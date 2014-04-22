@@ -31,18 +31,22 @@ public class Tower {
     
     /** set currentLevel to level */
     protected void setCurrentLevel(int level) {
+        currentLevel = level;
     }
     
     /** set position_x to pos_x */
     protected void setPositionX(int pos_x) {
+        position_x = pos_x;
     }
     
     /** set position_y to pos_y */
     protected void setPositionY(int pos_y) {
+        position_y = pos_y;
     }
     
     /** set upgradeCost to cost */
     protected void setUpgradeCost(int cost) {
+        upgradeCost = cost;
     }
     
     /** set attack to att */
