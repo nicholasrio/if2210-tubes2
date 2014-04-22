@@ -1,5 +1,5 @@
-
 package towerdefense;
+
 import java.util.*;
 import java.io.*;
 
@@ -8,6 +8,7 @@ import java.io.*;
  * @author Klongkgung, opelhoward
  */
 public class GamePlay {
+
     protected int[][] map;
     private List<Tower> listOfTower;
     private List<Monster> listOfMonster;
@@ -16,7 +17,8 @@ public class GamePlay {
     private int score;
     private int gold;
     private int lives;
-    private int start_x, start_y, end_x, end_y; 
+    private int start_x, start_y, end_x, end_y;
+
     public GamePlay() {
         map = new int[ROW][COL];
         listOfTower = new ArrayList<>();
@@ -27,13 +29,19 @@ public class GamePlay {
         gold = 0;
         lives = INITIAL_LIFE;
     }
-    
+
     public void decreaseLive() {
         --lives;
     }
-    
+
     public void buildTower(int pos_x, int pos_y) {
-        listOfTower.add(new Tower(int pos_x, int pos_y));
+        listOfTower.add(new Tower(int pos_x
+        , int pos_y
+    
+
+    
+
+    ));
     }
     
     public void upgradeTower(int pos_x, int pos_y) {
@@ -45,18 +53,18 @@ public class GamePlay {
             }
         }
     }
-    
+
     public void nextLevel() {
         listOfMonster = new ArrayList<>();
         ++currentLevel;
         lives = INITIAL_LIFE;
     }
-    
+
     public void spawnMonster() {
         listOfMonster.add(Monster());
-        
+
     }
-    
+
     private void run() throws FileNotFoundException {
         Scanner cin = new Scanner(new File("level1.txt"));
         while (cin.hasNext() || ((!listOfMonster.isEmpty()) && (lives > 0))) {
@@ -78,8 +86,8 @@ public class GamePlay {
                 }
             }
         }
-        
+
     }
-    
+
     private static final int ROW = 25, COL = 80, INITIAL_LIFE = 5;
 }
