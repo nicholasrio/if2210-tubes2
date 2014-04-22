@@ -29,7 +29,8 @@ public class Tower {
         coolDown = 10;
     }
     
-    /** set currentLevel to level */
+    /** set currentLevel to level
+     * @param level */
     protected void setCurrentLevel(int level) {
         currentLevel = level;
     }
