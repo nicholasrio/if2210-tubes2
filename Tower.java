@@ -146,10 +146,8 @@ public class Tower {
         attack=attack+(attack*attackIncreaseRate/100);
     }
     
-    public int void sellTower() {                                                                       // ini maksudnya public int sellTower?
+    public int sellTower() {                                                                       // ini maksudnya public int sellTower? -> betul
         //menjual tower, mengembalikan uang sejumlah sekian persen dari cost terakhir tower
-        int towerCost;
-        towerCost=1/((1+costIncreaseRate/100)*upgradeCost);
-        return (rateJual/100 * towerCost);
+        return (rateJual*towerCost/100);
     }
 }
