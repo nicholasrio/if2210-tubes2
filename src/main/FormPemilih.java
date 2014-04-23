@@ -81,4 +81,8 @@ public class FormPemilih extends javax.swing.JFrame implements Form{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void SaveToDatabase() {
+    }
 }

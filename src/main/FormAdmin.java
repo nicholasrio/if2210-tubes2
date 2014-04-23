@@ -15,8 +15,14 @@ public class FormAdmin extends javax.swing.JFrame implements Form{
     /**
      * Creates new form FormAdmin
      */
+    private CalonTerpilih DaftarPilihan;
+    
     public FormAdmin() {
         initComponents();
+    }
+    
+    public void SaveToDatabase(){
+    
     }
 
     /**
@@ -28,40 +34,59 @@ public class FormAdmin extends javax.swing.JFrame implements Form{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        TombolLogin = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        TombolDapil = new javax.swing.JButton();
+        TombolDapil1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        TombolDapil.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDapil.setText("Daerah Pemilihan");
+        TombolDapil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TombolDapilActionPerformed(evt);
+            }
+        });
 
-        TombolLogin.setText("Login");
+        TombolDapil1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDapil1.setText("Calon Legislatif");
+        TombolDapil1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TombolDapil1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(286, Short.MAX_VALUE)
-                .addComponent(TombolLogin)
-                .addGap(62, 62, 62))
+                .addGap(112, 112, 112)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TombolDapil1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TombolDapil))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jLabel1)
-                .addGap(71, 71, 71)
-                .addComponent(TombolLogin)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addGap(95, 95, 95)
+                .addComponent(TombolDapil)
+                .addGap(18, 18, 18)
+                .addComponent(TombolDapil1)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TombolDapilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDapilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TombolDapilActionPerformed
+
+    private void TombolDapil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDapil1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TombolDapil1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,7 +124,8 @@ public class FormAdmin extends javax.swing.JFrame implements Form{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton TombolLogin;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton TombolDapil;
+    private javax.swing.JButton TombolDapil1;
+    private javax.swing.ButtonGroup buttonGroup1;
     // End of variables declaration//GEN-END:variables
 }

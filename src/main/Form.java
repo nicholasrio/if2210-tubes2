@@ -11,5 +11,5 @@ package main;
  * @author akhfa
  */
 public interface Form {
-    
+    public void SaveToDatabase();
 }
