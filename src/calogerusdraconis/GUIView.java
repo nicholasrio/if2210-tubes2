@@ -27,6 +27,7 @@ public class GUIView implements View {
     // #[regen=yes,id=DCE.33D9B330-3FE3-660C-016C-84F9DC7087C3]
     // </editor-fold> 
     public GUIView () {
+        super();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
