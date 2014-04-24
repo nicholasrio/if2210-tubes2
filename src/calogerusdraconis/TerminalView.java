@@ -27,6 +27,7 @@ public class TerminalView implements View {
     // #[regen=yes,id=DCE.9D7AC24E-0320-910E-A1C9-99F1CE632965]
     // </editor-fold> 
     public TerminalView () {
+        super();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
