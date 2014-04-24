@@ -10,7 +10,7 @@ package main;
  *
  * @author akhfa
  */
-public class FormAdmin extends javax.swing.JFrame implements Form{
+public class FormAdmin extends javax.swing.JFrame{
 
     /**
      * Creates new form FormAdmin
@@ -82,6 +82,8 @@ public class FormAdmin extends javax.swing.JFrame implements Form{
 
     private void TombolDapilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDapilActionPerformed
         // TODO add your handling code here:
+        FormDapil FD = new FormDapil();
+        
     }//GEN-LAST:event_TombolDapilActionPerformed
 
     private void TombolDapil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDapil1ActionPerformed

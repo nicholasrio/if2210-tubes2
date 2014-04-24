@@ -10,13 +10,16 @@ package main;
  *
  * @author akhfa
  */
-public class FormPemilih extends javax.swing.JFrame implements Form{
+public class FormPemilih extends javax.swing.JFrame{
 
     /**
      * Creates new form FormPemilih
      */
     public FormPemilih() {
         initComponents();
+    }
+    
+   public void SaveToDatabase() {
     }
 
     /**
@@ -82,7 +85,4 @@ public class FormPemilih extends javax.swing.JFrame implements Form{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void SaveToDatabase() {
-    }
 }

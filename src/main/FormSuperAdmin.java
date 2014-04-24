@@ -10,7 +10,7 @@ package main;
  *
  * @author akhfa
  */
-public class FormSuperAdmin extends javax.swing.JFrame implements Form{
+public class FormSuperAdmin extends javax.swing.JFrame{
 
     /**
      * Creates new form FormSuperAdmin
@@ -19,7 +19,6 @@ public class FormSuperAdmin extends javax.swing.JFrame implements Form{
         initComponents();
     }
 
-    @Override
     public void SaveToDatabase() {
         
     }

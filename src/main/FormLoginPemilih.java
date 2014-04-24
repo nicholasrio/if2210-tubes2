@@ -10,7 +10,7 @@ package main;
  *
  * @author akhfa
  */
-public class FormLoginPemilih extends javax.swing.JFrame implements FormLogin{
+public class FormLoginPemilih extends javax.swing.JFrame{
 
     /**
      * Creates new form FormLoginPemilih
