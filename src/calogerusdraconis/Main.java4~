@@ -92,14 +92,6 @@ public class Main {
         }catch (Exception err) {
             System.out.println("ASDF");
         }
-        UserDragon d = new UserDragon("willy","ASDFASD");
-        System.out.println("halo");
-        try {
-            Thread.sleep(2000);
-        } catch (Exception e) {
-           System.out.println("ASFDASDFASDF"); 
-        }
-        System.exit(0);
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

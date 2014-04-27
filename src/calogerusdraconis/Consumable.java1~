@@ -19,39 +19,52 @@ package CalogerusDraconis;
 
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.056C772C-244D-5316-DDA8-DC26E2BBEE94]
+// #[regen=yes,id=DCE.8C0A9E96-A0E7-4807-A522-F6B14E09C50C]
 // </editor-fold> 
-public class GUIView implements View {
+public class Consumable {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.33D9B330-3FE3-660C-016C-84F9DC7087C3]
+    // #[regen=yes,id=DCE.86F6A278-9B7D-6DDB-EDA6-9A84D27CD125]
     // </editor-fold> 
-    public GUIView () {
-        super();
+    private String name;
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.D15787C4-332B-20A0-16ED-013269409DAD]
+    // </editor-fold> 
+    private String img;
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.F03DB0AA-CF3F-89E5-39C3-F3B3682E7B01]
+    // </editor-fold> 
+    public Consumable () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.FEFFC23B-84C7-D140-49BA-F39920FE6E14]
+    // #[regen=yes,regenBody=yes,id=DCE.C5B6B673-F75B-9DC3-6EDB-CF4CD4C391D2]
     // </editor-fold> 
-    public void UpdateScreen (UserDragon drg) {
+    public String getImg () {
+        return img;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.FC237CD2-A9E0-A34D-B975-06DFB5ED1A26]
+    // #[regen=yes,regenBody=yes,id=DCE.2BAEFB0D-A6EE-7659-6732-2C542110AF05]
     // </editor-fold> 
-    public void UpdateScreen (Store str) {
+    public void setImg (String val) {
+        this.img = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.0B24C935-E31C-F78E-9908-277BB6F5159B]
+    // #[regen=yes,regenBody=yes,id=DCE.51066AD5-031F-C47D-1755-8200DDE00E01]
     // </editor-fold> 
-    public void UpdateScreen (UserDragon drg, Dragon enemy) {
+    public String getName () {
+        return name;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.39E46400-7DF2-1C4C-F495-A984B97C2266]
+    // #[regen=yes,regenBody=yes,id=DCE.DB401575-72EA-83C8-2ECF-AC0D5743D50B]
     // </editor-fold> 
-    public void UpdateScreen (UserDragon drg, Event evnt) {
+    public void setName (String val) {
+        this.name = val;
     }
 
 }

@@ -15,56 +15,66 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package CalogerusDraconis;
-
+package CalogerusDraconis;import java.text.DateFormat; 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList; 
+import java.util.Calendar;
+import java.util.Date; 
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.8C0A9E96-A0E7-4807-A522-F6B14E09C50C]
+// #[regen=yes,id=DCE.DA1CAA8E-DC4F-B1A6-2BEB-CD5E1F104533]
 // </editor-fold> 
-public final class Consumable {
+public class Main {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.86F6A278-9B7D-6DDB-EDA6-9A84D27CD125]
+    // #[regen=yes,id=DCE.63CA2664-F119-3E4F-70B9-EBE581D09D8B]
     // </editor-fold> 
-    private String name;
+    public Dragon draco;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.D15787C4-332B-20A0-16ED-013269409DAD]
+    // #[regen=yes,id=DCE.0BE79718-C1E2-6BA1-97AA-29B6F470E4CF]
     // </editor-fold> 
-    private String img;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.F03DB0AA-CF3F-89E5-39C3-F3B3682E7B01]
-    // </editor-fold> 
-    public Consumable () {
+    public Main () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.C5B6B673-F75B-9DC3-6EDB-CF4CD4C391D2]
+    // #[regen=yes,id=DCE.C285A074-E684-E331-E7AB-CD728879D8B5]
     // </editor-fold> 
-    public String getImg () {
-        return img;
+    public static void main (String[] args) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	//get current date time with Date()
+        Date date = new Date();
+        System.out.println(dateFormat.format(date));
+
+        //get current date time with Calendar()
+        Calendar cal = Calendar.getInstance();
+        System.out.println(dateFormat.format(cal.getTime()));
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.2BAEFB0D-A6EE-7659-6732-2C542110AF05]
+    // #[regen=yes,id=DCE.300DE1C1-8FFF-9876-186B-6A300231FB80]
     // </editor-fold> 
-    public void setImg (String val) {
-        this.img = val;
+    public void newGame () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.51066AD5-031F-C47D-1755-8200DDE00E01]
+    // #[regen=yes,id=DCE.A635F2FE-A9F8-36AD-47CE-2F0270215A08]
     // </editor-fold> 
-    public String getName () {
-        return name;
+    public void loadGame () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.DB401575-72EA-83C8-2ECF-AC0D5743D50B]
+    // #[regen=yes,regenBody=yes,id=DCE.80151BEA-D69C-3C3E-5363-37DFEC7601CC]
     // </editor-fold> 
-    public void setName (String val) {
-        this.name = val;
+    public Dragon getDraco () {
+        return draco;
+    }
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,regenBody=yes,id=DCE.1EFC7D1A-E329-168A-3331-F1511B338D84]
+    // </editor-fold> 
+    public void setDraco (Dragon val) {
+        this.draco = val;
     }
 
 }

@@ -51,7 +51,7 @@ public class Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.B9490DAF-9CCD-C6A0-576E-D2BE83DFF40A]
     // </editor-fold> 
-    protected float thirst;
+    protected pfloat thirst;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.20D90B97-CE2A-DC4D-0990-EDABCF43383A]
@@ -218,14 +218,14 @@ public class Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.5BD56FB4-7501-9B51-0277-6F178C849755]
     // </editor-fold> 
-    public float getThirst () {
+    public pfloat getThirst () {
         return thirst;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.8390DE16-9460-CEB6-53AA-AEE7B04EA64B]
     // </editor-fold> 
-    public void setThirst (float val) {
+    public void setThirst (pfloat val) {
         this.thirst = val;
     }
 

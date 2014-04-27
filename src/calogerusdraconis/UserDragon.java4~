@@ -17,12 +17,8 @@
 
 package CalogerusDraconis;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener; 
-import static java.lang.Thread.sleep;
 import java.util.ArrayList; 
 import java.util.Date; 
-import javax.swing.Timer; 
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.DF71A32C-B40F-498E-E6D5-9F4513B43A22]
@@ -48,49 +44,13 @@ public class UserDragon extends Dragon {
     // #[regen=yes,id=DCE.E7EE7EE8-EEF2-6089-FC34-B81192D0AB59]
     // </editor-fold> 
     private ArrayList<Consumable> fdInventory;
-    
-    private Thread addMoney;
-    private Thread addHappiness;
-    
+
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.39F10D0D-020E-7824-2E18-D995AC6ED214]
     // </editor-fold> 
-    public UserDragon (String name, String password) {
+    public UserDragon (String name, String passoword) {
         super(name);
         this.password = password;
-        money = 0;
-        happiness = 0;
-        addMoney = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    while(true) {
-                        sleep(1000);
-                        money++;
-                        System.out.println("money " + money);
-                    }
-                } catch (Exception e) {
-                    System.out.println("diinterupt");
-                }
-            }
-        };
-        
-        addHappiness = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    while(true) {
-                        sleep(1000);
-                        happiness++;
-                        System.out.println("happiness " + happiness);
-                    }
-                } catch (Exception e) {
-                    System.out.println("diinterupt");
-                }
-            }
-        };
-        addMoney.start();
-        addHappiness.start();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

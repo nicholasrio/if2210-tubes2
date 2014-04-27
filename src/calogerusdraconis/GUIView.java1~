@@ -54,5 +54,13 @@ public class GUIView implements View {
     public void UpdateScreen (UserDragon drg, Event evnt) {
     }
 
+    public void updateScreen(UserDragon drg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void updateScreen(Store str) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
 
