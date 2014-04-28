@@ -92,9 +92,7 @@ public class Main {
         }catch (Exception err) {
             System.out.println("ASDF");
         }
-        
-        /* urutan: name, health, maxHealth, stamina, maxStamina, thirst, bladder, hunger, level, experience, password, money, happiness */
-        UserDragon d = new UserDragon("willy",0,100,0,100,0,0,0,1,0,"asdf",0,0);
+        UserDragon d = new UserDragon("willy","ASDFASD");
         System.out.println("halo");
         try {
             Thread.sleep(2000);

@@ -1,13 +1,53 @@
+/*
+ * Copyright (C) 2014 Calogerus Draconis Team
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package CalogerusDraconis;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener; 
+import static java.lang.Thread.sleep;
 import java.util.ArrayList; 
-import java.util.Date;
+import java.util.Date; 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Timer; 
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.DF71A32C-B40F-498E-E6D5-9F4513B43A22]
 // </editor-fold> 
 public class UserDragon extends Dragon {
-
+    public class modifyHappiness implements Runnable {
+        private float happiness;
+        public void modifyHappiness(float val) {
+            synchronized(this) {
+                ++happiness;
+            }
+        }
+        @Override
+        public void run() {
+            try {
+                while(true){
+                    sleep(1000);
+                    modifyHappiness(1);
+                }
+            } catch (InterruptedException ex) {
+            }
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.9B6996D6-9D30-35C7-C2CD-E73DB7F0E8CF]
     // </editor-fold> 
@@ -16,31 +56,37 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.EBDC48DE-2E8B-B203-0F6D-4E51C55A8BCB]
     // </editor-fold> 
-    private modifyAttribute money;
+    private int money;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.3E0300E9-AAEC-E4C7-70D3-67516D1EAA8D]
     // </editor-fold> 
-    private modifyAttribute happiness;
+    private modifyHappiness happiness;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.E7EE7EE8-EEF2-6089-FC34-B81192D0AB59]
     // </editor-fold> 
     private ArrayList<Consumable> fdInventory;
     
-    private Thread threadMoney;
+    private Thread threadHappiness;
     
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.39F10D0D-020E-7824-2E18-D995AC6ED214]
     // </editor-fold> 
-    public UserDragon (String name, float health, float maxHealth, float stamina, float maxStamina, float thirst, float bladder, float hunger, int level, int experience, String password, float money, float happiness) {
-        super(name, health, maxHealth, stamina, maxStamina, thirst, bladder, hunger, level, experience);
+    public UserDragon (String name, String password) {
+        super(name);
         this.password = password;
-        this.money = new modifyAttribute(0,10,1,new Float(20),0);
-        threadMoney = new Thread(this.money);
-        threadMoney.start();
+        money = 0;
+        //happiness = 0;
+        threadHappiness = new Thread(happiness);
     }
-
+    
+    private final void letThreadDoIt() {
+    }
+    
+    private final void startTheThread() {
+    }
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.B112E0C0-12CE-6328-CA63-947031A9E5D4]
     // </editor-fold> 
@@ -59,28 +105,28 @@ public class UserDragon extends Dragon {
     // #[regen=yes,regenBody=yes,id=DCE.DE5979F6-6507-47F8-D0DB-38CDBF826BF7]
     // </editor-fold> 
     public float getHappiness () {
-        return happiness.getAttribute();
+        return happiness;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.6DDA13A0-CBDF-5386-53C4-B3572DA123D1]
     // </editor-fold> 
     public void setHappiness (float val) {
-        this.happiness.setAttribute(val);
+        this.happiness = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.FF2F5803-9362-8956-4285-607F8311B732]
     // </editor-fold> 
-    public float getMoney () {
-        return money.getAttribute();
+    public int getMoney () {
+        return money;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.94B86C97-726A-A571-226A-DE3EC1EF1BB5]
     // </editor-fold> 
-    public void setMoney (float val) {
-        this.money.setAttribute(val);
+    public void setMoney (int val) {
+        this.money = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
