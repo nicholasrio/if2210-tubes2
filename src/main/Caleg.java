@@ -11,7 +11,32 @@ package main;
  * @author akhfa
  */
 public class Caleg {
-    String NIK;
-    String NamaPartai;
-    String History;
+    private String NIK;
+    private String NamaPartai;
+    private String History;
+    private int NoDapil;
+    
+    public Caleg(String _NIK, String _Partai, String _History, int _NoDapil){
+        NIK = _NIK;
+        NamaPartai = _Partai;
+        History = _History;
+        NoDapil = _NoDapil;
+    }
+    
+    public String GetNIK(){
+        return NIK;        
+    }
+    
+    public String GetPartai(){
+        return NamaPartai;
+    }
+    
+    public String GetHistory(){
+        return History;
+    }
+    
+    public int GetDapil(){
+        return NoDapil;
+    }
+    
 }
