@@ -16,13 +16,11 @@ public class TowerList {
     private TowerList() {}
     
     /** create new tower at position (pos_x, pos_y) if have enough money. return true if the tower could be created */
-    public boolean createNewTower(int pos_x, int pos_y, int money) throws Exception {
+    public boolean createNewTower(int pos_x, int pos_y, int money) {
     /* ?Precondition, there should not exist any tower at position (pos_x, pos_y) */
         int idx = getTowerIdx(pos_x, pos_y);
-        if (idx!=-1) {
-            throw new Exception("Tower already created there");
-        }
-        else if (money>=1) {
+        assert(idx==-1) : "There's already tower in there";
+        if (idx==-1 && money>=1) {
             Tower temp = new Tower(pos_x,pos_y);
             ListOfTower.add(temp);
             return true;
@@ -42,29 +40,25 @@ public class TowerList {
     /* ?Precondition, there should exist a tower at position (pos_x, pos_y) */
         int idx = getTowerIdx(pos_x, pos_y);
         int payBack=0;
+        assert(idx!=-1) : "Tower not found";
         if (idx!=-1) {
             payBack = ListOfTower.get(idx).sellTower();
             ListOfTower.remove(idx);
-            return payBack;
         }
-        else return 0;
+        return payBack;
     }
     
     /** upgrade tower at position (pos_x, pos_y) if player's money is sufficient, return remaining money */
-    public int upgradeTower(int pos_x, int pos_y, int money) throws Exception {
+    public int upgradeTower(int pos_x, int pos_y, int money) {
     /* ?Precondition, there should exist a tower at position (pos_x, pos_y) */
         int idx = getTowerIdx(pos_x,pos_y);
-        if (idx==-1) { 
-            throw new Exception("There's no tower there");
+        assert(idx!=-1) : "Tower not found";
+        if (idx!=-1 && money >= ListOfTower.get(idx).getUpgradeCost()) {
+            int retval = money - ListOfTower.get(idx).getUpgradeCost();
+            ListOfTower.get(idx).upgradeTower();
+            return retval;
         }
-        else if (idx!=-1) {
-            if (money >= ListOfTower.get(idx).getUpgradeCost()) {
-                int retval = money - ListOfTower.get(idx).getUpgradeCost();
-                ListOfTower.get(idx).upgradeTower();
-                return retval;
-            }
-        } 
-        return 0;
+        else return 0;
     }
     
     /** Enemies are being attacked by tower(s) */
