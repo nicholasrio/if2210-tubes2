@@ -2,18 +2,23 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package catalogue;
+package Admin;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import katalogv.Connect;
+
 
 /**
  *
  * @author KURING
  */
-public class SqlStatement {
+public final class SqlStatement {
     private Statement statement;
     
     public SqlStatement() throws SQLException{
@@ -39,16 +44,13 @@ public class SqlStatement {
         statement.execute("INSERT INTO `video` (`title`, `link`, `rating`, `view`, `no_tubes`, `group_nama`) VALUES (\""+title+"\", \""+link+"\", \""+rating+"\", \""+view+"\", \""+no_tubes+"\", \""+group_name+"\");");
     }
     
-    public String select_admin() throws SQLException{
-        String details = null;
+    public List<String> select_admin() throws SQLException{
+        List<String> details = new ArrayList<>();
         try (ResultSet rs = statement.executeQuery("select * from administrator")) {
             while(rs.next()){
-                //Retrieve by column name
-                int id  = rs.getInt("nim");
-                String nama  = rs.getString("name");
-                
-                //Display values
-                details = "ID: " + id + " Nama: " + nama;
+                //Retrieve by column name and insert it into the list
+                details.add(rs.getString("nim"));
+                details.add(rs.getString("name"));
             }
         }
         return details;
@@ -127,17 +129,14 @@ public class SqlStatement {
         statement.execute(query);
     }
     
-     public String select_admin_specific(int _NIM) throws SQLException{
-        String details = null;
+     public List<String> select_admin_specific(int _NIM) throws SQLException{
+        List<String> details = new ArrayList<>();
         String query = "SELECT * FROM administrator WHERE nim=\'" + _NIM + "\'";
         try (ResultSet rs = statement.executeQuery(query)) {
             while(rs.next()){
-                //Retrieve by column name
-                int id  = rs.getInt("nim");
-                String nama  = rs.getString("name");
-                
-                //Display values
-                details = "ID: " + id + " Nama: " + nama;
+                //Retrieve by column name and insert it into the list
+                details.add(rs.getString("nim"));
+                details.add(rs.getString("name"));
             }
         }
         return details;

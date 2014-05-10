@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package catalogue;
+package Admin;
 
 import java.sql.SQLException;
 
@@ -13,29 +13,37 @@ import java.sql.SQLException;
  * @author Rikysamuel
  */
 public class AdministratorController {
-    private Administrator admin;
-    private AdministratorView view;
+    private final Administrator admin;
+    private final AdministratorView view;
     
     public AdministratorController(){
         admin = new Administrator();
         view = new AdministratorView();
     }
     
-    public void checkLoginAdmin(String _NIM, String password) throws SQLException{
-        if (_NIM!=null && _NIM!=""){
+    public Administrator getAdmin(){
+        return admin;
+    }
+    
+    public boolean checkLoginAdmin(String _NIM, String password) throws SQLException{
+        if (_NIM!=null && !_NIM.equals("")){
             if (!admin.isUserExist(Integer.valueOf(_NIM))){
                 view.printUserRejected(Integer.valueOf(_NIM));
+                return false;
             }
             else{
                 admin.SetNIM(Integer.valueOf(_NIM));
                 if (!admin.isPasswordMatch(password)){
                     view.printMatchPassword(false);
+                    return false;
                 }
                 else{
                     view.printMatchPassword(true);
+                    return true;
                 }
             }
         }
+        return false;
     }
     
     public void AdminRegister(String _NIM, String name, String password) throws SQLException{
