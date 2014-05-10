@@ -148,6 +148,26 @@ public class UserDragon extends Dragon {
                     health -= 5 * level;
                 }
                 
+                if (hunger < 30){ // kalau baru makan
+                    bladder += 4;
+                } else if (hunger < 60){
+                    bladder += 3;
+                } else if (hunger < 90){
+                    bladder += 2;
+                } else {
+                    bladder += 1;
+                }
+				
+                if (thirst < 30){ // kalau baru makan
+                    bladder += 4;
+                } else if (thirst < 60){
+                    bladder += 3;
+                } else if (thirst < 90){
+                    bladder += 2;
+                } else {
+                    bladder += 1;
+                }
+                
                 if (bladder > 75){ // kebelet banget
                     happiness -= 3;
                     health -= 10 * level;
@@ -161,27 +181,7 @@ public class UserDragon extends Dragon {
                 } else if (happiness < 25){
                     health -= 5 * level;
                 }
-                
-                if (hunger < 30){ // kalau baru makan
-                    bladder += 4;
-                } else if (hunger < 60){
-                    bladder += 3;
-                } else if (hunger < 90){
-                    bladder += 2;
-                } else {
-                    bladder += 1;
-                }
-                
-                if (thirst < 30){ // kalau baru makan
-                    bladder += 4;
-                } else if (thirst < 60){
-                    bladder += 3;
-                } else if (thirst < 90){
-                    bladder += 2;
-                } else {
-                    bladder += 1;
-                }
-                
+
             }
         } catch (Exception e) {
             
