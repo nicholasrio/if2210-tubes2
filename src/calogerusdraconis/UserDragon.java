@@ -225,61 +225,61 @@ public class UserDragon extends Dragon {
     
     private void modifyAttribute() {
         //tambah attribute
-        health += 30 * level;
-        stamina += 1;
-        money += 1;
-        happiness -= 1;
-        thirst += 1;
-        hunger += 1;
+        tambahHealth(30 * level);
+        tambahStamina(1);
+        tambahMoney(1);
+        tambahHappiness(-1);
+        tambahThirst(1);
+        tambahHunger(1);
 
         if (hunger > 75){ // lapar banget
-            happiness -= 5;
-            health -= 10 * level;
+            tambahHappiness(-5);
+            tambahHealth (-10 * level);
         } else if (hunger > 50){
-            happiness -= 3;
-            health -= 5 * level;
+            tambahHappiness(-3);
+            tambahHealth (-5 * level);
         }
 
         if (thirst > 75){ // haus banget
-            happiness -= 3;
-            health -= 10 * level;
+            tambahHappiness(-3);
+            tambahHealth(-10 * level);
         } else if (thirst > 50){
-            happiness -= 5;
-            health -= 5 * level;
+            tambahHappiness(-5);
+            tambahHealth (-5 * level);
         }
 
-        if (bladder > 75){ // kebelet banget
-            happiness -= 3;
-            health -= 10 * level;
-        } else if (bladder > 50){
-            happiness -= 5;
-            health -= 5 * level;
-        }
-
-        if (happiness < 50){ // galau banget
-            health -= 10 * level;
-        } else if (happiness < 25){
-            health -= 5 * level;
-        }
-
-        if (hunger < 30){ // kalau baru makan
-            bladder += 4;
+		if (hunger < 30){ // kalau baru makan
+            tambahBladder(4);
         } else if (hunger < 60){
-            bladder += 3;
+            tambahBladder(3);
         } else if (hunger < 90){
-            bladder += 2;
+            tambahBladder(2);
         } else {
-            bladder += 1;
+            tambahBladder(1);
         }
 
         if (thirst < 30){ // kalau baru makan
-            bladder += 4;
+            tambahBladder(4);
         } else if (thirst < 60){
-            bladder += 3;
+            tambahBladder(3);
         } else if (thirst < 90){
-            bladder += 2;
+            tambahBladder(2);
         } else {
-            bladder += 1;
+            tambahBladder(1);
+        }
+		
+        if (bladder > 75){ // kebelet banget
+            tambahHappiness(-3);
+            tambahHealth(-10 * level);
+        } else if (bladder > 50){
+            tambahHappiness(-5);
+            tambahHealth (-5 * level);
+        }
+
+        if (happiness < 50){ // galau banget
+            tambahHealth(-10 * level);
+        } else if (happiness < 25){
+            tambahHealth(-5 * level);
         }
     }
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -306,7 +306,7 @@ public class UserDragon extends Dragon {
             e.setType("WinFight");
             e.setMessage("Congrats!You Win.");
             experience += 200 + 30 * level;
-            money += 100 + (Math.random() * (500 - 100));
+            tambahMoney((float)(100 + (Math.random() * (500 - 100))));
         } else if (sum1 < sum2){ // we lose
             e.setType("LoseFight");
             e.setMessage("Sorry!You Lose.");
