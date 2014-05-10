@@ -16,6 +16,10 @@
  */
 package calogerusdraconis;
 
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.DA1CAA8E-DC4F-B1A6-2BEB-CD5E1F104533]
@@ -35,7 +39,14 @@ public class Main {
         }
         
         public static void main(String[] args) {
-            System.out.println("ASFDASD");
+            UserDragon ud = new UserDragon("S", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0);
+            try {
+                sleep(10000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ud.sebelumExit();
+            //System.out.println("ASFA");
         }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
