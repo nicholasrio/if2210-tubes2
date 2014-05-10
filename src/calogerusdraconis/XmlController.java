@@ -29,7 +29,9 @@ import org.jdom2.input.SAXBuilder;
  * @author Dariel Valdano
  */
 public class XmlController {
-	public void LoadDragon(String name) {
+
+	public UserDragon LoadDragon(String name) throws Exception{
+		UserDragon retval = null;
 		try {
 
 			// Load XML and get root Node
@@ -50,7 +52,22 @@ public class XmlController {
 
 				//check if name is equal
 				if (userDragon.getChildText("name").equals(name)) {
-					//TODO: load this dragon to a UserDragon Object
+					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
+					retval = new UserDragon(
+							userDragon.getChildText("name"), 
+							Float.parseFloat(userDragon.getChildText("health")),
+							Float.parseFloat(userDragon.getChildText("maxHealth")),
+							Float.parseFloat(userDragon.getChildText("stamina")),
+							Float.parseFloat(userDragon.getChildText("maxStamina")),
+							Float.parseFloat(userDragon.getChildText("thirst")),
+							Float.parseFloat(userDragon.getChildText("bladder")),
+							Float.parseFloat(userDragon.getChildText("hunger")),
+							Integer.parseInt(userDragon.getChildText("level")),
+							Integer.parseInt(userDragon.getChildText("experience")),
+							userDragon.getChildText("password"),
+							Integer.parseInt(userDragon.getChildText("money")),
+							Float.parseFloat(userDragon.getChildText("happiness"))
+					);
 					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
 					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
 					for (Object anObj : invList) {
@@ -61,6 +78,12 @@ public class XmlController {
 			}
 		} catch (IOException | JDOMException io) {
 			System.out.println(io.getMessage());
+		}
+		
+		if (retval == null) {
+			throw new Exception("Cannot Find UserDragon");
+		} else {
+			return retval;
 		}
 	}
 }
