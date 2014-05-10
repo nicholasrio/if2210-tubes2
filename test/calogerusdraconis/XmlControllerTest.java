@@ -73,5 +73,18 @@ public class XmlControllerTest {
 		// TODO review the generated test code and remove the default call to fail.
 		//assertEquals("Dragon Name : Xanareth\n", outContent.toString());
 	}
+
+	/**
+	 * Test of SaveDragon method, of class XmlController.
+	 */
+	@Test
+	public void testSaveDragon() {
+		System.out.println("SaveDragon");
+		UserDragon dragon = null;
+		XmlController instance = new XmlController();
+		instance.SaveDragon(dragon);
+		// TODO review the generated test code and remove the default call to fail.
+		fail("The test case is a prototype.");
+	}
 	
 }
