@@ -1,0 +1,32 @@
+<calogerusSave>
+    <userDragon>
+      <name>Xanareth</name>
+      <currentTime>500</currentTime>
+      <password>aPassword</password>
+      <money>500</money>
+      <happiness>80</happiness>
+      <inventory>
+		<item>iceTea</item>
+		<item>lemonTea</item>
+		<item>tehBotol</item>
+		<item>catItem</item>
+      </inventory>
+      <health>90</health>
+      <maxHealth>100</maxHealth>
+      <stamina>80</stamina>
+      <maxStamina>120</maxStamina>
+      <thirst>50</thirst>
+      <bladder>30</bladder>
+      <hunger>20</hunger>
+      <level>2</level>
+      <experience>252</experience>
+    </userDragon>
+    <market>
+      <inventory>
+		<item>iceTea</item>
+		<item>lemonTea</item>
+		<item>tehBotol</item>
+		<item>catItem</item>
+      </inventory>
+    </market>
+</calogerusSave>

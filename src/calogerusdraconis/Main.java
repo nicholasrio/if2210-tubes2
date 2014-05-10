@@ -50,17 +50,17 @@ public class Main {
         try {
             DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse (new File("book.xml"));
+            Document doc = docBuilder.parse (new File("calogerusSave.xml"));
             // normalize text representation
             doc.getDocumentElement ().normalize ();
             System.out.println ("Root element of the doc is " + 
-                 doc.getDocumentElement().getNodeName());
+                doc.getDocumentElement().getNodeName());
 
-            NodeList listOfPersons = doc.getElementsByTagName("person");
+            NodeList listOfPersons = doc.getElementsByTagName("item");
             int totalPersons = listOfPersons.getLength();
             System.out.println("Total no of people : " + totalPersons);
 
-            for(int s=0; s<listOfPersons.getLength() ; s++){
+            /*for(int s=0; s<listOfPersons.getLength() ; s++){
                 Node firstPersonNode = listOfPersons.item(s);
                 if(firstPersonNode.getNodeType() == Node.ELEMENT_NODE){
                     Element firstPersonElement = (Element)firstPersonNode;
@@ -89,6 +89,7 @@ public class Main {
                     //------
                 }//end of if clause
             }//end of for loop with s var
+	    */
         }catch (Exception err) {
             System.out.println("ASDF");
         }
