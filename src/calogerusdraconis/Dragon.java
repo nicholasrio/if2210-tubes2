@@ -34,19 +34,9 @@ public class Dragon {
     protected float health;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.6E9F01F2-D50D-BD74-70EC-A8F0D4DFCCED]
-    // </editor-fold> 
-    protected float maxHealth;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.A9D0A60F-1DF6-E280-56F7-EC7EB9608BC0]
     // </editor-fold> 
     protected float stamina;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.8E483E98-B30E-A342-6A19-2C19F3CABBE6]
-    // </editor-fold> 
-    protected float maxStamina;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.B9490DAF-9CCD-C6A0-576E-D2BE83DFF40A]
@@ -57,7 +47,6 @@ public class Dragon {
     // #[regen=yes,id=DCE.20D90B97-CE2A-DC4D-0990-EDABCF43383A]
     // </editor-fold> 
     protected float bladder;
-
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.A10BC95A-5B3B-BF14-8658-07C226D811B5]
@@ -77,7 +66,7 @@ public class Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.CF3D2C4D-9EA6-E944-69EA-28C431E61AE3]
     // </editor-fold> 
-    public Dragon (String name, float health, float maxHealth, float stamina, float maxStamina, float thirst, float bladder, float hunger, int level, int experience) {
+    public Dragon (String name, float health, float stamina, float thirst, float bladder, float hunger, int level, int experience) {
         this.name = name;
     }
 

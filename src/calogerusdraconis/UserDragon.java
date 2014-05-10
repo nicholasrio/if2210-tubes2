@@ -2,7 +2,7 @@ package CalogerusDraconis;
 
 import java.util.ArrayList; 
 import java.util.Date;
-import java.util.Math;
+import java.util.Random;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.DF71A32C-B40F-498E-E6D5-9F4513B43A22]
@@ -33,7 +33,7 @@ public class UserDragon extends Dragon {
     // #[regen=yes,id=DCE.39F10D0D-020E-7824-2E18-D995AC6ED214]
     // </editor-fold> 
     public UserDragon (String name, float health, float maxHealth, float stamina, float maxStamina, float thirst, float bladder, float hunger, int level, int experience, String password, float money, float happiness) {
-        super(name, health, maxHealth, stamina, maxStamina, thirst, bladder, hunger, level, experience);
+        super(name, health, stamina, thirst, bladder, hunger, level, experience);
         this.password = password;
         this.money = money;
         this.happiness = happiness;
@@ -105,17 +105,26 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.CAFBB28D-46E4-68A5-0A2A-82623BC039D0]
     // </editor-fold> 
-    public Event fight (Dragon withWho) {
-        float sum1 = 0.2 * getHealth() + 0.2 * getStamina() + 0.3 * getIexperience() + 5 * level - 0.1 * getThrist() - 0.1 * bladder - 0.1 * hunger;
-        float sum2 = 0.2 * withWho.getHealth() + 0.2 * withWho.getStamina() + 0.3 * withWho.getIexperience() + 5 * withWho.getLevel() - 0.1 * withWho.getThrist() - 0.1 * withWho.getBladder() - 0.1 * withWho.getHunger() - ;
+    public Event fight () {
+        Random rand = new Random();
+        float ranHealth = (float) Math.ceil(rand.nextGaussian()*(0.2*health)+health);
+        float ranStamina = (float) Math.ceil(rand.nextGaussian()*(0.2*stamina)+stamina);
+        int ranIexperience = (int) Math.ceil(rand.nextGaussian()*(0.2*iexperience)+iexperience);
+        int ranLevel = (int) Math.ceil(rand.nextGaussian()*(0.2*level)+level);
+        float ranThirst = (float) Math.ceil(rand.nextGaussian()*(0.2*thirst)+thirst);
+        float ranBladder = (float) Math.ceil(rand.nextGaussian()*(0.2*bladder)+bladder);
+        float ranHunger = (float) Math.ceil(rand.nextGaussian()*(0.2*hunger)+hunger);
+        Dragon withWho = new Dragon("Random Dragon", ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranIexperience);
+        
+        float sum1 = (float)0.2 * health + (float)0.2 * stamina + (float)0.3 * iexperience + 5 * level - (float)0.1 * thirst - (float)0.1 * bladder - (float)0.1 * hunger;
+        float sum2 = (float)0.2 * withWho.getHealth() + (float)0.2 * withWho.getStamina() + (float)0.3 * withWho.getIexperience() + 5 * withWho.getLevel() - (float)0.1 * withWho.getThirst() - (float)0.1 * withWho.getBladder() - (float)0.1 * withWho.getHunger();
         
         Event e = new Event();
         if (sum1 > sum2){ // we win
             e.setType("WinFight");
             e.setMessage("Congrats!You Win.");
             iexperience += 200 + 30 * level;
-            money += ;
-            
+            money += 100 + (Math.random() * (500 - 100));
         } else if (sum1 < sum2){ // we lose
             e.setType("LoseFight");
             e.setMessage("Sorry!You Lose.");
