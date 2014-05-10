@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package CalogerusDraconis;
+package calogerusdraconis;
 
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
