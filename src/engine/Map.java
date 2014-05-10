@@ -10,8 +10,9 @@ package engine;
  *
  * @author Winson
  */
-public class Map implements Cloneable{
-
+public class Map{
+    private final int maxLevel,maxRow,maxCol;
+    private int matrix[][][];
     /**
      * Constructor
      * 
@@ -43,24 +44,20 @@ public class Map implements Cloneable{
 
     /**
      * Get element
-     * @param level level of Map
-     * @param row row of Map
-     * @param col column of Map
+     * @param L Location of Map
      * @return Map element
      */
-    public int getElement(int level,int row,int col){
-        return matrix[level][row][col];
+    public int getElement(Location L){
+        return matrix[L.getLevel()][L.getRow()][L.getCol()];
     }
 
     /**
      * Set element
-     * @param level level of Map
-     * @param row row of Map
-     * @param col column of Map
-     * @param value integer value
+     * @param L level of Map
+     * @param value value of Map
      */
-    public void setElement(int level,int row, int col, int value){
-        matrix[level][row][col] = value; 
+    public void setElement(Location L, int value){
+        matrix[L.getLevel()][L.getRow()][L.getCol()] = value; 
     }
 
     /**
@@ -114,7 +111,7 @@ public class Map implements Cloneable{
                 col = 0;
                 while(col < maxCol && !Found)
                 {
-                    if(getElement(level, row, col) == -1) // Menemukan posisi start
+                    if(getElement(new Location(level, row, col)) == -1) // Menemukan posisi start
                     {
                         Found = true;
                     }
@@ -136,7 +133,5 @@ public class Map implements Cloneable{
             throw new Exception("Tidak ditemukan titik start pada map");
         }
     }
-        
-    private final int maxLevel,maxRow,maxCol;
-    private int matrix[][][];
 }
+

@@ -147,7 +147,7 @@ public class Player {
             String command;
             
             /* Play */
-            while(map.getElement(position.getLevel(), position.getRow(), position.getCol())!= -2) /* Belum ketemu exit */
+            while(map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()))!= -2) /* Belum ketemu exit */
             {
                 do
                 {
@@ -157,7 +157,7 @@ public class Player {
                     case "up": // move ke atas
                         if(position.getRow() > 0) // periksa apakah posisi sudah diujung atas map?
                         {
-                            if(map.getElement(position.getLevel(), position.getRow()-1, position.getCol()) != -4) // periksa apakah ada tembok?
+                            if(map.getElement(new Location(position.getLevel(), position.getRow()-1, position.getCol())) != -4) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getRow()-1);
                             }
@@ -166,7 +166,7 @@ public class Player {
                     case "down": // move ke bawah
                         if(position.getRow()<map.getMaxRow()-1) // periksa apakah posisi sudah diujung bawah map?
                         {
-                            if(map.getElement(position.getLevel(), position.getRow()+1, position.getCol()) != -4) // periksa apakah ada tembok?
+                            if(map.getElement(new Location(position.getLevel(), position.getRow()+1, position.getCol())) != -4) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getRow()+1);
                             }
@@ -175,7 +175,7 @@ public class Player {
                     case "left": // move ke kiri
                         if(position.getCol() > 0) // periksa apakah posisi sudah diujung kiri map?
                         {
-                            if(map.getElement(position.getLevel(), position.getRow(), position.getCol()-1) != -4) // periksa apakah ada tembok?
+                            if(map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()-1)) != -4) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getCol()-1);
                             }
@@ -184,18 +184,18 @@ public class Player {
                     case "right": // move ke kanan
                         if(position.getCol() < map.getMaxCol()-1) // periksa apakah posisi sudah diujung kanan map?
                         {
-                            if(map.getElement(position.getLevel(), position.getRow(), position.getCol()+1) != -4) // periksa apakah ada tembok?
+                            if(map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()+1)) != -4) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getCol()+1);
                             }
                         }
                         break;
                 }
-                status = map.getElement(position.getLevel(), position.getRow(), position.getCol());
+                status = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
                 if(status == -3) // ada coin
                 {
                     score++;
-                    map.setElement(position.getLevel(), position.getRow(), position.getCol(), 0);
+                    map.setElement(new Location(position.getLevel(), position.getRow(), position.getCol()), 0);
                 }
                 else if(status > 0) // teleporter
                 {
