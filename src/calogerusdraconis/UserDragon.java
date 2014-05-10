@@ -125,6 +125,63 @@ public class UserDragon extends Dragon {
             while (true) {
                 sleep(5000);
                 //tambah attribute
+                health += 30 * level;
+                stamina += 1;
+                money += 1;
+                happiness -= 1;
+                thirst += 1;
+                hunger += 1;
+                
+                if (hunger > 75){ // lapar banget
+                    happiness -= 5;
+                    health -= 10 * level;
+                } else if (hunger > 50){
+                    happiness -= 3;
+                    health -= 5 * level;
+                }
+                
+                if (thirst > 75){ // haus banget
+                    happiness -= 3;
+                    health -= 10 * level;
+                } else if (thirst > 50){
+                    happiness -= 5;
+                    health -= 5 * level;
+                }
+                
+                if (bladder > 75){ // kebelet banget
+                    happiness -= 3;
+                    health -= 10 * level;
+                } else if (bladder > 50){
+                    happiness -= 5;
+                    health -= 5 * level;
+                }
+                
+                if (happiness < 50){ // galau banget
+                    health -= 10 * level;
+                } else if (happiness < 25){
+                    health -= 5 * level;
+                }
+                
+                if (hunger < 30){ // kalau baru makan
+                    bladder += 4;
+                } else if (hunger < 60){
+                    bladder += 3;
+                } else if (hunger < 90){
+                    bladder += 2;
+                } else {
+                    bladder += 1;
+                }
+                
+                if (thirst < 30){ // kalau baru makan
+                    bladder += 4;
+                } else if (thirst < 60){
+                    bladder += 3;
+                } else if (thirst < 90){
+                    bladder += 2;
+                } else {
+                    bladder += 1;
+                }
+                
             }
         } catch (Exception e) {
             
@@ -152,12 +209,19 @@ public class UserDragon extends Dragon {
         if (sum1 > sum2){ // we win
             e.setType("WinFight");
             e.setMessage("Congrats!You Win.");
-            iexperience += 200 + 30 * level;
-            money += 100 + (Math.random() * (500 - 100));
+            iexperience += 400 * withWho.getLevel();
+            money += 200 + (Math.random() * (500 - 200));
         } else if (sum1 < sum2){ // we lose
             e.setType("LoseFight");
             e.setMessage("Sorry!You Lose.");
-            iexperience += 25 * level;
+            iexperience += 25 * withWho.getLevel();
+        }
+        
+        // jika naik level
+        while(iexperience >= 100*(level+1)*(level+1)*(level+1)){
+            level++;
+            maxHealth += 30;
+            maxStamina += 10;
         }
         return e;
     }
