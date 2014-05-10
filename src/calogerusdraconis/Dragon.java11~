@@ -78,13 +78,22 @@ public class Dragon {
     // </editor-fold> 
     public Dragon (String name, float health, float maxHealth, float stamina, float maxStamina, float thirst, float bladder, float hunger, int level, int experience) {
         this.name = name;
+        health = 0;
+        maxHealth = 100;
+        stamina = 0;
+        maxStamina = 100;
+        thirst = 0;
+        bladder = 0;
+        hunger = 0;
+        level = 1;
+        experience = 0;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.BEDDE777-A659-6921-1DBA-BCF0639DFE8A]
     // </editor-fold> 
     public float getBladder () {
-        return bladder.getAttribute();
+        return bladder;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -98,14 +107,14 @@ public class Dragon {
     // #[regen=yes,regenBody=yes,id=DCE.529852B7-419A-E67A-017E-6DE85DD69437]
     // </editor-fold> 
     public float getHealth () {
-        return health.getAttribute();
+        return health;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.308B626E-D670-075F-FEE4-9914D89D91D3]
     // </editor-fold> 
     public float getHunger () {
-        return hunger.getAttribute();
+        return hunger;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -168,7 +177,7 @@ public class Dragon {
     // #[regen=yes,regenBody=yes,id=DCE.9FEA72BE-7A05-FBB0-8C0C-9EB9462FCD5D]
     // </editor-fold> 
     public float getStamina () {
-        return stamina.getAttribute();
+        return stamina;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
