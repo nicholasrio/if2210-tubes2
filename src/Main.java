@@ -36,7 +36,7 @@ public class Main extends JPanel implements Runnable{
     {
         super.paint(g);
         Graphics2D g2 = (Graphics2D)g;
-        g.drawImage(V.getImage(),0, 0, x, y, null);
+        //g.drawImage(V.getImage(),0, 0, x, y, null);
         x++;
         y++;
     }
@@ -49,10 +49,11 @@ public class Main extends JPanel implements Runnable{
         }
     }
     
-    public static void main(String arg[])
+    public static void main(String args[])
     {
         Main main = new Main();
         Thread t1 = new Thread(main);
         t1.start();
+        int a = 0;
     }
 }
