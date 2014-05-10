@@ -106,17 +106,15 @@ public class XmlController {
 			Document saveXML = (Document) builder.build(xmlFile);
 			Element rootNode = saveXML.getRootElement();
 
+			// Unfinished, still following example
 			// update staff id attribute
 			Element staff = rootNode.getChild("staff");
 			staff.getAttribute("id").setValue("2");
-
 			// add new age element
 			Element age = new Element("age").setText("28");
 			staff.addContent(age);
-
 			// update salary value
 			staff.getChild("salary").setText("7000");
-
 			// remove firstname element
 			staff.removeChild("firstname");
 
