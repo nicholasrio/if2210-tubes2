@@ -65,7 +65,11 @@ public class XmlControllerTest {
 	public void testLoadDragon() {
 		System.out.println("LoadDragon");
 		XmlController instance = new XmlController();
-		instance.LoadDragon("Xanareth");
+		try {
+			UserDragon ud = instance.LoadDragon("Xanareth");
+		} catch(Exception ex) {
+			System.err.println(ex.getMessage());
+		}
 		// TODO review the generated test code and remove the default call to fail.
 		//assertEquals("Dragon Name : Xanareth\n", outContent.toString());
 	}
