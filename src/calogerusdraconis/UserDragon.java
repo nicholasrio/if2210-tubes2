@@ -248,21 +248,7 @@ public class UserDragon extends Dragon {
             tambahHealth (-5 * level);
         }
 
-        if (bladder > 75){ // kebelet banget
-            tambahHappiness(-3);
-            tambahHealth(-10 * level);
-        } else if (bladder > 50){
-            tambahHappiness(-5);
-            tambahHealth (-5 * level);
-        }
-
-        if (happiness < 50){ // galau banget
-            tambahHealth(-10 * level);
-        } else if (happiness < 25){
-            tambahHealth(-5 * level);
-        }
-
-        if (hunger < 30){ // kalau baru makan
+		if (hunger < 30){ // kalau baru makan
             tambahBladder(4);
         } else if (hunger < 60){
             tambahBladder(3);
@@ -280,6 +266,20 @@ public class UserDragon extends Dragon {
             tambahBladder(2);
         } else {
             tambahBladder(1);
+        }
+		
+        if (bladder > 75){ // kebelet banget
+            tambahHappiness(-3);
+            tambahHealth(-10 * level);
+        } else if (bladder > 50){
+            tambahHappiness(-5);
+            tambahHealth (-5 * level);
+        }
+
+        if (happiness < 50){ // galau banget
+            tambahHealth(-10 * level);
+        } else if (happiness < 25){
+            tambahHealth(-5 * level);
         }
     }
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
