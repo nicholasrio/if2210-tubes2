@@ -28,12 +28,24 @@ public final class Store {
     // #[regen=yes,id=DCE.F02D507C-955C-E473-70F5-66CF2BE0A57E]
     // </editor-fold> 
     private ArrayList<Consumable> fdInventory;
-
+	
+	private Store s = new Store();
+	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0162CBAA-064B-21DC-586A-5086BCF89195]
     // </editor-fold> 
-    public Store () {
-    }
+    private Store () {
+		fdInventory.add(new Consumable("first-aid","",200,0,0,300));
+		fdInventory.add(new Consumable("potion","",250,0,0,400));
+		fdInventory.add(new Consumable("hi-potion","",500,0,0,600));
+		fdInventory.add(new Consumable("x-potion","",1000,0,0,1000));
+		fdInventory.add(new Consumable("ether","",200,0,0,300));
+		fdInventory.add(new Consumable("hi-ether","",500,0,0,600));
+	}
+	
+	private Store getInstance() {
+		return s;
+	}
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.5BA2A08B-741C-A0B6-B5B5-84388C3CA7EC]
