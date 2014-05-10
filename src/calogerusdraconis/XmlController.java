@@ -17,12 +17,15 @@
 package calogerusdraconis;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 /**
  *
@@ -30,31 +33,36 @@ import org.jdom2.input.SAXBuilder;
  */
 public class XmlController {
 
-	public UserDragon LoadDragon(String name) throws Exception{
+	/* 
+	 * 
+	 */
+	public UserDragon LoadDragon(String name) throws Exception {
 		UserDragon retval = null;
 		try {
-			
+
 			// Load XML and get root Node
 			SAXBuilder builder = new SAXBuilder();
 			File xmlFile = new File("calogerusSave.xml");
-			Document document = (Document) builder.build(xmlFile);
-			Element rootNode = document.getRootElement();
-			
+			Document saveXML = (Document) builder.build(xmlFile);
+			Element rootNode = saveXML.getRootElement();
+
 			//get list of root/save nodes
 			List saves = rootNode.getChildren("save");
-			
+
 			//iterate each root/save inside XML
 			for (Object aSave : saves) {
 				Element save = (Element) aSave;
-				
+
 				//get root/save/userDragon
 				Element userDragon = (Element) save.getChildren("userDragon").get(0);
-				
+
 				//check if name is equal
 				if (userDragon.getChildText("name").equals(name)) {
 					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
+					
+					// Make Dragon
 					retval = new UserDragon(
-							userDragon.getChildText("name"), 
+							userDragon.getChildText("name"),
 							Float.parseFloat(userDragon.getChildText("health")),
 							Float.parseFloat(userDragon.getChildText("maxHealth")),
 							Float.parseFloat(userDragon.getChildText("stamina")),
@@ -68,9 +76,11 @@ public class XmlController {
 							Integer.parseInt(userDragon.getChildText("money")),
 							Float.parseFloat(userDragon.getChildText("happiness"))
 					);
-					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
+					
+					// Make Inventory
 					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
 					for (Object anObj : invList) {
+						// TODO: get inventory for DRAGON
 						Element node = (Element) anObj;
 						System.out.println("Inventory Name : " + node.getText());
 					}
@@ -79,11 +89,43 @@ public class XmlController {
 		} catch (IOException | JDOMException io) {
 			System.out.println(io.getMessage());
 		}
-		
+
 		if (retval == null) {
 			throw new Exception("Cannot Find UserDragon");
 		} else {
 			return retval;
+		}
+	}
+
+	public void SaveDragon(UserDragon dragon) {
+		try {
+			
+			//Initial setup
+			SAXBuilder builder = new SAXBuilder();
+			File xmlFile = new File("calogerusSave.xml");
+			Document saveXML = (Document) builder.build(xmlFile);
+			Element rootNode = saveXML.getRootElement();
+
+			// update staff id attribute
+			Element staff = rootNode.getChild("staff");
+			staff.getAttribute("id").setValue("2");
+
+			// add new age element
+			Element age = new Element("age").setText("28");
+			staff.addContent(age);
+
+			// update salary value
+			staff.getChild("salary").setText("7000");
+
+			// remove firstname element
+			staff.removeChild("firstname");
+
+			// Formatting and Outputting
+			XMLOutputter xmlOutput = new XMLOutputter();
+			xmlOutput.setFormat(Format.getPrettyFormat());
+			xmlOutput.output(saveXML, new FileWriter("calogerusSave.xml"));
+		} catch (IOException | JDOMException io) {
+			io.printStackTrace();
 		}
 	}
 }
