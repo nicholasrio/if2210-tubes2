@@ -16,9 +16,13 @@
  */
 package calogerusdraconis;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 /**
  *
@@ -26,7 +30,38 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 public class XmlController {
 
-	public void XMLtest() {
-		
+	public void LoadDragon(String name) {
+		try {
+			
+			// Load XML and get root Node
+			SAXBuilder builder = new SAXBuilder();
+			File xmlFile = new File("calogerusSave.xml");
+			Document document = (Document) builder.build(xmlFile);
+			Element rootNode = document.getRootElement();
+			
+			//get list of root/save nodes
+			List saves = rootNode.getChildren("save");
+			
+			//iterate each root/save inside XML
+			for (Object aSave : saves) {
+				Element save = (Element) aSave;
+				
+				//get root/save/userDragon
+				Element userDragon = (Element) save.getChildren("userDragon").get(0);
+				
+				//check if name is equal
+				if (userDragon.getChildText("name").equals(name)) {
+					//TODO: load this dragon to a UserDragon Object
+					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
+					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
+					for (Object anObj : invList) {
+						Element node = (Element) anObj;
+						System.out.println("Inventory Name : " + node.getText());
+					}
+				}
+			}
+		} catch (IOException | JDOMException io) {
+			System.out.println(io.getMessage());
+		}
 	}
 }
