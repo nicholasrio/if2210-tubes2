@@ -31,7 +31,7 @@ public class Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.945F8DD4-D2F4-FB15-DDC2-CA52DADDE85C]
     // </editor-fold> 
-    protected modifyAttribute health;
+    protected float health;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.6E9F01F2-D50D-BD74-70EC-A8F0D4DFCCED]
@@ -41,7 +41,7 @@ public class Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.A9D0A60F-1DF6-E280-56F7-EC7EB9608BC0]
     // </editor-fold> 
-    protected modifyAttribute stamina;
+    protected float stamina;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8E483E98-B30E-A342-6A19-2C19F3CABBE6]
@@ -51,17 +51,17 @@ public class Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.B9490DAF-9CCD-C6A0-576E-D2BE83DFF40A]
     // </editor-fold> 
-    protected modifyAttribute thirst;
+    protected float thirst;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.20D90B97-CE2A-DC4D-0990-EDABCF43383A]
     // </editor-fold> 
-    protected modifyAttribute bladder;
+    protected float bladder;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.A10BC95A-5B3B-BF14-8658-07C226D811B5]
     // </editor-fold> 
-    protected modifyAttribute hunger;
+    protected float hunger;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.DDDF8E02-DA81-91EC-C68A-C9B0E88BDC91]
@@ -84,7 +84,7 @@ public class Dragon {
     // #[regen=yes,regenBody=yes,id=DCE.BEDDE777-A659-6921-1DBA-BCF0639DFE8A]
     // </editor-fold> 
     public float getBladder () {
-        return bladder.getAttribute();
+        return bladder;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -98,14 +98,14 @@ public class Dragon {
     // #[regen=yes,regenBody=yes,id=DCE.529852B7-419A-E67A-017E-6DE85DD69437]
     // </editor-fold> 
     public float getHealth () {
-        return health.getAttribute();
+        return health;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.308B626E-D670-075F-FEE4-9914D89D91D3]
     // </editor-fold> 
     public float getHunger () {
-        return hunger.getAttribute();
+        return hunger;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -168,13 +168,13 @@ public class Dragon {
     // #[regen=yes,regenBody=yes,id=DCE.9FEA72BE-7A05-FBB0-8C0C-9EB9462FCD5D]
     // </editor-fold> 
     public float getStamina () {
-        return stamina.getAttribute();
+        return stamina;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.5BD56FB4-7501-9B51-0277-6F178C849755]
     // </editor-fold> 
-    public modifyAttribute getThirst () {
+    public float getThirst () {
         return thirst;
     }
 

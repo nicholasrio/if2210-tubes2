@@ -16,19 +16,17 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.EBDC48DE-2E8B-B203-0F6D-4E51C55A8BCB]
     // </editor-fold> 
-    private modifyAttribute money;
+    private float money;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.3E0300E9-AAEC-E4C7-70D3-67516D1EAA8D]
     // </editor-fold> 
-    private modifyAttribute happiness;
+    private float happiness;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.E7EE7EE8-EEF2-6089-FC34-B81192D0AB59]
     // </editor-fold> 
     private ArrayList<Consumable> fdInventory;
-    
-    private Thread threadMoney;
     
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.39F10D0D-020E-7824-2E18-D995AC6ED214]
@@ -36,9 +34,8 @@ public class UserDragon extends Dragon {
     public UserDragon (String name, float health, float maxHealth, float stamina, float maxStamina, float thirst, float bladder, float hunger, int level, int experience, String password, float money, float happiness) {
         super(name, health, maxHealth, stamina, maxStamina, thirst, bladder, hunger, level, experience);
         this.password = password;
-        this.money = new modifyAttribute(0,10,1,new Float(20),0);
-        threadMoney = new Thread(this.money);
-        threadMoney.start();
+        this.money = money;
+        this.happiness = happiness;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -59,28 +56,28 @@ public class UserDragon extends Dragon {
     // #[regen=yes,regenBody=yes,id=DCE.DE5979F6-6507-47F8-D0DB-38CDBF826BF7]
     // </editor-fold> 
     public float getHappiness () {
-        return happiness.getAttribute();
+        return happiness;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.6DDA13A0-CBDF-5386-53C4-B3572DA123D1]
     // </editor-fold> 
     public void setHappiness (float val) {
-        this.happiness.setAttribute(val);
+        this.happiness = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.FF2F5803-9362-8956-4285-607F8311B732]
     // </editor-fold> 
     public float getMoney () {
-        return money.getAttribute();
+        return money;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.94B86C97-726A-A571-226A-DE3EC1EF1BB5]
     // </editor-fold> 
     public void setMoney (float val) {
-        this.money.setAttribute(val);
+        this.money = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
