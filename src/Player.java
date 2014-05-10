@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package theplants;
 import java.util.*;
 import java.io.*;
 /**
@@ -17,7 +15,6 @@ public class Player {
     private ArrayList<Plant> ULPlant;
     private ArrayList<Vehicle> ULVehicle;
     private ArrayList<Fertilizer> ULFertilizer;
-    
     
     public Player(){
         Money=100;
