@@ -5,7 +5,9 @@
  */
 import java.util.List;
 import java.util.ArrayList;
-import java.lang.Exception;
+import java.lang.AssertionError;
+import java.io.*;
+import java.util.*;
 import java.util.Collections;
 
 public class TowerList {
@@ -93,6 +95,28 @@ public class TowerList {
         return instance;
     }
     
+    /** Save ListOfTower to file */
+    public void saveToFile(PrintWriter out) {
+        out.println(ListOfTower.size());
+        for (int i=0; i<ListOfTower.size(); i++) {
+           writeToFile(i,out); 
+        }
+        out.flush();
+    }
+    
+    /** read from file, then create new tower
+     * @param in */
+    public void readFromFile(Scanner in) {
+        int total = in.nextInt();
+        for (int i=0; i<total; i++) {
+            int x = in.nextInt();
+            int y = in.nextInt();
+            Tower temp = new Tower(x,y);
+            ListOfTower.add(temp);
+            readAttributes(i,in);
+        }
+    }
+    
     /** Get tower (pos_x, pos_y) index in the list */
     private int getTowerIdx(int pos_x, int pos_y) {
         boolean stop = false;
@@ -104,5 +128,24 @@ public class TowerList {
             }
         }
         return simpan;
+    }
+    
+    /** write LisOfTower[idx] to file */
+    private void writeToFile(int idx, PrintWriter out) {
+        out.println(ListOfTower.get(idx).getPositionX() + " " +
+                    ListOfTower.get(idx).getPositionY() + " " +
+                    ListOfTower.get(idx).getUpgradeCost()+ " " +
+                    ListOfTower.get(idx).getAttack()+ " " +
+                    ListOfTower.get(idx).getRange()+ " " +
+                    ListOfTower.get(idx).getCoolDown()+ " " +
+                    ListOfTower.get(idx).getCurrentLevel()+ " ");
+    }
+    
+    private void readAttributes(int idx, Scanner in) {
+        int cost = in.nextInt(); ListOfTower.get(idx).setUpgradeCost(cost);
+        int att = in.nextInt(); ListOfTower.get(idx).setAttack(att);
+        int r = in.nextInt(); ListOfTower.get(idx).setRange(r);
+        int CD = in.nextInt(); ListOfTower.get(idx).setCoolDown(CD);
+        int level = in.nextInt(); ListOfTower.get(idx).setCurrentLevel(level);
     }
 }
