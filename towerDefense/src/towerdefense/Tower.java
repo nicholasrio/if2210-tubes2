@@ -9,6 +9,7 @@ public class Tower {
     public static final int costIncreaseRate = 10; //in percent
     public static final int rateJual = 90; //in percent
     public static final int levelMax = 20;  
+    public static final int towerCost = 1;
     private int currentLevel;
     private int position_x;
     private int position_y;
