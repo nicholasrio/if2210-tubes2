@@ -29,26 +29,25 @@ import org.jdom2.input.SAXBuilder;
  * @author Dariel Valdano
  */
 public class XmlController {
-
 	public void LoadDragon(String name) {
 		try {
-			
+
 			// Load XML and get root Node
 			SAXBuilder builder = new SAXBuilder();
 			File xmlFile = new File("calogerusSave.xml");
 			Document document = (Document) builder.build(xmlFile);
 			Element rootNode = document.getRootElement();
-			
+
 			//get list of root/save nodes
 			List saves = rootNode.getChildren("save");
-			
+
 			//iterate each root/save inside XML
 			for (Object aSave : saves) {
 				Element save = (Element) aSave;
-				
+
 				//get root/save/userDragon
 				Element userDragon = (Element) save.getChildren("userDragon").get(0);
-				
+
 				//check if name is equal
 				if (userDragon.getChildText("name").equals(name)) {
 					//TODO: load this dragon to a UserDragon Object
