@@ -34,19 +34,9 @@ public class Dragon {
     protected float health;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.6E9F01F2-D50D-BD74-70EC-A8F0D4DFCCED]
-    // </editor-fold> 
-    protected float maxHealth;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.A9D0A60F-1DF6-E280-56F7-EC7EB9608BC0]
     // </editor-fold> 
     protected float stamina;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.8E483E98-B30E-A342-6A19-2C19F3CABBE6]
-    // </editor-fold> 
-    protected float maxStamina;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.B9490DAF-9CCD-C6A0-576E-D2BE83DFF40A]
@@ -77,7 +67,7 @@ public class Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.CF3D2C4D-9EA6-E944-69EA-28C431E61AE3]
     // </editor-fold> 
-    public Dragon (String name, float health, float maxHealth, float stamina, float maxStamina, float thirst, float bladder, float hunger, int level, int experience) {
+    public Dragon (String name, float health, float stamina, float thirst, float bladder, float hunger, int level, int experience) {
         this.name = name;
     }
 
@@ -121,34 +111,6 @@ public class Dragon {
     // </editor-fold> 
     public void setLevel (int val) {
         this.level = val;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.9D857681-5832-E816-C5AC-6672F39D5B18]
-    // </editor-fold> 
-    public float getMaxHealth () {
-        return maxHealth;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.31197C59-99D4-0C0D-D939-8B07F7F99CF9]
-    // </editor-fold> 
-    public void setMaxHealth (float val) {
-        this.maxHealth = val;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.042D3737-77D3-43E4-CCA4-ECC74324B670]
-    // </editor-fold> 
-    public float getMaxStamina () {
-        return maxStamina;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.66C70F77-915B-B32E-BB1B-16729C13ED23]
-    // </editor-fold> 
-    public void setMaxStamina (float val) {
-        this.maxStamina = val;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

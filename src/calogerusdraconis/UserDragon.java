@@ -1,6 +1,7 @@
 package calogerusdraconis;
 
-import java.util.ArrayList; 
+import static java.lang.Thread.sleep; 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Math;
 
@@ -30,13 +31,26 @@ public class UserDragon extends Dragon {
     private ArrayList<Consumable> fdInventory;
     
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.6E9F01F2-D50D-BD74-70EC-A8F0D4DFCCED]
+    // </editor-fold> 
+    protected float maxHealth;
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.8E483E98-B30E-A342-6A19-2C19F3CABBE6]
+    // </editor-fold> 
+    protected float maxStamina;
+    
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.39F10D0D-020E-7824-2E18-D995AC6ED214]
     // </editor-fold> 
     public UserDragon (String name, float health, float maxHealth, float stamina, float maxStamina, float thirst, float bladder, float hunger, int level, int experience, String password, float money, float happiness) {
-        super(name, health, maxHealth, stamina, maxStamina, thirst, bladder, hunger, level, experience);
+        super(name, health, stamina, thirst, bladder, hunger, level, experience);
+        this.maxHealth = maxHealth;
+        this.maxStamina = maxStamina;
         this.password = password;
         this.money = money;
         this.happiness = happiness;
+        modifyAttribute();
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -45,12 +59,16 @@ public class UserDragon extends Dragon {
     public ArrayList<Consumable> getFdInventory () {
         return fdInventory;
     }
+    
+    public void removeFdInventory(int idx) {
+        this.fdInventory.remove(idx);
+    }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.DC5D1D42-8A76-00B1-081A-42B70BD35ABE]
     // </editor-fold> 
-    public void setFdInventory (ArrayList<Consumable> val) {
-        this.fdInventory = val;
+    public void addFdInventory (Consumable val) {
+        this.fdInventory.add(val);
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -101,7 +119,18 @@ public class UserDragon extends Dragon {
     public Event useConsumable (Consumable fd) {
         return null;
     }
-
+    
+    private void modifyAttribute() {
+        try {
+            while (true) {
+                sleep(5000);
+                //tambah attribute
+            }
+        } catch (Exception e) {
+            
+        }
+    }
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.CAFBB28D-46E4-68A5-0A2A-82623BC039D0]
     // </editor-fold> 
