@@ -17,13 +17,12 @@
 package calogerusdraconis;
 
 import java.io.File;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
+import java.io.IOException;
+import java.util.List;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 /**
  *
@@ -31,64 +30,60 @@ import org.xml.sax.SAXParseException;
  */
 public class XmlController {
 
-	public void XMLtest() {
+	public UserDragon LoadDragon(String name) throws Exception{
+		UserDragon retval = null;
 		try {
-			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-			Document doc = docBuilder.parse(new File("calogerusSave.xml"));
-			// normalize text representation
-			doc.getDocumentElement().normalize();
-			System.out.println("Root element of the doc is "
-					+ doc.getDocumentElement().getNodeName());
 
-			NodeList listOfPersons = doc.getElementsByTagName("item");
-			
-			int totalPersons = listOfPersons.getLength();
-			System.out.println("Total no of items : " + totalPersons);
-			
-			//bla
+			// Load XML and get root Node
+			SAXBuilder builder = new SAXBuilder();
+			File xmlFile = new File("calogerusSave.xml");
+			Document document = (Document) builder.build(xmlFile);
+			Element rootNode = document.getRootElement();
 
-			/*for(int s=0; s<listOfPersons.getLength() ; s++){
-			 Node firstPersonNode = listOfPersons.item(s);
-			 if(firstPersonNode.getNodeType() == Node.ELEMENT_NODE){
-			 Element firstPersonElement = (Element)firstPersonNode;
-			 //-------
-			 NodeList firstNameList = firstPersonElement.getElementsByTagName("first");
-			 Element firstNameElement = (Element)firstNameList.item(0);
-			 NodeList textFNList = firstNameElement.getChildNodes();
-			 System.out.println("First Name : "  + 
-			 ((Node)textFNList.item(0)).getNodeValue().trim());
+			//get list of root/save nodes
+			List saves = rootNode.getChildren("save");
 
-			 //-------
-			 NodeList lastNameList = firstPersonElement.getElementsByTagName("last");
-			 Element lastNameElement = (Element)lastNameList.item(0);
+			//iterate each root/save inside XML
+			for (Object aSave : saves) {
+				Element save = (Element) aSave;
 
-			 NodeList textLNList = lastNameElement.getChildNodes();
-			 System.out.println("Last Name : " + 
-			 ((Node)textLNList.item(0)).getNodeValue().trim());
+				//get root/save/userDragon
+				Element userDragon = (Element) save.getChildren("userDragon").get(0);
 
-			 //----
-			 NodeList ageList = firstPersonElement.getElementsByTagName("age");
-			 Element ageElement = (Element)ageList.item(0);
-
-			 NodeList textAgeList = ageElement.getChildNodes();
-			 System.out.println("Age : " + 
-			 ((Node)textAgeList.item(0)).getNodeValue().trim());
-			 //------
-			 }//end of if clause
-			 }//end of for loop with s var
-			 */
-		} catch (Exception err) {
-			System.out.println("ASDF");
+				//check if name is equal
+				if (userDragon.getChildText("name").equals(name)) {
+					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
+					retval = new UserDragon(
+							userDragon.getChildText("name"), 
+							Float.parseFloat(userDragon.getChildText("health")),
+							Float.parseFloat(userDragon.getChildText("maxHealth")),
+							Float.parseFloat(userDragon.getChildText("stamina")),
+							Float.parseFloat(userDragon.getChildText("maxStamina")),
+							Float.parseFloat(userDragon.getChildText("thirst")),
+							Float.parseFloat(userDragon.getChildText("bladder")),
+							Float.parseFloat(userDragon.getChildText("hunger")),
+							Integer.parseInt(userDragon.getChildText("level")),
+							Integer.parseInt(userDragon.getChildText("experience")),
+							userDragon.getChildText("password"),
+							Integer.parseInt(userDragon.getChildText("money")),
+							Float.parseFloat(userDragon.getChildText("happiness"))
+					);
+					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
+					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
+					for (Object anObj : invList) {
+						Element node = (Element) anObj;
+						System.out.println("Inventory Name : " + node.getText());
+					}
+				}
+			}
+		} catch (IOException | JDOMException io) {
+			System.out.println(io.getMessage());
 		}
-
-		/* urutan: name, health, maxHealth, stamina, maxStamina, thirst, bladder, hunger, level, experience, password, money, happiness */
-		UserDragon d = new UserDragon("willy", 0, 100, 0, 100, 0, 0, 0, 1, 0, "asdf", 0, 0);
-		System.out.println("halo");
-		try {
-			Thread.sleep(2000);
-		} catch (Exception e) {
-			System.out.println("ASFDASDFASDF");
+		
+		if (retval == null) {
+			throw new Exception("Cannot Find UserDragon");
+		} else {
+			return retval;
 		}
 	}
 }

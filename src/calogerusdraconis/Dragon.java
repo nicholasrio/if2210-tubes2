@@ -48,7 +48,6 @@ public class Dragon {
     // </editor-fold> 
     protected float bladder;
 
-
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.A10BC95A-5B3B-BF14-8658-07C226D811B5]
     // </editor-fold> 
@@ -62,7 +61,7 @@ public class Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.82F315C9-04A4-FFB5-6ECC-4B08463CD346]
     // </editor-fold> 
-    protected int iexperience;
+    protected int experience;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.CF3D2C4D-9EA6-E944-69EA-28C431E61AE3]
@@ -81,8 +80,8 @@ public class Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.8EE0298E-917C-8477-74F8-511A87D2C31A]
     // </editor-fold> 
-    public int getIexperience () {
-        return iexperience;
+    public int getExperience () {
+        return experience;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -91,7 +90,7 @@ public class Dragon {
     public float getHealth () {
         return health;
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.308B626E-D670-075F-FEE4-9914D89D91D3]
     // </editor-fold> 
@@ -110,7 +109,9 @@ public class Dragon {
     // #[regen=yes,regenBody=yes,id=DCE.273BCA42-554C-7F30-4B62-B88C23F5AAB1]
     // </editor-fold> 
     public void setLevel (int val) {
-        this.level = val;
+        synchronized(this) {
+            this.level = val;
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

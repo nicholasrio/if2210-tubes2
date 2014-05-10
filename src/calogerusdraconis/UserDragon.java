@@ -4,6 +4,8 @@ import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.DF71A32C-B40F-498E-E6D5-9F4513B43A22]
@@ -34,11 +36,13 @@ public class UserDragon extends Dragon {
     // #[regen=yes,id=DCE.6E9F01F2-D50D-BD74-70EC-A8F0D4DFCCED]
     // </editor-fold> 
     protected float maxHealth;
-
+    
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8E483E98-B30E-A342-6A19-2C19F3CABBE6]
     // </editor-fold> 
     protected float maxStamina;
+    
+    private Thread th;
     
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.39F10D0D-020E-7824-2E18-D995AC6ED214]
@@ -50,7 +54,102 @@ public class UserDragon extends Dragon {
         this.password = password;
         this.money = money;
         this.happiness = happiness;
-        modifyAttribute();
+        th = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while(true) {
+                        sleep(1000);
+                        modifyAttribute();
+                    }
+                } catch (InterruptedException ex) {
+                    System.out.println("interrupted");
+                }
+            }
+        };
+        th.start();
+    }
+    
+    private void tambahHealth(float val) {
+        synchronized(this) {
+            if (health + val < 0) {
+                health = 0;
+            } else {
+                if (health + val > maxHealth) {
+                    health = maxHealth;
+                } else health += val;
+            }
+        }
+    }
+    
+    private void tambahStamina(float val) {
+        synchronized(this) {
+            if (stamina + val < 0) {
+                stamina = 0;
+            } else {
+                if ((stamina + val) > maxStamina) {
+                   stamina = maxStamina;
+                } else stamina += val;
+            }
+        }
+    }
+    
+    private void tambahThirst(int val) {
+        synchronized(this) {
+            if (thirst + val < 0) {
+                thirst = 0;
+            } else {
+                if ((thirst + val) > 100) {
+                   thirst = 100;
+               } else thirst += val;
+            }
+        }
+    }
+    
+    private void tambahBladder (int val) {
+        synchronized(this) {
+            if (bladder + val < 0) {
+                bladder = 0;
+            } else {
+                if (bladder + val > 100) {
+                    bladder = 100;
+                } else bladder += val;
+            }
+        }
+    }
+    
+    private void tambahHunger (int val) {
+        synchronized (this) {
+            if (hunger + val < 0) {
+                hunger = 0;
+            } else {
+                if (hunger + val > 100) {
+                    hunger = 100;
+                } else hunger += val;
+            }
+        }
+    }
+    
+    private void tambahMoney(float val) {
+        synchronized (this) {
+            money += val;
+        }
+    }
+    
+    private void tambahHappiness(float val) {
+        synchronized(this) {
+            if ((happiness + val) > 100) {
+                happiness = 100;
+            } else happiness += val;
+        }
+    }
+    
+    public float getMaxHealth() {
+        return maxHealth;
+    }
+    
+    public float getMaxStamina() {
+        return maxStamina;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -120,105 +219,101 @@ public class UserDragon extends Dragon {
         return null;
     }
     
-    private void modifyAttribute() {
-        try {
-            while (true) {
-                sleep(5000);
-                //tambah attribute
-                health += 30 * level;
-                stamina += 1;
-                money += 1;
-                happiness -= 1;
-                thirst += 1;
-                hunger += 1;
-                
-                if (hunger > 75){ // lapar banget
-                    happiness -= 5;
-                    health -= 10 * level;
-                } else if (hunger > 50){
-                    happiness -= 3;
-                    health -= 5 * level;
-                }
-                
-                if (thirst > 75){ // haus banget
-                    happiness -= 3;
-                    health -= 10 * level;
-                } else if (thirst > 50){
-                    happiness -= 5;
-                    health -= 5 * level;
-                }
-                
-                if (hunger < 30){ // kalau baru makan
-                    bladder += 4;
-                } else if (hunger < 60){
-                    bladder += 3;
-                } else if (hunger < 90){
-                    bladder += 2;
-                } else {
-                    bladder += 1;
-                }
-				
-                if (thirst < 30){ // kalau baru makan
-                    bladder += 4;
-                } else if (thirst < 60){
-                    bladder += 3;
-                } else if (thirst < 90){
-                    bladder += 2;
-                } else {
-                    bladder += 1;
-                }
-                
-                if (bladder > 75){ // kebelet banget
-                    happiness -= 3;
-                    health -= 10 * level;
-                } else if (bladder > 50){
-                    happiness -= 5;
-                    health -= 5 * level;
-                }
-                
-                if (happiness < 50){ // galau banget
-                    health -= 10 * level;
-                } else if (happiness < 25){
-                    health -= 5 * level;
-                }
-
-            }
-        } catch (Exception e) {
-            
-        }
+    public void sebelumExit() {
+        th.interrupt();
     }
     
+    private void modifyAttribute() {
+        //tambah attribute
+        tambahHealth(30 * level);
+        tambahStamina(1);
+        tambahMoney(1);
+        tambahHappiness(-1);
+        tambahThirst(1);
+        tambahHunger(1);
+
+        if (hunger > 75){ // lapar banget
+            tambahHappiness(-5);
+            tambahHealth (-10 * level);
+        } else if (hunger > 50){
+            tambahHappiness(-3);
+            tambahHealth (-5 * level);
+        }
+
+        if (thirst > 75){ // haus banget
+            tambahHappiness(-3);
+            tambahHealth(-10 * level);
+        } else if (thirst > 50){
+            tambahHappiness(-5);
+            tambahHealth (-5 * level);
+        }
+
+        if (bladder > 75){ // kebelet banget
+            tambahHappiness(-3);
+            tambahHealth(-10 * level);
+        } else if (bladder > 50){
+            tambahHappiness(-5);
+            tambahHealth (-5 * level);
+        }
+
+        if (happiness < 50){ // galau banget
+            tambahHealth(-10 * level);
+        } else if (happiness < 25){
+            tambahHealth(-5 * level);
+        }
+
+        if (hunger < 30){ // kalau baru makan
+            tambahBladder(4);
+        } else if (hunger < 60){
+            tambahBladder(3);
+        } else if (hunger < 90){
+            tambahBladder(2);
+        } else {
+            tambahBladder(1);
+        }
+
+        if (thirst < 30){ // kalau baru makan
+            tambahBladder(4);
+        } else if (thirst < 60){
+            tambahBladder(3);
+        } else if (thirst < 90){
+            tambahBladder(2);
+        } else {
+            tambahBladder(1);
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.CAFBB28D-46E4-68A5-0A2A-82623BC039D0]
     // </editor-fold> 
+    
     public Event fight () {
+        
         Random rand = new Random();
         float ranHealth = (float) Math.ceil(rand.nextGaussian()*(0.2*health)+health);
         float ranStamina = (float) Math.ceil(rand.nextGaussian()*(0.2*stamina)+stamina);
-        int ranIexperience = (int) Math.ceil(rand.nextGaussian()*(0.2*iexperience)+iexperience);
+        int ranExperience = (int) Math.ceil(rand.nextGaussian()*(0.2*experience)+experience);
         int ranLevel = (int) Math.ceil(rand.nextGaussian()*(0.2*level)+level);
         float ranThirst = (float) Math.ceil(rand.nextGaussian()*(0.2*thirst)+thirst);
         float ranBladder = (float) Math.ceil(rand.nextGaussian()*(0.2*bladder)+bladder);
         float ranHunger = (float) Math.ceil(rand.nextGaussian()*(0.2*hunger)+hunger);
-        Dragon withWho = new Dragon("Random Dragon", ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranIexperience);
+        Dragon withWho = new Dragon("Random Dragon", ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranExperience);
         
-        float sum1 = (float)0.2 * health + (float)0.2 * stamina + (float)0.3 * iexperience + 5 * level - (float)0.1 * thirst - (float)0.1 * bladder - (float)0.1 * hunger;
-        float sum2 = (float)0.2 * withWho.getHealth() + (float)0.2 * withWho.getStamina() + (float)0.3 * withWho.getIexperience() + 5 * withWho.getLevel() - (float)0.1 * withWho.getThirst() - (float)0.1 * withWho.getBladder() - (float)0.1 * withWho.getHunger();
+        float sum1 = (float)0.2 * health + (float)0.2 * stamina + (float)0.3 * experience + 5 * level - (float)0.1 * thirst - (float)0.1 * bladder - (float)0.1 * hunger;
+        float sum2 = (float)0.2 * withWho.getHealth() + (float)0.2 * withWho.getStamina() + (float)0.3 * withWho.getExperience() + 5 * withWho.getLevel() - (float)0.1 * withWho.getThirst() - (float)0.1 * withWho.getBladder() - (float)0.1 * withWho.getHunger();
         
         Event e = new Event();
         if (sum1 > sum2){ // we win
             e.setType("WinFight");
             e.setMessage("Congrats!You Win.");
-            iexperience += 400 * withWho.getLevel();
-            money += 200 + (Math.random() * (500 - 200));
+            experience += 200 + 30 * level;
+            tambahMoney((float)(100 + (Math.random() * (500 - 100))));
         } else if (sum1 < sum2){ // we lose
             e.setType("LoseFight");
             e.setMessage("Sorry!You Lose.");
-            iexperience += 25 * withWho.getLevel();
+            experience += 25 * level;
         }
-        
         // jika naik level
-        while(iexperience >= 100*(level+1)*(level+1)*(level+1)){
+        while(experience >= 100*(level+1)*(level+1)*(level+1)){
             level++;
             maxHealth += 30;
             maxStamina += 10;
@@ -260,7 +355,4 @@ public class UserDragon extends Dragon {
     public Event addConsumable (Consumable what) {
         return null;
     }
-    
-
 }
-

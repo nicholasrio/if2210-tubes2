@@ -36,7 +36,9 @@ public final class Consumable {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F03DB0AA-CF3F-89E5-39C3-F3B3682E7B01]
     // </editor-fold> 
-    public Consumable () {
+    public Consumable (String name, String img) {
+        this.name = name;
+        this.img = img;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
