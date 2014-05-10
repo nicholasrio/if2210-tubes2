@@ -31,14 +31,12 @@ public class Main {
 	// #[regen=yes,id=DCE.0BE79718-C1E2-6BA1-97AA-29B6F470E4CF]
 	// </editor-fold> 
 	public Main() {
-	}
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-	// #[regen=yes,id=DCE.C285A074-E684-E331-E7AB-CD728879D8B5]
-	// </editor-fold> 
-	public static void main(String[] args) {
-		System.exit(0);
-	}
+            
+        }
+        
+        public static void main(String[] args) {
+            System.out.println("ASFDASD");
+        }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 	// #[regen=yes,id=DCE.300DE1C1-8FFF-9876-186B-6A300231FB80]
