@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Map {
 	static int[][] Peta;
-	static int row;
-	static int col;
+	int row;
+	int col;
     
    public static void baca_input () throws FileNotFoundException, IOException
     {
@@ -35,8 +35,33 @@ public class Map {
             j=0;
         }
     }
-    
-   public static void print_matriks (int [][]matriks)
+		
+		public static void showMap() {
+			for(int i=0;i<40;++i) {
+				for(int j=0;j<72;++j) {
+					if((Peta[i][j] >> 4) == 1) {
+						
+					}
+					else if((Peta[i][j] >> 4) == 2) {
+						
+					}
+					else if((Peta[i][j] >> 4) == 3) {
+						
+					}
+					else if((Peta[i][j] >> 4) == 4) {
+						
+					}
+					else if((Peta[i][j] >> 4) == 5) {
+						
+					}
+					else if((Peta[i][j] >> 4) == 6) {
+						
+					}
+				}
+			}
+		}
+   
+	 public static void print_matriks (int [][]matriks)
     {
            for (int i = 0; i < 40 ; i ++)
            {
@@ -51,7 +76,7 @@ public class Map {
            }
     }
 		
-		public static void save_matriks () throws IOException {
+		public void save_matriks () throws IOException {
 			try {
 				FileWriter f = new FileWriter(new File("outfile.txt"));
 				for(int i=0;i<40;++i) {
