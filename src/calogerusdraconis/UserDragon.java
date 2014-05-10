@@ -1,4 +1,4 @@
-package CalogerusDraconis;
+package calogerusdraconis;
 
 import java.util.ArrayList; 
 import java.util.Date;
