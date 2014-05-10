@@ -101,6 +101,15 @@ public class UserDragon extends Dragon {
     // #[regen=yes,id=DCE.CAFBB28D-46E4-68A5-0A2A-82623BC039D0]
     // </editor-fold> 
     public Event fight (Dragon withWho) {
+        float sum1 = 0.2 * health + 0.2 * stamina + 0.3 * exprience + 5 * level - 0.1 * thrist - 0.1 * bladder - 0.1 * hunger;
+        float sum2 = 0.2 * WithWho.getHealth() + 0.2 * WithWho.getStamina() + 0.3 * WithWho.getExprience() 
+                + 5 * WithWho.getLevel() - 0.1 * WithWho.getThrist() - 0.1 * WithWho.getBladder() - 0.1 * WithWho.getHunger();
+
+        if (sum1 > sum2){ // we win
+
+        } else if (sum1 < sum2){ // we lose
+
+        }
         return null;
     }
 
