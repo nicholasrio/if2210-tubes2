@@ -43,8 +43,8 @@ public class XmlController {
 			// Load XML and get root Node
 			SAXBuilder builder = new SAXBuilder();
 			File xmlFile = new File("calogerusSave.xml");
-			Document saveXML = (Document) builder.build(xmlFile);
-			Element rootNode = saveXML.getRootElement();
+			Document document = (Document) builder.build(xmlFile);
+			Element rootNode = document.getRootElement();
 
 			//get list of root/save nodes
 			List saves = rootNode.getChildren("save");
