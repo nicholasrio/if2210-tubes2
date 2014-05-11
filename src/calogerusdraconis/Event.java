@@ -17,7 +17,6 @@
 
 package calogerusdraconis;
 
-
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.57AECD36-91F2-731A-ACC4-5BB24478BF89]
 // </editor-fold> 
@@ -38,7 +37,12 @@ public class Event {
     // </editor-fold> 
     public Event () {
     }
-
+	
+	public Event(String type, String message) {
+		this.type = type;
+		this.message = message;
+	}
+	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.64EB3B87-6529-109B-22C5-601F2F498386]
     // </editor-fold> 

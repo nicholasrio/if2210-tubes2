@@ -32,14 +32,29 @@ public final class Consumable {
     // #[regen=yes,id=DCE.D15787C4-332B-20A0-16ED-013269409DAD]
     // </editor-fold> 
     private String img;
-
+	
+	private float health;
+	private float thirst;
+	private float hunger;
+	private float cost;
+	private float stamina;
+	private float maxHealth;
+	private float maxStamina;
+	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F03DB0AA-CF3F-89E5-39C3-F3B3682E7B01]
     // </editor-fold> 
-    public Consumable (String name, String img) {
+    public Consumable (String name, String img, float health, float thirst, float hunger, float cost, float stamina, float maxHealth, float maxStamina) {
         this.name = name;
         this.img = img;
-    }
+		this.health = health;
+		this.thirst = thirst;
+		this.hunger = hunger;
+		this.cost = cost;
+		this.stamina = stamina;
+		this.maxHealth = maxHealth;
+		this.maxStamina = maxStamina;
+	}
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.C5B6B673-F75B-9DC3-6EDB-CF4CD4C391D2]
@@ -61,13 +76,40 @@ public final class Consumable {
     public String getName () {
         return name;
     }
-
+	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.DB401575-72EA-83C8-2ECF-AC0D5743D50B]
     // </editor-fold> 
     public void setName (String val) {
         this.name = val;
     }
-
+	
+	public float getHealthValue() {
+		return health;
+	}
+	
+	public float getThirstValue() {
+		return thirst;
+	}
+	
+	public float getHungerValue() {
+		return hunger;
+	}
+	
+	public float getCost() {
+		return cost;
+	}
+	
+	public float getStaminaValue() {
+		return stamina;
+	}
+	
+	public float getMaxHealthValue() {
+		return maxHealth;
+	}
+	
+	public float getMaxStaminaValue() {
+		return maxStamina;
+	}
 }
 
