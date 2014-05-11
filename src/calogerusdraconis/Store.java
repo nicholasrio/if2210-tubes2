@@ -35,15 +35,24 @@ public final class Store {
     // #[regen=yes,id=DCE.0162CBAA-064B-21DC-586A-5086BCF89195]
     // </editor-fold> 
     private Store () {
-		fdInventory.add(new Consumable("first-aid","",200,0,0,300));
-		fdInventory.add(new Consumable("potion","",250,0,0,400));
-		fdInventory.add(new Consumable("hi-potion","",500,0,0,600));
-		fdInventory.add(new Consumable("x-potion","",1000,0,0,1000));
-		fdInventory.add(new Consumable("ether","",200,0,0,300));
-		fdInventory.add(new Consumable("hi-ether","",500,0,0,600));
+		s.fdInventory.add(new Consumable("first-aid","",200,0,0,300,0,0,0));
+		fdInventory.add(new Consumable("potion","",250,0,0,400,0,0,0));
+		fdInventory.add(new Consumable("hi-potion","",500,0,0,600,0,0,0));
+		fdInventory.add(new Consumable("x-potion","",1000,0,0,1000,0,0,0));
+		fdInventory.add(new Consumable("ether","",0,0,0,300,200,0,0));
+		fdInventory.add(new Consumable("hi-ether","",0,0,0,600,500,0,0));
+		fdInventory.add(new Consumable("ex-ether","",0,0,0,1000,1000,0,0));
+		fdInventory.add(new Consumable("elixir","",1500,0,0,1700,1500,0,0));
+		fdInventory.add(new Consumable("shard of fire heart","",0,0,0,1000000,0,100,0));
+		fdInventory.add(new Consumable("sacred root","",0,0,0,500000,0,0,10));
+		fdInventory.add(new Consumable("candy","",0,0,-20,100,0,0,0));
+		fdInventory.add(new Consumable("orange","",0,-20,-30,250,0,0,0));
+		fdInventory.add(new Consumable("meat","",0,10,-60,300,0,0,0));
+		fdInventory.add(new Consumable("juice","",0,-40,0,200,0,0,0));
+		fdInventory.add(new Consumable("milk","",0,-50,-10,400,0,0,0));
 	}
 	
-	private Store getInstance() {
+	public Store getInstance() {
 		return s;
 	}
 
