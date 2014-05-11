@@ -15,6 +15,11 @@ import java.awt.List;
 
 public class Dapil {
     int NoDapil;
-    List Kabupaten = new List();
+    private List Kabupaten;
+    
+    public Dapil(){
+        Kabupaten = new List();
+    }
+    
     
 }

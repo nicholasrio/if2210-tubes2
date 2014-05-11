@@ -11,5 +11,16 @@ package main;
  * @author akhfa
  */
 public class Admin {
+    private String Username;
+    private String Password;
+    private boolean SuperAdmin;
+    
+    public boolean ValidateInput(){
+        
+    }
+    
+    public boolean IsSuperAdmin(){
+        return SuperAdmin;
+    }
     
 }

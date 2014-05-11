@@ -11,5 +11,15 @@ package main;
  * @author akhfa
  */
 public class Pilihan {
+    private String NIKPemilih;
+    private String NIKCaleg;
+    private String Partai;
     
+    public void SetPilihan(){
+        
+    }
+    
+    public void AddToDatabase(){
+        
+    }
 }

@@ -11,5 +11,15 @@ package main;
  * @author akhfa
  */
 public class Pemilih {
+    private int NIK;
+    private String Password;
+    
+    public boolean ValidateInput(){
+        
+    }
+    
+    public int GetDapil(){
+        
+    }
     
 }
