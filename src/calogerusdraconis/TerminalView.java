@@ -19,7 +19,7 @@ package calogerusdraconis;
 
 /**
  *
- * @author Dariel Valdano
+ * @author Willy
  */
 public class TerminalView implements View {
  
