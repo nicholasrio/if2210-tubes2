@@ -144,6 +144,12 @@ public class UserDragon extends Dragon {
         }
     }
     
+	private void tambahExperience(float val) {
+		synchronized(this) {
+			experience += val; 
+		}
+	}
+	
     public float getMaxHealth() {
         return maxHealth;
     }
@@ -324,29 +330,65 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0194129F-5D6C-13CE-0AE4-A5601DADA176]
     // </editor-fold> 
-    public Event train (Date howLong) {
-        return null;
+    public Event train () {
+		try {
+			sleep(1000);
+			tambahExperience(20*level);
+			while(experience >= 100*(level+1)*(level+1)*(level+1)){
+				level++;
+				maxHealth += 30;
+				maxStamina += 10;
+			}
+		} catch (InterruptedException e) {
+			
+		}
+        return new Event("Proses Selesai","Train Selesai");
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.847AFD4C-3B2A-B5F6-9C2C-571586FEBF0A]
     // </editor-fold> 
-    public Event entertain (Date howLong) {
-        return null;
+    public Event entertain () {
+        try {
+			while (happiness < 100) {
+				sleep(1000);
+				tambahHappiness(1);
+			}
+		} catch(InterruptedException e) {
+			
+		}
+		return new Event("Proses Selesai","Entertain Selesai");
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.20C42E67-996F-166D-45F1-95DC8D50E616]
     // </editor-fold> 
-    public Event rest (Date howLong) {
-        return null;
+    public Event rest () {
+        try {
+			while (stamina < maxStamina || health < maxHealth) {
+				sleep(1000);
+				if (stamina < maxStamina) tambahStamina(1);
+				if (health < maxHealth) tambahHealth(1);
+			}
+		} catch(InterruptedException e) {
+			
+		}
+		return new Event("Proses Selesai","Rest Selesai");
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8A6C5225-21DB-47E8-1287-18C4BEE4D3B1]
     // </editor-fold> 
     public Event toToilet () {
-        return null;
+        try {
+			while (bladder > 0) {
+				sleep(1000);
+				tambahBladder(-1);
+			}
+		} catch(InterruptedException e) {
+			
+		}
+		return new Event("Proses Selesai","toToilet Selesai");
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
