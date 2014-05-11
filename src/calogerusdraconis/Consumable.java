@@ -37,17 +37,25 @@ public final class Consumable {
 	private float thirst;
 	private float hunger;
 	private float cost;
+	private float stamina;
+	private float maxHealth;
+	private float maxStamina;
+	private float happiness;
 	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F03DB0AA-CF3F-89E5-39C3-F3B3682E7B01]
     // </editor-fold> 
-    public Consumable (String name, String img, float health, float thirst, float hunger, float cost) {
+    public Consumable (String name, String img, float health, float thirst, float hunger, float cost, float stamina, float maxHealth, float maxStamina, float happiness) {
         this.name = name;
         this.img = img;
 		this.health = health;
 		this.thirst = thirst;
 		this.hunger = hunger;
 		this.cost = cost;
+		this.stamina = stamina;
+		this.maxHealth = maxHealth;
+		this.maxStamina = maxStamina;
+		this.happiness = happiness;
 	}
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -93,5 +101,21 @@ public final class Consumable {
 	public float getCost() {
 		return cost;
 	}
+	
+	public float getStaminaValue() {
+		return stamina;
+	}
+	
+	public float getMaxHealthValue() {
+		return maxHealth;
+	}
+	
+	public float getMaxStaminaValue() {
+		return maxStamina;
+	}
+	
+	public float getHappinessValue() {
+		return happiness;
+	} 
 }
 

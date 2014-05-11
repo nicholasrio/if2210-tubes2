@@ -313,11 +313,15 @@ public class UserDragon extends Dragon {
             e.setMessage("Congrats!You Win.");
             experience += 200 + 30 * level;
             tambahMoney((float)(100 + (Math.random() * (500 - 100))));
-        } else if (sum1 < sum2){ // we lose
-            e.setType("LoseFight");
-            e.setMessage("Sorry!You Lose.");
+        } else if (sum1 == sum2){ // draw
             experience += 25 * level;
-        }
+			e.setType("DrawFight");
+			e.setMessage("This fight is Draw.");
+        } else { // we lose
+			experience += 20 * level;
+			e.setType("LoseFight");
+	        e.setMessage("Sorry!You Lose.");
+		}
         // jika naik level
         while(experience >= 100*(level+1)*(level+1)*(level+1)){
             level++;
