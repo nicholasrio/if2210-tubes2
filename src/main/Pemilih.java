@@ -15,11 +15,11 @@ public class Pemilih {
     private String Password;
     
     public boolean ValidateInput(){
-        
+        return true;
     }
     
     public int GetDapil(){
-        
+        return 1;
     }
     
 }

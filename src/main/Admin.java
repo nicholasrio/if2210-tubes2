@@ -16,7 +16,7 @@ public class Admin {
     private boolean SuperAdmin;
     
     public boolean ValidateInput(){
-        
+        return true;
     }
     
     public boolean IsSuperAdmin(){
