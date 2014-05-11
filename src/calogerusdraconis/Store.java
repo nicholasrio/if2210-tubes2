@@ -29,30 +29,33 @@ public final class Store {
     // </editor-fold> 
     private ArrayList<Consumable> fdInventory;
 	
-	private Store s = new Store();
+	private static Store s = new Store();
 	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0162CBAA-064B-21DC-586A-5086BCF89195]
     // </editor-fold> 
     private Store () {
-		s.fdInventory.add(new Consumable("first-aid","",200,0,0,300,0,0,0));
-		fdInventory.add(new Consumable("potion","",250,0,0,400,0,0,0));
-		fdInventory.add(new Consumable("hi-potion","",500,0,0,600,0,0,0));
-		fdInventory.add(new Consumable("x-potion","",1000,0,0,1000,0,0,0));
-		fdInventory.add(new Consumable("ether","",0,0,0,300,200,0,0));
-		fdInventory.add(new Consumable("hi-ether","",0,0,0,600,500,0,0));
-		fdInventory.add(new Consumable("ex-ether","",0,0,0,1000,1000,0,0));
-		fdInventory.add(new Consumable("elixir","",1500,0,0,1700,1500,0,0));
-		fdInventory.add(new Consumable("shard of fire heart","",0,0,0,1000000,0,100,0));
-		fdInventory.add(new Consumable("sacred root","",0,0,0,500000,0,0,10));
-		fdInventory.add(new Consumable("candy","",0,0,-20,100,0,0,0));
-		fdInventory.add(new Consumable("orange","",0,-20,-30,250,0,0,0));
-		fdInventory.add(new Consumable("meat","",0,10,-60,300,0,0,0));
-		fdInventory.add(new Consumable("juice","",0,-40,0,200,0,0,0));
-		fdInventory.add(new Consumable("milk","",0,-50,-10,400,0,0,0));
+		fdInventory.add(new Consumable("first-aid","",200,0,0,300,0,0,0,0));
+		fdInventory.add(new Consumable("potion","",250,0,0,400,0,0,0,0));
+		fdInventory.add(new Consumable("hi-potion","",500,0,0,600,0,0,0,0));
+		fdInventory.add(new Consumable("x-potion","",1000,0,0,1000,0,0,0,0));
+		fdInventory.add(new Consumable("ether","",0,0,0,300,200,0,0,0));
+		fdInventory.add(new Consumable("hi-ether","",0,0,0,600,500,0,0,0));
+		fdInventory.add(new Consumable("ex-ether","",0,0,0,1000,1000,0,0,0));
+		fdInventory.add(new Consumable("elixir","",1500,0,0,1700,1500,0,0,0));
+		fdInventory.add(new Consumable("shard of fire heart","",0,0,0,1000000,0,100,0,0));
+		fdInventory.add(new Consumable("sacred root","",0,0,0,500000,0,0,10,0));
+		fdInventory.add(new Consumable("candy","",0,5,-20,100,0,0,0,40));
+		fdInventory.add(new Consumable("orange","",50,-20,-30,250,0,0,0,0));
+		fdInventory.add(new Consumable("meat","",100,10,-60,300,0,0,0,30));
+		fdInventory.add(new Consumable("juice","",0,-40,0,200,30,0,0,0));
+		fdInventory.add(new Consumable("milk","",150,-50,-10,400,20,0,0,0));
+		fdInventory.add(new Consumable("eggroll","",0,0,-50,250,25,0,0,0));
+		fdInventory.add(new Consumable("peanut","",100,0,-10,200,0,0,0,20));
+		fdInventory.add(new Consumable("pill","",30,0,-30,250,30,0,0,-30));
 	}
 	
-	public Store getInstance() {
+	public static Store getInstance() {
 		return s;
 	}
 
