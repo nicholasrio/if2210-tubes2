@@ -34,7 +34,7 @@ import org.jdom2.output.XMLOutputter;
 public class XmlController {
 
 	/* 
-	 * 
+	 * Load Dragon from XML
 	 */
 	public UserDragon LoadDragon(String name) throws Exception {
 		UserDragon retval = null;
@@ -59,7 +59,7 @@ public class XmlController {
 				//check if name is equal
 				if (userDragon.getChildText("name").equals(name)) {
 					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
-					
+
 					// Make Dragon
 					retval = new UserDragon(
 							userDragon.getChildText("name"),
@@ -76,7 +76,7 @@ public class XmlController {
 							Integer.parseInt(userDragon.getChildText("money")),
 							Float.parseFloat(userDragon.getChildText("happiness"))
 					);
-					
+
 					// Make Inventory
 					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
 					for (Object anObj : invList) {
@@ -97,14 +97,45 @@ public class XmlController {
 		}
 	}
 
+	/* 
+	 * Save Dragon to XML
+	 */
 	public void SaveDragon(UserDragon dragon) {
 		try {
-			
+
 			//Initial setup
 			SAXBuilder builder = new SAXBuilder();
 			File xmlFile = new File("calogerusSave.xml");
 			Document saveXML = (Document) builder.build(xmlFile);
 			Element rootNode = saveXML.getRootElement();
+
+			//get list of root/save nodes
+			List saves = rootNode.getChildren("save");
+
+			//iterate each root/save inside XML to find if dragon already exist
+			boolean found = false;
+			for (Object aSave : saves) {
+				Element save = (Element) aSave;
+
+				//get root/save/userDragon
+				Element userDragon = (Element) save.getChildren("userDragon").get(0);
+
+				//check if name is equal
+				if (userDragon.getChildText("name").equals(dragon.getName())) {
+					found = true;
+					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
+
+					
+
+					// Make Inventory
+					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
+					for (Object anObj : invList) {
+						// TODO: get inventory for DRAGON
+						Element node = (Element) anObj;
+						System.out.println("Inventory Name : " + node.getText());
+					}
+				}
+			}
 
 			// Unfinished, still following example
 			// update staff id attribute
