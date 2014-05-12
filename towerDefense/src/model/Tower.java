@@ -2,6 +2,8 @@
     Author  : Chrestella Stephanie (13512005) & Jan Wira Gotama Putra (13512015)
 */
 
+package model;
+
 public class Tower {
     public static final int attackIncreaseRate = 10; //in percent
     public static final int coolDownRate = 10; //in percent
@@ -32,37 +34,37 @@ public class Tower {
     }
     
     /** set currentLevel to level */
-    protected void setCurrentLevel(int level) {
+    public void setCurrentLevel(int level) {
         currentLevel=level;
     }
     
     /** set position_x to pos_x */
-    protected void setPositionX(int pos_x) {
+    public void setPositionX(int pos_x) {
         position_x=pos_x;
     }
     
     /** set position_y to pos_y */
-    protected void setPositionY(int pos_y) {
+    public void setPositionY(int pos_y) {
         position_y=pos_y;
     }
     
     /** set upgradeCost to cost */
-    protected void setUpgradeCost(int cost) {                       
+    public void setUpgradeCost(int cost) {                       
         upgradeCost=cost;
     }
     
     /** set attack to att */
-    protected void setAttack(int att) {
+    public void setAttack(int att) {
         attack=att;
     }
     
     /** set range to r */
-    protected void setRange(int r) {
+    public void setRange(int r) {
         range=r;
     }
     
     /** set attackSpeed to attSpeed */
-    protected void setCoolDown(int attSpeed) {
+    public void setCoolDown(int attSpeed) {
         coolDown=attSpeed;
     }
     

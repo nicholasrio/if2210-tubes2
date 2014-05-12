@@ -1,5 +1,4 @@
-package towerdefense;
-
+package controller;
 
 /**
  *
@@ -10,6 +9,8 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
 import java.util.Collections;
+import exception.*;
+import model.*;
 
 public class Controller {
 
@@ -26,33 +27,34 @@ public class Controller {
     private int[][] map;
 
     private Controller() {
-        
+        maximumLevel = 10;
     }
-    
+
     public void newGame() {
         map = new int[ROW][COL];
         listOfTower = new ArrayList<>();
         listOfMonster = new ArrayList<>(); // misalkan 10 monster langsung keluar
         currentLevel = 1;
-        maximumLevel = 5;
         score = 0;
         gold = 0;
         lives = INITIAL_LIFE;
     }
+
     public void loadGame() {
-        
+
     }
 
     public void spawnMonster() {
-        listOfMonster.add(new Monster(0, 0));
+        listOfMonster.add(new Monster(start_x, start_y));
     }
 
     /**
      * create new tower at position (pos_x, pos_y) if have enough money. return
      * true if the tower could be created
+     *
      * @param pos_x
      * @param pos_y
-     * @return 
+     * @return
      */
     public boolean createNewTower(int pos_x, int pos_y) {
         /* ?Precondition, there should not exist any tower at position (pos_x, pos_y) */
@@ -66,12 +68,13 @@ public class Controller {
             return false;
         }
     }
+
     public void moveAllMonster() {
         for (int it = 0; it < listOfMonster.size(); ++it) {
             /*
-                int x_new = ambil dari bit map sesuai dengan posisinya sekarang
-                int y_new = ambil dari bit map sesuai dengan posisinya sekarang
-            */
+             int x_new = ambil dari bit map sesuai dengan posisinya sekarang
+             int y_new = ambil dari bit map sesuai dengan posisinya sekarang
+             */
             Monster M = listOfMonster.get(it);
             int x_new = M.getX();
             int y_new = M.getY();
@@ -93,12 +96,12 @@ public class Controller {
                     y_new -= 1;
                     break;
                 }
-                default:assert(false);
+                default:
+                    assert (false);
             }
             M.changePos(x_new, y_new);
         }
     }
-    
 
     public void decreaseLive() {
         --lives;
@@ -121,9 +124,10 @@ public class Controller {
 
     /**
      * sell (destroy) the tower at (pos_x, pos_y) to get pay back money
+     *
      * @param pos_x
      * @param pos_y
-     * @return 
+     * @return
      */
     public int sellTower(int pos_x, int pos_y) {
         /* ?Precondition, there should exist a tower at position (pos_x, pos_y) */
@@ -139,8 +143,9 @@ public class Controller {
 
     /**
      * upgrade tower at position (pos_x, pos_y) if player's money is sufficient,
+     *
      * @param pos_x
-     * @param pos_y 
+     * @param pos_y
      */
     public void upgradeTower(int pos_x, int pos_y) {
         /* ?Precondition, there should exist a tower at position (pos_x, pos_y) */
@@ -159,8 +164,8 @@ public class Controller {
         for (int i = 0; i < listOfTower.size(); i++) {
             for (int j = 0; j < listOfMonster.size(); ++j) {
                 /* 
-                    if (there's ')enemy in tower's sight, then attack those enemy
-                */
+                 if (there's ')enemy in tower's sight, then attack those enemy
+                 */
                 Tower T = listOfTower.get(i);
                 Monster M = listOfMonster.get(j);
                 if (T.rangeCheck(M.getX(), M.getY())) {
@@ -194,6 +199,7 @@ public class Controller {
 
     /**
      * Save ListOfTower to file
+     *
      * @param out
      */
     public void saveToFile(PrintWriter out) {
@@ -217,7 +223,7 @@ public class Controller {
             int x = in.nextInt();
             int y = in.nextInt();
             // Ini ditambahkan di terakhir saja
-            
+
             Tower temp = new Tower(x, y);
             temp.setCurrentLevel(in.nextInt());
             temp.setUpgradeCost(in.nextInt());
@@ -230,9 +236,10 @@ public class Controller {
 
     /**
      * Get tower (pos_x, pos_y) index in the list
+     *
      * @param pos_x
      * @param pos_y
-     * @return 
+     * @return
      */
     public int getTowerIdx(int pos_x, int pos_y) {
         int simpan = -1;

@@ -1,7 +1,5 @@
-
+package model;
 import java.io.*;
-import java.util.*;
-
 public class Map {
 	static int[][] Peta;
 	int row;
@@ -16,12 +14,12 @@ public class Map {
        int i = 0; 
        int j = 0; 
        
-        row = 40;
-		col = 72;
+        rows = 40;
+		columns = 72;
 		Peta = new int [40][72];
         BufferedReader read = new BufferedReader(new FileReader("matriks.txt"));
         String a = null;
-        while ((a = read.readLine()) != null)
+        while ((a = read.readLine())    != null)
         {
             String[] parts = a.split("\\s");
             for(String part : parts)
@@ -94,7 +92,7 @@ public class Map {
     public static void main(String[] args) throws FileNotFoundException, IOException  {
      Map.baca_input();
 	 print_matriks(Map.Peta);
-		Map.save_matriks();
+		//Map.save_matriks();
 	 }
 	
 

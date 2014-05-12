@@ -1,3 +1,4 @@
+package model;
 
 import java.io.*;
 
@@ -13,8 +14,6 @@ public class Monster {
         position_y = _position_y;
     }
 
-    
-
     public void decreaseHitPoints(int damage) {
         hitPoints = hitPoints - damage;
     }
@@ -25,13 +24,16 @@ public class Monster {
         position_y = 0;
 
     }
+
     public void changePos(int _x, int _y) {
         position_x = _x;
         position_y = _y;
     }
+
     public int getX() {
         return position_x;
     }
+
     public int getY() {
         return position_y;
     }
