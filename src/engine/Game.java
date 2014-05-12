@@ -6,7 +6,6 @@
 
 package engine;
 import engine.Scenes.*;
-import engine.DataStructure.*;
 
 /**
  *
@@ -18,8 +17,13 @@ public class Game
     
     public static void main(String []args)
     {
-        PrepareScenes();    
+        PrepareScenes();  
         gameLoop();
+        /*LevelMenu s=new LevelMenu();
+        s.Initialize();
+        s.Update();
+        s.Update();
+        s.Draw();*/
     }
     
     public static void PrepareScenes()
