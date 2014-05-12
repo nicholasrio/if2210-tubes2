@@ -72,13 +72,12 @@ public final class Store {
     public void setFdInventory (ArrayList<Consumable> val) {
         this.fdInventory = val;
     }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+	
+	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.51BC2E63-3236-4A18-2895-B470C93E454E]
     // </editor-fold> 
     public Consumable buy (int arrLoc) {
-        return null;
+        return fdInventory.get(arrLoc);
     }
-
 }
 

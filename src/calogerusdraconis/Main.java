@@ -45,7 +45,6 @@ public class Main {
 			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		ud.sebelumExit();
-		//System.out.println("ASFA");
 	}
 
 	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

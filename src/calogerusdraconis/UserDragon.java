@@ -94,7 +94,7 @@ public class UserDragon extends Dragon {
         }
     }
     
-    private void tambahThirst(int val) {
+    private void tambahThirst(float val) {
         synchronized(this) {
             if (thirst + val < 0) {
                 thirst = 0;
@@ -118,7 +118,7 @@ public class UserDragon extends Dragon {
         }
     }
     
-    private void tambahHunger (int val) {
+    private void tambahHunger (float val) {
         synchronized (this) {
             if (hunger + val < 0) {
                 hunger = 0;
@@ -163,17 +163,6 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
     public ArrayList<Consumable> getFdInventory () {
         return fdInventory;
-    }
-    
-    public void removeFdInventory(int idx) {
-        this.fdInventory.remove(idx);
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.DC5D1D42-8A76-00B1-081A-42B70BD35ABE]
-    // </editor-fold> 
-    public void addFdInventory (Consumable val) {
-        this.fdInventory.add(val);
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -222,7 +211,27 @@ public class UserDragon extends Dragon {
     // #[regen=yes,id=DCE.2FA42178-E36A-15BE-3646-94D71EAC0289]
     // </editor-fold> 
     public Event useConsumable (Consumable fd) {
-        return null;
+		/* Prekondisi : fd sudah ada di barang karena dipilih dari fd */
+		tambahHealth(fd.getHealthValue());
+		tambahThirst(fd.getThirstValue());
+		tambahHunger(fd.getHungerValue());
+		money -= fd.getCost();
+		tambahStamina(fd.getStaminaValue());
+		maxStamina = fd.getMaxStaminaValue();
+		maxHealth = fd.getMaxHealthValue();
+		tambahHappiness(fd.getHappinessValue());
+		int idx = this.fdInventory.indexOf(fd);
+		this.fdInventory.remove(idx);
+		return null;
+    }
+	
+	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.0929F36F-FC07-E055-0FD8-118CC54E9595]
+    // </editor-fold> 
+    public Event addConsumable (Consumable what) throws Exception {
+        if (money < what.getCost()) throw new Exception ("Uang tidak cukup");
+		
+		return null;
     }
     
     public void sebelumExit() {
@@ -393,12 +402,5 @@ public class UserDragon extends Dragon {
 			
 		}
 		return new Event("Proses Selesai","toToilet Selesai");
-    }
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.0929F36F-FC07-E055-0FD8-118CC54E9595]
-    // </editor-fold> 
-    public Event addConsumable (Consumable what) {
-        return null;
     }
 }
