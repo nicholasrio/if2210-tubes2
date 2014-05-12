@@ -17,7 +17,6 @@ public class SceneManager
     static private ArrayList<Scene> Scenes = new ArrayList<Scene>();
     static private boolean Started = false;
     static private Scene activeScene = null;
-    static public boolean Play = true;
     
     // Methods
     static public void AddScene(Scene S)
@@ -60,4 +59,8 @@ public class SceneManager
             activeScene.Draw();
     }
     
+    static public void ShutDown()
+    {
+        Game.gameRunning = false;
+    }
 }
