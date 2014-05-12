@@ -36,6 +36,7 @@ public class PilihanPartai implements Pilihan {
                 p.setString(2, NamaPartai);
                 p.executeUpdate();
             }
+            koneksi.close();
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
