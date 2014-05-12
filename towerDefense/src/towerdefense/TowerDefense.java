@@ -7,6 +7,9 @@ import java.util.*;
 import controller.*;
 import model.*;
 import exception.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,16 +25,19 @@ public class TowerDefense {
     
     public static void main(String[] args) {
         MainMenu menuList = MainMenu.getInstance();
+        boolean cannotPlay = false;
         try {
             menuList.loadPlayer();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
+            cannotPlay = true;
             return;
         }
         Scanner in = new Scanner(System.in);
         String str;
         int pilihanMenu = 0;
-        while (pilihanMenu!=7) {
+        while (pilihanMenu!=7 && !cannotPlay) {
+            //clearscreen???5
             menuList.showMenus();
             pilihanMenu = in.nextInt();
             if (pilihanMenu==1 || pilihanMenu==2 || pilihanMenu==4) {
@@ -72,12 +78,29 @@ public class TowerDefense {
                     case 5 : {
                         if (menuList.logged()) {
                             System.out.println("ada login");
+                            try {
+                                menuList.PlayGame(true);
+                            } catch (FileNotFoundException ex) {
+                                System.out.println("Map not found");
+                                cannotPlay = true;
+                            } catch (IOException ex) {
+                                System.out.println("Interrupted");
+                            }
                         }
                         break;
                     }
                     case 6 : {
                         if (menuList.logged()) {
                             System.out.println("ada login");
+                            try {
+                                menuList.PlayGame(false);   
+                            } catch (FileNotFoundException ex) {
+                                System.out.println("Cannot load game");
+                                cannotPlay = true;
+                            }catch (IOException ex) {
+                                System.out.println("Interrupted");
+                            }
+                            
                         }
                         break;
                     }
