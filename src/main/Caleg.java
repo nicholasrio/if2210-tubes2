@@ -11,10 +11,10 @@ package main;
  * @author akhfa
  */
 public class Caleg {
-    private String NIK;
-    private String NamaPartai;
-    private String History;
-    private int NoDapil;
+    private final String NIK;
+    private final String NamaPartai;
+    private final String History;
+    private final int NoDapil;
     
     public Caleg(String _NIK, String _Partai, String _History, int _NoDapil){
         NIK = _NIK;

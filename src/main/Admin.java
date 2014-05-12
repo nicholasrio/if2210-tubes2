@@ -16,9 +16,16 @@ import javax.swing.JOptionPane;
 
 
 public class Admin {
-    private String Username;
-    private String Password;
+    private final String Username;
+    private final String Password;
     private boolean SuperAdmin;
+    
+    public Admin(String user, String pass, boolean superAdmin)
+    {
+        Username = user;
+        Password = pass;
+        SuperAdmin = superAdmin;
+    }
     
     /**
      * Memvalidasi input dari form login admin

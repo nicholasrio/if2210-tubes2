@@ -6,20 +6,14 @@
 
 package main;
 
-import java.awt.List;
-
-/**
- *
- * @author akhfa
- */
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dapil {
     int NoDapil;
-    private List Kabupaten;
+    private List<String>Kabupaten;
     
     public Dapil(){
-        Kabupaten = new List();
+        Kabupaten = new ArrayList<>();
     }
-    
-    
 }
