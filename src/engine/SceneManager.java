@@ -17,7 +17,7 @@ public class SceneManager
     static private ArrayList<Scene> Scenes = new ArrayList<Scene>();
     static private boolean Started = false;
     static private Scene activeScene = null;
-    static public boolean play = true;
+    static public boolean Play = true;
     
     // Methods
     static public void AddScene(Scene S)
@@ -39,11 +39,6 @@ public class SceneManager
                 Scn.Initialize();
             }
         }
-    }
-    
-    public void Stop()
-    {
-        if (play) play = false;
     }
     
     static public void Initialize()
