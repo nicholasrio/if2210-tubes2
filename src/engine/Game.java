@@ -17,6 +17,11 @@ public class Game
     {
         PrepareScenes();    
         RunGame();
+        /*LevelMenu s=new LevelMenu();
+        s.Initialize();
+        s.Update();
+        s.Update();
+        s.Draw();*/
     }
     
     public static void PrepareScenes()
