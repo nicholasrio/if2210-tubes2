@@ -6,14 +6,6 @@
 
 package main;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Dapil {
-    int NoDapil;
-    private List<String>Kabupaten;
-    
-    public Dapil(){
-        Kabupaten = new ArrayList<>();
-    }
+public interface Pilihan {
+    public void addToDatabase();
 }

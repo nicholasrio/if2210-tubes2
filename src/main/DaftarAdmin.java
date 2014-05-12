@@ -6,14 +6,10 @@
 
 package main;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Dapil {
-    int NoDapil;
-    private List<String>Kabupaten;
+/**
+ *
+ * @author akhfa
+ */
+public class DaftarAdmin {
     
-    public Dapil(){
-        Kabupaten = new ArrayList<>();
-    }
 }
