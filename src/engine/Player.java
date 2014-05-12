@@ -37,12 +37,20 @@ public class Player {
     @Override
     public String toString()
     {
-        String temp;
-        temp = "Nama : " + nama + "\n";
-        temp += "Score : " + score + "\n";
-        temp += "Level unlocked : " + levelUnlocked + "\n";
-        temp += "Achievement unlocked : " + achievementUnlocked + "\n";
-        return temp;
+        StringBuilder temp = new StringBuilder();
+        temp.append("Nama : ");
+        temp.append(nama);
+        temp.append("\n");
+        temp.append("Score : ");
+        temp.append(score);
+        temp.append("\n");
+        temp.append("Level unlocked : ");
+        temp.append(levelUnlocked);
+        temp.append("\n");
+        temp.append("Achievement unlocked : ");
+        temp.append(achievementUnlocked);
+        temp.append("\n");
+        return temp.toString();
     }
     
     /* Getter */
