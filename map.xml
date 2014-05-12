@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<map>
+    <baris>4</baris>
+    <kolom>4</kolom>
+    <level>4</level>
+    <matrix>
+        <el idx="0">1</el>
+        <el idx="1">2</el>
+        <el idx="2">3</el>
+        <el idx="3">4</el>
+        <el idx="4">5</el>
+        <el idx="5">6</el>
+        <el idx="6">7</el>
+        <el idx="7">8</el>
+        <el idx="8">9</el>
+        <el idx="9">10</el>
+        <el idx="10">11</el>
+        <el idx="11">12</el>
+        <el idx="12">13</el>
+        <el idx="13">14</el>
+        <el idx="14">15</el>
+        <el idx="15">16</el>
+        <el idx="16">e</el>
+        <el idx="17">f</el>
+        <el idx="18">g</el>
+        <el idx="19">h</el>
+        <el idx="20">h</el>
+        <el idx="21">g</el>
+        <el idx="22">f</el>
+        <el idx="23">e</el>
+        <el idx="24">e</el>
+        <el idx="25">f</el>
+        <el idx="26">g</el>
+        <el idx="27">h</el>
+        <el idx="28">h</el>
+        <el idx="29">g</el>
+        <el idx="30">f</el>
+        <el idx="31">e</el>
+        <el idx="32">20</el>
+        <el idx="33">21</el>
+        <el idx="34">22</el>
+        <el idx="35">23</el>
+        <el idx="36">24</el>
+        <el idx="37">25</el>
+        <el idx="38">26</el>
+        <el idx="39">27</el>
+        <el idx="40">28</el>
+        <el idx="41">29</el>
+        <el idx="42">30</el>
+        <el idx="43">31</el>
+        <el idx="44">32</el>
+        <el idx="45">33</el>
+        <el idx="46">34</el>
+        <el idx="47">35</el>
+        <el idx="48">t</el>
+        <el idx="49">u</el>
+        <el idx="50">v</el>
+        <el idx="51">w</el>
+        <el idx="52">w</el>
+        <el idx="53">v</el>
+        <el idx="54">u</el>
+        <el idx="55">t</el>
+        <el idx="56">t</el>
+        <el idx="57">u</el>
+        <el idx="58">v</el>
+        <el idx="59">w</el>
+        <el idx="60">w</el>
+        <el idx="61">v</el>
+        <el idx="62">u</el>
+        <el idx="63">t</el>
+    </matrix>
+</map>
