@@ -14,6 +14,7 @@ import java.sql.Statement;
 public class PilihanPartai implements Pilihan{
     String NIKPemilih;
     String NamaPartai;
+    
     public PilihanPartai(String nikPemilih, String namaPartai)
     {
         NIKPemilih = nikPemilih;
@@ -31,6 +32,7 @@ public class PilihanPartai implements Pilihan{
                 p.setString(2, NamaPartai);
                 p.executeUpdate();
             }
+            koneksi.close();
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

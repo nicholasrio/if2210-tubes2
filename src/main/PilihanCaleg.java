@@ -26,6 +26,7 @@ public class PilihanCaleg implements Pilihan{
                 p.setString(2, NIKCaleg);
                 p.executeUpdate();
             }
+            koneksi.close();
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
