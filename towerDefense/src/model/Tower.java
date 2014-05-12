@@ -5,13 +5,12 @@
 package model;
 
 public class Tower {
-    public static final int attackIncreaseRate = 10; //in percent
-    public static final int coolDownRate = 10; //in percent
-    public static final int maximum_speed = 100;
-    public static final int costIncreaseRate = 10; //in percent
+    public static final int attackIncreaseRate = 1; 
     public static final int rateJual = 90; //in percent
     public static final int levelMax = 20;  
     public static final int towerCost = 1;
+    public static final int maxRange = 15;
+    
     private int currentLevel;
     private int position_x;
     private int position_y;
@@ -29,8 +28,8 @@ public class Tower {
         upgradeCost = 1;
         attack = 1;
         range = 5;
-        coolDown = 3;
-        coolDownCount = 3;
+        coolDown = 1;
+        coolDownCount = 0;
     }
     
     /** set currentLevel to level */
@@ -74,7 +73,7 @@ public class Tower {
     }
     
     public void coolingDown() {
-        if (coolDownCount > 1)
+        if (coolDownCount > 0)
             coolDownCount--;
     }
     
@@ -116,38 +115,25 @@ public class Tower {
     }
     
     /** shoot the enemy at (pos_x_enemy,pos_y_enemy) if the position is in range */
-    public boolean rangeCheck(int pos_x_enemy, int pos_y_enemy) {
+    public boolean rangeCheck(int pos_x_enemy, int pos_y_enemy, int row, int col) {
         //check if the enemy's position is in range
         //if so then shoot it! else tower cannot shot it
         //asumsi 0,0 di kiri atas
         boolean retval;
-        int batasAtasX,batasBawahX,batasAtasY,batasBawahY;
-        batasAtasX=position_x-range;
-        batasAtasY=position_y-range;
-        batasBawahX=position_x+range;
-        batasBawahY=position_y+range;
+        int batasKiri, batasKanan, batasAtas, batasBawah;
+        batasKiri=position_y-range;
+        batasKanan=position_y+range;
+        batasAtas=position_x-range;
+        batasBawah=position_x+range;
         if (coolDownCount==0) {
-            if((pos_x_enemy<=batasAtasX)&&(pos_x_enemy>=position_x)&&(pos_y_enemy>=batasAtasY)&&(pos_y_enemy<=position_y)){
-                retval=true;
-            }
-            else{
-                if((pos_x_enemy>=batasBawahX)&&(pos_x_enemy<=position_x)&&(pos_y_enemy>=batasAtasY)&&(pos_y_enemy<=position_y)){
-                    retval=true;
+            if (pos_y_enemy>=0 && pos_x_enemy>=0 && pos_x_enemy<row && pos_y_enemy<col) {
+                //System.out.println("Me : "+position_x+","+position_y+" Enemy :"+pos_x_enemy+","+pos_y_enemy);
+                if (pos_x_enemy >= batasKiri && pos_x_enemy <= batasKanan && pos_y_enemy<=batasBawah && pos_y_enemy>=batasAtas) {
+                    retval = true;
                 }
-                else{
-                    if((pos_x_enemy>=batasBawahX)&&(pos_x_enemy<=position_x)&&(pos_y_enemy<=batasBawahY)&&(pos_y_enemy>=position_y)){
-                        retval = true;
-                    }
-                    else{
-                        if((pos_x_enemy<=batasAtasX)&&(pos_x_enemy>=position_x)&&(pos_y_enemy<=batasBawahY)&&(pos_y_enemy>=position_y)){
-                            retval=true;
-                        }
-                        else{
-                            retval = false;
-                        }
-                    }
-                }
+                else retval = false;
             }
+            else retval = false;
         }
         else {
             retval = false;
@@ -159,8 +145,10 @@ public class Tower {
     public void upgradeTower() {
         //increase attack, attackSpeed and Cost by rate (static final variable)
         if (currentLevel < levelMax) {
-            upgradeCost=upgradeCost+(upgradeCost*costIncreaseRate/100);
-            attack=attack+(attack*attackIncreaseRate/100);
+            upgradeCost=upgradeCost+currentLevel;
+            if (range < maxRange)
+                ++range;
+            attack=attack+(currentLevel*attackIncreaseRate);
             if (coolDown > 1) {
                 coolDown--;
                 coolDownCount = coolDown;
@@ -171,6 +159,6 @@ public class Tower {
     /** sell the tower to get payback money*/
     public int sellTower() {                                                                       // ini maksudnya public int sellTower? -> betul
         //menjual tower, mengembalikan uang sejumlah sekian persen dari cost terakhir tower
-        return (rateJual*upgradeCost/100);
+        return (int)Math.ceil(rateJual*upgradeCost/100);
     }
 }

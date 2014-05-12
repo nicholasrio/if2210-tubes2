@@ -1,22 +1,22 @@
 package model;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Map {
-	static int[][] Peta;
-	int row;
-	int col;
+    public static int[][] Peta;
+    public static int row;
+    public static int col;
     
-   public static void baca_input () throws FileNotFoundException, IOException
+    public static void readFile () throws FileNotFoundException, IOException
     {
-       BufferedReader baca = new BufferedReader(new FileReader("matriks.txt"));
-       String s = null;
-       int rows =0;
-       int columns =0;
-       int i = 0; 
-       int j = 0; 
+        String s = null;
+        row = 15;
+        col = 20;
+        int i = 0; 
+        int j = 0; 
        
-        rows = 40;
-		columns = 72;
-		Peta = new int [40][72];
+        Peta = new int [row][col];
         BufferedReader read = new BufferedReader(new FileReader("matriks.txt"));
         String a = null;
         while ((a = read.readLine())    != null)
@@ -25,77 +25,53 @@ public class Map {
             for(String part : parts)
             {
                Peta[i][j] = Integer.valueOf(part);
-                j++;
+               j++;
+               if (j>19) {
+                   j = 0;
+               }
             }
-            
             i++;
-   
             j=0;
         }
+        read.close();
     }
 		
-		public static void showMap() {
-			for(int i=0;i<40;++i) {
-				for(int j=0;j<72;++j) {
-					if((Peta[i][j] >> 4) == 1) {
-						
-					}
-					else if((Peta[i][j] >> 4) == 2) {
-						
-					}
-					else if((Peta[i][j] >> 4) == 3) {
-						
-					}
-					else if((Peta[i][j] >> 4) == 4) {
-						
-					}
-					else if((Peta[i][j] >> 4) == 5) {
-						
-					}
-					else if((Peta[i][j] >> 4) == 6) {
-						
-					}
-				}
-			}
-		}
-   
-	 public static void print_matriks (int [][]matriks)
-    {
-           for (int i = 0; i < 40 ; i ++)
-           {
-                for (int j = 0; j < 72; j++)
-                {
-                    System.out.print(Peta[i][j] + " ");
-                    if(j == 71 -1)
-                    {
-                         System.out.println();
-                    }
+    public static void showMap() {
+       for (int i = 0; i < row ; i ++)
+       {
+            for (int j = 0; j < col; j++)
+            {
+                if (Peta[i][j]==256) {
+                    System.out.print(".");
                 }
-           }
+                else System.out.print("#");
+            }
+            System.out.println();
+       }
     }
 		
-		public void save_matriks () throws IOException {
-			try {
-				FileWriter f = new FileWriter(new File("outfile.txt"));
-				for(int i=0;i<40;++i) {
-					for(int j=0; j < 72; ++j) {
-						f.write(Peta[i][j] + " ");
-					}
-					f.write("\n");
-				}
-				f.close();
-			}
-			catch (IOException e) {
-			}
-		}
-	
-    public static void main(String[] args) throws FileNotFoundException, IOException  {
-     Map.baca_input();
-	 print_matriks(Map.Peta);
-		//Map.save_matriks();
-	 }
-	
-
-
-
+    /*public void save_matriks () throws IOException {
+        try {
+            FileWriter f = new FileWriter(new File("outfile.txt"));
+            for(int i=0;i<40;++i) {
+                    for(int j=0; j < 72; ++j) {
+                            f.write(Peta[i][j] + " ");
+                    }
+                    f.write("\n");
+            }
+            f.close();
+        }
+        catch (IOException e) {
+        }
+    }*/
+    
+    public static void main(String args[]) {
+        Map M = new Map();
+        try {
+            M.readFile();
+        } catch (IOException ex) {
+            System.out.println("File not found");
+        }
+        M.showMap();
+    }
 }

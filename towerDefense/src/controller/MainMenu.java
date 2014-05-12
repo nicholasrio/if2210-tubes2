@@ -8,16 +8,16 @@ import model.Player;
 public class MainMenu {
 
     private List<Player> players = new ArrayList<Player>();
-    private String loginPlayer;
+    private Player loginPlayer;
     private static MainMenu instance = new MainMenu();
-
+    
     private MainMenu() {
     }
-
+    
     public void Login(String username) throws NameNotExistException {
         int idx = searchPlayer(username);
         if (idx != -1) {
-            loginPlayer = players.get(idx).getName();
+            loginPlayer = players.get(idx);
         } else {
             throw new NameNotExistException();
         }
@@ -55,9 +55,78 @@ public class MainMenu {
         return idx;
     }
 
-    public void PlayGame() {
-        //jalankan controller game
-        //TODO, tambahkan playgame
+    public void PlayGame(boolean newGame) throws FileNotFoundException, IOException {
+        Controller gameControl = Controller.getInstance();
+        if (newGame==false) {
+            gameControl.loadGame(loginPlayer);
+        }
+        else { 
+            gameControl.newGame(loginPlayer);
+        }
+        Scanner in = new Scanner(System.in);
+        int menu=0, pos_x=0, pos_y=0;
+        while (gameControl.getCurrentLevel() <= gameControl.getMaxLevel() && menu!=6) { //TO DO : inget diganti
+            gameControl.showGame(true);
+            menu = in.nextInt();
+            if (menu==1 || menu==2 || menu==3) {
+                System.out.print(">Position(x,y) ");
+                pos_x = in.nextInt();
+                pos_y = in.nextInt();
+            }
+            switch(menu) {
+                case 1 : {
+                    boolean retval = gameControl.createNewTower(pos_x, pos_y);
+                    break;
+                }
+                case 2 : {
+                    gameControl.sellTower(pos_x, pos_y);
+                    break;
+                }
+                case 3 : {
+                    gameControl.upgradeTower(pos_x, pos_y);
+                    break;
+                }
+                case 4 : {
+                    gameControl.saveToFile();
+                    break;
+                }
+                case 5 : {
+                    gameControl.spawnMonster();
+                    while (gameControl.countSeenMonster() > 0 && gameControl.getLives() > 0) {
+                        gameControl.showGame(false);
+                        gameControl.allTowersAttack();
+                        gameControl.moveAllMonster();
+                        gameControl.coolDownAllTower();
+                        gameControl.showMonsterLive(); //for testing purpose only
+                        if (gameControl.getScore() > loginPlayer.getHighScore()) {
+                            loginPlayer.setHighScore(gameControl.getScore());
+                        }    
+                        in.nextLine();
+                    }
+                    if (gameControl.getLives()>0) {
+                        System.out.println("Congratulations... you may advance to next level!");
+                        gameControl.nextLevel();
+                    }
+                    else {
+                        System.out.println("You lose!");
+                    }
+                    break;
+                }
+                case 6 : { break; }
+                default : {
+                    System.out.println("Menu not found!");
+                    break;
+                }
+            }
+        }
+        if (gameControl.getCurrentLevel() > gameControl.getMaxLevel()) {
+            System.out.println("Congratulation... you've win the game!");
+        }    
+        if (gameControl.getScore() > loginPlayer.getHighScore()) {
+            loginPlayer.setHighScore(gameControl.getScore());
+        }  
+        int idx = searchPlayer(loginPlayer.getName());
+        players.get(idx).setHighScore(loginPlayer.getHighScore());
     }
 
     public List<Player> getHighScore() {
