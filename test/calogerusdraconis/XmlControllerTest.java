@@ -82,7 +82,13 @@ public class XmlControllerTest {
 		System.out.println("SaveDragon");
 		UserDragon dragon = null;
 		XmlController instance = new XmlController();
-		instance.SaveDragon(dragon);
+		try {
+			UserDragon ud = instance.LoadDragon("Xanareth");
+			ud.setPassword("anotherPass");
+			instance.SaveDragon(ud);
+		} catch(Exception ex) {
+			System.err.println(ex.getMessage());
+		}
 		// TODO review the generated test code and remove the default call to fail.
 		fail("The test case is a prototype.");
 	}
