@@ -11,11 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author akhfa
- */
-public class PilihanPartai {
+public class PilihanPartai implements Pilihan{
     String NIKPemilih;
     String NamaPartai;
     public PilihanPartai(String nikPemilih, String namaPartai)
@@ -23,6 +19,7 @@ public class PilihanPartai {
         NIKPemilih = nikPemilih;
         NamaPartai = namaPartai;
     }
+    @Override
     public void addToDatabase()
     {
         try {

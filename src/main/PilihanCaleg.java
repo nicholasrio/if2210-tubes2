@@ -11,13 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author akhfa
- */
-public class PilihanCaleg {
+public class PilihanCaleg implements Pilihan{
     String NIKCaleg;
     String NIKPemilih;
+    @Override
     public void addToDatabase()
     {
         try {
