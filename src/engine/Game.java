@@ -31,8 +31,8 @@ public class Game
         SceneManager.SwitchScene("MainMenu");
         while (SceneManager.Play)
         {
-            SceneManager.Draw();
             SceneManager.Update();
+            SceneManager.Draw();
         }
     }
 }
