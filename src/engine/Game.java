@@ -6,7 +6,6 @@
 
 package engine;
 import engine.Scenes.*;
-import engine.DataStructure.*;
 
 /**
  *
@@ -31,8 +30,8 @@ public class Game
         SceneManager.SwitchScene("MainMenu");
         while (SceneManager.Play)
         {
-            SceneManager.Draw();
             SceneManager.Update();
+            SceneManager.Draw();
         }
     }
 }
