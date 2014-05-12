@@ -19,11 +19,6 @@ public class Game
     {
         PrepareScenes();  
         gameLoop();
-        /*LevelMenu s=new LevelMenu();
-        s.Initialize();
-        s.Update();
-        s.Update();
-        s.Draw();*/
     }
     
     public static void PrepareScenes()
@@ -31,7 +26,8 @@ public class Game
         SceneManager.Initialize();
         SceneManager.AddScene(new MainMenu());
         SceneManager.AddScene(new LevelMenu());
-        SceneManager.SwitchScene("MainMenu"); 
+        SceneManager.AddScene(new GameMenu());
+        SceneManager.SwitchScene("GameMenu"); 
     }
     
     public static void gameLoop()
