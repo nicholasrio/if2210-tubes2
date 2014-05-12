@@ -41,23 +41,45 @@ public class MainMenu extends Scene
     }
     
     private void DrawHeader() {
-       String Title = "CUBE MAZER";
-       int spaces, spacebetween;
-       spacebetween = width/25;
-       for (int i = 0;i<width;i++) System.out.print("=");
-       System.out.println();
-       if (width%2 == 0)System.out.print("||");
-       else System.out.print("|| ");
-       spaces = (width - (spacebetween*10) - 10 - 4 )/2;
-       for (int i = 0;i < spaces;i++) System.out.print(" ");
-       for (int i = 0;i < Title.length();i++) {
-            System.out.print(Title.charAt(i));
-            for(int j = 0;j<spacebetween;j++) System.out.print(" ");
-       }
-       for (int i = 0;i < spaces;i++) System.out.print(" ");
-       System.out.print("||");
-       System.out.println();
-       for (int i = 0;i<width;i++) System.out.print("=");
-       System.out.println();
+        PrinterString("=");
+        PrinterString("CUBE MAZER");
+        PrinterString("");
+        PrinterString("MAIN MENU");
+        PrinterString("=");
+    }
+    
+    private void PrinterString(String what) {
+        if (what.equals("=")) {
+            System.out.print("||");
+            for(int i = 0; i < (width-4);i++) System.out.print("=");
+            System.out.println("||");
+        } else {
+            int spaces, spacebetween;
+            spacebetween = width / 25;
+            if (width % 2 == 0) {
+                System.out.print("||");
+            } else {
+                System.out.print("|| ");
+            }
+            spaces = (width - (spacebetween * what.length()) - what.length() - 4) / 2;
+            for (int i = 0; i < spaces; i++) {
+                System.out.print(" ");
+            }
+            for (int i = 0; i < what.length(); i++) {
+                System.out.print(what.charAt(i));
+                for (int j = 0; j < spacebetween; j++) {
+                    System.out.print(" ");
+                }
+            }
+            for (int i = 0; i < spaces; i++) {
+                System.out.print(" ");
+            }
+            if (what.length() % 2 == 0) {
+                System.out.print("||");
+            } else {
+                System.out.print(" ||");
+            }
+            System.out.println();
+        }
     }
 }
