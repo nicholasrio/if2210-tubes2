@@ -124,9 +124,20 @@ public class XmlController {
 				if (userDragon.getChildText("name").equals(dragon.getName())) {
 					found = true;
 					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
-
 					
-
+					userDragon.getChild("password").setText(dragon.getPassword());
+					userDragon.getChild("money").setText(Float.toString(dragon.getMoney()));
+					userDragon.getChild("happiness").setText(Float.toString(dragon.getHappiness()));
+					userDragon.getChild("health").setText(Float.toString(dragon.getHealth()));
+					userDragon.getChild("maxHealth").setText(Float.toString(dragon.getMaxHealth()));
+					userDragon.getChild("stamina").setText(Float.toString(dragon.getStamina()));
+					userDragon.getChild("maxStamina").setText(Float.toString(dragon.getMaxStamina()));
+					userDragon.getChild("thirst").setText(Float.toString(dragon.getThirst()));userDragon.getChild("money").setText(Float.toString(dragon.getMoney()));
+					userDragon.getChild("bladder").setText(Float.toString(dragon.getBladder()));
+					userDragon.getChild("hunger").setText(Float.toString(dragon.getHunger()));
+					userDragon.getChild("level").setText(Float.toString(dragon.getLevel()));
+					userDragon.getChild("experience").setText(Float.toString(dragon.getExperience()));
+					
 					// Make Inventory
 					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
 					for (Object anObj : invList) {
@@ -136,7 +147,10 @@ public class XmlController {
 					}
 				}
 			}
-
+			
+			//TODO: make new entry if dragon not found
+			
+			/*
 			// Unfinished, still following example
 			// update staff id attribute
 			Element staff = rootNode.getChild("staff");
@@ -148,6 +162,7 @@ public class XmlController {
 			staff.getChild("salary").setText("7000");
 			// remove firstname element
 			staff.removeChild("firstname");
+			*/
 
 			// Formatting and Outputting
 			XMLOutputter xmlOutput = new XMLOutputter();
