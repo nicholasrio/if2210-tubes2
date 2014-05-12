@@ -13,9 +13,13 @@ import engine.*;
  */
 public class MainMenu extends Scene
 {
+    private int height;
+    private int width;
     public MainMenu()
     {
         super("MainMenu");
+        height = 30;
+        width = 50;
     }
     
     @Override
@@ -33,6 +37,8 @@ public class MainMenu extends Scene
     @Override
     public void Draw()
     {
-        System.out.println("A");
+       for (int i = 0;i<width;i++) System.out.print("=");
+       for (int i = 0;i<width;i++) System.out.print("=");
+       System.out.println();
     }
 }
