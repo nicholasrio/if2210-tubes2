@@ -30,7 +30,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="TombolDapil1" min="-2" pref="183" max="-2" attributes="0"/>
+                  <Component id="TombolCaleg" min="-2" pref="183" max="-2" attributes="0"/>
                   <Component id="TombolDapil" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="125" max="32767" attributes="0"/>
@@ -43,7 +43,7 @@
               <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
               <Component id="TombolDapil" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="TombolDapil1" min="-2" max="-2" attributes="0"/>
+              <Component id="TombolCaleg" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="113" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -61,7 +61,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TombolDapilActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="TombolDapil1">
+    <Component class="javax.swing.JButton" name="TombolCaleg">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tempus Sans ITC" size="18" style="1"/>
@@ -69,7 +69,7 @@
         <Property name="text" type="java.lang.String" value="Calon Legislatif"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TombolDapil1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TombolCalegActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

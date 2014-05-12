@@ -5,7 +5,8 @@
  */
 
 package main;
-
+import com.sun.awt.AWTUtilities;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author akhfa
@@ -16,6 +17,7 @@ public class FormAdmin extends javax.swing.JFrame{
      * Creates new form FormAdmin
      */
     private CalonTerpilih DaftarPilihan;
+    private Object AWTUtilities;
     
     public FormAdmin() {
         initComponents();
@@ -36,7 +38,7 @@ public class FormAdmin extends javax.swing.JFrame{
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         TombolDapil = new javax.swing.JButton();
-        TombolDapil1 = new javax.swing.JButton();
+        TombolCaleg = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,11 +50,11 @@ public class FormAdmin extends javax.swing.JFrame{
             }
         });
 
-        TombolDapil1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
-        TombolDapil1.setText("Calon Legislatif");
-        TombolDapil1.addActionListener(new java.awt.event.ActionListener() {
+        TombolCaleg.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolCaleg.setText("Calon Legislatif");
+        TombolCaleg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TombolDapil1ActionPerformed(evt);
+                TombolCalegActionPerformed(evt);
             }
         });
 
@@ -63,7 +65,7 @@ public class FormAdmin extends javax.swing.JFrame{
             .addGroup(layout.createSequentialGroup()
                 .addGap(112, 112, 112)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TombolDapil1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TombolCaleg, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TombolDapil))
                 .addContainerGap(125, Short.MAX_VALUE))
         );
@@ -73,7 +75,7 @@ public class FormAdmin extends javax.swing.JFrame{
                 .addGap(95, 95, 95)
                 .addComponent(TombolDapil)
                 .addGap(18, 18, 18)
-                .addComponent(TombolDapil1)
+                .addComponent(TombolCaleg)
                 .addContainerGap(113, Short.MAX_VALUE))
         );
 
@@ -82,13 +84,19 @@ public class FormAdmin extends javax.swing.JFrame{
 
     private void TombolDapilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDapilActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         FormDapil FD = new FormDapil();
+        FD.setVisible(true);
+        //this.setVisible(true);
         
     }//GEN-LAST:event_TombolDapilActionPerformed
 
-    private void TombolDapil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDapil1ActionPerformed
+    private void TombolCalegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolCalegActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TombolDapil1ActionPerformed
+        this.dispose();
+        FormCaleg FC = new FormCaleg();
+        FC.setVisible(true);
+    }//GEN-LAST:event_TombolCalegActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,8 +134,8 @@ public class FormAdmin extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton TombolCaleg;
     private javax.swing.JButton TombolDapil;
-    private javax.swing.JButton TombolDapil1;
     private javax.swing.ButtonGroup buttonGroup1;
     // End of variables declaration//GEN-END:variables
 }
