@@ -53,16 +53,47 @@ public class LevelMenu extends Scene
         }        
     }
     
-    @Override
+    @Override 
+    //punya kevin
     public void Draw()
     {
-        for (int i=0;i<150;i++){
+        for (int i=0;i<100;i++){
             System.out.print("=");
         }
         System.out.println();
         System.out.println("||");
-        //for (int i=0;i<)
+        for (int i=0;i<space;i++) System.out.print(" ");
+        for (int j=0;j<nama_klmpk.length();j++){
+            System.out.print(nama_klmpk.charAt(j));
+            for (int i=0;i<spacebetween;i++) System.out.print(" ");
+        }
+        for (int i=0;i<space;i++) System.out.print(" ");
+        System.out.print("||");
         System.out.println(" ");
+        
+        //Print judul
+        System.out.println("||");
+        for (int i=0;i<space;i++) System.out.print(" ");
+        for (int j=0;j<judul.length();j++){
+            System.out.print(judul.charAt(j));
+            for (int i=0;i<spacebetween;i++) System.out.print(" ");
+        }
+        for (int i=0;i<space;i++) System.out.print(" ");
+        System.out.print("||");
+        System.out.println(" ");
+        
+        //Print nama level
+        space=((width)-(spacebetween*nama_lvl.length())-nama_lvl.length()-4);
+        System.out.println("||");
+        for (int i=0;i<space;i++) System.out.print(" ");
+        for (int j=0;j<nama_lvl.length();j++){
+            System.out.print(nama_lvl.charAt(j));
+            for (int i=0;i<spacebetween;i++) System.out.print(" ");
+        }
+        for (int i=0;i<space;i++) System.out.print(" ");
+        System.out.print("||");
+        System.out.println(" ");
+        
         System.out.println(judul);
         System.out.println(level);
         System.out.println(nama_lvl);
