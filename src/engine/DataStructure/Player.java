@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-package engine;
+package engine.DataStructure;
+
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +15,8 @@ import java.util.logging.Logger;
  * @author Timothy
  * 
  */
-public class Player {
+public class Player 
+{
     /* Attribut */
     private String nama;
     private int score;
@@ -127,6 +129,7 @@ public class Player {
      * @param peta the map in which the player is playing
      */
     public void move(Map peta) /* ? */
+    
     {
         try 
         {
