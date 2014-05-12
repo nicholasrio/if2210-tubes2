@@ -15,14 +15,16 @@ import java.sql.Statement;
  *
  * @author akhfa
  */
-public class PilihanPartai {
+public class PilihanPartai implements Pilihan {
     String NIKPemilih;
     String NamaPartai;
+    
     public PilihanPartai(String nikPemilih, String namaPartai)
     {
         NIKPemilih = nikPemilih;
         NamaPartai = namaPartai;
     }
+    
     public void addToDatabase()
     {
         try {

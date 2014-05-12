@@ -15,7 +15,7 @@ import java.sql.Statement;
  *
  * @author akhfa
  */
-public class PilihanCaleg {
+public class PilihanCaleg implements Pilihan {
     String NIKCaleg;
     String NIKPemilih;
     public void addToDatabase()
