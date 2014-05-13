@@ -6,9 +6,9 @@
 
 package engine.Scenes;
 import engine.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,62 +28,47 @@ public class MainMenu extends Scene
     public void Initialize()
     {
         height = 30;
-        width = 150;
+        width = 80;
         status = 0;       
     }
     
     @Override
     public void Update()
     {
-        KeyEvent K = new KeyEvent();
-     //   while (K.RetKeyVal() != 10) { /* 10 = Enter Key */
-            if(K.RetKeyVal() == 37) /* Left arrow code */ {
-                status--;
-                if(status < 0) status = 4;
-            }
-            else if (K.RetKeyVal() == 39) /*Right arrow code */ {
-                status++;
-                if(status > 4) status = 0;
-            }
-      //  }
+        
     }
     
     @Override
     public void Draw()
     {
        DrawHeader();
-       PrinterString("");
-       if(status == 0) {
-           PrinterString("<< NEW GAME/CONTINUE GAME >>");
-       } else if (status == 1) {
-           PrinterString("<< CHANGE USER >>");
-       } else if (status == 2) {
-           PrinterString("<< ACHIEVEMENT >>");
-       } else if (status == 3) {
-           PrinterString("<< OPTION >>");
-       } else {
-           PrinterString("<< EXIT >>");
-       }
-       PrinterString("");
-       PrinterString("=");
+       PrinterString("",0);
+       PrinterString("1 NEW GAME/CONTINUE GAME",0);
+       PrinterString("2 CHANGE USER",0);
+       PrinterString("3 ACHIEVEMENT",0);
+       PrinterString("4 OPTION",0);      
+       PrinterString("5 EXIT",0);       
+       PrinterString("",0);
+       PrinterString("=",0);
     }
     
     private void DrawHeader() {
-        PrinterString("=");
-        PrinterString("CUBE MAZER");
-        PrinterString("");
-        PrinterString("MAIN MENU");
-        PrinterString("=");
+        PrinterString("=",1);
+        PrinterString("CUBE MAZER",1);
+        PrinterString("",1);
+        PrinterString("MAIN MENU",1);
+        PrinterString("=",1);
     }
     
-    private void PrinterString(String what) {
+    private void PrinterString(String what, int mode) { /* mode = space scaling */
         if (what.equals("=")) {
             System.out.print("||");
             for(int i = 0; i < (width-4);i++) System.out.print("=");
             System.out.println("||");
         } else {
             int spaces, spacebetween;
-            spacebetween = width / 25;
+            if(mode == 1) spacebetween = width / 20;
+            else spacebetween = 0;
             if (width % 2 == 0) {
                 System.out.print("||");
             } else {
@@ -109,28 +94,5 @@ public class MainMenu extends Scene
             }
             System.out.println();
         }
-    }
-}
-
-class KeyEvent implements KeyListener{
-    int ret;
-    @Override
-    public void keyTyped(java.awt.event.KeyEvent e) {
-        
-    }
-
-    @Override
-    public void keyPressed(java.awt.event.KeyEvent e) {
-        ret = e.getKeyCode();
-    }
-
-    @Override
-    public void keyReleased(java.awt.event.KeyEvent e) {
-        
-    }
-    
-    public int RetKeyVal() {
-        System.out.println(ret);
-        return ret;
     }
 }
