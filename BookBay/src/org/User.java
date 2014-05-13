@@ -39,11 +39,7 @@ public class User {
 		this.password = password;
 	}
 	
-	public List<FileController> getFileController() {
+	public List<FileController> fileController() {
 		return files;
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> 4b830e3a9b112ff18106cd8ab3195c435900aa28
 }

@@ -10,29 +10,29 @@ public class UserController implements Contoller {
 		_view=view;
 	}
 	public String getUserName(){
-		return _model.getName();
+		return _model.name();
 	}
 	public void setUserName(String name){
-		_model.setName(name);
+		_model.name(name);
 	}
 	public String getUserID(){
-		return _model.getID();
+		return _model.id();
 	}
 	public void setUserID(String ID){
-		_model.setID(ID);
+		_model.id(ID);
 	}
 	public String getUserPassword(){
-		return _model.getPassword();
+		return _model.password();
 	}
 	public void setUserPassword(String password){
-		_model.setPassword(password);
+		_model.password(password);
 	}
 	public FileController getUserFile(int n){ 
-		List<FileController> tempFileController = _model.getFileController();
+		List<FileController> tempFileController = _model.fileController();
 		return tempFileController.get(n);
 	}
 	public List<FileController> getFileList(){
-		return _model.getFileController();
+		return _model.fileController();
 	}
 	@Override
 	public void updateView() {
