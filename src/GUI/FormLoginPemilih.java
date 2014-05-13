@@ -4,18 +4,18 @@
  * and open the template in the editor.
  */
 
-package main;
+package GUI;
 
 /**
  *
  * @author akhfa
  */
-public class FormLoginAdmin extends javax.swing.JFrame{
+public class FormLoginPemilih extends javax.swing.JFrame{
 
     /**
-     * Creates new form FormLoginAdmin
+     * Creates new form FormLoginPemilih
      */
-    public FormLoginAdmin() {
+    public FormLoginPemilih() {
         initComponents();
     }
 
@@ -61,20 +61,20 @@ public class FormLoginAdmin extends javax.swing.JFrame{
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormLoginAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoginPemilih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormLoginAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoginPemilih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormLoginAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoginPemilih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormLoginAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLoginPemilih.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormLoginAdmin().setVisible(true);
+                new FormLoginPemilih().setVisible(true);
             }
         });
     }

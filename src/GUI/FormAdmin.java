@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-package main;
+package GUI;
 import com.sun.awt.AWTUtilities;
 import javax.swing.SwingUtilities;
+import main.CalonTerpilih;
 /**
  *
  * @author akhfa
