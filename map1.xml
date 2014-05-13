@@ -39,7 +39,7 @@
           <el idx="32">p</el>
           <el idx="33">p</el>
           <el idx="34">w</el>
-          <el idx="35">t1</el>
+          <el idx="35">t0</el>
           <el idx="36">p</el>
           <el idx="37">p</el>
           <el idx="38">p</el>
@@ -61,7 +61,7 @@
           <el idx="54">p</el>
           <el idx="55">p</el>
           <el idx="56">w</el>
-          <el idx="57">t4</el>
+          <el idx="57">t3</el>
           <el idx="58">w</el>
           <el idx="59">p</el>
           <el idx="60">p</el>
@@ -70,7 +70,7 @@
           <el idx="63">p</el>
           <el idx="64">w</el>
           <el idx="65">p</el>
-          <el idx="66">p</el>
+          <el idx="66">h</el>
           <el idx="67">p</el>
           <el idx="68">p</el>
           <el idx="69">p</el>
@@ -93,7 +93,7 @@
           <el idx="86">w</el>
           <el idx="87">w</el>
           <el idx="88">w</el>
-          <el idx="89">p</el>
+          <el idx="89">h</el>
           <el idx="90">p</el>
           <el idx="91">p</el>
           <el idx="92">p</el>
@@ -111,7 +111,7 @@
           <el idx="104">w</el>
           <el idx="105">p</el>
           <el idx="106">w</el>
-          <el idx="107">t2</el>
+          <el idx="107">t1</el>
           <el idx="108">p</el>
           <el idx="109">w</el>
           <el idx="110">p</el>
@@ -132,7 +132,7 @@
           <el idx="125">w</el>
           <el idx="126">p</el>
           <el idx="127">w</el>
-          <el idx="128">p</el>
+          <el idx="128">h</el>
           <el idx="129">w</el>
           <el idx="130">p</el>
           <el idx="131">w</el>
@@ -146,14 +146,14 @@
           <el idx="139">p</el>
           <el idx="140">c</el>
           <el idx="141">w</el>
-          <el idx="142">t5</el>
+          <el idx="142">t4</el>
           <el idx="143">w</el>
           <el idx="144">p</el>
           <el idx="145">p</el>
           <el idx="146">p</el>
           <el idx="147">w</el>
           <el idx="148">p</el>
-          <el idx="149">t3</el>
+          <el idx="149">t2</el>
           <el idx="150">p</el>
           <el idx="151">w</el>
           <el idx="152">p</el>
@@ -161,7 +161,7 @@
           <el idx="154">p</el>
           <el idx="155">w</el>
           <el idx="156">p</el>
-          <el idx="157">p</el>
+          <el idx="157">h</el>
           <el idx="158">p</el>
           <el idx="159">p</el>
           <el idx="160">p</el>
@@ -221,16 +221,6 @@
           <el idx="214">p</el>
           <el idx="215">p</el>
      </matrix>
-     <start>
-          <baris>0</baris>
-          <kolom>0</kolom>
-          <level>0</level>
-     </start>
-     <finish>
-          <baris>5</baris>
-          <kolom>5</kolom>
-          <level>5</level>
-     </finish>
      <teleporters>5</teleporters>
      <destination>
           <teleporter id="0">
