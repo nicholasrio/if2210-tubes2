@@ -14,12 +14,12 @@ public class FileExt extends File {
 	private long _downloadCount; // download count
 	private FileCategory _cat; // file category
 	
-	public FileExt(String location, String filename, User uploader) {
+	public FileExt(String location, String filename, User uploader, Date uploadTime) {
 		super(location); // physical location of the file
 		_name = filename;
 		_uploader = uploader;
 		_downloadCount = 0;
-		_uploadtime = new Date();
+		_uploadtime = uploadTime;
 	}
 	
 	public User uploader() {
@@ -55,8 +55,8 @@ public class FileExt extends File {
 		_downloadCount = count;
 	}
 	
-	public FileCategory category() {
-		return _cat;
+	public String category() {
+		return _cat.toString();
 	}
 	
 	public void category(FileCategory cat) {

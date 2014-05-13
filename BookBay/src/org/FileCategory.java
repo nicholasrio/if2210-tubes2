@@ -1,5 +1,16 @@
 package org;
 
 public enum FileCategory {
-	TextBook, Comics, Manga;
+	TextBook("textbook"), Comics("comics"), Manga("manga");
+	
+	private String _text;
+	
+	FileCategory(String id) {
+		this._text = id;
+	}
+	
+	@Override
+	public String toString() {
+		return _text;
+	}
 }

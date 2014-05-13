@@ -15,27 +15,27 @@ public class User {
 		files = new ArrayList<>();
 	}
 	
-	public String getName() {
+	public String name() {
 		return name;
 	}
 	
-	public void setName(String name) {
+	public void name(String name) {
 		this.name = name;
 	}
 	
-	public String getID() {
+	public String id() {
 		return ID;
 	}
 	
-	public void setID(String ID) {
+	public void id(String ID) {
 		this.ID = ID;
 	}
 	
-	public String getPassword() {
+	public String password() {
 		return password;
 	}
 	
-	public void setPassword(String password) {
+	public void password(String password) {
 		this.password = password;
 	}
 	
