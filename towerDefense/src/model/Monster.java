@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Class untuk merepresentasikan monster
+ */
 public class Monster {
 
     private static final int BASE_HP = 1;

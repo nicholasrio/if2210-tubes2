@@ -1,8 +1,7 @@
 package exception;
 
 /**
- *
- * @author Klongkgung
+ * Exception yang menandakan nama player sudah ada di dalam database
  */
 public class NameExistException extends Exception {
 
