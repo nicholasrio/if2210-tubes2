@@ -1,3 +1,4 @@
+package org;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -12,6 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class LoginPanel extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4932513626147661013L;
 
 	public LoginPanel(){
 		Dimension d = getPreferredSize();

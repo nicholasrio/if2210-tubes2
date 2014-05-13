@@ -1,3 +1,4 @@
+package org;
 import java.sql.SQLException;
 
 public class Main{

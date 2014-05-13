@@ -1,3 +1,4 @@
+package org;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import javax.swing.JFrame;
@@ -5,6 +6,10 @@ import javax.swing.JFrame;
 
 public class MainFrame extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3420062509635691555L;
 	private LoginPanel loginPanel;
 	
 	public MainFrame(String Title){
