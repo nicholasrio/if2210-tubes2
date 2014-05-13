@@ -1,7 +1,7 @@
 package org;
 
 public class FileView {
-  public printFileDetails(){
+  public void printFileDetails(){
     
   }
 }
