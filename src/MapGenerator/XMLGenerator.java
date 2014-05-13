@@ -5,6 +5,7 @@
  */
 
 package MapGenerator;
+import engine.DataStructure.Location;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -34,6 +35,8 @@ public class XMLGenerator {
     /* Atribut kelas */
     private int baris, kolom, level;
     private String map[][][];
+    private int jumlah_teleporter;
+    private ArrayList<Location> teleporter;
     
     /* Konstruktor Kelas */
     public XMLGenerator()
@@ -42,32 +45,8 @@ public class XMLGenerator {
         kolom = 0;
         level = 0;
         map = null;
-    }
-    
-    /* Setter dan Getter */
-    public void setJumlahBaris(int baris)
-    {
-        this.baris = baris;
-    }
-    public void setJumlahKolom(int kolom)
-    {
-        this.kolom = kolom;
-    }
-    public void setJumlahLevel(int level)
-    {
-        this.level = level;
-    }
-    public int getJumlahBaris()
-    {
-        return baris;
-    }
-    public int getJumlahKolom()
-    {
-        return kolom;
-    }
-    public int getJumlahLevel()
-    {
-        return level;
+        jumlah_teleporter = 0;
+        teleporter = new ArrayList<>();
     }
     
     /* Method */
@@ -99,9 +78,7 @@ public class XMLGenerator {
             baris = Integer.parseInt(tempbaris);
             kolom = Integer.parseInt(tempkolom);
             level = Integer.parseInt(templevel);
-            System.out.printf("baris,kolom,level : %d,%d,%d\n", baris,kolom,level);
             assert (baris == kolom && kolom == level) : baris + "," + kolom + "," + level + " tidak sama panjang";
-            System.out.println(baris == kolom && kolom == level);
             map = new String[baris][kolom][level];
             
             /* Baca isi Mapnya */
@@ -121,6 +98,21 @@ public class XMLGenerator {
                 }
             }
             
+            /* Baca Jumlah Teleporter */
+            read.nextLine();
+            temp = read.nextLine();
+            jumlah_teleporter = Integer.parseInt(temp);
+            int i;
+            
+            for(i = 0; i<jumlah_teleporter - 1; i++)
+            {
+                read.nextLine();
+                read.nextLine();
+                temp = read.nextLine();
+                elements = temp.split(" ");
+                teleporter.add(new Location(Integer.parseInt(elements[0]), Integer.parseInt(elements[1]), Integer.parseInt(elements[2])));
+            }
+            
         } catch (FileNotFoundException ex) {}
     }
     
@@ -137,6 +129,14 @@ public class XMLGenerator {
                 }
                 System.out.println();
             }
+        }
+        System.out.println("Jumlah teleporter = " + jumlah_teleporter);
+        int i = 0;
+        for(Location loc : teleporter)
+        {
+            System.out.printf("Teleporter[%d]\n", i);
+            System.out.println(teleporter.get(i));
+            i++;
         }
     }
     
@@ -185,6 +185,37 @@ public class XMLGenerator {
                     }
                 }
             }
+            
+            // Teleporter Elements
+            Element sum = doc.createElement("teleporters");
+            sum.appendChild(doc.createTextNode(String.valueOf(jumlah_teleporter)));
+            rootElement.appendChild(sum);
+            
+            // Teleporter location
+            Element dest = doc.createElement("destination");
+            rootElement.appendChild(dest);
+            i = 0;
+            
+            for(Location loc : teleporter)
+            {
+                Element teleporter = doc.createElement("teleporter");
+                teleporter.setAttribute("id", String.valueOf(i));
+                dest.appendChild(teleporter);
+                Element rows = doc.createElement("baris");
+                rows.appendChild(doc.createTextNode(String.valueOf(loc.getRow())));
+                
+                Element cols = doc.createElement("kolom");
+                cols.appendChild(doc.createTextNode(String.valueOf(loc.getCol())));
+                
+                Element lvls = doc.createElement("level");
+                lvls.appendChild(doc.createTextNode(String.valueOf(loc.getLevel())));
+                
+                teleporter.appendChild(rows);
+                teleporter.appendChild(cols);
+                teleporter.appendChild(lvls);
+                
+                i++;
+            }
              
             // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -195,7 +226,7 @@ public class XMLGenerator {
             // config the output
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.METHOD,"xml");
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "5");
 
             // transform
             transformer.transform(source, result);  
@@ -216,7 +247,7 @@ public class XMLGenerator {
     public static void main (String [] args)
     {
         XMLGenerator g = new XMLGenerator();
-        g.getMap("map.txt");
-        g.convertToXML("map.xml");
+        g.getMap("map1.txt");
+        g.convertToXML("map12xml");
     }
 }

@@ -25,7 +25,7 @@ public class Location
         this.row = 0;
         this.col = 0;
     }
-    public Location(int level, int row, int col)
+    public Location(int row, int col, int level)
     {
         this.level = level;
         this.row = row;
@@ -94,5 +94,20 @@ public class Location
     public int getCol()
     {
         return col;
+    }
+    
+    public String toString()
+    {
+        StringBuilder temp = new StringBuilder();
+        temp.append("Baris = ");
+        temp.append(row);
+        temp.append("\n");
+        temp.append("Kolom = ");
+        temp.append(col);
+        temp.append("\n");
+        temp.append("Level = ");   
+        temp.append(level);
+        temp.append("\n");
+        return temp.toString();
     }
 }

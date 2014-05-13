@@ -1,0 +1,87 @@
+=================================================
+| File untuk men-generate sebuah file map.xml   |
+| Format Input :                                |
+| <jumlah baris>                                |
+| <jumlah kolom>                                |
+| <jumlah level>                                |
+| <matriks level 0>                             |
+| ...                                           |
+| <matriks level (jumlah level - 1)>		|
+| <jumlah teleporter>				|
+| <informasi teleporter 1>			|
+| ...						|
+| <informasi teleporter (jumlah - 1)>		|
+| <format : baris,kolom,level>			|
+|						|
+| Legend : p = path, t = teleporter, c = coin	|
+|	   w = wall, s = start, f = finish	|	        
+=================================================
+
+6
+6
+6
+
+level 0
+p w w p p p
+p p p p w w
+p w w p w c
+p w c p p p
+p w w p w p
+s p p p w t1
+
+level 1
+p p p p p p
+p w p w w p
+p w p w c p
+p p w t4 w p
+p w w p w p
+p p p p p p 
+
+level 2
+w p w w c w
+p p p p p p
+w p w w w p
+p p p p w w
+w p w p p p
+c p w p w t2
+
+level 3
+p w p w p w
+p w p w p w
+p p p p p w
+p w p w p w
+p w w w p p
+p p c w t5 w
+
+level 4
+p p p w p t3
+p w p w p w
+p p p p p w
+w w p w p w
+p p p p p p
+c w w w p w
+
+level 5
+p p p p w f
+p w p w c p
+p w p w w p
+p w p c w p
+p w w w w p
+p p p p p p
+
+6
+
+teleporter 1
+1 1 2
+
+teleporter 2
+0 0 4
+
+teleporter 3
+0 0 1
+
+teleporter 4
+2 2 3
+
+teleporter 5
+0 3 5
