@@ -221,7 +221,17 @@
           <el idx="214">p</el>
           <el idx="215">p</el>
      </matrix>
-     <teleporters>6</teleporters>
+     <start>
+          <baris>0</baris>
+          <kolom>0</kolom>
+          <level>0</level>
+     </start>
+     <finish>
+          <baris>5</baris>
+          <kolom>5</kolom>
+          <level>5</level>
+     </finish>
+     <teleporters>5</teleporters>
      <destination>
           <teleporter id="0">
                <baris>1</baris>

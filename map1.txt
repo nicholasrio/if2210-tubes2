@@ -6,7 +6,9 @@
 | <jumlah level>                                |
 | <matriks level 0>                             |
 | ...                                           |
-| <matriks level (jumlah level - 1)>		|
+| <matriks level (jumlah level - 1)>            |
+| <start location>                      	|
+| <finish location>                             |
 | <jumlah teleporter>				|
 | <informasi teleporter 1>			|
 | ...						|
@@ -69,7 +71,13 @@ p w p c w p
 p w w w w p
 p p p p p p
 
-6
+Start Location
+0 0 0
+
+Finish Location
+5 5 5
+
+5
 
 teleporter 1
 1 1 2
