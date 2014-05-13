@@ -249,5 +249,5 @@ public class XMLGenerator {
         XMLGenerator g = new XMLGenerator();
         g.getMap("map1.txt");
         g.convertToXML("map1.xml");
-    }
+    } 
 }
