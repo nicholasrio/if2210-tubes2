@@ -154,11 +154,12 @@ public class Player
             int maxLevel = map.getMaxLevel();
             int maxRow = map.getMaxRow();
             int maxCol = map.getMaxCol();
-            int status;
+            GameItem status;
             String command;
             
             /* Play */
-            while(map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()))!= -2) /* Belum ketemu exit */
+            GameItem itemHere = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
+            while(!itemHere.getName().equalsIgnoreCase("finsih")) /* Belum ketemu exit */
             {
                 do
                 {
@@ -168,7 +169,8 @@ public class Player
                     case "up": // move ke atas
                         if(position.getRow() > 0) // periksa apakah posisi sudah diujung atas map?
                         {
-                            if(map.getElement(new Location(position.getLevel(), position.getRow()-1, position.getCol())) != -4) // periksa apakah ada tembok?
+                            itemHere = map.getElement(new Location(position.getLevel(), position.getRow()-1, position.getCol()));
+                            if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getRow()-1);
                             }
@@ -177,7 +179,8 @@ public class Player
                     case "down": // move ke bawah
                         if(position.getRow()<map.getMaxRow()-1) // periksa apakah posisi sudah diujung bawah map?
                         {
-                            if(map.getElement(new Location(position.getLevel(), position.getRow()+1, position.getCol())) != -4) // periksa apakah ada tembok?
+                            itemHere = map.getElement(new Location(position.getLevel(), position.getRow()+1, position.getCol()));
+                            if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getRow()+1);
                             }
@@ -186,7 +189,8 @@ public class Player
                     case "left": // move ke kiri
                         if(position.getCol() > 0) // periksa apakah posisi sudah diujung kiri map?
                         {
-                            if(map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()-1)) != -4) // periksa apakah ada tembok?
+                            itemHere = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()-1));
+                            if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getCol()-1);
                             }
@@ -195,7 +199,8 @@ public class Player
                     case "right": // move ke kanan
                         if(position.getCol() < map.getMaxCol()-1) // periksa apakah posisi sudah diujung kanan map?
                         {
-                            if(map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()+1)) != -4) // periksa apakah ada tembok?
+                            itemHere = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()+1));
+                            if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getCol()+1);
                             }
@@ -203,14 +208,19 @@ public class Player
                         break;
                 }
                 status = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
-                if(status == -3) // ada coin
+                if(status.getName().equalsIgnoreCase("coin")) // ada coin
                 {
                     score++;
-                    map.setElement(new Location(position.getLevel(), position.getRow(), position.getCol()), 0);
+                    map.setElement(new Location(position.getLevel(), position.getRow(), position.getCol()), new RoadItem());
                 }
-                else if(status > 0) // teleporter
+                else if(status.getName().equalsIgnoreCase("teleporter")) // teleporter
                 {
-                    position.setLevel(status);
+                    TeleporterItem tele = (TeleporterItem) status;
+                    Location teleLocation = tele.getArrivalLocation();
+                    position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
+                }
+                else if(status.getName().equalsIgnoreCase("hole")){
+                    position.setLocation(position.getLevel()-1, position.getRow(), position.getCol());
                 }
             }
         } 

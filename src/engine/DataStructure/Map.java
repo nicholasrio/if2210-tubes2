@@ -6,15 +6,13 @@
 
 package engine.DataStructure;
 
-
-
 /**
  *
  * @author Winson
  */
 public class Map{
     private final int maxLevel,maxRow,maxCol;
-    private int matrix[][][];
+    private GameItem matrix[][][];
     /**
      * Constructor
      * 
@@ -26,9 +24,23 @@ public class Map{
         this.maxLevel = maxLevel;
         this.maxRow = maxRow;
         this.maxCol = maxCol;
-        matrix = new int[maxLevel][maxRow][maxCol];
+        matrix = new GameItem[maxLevel][maxRow][maxCol];
+        for(int i=0;i<maxLevel;i++)
+            for(int j=0;j<maxRow;j++)
+                for(int k=0;k<maxCol;k++)
+                    matrix[i][j][k] = new RoadItem();
     }
-
+    
+    public Map(String namaFile){
+        this.maxLevel = 5;
+        this.maxRow = 5;
+        this.maxCol = 5;
+        matrix = new GameItem[maxLevel][maxRow][maxCol];
+        for(int i=0;i<maxLevel;i++)
+            for(int j=0;j<maxRow;j++)
+                for(int k=0;k<maxCol;k++)
+                    matrix[i][j][k] = new RoadItem();
+    }
     /**
      * Copy Constructor
      * <p>
@@ -49,7 +61,7 @@ public class Map{
      * @param L Location of Map
      * @return Map element
      */
-    public int getElement(Location L){
+    public GameItem getElement(Location L){
         return matrix[L.getLevel()][L.getRow()][L.getCol()];
     }
 
@@ -58,7 +70,7 @@ public class Map{
      * @param L level of Map
      * @param value value of Map
      */
-    public void setElement(Location L, int value){
+    public void setElement(Location L, GameItem value){
         matrix[L.getLevel()][L.getRow()][L.getCol()] = value; 
     }
 
@@ -87,53 +99,17 @@ public class Map{
     }
 
     /**
-     *Load data to this Map from file
-     */
-    public void loadFromMap(){
-        //Belum direalisasikan
-    }
-
-    /**
      * Find Location of start point
      * @return Location of start
      * @throws Exception
      */
     public Location getStart() throws Exception{
-        int level = 0;
-        int row = 0;
-        int col = 0;
-        boolean Found = false;
-        Location location = new Location();
-        
-        while(level < maxLevel && !Found)
-        {
-            row = 0;
-            while(row < maxRow && !Found)
-            {
-                col = 0;
-                while(col < maxCol && !Found)
-                {
-                    if(getElement(new Location(level, row, col)) == -1) // Menemukan posisi start
-                    {
-                        Found = true;
-                    }
-                    else
-                    {
-                        col++;
-                    }
-                }
-                row++;
-            }
-            level++;
-        }
-        if(Found)
-        {
-            return new Location(level,row,col);
-        }
-        else
-        {
-            throw new Exception("Tidak ditemukan titik start pada map");
-        }
+        for(int i=0;i<maxLevel;i++)
+            for(int j=0;j<maxRow;j++)
+                for(int k=0;k<maxCol;k++)
+                    if(matrix[i][j][k].getName().equalsIgnoreCase("start"))
+                        return new Location(i,j,k);
+        throw new Exception("Tidak menemukan start.");
     }
 }
 
