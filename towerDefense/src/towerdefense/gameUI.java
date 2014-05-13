@@ -60,12 +60,12 @@ public class gameUI {
                     else MapView[i][j] = '#';
         
         for (int i=0; i<T.size(); i++) {
-            MapView[T.get(i).getPositionX()][T.get(i).getPositionY()] = 'T'; //tanda tower
+            MapView[T.get(i).getPositionRow()][T.get(i).getPositionCol()] = 'T'; //tanda tower
         }
         for (int i=0; i<M.size(); i++) {
             if (M.get(i).getHP()>0) {
-                if ((M.get(i).getX() >=0 && M.get(i).getX() < Map.row) && (M.get(i).getY() >=0 && M.get(i).getY() < Map.col)) 
-                    MapView[M.get(i).getX()][M.get(i).getY()] = 'M'; //tanda tower
+                if ((M.get(i).getRow() >=0 && M.get(i).getRow() < Map.row) && (M.get(i).getCol() >=0 && M.get(i).getCol() < Map.col)) 
+                    MapView[M.get(i).getRow()][M.get(i).getCol()] = 'M'; //tanda tower
             }
         }
     }

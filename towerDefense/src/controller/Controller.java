@@ -21,13 +21,13 @@ public class Controller {
     private static Controller instance;
     private final int maximumLevel;
     private final int goldRate = 5;
-   
+
     private model.Player player;
     private int currentLevel;
     private int score;
     private int gold;
     private int lives;
-    private final int start_x = 2, start_y = 0;
+    private final int start_row = 2, start_col = 0;
     private final int monsterCount = 10;
     private model.Map map;
 
@@ -38,26 +38,26 @@ public class Controller {
     public int getCurrentLevel() {
         return currentLevel;
     }
-    
+
     public int getMaxLevel() {
         return maximumLevel;
     }
-        
+
     public int getScore() {
         return score;
     }
-    
+
     public int getLives() {
         return lives;
     }
-    
+
     public void showMonsterLive() {
-        for (int i=0; i<listOfMonster.size(); i++)
-            System.out.println("Monster ke-"+i+" "+listOfMonster.get(i).getHP());
-    }   
-    
-    
-    public void newGame(Player x) throws FileNotFoundException, IOException  {
+        for (int i = 0; i < listOfMonster.size(); i++) {
+            System.out.println("Monster ke-" + i + " " + listOfMonster.get(i).getHP());
+        }
+    }
+
+    public void newGame(Player x) throws FileNotFoundException, IOException {
         map.readFile();
         player = x;
         currentLevel = 1;
@@ -70,29 +70,30 @@ public class Controller {
         player = x;
         map.readFile();
         String filename = player.getName() + ".txt";
-        Scanner in = new Scanner (new File(filename));
+        Scanner in = new Scanner(new File(filename));
         readFromFile(in);
     }
 
     public void spawnMonster() {
-        for (int i=0; i<monsterCount; i++)
-            listOfMonster.add(new Monster(start_x, start_y-i, currentLevel));
+        for (int i = 0; i < monsterCount; i++) {
+            listOfMonster.add(new Monster(start_row, start_col - i, currentLevel));
+        }
     }
-    
+
     /**
      * create new tower at position (pos_x, pos_y) if have enough money. return
      * true if the tower could be created
      *
-     * @param pos_x
-     * @param pos_y
+     * @param pos_row
+     * @param pos_col
      * @return
      */
-    public boolean createNewTower(int pos_x, int pos_y) {
+    public boolean createNewTower(int pos_row, int pos_col) {
         /* ?Precondition, there should not exist any tower at position (pos_x, pos_y) */
-        int idx = getTowerIdx(pos_x, pos_y);
+        int idx = getTowerIdx(pos_row, pos_col);
         assert (idx == -1) : "There's already tower in there";
         if (idx == -1 && gold >= Tower.towerCost) {
-            Tower temp = new Tower(pos_x, pos_y);
+            Tower temp = new Tower(pos_row, pos_col);
             listOfTower.add(temp);
             gold -= Tower.towerCost;
             return true;
@@ -108,52 +109,51 @@ public class Controller {
              int y_new = ambil dari bit map sesuai dengan posisinya sekarang
              */
             Monster M = listOfMonster.get(it);
-            if (M.getHP()>0) {
-                int x_new = M.getX();
-                int y_new = M.getY();
-                if (x_new>0 && x_new < map.row && y_new>0 && y_new < map.col) {
-                    int arah = map.Peta[x_new][y_new] & 0xF;
+            if (M.getHP() > 0) {
+                int row_new = M.getRow();
+                int col_new = M.getCol();
+                if (row_new >= 0 && row_new < map.row && col_new >= 0 && col_new < map.col) {
+                    int arah = map.Peta[row_new][col_new] & 0xF;
                     switch (arah) {
                         case 1: {
-                            y_new += 1;
+                            col_new += 1;
                             break;
                         }
                         case 2: {
-                            x_new -= 1;
+                            row_new -= 1;
                             break;
                         }
                         case 4: {
-                            y_new -= 1;
+                            col_new -= 1;
                             break;
                         }
                         case 8: {
-                            x_new += 1;
+                            row_new += 1;
                             break;
                         }
                         default:
                             assert (false);
-                    }  
+                    }
+                } else {
+                    col_new += 1;
                 }
-                else {
-                    y_new += 1;
-                }
-                M.changePos(x_new, y_new);
-                if (y_new==20) { //masuk ke rumah kita
+                M.changePos(row_new, col_new);
+                if (col_new == 20) { //masuk ke rumah kita
                     decreaseLive();
-                            
                 }
-            }  
+            }
         }
     }
-    
+
     public int countSeenMonster() {
         int count = 0;
-        for (int i=0; i<listOfMonster.size(); i++) {
-            if ((listOfMonster.get(i).getY()<map.col && listOfMonster.get(i).getY()>=0)
-                && (listOfMonster.get(i).getX()<map.row && listOfMonster.get(i).getX()>=0))
-                if (listOfMonster.get(i).getHP() > 0 ) {
+        for (int i = 0; i < listOfMonster.size(); i++) {
+            if ((listOfMonster.get(i).getCol() < map.col && listOfMonster.get(i).getCol() >= 0)
+                    && (listOfMonster.get(i).getRow() < map.row && listOfMonster.get(i).getRow() >= 0)) {
+                if (listOfMonster.get(i).getHP() > 0) {
                     ++count;
                 }
+            }
         }
         return count;
     }
@@ -169,24 +169,15 @@ public class Controller {
     }
 
     /**
-     * for testing purpose
-     */
-    public void getTower() {
-        if (listOfTower.size() > 0) {
-            System.out.println("ada");
-        }
-    }
-
-    /**
      * sell (destroy) the tower at (pos_x, pos_y) to get pay back money
      *
-     * @param pos_x
-     * @param pos_y
+     * @param pos_row
+     * @param pos_col
      * @return
      */
-    public void sellTower(int pos_x, int pos_y) {
+    public void sellTower(int pos_row, int pos_col) {
         /* ?Precondition, there should exist a tower at position (pos_x, pos_y) */
-        int idx = getTowerIdx(pos_x, pos_y);
+        int idx = getTowerIdx(pos_row, pos_col);
         int payBack = 0;
         assert (idx != -1) : "Tower not found";
         if (idx != -1) {
@@ -199,12 +190,12 @@ public class Controller {
     /**
      * upgrade tower at position (pos_x, pos_y) if player's money is sufficient,
      *
-     * @param pos_x
-     * @param pos_y
+     * @param pos_row
+     * @param pos_col
      */
-    public void upgradeTower(int pos_x, int pos_y) {
+    public void upgradeTower(int pos_row, int pos_col) {
         /* ?Precondition, there should exist a tower at position (pos_x, pos_y) */
-        int idx = getTowerIdx(pos_x, pos_y);
+        int idx = getTowerIdx(pos_row, pos_col);
         assert (idx != -1) : "Tower not found";
         gold = gold - listOfTower.get(idx).getUpgradeCost();
         listOfTower.get(idx).upgradeTower();
@@ -216,14 +207,14 @@ public class Controller {
     public void allTowersAttack() {
         System.out.println("Attacking!");
         for (int i = 0; i < listOfTower.size(); i++) {
-            System.out.println("Tower ke-" +i + " Cooldown : "+ listOfTower.get(i).getCoolDownCount());
+            System.out.println("Tower ke-" + i + " Cooldown : " + listOfTower.get(i).getCoolDownCount());
             for (int j = 0; j < listOfMonster.size(); ++j) {
                 /* 
                  if (there's ')enemy in tower's sight, then attack those enemy
                  */
                 //System.out.println(listOfTower.get(i).rangeCheck(2, 2,map.row,map.col));
-                if (listOfMonster.get(j).getHP() > 0 && listOfMonster.get(j).getY() >=0 
-                        && listOfTower.get(i).rangeCheck(listOfMonster.get(j).getX(), listOfMonster.get(j).getY(),map.row,map.col)) {
+                if (listOfMonster.get(j).getHP() > 0 && listOfMonster.get(j).getCol() >= 0
+                        && listOfTower.get(i).rangeCheck(listOfMonster.get(j).getRow(), listOfMonster.get(j).getCol(), map.row, map.col)) {
                     listOfTower.get(i).resetCoolingDownTime();
                     listOfMonster.get(j).decreaseHitPoints(listOfTower.get(i).getAttack());
                     if (listOfMonster.get(j).getHP() <= 0) {
@@ -262,7 +253,7 @@ public class Controller {
      * @param out
      */
     public void saveToFile() throws IOException {
-        File file = new File(player.getName() + ".txt");  
+        File file = new File(player.getName() + ".txt");
         FileWriter writer = new FileWriter(file);
         PrintWriter out = new PrintWriter(writer);
         out.println(score);
@@ -278,6 +269,8 @@ public class Controller {
             writeMonsterToFile(i, out);
         }
         out.flush();
+        out.close();
+        writer.close();
     }
 
     /**
@@ -286,10 +279,10 @@ public class Controller {
      * @param in
      */
     public void readFromFile(Scanner in) {
-        score   = in.nextInt();
-        gold    = in.nextInt();
-        currentLevel    = in.nextInt();
-        lives   = in.nextInt();
+        score = in.nextInt();
+        gold = in.nextInt();
+        currentLevel = in.nextInt();
+        lives = in.nextInt();
         int total = in.nextInt();
         for (int i = 0; i < total; i++) {
             int x = in.nextInt();
@@ -320,14 +313,14 @@ public class Controller {
     /**
      * Get tower (pos_x, pos_y) index in the list
      *
-     * @param pos_x
-     * @param pos_y
-     * @return
+     * @param pos_row
+     * @param pos_col
+     * @return index of tower in that position
      */
-    public int getTowerIdx(int pos_x, int pos_y) {
+    public int getTowerIdx(int pos_row, int pos_col) {
         int simpan = -1;
         for (int i = 0; i < listOfTower.size(); i++) {
-            if (listOfTower.get(i).getPositionX() == pos_x && listOfTower.get(i).getPositionY() == pos_y) {
+            if (listOfTower.get(i).getPositionRow() == pos_row && listOfTower.get(i).getPositionCol() == pos_col) {
                 simpan = i;
                 break;
             }
@@ -339,25 +332,26 @@ public class Controller {
      * write LisOfTower[idx] to file
      */
     private void writeTowerToFile(int idx, PrintWriter out) {
-        out.println(listOfTower.get(idx).getPositionX() + " "
-                + listOfTower.get(idx).getPositionY() + " "
+        out.println(listOfTower.get(idx).getPositionRow() + " "
+                + listOfTower.get(idx).getPositionCol() + " "
                 + listOfTower.get(idx).getUpgradeCost() + " "
                 + listOfTower.get(idx).getAttack() + " "
                 + listOfTower.get(idx).getRange() + " "
                 + listOfTower.get(idx).getCoolDownCount() + " "
                 + listOfTower.get(idx).getCurrentLevel() + " ");
     }
-    
+
     private void writeMonsterToFile(int idx, PrintWriter out) {
         out.println(listOfMonster.get(idx).getHP() + " "
-                + listOfMonster.get(idx).getX() + " "
-                + listOfMonster.get(idx).getY());
+                + listOfMonster.get(idx).getRow() + " "
+                + listOfMonster.get(idx).getCol());
     }
 
     public void showGame(boolean ingame) {
-        if (ingame)
-            gameUI.showTransition(map, player, score, currentLevel, gold, lives,  listOfTower, listOfMonster);
-        else
+        if (ingame) {
+            gameUI.showTransition(map, player, score, currentLevel, gold, lives, listOfTower, listOfMonster);
+        } else {
             gameUI.showMap(map, player, score, ROW, gold, listOfTower, listOfMonster);
+        }
     }
 }

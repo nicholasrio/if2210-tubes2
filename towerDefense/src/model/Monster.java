@@ -1,47 +1,39 @@
 package model;
 
-import java.io.*;
-
 public class Monster {
-    private final int baseHP = 1;
-    private int hitPoints;
-    private int position_x;
-    private int position_y;
 
-    public Monster(int _position_x, int _position_y, int level) {
-        hitPoints = baseHP * level;
-        position_x = _position_x;
-        position_y = _position_y;
+    private static final int BASE_HP = 1;
+    private int hitPoints;
+    private int position_row;
+    private int position_col;
+
+    public Monster(int _position_row, int _position_col, int level) {
+        hitPoints = BASE_HP * level;
+        position_row = _position_row;
+        position_col = _position_col;
     }
 
     public void decreaseHitPoints(int damage) {
         hitPoints = hitPoints - damage;
     }
 
-    /*public void LevelUp(int level) {
-        hitPoints = level * baseHP;
-        position_x = 0;
-        position_y = 0;
-
-    }*/
-
-    public void changePos(int _x, int _y) {
-        position_x = _x;
-        position_y = _y;
+    public void changePos(int _row, int _col) {
+        position_row = _row;
+        position_col = _col;
     }
-    
+
     public void setHP(int HP) {
         hitPoints = HP;
     }
 
-    public int getX() {
-        return position_x;
+    public int getRow() {
+        return position_row;
     }
 
-    public int getY() {
-        return position_y;
+    public int getCol() {
+        return position_col;
     }
-    
+
     public int getHP() {
         return hitPoints;
     }
