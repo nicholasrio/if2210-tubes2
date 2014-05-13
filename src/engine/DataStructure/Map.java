@@ -19,6 +19,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class Map{
     private int maxLevel,maxRow,maxCol;
     private GameItem matrix[][][];
+
     /**
      * Constructor
      * 
@@ -56,6 +57,18 @@ public class Map{
             maxRow = Integer.parseInt(doc.getElementsByTagName("baris").item(0).getTextContent());
             maxCol = Integer.parseInt(doc.getElementsByTagName("kolom").item(0).getTextContent());
             maxLevel = Integer.parseInt(doc.getElementsByTagName("level").item(0).getTextContent());
+            //Ambil daftar teleporter
+            int nTeleporter = Integer.parseInt(doc.getElementsByTagName("teleporters").item(0).getTextContent());
+            Location teleLocation[] = new Location[nTeleporter];
+            NodeList NodeTeleporter = doc.getElementsByTagName("teleporter");
+            for(int i=0;i<nTeleporter;i++){
+                int b,c,l,idx;
+                idx = Integer.parseInt(((Element)NodeTeleporter.item(0)).getAttribute("id"));
+                b = Integer.parseInt(((Element) NodeTeleporter.item(0)).getElementsByTagName("baris").item(0).getTextContent());
+                c = Integer.parseInt(((Element) NodeTeleporter.item(0)).getElementsByTagName("kolom").item(0).getTextContent());
+                l = Integer.parseInt(((Element) NodeTeleporter.item(0)).getElementsByTagName("level").item(0).getTextContent());
+                teleLocation[idx] = new Location(b,c,l);
+            }
             //Ambil isi dari matrix
             NodeList matrixList = doc.getElementsByTagName("el");
             if (matrixList.getLength()!= maxRow*maxCol*maxLevel)
@@ -64,8 +77,24 @@ public class Map{
                 for(int j=0;j<maxRow;j++)
                     for(int k=0;k<maxCol;k++){
                         Element el = (Element) matrixList.item(i*(maxRow*maxCol)+j*(maxCol)+k);
-                        //Ini dibuat untuk lihat aja karena xml belum pada format yang sesuai
-                        System.out.println(el.getTextContent());
+                        if(el.getTextContent().equals("p"))
+                            matrix[i][j][k] = new RoadItem();
+                        else if(el.getTextContent().equals("w"))
+                            matrix[i][j][k] = new WallItem();
+                        else if(el.getTextContent().equals("c"))
+                            matrix[i][j][k] = new CoinItem();
+                         else if(el.getTextContent().equals("c"))
+                            matrix[i][j][k] = new HoleItem();
+                        else if(el.getTextContent().equals("f"))
+                            matrix[i][j][k] = new FinishItem();
+                        else if(el.getTextContent().equals("s"))
+                            matrix[i][j][k] = new StartItem();
+                        else if(el.getTextContent().matches("^[tT](\\d)*")){
+                            String kode = el.getTextContent();
+                            String nomorString = kode.substring(1);
+                            int nomorInt = Integer.parseInt(nomorString);
+                            matrix[i][j][k] = new TeleporterItem(teleLocation[nomorInt-1]);
+                        }
                     }
         } catch (Exception e){
             e.printStackTrace();
