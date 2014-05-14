@@ -5,7 +5,12 @@
  */
 
 package main;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author linda.sekawati
@@ -15,19 +20,45 @@ public class FormDapil extends javax.swing.JFrame {
     /**
      * Creates new form FormDapil
      */
+    private DefaultTableModel model;
     public FormDapil() {
         initComponents();
-        int NbDapil = 0;
+        model = new DefaultTableModel();
+        TabelDapil.setModel(model);
+        
+        model.addColumn("No. Dapil");
+        model.addColumn("Kota/Kabupaten");
+        loadData();
     }
-    /*
-    public AddTabelDapil(){
-        JTabel Tabel = new JTabel;
-        Tabel[nbDapil][0] = NoDapil;
-        Tabel[nbDapil][1] = KotKab;
-        nbDapil++;
+    
+    public void loadData(){
+     model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        try
+        {
+            Connection c = DataDapil.getKoneksi();
+            Statement s = c.createStatement();
+            
+            String sql = "SELECT * FROM DAPIL";
+            ResultSet r = s.executeQuery(sql);
+            
+            while (r.next())
+            {
+                Object [] o = new Object[5];
+                o[0] = r.getString("No. Dapil");
+                o[1] = r.getString("Kota/Kabupaten");
+                
+                model.addRow(o);
+            }
+            r.close();
+            s.close();
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Terjadi eror");
+        }
     }
-    private int nbDapil;
-*/
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,7 +72,7 @@ public class FormDapil extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         NoDapil = new javax.swing.JTextField();
-        AddToList = new javax.swing.JButton();
+        Tambah = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelDapil = new javax.swing.JTable();
@@ -63,7 +94,12 @@ public class FormDapil extends javax.swing.JFrame {
             }
         });
 
-        AddToList.setText("Tambah");
+        Tambah.setText("Tambah");
+        Tambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TambahActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Daftar");
 
@@ -132,7 +168,7 @@ public class FormDapil extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(NoDapil, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(AddToList)
+                                .addComponent(Tambah)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -158,7 +194,7 @@ public class FormDapil extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AddToList)
+                .addComponent(Tambah)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,6 +216,47 @@ public class FormDapil extends javax.swing.JFrame {
         FA.setVisible(true);
     }//GEN-LAST:event_KembaliFormAdminActionPerformed
 
+    private void TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahActionPerformed
+         // TODO add your handling code here:
+        String nodapil = NoDapil.getText();
+        String kotkab = KotKab.getText();
+        try
+        {
+            Connection c = DataDapil.getKoneksi();
+            String sql = "INSERT INTO MAHASISWA VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            
+            p.setString(1, nodapil);
+            p.setString(2, kotkab);
+            
+            p.executeUpdate();
+            p.close();
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Terjadi Error");
+        }
+        finally
+        {
+            loadData();
+        }
+    }//GEN-LAST:event_TambahActionPerformed
+
+    private void TabelDapilMouseClicked(java.awt.event.MouseEvent evt) {                                            
+        // TODO add your handling code here:
+        int i = TabelDapil.getSelectedRow();
+        if(i == -1){
+            return;
+        }
+        
+        String nodapil = (String) model.getValueAt(i, 0);
+        NoDapil.setText(nodapil);
+        
+        String kotkab = (String) model.getValueAt(i, 1);
+        KotKab.setText(kotkab);
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -216,11 +293,11 @@ public class FormDapil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddToList;
     private javax.swing.JButton KembaliFormAdmin;
     private javax.swing.JTextArea KotKab;
     private javax.swing.JTextField NoDapil;
     private javax.swing.JTable TabelDapil;
+    private javax.swing.JButton Tambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
