@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package main;
+package CLI;
 
 import java.util.Scanner;
 
@@ -12,28 +12,29 @@ import java.util.Scanner;
  *
  * @author user
  */
-public class FormLoginAdminCLI {
-    private boolean superAdmin;
-    public FormLoginAdminCLI(){
-        loginAdmin();
+public class FormLoginPemilihCLI {
+    public FormLoginPemilihCLI(){
+    
     }
-    private void loginAdmin(){
+    public void login(){
+        int t=2014;
         System.out.println("=============================================");
         System.out.println("=============================================");
-        System.out.println("==              Kolom Admin                ==");
+        System.out.println("==              Yuk, Coblos                ==");
         System.out.println("=============================================");
         System.out.println("=============================================");
-        System.out.println("\n\n");
+        System.out.println("\n");
+        System.out.println("Selamat datang di Software Pemilu "+t+"\n");
         System.out.println("Silakan login terlebih dahulu\n");
-        System.out.print("Username > ");
+        System.out.println("username>");
         Scanner input = new Scanner(System.in);
         String username = new String();
         username = input.next();
-        System.out.print("\nPassword > ");
+        System.out.println("\npassword>");
         String password = new String();
         password = input.next();
     }
-    public boolean isAdmin(String username, String password){
+    public boolean isTerdaftar(String username, String password){
         boolean stop = false;
         if("entah".equals(username)){
             if("entah".equals(password)){
@@ -41,14 +42,5 @@ public class FormLoginAdminCLI {
             }
         }
         return stop;
-    }
-    public boolean isSuperAdmin(String username, String password){
-        boolean stop = false;
-        if("entah".equals(username)){
-            if("entah".equals(password)){
-                stop = true;
-            }
-        }
-        return stop;
-    }
+    } 
 }

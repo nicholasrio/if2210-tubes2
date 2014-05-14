@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package main;
+package CLI;
 
 import java.util.Scanner;
 
@@ -12,29 +12,28 @@ import java.util.Scanner;
  *
  * @author user
  */
-public class FormLoginPemilihCLI {
-    public FormLoginPemilihCLI(){
-    
+public class FormLoginAdminCLI {
+    private boolean superAdmin;
+    public FormLoginAdminCLI(){
+        loginAdmin();
     }
-    public void login(){
-        int t=2014;
+    private void loginAdmin(){
         System.out.println("=============================================");
         System.out.println("=============================================");
-        System.out.println("==              Yuk, Coblos                ==");
+        System.out.println("==              Kolom Admin                ==");
         System.out.println("=============================================");
         System.out.println("=============================================");
-        System.out.println("\n");
-        System.out.println("Selamat datang di Software Pemilu "+t+"\n");
+        System.out.println("\n\n");
         System.out.println("Silakan login terlebih dahulu\n");
-        System.out.println("username>");
+        System.out.print("Username > ");
         Scanner input = new Scanner(System.in);
         String username = new String();
         username = input.next();
-        System.out.println("\npassword>");
+        System.out.print("\nPassword > ");
         String password = new String();
         password = input.next();
     }
-    public boolean isTerdaftar(String username, String password){
+    public boolean isAdmin(String username, String password){
         boolean stop = false;
         if("entah".equals(username)){
             if("entah".equals(password)){
@@ -42,5 +41,14 @@ public class FormLoginPemilihCLI {
             }
         }
         return stop;
-    } 
+    }
+    public boolean isSuperAdmin(String username, String password){
+        boolean stop = false;
+        if("entah".equals(username)){
+            if("entah".equals(password)){
+                stop = true;
+            }
+        }
+        return stop;
+    }
 }

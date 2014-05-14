@@ -6,12 +6,12 @@
 
 package main;
 
+import Tools.KoneksiDatabase;
+import Tools.Hashing;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -33,22 +33,28 @@ public class Admin {
      */
     public boolean ValidateInput(){
         Connection koneksi = KoneksiDatabase.getKoneksi();
+        boolean valid = false;
         try {
             Statement statemet = koneksi.createStatement();
             String command = "SELECT * FROM Admin where username = '" + Username + "';";
             ResultSet result = statemet.executeQuery(command);
-            String []o = new String[2];
-            o[0] = result.getString("username");
-            o[1] = result.getString("password");
-            if(Username.compareToIgnoreCase(o[0]) == 0  && Hashing.StringToMD5(Password).compareTo(o[1]) == 0)
-                SuperAdmin = result.getInt("Peran") == 1;
-            else
-                JOptionPane.showMessageDialog(null, "username dan password tidak cocok");
+            /* Jika username terdaftar di database */
+            if(result.next())
+            {
+                String []o = new String[2];
+                o[0] = result.getString("username");
+                o[1] = result.getString("password");
+                if(Username.compareToIgnoreCase(o[0]) == 0  && Hashing.StringToMD5(Password).compareTo(o[1]) == 0)
+                {
+                    SuperAdmin = result.getInt("Peran") == 1;
+                    valid = true;
+                }
+            }
+            
         } catch (SQLException ex) {
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        
-        return true;
+        return valid;
     }
     
     public boolean IsSuperAdmin(){
