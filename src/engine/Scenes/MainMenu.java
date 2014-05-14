@@ -6,9 +6,7 @@
 
 package engine.Scenes;
 import engine.*;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Scanner;
 
 /**
  *
@@ -27,29 +25,27 @@ public class MainMenu extends Scene
     @Override
     public void Initialize()
     {
-        height = 30;
-        width = 80;
+        height = 12; //80 height of half full screen, 12 is standard cmd size full screen
+        width = 80; // full width of standard cmd screen and half full screen cmd size
         status = 0;       
     }
     
     @Override
     public void Update()
     {
-        
+        Draw();
+        System.out.print("Enter your choice: ");
+        Scanner Sc = new Scanner(System.in);
+        status = Sc.nextInt();
     }
     
     @Override
     public void Draw()
     {
+       System.out.println();
+       System.out.flush();
        DrawHeader();
-       PrinterString("",0);
-       PrinterString("1 NEW GAME/CONTINUE GAME",0);
-       PrinterString("2 CHANGE USER",0);
-       PrinterString("3 ACHIEVEMENT",0);
-       PrinterString("4 OPTION",0);      
-       PrinterString("5 EXIT",0);       
-       PrinterString("",0);
-       PrinterString("=",0);
+       DrawBody();
     }
     
     private void DrawHeader() {
@@ -58,6 +54,17 @@ public class MainMenu extends Scene
         PrinterString("",1);
         PrinterString("MAIN MENU",1);
         PrinterString("=",1);
+    }
+    
+    private void DrawBody() {
+        String[] Body = new String[6];
+        Body[0] = "1 NEW GAME/CONTINUE GAME";
+        Body[1] = "2 CHANGE USER";
+        Body[2] = "3 ACHIEVEMENT";
+        Body[3] = "4 OPTION";
+        Body[4] = "5 EXIT";
+        Body[5] = "=";
+        PrinterStringVertical(Body);
     }
     
     private void PrinterString(String what, int mode) { /* mode = space scaling */
@@ -93,6 +100,16 @@ public class MainMenu extends Scene
                 System.out.print(" ||");
             }
             System.out.println();
+        }
+    }
+    
+    private void PrinterStringVertical(String[] what) {
+        int entersbetween;
+        entersbetween = (height / 24);
+        for (int i = 0; i < what.length;i++) {
+            if(i == what.length-1) entersbetween--;
+            for (int j = 0; j < entersbetween; j++) PrinterString("",0);
+            PrinterString(what[i], 0);
         }
     }
 }
