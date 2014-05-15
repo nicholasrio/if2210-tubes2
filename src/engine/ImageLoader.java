@@ -33,10 +33,13 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/title.png"));
         allImages.add(loadImage("Image/MainMenu/mainmenu_bg.png"));
         allImages.add(loadImage("Image/MainMenu/newgame.png"));
+        allImages.add(loadImage("Image/MainMenu/achievement.png"));
+        allImages.add(loadImage("Image/MainMenu/options.png"));
+        allImages.add(loadImage("Image/MainMenu/exit.png"));
         allImages.add(loadImage("Image/MainMenu/icecube.png"));
         allImages.add(loadImage("Image/MainMenu/fire-maze.png"));
         allImages.add(loadImage("Image/MainMenu/egypt.png"));
-    }
+}
     
     public static Image getImage(String imgName)
     {
@@ -54,13 +57,25 @@ public class ImageLoader extends JPanel
         }
         else if ("icecube".equalsIgnoreCase(imgName))
         {
-            return allImages.get(3);
+            return allImages.get(6);
         }
         else if ("fire-maze".equalsIgnoreCase(imgName))
         {
-            return allImages.get(4);
+            return allImages.get(7);
         }
         else if ("egypt".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(8);
+        }
+        else if ("achievement".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(3);
+        }
+        else if ("options".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(4);
+        }
+        else if ("exit".equalsIgnoreCase(imgName))
         {
             return allImages.get(5);
         }

@@ -258,7 +258,7 @@ public class XMLGenerator {
    public static void main (String [] args)
     {
         XMLGenerator g = new XMLGenerator();
-        g.getMap("map1.txt");
-        g.convertToXML("map1.xml");
+        g.getMap("map2.txt");
+        g.convertToXML("map2.xml");
     } 
 }
