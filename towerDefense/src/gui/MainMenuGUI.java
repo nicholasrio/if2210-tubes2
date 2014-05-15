@@ -103,9 +103,9 @@ class MyCanvas extends Canvas implements MouseListener {
     @Override
     public void paint(Graphics graphic) {
         for (ImgComp it : listOfImg) {
-            //if (it.isModified()) {
+            if (it.isModified()) {
                 graphic.drawImage(it.getDisplayed(), it.getX(), it.getY(), this);
-            //}
+            }
         }
     }
 }
