@@ -23,6 +23,8 @@ public class Game
     static public int mode; // 1 for CLI, 2 for GUI
     static public JFrame gameFrame = new JFrame();
     static public Graphics g = gameFrame.getGraphics();
+    static public final int ResolutionWidth = 800;
+    static public final int ResolutionHeight = 600;
     
     private Game()
     {
@@ -44,7 +46,7 @@ public class Game
         gameFrame.setTitle("CubeMazer");
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.pack();
-        gameFrame.setSize(new Dimension(800,600));
+        gameFrame.setSize(new Dimension(ResolutionWidth,ResolutionHeight));
         gameFrame.setLocationRelativeTo(null);
         gameFrame.setResizable(true);
         gameFrame.setVisible(true);

@@ -30,19 +30,20 @@ public class ImageLoader extends JPanel
     
     public static void loadAllImages()
     {
+        allImages.add(loadImage("Image/title.png"));
         allImages.add(loadImage("Image/MainMenu/mainmenu_bg.png"));
     }
     
     public static Image getImage(String imgName)
     {
-        if ("mainmenu_bg".equalsIgnoreCase(imgName))
+        if ("title".equalsIgnoreCase(imgName))
         {
             return allImages.get(0);
         }
-        //else if ("mainmenu_bg".equalsIgnoreCase(imgName))
-        //{
-        //    return allImages.get(1);
-        //}
+        else if ("mainmenu_bg".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(1);
+        }
         return null;
     }
     

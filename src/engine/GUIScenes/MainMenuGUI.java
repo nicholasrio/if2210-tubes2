@@ -9,6 +9,7 @@ package engine.GUIScenes;
 import engine.*;
 import static engine.Game.gameFrame;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -19,17 +20,23 @@ import java.awt.Image;
  */
 public class MainMenuGUI extends Scene
 {
-    private static int pos = 0;
+    /* Textures */
     private static Image bgTexture;
+    private static Image titleTexture;
+    
+    private static int pos;
     
     public MainMenuGUI()
     {
         super("MainMenuGUI");
+        
+        pos = Game.ResolutionHeight;
     }
     
     public void LoadContent()
     {
         bgTexture = ImageLoader.getImage("mainmenu_bg");
+        titleTexture = ImageLoader.getImage("title");
     }
     
     @Override
@@ -43,7 +50,10 @@ public class MainMenuGUI extends Scene
     @Override
     public void Update()
     {
-        pos++;/*
+        if (pos > (Game.ResolutionHeight)*0.025f)
+        {
+            pos-= Game.ResolutionHeight*0.01f;
+        }/*
         if (pos > 100)
         {
         SceneManager.SwitchScene("AchievementMenu");
@@ -67,6 +77,7 @@ public class MainMenuGUI extends Scene
         {
             Graphics2D g2D = (Graphics2D) g;
             g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
+            g2D.drawImage(titleTexture,(int)(getWidth()*0.2f),pos,titleTexture.getWidth(this),titleTexture.getHeight(this),this);
         }
     }
 }
