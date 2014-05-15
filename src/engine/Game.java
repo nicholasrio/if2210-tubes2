@@ -35,11 +35,6 @@ public class Game
         }
         PrepareScenes();
         gameLoop();
-        /*LevelMenu l=new LevelMenu();        
-        l.Initialize();
-        l.Draw();
-        l.Update();
-        l.Draw();*/
     }
     
     private static void prepareFrame()
@@ -60,7 +55,7 @@ public class Game
         SceneManager.AddScene(new LevelMenu());
         SceneManager.AddScene(new GameMenu());
         SceneManager.AddScene(new AchievementMenu());
-        SceneManager.SwitchScene("GameMenu"); 
+        SceneManager.SwitchScene("MainMenu"); 
     }
     
     private static void gameLoop()
@@ -69,9 +64,9 @@ public class Game
         { 
             long time = System.currentTimeMillis(); 
             final int fps = 60;
-             
+            
             SceneManager.Draw(); 
-            SceneManager.Update();
+            SceneManager.Update(); 
                 
             time = (1000 / fps) - (System.currentTimeMillis() - time); 
             if (time > 0) 
