@@ -96,6 +96,18 @@ public final class SqlStatement {
         return details;
     }
     
+    public boolean cekDataVideo(int id) throws SQLException{
+        ResultSet rs = statement.executeQuery("select * from video WHERE id = \"" + id + "\";");
+        boolean ketemu = false;
+        
+        if(rs.first()){
+            ketemu = true;
+        }
+        rs.close();
+        
+        return ketemu;
+    }
+    
     public boolean IsAdminExist(int _NIM) throws SQLException{
         String nama = null;
         String query = "SELECT name FROM `administrator` WHERE nim=\"" + _NIM + "\";";
