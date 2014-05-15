@@ -1,33 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Steve
- */
-
-// INI CUMA STUB
-public class SaleableObjects {
-    private String name;
-    private int price;
-    private int capacity;
-    
-    public String getName()
-    {
-        return (this.name);
-    }
-    
-    public int getPrice()
-    {
-        return (this.price);
-    }
-    
-    public int getCapacity()
-    {
-        return (this.capacity);
-    }
-    
-    
+public class SaleableObjects{
+	protected int value;
+	protected int capacity;
+	
+	public SaleableObjects(){
+		value = 0;
+		capacity = 0;
+	}
+	
+	public SaleableObjects(int x, int y){
+		value = x;
+		capacity = y;
+	}
+	
+	public void SetValue(int x){
+		value = x;
+	}
+	
+	public int GetValue(){
+		return value;
+	}
+	
+	public void SetCapacity(int x){
+		capacity = x;
+	}
+	
+	public int GetCapacity(){
+		return capacity;
+	}
 }
