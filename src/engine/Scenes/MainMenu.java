@@ -36,6 +36,9 @@ public class MainMenu extends Scene
         super("MainMenu");
     }
     
+    /**
+     * Inisialisasi nilai nilai Main Menu
+     */
     @Override
     public void Initialize()
     {
@@ -46,6 +49,9 @@ public class MainMenu extends Scene
         ReadPlayerDataXML();
     }
     
+    /**
+     * Update atribut berdasarkan input user
+     */
     @Override
     public void Update()
     {
@@ -53,7 +59,12 @@ public class MainMenu extends Scene
         Scanner Sc = new Scanner(System.in);
         if(status == 0) {
             status = Sc.nextInt();
-        } else if(status == 2) {
+        } 
+        else if(status == 1) {
+            status = 0;
+            SceneManager.SwitchScene("LevelMenu");
+        }
+        else if(status == 2) {
             status = 0;
             int temp = Sc.nextInt();
             if(temp != 0) currentplayer = temp-1;
@@ -72,17 +83,19 @@ public class MainMenu extends Scene
         }
     }
     
+    /**
+     * Draw ke layar
+     */
     @Override
     public void Draw()
     {
        for (int i = 0; i < 100; i++) System.out.println();
        System.out.flush();
        if (status == 5) System.exit(0);
+       else if (status == 1) SceneManager.SwitchScene("LevelMenu");
        DrawHeader();
        if(status == 0) {
        DrawBody();
-       } else if (status == 1) {
-           System.out.println("NEW GAME STUB");
        }
        else if (status == 2) {
            DrawChange();
@@ -96,6 +109,9 @@ public class MainMenu extends Scene
        
     }
     
+    /**
+     * Method untuk menggambar header ke layar
+     */
     private void DrawHeader() {
         PrinterString("=",1);
         PrinterString("", 1);
@@ -110,6 +126,9 @@ public class MainMenu extends Scene
         PrinterString("=",1);
     }
     
+    /**
+     * Method untuk menggambar content main menu
+     */
     private void DrawBody() {
         String[] Body = new String[7];
         Body[0] = "Welcome " + players[currentplayer];
@@ -122,6 +141,9 @@ public class MainMenu extends Scene
         PrinterStringVertical(Body);
     }
     
+    /**
+     * Method menggambar body untuk menu change player
+     */
     private void DrawChange() {
         String[] temp = new String[players.length+2];
         temp[0] = "Pilih user : ";
@@ -132,6 +154,9 @@ public class MainMenu extends Scene
         PrinterStringVertical(temp);
     }
     
+    /**
+     * Method untuk menggambar data player
+     */
     private void DrawAchievement() {
         String[] temp = new String[6];
         temp[0] = "Player Data";
@@ -143,6 +168,9 @@ public class MainMenu extends Scene
         PrinterStringVertical(temp);
     }
     
+    /**
+     * Method untuk menggambar option
+     */
     private void DrawOption() {
         String[] temp = new String[6];
         temp[0] = "Choose Resolution";
@@ -154,6 +182,9 @@ public class MainMenu extends Scene
         PrinterStringVertical(temp);
     }
     
+    /**
+     * Renderer CLI horizontal, PrinterString(String what, int mode), what adalah string yang akan digambar dan mode = 0 untuk spacing header dan 1 untuk spacing body
+     */
     private void PrinterString(String what, int mode) { /* mode = space scaling */
         if (what.equals("=")) {
             System.out.print("||");
@@ -189,6 +220,9 @@ public class MainMenu extends Scene
         }
     }
     
+    /**
+     * Renderer CLI vertikal, menerima array of string sebagai masukan
+     */
     private void PrinterStringVertical(String[] what) {
         int entersbetween;
         entersbetween = (height - (5 + what.length)) / (what.length);
@@ -203,6 +237,9 @@ public class MainMenu extends Scene
         }
     }
     
+    /**
+     * Pembacaan data player dari file
+     */
     private void ReadPlayerDataXML() {
         try {
  
