@@ -80,7 +80,8 @@ public class MainMenuGUI extends Scene
             Graphics2D g2D = (Graphics2D) g;
             g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
             g2D.drawImage(titleTexture,(int)(getWidth()*0.2f),pos,titleTexture.getWidth(this),titleTexture.getHeight(this),this);
-            g2D.drawImage(newgameTexture,(int)(getWidth()*(-0.09f)),(int)(getHeight()*0.3f),newgameTexture.getWidth(this),newgameTexture.getHeight(this),this);
-        }
+            g2D.drawImage(newgameTexture,(int)(getWidth()*(-0.09f)),(int)(getHeight()*0.3f),newgameTexture.getWidth(this),newgameTexture.getHeight(this),this);            
+        }   
+        
     }
 }

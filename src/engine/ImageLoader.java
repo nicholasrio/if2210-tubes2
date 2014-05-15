@@ -33,6 +33,9 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/title.png"));
         allImages.add(loadImage("Image/MainMenu/mainmenu_bg.png"));
         allImages.add(loadImage("Image/MainMenu/newgame.png"));
+        allImages.add(loadImage("Image/MainMenu/icecube.png"));
+        allImages.add(loadImage("Image/MainMenu/fire-maze.png"));
+        allImages.add(loadImage("Image/MainMenu/egypt.png"));
     }
     
     public static Image getImage(String imgName)
@@ -48,6 +51,18 @@ public class ImageLoader extends JPanel
         else if ("newgame".equalsIgnoreCase(imgName))
         {
             return allImages.get(2);
+        }
+        else if ("icecube".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(3);
+        }
+        else if ("fire-maze".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(4);
+        }
+        else if ("egypt".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(5);
         }
         return null;
     }

@@ -29,7 +29,7 @@ public class Game
     private Game()
     {
         // Choice Mode
-        mode = 1;
+        mode = 2;
         
         if (mode == 2)
         {
@@ -69,7 +69,7 @@ public class Game
             SceneManager.AddScene(new LevelMenuGUI());
             SceneManager.AddScene(new GameMenuGUI());
             SceneManager.AddScene(new AchievementMenuGUI());
-            SceneManager.SwitchScene("MainMenuGUI");
+            SceneManager.SwitchScene("LevelMenuGUI");
         }
     }
     

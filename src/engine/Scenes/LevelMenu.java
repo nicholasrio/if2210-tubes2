@@ -29,7 +29,7 @@ public class LevelMenu extends Scene
         nama_klmpk="CUBE MAZER";
         judul="LEVEL MENU";        
         level=1;
-        nama_lvl="INDONESIAN MAZE";
+        nama_lvl="ICE MAZE";
         height=55;
         width=168;        
         spacebetween=width/25;
@@ -42,14 +42,14 @@ public class LevelMenu extends Scene
         System.out.print("Enter your choice (1 untuk ke level berikutnya,0 untuk ke level sebelumnya) : ");
         Scanner sc = new Scanner(System.in);        
         if (sc.nextInt()==1){
-            if (level<5){
+            if (level<3){
                 level+=1;
                 height=55;
             }
             else{
                 height=54;
                 for (int i=0;i<60;i++) System.out.print(" ");
-                System.out.println("Tidak ada level diatas level 5!!");
+                System.out.println("Tidak ada level diatas level 3!!");
             }
         }
         else{
@@ -64,15 +64,15 @@ public class LevelMenu extends Scene
             }
         }
         if (level==1){
-            nama_lvl="INDONESIAN MAZE";
+            nama_lvl="ICE MAZE";
         }       
-         else if (level==2){
+         else if (level==4){
             nama_lvl="DUNGEON MAZE";
         }
-        else if (level==3){
+        else if (level==2){
             nama_lvl="FIRE MAZE";
         }
-        else if (level==4){
+        else if (level==3){
             nama_lvl="EGYPT MAZE";
         }
         else if (level==5){
