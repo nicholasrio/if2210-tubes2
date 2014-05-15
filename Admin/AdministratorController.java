@@ -7,6 +7,7 @@
 package Admin;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -23,6 +24,10 @@ public class AdministratorController {
     
     public Administrator getAdmin(){
         return admin;
+    }
+    
+    public List<String[]> getAdminsData() throws SQLException{
+        return admin.getAdmins();
     }
     
     public boolean checkLoginAdmin(String _NIM, String password) throws SQLException{

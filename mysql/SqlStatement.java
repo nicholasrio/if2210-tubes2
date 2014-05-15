@@ -47,13 +47,13 @@ public final class SqlStatement {
     public void delete_video(int id) throws SQLException {
         statement.execute("DELETE * FROM video WHERE id = \"" + id + "\";");
     }
-    public List<String> select_admin() throws SQLException{
-        List<String> details = new ArrayList<>();
+    public List<String[]> select_admin() throws SQLException{
+        List<String[]> details = new ArrayList<>();
         try (ResultSet rs = statement.executeQuery("select * from administrator")) {
             while(rs.next()){
                 //Retrieve by column name and insert it into the list
-                details.add(rs.getString("nim"));
-                details.add(rs.getString("name"));
+                String[] data = {rs.getString("nim"),rs.getString("name")};
+                details.add(data);
             }
         }
         return details;
