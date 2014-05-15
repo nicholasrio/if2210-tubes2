@@ -41,6 +41,7 @@ public class ImgComp {
     }
 
     public void setDisplayed(BufferedImage _img_diplayed) {
+        dirtyBit = true;
         img_displayed = _img_diplayed;
     }
 
@@ -79,7 +80,6 @@ public class ImgComp {
 
     public boolean invoked(int _x, int _y) {
         if ((x < _x) && (_x < x + img_displayed.getWidth()) && ((y < _y) && (_y < y + img_displayed.getHeight()))) {
-            dirtyBit = true;
             return true;
         }
         return false;

@@ -30,6 +30,7 @@ public class MainMenuGUI {
         canvas.addImage("highscore", 0, 143);
         canvas.addImage("about", 0, 200);
         canvas.addImage("exit", 0, 257);
+        canvas.addImage("towerDefense", 420, 0);
         //canvas.addImage("towerDefense.png", null, 400, 0);
         mainFrame.add(canvas);
 
@@ -53,31 +54,33 @@ public class MainMenuGUI {
     }
 }
 class MyCanvas extends Canvas implements MouseListener {
+    int currentIdx;
     private final ArrayList<ImgComp> listOfImg;
     @Override
     public void mouseClicked(MouseEvent e) {
     }
     @Override
     public void mousePressed(MouseEvent e) {
+        int count = 0;
         for (ImgComp img : listOfImg) {
             if (img.getClicked() != null) {
                 if (img.invoked(e.getX(), e.getY())) {
+                    currentIdx = count;
                     img.setDisplayed(img.getClicked());
                     repaint();
                 }
             }
+            ++count;
         }
     }
     @Override
     public void mouseReleased(MouseEvent e) {
-        for (ImgComp img : listOfImg) {
-            if (img.getUnclicked() != null) {
-                if (img.invoked(e.getX(), e.getY())) {
-                    img.setDisplayed(img.getUnclicked());
-                    repaint();
-                }
-            }
-        }
+        if (currentIdx == -1)
+            return;
+        ImgComp img = listOfImg.get(currentIdx);
+        img.setDisplayed(img.getUnclicked());
+        currentIdx = -1;
+        repaint();
     }
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -92,6 +95,7 @@ class MyCanvas extends Canvas implements MouseListener {
     public MyCanvas() throws IOException {
         listOfImg = new ArrayList<>();
         this.addMouseListener(this);
+        currentIdx = -1;
     }
     public void addImage(String str, int _x, int _y) throws IOException {
         ImgComp temp = new ImgComp(str);
