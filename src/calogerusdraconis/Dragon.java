@@ -79,6 +79,13 @@ public class Dragon {
 	 */
     public Dragon (String name, float health, float stamina, float thirst, float bladder, float hunger, int level, int experience) {
         this.name = name;
+		this.health = health;
+		this.stamina = stamina;
+		this.thirst = thirst;
+		this.bladder = bladder;
+		this.hunger = hunger;
+		this.level = level;
+		this.experience = experience;
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
