@@ -32,16 +32,16 @@ public class TerminalView implements View {
 	@Override
     public void UpdateScreen (UserDragon drg) {
 		System.out.println(drg.getName()+"'s Attribute: ");
-		System.out.println(drg.getLevel());
-		System.out.println(drg.getExperience());
-		System.out.println(drg.getHappiness());
-		System.out.println(drg.getBladder());
-		System.out.println(drg.getThirst());
-		System.out.println(drg.getHealth());
-		System.out.println(drg.getMaxHealth());
-		System.out.println(drg.getStamina());
-		System.out.println(drg.getMaxStamina());
-		System.out.println(drg.getMoney());
+		System.out.println("Level: " + drg.getLevel());
+		System.out.println("Experience: " + drg.getExperience());
+		System.out.println("Happiness: " + drg.getHappiness());
+		System.out.println("Bladdr: " + drg.getBladder());
+		System.out.println("Thirst: " + drg.getThirst());
+		System.out.println("Health: " + drg.getHealth());
+		System.out.println("Health: " + drg.getMaxHealth());
+		System.out.println("Stamina: " + drg.getStamina());
+		System.out.println("MaxStamina: " + drg.getMaxStamina());
+		System.out.println("Money: " + drg.getMoney());
 	}
 
 	@Override
