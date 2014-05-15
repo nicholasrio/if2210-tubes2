@@ -4,23 +4,23 @@
     <userDragon>
       <name>Xanareth</name>
       <password>anotherPass</password>
-      <money>500</money>
-      <happiness>80</happiness>
+      <money>500.0</money>
+      <happiness>80.0</happiness>
       <inventory>
         <item>iceTea</item>
         <item>lemonTea</item>
         <item>tehBotol</item>
         <item>catItem</item>
       </inventory>
-      <health>90</health>
-      <maxHealth>100</maxHealth>
-      <stamina>80</stamina>
-      <maxStamina>120</maxStamina>
-      <thirst>50</thirst>
-      <bladder>30</bladder>
-      <hunger>20</hunger>
-      <level>2</level>
-      <experience>252</experience>
+      <health>0.0</health>
+      <maxHealth>100.0</maxHealth>
+      <stamina>0.0</stamina>
+      <maxStamina>120.0</maxStamina>
+      <thirst>0.0</thirst>
+      <bladder>0.0</bladder>
+      <hunger>0.0</hunger>
+      <level>0.0</level>
+      <experience>0.0</experience>
     </userDragon>
   </save>
   <save>

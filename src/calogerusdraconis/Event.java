@@ -38,6 +38,11 @@ public class Event {
     public Event () {
     }
 	
+	/**
+	 * Constructor Event
+	 * @param type		type message of Event
+	 * @param message	content message of Event
+	 */
 	public Event(String type, String message) {
 		this.type = type;
 		this.message = message;
@@ -46,6 +51,10 @@ public class Event {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.64EB3B87-6529-109B-22C5-601F2F498386]
     // </editor-fold> 
+	/**
+	 * Getter Message
+	 * @return content message of Event
+	 */
     public String getMessage () {
         return message;
     }
@@ -53,6 +62,10 @@ public class Event {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.088FD8D2-EE17-5F75-2CF0-92DF71A329FE]
     // </editor-fold> 
+	/**
+	 * Setter Message
+	 * @param val new content message of Event
+	 */
     public void setMessage (String val) {
         this.message = val;
     }
@@ -60,6 +73,10 @@ public class Event {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.B4E0B8D1-F6FD-2358-8D75-EB2F587E8CD1]
     // </editor-fold> 
+	/**
+	 * Getter Type
+	 * @return type message of Event
+	 */
     public String getType () {
         return type;
     }
@@ -67,6 +84,10 @@ public class Event {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.CF292706-1AB2-F7E7-C15F-9CC5F4BA896D]
     // </editor-fold> 
+	/**
+	 * Setter Type
+	 * @param val new type message of Event
+	 */
     public void setType (String val) {
         this.type = val;
     }

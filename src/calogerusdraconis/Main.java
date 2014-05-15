@@ -50,18 +50,28 @@ public class Main {
 	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 	// #[regen=yes,id=DCE.300DE1C1-8FFF-9876-186B-6A300231FB80]
 	// </editor-fold> 
+	/**
+	 * 
+	 */
 	public void newGame() {
 	}
 
 	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 	// #[regen=yes,id=DCE.A635F2FE-A9F8-36AD-47CE-2F0270215A08]
 	// </editor-fold> 
+	/**
+	 * 
+	 */
 	public void loadGame() {
 	}
 
 	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 	// #[regen=yes,regenBody=yes,id=DCE.80151BEA-D69C-3C3E-5363-37DFEC7601CC]
 	// </editor-fold> 
+	/**
+	 * Getter Dragon
+	 * @return Dragon of user
+	 */
 	public Dragon getDraco() {
 		return draco;
 	}
@@ -69,6 +79,10 @@ public class Main {
 	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 	// #[regen=yes,regenBody=yes,id=DCE.1EFC7D1A-E329-168A-3331-F1511B338D84]
 	// </editor-fold> 
+	/**
+	 * Setter Dragon
+	 * @param val new Dragon of User
+	 */
 	public void setDraco(Dragon val) {
 		this.draco = val;
 	}
