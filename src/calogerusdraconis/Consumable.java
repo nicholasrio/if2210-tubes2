@@ -17,7 +17,6 @@
 
 package calogerusdraconis;
 
-
 public final class Consumable {
 
     private String name;
@@ -44,7 +43,7 @@ public final class Consumable {
 		this.maxHealth = maxHealth;
 		this.maxStamina = maxStamina;
 		this.happiness = happiness;
-	}
+   	}
 
     public String getImg () {
         return img;

@@ -50,7 +50,7 @@ public final class Store {
 		fdInventory.add(new Consumable("meat","res/meat.png",100,10,-60,300,0,0,0,30));
 		fdInventory.add(new Consumable("juice","res/juice.png",0,-40,0,200,30,0,0,0));
 		fdInventory.add(new Consumable("milk","res/milk.png",150,-50,-10,400,20,0,0,0));
-		fdInventory.add(new Consumable("eggroll","res/eggroll.png",0,0,-50,250,25,0,0,0));
+		fdInventory.add(new Consumable("eggroll","res/egg-roll.png",0,0,-50,250,25,0,0,0));
 		fdInventory.add(new Consumable("peanut","res/peanut.png",100,0,-10,200,0,0,0,20));
 		fdInventory.add(new Consumable("pill","res/pill.png",30,0,-30,250,30,0,0,-30));
 	}
