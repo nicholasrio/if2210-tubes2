@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <DatabasePlayer>
-    <player id="0">
+     <lastLogin>
+          <nama>Survey Corps</nama>
+          <score>250</score>
+          <levelUnlocked>8</levelUnlocked>
+          <achievementUnlocked>4</achievementUnlocked>
+     </lastLogin>
+     <player id="0">
           <nama>dummy</nama>
           <score>100</score>
           <levelUnlocked>15</levelUnlocked>
           <achievementUnlocked>25</achievementUnlocked>
      </player>
      <player id="1">
-          <nama>Timothy</nama>
-          <score>0</score>
-          <levelUnlocked>0</levelUnlocked>
-          <achievementUnlocked>0</achievementUnlocked>
+          <nama>Timothy Pratama</nama>
+          <score>10</score>
+          <levelUnlocked>100</levelUnlocked>
+          <achievementUnlocked>20</achievementUnlocked>
      </player>
      <player id="2">
-          <nama>Winson</nama>
-          <score>0</score>
-          <levelUnlocked>0</levelUnlocked>
-          <achievementUnlocked>0</achievementUnlocked>
+          <nama>Winson Waisakurnia</nama>
+          <score>10</score>
+          <levelUnlocked>2</levelUnlocked>
+          <achievementUnlocked>30</achievementUnlocked>
      </player>
      <player id="3">
           <nama>Michael Alexander Wangsa</nama>
-          <score>0</score>
-          <levelUnlocked>0</levelUnlocked>
-          <achievementUnlocked>0</achievementUnlocked>
+          <score>40</score>
+          <levelUnlocked>20</levelUnlocked>
+          <achievementUnlocked>10</achievementUnlocked>
      </player>
      <player id="4">
           <nama>Tony</nama>
@@ -32,12 +38,12 @@
      </player>
      <player id="5">
           <nama>Kevin Tjong</nama>
-          <score>0</score>
-          <levelUnlocked>0</levelUnlocked>
-          <achievementUnlocked>0</achievementUnlocked>
+          <score>10</score>
+          <levelUnlocked>10</levelUnlocked>
+          <achievementUnlocked>10</achievementUnlocked>
      </player>
-      <player id="6">
-          <nama>Gerard Butler</nama>
+     <player id="6">
+          <nama>Eren Jaeger</nama>
           <score>20</score>
           <levelUnlocked>1</levelUnlocked>
           <achievementUnlocked>1</achievementUnlocked>

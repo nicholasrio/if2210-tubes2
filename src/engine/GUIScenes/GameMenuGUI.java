@@ -36,7 +36,7 @@ public class GameMenuGUI extends Scene
     public void Initialize()
     {
         gameFrame.getContentPane().removeAll();
-        gameFrame.getContentPane().add(new GameMenuGUI());
+        gameFrame.getContentPane().add(this);
     }
     
     @Override
