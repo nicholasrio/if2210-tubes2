@@ -26,6 +26,9 @@ public class MainMenu extends Scene
     private int width;
     private int status;
     private String[] players;
+    private String[] playersscore;
+    private String[] playerslevel;
+    private String[] playersachievement;
     private int currentplayer;
     public MainMenu()
     {
@@ -39,7 +42,7 @@ public class MainMenu extends Scene
         width = 80; // full width of standard cmd screen and half full screen cmd size
         status = 0;
         currentplayer = 0;
-        ReadPlayerNameXML();
+        ReadPlayerDataXML();
     }
     
     @Override
@@ -54,6 +57,10 @@ public class MainMenu extends Scene
             int temp = Sc.nextInt();
             if(temp != 0) currentplayer = temp-1;
         }
+        else if (status == 3) {
+            status = 0;
+            Sc.nextInt();
+        }
         else if (status == 4) {
             status = 0;
             int temp = Sc.nextInt();
@@ -67,7 +74,7 @@ public class MainMenu extends Scene
     @Override
     public void Draw()
     {
-       System.out.println();
+       for (int i = 0; i < 100; i++) System.out.println();
        System.out.flush();
        if (status == 5) System.exit(0);
        DrawHeader();
@@ -80,7 +87,7 @@ public class MainMenu extends Scene
            DrawChange();
        }
        else if (status == 3) {
-           System.out.println("ACHIEVEMENT STUB");
+           DrawAchievement();
        }
        else if (status == 4) {
            DrawOption();
@@ -121,6 +128,17 @@ public class MainMenu extends Scene
         for(int i = 1; i <= players.length;i++) {
             temp[i] = Integer.toString(i) + ". " + players[i-1];
         }
+        PrinterStringVertical(temp);
+    }
+    
+    private void DrawAchievement() {
+        String[] temp = new String[6];
+        temp[0] = "Player Data";
+        temp[1] = "Name : " + players[currentplayer];
+        temp[2] = "Score: " + playersscore[currentplayer];
+        temp[3] = "Level: " + playerslevel[currentplayer];
+        temp[4] = "Achievement Unlocked: " + playersachievement[currentplayer];
+        temp[5] = "=";
         PrinterStringVertical(temp);
     }
     
@@ -184,7 +202,7 @@ public class MainMenu extends Scene
         }
     }
     
-    private void ReadPlayerNameXML() {
+    private void ReadPlayerDataXML() {
         try {
  
 	File fXmlFile = new File("player.xml");
@@ -197,16 +215,17 @@ public class MainMenu extends Scene
 	NodeList nList = doc.getElementsByTagName("player");
  
         players = new String[nList.getLength()];
+        playersscore = new String[nList.getLength()];
+        playerslevel = new String[nList.getLength()];
+        playersachievement = new String[nList.getLength()];
 	for (int temp = 0; temp < nList.getLength(); temp++) {
 		Node nNode = nList.item(temp);
 		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-			Element eElement = (Element) nNode;
-			/*System.out.println("Player id : " + eElement.getAttribute("id"));
-			System.out.println("Nama : " + eElement.getElementsByTagName("nama").item(0).getTextContent());
-			System.out.println("Score : " + eElement.getElementsByTagName("score").item(0).getTextContent());
-			System.out.println("Levelunlocked : " + eElement.getElementsByTagName("levelUnlocked").item(0).getTextContent());
-			System.out.println("Achievement unlocked : " + eElement.getElementsByTagName("achievementUnlocked").item(0).getTextContent());*/
-                        players[temp] = eElement.getElementsByTagName("nama").item(0).getTextContent();
+                    Element eElement = (Element) nNode;
+                    players[temp] = eElement.getElementsByTagName("nama").item(0).getTextContent();
+                    playersscore[temp] = eElement.getElementsByTagName("score").item(0).getTextContent();
+                    playerslevel[temp] = eElement.getElementsByTagName("levelUnlocked").item(0).getTextContent();
+                    playersachievement[temp] = eElement.getElementsByTagName("achievementUnlocked").item(0).getTextContent();
 		}
 	}
     } catch (Exception e) {
