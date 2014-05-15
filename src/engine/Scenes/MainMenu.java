@@ -6,15 +6,8 @@
 
 package engine.Scenes;
 import engine.*;
+import engine.DataStructure.*;
 import java.util.Scanner;
-
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
-import java.io.File;
 
 /**
  *
@@ -25,11 +18,6 @@ public class MainMenu extends Scene
     private int height;
     private int width;
     private int status;
-    private String[] players;
-    private String[] playersscore;
-    private String[] playerslevel;
-    private String[] playersachievement;
-    private int currentplayer;
     public MainMenu()
     {
         super("MainMenu");
@@ -44,8 +32,8 @@ public class MainMenu extends Scene
         height = 25; //57 height of half full screen, 25 is standard cmd size full screen
         width = 80; // full width of standard cmd screen and half full screen cmd size
         status = 0;
-        currentplayer = 0;
-        ReadPlayerDataXML();
+        GameData.loadPlayer("player.xml");
+ /* STUB */       GameData.lastLogin = GameData.dataPlayer.get(0); 
     }
     
     /**
@@ -66,11 +54,11 @@ public class MainMenu extends Scene
         else if(status == 2) {
             status = 0;
             int temp = Sc.nextInt();
-            if(temp != 0) currentplayer = temp-1;
+            if(temp != 0) GameData.lastLogin = GameData.dataPlayer.get(temp-1);
         }
         else if (status == 3) {
             status = 0;
-            Sc.nextInt();
+            SceneManager.SwitchScene("AchievementMenu");
         }
         else if (status == 4) {
             status = 0;
@@ -92,20 +80,19 @@ public class MainMenu extends Scene
        System.out.flush();
        if (status == 5) System.exit(0);
        else if (status == 1) SceneManager.SwitchScene("LevelMenu");
-       DrawHeader();
-       if(status == 0) {
-       DrawBody();
+       else if (status == 3) SceneManager.SwitchScene("AchievementMenu");
+       else {
+            DrawHeader();
+            if(status == 0) {
+            DrawBody();
+            }
+            else if (status == 2) {
+                DrawChange();
+            }
+            else if (status == 4) {
+                DrawOption();
+            }
        }
-       else if (status == 2) {
-           DrawChange();
-       }
-       else if (status == 3) {
-           DrawAchievement();
-       }
-       else if (status == 4) {
-           DrawOption();
-       }
-       
     }
     
     /**
@@ -130,7 +117,7 @@ public class MainMenu extends Scene
      */
     private void DrawBody() {
         String[] Body = new String[7];
-        Body[0] = "Welcome " + players[currentplayer];
+        Body[0] = "Welcome " + GameData.lastLogin.getNama();
         Body[1] = "1 NEW GAME/CONTINUE GAME";
         Body[2] = "2 CHANGE USER";
         Body[3] = "3 ACHIEVEMENT";
@@ -144,26 +131,12 @@ public class MainMenu extends Scene
      * Method menggambar body untuk menu change player
      */
     private void DrawChange() {
-        String[] temp = new String[players.length+2];
+        String[] temp = new String[GameData.getJumlahPlayer()+2];
         temp[0] = "Pilih user : ";
-        temp[players.length+1] = "=";    
-        for(int i = 1; i <= players.length;i++) {
-            temp[i] = Integer.toString(i) + ". " + players[i-1];
+        temp[GameData.getJumlahPlayer()+1] = "=";    
+        for(int i = 1; i <= GameData.getJumlahPlayer();i++) {
+            temp[i] = Integer.toString(i) + ". " + GameData.dataPlayer.get(i-1).getNama();
         }
-        PrinterStringVertical(temp);
-    }
-    
-    /**
-     * Method untuk menggambar data player
-     */
-    private void DrawAchievement() {
-        String[] temp = new String[6];
-        temp[0] = "Player Data";
-        temp[1] = "Name : " + players[currentplayer];
-        temp[2] = "Score: " + playersscore[currentplayer];
-        temp[3] = "Level: " + playerslevel[currentplayer];
-        temp[4] = "Achievement Unlocked: " + playersachievement[currentplayer];
-        temp[5] = "=";
         PrinterStringVertical(temp);
     }
     
@@ -234,39 +207,5 @@ public class MainMenu extends Scene
             for (int j = 0; j < entersbetween; j++) PrinterString("",0);
             PrinterString(what[i], 0);
         }
-    }
-    
-    /**
-     * Pembacaan data player dari file
-     */
-    private void ReadPlayerDataXML() {
-        try {
- 
-	File fXmlFile = new File("player.xml");
-	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	Document doc = dBuilder.parse(fXmlFile);
- 
-	doc.getDocumentElement().normalize();
- 
-	NodeList nList = doc.getElementsByTagName("player");
- 
-        players = new String[nList.getLength()];
-        playersscore = new String[nList.getLength()];
-        playerslevel = new String[nList.getLength()];
-        playersachievement = new String[nList.getLength()];
-	for (int temp = 0; temp < nList.getLength(); temp++) {
-		Node nNode = nList.item(temp);
-		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) nNode;
-                    players[temp] = eElement.getElementsByTagName("nama").item(0).getTextContent();
-                    playersscore[temp] = eElement.getElementsByTagName("score").item(0).getTextContent();
-                    playerslevel[temp] = eElement.getElementsByTagName("levelUnlocked").item(0).getTextContent();
-                    playersachievement[temp] = eElement.getElementsByTagName("achievementUnlocked").item(0).getTextContent();
-		}
-	}
-    } catch (Exception e) {
-	e.printStackTrace();
-    }
     }
 }
