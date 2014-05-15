@@ -254,6 +254,7 @@ public class GameData {
     {
         dataMap.clear();
         dataMap.add(new Map("map1.xml"));
+        dataMap.add(new Map("map2.xml"));
     }
     
     /**

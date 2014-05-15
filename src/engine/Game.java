@@ -29,7 +29,7 @@ public class Game
     private Game()
     {
         // Choice Mode
-        mode = 1;
+        mode = 2;
         
         if (mode == 2)
         {
