@@ -15,12 +15,14 @@ public class Caleg {
     private final String NamaPartai;
     private final String History;
     private final int NoDapil;
+    private final String Lingkup;//DPR, DPD, DPRDProv, DPRDKab
     
-    public Caleg(String _NIK, String _Partai, String _History, int _NoDapil){
+    public Caleg(String _NIK, String _Partai, String _History, int _NoDapil, String lingkup){
         NIK = _NIK;
         NamaPartai = _Partai;
         History = _History;
         NoDapil = _NoDapil;
+        Lingkup = lingkup;
     }
     
     public String GetNIK(){

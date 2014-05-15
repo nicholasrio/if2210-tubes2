@@ -61,4 +61,21 @@ public class Admin {
         return SuperAdmin;
     }
     
+    public String getUsername()
+    {
+        return Username;
+    }
+    
+    public String getPassword()
+    {
+        return Password;
+    }
+    
+    public int getPeran()
+    {
+        if(SuperAdmin)
+            return 1;
+        else
+            return 0;
+    }
 }
