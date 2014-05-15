@@ -47,6 +47,22 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.39F10D0D-020E-7824-2E18-D995AC6ED214]
     // </editor-fold> 
+	/** 
+	 * Constructor UserDragon
+	 * @param name	Name of UserDragon
+	 * @param health	Health of UserDragon
+	 * @param maxHealth 
+	 * @param stamina
+	 * @param maxStamina
+	 * @param thirst
+	 * @param bladder
+	 * @param hunger
+	 * @param level
+	 * @param experience
+	 * @param password
+	 * @param money
+	 * @param happiness 
+	 */
     public UserDragon (String name, float health, float maxHealth, float stamina, float maxStamina, float thirst, float bladder, float hunger, int level, int experience, String password, float money, float happiness) {
         super(name, health, stamina, thirst, bladder, hunger, level, experience);
         this.maxHealth = maxHealth;
@@ -70,6 +86,10 @@ public class UserDragon extends Dragon {
         th.start();
     }
     
+	/**	
+	 * Menambah parameter Health pada Dragon
+	 * @param val jumlah health point yang akan ditambah
+	 */
     private void tambahHealth(float val) {
         synchronized(this) {
             if (health + val < 0) {
@@ -82,6 +102,10 @@ public class UserDragon extends Dragon {
         }
     }
     
+	/**
+	 * Menambah parameter Stamina pada Dragon
+	 * @param val jumlah stamina point yang akan ditambah
+	 */
     private void tambahStamina(float val) {
         synchronized(this) {
             if (stamina + val < 0) {
@@ -94,6 +118,10 @@ public class UserDragon extends Dragon {
         }
     }
     
+	/**
+	 * Menambah parameter Thirst pada Dragon
+	 * @param val jumlah thirst point yang akan ditambah
+	 */
     private void tambahThirst(float val) {
         synchronized(this) {
             if (thirst + val < 0) {
@@ -106,6 +134,10 @@ public class UserDragon extends Dragon {
         }
     }
     
+	/**
+	 * Menambah parameter Bladder pada Dragon
+	 * @param val jumlah bladder point yang akan ditambah
+	 */
     private void tambahBladder (int val) {
         synchronized(this) {
             if (bladder + val < 0) {
@@ -118,6 +150,10 @@ public class UserDragon extends Dragon {
         }
     }
     
+	/**
+	 * Menambah parameter Hunger pada Dragon
+	 * @param val jumlah hunger point yang akan ditambah
+	 */
     private void tambahHunger (float val) {
         synchronized (this) {
             if (hunger + val < 0) {
@@ -130,12 +166,20 @@ public class UserDragon extends Dragon {
         }
     }
     
+	/**
+	 * Menambah parameter Money pada Dragon
+	 * @param val jumlah money yang akan ditambah
+	 */
     private void tambahMoney(float val) {
         synchronized (this) {
             money += val;
         }
     }
     
+	/**
+	 * Menambah parameter Happiness pada Dragon
+	 * @param val jumlah happiness point yang akan ditambah
+	 */
     private void tambahHappiness(float val) {
         synchronized(this) {
             if ((happiness + val) > 100) {
@@ -144,6 +188,10 @@ public class UserDragon extends Dragon {
         }
     }
     
+	/**
+	 * Menambah parameter Experience pada Dragon
+	 * @param val jumlah experience point yang akan ditambah
+	 */
 	private void tambahExperience(float val) {
 		synchronized(this) {
 			experience += val; 
@@ -228,6 +276,12 @@ public class UserDragon extends Dragon {
 	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0929F36F-FC07-E055-0FD8-118CC54E9595]
     // </editor-fold> 
+	/**
+	 * Memberi consumable ke Dragon
+	 * @param what Consumable yang akan diberikan
+	 * @return 
+	 * @throws Exception Uang tidak cukup
+	 */
     public Event addConsumable (Consumable what) throws Exception {
         if (money < what.getCost()) throw new Exception ("Uang tidak cukup");
 		
@@ -238,6 +292,9 @@ public class UserDragon extends Dragon {
         th.interrupt();
     }
     
+	/**
+	 * Mengubah parameter-parameter Dragon seiring berjalannya waktu
+	 */
     private void modifyAttribute() {
         //tambah attribute
         tambahHealth(30 * level);
@@ -300,7 +357,10 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.CAFBB28D-46E4-68A5-0A2A-82623BC039D0]
     // </editor-fold> 
-    
+    /**
+	 * Bertarung dengan random Dragon
+	 * @return 
+	 */
     public Event fight () {
         
         Random rand = new Random();
@@ -343,6 +403,10 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0194129F-5D6C-13CE-0AE4-A5601DADA176]
     // </editor-fold> 
+	/**
+	 * Mengajak Dragon berlatih
+	 * @return 
+	 */
     public Event train () {
 		try {
 			sleep(1000);
@@ -361,6 +425,10 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.847AFD4C-3B2A-B5F6-9C2C-571586FEBF0A]
     // </editor-fold> 
+	/**
+	 * Mengajak Dragon bermain
+	 * @return 
+	 */
     public Event entertain () {
         try {
 			while (happiness < 100) {
@@ -376,6 +444,10 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.20C42E67-996F-166D-45F1-95DC8D50E616]
     // </editor-fold> 
+	/**
+	 * Menyuruh Dragon tidur
+	 * @return 
+	 */
     public Event rest () {
         try {
 			while (stamina < maxStamina || health < maxHealth) {
@@ -392,6 +464,10 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.8A6C5225-21DB-47E8-1287-18C4BEE4D3B1]
     // </editor-fold> 
+	/**
+	 * Menyuruh Dragon pergi ke toilet
+	 * @return 
+	 */
     public Event toToilet () {
         try {
 			while (bladder > 0) {
