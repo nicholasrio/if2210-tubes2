@@ -82,21 +82,18 @@ public final class SqlStatement {
         }
     }
     
-    public List<String> select_video(int id) throws SQLException{
-        List<String> L = new ArrayList<>();
-        ResultSet rs = statement.executeQuery("select * from video WHERE id = \"" + id + "\";");
-        
-            //Retrieve by column name
-            L.add(Integer.toString(rs.getInt("id")));
-            L.add(rs.getString("title"));
-            L.add(rs.getString("link"));
-            L.add(Integer.toString(rs.getInt("rating")));
-            L.add(Integer.toString(rs.getInt("view")));
-            L.add(Integer.toString(rs.getInt("no_tubes")));
-            L.add(rs.getString("group_name"));
-
-        rs.close();
-        return L;
+    public List<String[]> select_video() throws SQLException{
+        List<String[]> details;
+        try (ResultSet rs = statement.executeQuery("select * from video;")) {
+            details = new ArrayList<>();
+            while(rs.next()) {
+                String[] data = {Integer.toString(rs.getInt("id")), rs.getString("title"), rs.getString("link"),
+                    Integer.toString(rs.getInt("rating")), Integer.toString(rs.getInt("view")),
+                    Integer.toString(rs.getInt("no_tubes")), rs.getString("group_name")};
+                details.add(data);
+            }
+        }
+        return details;
     }
     
     public boolean IsAdminExist(int _NIM) throws SQLException{
