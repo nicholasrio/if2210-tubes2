@@ -1,3 +1,8 @@
+/**
+ * author tegarnization
+ * */
+
+
 package VideoPlayer;
 
 import java.awt.BorderLayout;
@@ -6,7 +11,16 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 
+
+/**
+ * Youtube Media Player responsible to browse youtube video based on URL
+ * */
+
 public class YoutubeMediaPlayer {
+	
+	/**
+	 * param VideoURL
+	 * */
 
 	public static JPanel getBrowserPanel(String VideoURL) 
 	{
