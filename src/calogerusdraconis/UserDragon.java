@@ -206,12 +206,13 @@ public class UserDragon extends Dragon {
         return maxStamina;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.B112E0C0-12CE-6328-CA63-947031A9E5D4]
-    // </editor-fold> 
     public ArrayList<Consumable> getFdInventory () {
         return fdInventory;
     }
+	
+	public void setFdInventory(ArrayList<Consumable> fd) {
+		fdInventory = fd;
+	}
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.DE5979F6-6507-47F8-D0DB-38CDBF826BF7]
