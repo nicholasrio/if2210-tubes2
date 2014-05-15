@@ -5,12 +5,13 @@
  */
 
 package engine;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Tony
  */
-public abstract class Scene 
+public abstract class Scene extends JPanel
 {
     private final String name;
     

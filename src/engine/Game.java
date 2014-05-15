@@ -5,7 +5,12 @@
  */
 
 package engine;
+
 import engine.Scenes.*;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+import javax.swing.JFrame;
 
 /**
  *
@@ -14,23 +19,45 @@ import engine.Scenes.*;
 public class Game 
 {
     static public boolean gameRunning = true;
+    static public int mode; // 1 for CLI, 2 for GUI
+    static public JFrame gameFrame = new JFrame();
+    static public Graphics g = gameFrame.getGraphics();
     
-    public static void main(String []args)
+    private Game()
     {
-        PrepareScenes();  
+        // Choice Mode
+        mode = 2;
+        
+        if (mode == 2)
+        {
+            ImageLoader.loadAllImages();
+            prepareFrame();
+        }
+        PrepareScenes();
         gameLoop();
     }
     
-    public static void PrepareScenes()
+    private static void prepareFrame()
+    {
+        gameFrame.setTitle("CubeMazer");
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame.pack();
+        gameFrame.setSize(new Dimension(800,600));
+        gameFrame.setResizable(true);
+        gameFrame.setVisible(true);
+    }
+    
+    private static void PrepareScenes()
     {
         SceneManager.Initialize();
         SceneManager.AddScene(new MainMenu());
         SceneManager.AddScene(new LevelMenu());
         SceneManager.AddScene(new GameMenu());
+        SceneManager.AddScene(new AchievementMenu());
         SceneManager.SwitchScene("GameMenu"); 
     }
     
-    public static void gameLoop()
+    private static void gameLoop()
     {
         while(gameRunning) 
         { 
@@ -49,5 +76,10 @@ public class Game
                 catch(Exception e){} 
             } 
         }   
+    }
+    
+    public static void main(String []args)
+    {
+        Game CubeMazer = new Game();
     }
 }
