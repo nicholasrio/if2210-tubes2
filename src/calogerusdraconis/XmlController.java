@@ -19,6 +19,7 @@ package calogerusdraconis;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -58,7 +59,7 @@ public class XmlController {
 
 				//check if name is equal
 				if (userDragon.getChildText("name").equals(name)) {
-					System.out.println("Dragon Name : " + userDragon.getChildText("name"));
+					//System.out.println("Dragon Name : " + userDragon.getChildText("name"));
 
 					// Make Dragon
 					retval = new UserDragon(
@@ -79,11 +80,19 @@ public class XmlController {
 
 					// Make Inventory
 					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
+					
+
+					ArrayList<Consumable> arr = new ArrayList<Consumable>();
 					for (Object anObj : invList) {
 						// TODO: get inventory for DRAGON
 						Element node = (Element) anObj;
-						System.out.println("Inventory Name : " + node.getText());
+						String s  = node.getText();
+
+						Consumable ctemp = ConsumableFactory.produceConsumable(s);
+						if (ctemp != null)
+							arr.add(ctemp);
 					}
+					retval.setFdInventory(arr);
 				}
 			}
 		} catch (IOException | JDOMException io) {

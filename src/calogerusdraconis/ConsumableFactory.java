@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Calogerus Draconis Team
+ * Copyright (C) 2014 WILLY
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,34 +21,18 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Willy
+ * @author WILLY
  */
-public class TerminalView implements View {
- 
-    public TerminalView () {
-        super();
-    }
-
-	@Override
-    public void UpdateScreen (UserDragon drg) {
-		ArrayList<Consumable> ac = drg.getFdInventory();
-		for (Consumable c : ac) {
-			System.out.println(c.getName());
+public class ConsumableFactory {
+	//private static final Store s = Store.getInstance();
+	public static Consumable produceConsumable(String name) {
+		Store s = Store.getInstance();
+		ArrayList<Consumable> ac = s.getFdInventory();
+		for (Consumable c : ac){
+			if (c.getName().equals(name)) {
+				return c;
+			}
 		}
+		return null;
 	}
-
-	@Override
-    public void UpdateScreen (Store str) {
-    }
-
-	@Override
-    public void UpdateScreen (UserDragon drg, Dragon enemy) {
-    }
-
-	@Override
-    public void UpdateScreen (UserDragon drg, Event evnt) {
-		System.out.println(evnt.getMessage());
-    }
-
 }
-

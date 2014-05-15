@@ -7,10 +7,10 @@
       <money>500.0</money>
       <happiness>80.0</happiness>
       <inventory>
-        <item>iceTea</item>
-        <item>lemonTea</item>
-        <item>tehBotol</item>
-        <item>catItem</item>
+        <item>potion</item>
+        <item>x-potion</item>
+        <item>first-aid</item>
+        <item>ether</item>
       </inventory>
       <health>0.0</health>
       <maxHealth>100.0</maxHealth>

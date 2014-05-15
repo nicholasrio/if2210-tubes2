@@ -22,7 +22,7 @@ import java.util.ArrayList;
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.E6BDD020-1BE0-47FA-DEC1-23321E47E085]
 // </editor-fold> 
-public final class Store {
+public class Store {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.F02D507C-955C-E473-70F5-66CF2BE0A57E]
@@ -38,6 +38,7 @@ public final class Store {
 	 * Constructor Store
 	 */
     private Store () {
+		fdInventory = new ArrayList<>();
 		fdInventory.add(new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0));
 		fdInventory.add(new Consumable("potion","res/potion.png",250,0,0,400,0,0,0,0));
 		fdInventory.add(new Consumable("hi-potion","res/hi-potion.png",500,0,0,600,0,0,0,0));

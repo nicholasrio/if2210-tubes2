@@ -46,13 +46,9 @@ public class StoreTest {
     @Test
     public void testGetInstance() {
         System.out.println("getInstance");
-        Store expResult = null;
-        System.out.println("ASDFASDFASD");
         Store result = Store.getInstance();
-        System.out.println("aabfnbfn");
         for (Consumable c : result.getFdInventory()){
             System.out.println(c.getName());}
-        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -75,6 +71,7 @@ public class StoreTest {
      * Test of setFdInventory method, of class Store.
      */
     @Test
+
     public void testSetFdInventory() {
         System.out.println("setFdInventory");
         ArrayList<Consumable> val = null;

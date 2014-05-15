@@ -84,8 +84,6 @@ public class XmlControllerTest {
 		XmlController instance = new XmlController();
 		try {
 			UserDragon ud = instance.LoadDragon("Xanareth");
-			ud.setPassword("anotherPass");
-			instance.SaveDragon(ud);
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}

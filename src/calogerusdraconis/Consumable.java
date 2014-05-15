@@ -17,6 +17,7 @@
 
 package calogerusdraconis;
 
+
 public final class Consumable {
 
     private String name;
@@ -154,4 +155,3 @@ public final class Consumable {
 		return happiness;
 	} 
 }
-
