@@ -182,9 +182,13 @@ public class UserDragon extends Dragon {
 	 */
     private void tambahHappiness(float val) {
         synchronized(this) {
-            if ((happiness + val) > 100) {
-                happiness = 100;
-            } else happiness += val;
+            if (happiness + val < 0) {
+                happiness = 0;
+            } else {
+                if (happiness + val > 100) {
+                    happiness = 100;
+                } else happiness += val;
+            }
         }
     }
     
