@@ -8,8 +8,10 @@ package engine.Scenes;
 
 import engine.*;
 import static engine.Game.gameFrame;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 
 /**
  *
@@ -18,10 +20,16 @@ import java.awt.Graphics2D;
 public class GameMenu extends Scene
 {
     private static int pos = 0;
+    private static Image bgTexture;
     
     public GameMenu()
     {
         super("GameMenu");
+    }
+    
+    public void LoadContent()
+    {
+        bgTexture = ImageLoader.getImage("mainmenu_bg");
     }
     
     @Override
@@ -31,6 +39,7 @@ public class GameMenu extends Scene
         {
             gameFrame.getContentPane().removeAll();
             gameFrame.getContentPane().add(new GameMenu());
+            this.LoadContent();
         }
     }
     
@@ -39,11 +48,11 @@ public class GameMenu extends Scene
     {
         if (Game.mode == 2)
         {
-            pos++;
+            pos++;/*
             if (pos > 100)
             {
                 SceneManager.SwitchScene("AchievementMenu");
-            }
+            } */
         }
     }
     
@@ -63,7 +72,7 @@ public class GameMenu extends Scene
         if (Game.mode == 2)
         {
             Graphics2D g2D = (Graphics2D) g;
-            g2D.drawImage(ImageLoader.getImage("tes"),pos, 10, this);
+            g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
         }
     }
 }

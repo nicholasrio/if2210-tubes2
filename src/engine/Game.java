@@ -43,6 +43,7 @@ public class Game
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.pack();
         gameFrame.setSize(new Dimension(800,600));
+        gameFrame.setLocationRelativeTo(null);
         gameFrame.setResizable(true);
         gameFrame.setVisible(true);
     }
@@ -63,6 +64,7 @@ public class Game
         { 
             long time = System.currentTimeMillis(); 
             final int fps = 60;
+            
             SceneManager.Draw(); 
             SceneManager.Update(); 
                 
