@@ -18,6 +18,7 @@ package calogerusdraconis;
 
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,10 +31,27 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Tekan 1 untuk GUI atau tekan 2 untuk Terminal: ");
+		//int pil = in.nextInt();
+		View view = null;
+		//if (pil == 2)
+		view = new TerminalView();
+		
 		XmlController instance = new XmlController();
 		UserDragon ud = null;
 		try {
 			ud = instance.LoadDragon("Xanareth");
+			int menu = 0;
+			do {
+				view.showMenu();
+				System.out.println("Input menu yang diinginkan : ");
+				menu = in.nextInt();
+				switch (menu) {
+					case 1: view.UpdateScreen(ud); break;
+				}
+				//view.UpdateScreen(Store.getInstance());
+			} while (menu != 9);
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}

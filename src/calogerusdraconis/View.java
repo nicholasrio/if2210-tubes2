@@ -22,7 +22,9 @@ package calogerusdraconis;
  * @author Dariel Valdano
  */
 public interface View {
-
+	
+	public void showMenu();
+	
     public void UpdateScreen (UserDragon drg);
 
     public void UpdateScreen (Store str);
@@ -30,6 +32,6 @@ public interface View {
     public void UpdateScreen (UserDragon drg, Dragon enemy);
 
     public void UpdateScreen (UserDragon drg, Event evnt);
-
+	
 }
 

@@ -92,6 +92,10 @@ public class GUIView extends javax.swing.JFrame implements View {
 		});
 	}
 	
+	@Override
+	public void showMenu() {
+		
+	}
 	
 	@Override
     public void UpdateScreen (UserDragon drg) {
