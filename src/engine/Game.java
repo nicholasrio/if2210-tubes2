@@ -59,7 +59,7 @@ public class Game
         SceneManager.AddScene(new LevelMenu());
         SceneManager.AddScene(new GameMenu());
         SceneManager.AddScene(new AchievementMenu());
-        SceneManager.SwitchScene("GameMenu"); 
+        SceneManager.SwitchScene("MainMenu"); 
     }
     
     private static void gameLoop()
@@ -68,8 +68,8 @@ public class Game
         { 
             long time = System.currentTimeMillis(); 
             final int fps = 60;
-            SceneManager.Update(); 
             SceneManager.Draw(); 
+            SceneManager.Update(); 
                 
             time = (1000 / fps) - (System.currentTimeMillis() - time); 
             if (time > 0) 
