@@ -40,8 +40,12 @@ public class Main {
 		
 		XmlController instance = new XmlController();
 		UserDragon ud = null;
+		ud = new UserDragon("S", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0);
+		//System.out.println("ASDFASD");
 		try {
+			System.out.println("ASFD");
 			ud = instance.LoadDragon("Xanareth");
+			System.out.println("ASFD1");
 			int menu = 0;
 			do {
 				view.showMenu();
@@ -49,6 +53,8 @@ public class Main {
 				menu = in.nextInt();
 				switch (menu) {
 					case 1: view.UpdateScreen(ud); break;
+					case 7: view.seeFoodDirectory(ud); break;
+					default: break;
 				}
 				//view.UpdateScreen(Store.getInstance());
 			} while (menu != 9);
@@ -56,6 +62,7 @@ public class Main {
 			System.err.println(ex.getMessage());
 		}
 		ud.sebelumExit();
+		System.exit(0);
 	}
 
 	/**

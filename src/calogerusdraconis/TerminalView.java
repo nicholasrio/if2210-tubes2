@@ -31,24 +31,23 @@ public class TerminalView implements View {
 
 	@Override
     public void UpdateScreen (UserDragon drg) {
-		ArrayList<Consumable> ac = drg.getFdInventory();
-		for (Consumable c : ac) {
-			System.out.println(c.getName());
-		}
+		System.out.println(drg.getName()+"'s Attribute: ");
+		System.out.println(drg.getLevel());
+		System.out.println(drg.getExperience());
+		System.out.println(drg.getHappiness());
+		System.out.println(drg.getBladder());
+		System.out.println(drg.getThirst());
+		System.out.println(drg.getHealth());
+		System.out.println(drg.getMaxHealth());
+		System.out.println(drg.getStamina());
+		System.out.println(drg.getMaxStamina());
+		System.out.println(drg.getMoney());
 	}
 
 	@Override
     public void UpdateScreen (Store str) {
 		for (Consumable c : str.getFdInventory()) {
-			System.out.println("Nama : " + c.getName());
-			System.out.println("Harga : " + c.getCost());
-			System.out.println("Happiness : " + c.getHappinessValue());
-			System.out.println("Hunger : " + c.getHungerValue());
-			System.out.println("Thirst : " + c.getThirstValue());
-			System.out.println("Health : " + c.getHealthValue());
-			System.out.println("MaxHealth : " + c.getMaxHealthValue());
-			System.out.println("Stamina : " + c.getStaminaValue());
-			System.out.println("MaxStamina : " + c.getMaxStaminaValue());
+			System.out.println(c);
 			System.out.println();
 		}
     }
@@ -74,6 +73,14 @@ public class TerminalView implements View {
 		System.out.println("7. See Food Directory");
 		System.out.println("8. Go to Store");
 		System.out.println("9. Exit");
+	}
+
+	@Override
+	public void seeFoodDirectory(UserDragon drg) {
+		ArrayList<Consumable> ac = drg.getFdInventory();
+		for (Consumable c : ac) {
+			System.out.println(c.getName());
+		}
 	}
 	
 }

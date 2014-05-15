@@ -33,5 +33,6 @@ public interface View {
 
     public void UpdateScreen (UserDragon drg, Event evnt);
 	
+	public void seeFoodDirectory (UserDragon drg);
 }
 
