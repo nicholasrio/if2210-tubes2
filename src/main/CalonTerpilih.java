@@ -9,6 +9,7 @@ package main;
 import Tools.KoneksiDatabase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -26,23 +27,67 @@ public class CalonTerpilih {
     {
         daerahPemilihan = new ArrayList<>();
         daftarCaleg = new ArrayList<>();
+        try
+        {
+            /* Kalo ada tabel yang nampilin Calon terpilih, edit database ini dan langsung masukkan nilainya ke tabel */
+            Connection koneksi = KoneksiDatabase.getKoneksi();
+            Statement statement = koneksi.createStatement();
+            /* load dapil */
+            boolean ketemu = false;
+            String CommandGetDapil = "select * from Kabupaten";
+            ResultSet result = statement.executeQuery(CommandGetDapil);
+            while(result.next())
+            {
+                for(Dapil dapil : daerahPemilihan)
+                {
+                    if(dapil.getNoDapil() == Integer.parseInt(result.getString("No_Dapil")))
+                    {
+                        ketemu = true;
+                        dapil.addKabupaten(result.getString("Nama_Kabupaten"));
+                    }
+                }
+                if(!ketemu)
+                {
+                    daerahPemilihan.add(new Dapil(Integer.parseInt(result.getString("No_Dapil")),
+                                                                result.getString("Nama_Kabupaten")));
+                }
+            }
+            /* load Caleg */
+            String commandGetCaleg = "select * from Caleg";
+            ResultSet resultCaleg = statement.executeQuery(commandGetCaleg);
+            while(resultCaleg.next())
+            {
+                daftarCaleg.add(new Caleg(resultCaleg.getString("NIKCaleg"), 
+                                            resultCaleg.getString("NamaPartai"), 
+                                            resultCaleg.getString("TrackRecord"), 
+                                            Integer.parseInt(resultCaleg.getString("NoDapil")), 
+                                            resultCaleg.getString("Lingkup")));
+            }
+            koneksi.close();
+        }
+        catch (SQLException ex) {
+            System.out.println("Error CalonTerpilih.java" + ex.getMessage());
+        }
     }
     public void AddCaleg(String NIK, String Partai,String History, int _NoDapil, String lingkup){
-        
+        //Jangan lupa pengecekan udah ada Caleg apa belum
     }
     
     public void AddCaleg(Caleg caleg){
-    
+        //Jangan lupa pengecekan udah ada Caleg apa belum
     }
     
     public void AddDapil(int NomorDapil, String Kabupaten[] ){
-        
+        //Jangan lupa pengecekan noDapilnya udah ada apa belum
     }
     
     public void AddDapil(Dapil dapil){
-        
+        //Jangan lupa pengecekan noDapilnya udah ada apa belum
     }
     
+    /**
+     * Menyimpan list dapil dan list caleg ke database. Isi list harus sudah unik.
+     */
     public void SaveToDatabase(){
         if(daftarCaleg.size() == 0)
         {
@@ -122,4 +167,6 @@ public class CalonTerpilih {
             System.out.println("Error CalonTerpilih.java: " + ex.getMessage());
         }
     }
+    
+    
 }

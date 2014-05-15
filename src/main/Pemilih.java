@@ -38,11 +38,11 @@ public class Pemilih {
                 /* Jika NIK dan Password cocok */
                 if(NIK.compareToIgnoreCase(o[0]) == 0  && Hashing.StringToMD5(Password).compareTo(o[1]) == 0)
                 {
-                    command = "SELECT * FROM PilihanCaleg where NIKPemilih = '" + NIK + "';";
+                    command = "SELECT * FROM PilihanCaleg where NIKPemilih = '" + NIK + "'";
                     result = statemet.executeQuery(command);
                     if(!result.next()) /* Jika belum memilih partai */
                     {
-                        command = "SELECT * FROM PilihanPartai where NIKPemilih = '" + NIK + "';";
+                        command = "SELECT * FROM PilihanPartai where NIKPemilih = '" + NIK + "'";
                         result = statemet.executeQuery(command);
                         if(!result.next()) /* dan jika belum memilih caleg */
                             valid = true;

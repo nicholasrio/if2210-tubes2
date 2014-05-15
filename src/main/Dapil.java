@@ -11,10 +11,21 @@ import java.util.List;
 
 public class Dapil {
     private int NoDapil;
-    private List<String>Kabupaten;
+    private List<String> daftarKabupaten;
     
     public Dapil(){
-        Kabupaten = new ArrayList<>();
+        daftarKabupaten = new ArrayList<>();
+    }
+    /**
+     * Menambahkan Dapil baru
+     * @param noDapil Nomor Dapil yang dimasukkan
+     * @param kabupaten Kabupaten yang termasuk dalam dapil
+     */
+    public Dapil(int noDapil, String kabupaten)
+    {
+        daftarKabupaten = new ArrayList<>();
+        NoDapil = noDapil;
+        daftarKabupaten.add(kabupaten);
     }
     
     public int getNoDapil()
@@ -24,6 +35,14 @@ public class Dapil {
     
     public List<String> getDaftarKabupaten()
     {
-        return Kabupaten;
+        return daftarKabupaten;
+    }
+    
+    public void addKabupaten(String kabupaten)
+    {
+        if(!daftarKabupaten.contains(kabupaten))
+        {
+            daftarKabupaten.add(kabupaten);
+        }
     }
 }

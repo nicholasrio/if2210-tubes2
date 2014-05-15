@@ -77,7 +77,7 @@ public class DaftarPilihan {
             koneksi.close();
             
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Error DaftarPilihan.java" + ex.getMessage());
         }
         
     }
