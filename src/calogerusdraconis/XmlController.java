@@ -40,7 +40,6 @@ public class XmlController {
 	public UserDragon LoadDragon(String name) throws Exception {
 		UserDragon retval = null;
 		try {
-
 			// Load XML and get root Node
 			SAXBuilder builder = new SAXBuilder();
 			File xmlFile = new File("calogerusSave.xml");
@@ -59,8 +58,7 @@ public class XmlController {
 
 				//check if name is equal
 				if (userDragon.getChildText("name").equals(name)) {
-					//System.out.println("Dragon Name : " + userDragon.getChildText("name"));
-
+					
 					// Make Dragon
 					retval = new UserDragon(
 							userDragon.getChildText("name"),
@@ -74,17 +72,17 @@ public class XmlController {
 							Integer.parseInt(userDragon.getChildText("level")),
 							Integer.parseInt(userDragon.getChildText("experience")),
 							userDragon.getChildText("password"),
-							Integer.parseInt(userDragon.getChildText("money")),
+							Float.parseFloat(userDragon.getChildText("money")),
 							Float.parseFloat(userDragon.getChildText("happiness"))
 					);
 
 					// Make Inventory
 					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
 					
-
 					ArrayList<Consumable> arr = new ArrayList<Consumable>();
 					for (Object anObj : invList) {
 						// TODO: get inventory for DRAGON
+						
 						Element node = (Element) anObj;
 						String s  = node.getText();
 
@@ -98,7 +96,7 @@ public class XmlController {
 		} catch (IOException | JDOMException io) {
 			System.out.println(io.getMessage());
 		}
-
+		
 		if (retval == null) {
 			throw new Exception("Cannot Find UserDragon");
 		} else {

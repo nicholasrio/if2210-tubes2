@@ -31,24 +31,57 @@ public class TerminalView implements View {
 
 	@Override
     public void UpdateScreen (UserDragon drg) {
-		ArrayList<Consumable> ac = drg.getFdInventory();
-		for (Consumable c : ac) {
-			System.out.println(c.getName());
-		}
+		System.out.println(drg.getName()+"'s Attribute: ");
+		System.out.println("Level: " + drg.getLevel());
+		System.out.println("Experience: " + drg.getExperience());
+		System.out.println("Happiness: " + drg.getHappiness());
+		System.out.println("Bladdr: " + drg.getBladder());
+		System.out.println("Thirst: " + drg.getThirst());
+		System.out.println("Health: " + drg.getHealth());
+		System.out.println("Health: " + drg.getMaxHealth());
+		System.out.println("Stamina: " + drg.getStamina());
+		System.out.println("MaxStamina: " + drg.getMaxStamina());
+		System.out.println("Money: " + drg.getMoney());
 	}
 
 	@Override
     public void UpdateScreen (Store str) {
+		for (Consumable c : str.getFdInventory()) {
+			System.out.println(c);
+			System.out.println();
+		}
     }
 
 	@Override
     public void UpdateScreen (UserDragon drg, Dragon enemy) {
+		
     }
 
 	@Override
     public void UpdateScreen (UserDragon drg, Event evnt) {
 		System.out.println(evnt.getMessage());
     }
+	
+	public void showMenu () {
+		System.out.println("Piliah menu: ");
+		System.out.println("1. See Attribute");
+		System.out.println("2. Entertain");
+		System.out.println("3. Rest");
+		System.out.println("4. Go to toilet");
+		System.out.println("5. Fight");
+		System.out.println("6. Train");
+		System.out.println("7. See Food Directory");
+		System.out.println("8. Go to Store");
+		System.out.println("9. Exit");
+	}
 
+	@Override
+	public void seeFoodDirectory(UserDragon drg) {
+		ArrayList<Consumable> ac = drg.getFdInventory();
+		for (Consumable c : ac) {
+			System.out.println(c.getName());
+		}
+	}
+	
 }
 
