@@ -1,5 +1,6 @@
 package engine.Scenes;
 import engine.*;
+import engine.DataStructure.GameData;
 import java.util.Scanner;
 
 /**
@@ -39,9 +40,10 @@ public class LevelMenu extends Scene
     @Override
     public void Update()
     {
-        System.out.print("Enter your choice (1 untuk ke level berikutnya,0 untuk ke level sebelumnya) : ");
-        Scanner sc = new Scanner(System.in);        
-        if (sc.nextInt()==1){
+        System.out.print("Enter your choice (1 untuk ke level berikutnya,0 untuk ke level sebelumnya, 2 untuk memilih level) : ");
+        Scanner sc = new Scanner(System.in);    
+        int input = sc.nextInt();
+        if (input==1){
             if (level<5){
                 level+=1;
                 height=55;
@@ -52,7 +54,7 @@ public class LevelMenu extends Scene
                 System.out.println("Tidak ada level diatas level 5!!");
             }
         }
-        else{
+        else if(input == 0){
             if (level>1){
                 height=55;
                 level-=1;
@@ -62,6 +64,13 @@ public class LevelMenu extends Scene
                 for (int i=0;i<60;i++) System.out.print(" ");
                 System.out.println("Tidak ada level dibawah level 1!!");
             }
+        }
+        else // input == 2
+        {
+            GameData.nowLevelPlayed = level;
+            System.out.println("Level Chosen : " + level);
+            Game.gameRunning = false;
+            //SceneManager.SwitchScene("GameMenu");
         }
         if (level==1){
             nama_lvl="INDONESIAN MAZE";

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <DatabasePlayer>
      <lastLogin>
-          <nama>Survey Corps</nama>
-          <score>250</score>
-          <levelUnlocked>8</levelUnlocked>
-          <achievementUnlocked>4</achievementUnlocked>
+          <nama>Timothy Pratama</nama>
+          <score>10</score>
+          <levelUnlocked>100</levelUnlocked>
+          <achievementUnlocked>20</achievementUnlocked>
      </lastLogin>
      <player id="0">
           <nama>dummy</nama>

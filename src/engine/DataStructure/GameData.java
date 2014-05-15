@@ -32,7 +32,8 @@ import org.xml.sax.SAXException;
 public class GameData {
     public static ArrayList<Player> dataPlayer = new ArrayList<>();
     public static ArrayList<Map> dataMap = new ArrayList<>();
-    public static Player lastLogin = new Player("Mikaza");
+    public static Player lastLogin = new Player("Mikaza"); //Default nya Mikaza, digunakan untuk testing load map.
+    public static int nowLevelPlayed; 
     
     /**
      * Reset dataPlayer dan dataMap
