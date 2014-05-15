@@ -26,6 +26,7 @@ public class MainMenu extends Scene
     private int width;
     private int status;
     private String[] players;
+    private int currentplayer;
     public MainMenu()
     {
         super("MainMenu");
@@ -36,17 +37,23 @@ public class MainMenu extends Scene
     {
         height = 57; //57 height of half full screen, 25 is standard cmd size full screen
         width = 80; // full width of standard cmd screen and half full screen cmd size
-        status = 0;     
+        status = 0;
+        currentplayer = 0;
         ReadPlayerNameXML();
     }
     
     @Override
     public void Update()
     {
-        Draw();
-        System.out.print("Enter your choice: ");
+        System.out.print("Enter your choice (0 for main menu): ");
         Scanner Sc = new Scanner(System.in);
-        status = Sc.nextInt();
+        if(status == 0) {
+            status = Sc.nextInt();
+        } else if(status == 2) {
+            status = 0;
+            int temp = Sc.nextInt();
+            if(temp != 0) currentplayer = temp-1;
+        }
     }
     
     @Override
@@ -54,11 +61,12 @@ public class MainMenu extends Scene
     {
        System.out.println();
        System.out.flush();
+       if (status == 5) System.exit(0);
        DrawHeader();
        if(status == 0) {
        DrawBody();
        } else if (status == 1) {
-           
+           System.out.println("NEW GAME STUB");
        }
        else if (status == 2) {
            DrawChange();
@@ -81,18 +89,25 @@ public class MainMenu extends Scene
     }
     
     private void DrawBody() {
-        String[] Body = new String[6];
-        Body[0] = "1 NEW GAME/CONTINUE GAME";
-        Body[1] = "2 CHANGE USER";
-        Body[2] = "3 ACHIEVEMENT";
-        Body[3] = "4 OPTION";
-        Body[4] = "5 EXIT";
-        Body[5] = "=";
+        String[] Body = new String[7];
+        Body[0] = "Welcome " + players[currentplayer];
+        Body[1] = "1 NEW GAME/CONTINUE GAME";
+        Body[2] = "2 CHANGE USER";
+        Body[3] = "3 ACHIEVEMENT";
+        Body[4] = "4 OPTION";
+        Body[5] = "5 EXIT";
+        Body[6] = "=";
         PrinterStringVertical(Body);
     }
     
     private void DrawChange() {
-        PrinterStringVertical(players);
+        String[] temp = new String[players.length+2];
+        temp[0] = "Pilih user : ";
+        temp[players.length+1] = "=";    
+        for(int i = 1; i <= players.length;i++) {
+            temp[i] = Integer.toString(i) + ". " + players[i-1];
+        }
+        PrinterStringVertical(temp);
     }
     
     private void PrinterString(String what, int mode) { /* mode = space scaling */
@@ -158,9 +173,7 @@ public class MainMenu extends Scene
  
 	NodeList nList = doc.getElementsByTagName("player");
  
-        players = new String[nList.getLength()+2];
-        players[0] = "Pilih user : ";
-        players[nList.getLength()+1] = "=";        
+        players = new String[nList.getLength()];
 	for (int temp = 0; temp < nList.getLength(); temp++) {
 		Node nNode = nList.item(temp);
 		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -170,7 +183,7 @@ public class MainMenu extends Scene
 			System.out.println("Score : " + eElement.getElementsByTagName("score").item(0).getTextContent());
 			System.out.println("Levelunlocked : " + eElement.getElementsByTagName("levelUnlocked").item(0).getTextContent());
 			System.out.println("Achievement unlocked : " + eElement.getElementsByTagName("achievementUnlocked").item(0).getTextContent());*/
-                        players[temp+1] = Integer.toString(Integer.valueOf(eElement.getAttribute("id"))+1) + ". " + eElement.getElementsByTagName("nama").item(0).getTextContent();
+                        players[temp] = eElement.getElementsByTagName("nama").item(0).getTextContent();
 		}
 	}
     } catch (Exception e) {
