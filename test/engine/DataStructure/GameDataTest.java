@@ -25,6 +25,7 @@ public class GameDataTest {
     @BeforeClass
     public static void setUpClass() {
         GameData.loadPlayer("player.xml");
+        GameData.loadMap();
     }
     
     @AfterClass
@@ -47,11 +48,27 @@ public class GameDataTest {
     }
 
     /**
+     * Test of loadMap method, of class GameData.
+     */
+    @Test
+    public void testloadMap()
+    {
+        System.out.println("testloadMap");
+        GameData.dataMap.clear();
+        System.out.println("Before Load");
+        System.out.println("Jumlah Map : " + GameData.getJumlahMap());
+        GameData.loadMap();
+        System.out.println("Setelah load map");
+        System.out.println("Jumlah Map : " + GameData.getJumlahMap());
+    }
+    
+    /**
      * Test of loadPlayer method, of class GameData.
      */
     @Test
     public void testloadPlayer()
     {
+        System.out.println("testloadPlayer");
         GameData.dataPlayer.clear();
         System.out.println("Before Load");
         GameData.printPlayer();

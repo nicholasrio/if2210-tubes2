@@ -1,5 +1,6 @@
 package engine.Scenes;
 import engine.*;
+import java.util.Scanner;
 
 /**
  *
@@ -25,33 +26,57 @@ public class LevelMenu extends Scene
     @Override
     public void Initialize()
     {
-        nama_klmpk="Cube Mazer";
-        judul="Level Menu";        
-        level=0;
-        height=56;
+        nama_klmpk="CUBE MAZER";
+        judul="LEVEL MENU";        
+        level=1;
+        nama_lvl="INDONESIAN MAZE";
+        height=55;
         width=168;        
         spacebetween=width/25;
-        space=((width)-(spacebetween*10)-10-4)/2;        
+        space=((width)-(spacebetween*10)-10-4)/2;         
     }
     
     @Override
     public void Update()
     {
-        if (level<5) level+=1;
-         if (level==1){
-            nama_lvl="Indonesian Maze";
+        System.out.print("Enter your choice (1 untuk ke level berikutnya,0 untuk ke level sebelumnya) : ");
+        Scanner sc = new Scanner(System.in);        
+        if (sc.nextInt()==1){
+            if (level<5){
+                level+=1;
+                height=55;
+            }
+            else{
+                height=54;
+                for (int i=0;i<60;i++) System.out.print(" ");
+                System.out.println("Tidak ada level diatas level 5!!");
+            }
+        }
+        else{
+            if (level>1){
+                height=55;
+                level-=1;
+            }            
+            else{
+                height=54;
+                for (int i=0;i<60;i++) System.out.print(" ");
+                System.out.println("Tidak ada level dibawah level 1!!");
+            }
+        }
+        if (level==1){
+            nama_lvl="INDONESIAN MAZE";
         }       
          else if (level==2){
-            nama_lvl="Dungeon Maze";
+            nama_lvl="DUNGEON MAZE";
         }
         else if (level==3){
-            nama_lvl="Fire Maze";
+            nama_lvl="FIRE MAZE";
         }
         else if (level==4){
-            nama_lvl="Egypt Maze";
+            nama_lvl="EGYPT MAZE";
         }
         else if (level==5){
-            nama_lvl="Alien Maze";
+            nama_lvl="ALIEN MAZE";
         }        
     }
     
@@ -74,12 +99,13 @@ public class LevelMenu extends Scene
         k+=1;
         
         //Print Blank Row
-        while (k<19){
+        while (k<5){
             PrintBR();
             k+=1;            
         }
         
         //Print Nama Kelompok
+        spacebetween=width/25;
         space=((width)-(spacebetween*10)-10-4)/2;
         System.out.print("||");
         for (int i=0;i<space;i++) System.out.print(" ");
@@ -108,13 +134,28 @@ public class LevelMenu extends Scene
         System.out.print("||");
         System.out.println(" ");
         k+=1;
+ 
+        //Print Blank Row
+        while (k<15){
+            PrintBR();
+            k+=1;            
+        }
+ 
+        //Print batas tengah        
+        System.out.print("||");
+        for (int i=0;i<width-4;i++) System.out.print("=");
+        System.out.println("||");
+        k++;
+        
         
         //Print Blank Row
-        PrintBR();
-        PrintBR();
-        k+=2;
+        while (k<28){
+            PrintBR();
+            k+=1;            
+        }
         
         //Print nama level
+        spacebetween=width/25;
         space=((width)-(spacebetween*nama_lvl.length())-nama_lvl.length()-4)/2;
         System.out.print("||");        
         for (int i=0;i<space;i++) System.out.print(" ");
@@ -138,6 +179,7 @@ public class LevelMenu extends Scene
         k+=2;
                
         //Print tingkat level
+        spacebetween=width/25;
         String str_level= "level " + level;      
         space=((width)-(spacebetween*str_level.length())-str_level.length()-4)/2;
         System.out.print("||");        
