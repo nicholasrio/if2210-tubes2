@@ -29,8 +29,8 @@ public class LevelMenu extends Scene
         judul="Level Menu";
         nama_lvl="Indonesian Maze";
         level=1;
-        height=30;
-        width=100;        
+        height=55;
+        width=170;        
         spacebetween=width/25;
         space=((width)-(spacebetween*10)-10-4)/2;        
     }
@@ -38,7 +38,7 @@ public class LevelMenu extends Scene
     @Override
     public void Update()
     {
-        level+=1;
+        if (level<5) level+=1;
         if (level==2){
             nama_lvl="Dungeon Maze";
         }
@@ -57,10 +57,14 @@ public class LevelMenu extends Scene
     //punya kevin
     public void Draw()
     {
-        for (int i=0;i<100;i++){
+        //Print Batas atas
+        for (int i=0;i<width;i++){
             System.out.print("=");
         }
         System.out.println();
+        
+        //Print Nama Kelompok
+        space=((width)-(spacebetween*10)-10-4)/2;
         System.out.print("||");
         for (int i=0;i<space;i++) System.out.print(" ");
         for (int j=0;j<nama_klmpk.length();j++){
@@ -70,6 +74,7 @@ public class LevelMenu extends Scene
         for (int i=0;i<space;i++) System.out.print(" ");
         System.out.print("||");
         System.out.println(" ");
+        //System.out.println("Panjang nama klompok" + nama_klmpk.length());
         
         //Print judul
         System.out.print("||");
@@ -81,6 +86,7 @@ public class LevelMenu extends Scene
         for (int i=0;i<space;i++) System.out.print(" ");
         System.out.print("||");
         System.out.println(" ");
+        //System.out.println("Pjg judul " + judul.length());
         
         //Print nama level
         space=((width)-(spacebetween*nama_lvl.length())-nama_lvl.length()-4)/2;
@@ -119,20 +125,20 @@ public class LevelMenu extends Scene
         
         
         System.out.print("||");
-        for (int i=0;i<96;i++) System.out.print(" ");
+        for (int i=0;i<width-4;i++) System.out.print(" ");
         System.out.println("||");
         
         //Print tanda kiri dan kanan
         System.out.print("||  <");
-        for (int i=0;i<90;i++) System.out.print(" ");
+        for (int i=0;i<width-10;i++) System.out.print(" ");
         System.out.println(">  ||");
         
-        for (int j=0;j<5;j++){
+        for (int j=0;j<height-6;j++){
             System.out.print("||");
-            for (int i=0;i<96;i++) System.out.print(" ");
+            for (int i=0;i<width-4;i++) System.out.print(" ");
             System.out.println("||");
         }
-        for (int i=0;i<100;i++) System.out.print("=");
+        for (int i=0;i<width;i++) System.out.print("=");
         System.out.println("");
     }
 }

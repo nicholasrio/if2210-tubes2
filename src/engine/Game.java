@@ -35,6 +35,11 @@ public class Game
         }
         PrepareScenes();
         gameLoop();
+        /*LevelMenu l=new LevelMenu();        
+        l.Initialize();
+        l.Draw();
+        l.Update();
+        l.Draw();*/
     }
     
     private static void prepareFrame()

@@ -15,6 +15,7 @@ public class TeleporterItem extends GameItem{
     
     public TeleporterItem(Location L){
         super("teleporter");
+        arrivalLocation = L;
     }
     
     public Location getArrivalLocation(){
