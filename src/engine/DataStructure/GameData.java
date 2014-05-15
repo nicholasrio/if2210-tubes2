@@ -85,7 +85,7 @@ public class GameData {
             try 
             {
                 throw new Exception("User : " + nama + " does not exist.");
-            } 
+        }
             catch (Exception ex) 
             {
                 Logger.getLogger(GameData.class.getName()).log(Level.SEVERE, null, ex);
@@ -206,9 +206,9 @@ public class GameData {
     
     public static  void main (String[] args)
     {
-        /*GameData.dataPlayer.clear();
+        GameData.dataPlayer.clear();
         GameData.loadPlayer("player.xml");
-        GameData.printPlayer();*/
+        GameData.printPlayer();
     }
 }
 

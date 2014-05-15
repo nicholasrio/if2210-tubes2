@@ -25,7 +25,7 @@ public class MainMenu extends Scene
     @Override
     public void Initialize()
     {
-        height = 12; //80 height of half full screen, 12 is standard cmd size full screen
+        height = 57; //57 height of half full screen, 25 is standard cmd size full screen
         width = 80; // full width of standard cmd screen and half full screen cmd size
         status = 0;       
     }
@@ -50,9 +50,15 @@ public class MainMenu extends Scene
     
     private void DrawHeader() {
         PrinterString("=",1);
+        PrinterString("", 1);
         PrinterString("CUBE MAZER",1);
         PrinterString("",1);
+       if (height > 25) {
+           PrinterString("",1);
+           PrinterString("",1);
+       }
         PrinterString("MAIN MENU",1);
+        PrinterString("",1);
         PrinterString("=",1);
     }
     
@@ -71,7 +77,7 @@ public class MainMenu extends Scene
         if (what.equals("=")) {
             System.out.print("||");
             for(int i = 0; i < (width-4);i++) System.out.print("=");
-            System.out.println("||");
+            System.out.print("||");
         } else {
             int spaces, spacebetween;
             if(mode == 1) spacebetween = width / 20;
@@ -99,15 +105,20 @@ public class MainMenu extends Scene
             } else {
                 System.out.print(" ||");
             }
-            System.out.println();
         }
     }
     
     private void PrinterStringVertical(String[] what) {
         int entersbetween;
-        entersbetween = (height / 24);
-        for (int i = 0; i < what.length;i++) {
-            if(i == what.length-1) entersbetween--;
+        if (height > 25) entersbetween = (height - (5 + what.length)) / (what.length);
+        else entersbetween = 2;
+        for (int i = 0 ; i < what.length ; i++) {
+            if(i == what.length-1 || i == 0) {
+                entersbetween--;
+            } else {
+                if (height > 25) entersbetween = (height - (5 + what.length)) / (what.length);
+                else entersbetween = 2;
+            }
             for (int j = 0; j < entersbetween; j++) PrinterString("",0);
             PrinterString(what[i], 0);
         }
