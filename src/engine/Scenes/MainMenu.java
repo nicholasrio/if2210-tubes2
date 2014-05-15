@@ -35,7 +35,7 @@ public class MainMenu extends Scene
     @Override
     public void Initialize()
     {
-        height = 57; //57 height of half full screen, 25 is standard cmd size full screen
+        height = 25; //57 height of half full screen, 25 is standard cmd size full screen
         width = 80; // full width of standard cmd screen and half full screen cmd size
         status = 0;
         currentplayer = 0;
@@ -54,6 +54,14 @@ public class MainMenu extends Scene
             int temp = Sc.nextInt();
             if(temp != 0) currentplayer = temp-1;
         }
+        else if (status == 4) {
+            status = 0;
+            int temp = Sc.nextInt();
+            if(temp != 0) {
+                if(temp == 1) height = 25;
+                if(temp == 2) height = 57;
+            }
+        }
     }
     
     @Override
@@ -70,6 +78,12 @@ public class MainMenu extends Scene
        }
        else if (status == 2) {
            DrawChange();
+       }
+       else if (status == 3) {
+           System.out.println("ACHIEVEMENT STUB");
+       }
+       else if (status == 4) {
+           DrawOption();
        }
        
     }
@@ -110,6 +124,17 @@ public class MainMenu extends Scene
         PrinterStringVertical(temp);
     }
     
+    private void DrawOption() {
+        String[] temp = new String[6];
+        temp[0] = "Choose Resolution";
+        temp[1] = "";
+        temp[2] = "1. Standard cmd size";
+        temp[3] = "";
+        temp[4] = "2. Maximized cmd size";
+        temp[5] = "=";
+        PrinterStringVertical(temp);
+    }
+    
     private void PrinterString(String what, int mode) { /* mode = space scaling */
         if (what.equals("=")) {
             System.out.print("||");
@@ -147,14 +172,12 @@ public class MainMenu extends Scene
     
     private void PrinterStringVertical(String[] what) {
         int entersbetween;
-        if (height > 25) entersbetween = (height - (5 + what.length)) / (what.length);
-        else entersbetween = 2;
+        entersbetween = (height - (5 + what.length)) / (what.length);
         for (int i = 0 ; i < what.length ; i++) {
             if(i == what.length-1 || i == 0) {
                 entersbetween--;
             } else {
-                if (height > 25) entersbetween = (height - (5 + what.length)) / (what.length);
-                else entersbetween = 2;
+                entersbetween = (height - (5 + what.length)) / (what.length);
             }
             for (int j = 0; j < entersbetween; j++) PrinterString("",0);
             PrinterString(what[i], 0);
