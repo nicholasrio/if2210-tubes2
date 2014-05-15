@@ -1,0 +1,4 @@
+bit pertama monster gerak ke kanan
+bit kedua monster gerak ke atas
+bit ketiga monster gerak ke kiri
+bit keempat monster gerak ke bawah
