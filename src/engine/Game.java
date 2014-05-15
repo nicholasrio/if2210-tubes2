@@ -27,7 +27,7 @@ public class Game
         SceneManager.AddScene(new MainMenu());
         SceneManager.AddScene(new LevelMenu());
         SceneManager.AddScene(new GameMenu());
-        SceneManager.SwitchScene("GameMenu"); 
+        SceneManager.SwitchScene("MainMenu"); 
     }
     
     public static void gameLoop()
