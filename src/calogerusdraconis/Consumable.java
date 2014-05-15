@@ -153,5 +153,18 @@ public final class Consumable {
 	 */
 	public float getHappinessValue() {
 		return happiness;
-	} 
+	}
+	
+	@Override
+	public String toString() {
+		return("Nama : " + getName() + '\n' +
+			   "Harga : " + getCost() + '\n' + 
+			   "Happiness : " + getHappinessValue() + '\n' +
+			   "Hunger : " + getHungerValue() + '\n' +
+			   "Thirst : " + getThirstValue() + '\n' +
+			   "Health : " + getHealthValue() + '\n' +
+			   "MaxHealth : " + getMaxHealthValue() + '\n' +
+			   "Stamina : " + getStaminaValue() + '\n' +
+			   "MaxStamina : " + getMaxStaminaValue());
+	}
 }
