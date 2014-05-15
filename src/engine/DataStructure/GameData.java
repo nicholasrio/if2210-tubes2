@@ -160,7 +160,7 @@ public class GameData {
     
     public static void loadPlayer (String filename)
     {
-        try 
+        /*try 
         {
             dataPlayer.clear();
             int i;
@@ -193,7 +193,7 @@ public class GameData {
             Logger.getLogger(GameData.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(GameData.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
     
     public static void printPlayer()
@@ -206,9 +206,9 @@ public class GameData {
     
     public static  void main (String[] args)
     {
-        GameData.dataPlayer.clear();
+        /*GameData.dataPlayer.clear();
         GameData.loadPlayer("player.xml");
-        GameData.printPlayer();
+        GameData.printPlayer();*/
     }
 }
 
