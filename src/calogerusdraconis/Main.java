@@ -70,6 +70,7 @@ public class Main {
 	public void loadGame() {
 	}
 
+	
 	/**
 	 * Getter Dragon
 	 * @return Dragon of user

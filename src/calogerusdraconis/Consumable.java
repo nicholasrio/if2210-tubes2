@@ -155,4 +155,3 @@ public final class Consumable {
 		return happiness;
 	} 
 }
-
