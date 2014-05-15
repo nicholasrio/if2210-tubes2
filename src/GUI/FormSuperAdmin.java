@@ -17,6 +17,25 @@ public class FormSuperAdmin extends javax.swing.JFrame{
      */
     public FormSuperAdmin() {
         initComponents();
+        /* Kalo mau ngeload daftar username yang udah ada di database, dan mau ditampilin ke tabel, pake ini.
+            Edit mana yang mau dimasukin ke tabel
+        try
+        {
+            daftaradmin = new ArrayList<>();
+            Connection koneksi = KoneksiDatabase.getKoneksi();
+            Statement statement = koneksi.createStatement();
+            String Command = "select * from Admin";
+            ResultSet result = statement.executeQuery(Command);
+            while(result.next())
+            {
+                daftaradmin.add(new Admin(result.getString("Username"), 
+                                            result.getString("Password"), 
+                                            result.getString("Peran").equals("1")));
+            }
+        }
+        catch (SQLException ex) {
+            System.out.println("Error DaftarAdmin.java" + ex.getMessage());
+        } */
     }
 
     public void SaveToDatabase() {

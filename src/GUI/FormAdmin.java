@@ -24,9 +24,6 @@ public class FormAdmin extends javax.swing.JFrame{
         initComponents();
     }
     
-    public void SaveToDatabase(){
-    
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

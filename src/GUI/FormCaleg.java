@@ -19,7 +19,31 @@ public class FormCaleg extends javax.swing.JFrame {
         initComponents();
     }
     
-    
+    private void loadData()
+    {
+        /* edit dari sini
+        try
+        {
+            Connection koneksi = KoneksiDatabase.getKoneksi();
+            Statement statement = koneksi.createStatement();
+            
+            String commandGetCaleg = "select * from Caleg";
+            ResultSet resultCaleg = statement.executeQuery(commandGetCaleg);
+            while(resultCaleg.next())
+            {
+                daftarCaleg.add(new Caleg(resultCaleg.getString("NIKCaleg"), 
+                                            resultCaleg.getString("NamaPartai"), 
+                                            resultCaleg.getString("TrackRecord"), 
+                                            Integer.parseInt(resultCaleg.getString("NoDapil")), 
+                                            resultCaleg.getString("Lingkup")));
+            }
+            koneksi.close();
+        }
+        catch (SQLException ex) {
+            System.out.println("Error CalonTerpilih.java" + ex.getMessage());
+        }
+        */
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

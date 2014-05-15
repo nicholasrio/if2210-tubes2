@@ -5,12 +5,14 @@
  */
 
 package GUI;
+import Tools.KoneksiDatabase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
+import main.Dapil;
 import main.DataDapil;
 /**
  *
@@ -32,31 +34,31 @@ public class FormDapil extends javax.swing.JFrame {
         loadData();
     }
     
-    public void loadData(){
+    private void loadData(){
      model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
         try
         {
-            Connection c = DataDapil.getKoneksi();
-            Statement s = c.createStatement();
+            Connection koneksi = KoneksiDatabase.getKoneksi();
+            Statement statement = koneksi.createStatement();
             
-            String sql = "SELECT * FROM DAPIL";
-            ResultSet r = s.executeQuery(sql);
+            String command = "SELECT * FROM Kabupaten";
+            ResultSet result = statement.executeQuery(command);
             
-            while (r.next())
+            while (result.next())
             {
                 Object [] o = new Object[5];
-                o[0] = r.getString("No. Dapil");
-                o[1] = r.getString("Kota/Kabupaten");
+                o[0] = result.getString("No_Dapil");
+                o[1] = result.getString("Nama_Kabupaten");
                 
                 model.addRow(o);
             }
-            r.close();
-            s.close();
+            result.close();
+            statement.close();
         }
         catch (SQLException e)
         {
-            System.out.println("Terjadi eror");
+            System.out.println("Terjadi eror FormDapil.java: " + e.getMessage());
         }
     }
     
@@ -242,7 +244,8 @@ public class FormDapil extends javax.swing.JFrame {
             loadData();
         }
     }//GEN-LAST:event_TambahActionPerformed
-private void TabelDapilMouseClicked(java.awt.event.MouseEvent evt) {                                            
+    
+    private void TabelDapilMouseClicked(java.awt.event.MouseEvent evt) {                                            
         // TODO add your handling code here:
         int i = TabelDapil.getSelectedRow();
         if(i == -1){

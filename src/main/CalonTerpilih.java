@@ -9,7 +9,6 @@ package main;
 import Tools.KoneksiDatabase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -27,47 +26,6 @@ public class CalonTerpilih {
     {
         daerahPemilihan = new ArrayList<>();
         daftarCaleg = new ArrayList<>();
-        try
-        {
-            /* Kalo ada tabel yang nampilin Calon terpilih, edit database ini dan langsung masukkan nilainya ke tabel */
-            Connection koneksi = KoneksiDatabase.getKoneksi();
-            Statement statement = koneksi.createStatement();
-            /* load dapil */
-            boolean ketemu = false;
-            String CommandGetDapil = "select * from Kabupaten";
-            ResultSet result = statement.executeQuery(CommandGetDapil);
-            while(result.next())
-            {
-                for(Dapil dapil : daerahPemilihan)
-                {
-                    if(dapil.getNoDapil() == Integer.parseInt(result.getString("No_Dapil")))
-                    {
-                        ketemu = true;
-                        dapil.addKabupaten(result.getString("Nama_Kabupaten"));
-                    }
-                }
-                if(!ketemu)
-                {
-                    daerahPemilihan.add(new Dapil(Integer.parseInt(result.getString("No_Dapil")),
-                                                                result.getString("Nama_Kabupaten")));
-                }
-            }
-            /* load Caleg */
-            String commandGetCaleg = "select * from Caleg";
-            ResultSet resultCaleg = statement.executeQuery(commandGetCaleg);
-            while(resultCaleg.next())
-            {
-                daftarCaleg.add(new Caleg(resultCaleg.getString("NIKCaleg"), 
-                                            resultCaleg.getString("NamaPartai"), 
-                                            resultCaleg.getString("TrackRecord"), 
-                                            Integer.parseInt(resultCaleg.getString("NoDapil")), 
-                                            resultCaleg.getString("Lingkup")));
-            }
-            koneksi.close();
-        }
-        catch (SQLException ex) {
-            System.out.println("Error CalonTerpilih.java" + ex.getMessage());
-        }
     }
     public void AddCaleg(String NIK, String Partai,String History, int _NoDapil, String lingkup){
         //Jangan lupa pengecekan udah ada Caleg apa belum
