@@ -7,7 +7,7 @@
 package Admin;
 
 import java.sql.SQLException;
-
+import java.util.List;
 import mysql.SqlStatement;
 
 
@@ -50,25 +50,35 @@ public class Administrator {
         return name;
     }
     
-    /* Method yang digunakan untuk mengecek apakah sebuah _NIM sudah ada dalam 
+    /**
+     * Method yang digunakan untuk mengecek apakah sebuah _NIM sudah ada dalam 
      * database admin atau belum.
      * Mengembalikan true jika ada, false jika tidak ada.
+     * @param _NIM
+     * @return 
+     * @throws java.sql.SQLException 
      */
     public boolean isUserExist(int _NIM) throws SQLException{
         SqlStatement s = new SqlStatement();
         return s.IsAdminExist(_NIM);
     }
     
-    /* untuk mengecek apakah password dari username tertentu valid/tidak.
+    /**
+     * untuk mengecek apakah password dari username tertentu valid/tidak.
      * Mengembalikan true jika sesuai. False jika tidak sesuai.
+     * @param _password
+     * @return 
+     * @throws java.sql.SQLException
      */
     public boolean isPasswordMatch(String _password) throws SQLException{
         SqlStatement s = new SqlStatement();
         return s.isPassword(NIM, _password);
     }
     
-    /* Panggil dulu setter NIM dan password sebelum memanggil method ini
+    /**
+     * Panggil dulu setter NIM dan password sebelum memanggil method ini
      * Digunakan untuk mendaftarkan admin pada database admin
+     * @throws java.sql.SQLException
      */
     public void Register() throws SQLException{
         SqlStatement s =new SqlStatement();
@@ -81,5 +91,10 @@ public class Administrator {
             SqlStatement s = new SqlStatement();
             s.deleteAdmin(_NIM);
         }
+    }
+    
+    /* Method untuk mendapatkan data admin */
+    public List<String[]> getAdmins() throws SQLException{
+        return new SqlStatement().select_admin();
     }
 }
