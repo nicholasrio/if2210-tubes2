@@ -49,19 +49,19 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
 	/** 
 	 * Constructor UserDragon
-	 * @param name	Name of UserDragon
-	 * @param health	Health of UserDragon
-	 * @param maxHealth 
-	 * @param stamina
-	 * @param maxStamina
-	 * @param thirst
-	 * @param bladder
-	 * @param hunger
-	 * @param level
-	 * @param experience
-	 * @param password
-	 * @param money
-	 * @param happiness 
+	 * @param name			Name of Dragon
+	 * @param health		Health point of Dragon
+	 * @param maxHealth		maxHealth of Dragon
+	 * @param stamina		Stamina point of Dragon
+	 * @param maxStamina	maxStamina of Dragon
+	 * @param thirst		Thirst point of Dragon
+	 * @param bladder		Bladder point of Dragon
+	 * @param hunger		Hunger point of Dragon
+	 * @param level			Level of Dragon
+	 * @param experience	Experience point of Dragon
+	 * @param password		Password of Dragon
+	 * @param money			Money of Dragon
+	 * @param happiness		Happiness point of Dragon
 	 */
     public UserDragon (String name, float health, float maxHealth, float stamina, float maxStamina, float thirst, float bladder, float hunger, int level, int experience, String password, float money, float happiness) {
         super(name, health, stamina, thirst, bladder, hunger, level, experience);
@@ -198,14 +198,26 @@ public class UserDragon extends Dragon {
 		}
 	}
 	
+	/**
+	 * Getter maxHealth
+	 * @return maxHealth of Dragon
+	 */
     public float getMaxHealth() {
         return maxHealth;
     }
     
+	/**
+	 * Getter maxStamina
+	 * @return maxStamina of Dragon
+	 */
     public float getMaxStamina() {
         return maxStamina;
     }
 
+	/**
+	 * Getter inventory
+	 * @return inventory of Dragon
+	 */
     public ArrayList<Consumable> getFdInventory () {
         return fdInventory;
     }
@@ -214,9 +226,10 @@ public class UserDragon extends Dragon {
 		fdInventory = fd;
 	}
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.DE5979F6-6507-47F8-D0DB-38CDBF826BF7]
-    // </editor-fold> 
+	/**
+	 * Getter Happiness
+	 * @return happiness point of Dragon
+	 */
     public float getHappiness () {
         return happiness;
     }
@@ -224,6 +237,10 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.6DDA13A0-CBDF-5386-53C4-B3572DA123D1]
     // </editor-fold> 
+	/**
+	 * Setter Happiness
+	 * @param val new happiness point of Dragon
+	 */
     public void setHappiness (float val) {
         this.happiness = val;
     }
@@ -231,6 +248,10 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.FF2F5803-9362-8956-4285-607F8311B732]
     // </editor-fold> 
+	/**
+	 * Getter Money
+	 * @return money of Dragon
+	 */
     public float getMoney () {
         return money;
     }
@@ -238,6 +259,10 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.94B86C97-726A-A571-226A-DE3EC1EF1BB5]
     // </editor-fold> 
+	/**
+	 * Setter Money
+	 * @param val new money of Dragon
+	 */
     public void setMoney (float val) {
         this.money = val;
     }
@@ -245,6 +270,10 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.9C65A126-D740-7A30-3143-471B8151D021]
     // </editor-fold> 
+	/**
+	 * Getter Password
+	 * @return password of Dragon
+	 */
     public String getPassword () {
         return password;
     }
@@ -252,6 +281,10 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.B85B65E8-3F7D-5A51-03F9-BE56ECA9662D]
     // </editor-fold> 
+	/**
+	 * Setter Password
+	 * @param val new password of Dragon
+	 */
     public void setPassword (String val) {
         this.password = val;
     }
@@ -259,6 +292,11 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.2FA42178-E36A-15BE-3646-94D71EAC0289]
     // </editor-fold> 
+	/**
+	 * Memberi Consumable yang sudah dibeli ke Dragon
+	 * @param fd Consumable yang akan diberikan ke Dragon
+	 * @return Event memberi Consumable selesai
+	 */
     public Event useConsumable (Consumable fd) {
 		/* Prekondisi : fd sudah ada di barang karena dipilih dari fd */
 		tambahHealth(fd.getHealthValue());
@@ -278,9 +316,9 @@ public class UserDragon extends Dragon {
     // #[regen=yes,id=DCE.0929F36F-FC07-E055-0FD8-118CC54E9595]
     // </editor-fold> 
 	/**
-	 * Memberi consumable ke Dragon
-	 * @param what Consumable yang akan diberikan
-	 * @return 
+	 * Membeli Consumable dari store
+	 * @param what Consumable yang akan dibeli
+	 * @return Event beli Consumable selesai
 	 * @throws Exception Uang tidak cukup
 	 */
     public Event addConsumable (Consumable what) throws Exception {
@@ -289,6 +327,9 @@ public class UserDragon extends Dragon {
 		return null;
     }
     
+	/**
+	 * 
+	 */
     public void sebelumExit() {
         th.interrupt();
     }
@@ -360,7 +401,7 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
     /**
 	 * Bertarung dengan random Dragon
-	 * @return 
+	 * @return Event fight selesai
 	 */
     public Event fight () {
         
@@ -406,7 +447,7 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
 	/**
 	 * Mengajak Dragon berlatih
-	 * @return 
+	 * @return Event train selesai
 	 */
     public Event train () {
 		try {
@@ -428,7 +469,7 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
 	/**
 	 * Mengajak Dragon bermain
-	 * @return 
+	 * @return Event entertain selesai
 	 */
     public Event entertain () {
         try {
@@ -447,7 +488,7 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
 	/**
 	 * Menyuruh Dragon tidur
-	 * @return 
+	 * @return Event rest selesai
 	 */
     public Event rest () {
         try {
@@ -467,7 +508,7 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
 	/**
 	 * Menyuruh Dragon pergi ke toilet
-	 * @return 
+	 * @return Event toilet selesai 
 	 */
     public Event toToilet () {
         try {

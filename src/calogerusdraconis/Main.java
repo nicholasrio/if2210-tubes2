@@ -40,16 +40,31 @@ public class Main {
 		ud.sebelumExit();
 	}
 
+	/**
+	 * 
+	 */
 	public void newGame() {
 	}
 
+	/**
+	 * 
+	 */
 	public void loadGame() {
 	}
+
+	/**
+	 * Getter Dragon
+	 * @return Dragon of user
+	 */
 
 	public Dragon getDraco() {
 		return draco;
 	}
 
+	/**
+	 * Setter Dragon
+	 * @param val new Dragon of User
+	 */
 	public void setDraco(Dragon val) {
 		this.draco = val;
 	}

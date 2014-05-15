@@ -33,6 +33,19 @@ public final class Consumable {
 	private final float maxStamina;
 	private final float happiness;
 	
+	/**
+	 * Constructor Consumable
+	 * @param name		Name of Consumable
+	 * @param img		Image path of Consumable
+	 * @param health	Health point of Consumable
+	 * @param thirst	Thirst point of Consumable
+	 * @param hunger	Hunger point of Consumable
+	 * @param cost		Cost of Consumable
+	 * @param stamina	Stamina point of Consumable
+	 * @param maxHealth maxHealth point of Consumable
+	 * @param maxStamina maxStamina point of Consumable
+	 * @param happiness Happiness point of Consumable
+	 */
     public Consumable (String name, String img, float health, float thirst, float hunger, float cost, float stamina, float maxHealth, float maxStamina, float happiness) {
         this.name = name;
         this.img = img;
@@ -45,51 +58,99 @@ public final class Consumable {
 		this.maxStamina = maxStamina;
 		this.happiness = happiness;
 	}
-
+	
+	/**
+	 * Getter Image path
+	 * @return image path of consumable
+	 */
     public String getImg () {
         return img;
     }
 
+	/**
+	 * Setter Image path
+	 * @param val new image path of Consumable
+	 */
     public void setImg (String val) {
         this.img = val;
     }
-
+	
+	/**
+	 * Getter Name
+	 * @return name of Consumable
+	 */
     public String getName () {
         return name;
     }
 	
+	/**
+	 * Setter Name
+	 * @param val new name of Consumable
+	 */
     public void setName (String val) {
         this.name = val;
     }
 	
+	/**
+	 * Getter Health Value
+	 * @return health point of Consumable
+	 */
 	public float getHealthValue() {
 		return health;
 	}
 	
+	/**
+	 * Getter Thirst Value
+	 * @return thirst point of Consumable
+	 */
 	public float getThirstValue() {
 		return thirst;
 	}
 	
+	/**
+	 * Getter Hunger Value
+	 * @return hunger point of Consumable
+	 */
 	public float getHungerValue() {
 		return hunger;
 	}
 	
+	/**
+	 * Getter Cost
+	 * @return cost of Consumable
+	 */
 	public float getCost() {
 		return cost;
 	}
 	
+	/**
+	 * Getter Stamina Value
+	 * @return stamina point of Consumable
+	 */
 	public float getStaminaValue() {
 		return stamina;
 	}
 	
+	/**
+	 * Getter maxHealth Value
+	 * @return maxHealth point of Consumable
+	 */
 	public float getMaxHealthValue() {
 		return maxHealth;
 	}
 	
+	/**
+	 * Getter maxStamina Value
+	 * @return maxStamina point of Consumable
+	 */
 	public float getMaxStaminaValue() {
 		return maxStamina;
 	}
 	
+	/**
+	 * Getter Happiness Value
+	 * @return happiness point of Consumable
+	 */
 	public float getHappinessValue() {
 		return happiness;
 	} 

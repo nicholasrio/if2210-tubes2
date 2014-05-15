@@ -34,6 +34,9 @@ public class Store {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.0162CBAA-064B-21DC-586A-5086BCF89195]
     // </editor-fold> 
+	/**
+	 * Constructor Store
+	 */
     private Store () {
 		fdInventory = new ArrayList<>();
 		fdInventory.add(new Consumable("first-aid","",200,0,0,300,0,0,0,0));
@@ -56,6 +59,10 @@ public class Store {
 		fdInventory.add(new Consumable("pill","",30,0,-30,250,30,0,0,-30));
 	}
 	
+	/**
+	 * Getter Instance
+	 * @return store 
+	 */
 	public static Store getInstance() {
 		return s;
 	}
@@ -63,6 +70,10 @@ public class Store {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.5BA2A08B-741C-A0B6-B5B5-84388C3CA7EC]
     // </editor-fold> 
+	/**
+	 * Getter inventory
+	 * @return array inventory
+	 */
     public ArrayList<Consumable> getFdInventory () {
         return fdInventory;
     }
@@ -70,6 +81,10 @@ public class Store {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,regenBody=yes,id=DCE.4AC594BD-9B48-8604-6DC2-329B93CE310C]
     // </editor-fold> 
+	/**
+	 * Setter inventory
+	 * @param val new inventory of Store
+	 */
     public void setFdInventory (ArrayList<Consumable> val) {
         this.fdInventory = val;
     }
@@ -77,6 +92,11 @@ public class Store {
 	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.51BC2E63-3236-4A18-2895-B470C93E454E]
     // </editor-fold> 
+	/**
+	 * Membeli Consumable dari Store
+	 * @param arrLoc posisi Consumable yang akan dibeli
+	 * @return Consumable yang dibeli
+	 */
     public Consumable buy (int arrLoc) {
         return fdInventory.get(arrLoc);
     }
