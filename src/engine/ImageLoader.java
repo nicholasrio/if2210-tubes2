@@ -32,6 +32,7 @@ public class ImageLoader extends JPanel
     {
         allImages.add(loadImage("Image/title.png"));
         allImages.add(loadImage("Image/MainMenu/mainmenu_bg.png"));
+        allImages.add(loadImage("Image/MainMenu/newgame.png"));
     }
     
     public static Image getImage(String imgName)
@@ -43,6 +44,10 @@ public class ImageLoader extends JPanel
         else if ("mainmenu_bg".equalsIgnoreCase(imgName))
         {
             return allImages.get(1);
+        }
+        else if ("newgame".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(2);
         }
         return null;
     }

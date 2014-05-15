@@ -36,7 +36,7 @@ public class AchievementMenuGUI extends Scene
     public void Initialize()
     {
         gameFrame.getContentPane().removeAll();
-        gameFrame.getContentPane().add(new AchievementMenuGUI());
+        gameFrame.getContentPane().add(this);
     }
     
     @Override

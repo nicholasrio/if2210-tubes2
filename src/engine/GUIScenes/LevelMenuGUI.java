@@ -42,7 +42,7 @@ public class LevelMenuGUI extends Scene
     public void Initialize()
     {
         gameFrame.getContentPane().removeAll();
-        gameFrame.getContentPane().add(new LevelMenuGUI());
+        gameFrame.getContentPane().add(this);
         this.LoadContent();
     }
     
