@@ -18,7 +18,13 @@ import java.net.URL;
  * @author yafithekid
  */
 public class CharacterCache {
+    /**
+     * contains unique character. need to be cloned to get instance.
+     */
     public static HashMap<String,Character> characterCache = new HashMap<>();
+    /**
+     * the image related to the character.
+     */
     public static HashMap<String,BufferedImage> image = new HashMap<>();
     
     private CharacterCache() { }

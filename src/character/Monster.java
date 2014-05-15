@@ -21,38 +21,30 @@ public class Monster extends Character implements Recoverable,Fightable{
 
     @Override
     public boolean isDead() {
-        return this.getCurrentHealth() < 0;
+        return this.getCurrentHealth() <= 0;
     }
 
     @Override
     public boolean isAlive() {
         return !this.isDead();
     }
-
+    
+    
     @Override
-    public void doDamageCalculation(int damage) {
-        this.addCurrentHealth(-damage);
+    public int getNetDamage(int damage){
+        int result = damage - this.getDefensePoint();
+        if (result < 0) result = 0;
+        return result;
+    }
+    
+    @Override
+    public void doAbsorbDamage(int damage) {
+        this.addCurrentHealth(-this.getNetDamage(damage));
     }
 
     @Override
     public void doAttack(Fightable fight) {
-        fight.doDamageCalculation(fight.getAttackPoint());
-    }
-    
-    //implementasi interface Recoverable
-    @Override
-    public void addCurrentHealth(int x){
-        this._currentHealth += x;
-        if (this._currentHealth > this._maxHealth) {
-            this._currentHealth = this._maxHealth;
-        }
-    }
-    @Override
-    public void addCurrentMana(int x){
-        this._currentMana += x;
-        if (this._currentMana > this._currentMana) {
-            this._currentMana = this._maxMana;
-        }
+        fight.doAbsorbDamage(this.getAttackPoint());
     }
 
 }
