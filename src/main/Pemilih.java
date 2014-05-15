@@ -28,7 +28,7 @@ public class Pemilih {
         boolean valid = false;
         try {
             Statement statemet = koneksi.createStatement();
-            String command = "SELECT * FROM Pemilih where NIKPemilih = '" + NIK + "';";
+            String command = "SELECT * FROM Pemilih where NIKPemilih = '" + NIK + "'";
             ResultSet result = statemet.executeQuery(command);
             while (result.next())
             {

@@ -36,7 +36,7 @@ public class Admin {
         boolean valid = false;
         try {
             Statement statemet = koneksi.createStatement();
-            String command = "SELECT * FROM Admin where username = '" + Username + "';";
+            String command = "SELECT * FROM Admin where username = '" + Username + "'";
             ResultSet result = statemet.executeQuery(command);
             /* Jika username terdaftar di database */
             if(result.next())
