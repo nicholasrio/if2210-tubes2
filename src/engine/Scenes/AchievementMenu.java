@@ -5,23 +5,23 @@
  */
 
 package engine.Scenes;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import engine.*;
 import static engine.Game.gameFrame;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 /**
  *
  * @author Tony
  */
-public class GameMenu extends Scene
+public class AchievementMenu extends Scene
 {
     private static int pos = 0;
     
-    public GameMenu()
+    public AchievementMenu()
     {
-        super("GameMenu");
+        super("AchievementMenu");
     }
     
     @Override
@@ -30,21 +30,17 @@ public class GameMenu extends Scene
         if (Game.mode == 2)
         {
             gameFrame.getContentPane().removeAll();
-            gameFrame.getContentPane().add(new GameMenu());
+            gameFrame.getContentPane().add(new AchievementMenu());
         }
     }
     
     @Override
     public void Update()
     {
-        if (Game.mode == 2)
-        {
-            pos++;
-            if (pos > 100)
-            {
-                SceneManager.SwitchScene("AchievementMenu");
-            }
-        }
+       if (Game.mode == 2)
+       {
+           pos++;
+       }
     }
     
     @Override
@@ -63,7 +59,7 @@ public class GameMenu extends Scene
         if (Game.mode == 2)
         {
             Graphics2D g2D = (Graphics2D) g;
-            g2D.drawImage(ImageLoader.getImage("tes"),pos, 10, this);
+            g2D.drawImage(ImageLoader.getImage("tes"),100, pos, this);
         }
     }
 }

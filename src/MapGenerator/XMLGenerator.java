@@ -48,6 +48,10 @@ public class XMLGenerator {
     }
     
     /* Method */
+    /**
+     * 
+     * @param fileName nama file tempat map disimpan (bentuk txt)
+     */
     public void getMap(String fileName)
     {
         File file = new File(fileName);
@@ -115,6 +119,9 @@ public class XMLGenerator {
         } catch (FileNotFoundException ex) {}
     }
     
+    /**
+     * Mencetak isi map
+     */
     public void Print()
     {
         int baris, kolom, level;
@@ -140,6 +147,10 @@ public class XMLGenerator {
         }
     }
     
+    /**
+     * 
+     * @param filename nama file .xml yang akan dibuat
+     */
     public void convertToXML(String filename)
     {
         try {
