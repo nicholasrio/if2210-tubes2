@@ -34,17 +34,27 @@ public class GameData {
     public static ArrayList<Map> dataMap = new ArrayList<>();
     public static Player lastLogin;
     
+    /**
+     * Reset dataPlayer dan dataMap
+     */
     public static void reset()
     {
         dataPlayer.clear();
         dataMap.clear();
     }
     
+    /**
+     * @param nama nama pemain yang ingin ditambakan
+     */
     public static void addPlayer(String nama)
     {
         dataPlayer.add(new Player(nama));
     }
     
+    /**
+     * 
+     * @param nama nama pemain yang akan dihapus
+     */
     public static void deletePlayer(String nama)
     {
         int i = 0;
@@ -59,20 +69,33 @@ public class GameData {
         else
         {
             dataPlayer.remove(i);
-            System.out.println("User : " + nama + " telah dihapus.");
         }
     }
     
+    /**
+     * 
+     * @return jumlah player yang terdaftar
+     */
     public static int getJumlahPlayer()
     {
         return dataPlayer.size();
     }
     
+    /**
+     * 
+     * @return jumlah map yang tersedia
+     */
     public static int getJumlahMap()
     {
         return dataMap.size();
     }
     
+    
+    /**
+     * 
+     * @param nama nama player yang dicari
+     * @return posisi player pada dataPlayer
+     */
     public static int getIndexPlayer(String nama)
     {
         int i = 0;
@@ -82,18 +105,15 @@ public class GameData {
         }
         if (i == getJumlahPlayer())
         {
-            try 
-            {
-                throw new Exception("User : " + nama + " does not exist.");
-            } 
-            catch (Exception ex) 
-            {
-                Logger.getLogger(GameData.class.getName()).log(Level.SEVERE, null, ex);
-            }
+           return -1;
         }
         return i;
     }
     
+    /**
+     * 
+     * @param filename Nama file tempat menyimpan data player
+     */
     public static void savePlayer(String filename)
     {
         try 
@@ -158,6 +178,10 @@ public class GameData {
         }
     }
     
+    /**
+     * 
+     * @param filename nama file tempat disimpannya data player
+     */
     public static void loadPlayer (String filename)
     {
         try 
@@ -186,29 +210,27 @@ public class GameData {
                 dataPlayer.add(temp);
             }
         } 
-        catch (ParserConfigurationException ex) 
+        catch (ParserConfigurationException | SAXException | IOException ex) 
         {
-            Logger.getLogger(GameData.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(GameData.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
             Logger.getLogger(GameData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+    public static void loadMap()
+    {
+        dataMap.clear();
+        dataMap.add(new Map("map1.xml"));
+    }
+    
+    /**
+     * menampilkan daftar player yang ada
+     */
     public static void printPlayer()
     {
         for(Player p : dataPlayer)
         {
             System.out.println(p);
         }
-    }
-    
-    public static  void main (String[] args)
-    {
-        GameData.dataPlayer.clear();
-        GameData.loadPlayer("player.xml");
-        GameData.printPlayer();
     }
 }
 
