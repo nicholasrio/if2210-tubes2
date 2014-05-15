@@ -6,6 +6,8 @@
 
 package engine.DataStructure;
 
+import org.hamcrest.CoreMatchers;
+import static org.hamcrest.CoreMatchers.not;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -56,6 +58,11 @@ public class GameDataTest {
         GameData.loadPlayer("player.xml");
         System.out.println("After Load");
         GameData.printPlayer();
+        assertThat("Mikaza",not(CoreMatchers.equalTo(GameData.lastLogin.getNama())));
+        assertEquals("dummy", GameData.dataPlayer.get(0).getNama());
+        assertEquals(100, GameData.dataPlayer.get(0).getScore());
+        assertEquals(15, GameData.dataPlayer.get(0).getLevelUnlocked());
+        assertEquals(25,GameData.dataPlayer.get(0).getAchievmentUnlocked());
     }
     
     /**

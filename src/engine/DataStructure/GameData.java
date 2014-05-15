@@ -32,7 +32,7 @@ import org.xml.sax.SAXException;
 public class GameData {
     public static ArrayList<Player> dataPlayer = new ArrayList<>();
     public static ArrayList<Map> dataMap = new ArrayList<>();
-    public static Player lastLogin;
+    public static Player lastLogin = new Player("Mikaza");
     
     /**
      * Reset dataPlayer dan dataMap
@@ -127,6 +127,27 @@ public class GameData {
             Element root = doc.createElement("DatabasePlayer");
             doc.appendChild(root);
             
+            /* Simpan player yang login terakhir */
+            Element lastlogin = doc.createElement("lastLogin");
+            
+            Element score = doc.createElement("score");
+            score.appendChild(doc.createTextNode(String.valueOf(lastLogin.getScore())));
+            
+            Element achievementUnlocked = doc.createElement("achievementUnlocked");
+            achievementUnlocked.appendChild(doc.createTextNode(String.valueOf(lastLogin.getAchievmentUnlocked())));
+            
+            Element levelUnlocked = doc.createElement("levelUnlocked");
+            levelUnlocked.appendChild(doc.createTextNode(String.valueOf(lastLogin.getLevelUnlocked())));
+            
+            Element nama = doc.createElement("nama");
+            nama.appendChild(doc.createTextNode(lastLogin.getNama()));
+            
+            root.appendChild(lastlogin);
+            lastlogin.appendChild(nama);
+            lastlogin.appendChild(score);
+            lastlogin.appendChild(levelUnlocked);
+            lastlogin.appendChild(achievementUnlocked);
+            
             for(i=0; i<getJumlahPlayer(); i++)
             {
                 /* Element Player */
@@ -135,13 +156,13 @@ public class GameData {
                 root.appendChild(player);
                 
                 /* Anggota Element Player */
-                Element nama = doc.createElement("nama");
+                nama = doc.createElement("nama");
                 nama.appendChild(doc.createTextNode(dataPlayer.get(i).getNama()));
-                Element score = doc.createElement("score");
+                score = doc.createElement("score");
                 score.appendChild(doc.createTextNode(String.valueOf(dataPlayer.get(i).getScore())));
-                Element levelUnlocked = doc.createElement("levelUnlocked");
+                levelUnlocked = doc.createElement("levelUnlocked");
                 levelUnlocked.appendChild(doc.createTextNode(String.valueOf(dataPlayer.get(i).getLevelUnlocked())));
-                Element achievementUnlocked = doc.createElement("achievementUnlocked");
+                achievementUnlocked = doc.createElement("achievementUnlocked");
                 achievementUnlocked.appendChild(doc.createTextNode(String.valueOf(dataPlayer.get(i).getAchievmentUnlocked())));
                
                 /* Append kan element Player dengan anggotanya */
@@ -189,12 +210,15 @@ public class GameData {
             dataPlayer.clear();
             int i;
             
+            /* Inisialisasi */
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(new File(filename));
             
             doc.getDocumentElement().normalize();
             
+            /* Ambil data player dari file XML */
+            /* Ambil semua data player */
             NodeList playerList = doc.getElementsByTagName("player");
             Node playerNode;
             Element element;
@@ -209,6 +233,16 @@ public class GameData {
                 temp.setAchievementUnlocked(Integer.parseInt(element.getElementsByTagName("achievementUnlocked").item(0).getTextContent()));
                 dataPlayer.add(temp);
             }
+            
+            /* Ambil player yang terakhir login */
+            playerList = doc.getElementsByTagName("lastLogin");
+            playerNode = playerList.item(0);
+            element = (Element) playerNode;
+            lastLogin.setNama(element.getElementsByTagName("nama").item(0).getTextContent());
+            lastLogin.setScore(Integer.parseInt(element.getElementsByTagName("score").item(0).getTextContent()));
+            lastLogin.setAchievementUnlocked(Integer.parseInt(element.getElementsByTagName("achievementUnlocked").item(0).getTextContent()));
+            lastLogin.setLevelUnlocked(Integer.parseInt(element.getElementsByTagName("levelUnlocked").item(0).getTextContent()));
+
         } 
         catch (ParserConfigurationException | SAXException | IOException ex) 
         {
@@ -227,6 +261,9 @@ public class GameData {
      */
     public static void printPlayer()
     {
+        System.out.println("Last Login : ");
+        System.out.println(lastLogin);
+        System.out.println("Database Player : ");
         for(Player p : dataPlayer)
         {
             System.out.println(p);
