@@ -57,16 +57,18 @@ public class Map{
             maxRow = Integer.parseInt(doc.getElementsByTagName("baris").item(0).getTextContent());
             maxCol = Integer.parseInt(doc.getElementsByTagName("kolom").item(0).getTextContent());
             maxLevel = Integer.parseInt(doc.getElementsByTagName("level").item(0).getTextContent());
+            //Inisiasi matrix
+            matrix = new GameItem[maxLevel][maxRow][maxCol];
             //Ambil daftar teleporter
             int nTeleporter = Integer.parseInt(doc.getElementsByTagName("teleporters").item(0).getTextContent());
             Location teleLocation[] = new Location[nTeleporter];
             NodeList NodeTeleporter = doc.getElementsByTagName("teleporter");
             for(int i=0;i<nTeleporter;i++){
                 int b,c,l,idx;
-                idx = Integer.parseInt(((Element)NodeTeleporter.item(0)).getAttribute("id"));
-                b = Integer.parseInt(((Element) NodeTeleporter.item(0)).getElementsByTagName("baris").item(0).getTextContent());
-                c = Integer.parseInt(((Element) NodeTeleporter.item(0)).getElementsByTagName("kolom").item(0).getTextContent());
-                l = Integer.parseInt(((Element) NodeTeleporter.item(0)).getElementsByTagName("level").item(0).getTextContent());
+                idx = Integer.parseInt(((Element)NodeTeleporter.item(i)).getAttribute("id"));
+                b = Integer.parseInt(((Element) NodeTeleporter.item(i)).getElementsByTagName("baris").item(0).getTextContent());
+                c = Integer.parseInt(((Element) NodeTeleporter.item(i)).getElementsByTagName("kolom").item(0).getTextContent());
+                l = Integer.parseInt(((Element) NodeTeleporter.item(i)).getElementsByTagName("level").item(0).getTextContent());
                 teleLocation[idx] = new Location(b,c,l);
             }
             //Ambil isi dari matrix
@@ -93,7 +95,7 @@ public class Map{
                             String kode = el.getTextContent();
                             String nomorString = kode.substring(1);
                             int nomorInt = Integer.parseInt(nomorString);
-                            matrix[i][j][k] = new TeleporterItem(teleLocation[nomorInt-1]);
+                            matrix[i][j][k] = new TeleporterItem(teleLocation[nomorInt]);
                         }
                     }
         } catch (Exception e){
