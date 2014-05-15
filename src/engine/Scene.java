@@ -15,7 +15,6 @@ public abstract class Scene extends JPanel
 {
     private final String name;
     
-    
     public Scene(String sceneName)
     {
         name = sceneName;
