@@ -41,7 +41,12 @@ public final class SqlStatement {
     public void insert_video(String title, String link, int rating, int view, int no_tubes, String group_name)throws SQLException{
         statement.execute("INSERT INTO `video` (`title`, `link`, `rating`, `view`, `no_tubes`, `group_nama`) VALUES (\""+title+"\", \""+link+"\", \""+rating+"\", \""+view+"\", \""+no_tubes+"\", \""+group_name+"\");");
     }
-    
+    public void update_video(int id, String title, String link, int rating, int view, int no_tubes, String group_name) throws SQLException {
+        statement.execute("UPDATE `video` SET (`title` = "+title+"\", `link` = "+link+"\", `rating` = "+rating+"\", `view` = "+view+"\", `no_tubes` = "+no_tubes+"\", `group_nama` = "+group_name+"\") WHERE id = "+id+"\";");
+    }
+    public void delete_video(int id) throws SQLException {
+        statement.execute("DELETE * FROM video WHERE id = \"" + id + "\";");
+    }
     public List<String> select_admin() throws SQLException{
         List<String> details = new ArrayList<>();
         try (ResultSet rs = statement.executeQuery("select * from administrator")) {
@@ -77,28 +82,21 @@ public final class SqlStatement {
         }
     }
     
-    public void select_video() throws SQLException{
-        try (ResultSet rs = statement.executeQuery("select * from video")) {
-            while(rs.next()){
-                //Retrieve by column name
-                int id  = rs.getInt("id");
-                String title  = rs.getString("title");
-                String link  = rs.getString("link");
-                int rating  = rs.getInt("rating");
-                int view  = rs.getInt("view");
-                int no_tubes  = rs.getInt("no_tubes");
-                String grup  = rs.getString("group_name");
-                
-                //Display values
-                System.out.print("ID: " + id + " ");
-                System.out.println("Title: " + title);
-                System.out.println("Link: " + link);
-                System.out.println("Rating: " + rating);
-                System.out.println("View: " + view);
-                System.out.println("No Tubes: " + no_tubes);
-                System.out.println("Nama Kelompok: " + grup);
-            }
-        }
+    public List<String> select_video(int id) throws SQLException{
+        List<String> L = new ArrayList<>();
+        ResultSet rs = statement.executeQuery("select * from video WHERE id = \"" + id + "\";");
+        
+            //Retrieve by column name
+            L.add(Integer.toString(rs.getInt("id")));
+            L.add(rs.getString("title"));
+            L.add(rs.getString("link"));
+            L.add(Integer.toString(rs.getInt("rating")));
+            L.add(Integer.toString(rs.getInt("view")));
+            L.add(Integer.toString(rs.getInt("no_tubes")));
+            L.add(rs.getString("group_name"));
+
+        rs.close();
+        return L;
     }
     
     public boolean IsAdminExist(int _NIM) throws SQLException{
