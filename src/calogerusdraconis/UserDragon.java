@@ -297,7 +297,7 @@ public class UserDragon extends Dragon {
 	/**
 	 * Memberi Consumable yang sudah dibeli ke Dragon
 	 * @param fd Consumable yang akan diberikan ke Dragon
-	 * @return 
+	 * @return Event memberi Consumable selesai
 	 */
     public Event useConsumable (Consumable fd) {
 		/* Prekondisi : fd sudah ada di barang karena dipilih dari fd */
@@ -320,7 +320,7 @@ public class UserDragon extends Dragon {
 	/**
 	 * Membeli Consumable dari store
 	 * @param what Consumable yang akan dibeli
-	 * @return 
+	 * @return Event beli Consumable selesai
 	 * @throws Exception Uang tidak cukup
 	 */
     public Event addConsumable (Consumable what) throws Exception {
@@ -403,7 +403,7 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
     /**
 	 * Bertarung dengan random Dragon
-	 * @return 
+	 * @return Event fight selesai
 	 */
     public Event fight () {
         
@@ -449,7 +449,7 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
 	/**
 	 * Mengajak Dragon berlatih
-	 * @return 
+	 * @return Event train selesai
 	 */
     public Event train () {
 		try {
@@ -471,7 +471,7 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
 	/**
 	 * Mengajak Dragon bermain
-	 * @return 
+	 * @return Event entertain selesai
 	 */
     public Event entertain () {
         try {
@@ -490,7 +490,7 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
 	/**
 	 * Menyuruh Dragon tidur
-	 * @return 
+	 * @return Event rest selesai
 	 */
     public Event rest () {
         try {
@@ -510,7 +510,7 @@ public class UserDragon extends Dragon {
     // </editor-fold> 
 	/**
 	 * Menyuruh Dragon pergi ke toilet
-	 * @return 
+	 * @return Event toilet selesai 
 	 */
     public Event toToilet () {
         try {

@@ -35,7 +35,7 @@ public final class Store {
     // #[regen=yes,id=DCE.0162CBAA-064B-21DC-586A-5086BCF89195]
     // </editor-fold> 
 	/**
-	 * 
+	 * Constructor Store
 	 */
     private Store () {
 		fdInventory.add(new Consumable("first-aid","",200,0,0,300,0,0,0,0));
@@ -59,8 +59,8 @@ public final class Store {
 	}
 	
 	/**
-	 * 
-	 * @return 
+	 * Getter Instance
+	 * @return store 
 	 */
 	public static Store getInstance() {
 		return s;
@@ -70,8 +70,8 @@ public final class Store {
     // #[regen=yes,regenBody=yes,id=DCE.5BA2A08B-741C-A0B6-B5B5-84388C3CA7EC]
     // </editor-fold> 
 	/**
-	 * 
-	 * @return 
+	 * Getter inventory
+	 * @return array inventory
 	 */
     public ArrayList<Consumable> getFdInventory () {
         return fdInventory;
