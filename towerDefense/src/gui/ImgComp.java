@@ -9,6 +9,7 @@ package gui;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import javax.imageio.ImageIO;
 
 /**
@@ -17,25 +18,27 @@ import javax.imageio.ImageIO;
  */
 public class ImgComp {
 
-    final private BufferedImage img_unclicked;
-    final private BufferedImage img_clicked;
+    private final BufferedImage img_unclicked;
+    private final BufferedImage img_clicked;
     private BufferedImage img_displayed;
     private int x;
     private int y;
+    private final Class event;
     private boolean dirtyBit;
 
-    public ImgComp(String str) throws IOException {
-        if (new File(str+".png").exists())
-            img_displayed = ImageIO.read(new File(str+".png"));
+    public ImgComp(String str, Class _event) throws IOException {
+        if (new File("img\\"+str+".png").exists())
+            img_displayed = ImageIO.read(new File("img\\"+str+".png"));
         
-        if (new File(str+"_unclicked.png").exists())
-            img_displayed = img_unclicked = ImageIO.read(new File(str+"_unclicked.png"));
+        if (new File("img\\"+str+"_unclicked.png").exists())
+            img_displayed = img_unclicked = ImageIO.read(new File("img\\"+str+"_unclicked.png"));
         else
             img_unclicked = null;
-        if (new File(str+"_clicked.png").exists())
-            img_clicked = ImageIO.read(new File(str+"_clicked.png"));
+        if (new File("img\\"+str+"_clicked.png").exists())
+            img_clicked = ImageIO.read(new File("img\\"+str+"_clicked.png"));
         else
             img_clicked = null;
+        event = _event;
         
         dirtyBit = true;
     }
@@ -78,10 +81,22 @@ public class ImgComp {
         return dirtyBit;
     }
 
-    public boolean invoked(int _x, int _y) {
-        if ((x < _x) && (_x < x + img_displayed.getWidth()) && ((y < _y) && (_y < y + img_displayed.getHeight()))) {
-            return true;
+    public boolean isInvoked(int _x, int _y) {
+        return (x < _x) && (_x < x + img_displayed.getWidth()) && ((y < _y) && (_y < y + img_displayed.getHeight()));
+    }
+    public void invoke() throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException {
+        if (event != null) {
+            Class[] interfaces = event.getInterfaces();
+            boolean isThread = false;
+            for (Class implement : interfaces) {
+                if (implement == Runnable.class)
+                    isThread = true;
+            }
+            if (isThread)
+                new Thread((Runnable) event.newInstance()).start();
+            else {
+                event.getMethod("run", null).invoke(event.newInstance(), null);
+            }
         }
-        return false;
-    }   
+    }
 }
