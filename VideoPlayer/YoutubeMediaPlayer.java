@@ -1,3 +1,5 @@
+package VideoPlayer;
+
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
@@ -10,7 +12,7 @@ import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 
 public class YoutubeMediaPlayer {
 
-public static void main(String[] args) 
+	public static void main(String[] args) 
 {
     NativeInterface.open();
     SwingUtilities.invokeLater(new Runnable() 
@@ -40,7 +42,6 @@ public static JPanel getBrowserPanel()
     JWebBrowser webBrowser = new JWebBrowser();
     webBrowserPanel.add(webBrowser, BorderLayout.CENTER);
     webBrowser.setBarsVisible(false);
-    /*Ibrahimovic Goal*/
     webBrowser.navigate("http://www.youtube.com/watch?v=JnRYo75KSyQ");
     return webBrowserPanel;
 }

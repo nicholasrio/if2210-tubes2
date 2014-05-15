@@ -15,6 +15,8 @@ import javax.swing.SwingUtilities;
 import java.awt.Point;
 import javax.swing.JOptionPane;
 
+import mysql.SqlStatement;
+
 /**
  *
  * @author Rikysamuel

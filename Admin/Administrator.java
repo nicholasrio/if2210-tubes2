@@ -8,6 +8,9 @@ package Admin;
 
 import java.sql.SQLException;
 
+import mysql.SqlStatement;
+
+
 /**
  *
  * @author Rikysamuel
