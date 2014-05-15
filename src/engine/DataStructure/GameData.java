@@ -105,7 +105,6 @@ public class GameData {
         }
         if (i == getJumlahPlayer())
         {
-           return -1;
         }
         return i;
     }
@@ -184,7 +183,7 @@ public class GameData {
      */
     public static void loadPlayer (String filename)
     {
-        try 
+        /*try 
         {
             dataPlayer.clear();
             int i;
@@ -213,7 +212,7 @@ public class GameData {
         catch (ParserConfigurationException | SAXException | IOException ex) 
         {
             Logger.getLogger(GameData.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
     
     public static void loadMap()

@@ -26,11 +26,10 @@ public class LevelMenu extends Scene
     public void Initialize()
     {
         nama_klmpk="Cube Mazer";
-        judul="Level Menu";
-        nama_lvl="Indonesian Maze";
-        level=1;
-        height=55;
-        width=170;        
+        judul="Level Menu";        
+        level=0;
+        height=56;
+        width=168;        
         spacebetween=width/25;
         space=((width)-(spacebetween*10)-10-4)/2;        
     }
@@ -39,7 +38,10 @@ public class LevelMenu extends Scene
     public void Update()
     {
         if (level<5) level+=1;
-        if (level==2){
+         if (level==1){
+            nama_lvl="Indonesian Maze";
+        }       
+         else if (level==2){
             nama_lvl="Dungeon Maze";
         }
         else if (level==3){
@@ -53,15 +55,29 @@ public class LevelMenu extends Scene
         }        
     }
     
+    public void PrintBR(){
+        System.out.print("||");
+        for (int i=0;i<width-4;i++) System.out.print(" ");
+        System.out.println("||");
+    }
+    
     @Override 
     //punya kevin
     public void Draw()
     {
+        int k=0;
         //Print Batas atas
         for (int i=0;i<width;i++){
             System.out.print("=");
         }
         System.out.println();
+        k+=1;
+        
+        //Print Blank Row
+        while (k<19){
+            PrintBR();
+            k+=1;            
+        }
         
         //Print Nama Kelompok
         space=((width)-(spacebetween*10)-10-4)/2;
@@ -73,8 +89,13 @@ public class LevelMenu extends Scene
         }
         for (int i=0;i<space;i++) System.out.print(" ");
         System.out.print("||");
-        System.out.println(" ");
-        //System.out.println("Panjang nama klompok" + nama_klmpk.length());
+        System.out.println(" "); 
+        k+=1;
+        
+        //Print Blank Row
+        PrintBR();
+        PrintBR();
+        k+=2;
         
         //Print judul
         System.out.print("||");
@@ -86,7 +107,12 @@ public class LevelMenu extends Scene
         for (int i=0;i<space;i++) System.out.print(" ");
         System.out.print("||");
         System.out.println(" ");
-        //System.out.println("Pjg judul " + judul.length());
+        k+=1;
+        
+        //Print Blank Row
+        PrintBR();
+        PrintBR();
+        k+=2;
         
         //Print nama level
         space=((width)-(spacebetween*nama_lvl.length())-nama_lvl.length()-4)/2;
@@ -104,7 +130,13 @@ public class LevelMenu extends Scene
         }
         System.out.print("||");
         System.out.println(" ");
+        k+=1;
 
+        //Print Blank Row
+        PrintBR();
+        PrintBR();
+        k+=2;
+               
         //Print tingkat level
         String str_level= "level " + level;      
         space=((width)-(spacebetween*str_level.length())-str_level.length()-4)/2;
@@ -122,21 +154,24 @@ public class LevelMenu extends Scene
         }
         System.out.print("||");
         System.out.println(" ");
+        k+=1;        
         
-        
-        System.out.print("||");
-        for (int i=0;i<width-4;i++) System.out.print(" ");
-        System.out.println("||");
+        //Print blank row
+        PrintBR();
+        PrintBR();
+        k+=2;
         
         //Print tanda kiri dan kanan
         System.out.print("||  <");
         for (int i=0;i<width-10;i++) System.out.print(" ");
         System.out.println(">  ||");
+        k+=1;
         
-        for (int j=0;j<height-6;j++){
+        while (k<height){
             System.out.print("||");
             for (int i=0;i<width-4;i++) System.out.print(" ");
             System.out.println("||");
+            k++;
         }
         for (int i=0;i<width;i++) System.out.print("=");
         System.out.println("");
