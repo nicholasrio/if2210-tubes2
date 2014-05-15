@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.Collections;
 import exception.*;
 import model.*;
-import towerdefense.gameUI;
+import console.gameUI;
 
 public class Controller {
 

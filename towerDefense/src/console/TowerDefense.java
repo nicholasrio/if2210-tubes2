@@ -1,4 +1,4 @@
-package towerdefense;
+package console;
 
 import model.Player;
 import controller.MainMenu;
