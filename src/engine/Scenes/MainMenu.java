@@ -30,6 +30,7 @@ public class MainMenu extends Scene
     private String[] playerslevel;
     private String[] playersachievement;
     private int currentplayer;
+    
     public MainMenu()
     {
         super("MainMenu");

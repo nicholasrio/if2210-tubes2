@@ -7,6 +7,7 @@
 package engine;
 
 import engine.Scenes.*;
+import engine.GUIScenes.*;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -33,6 +34,7 @@ public class Game
             ImageLoader.loadAllImages();
             prepareFrame();
         }
+        
         PrepareScenes();
         gameLoop();
     }
@@ -51,11 +53,22 @@ public class Game
     private static void PrepareScenes()
     {
         SceneManager.Initialize();
-        SceneManager.AddScene(new MainMenu());
-        SceneManager.AddScene(new LevelMenu());
-        SceneManager.AddScene(new GameMenu());
-        SceneManager.AddScene(new AchievementMenu());
-        SceneManager.SwitchScene("MainMenu"); 
+        if (mode == 1)
+        {
+            SceneManager.AddScene(new MainMenu());
+            SceneManager.AddScene(new LevelMenu());
+            SceneManager.AddScene(new GameMenu());
+            SceneManager.AddScene(new AchievementMenu());
+            SceneManager.SwitchScene("MainMenu"); 
+        }
+        else if (mode == 2)
+        {
+            SceneManager.AddScene(new MainMenuGUI());
+            SceneManager.AddScene(new LevelMenuGUI());
+            SceneManager.AddScene(new GameMenuGUI());
+            SceneManager.AddScene(new AchievementMenuGUI());
+            SceneManager.SwitchScene("MainMenuGUI");
+        }
     }
     
     private static void gameLoop()
