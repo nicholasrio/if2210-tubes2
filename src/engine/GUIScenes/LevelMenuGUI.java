@@ -33,19 +33,19 @@ public class LevelMenuGUI extends Scene
     public LevelMenuGUI()
     {
         super("LevelMenuGUI");
-        addMouseMotionListener(new MouseMotionListener() {
+        /*addMouseMotionListener(new MouseMotionListener()){
 
             @Override
-            public void mouseDragged(MouseEvent e) {
+            public void mouseDragged(MouseEvent f) {
                 
             };
 
             @Override
-            public void mouseMoved(MouseEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        })
-    }
+            public void mouseMoved(MouseEvent f) {
+                
+            };
+        }*/
+}
     
     public void LoadContent()
     {
