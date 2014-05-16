@@ -70,7 +70,7 @@ public class UserDragon extends Dragon {
         this.password = password;
         this.money = money;
         this.happiness = happiness;
-
+		fdInventory = new ArrayList<>();
 		th = new Thread() {
             @Override
             public void run() {
@@ -402,16 +402,9 @@ public class UserDragon extends Dragon {
             tambahHealth(-5 * level);
         }
     }
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.CAFBB28D-46E4-68A5-0A2A-82623BC039D0]
-    // </editor-fold> 
-    /**
-	 * Bertarung dengan random Dragon
-	 * @return Event fight selesai
-	 */
-    public Event fight () {
-        
-        Random rand = new Random();
+	
+	public Dragon generateEnemy() {
+		Random rand = new Random();
         float ranHealth = (float) Math.ceil(rand.nextGaussian()*(0.2*health)+health);
         float ranStamina = (float) Math.ceil(rand.nextGaussian()*(0.2*stamina)+stamina);
         int ranExperience = (int) Math.ceil(rand.nextGaussian()*(0.2*experience)+experience);
@@ -420,7 +413,18 @@ public class UserDragon extends Dragon {
         float ranBladder = (float) Math.ceil(rand.nextGaussian()*(0.2*bladder)+bladder);
         float ranHunger = (float) Math.ceil(rand.nextGaussian()*(0.2*hunger)+hunger);
         Dragon withWho = new Dragon("Random Dragon", ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranExperience);
-        
+		
+		return withWho;
+	}
+	
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.CAFBB28D-46E4-68A5-0A2A-82623BC039D0]
+    // </editor-fold> 
+    /**
+	 * Bertarung dengan random Dragon
+	 * @return Event fight selesai
+	 */
+    public Event fight (Dragon withWho) {
         float sum1 = (float)0.2 * health + (float)0.2 * stamina + (float)0.3 * experience + 5 * level - (float)0.1 * thirst - (float)0.1 * bladder - (float)0.1 * hunger;
         float sum2 = (float)0.2 * withWho.getHealth() + (float)0.2 * withWho.getStamina() + (float)0.3 * withWho.getExperience() + 5 * withWho.getLevel() - (float)0.1 * withWho.getThirst() - (float)0.1 * withWho.getBladder() - (float)0.1 * withWho.getHunger();
         
@@ -482,7 +486,7 @@ public class UserDragon extends Dragon {
 			while (happiness < 100) {
 				System.out.print(happiness+" ");
 				sleep(1000);
-				tambahHappiness(1);
+				tambahHappiness(4);
 			}
 		} catch(InterruptedException e) {
 			
@@ -502,7 +506,7 @@ public class UserDragon extends Dragon {
 			while (stamina < maxStamina || health < maxHealth) {
 				sleep(1000);
 				if (stamina < maxStamina) tambahStamina(1);
-				if (health < maxHealth) tambahHealth(1);
+				if (health < maxHealth) tambahHealth(3*level);
 			}
 		} catch(InterruptedException e) {
 			
@@ -522,7 +526,7 @@ public class UserDragon extends Dragon {
 			while (bladder > 0) {
 				System.out.print(bladder + " ");
 				sleep(1000);
-				tambahBladder(-1);
+				tambahBladder(-2);
 			}
 		} catch(InterruptedException e) {
 			

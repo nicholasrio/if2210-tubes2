@@ -57,10 +57,41 @@ public class Main {
 							view.UpdateScreen(ud, e); break;
 					case 4: e = ud.toToilet();
 							view.UpdateScreen(ud, e); break;
-					case 5: break;
+					case 5: Dragon enemy = ud.generateEnemy();
+							e = ud.fight(enemy); 
+							view.UpdateScreen(ud, enemy);
+							view.UpdateScreen(ud, e);
+							break;
 					case 6: e = ud.train();
 							view.UpdateScreen(ud, e); break;
 					case 7: view.seeFoodDirectory(ud); break;
+					case 8: {
+								int pil8;
+								int jum; int pilExit;
+								do {
+									view.UpdateScreen(Store.getInstance());
+									jum = Store.getInstance().getFdInventory().size();
+									if (jum==0) {
+										System.out.println("Tidak ada barang di Store");
+									} else {
+										System.out.println("Tekan 1 sampai " + jum + " untuk membeli barang sesuai pilihan");
+									}
+									pilExit = jum + 1;
+									System.out.println("Tekan " + pilExit + " untuk keluar");
+									pil8 = in.nextInt();
+									if (pil8 > pilExit || pil8 < 1) {
+										System.out.println("Pilihan salah!");
+									} else {
+										try {
+											ud.addConsumable(Store.getInstance().buy(jum));
+											System.out.println("Anda berhasil membeli barang dengan nomor " + pil8);
+										} catch (Exception ex) {
+											System.out.println(ex.getMessage());
+										}
+									}
+								} while(pil8!=pilExit);
+								break;
+							}
 					default: break;
 				}
 				//view.UpdateScreen(Store.getInstance());
