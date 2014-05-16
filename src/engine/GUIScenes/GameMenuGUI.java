@@ -9,10 +9,11 @@ package engine.GUIScenes;
 import engine.*;
 import engine.DataStructure.*;
 import static engine.Game.gameFrame;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
@@ -34,16 +35,40 @@ public class GameMenuGUI extends Scene
     private int nowFloor;
     private int initPosMapWidth;
     private int initPosMapHeight;
+    private int playerPosX;
+    private int playerPosY;
     private Map playedMap;
+    
+    private boolean keyUpPressed;
+    private boolean keyDownPressed;
+    private boolean keyRightPressed;
+    private boolean keyLeftPressed;
+    
+    private int playerFaced; // 1 for Up
+                             // 2 for Down
+                             // 3 for Right
+                             // 4 for Left
     
     public GameMenuGUI()
     {
         super("GameMenuGUI");
         
+        
+        
         //nowlevelPlay = GameData.nowLevelPlayed;
         nowlevelPlay = 0;
         nowFloor = 0;
         playedMap = GameData.dataMap.get(nowlevelPlay);
+        
+        keyUpPressed = false;
+        keyDownPressed = false;
+        keyRightPressed = false;
+        keyLeftPressed = false;
+        
+        playerFaced = 3;
+        
+        playerPosX = 180;
+        playerPosY = 490;
         switch(nowlevelPlay)
         {
             case 0: mazeSize = 6; 
@@ -51,6 +76,28 @@ public class GameMenuGUI extends Scene
                     initPosMapHeight = 110;
                     break;
         }
+        
+        addKeyListener(new KeyListener() 
+        {
+
+            @Override
+            public void keyTyped(KeyEvent e) 
+            {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) 
+            {
+                keyboardUpdatePressed(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) 
+            {
+                keyboardUpdateReleased(e);
+            }
+        });
     }
     
     public void LoadContent()
@@ -148,7 +195,70 @@ public class GameMenuGUI extends Scene
                 }
             } 
             
-            //g2D.drawImage(playerRLTexture,30,30,)
+            switch (playerFaced)
+            {
+                case 1: g2D.drawImage(playerUDTexture,playerPosX,playerPosY,playerPosX+39,playerPosY+71,0,0,39,76,this);
+                        break;
+                case 2: g2D.drawImage(playerUDTexture,playerPosX,playerPosY,playerPosX+39,playerPosY+71,0,76,39,152,this);
+                        break;
+                case 3: g2D.drawImage(playerRLTexture,playerPosX,playerPosY,playerPosX+48,playerPosY+63,0,0,48,63,this);
+                        break;
+                case 4: g2D.drawImage(playerRLTexture,playerPosX,playerPosY,playerPosX+48,playerPosY+63,0,63,48,126,this);
+                        break;
+            }
         }
+    }
+    
+    public void keyboardUpdatePressed(KeyEvent e)
+    {
+        System.out.println("A");
+                int keyCode = e.getKeyCode();
+                switch (keyCode)
+                {
+                    case KeyEvent.VK_UP: keyUpPressed = true;
+                                         playerFaced = 1;
+                                         break;
+
+                    case KeyEvent.VK_DOWN: keyDownPressed = true;
+                                           playerFaced = 2;
+
+                                           break;
+
+                    case KeyEvent.VK_RIGHT: keyRightPressed = true;
+                                            playerFaced = 3;
+                                            break;
+
+                    case KeyEvent.VK_LEFT: keyLeftPressed = true;
+                                           playerFaced = 4;
+                                           break;
+                }
+    }
+    
+    public void keyboardUpdateReleased(KeyEvent e)
+    {
+                     System.out.println("A"); 
+                int keyCode = e.getKeyCode();
+                 switch (keyCode)
+                 {
+                     case KeyEvent.VK_UP: 
+                         if (keyUpPressed)
+                             keyUpPressed = false;
+                             break;
+
+                    case KeyEvent.VK_DOWN: 
+                        if (keyDownPressed)
+                            keyDownPressed = false;
+                            break;
+
+                    case KeyEvent.VK_RIGHT: 
+                        if (keyRightPressed)
+                            keyRightPressed = false;
+                            break;
+
+                    case KeyEvent.VK_LEFT: 
+                        if (keyLeftPressed)
+                            keyLeftPressed = false;
+                            break;
+                }
     }
 }
