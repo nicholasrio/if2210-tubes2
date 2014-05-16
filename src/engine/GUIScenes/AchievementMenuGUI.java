@@ -9,7 +9,6 @@ package engine.GUIScenes;
 import engine.*;
 import engine.DataStructure.GameData;
 import static engine.Game.gameFrame;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
@@ -21,8 +20,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -101,7 +98,7 @@ public class AchievementMenuGUI extends Scene
             public void mouseExited(MouseEvent e) 
             {}
         });
-        File fontfile = new File("batmanforeveralternate.ttf");
+        File fontfile = new File("Font/batmanforeveralternate.ttf");
         try {
             PlayerDataFont = Font.createFont(Font.TRUETYPE_FONT, fontfile);
             PlayerDataFont = PlayerDataFont.deriveFont(18, 18f);
@@ -129,7 +126,7 @@ public class AchievementMenuGUI extends Scene
         this.LoadContent();
         
         backRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.755f), 
-                                   (int)(Game.ResolutionWidth*0.34f),(int)(Game.ResolutionHeight*0.145f));
+                                   (int)(Game.ResolutionWidth*0.24f),(int)(Game.ResolutionHeight*0.145f));
     }
     
     @Override
@@ -144,20 +141,14 @@ public class AchievementMenuGUI extends Scene
         {
             if (deltapos > 0f)
             {
-                deltapos -= 10f;
+                deltapos -= 5f;
             }
-            
         }
         else if (menuHovered == 1)
         {
-            if (deltapos > 0f)
+            if (deltapos < 25f)
             {
-                deltapos -= 10f;
-            }
-            
-            if (deltapos < 110f)
-            {
-                deltapos += 10f;
+                deltapos += 5f;
             }
         }
     }
@@ -181,10 +172,10 @@ public class AchievementMenuGUI extends Scene
             
             g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
             g2D.drawImage(titleTexture,(int)(getWidth()*0.2f),(int)(getHeight()*0.025f),titleTexture.getWidth(this),titleTexture.getHeight(this),this);
-            g2D.drawImage(backTexture,(int)(getWidth()*(-0.15f)+deltapos),(int)(getHeight()*0.80f),backTexture.getWidth(this),backTexture.getHeight(this),this);       
+            g2D.drawImage(backTexture,(int)(getWidth()*(-0.2f)+deltapos),(int)(getHeight()*0.80f),backTexture.getWidth(this),backTexture.getHeight(this),this);       
 
             g2D.drawImage(AchString,(int)(Game.ResolutionWidth*0.33f),(int)(Game.ResolutionHeight*0.2f),(int)(AchString.getWidth(this)*1.5f),AchString.getHeight(this),this);       
-        g2D.setFont(PlayerDataFont);
+            g2D.setFont(PlayerDataFont);
             g2D.drawString("Player Name : " + GameData.lastLogin.getNama(), Game.ResolutionWidth*0.33f+50, Game.ResolutionHeight*0.2f+50);
             g2D.drawString("Score : " + Integer.toString(GameData.lastLogin.getScore()), Game.ResolutionWidth*0.33f+50, Game.ResolutionHeight*0.2f+100);
             g2D.drawString("Level Unlocked : " + Integer.toString(GameData.lastLogin.getLevelUnlocked()), Game.ResolutionWidth*0.33f+50, Game.ResolutionHeight*0.2f+150);
