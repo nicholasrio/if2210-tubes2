@@ -48,10 +48,8 @@ public class DragonTest {
 		Dragon instance = new Dragon("enemy",78,89,23,51,21,5,123);
 		float expResult = 51;
 		float result = instance.getBladder();
-		//System.out.println(result);
 		assertEquals(expResult, result, 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -63,10 +61,8 @@ public class DragonTest {
 		Dragon instance = new Dragon("enemy",78,89,23,51,21,5,123);
 		int expResult = 123;
 		int result = instance.getExperience();
-		//System.out.println(result);
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -80,7 +76,6 @@ public class DragonTest {
 		float result = instance.getHealth();
 		assertEquals(expResult, result, 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -94,7 +89,6 @@ public class DragonTest {
 		float result = instance.getHunger();
 		assertEquals(expResult, result, 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -108,7 +102,6 @@ public class DragonTest {
 		int result = instance.getLevel();
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -120,8 +113,8 @@ public class DragonTest {
 		int val = 0;
 		Dragon instance = new Dragon("enemy",78,89,23,51,21,5,123);
 		instance.setLevel(val);
+		assertEquals(val, instance.getLevel());
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -135,7 +128,6 @@ public class DragonTest {
 		String result = instance.getName();
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -147,8 +139,8 @@ public class DragonTest {
 		String val = "";
 		Dragon instance = new Dragon("enemy",78,89,23,51,21,5,123);
 		instance.setName(val);
+		assertEquals(val, instance.getName());
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -162,7 +154,6 @@ public class DragonTest {
 		float result = instance.getStamina();
 		assertEquals(expResult, result, 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -176,7 +167,6 @@ public class DragonTest {
 		float result = instance.getThirst();
 		assertEquals(expResult, result, 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 	
 }

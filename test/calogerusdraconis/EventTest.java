@@ -50,7 +50,6 @@ public class EventTest {
 		String result = instance.getMessage();
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -62,8 +61,8 @@ public class EventTest {
 		String val = "";
 		Event instance = new Event("test","lagi testing");
 		instance.setMessage(val);
+		assertEquals(val, instance.getMessage());
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -77,7 +76,6 @@ public class EventTest {
 		String result = instance.getType();
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -89,8 +87,8 @@ public class EventTest {
 		String val = "";
 		Event instance = new Event("test","lagi testing");
 		instance.setType(val);
+		assertEquals(val, instance.getType());
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 	
 }

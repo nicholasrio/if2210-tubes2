@@ -403,6 +403,10 @@ public class UserDragon extends Dragon {
         tambahHunger(1);
     }
 	
+	/**
+	 * Men-generate Enemy Dragon untuk fight
+	 * @return Dragon Enemy hasil generate
+	 */
 	public Dragon generateEnemy() {
 		Random rand = new Random();
         float ranHealth = (float) Math.ceil(rand.nextGaussian()*(0.2*health)+health);
@@ -420,11 +424,12 @@ public class UserDragon extends Dragon {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.CAFBB28D-46E4-68A5-0A2A-82623BC039D0]
     // </editor-fold> 
-    /**
-	 * Bertarung dengan random Dragon
+	/**
+	 * Bertarung dengan Dragon lain
+	 * @param withWho Dragon lain yang akan bertarung
 	 * @return Event fight selesai
 	 */
-    public Event fight (Dragon withWho) {
+	public Event fight (Dragon withWho) {
         float sum1 = (float)0.2 * health + (float)0.2 * stamina + (float)0.3 * experience + 5 * level - (float)0.1 * thirst - (float)0.1 * bladder - (float)0.1 * hunger;
         float sum2 = (float)0.2 * withWho.getHealth() + (float)0.2 * withWho.getStamina() + (float)0.3 * withWho.getExperience() + 5 * withWho.getLevel() - (float)0.1 * withWho.getThirst() - (float)0.1 * withWho.getBladder() - (float)0.1 * withWho.getHunger();
         
@@ -443,6 +448,7 @@ public class UserDragon extends Dragon {
 			e.setType("LoseFight");
 	        e.setMessage("Sorry!You Lose.");
 		}
+		tambahStamina(-20 * level);
         // jika naik level
         while(experience >= 100*(level+1)*(level+1)*(level+1)){
             level++;
