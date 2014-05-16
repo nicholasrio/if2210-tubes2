@@ -44,7 +44,7 @@ public class CalonTerpilih {
     }
     
     /**
-     * Menyimpan list dapil dan list caleg ke database. Isi list harus sudah unik.
+     * Menyimpan list dapil dan list caleg ke database. Isi list harus sudah unik dan belum ada di database.
      */
     public void SaveToDatabase(){
         if(daftarCaleg.size() == 0)
@@ -99,7 +99,7 @@ public class CalonTerpilih {
     }
     
     /**
-     * Menyimpan List of Caleg ke database. List sudah unik.
+     * Menyimpan List of Caleg ke database. List sudah unik dan belum ada di database.
      */
     private void saveCalegToDatabase()
     {
