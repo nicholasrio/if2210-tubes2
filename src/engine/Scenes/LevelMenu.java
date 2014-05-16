@@ -70,7 +70,7 @@ public class LevelMenu extends Scene
             GameData.nowLevelPlayed = level;
             System.out.println("Level Chosen : " + level);
             Game.gameRunning = false;
-            //SceneManager.SwitchScene("GameMenu");
+            SceneManager.SwitchScene("GameMenu");
         }
         if (level==1){
             nama_lvl="ICE MAZE";
