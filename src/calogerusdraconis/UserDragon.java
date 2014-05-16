@@ -44,6 +44,8 @@ public class UserDragon extends Dragon {
     
     private Thread th;
     
+	private volatile boolean pauseFlag;
+	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.39F10D0D-020E-7824-2E18-D995AC6ED214]
     // </editor-fold> 
@@ -70,12 +72,14 @@ public class UserDragon extends Dragon {
         this.password = password;
         this.money = money;
         this.happiness = happiness;
-        th = new Thread() {
+        pauseFlag = false;
+		th = new Thread() {
             @Override
             public void run() {
                 try {
                     while(true) {
-                        sleep(1000);
+						System.out.println("jalan ");
+                        sleep(5000);
                         modifyAttribute();
                     }
                 } catch (InterruptedException ex) {
@@ -306,14 +310,13 @@ public class UserDragon extends Dragon {
 		tambahHealth(fd.getHealthValue());
 		tambahThirst(fd.getThirstValue());
 		tambahHunger(fd.getHungerValue());
-		money -= fd.getCost();
 		tambahStamina(fd.getStaminaValue());
-		maxStamina = fd.getMaxStaminaValue();
-		maxHealth = fd.getMaxHealthValue();
+		maxStamina += fd.getMaxStaminaValue();
+		maxHealth += fd.getMaxHealthValue();
 		tambahHappiness(fd.getHappinessValue());
 		int idx = this.fdInventory.indexOf(fd);
 		this.fdInventory.remove(idx);
-		return null;
+		return new Event("Proses Selesai","useCosumable Selesai");
     }
 	
 	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -327,8 +330,9 @@ public class UserDragon extends Dragon {
 	 */
     public Event addConsumable (Consumable what) throws Exception {
         if (money < what.getCost()) throw new Exception ("Uang tidak cukup");
-		
-		return null;
+		money -= what.getCost();
+		fdInventory.add(what);
+		return new Event("Proses Selesai","addConsumable Selesai");
     }
     
 	/**
@@ -476,14 +480,17 @@ public class UserDragon extends Dragon {
 	 * @return Event entertain selesai
 	 */
     public Event entertain () {
-        try {
+        pauseFlag = true;
+		try {
 			while (happiness < 100) {
+				System.out.print(happiness+" ");
 				sleep(1000);
 				tambahHappiness(1);
 			}
 		} catch(InterruptedException e) {
 			
 		}
+		pauseFlag = false;
 		return new Event("Proses Selesai","Entertain Selesai");
     }
 
@@ -495,7 +502,8 @@ public class UserDragon extends Dragon {
 	 * @return Event rest selesai
 	 */
     public Event rest () {
-        try {
+        pauseFlag = true;
+		try {
 			while (stamina < maxStamina || health < maxHealth) {
 				sleep(1000);
 				if (stamina < maxStamina) tambahStamina(1);
@@ -504,6 +512,7 @@ public class UserDragon extends Dragon {
 		} catch(InterruptedException e) {
 			
 		}
+		pauseFlag = false;
 		return new Event("Proses Selesai","Rest Selesai");
     }
 
@@ -515,14 +524,17 @@ public class UserDragon extends Dragon {
 	 * @return Event toilet selesai 
 	 */
     public Event toToilet () {
-        try {
+        pauseFlag = true;
+		try {
 			while (bladder > 0) {
+				System.out.print(bladder + " ");
 				sleep(1000);
 				tambahBladder(-1);
 			}
 		} catch(InterruptedException e) {
 			
 		}
+		pauseFlag = false;
 		return new Event("Proses Selesai","toToilet Selesai");
     }
 }

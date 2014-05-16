@@ -37,8 +37,9 @@ public class TerminalView implements View {
 		System.out.println("Happiness: " + drg.getHappiness());
 		System.out.println("Bladdr: " + drg.getBladder());
 		System.out.println("Thirst: " + drg.getThirst());
+		System.out.println("Hunger: " + drg.getHunger());
 		System.out.println("Health: " + drg.getHealth());
-		System.out.println("Health: " + drg.getMaxHealth());
+		System.out.println("Max Health: " + drg.getMaxHealth());
 		System.out.println("Stamina: " + drg.getStamina());
 		System.out.println("MaxStamina: " + drg.getMaxStamina());
 		System.out.println("Money: " + drg.getMoney());
