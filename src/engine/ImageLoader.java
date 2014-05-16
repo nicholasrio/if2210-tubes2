@@ -35,9 +35,11 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/MainMenu/options.png"));
         allImages.add(loadImage("Image/MainMenu/about.png"));
         allImages.add(loadImage("Image/MainMenu/exit.png"));
-        allImages.add(loadImage("Image/LevelMenu/icecube.png"));
-        allImages.add(loadImage("Image/LevelMenu/fire-maze.png"));
-        allImages.add(loadImage("Image/LevelMenu/egypt.png"));
+
+        allImages.add(loadImage("Image/MainMenu/icecube.png"));
+        allImages.add(loadImage("Image/MainMenu/fire-maze.png"));
+        allImages.add(loadImage("Image/MainMenu/egypt.png"));
+        allImages.add(loadImage("Image/MainMenu/back.png"));
 }
     
     public static Image getImage(String imgName)
@@ -81,6 +83,10 @@ public class ImageLoader extends JPanel
         else if ("egypt".equalsIgnoreCase(imgName))
         {
             return allImages.get(9);
+        }
+        else if ("back".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(10);
         }
         return null;
     }
