@@ -51,7 +51,6 @@ public class CharacterCache {
      * stub for load item
      */
     public static void stubLoadItem(){
-        Character character = new Hero();
-        
+        //Character character = new Hero(); 
     }
 }

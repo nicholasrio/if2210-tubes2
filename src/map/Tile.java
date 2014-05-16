@@ -20,9 +20,9 @@ public abstract class Tile implements Copyable<Tile>{
     public final static int tileUpStairs = 6;
     public final static int tileDownStairs = 7;
     public final static int tileChest = 8;
-    abstract int getId();
-    abstract boolean isWalkable();
-    abstract boolean isOpenable();
+    public abstract int getId();
+    public abstract boolean isWalkable();
+    public abstract boolean isOpenable();
 }
 
 abstract class OpenableTile extends Tile implements Openable{
@@ -32,17 +32,17 @@ abstract class OpenableTile extends Tile implements Openable{
 class tileChest extends OpenableTile{
     private boolean open = false;
     @Override
-    boolean isWalkable() {
+    public boolean isWalkable() {
         return open;
     }
 
     @Override
-    boolean isOpenable() {
+    public boolean isOpenable() {
         return true;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return Tile.tileChest;
     }
 
@@ -73,17 +73,17 @@ class tileChest extends OpenableTile{
 class tileDownStairs extends Tile{
     
     @Override
-    boolean isWalkable() {
+    public boolean isWalkable() {
         return true;
     }
 
     @Override
-    boolean isOpenable() {
+    public boolean isOpenable() {
         return false;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return Tile.tileDownStairs;
     }
     
@@ -98,17 +98,17 @@ class tileDownStairs extends Tile{
 class tileUpstair extends Tile{
     
     @Override
-    boolean isWalkable() {
+    public boolean isWalkable() {
         return true;
     }
 
     @Override
-    boolean isOpenable() {
+    public boolean isOpenable() {
         return false;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return Tile.tileUpStairs;
     }
     @Override
@@ -121,17 +121,17 @@ class tileUpstair extends Tile{
 class tileDoor extends OpenableTile{
     private boolean open;
     @Override
-    boolean isWalkable() {
+    public boolean isWalkable() {
         return open;
     }
 
     @Override
-    boolean isOpenable() {
+    public boolean isOpenable() {
         return true;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return Tile.tileDoor;
     }
     @Override
@@ -160,17 +160,17 @@ class tileDoor extends OpenableTile{
 class tileCorridor extends Tile{
     
     @Override
-    boolean isWalkable() {
+    public boolean isWalkable() {
         return true;
     }
 
     @Override
-    boolean isOpenable() {
+    public boolean isOpenable() {
         return false;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return Tile.tileCorridor;
     }
     
@@ -184,17 +184,17 @@ class tileCorridor extends Tile{
 class tileStoneWall extends Tile{
     
     @Override
-    boolean isWalkable() {
+    public boolean isWalkable() {
         return false;
     }
 
     @Override
-    boolean isOpenable() {
+    public boolean isOpenable() {
         return false;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return Tile.tileStoneWall;
     }
     
@@ -209,17 +209,17 @@ class tileStoneWall extends Tile{
 class tileDirtFloor extends Tile{
     
     @Override
-    boolean isWalkable() {
+    public boolean isWalkable() {
         return true;
     }
 
     @Override
-    boolean isOpenable() {
+    public boolean isOpenable() {
         return false;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return Tile.tileDirtFloor;
     }
     
@@ -233,17 +233,17 @@ class tileDirtFloor extends Tile{
 class tileDirtWall extends Tile{
     
     @Override
-    boolean isWalkable() {
+    public boolean isWalkable() {
         return false;
     }
 
     @Override
-    boolean isOpenable() {
+    public boolean isOpenable() {
         return false;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return Tile.tileDirtWall;
     }
     
@@ -257,17 +257,17 @@ class tileDirtWall extends Tile{
 class tileUnused extends Tile{
     
     @Override
-    boolean isWalkable() {
+    public boolean isWalkable() {
         return false;
     }
 
     @Override
-    boolean isOpenable() {
+    public boolean isOpenable() {
         return false;
     }
 
     @Override
-    int getId() {
+    public int getId() {
         return Tile.tileUnused;
     }
     

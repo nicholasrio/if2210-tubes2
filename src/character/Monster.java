@@ -4,11 +4,19 @@
  */
 package character;
 
+import java.awt.Graphics2D;
 /**
  *
  * @author yafithekid
  */
+
+import map.Map;
+
 public class Monster extends Character implements Recoverable,Fightable{
+    
+    public Monster(Map map){
+        super(map);
+    }
     @Override
     public int getAttackPoint() {
         return this.getStr();
@@ -36,7 +44,7 @@ public class Monster extends Character implements Recoverable,Fightable{
 
     @Override
     public void doAttack(Fightable fight) {
-        fight.doDamageCalculation(fight.getAttackPoint());
+        fight.doDamageCalculation(this.getAttackPoint());
     }
     
     //implementasi interface Recoverable
@@ -46,7 +54,11 @@ public class Monster extends Character implements Recoverable,Fightable{
         if (this._currentHealth > this._maxHealth) {
             this._currentHealth = this._maxHealth;
         }
+        else if (this._currentHealth > 0){
+            this._currentHealth = 0;
+        }
     }
+    
     @Override
     public void addCurrentMana(int x){
         this._currentMana += x;
@@ -54,5 +66,8 @@ public class Monster extends Character implements Recoverable,Fightable{
             this._currentMana = this._maxMana;
         }
     }
-
+    
+    public void draw(Graphics2D g,int offsetX,int offsetY){
+        
+    }
 }

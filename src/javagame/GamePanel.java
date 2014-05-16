@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.*;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import java.awt.RenderingHints;
 
 /**
  *
@@ -59,6 +60,7 @@ public class GamePanel extends JPanel implements Drawable,Updateable{
     
     public void initialize()
     {
+        setDoubleBuffered(true);
         this.maxFPS = 60;
         setBackground(Color.BLACK);
         sceneManager = new GameStateManager(this);
@@ -86,7 +88,11 @@ public class GamePanel extends JPanel implements Drawable,Updateable{
 
     @Override
     public void paint(Graphics g){
-        super.paintComponent(g);
+        RenderingHints rh =
+        new RenderingHints(RenderingHints.KEY_ANTIALIASING,
+                        RenderingHints.VALUE_ANTIALIAS_ON);
+        rh.put(RenderingHints.KEY_RENDERING,
+        RenderingHints.VALUE_RENDER_QUALITY);
         draw(this.gameTime, g);
     }
 

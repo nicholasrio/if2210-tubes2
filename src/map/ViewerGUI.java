@@ -31,8 +31,16 @@ public class ViewerGUI {
             for (int j = 0; j < M.ysize; j++){
                 if (!M.isVisible(i, j)) {
                     g.fillRect(i*TileImagePrototype.tileWidth, j*TileImagePrototype.tileHeight,TileImagePrototype.tileWidth, TileImagePrototype.tileHeight);
+                    continue;
                 }
-                else g.drawImage(TileImagePrototype.getTileImage(M.getCell(i, j).getId())
+                if (M.getCell(i, j).isOpenable()){
+                    if(((Openable)M.getCell(i, j)).isOpen()){
+                        g.drawImage(TileImagePrototype.getTileImage(M.getCell(i, j).getId()*10)
+                        , i*TileImagePrototype.tileWidth, j*TileImagePrototype.tileHeight, null);
+                    }
+                    continue;
+                }
+                g.drawImage(TileImagePrototype.getTileImage(M.getCell(i, j).getId())
                         , i*TileImagePrototype.tileWidth, j*TileImagePrototype.tileHeight, null);
             }
         }
@@ -46,6 +54,13 @@ public class ViewerGUI {
             }
         for (int i = 0; i < M.xsize; i++){
             for (int j = 0; j < M.ysize; j++){
+                if (M.getCell(i, j).isOpenable()){
+                    if(((Openable)M.getCell(i, j)).isOpen()){
+                        g.drawImage(TileImagePrototype.getTileImage(M.getCell(i, j).getId()*10)
+                        , i*TileImagePrototype.tileWidth, j*TileImagePrototype.tileHeight, null);
+                        continue;
+                    }
+                }
                 g.drawImage(TileImagePrototype.getTileImage(M.getCell(i, j).getId())
                         , i*TileImagePrototype.tileWidth, j*TileImagePrototype.tileHeight, null);
             }
@@ -65,13 +80,21 @@ public class ViewerGUI {
             } catch (IOException ex) {
                 Logger.getLogger(ViewerGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-        for (int i = x1; i < x1+width; i++){
-            for (int j = y1; j < y1+height; j++){
+        for (int i = (int)(x1/32); i < Math.min((int)(x1+width)/32+3,M.xsize-1); i++){
+            for (int j = (int)(y1/32); j < Math.min((int)(y1+height)/32+3,M.ysize-1); j++){
                 if (!M.isVisible(i, j)) {
-                    g.fillRect((i-x1)*TileImagePrototype.tileWidth, (j-y1)*TileImagePrototype.tileHeight,TileImagePrototype.tileWidth, TileImagePrototype.tileHeight);
+                    g.fillRect((i*32) - x1, (j*32) - y1,32,32);
+                    continue;
                 }
-                else g.drawImage(TileImagePrototype.getTileImage(M.getCell(i, j).getId())
-                        , (i-x1)*TileImagePrototype.tileWidth, (j-y1)*TileImagePrototype.tileHeight, null);
+                if (M.getCell(i, j).isOpenable()){
+                    if(((Openable)M.getCell(i, j)).isOpen()){
+                        g.drawImage(TileImagePrototype.getTileImage(M.getCell(i, j).getId()*10)
+                        , (i*32) - x1, (j*32) -y1, null);
+                        continue;
+                    }
+                }
+                g.drawImage(TileImagePrototype.getTileImage(M.getCell(i, j).getId())
+                        , (i*32) - x1, (j*32) -y1, null);
             }
         }
     }

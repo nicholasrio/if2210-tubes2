@@ -60,5 +60,7 @@ public class TileImagePrototype {
         ImageMap.put(Tile.tileUpStairs,Temp);
         Temp = Toolkit.getDefaultToolkit().getImage(P.getClass().getResource("resource/stairs_down.png"));
         ImageMap.put(Tile.tileDownStairs,Temp);
+        Temp = Toolkit.getDefaultToolkit().getImage(P.getClass().getResource("resource/gate_open.png"));
+        ImageMap.put(Tile.tileDoor*10,Temp);
     }
 }

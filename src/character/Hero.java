@@ -4,30 +4,42 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.*;
-import java.io.*;
-import javax.imageio.*;
-import java.net.URL;
 import javax.imageio.ImageIO;
+import map.Map;
+import map.*;
 
 public class Hero extends Character implements Useitem,Upgradeable,Recoverable,Fightable {
     protected int _money;
-    ArrayList<Item> _items;
+    private ArrayList<Item> _items;
     private static ArrayList<BufferedImage[]> sprites;
+    private ArrayList<FireBall> fireballs;
     
-    public Hero(){
+    public enum HeroState{
+        IDLE,MOVE,ATTACK
+    };
+    
+    HeroState heroState;
+    
+    public Hero(Map map){
+            super(map);
             _money = 0;
             _items = new ArrayList<Item>();
             
-            moveSpeed = 1;
+            //initialize movement
+            heroState = HeroState.IDLE;
+            moveSpeed = 2;
             movingUp=false;
             movingDown=false;
             movingRight=false;
             movingLeft=false;
             faceDirection = direction.UP;
+            
+            //initialize animation
             animation = new Animation();
             animation.setDelay(100);
             loadImage();
             animation.setFrames(sprites.get(3));
+            fireballs = new ArrayList<FireBall>(100);  
     }
     
     //implementasi interface useitem
@@ -171,21 +183,22 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
     public void loadImage() {
         
         sprites = new ArrayList<BufferedImage[]>(4);
+        BufferedImage spriteSheet=null;
+        try{
+            spriteSheet = ImageIO.read(getClass().getResourceAsStream("/Hero/Hero.png"));
+            width = spriteSheet.getWidth()/3;
+            height = spriteSheet.getHeight()/4;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         for (int i=0;i<4;i++){
             BufferedImage[] bi= new BufferedImage[3];
-            try{
-                BufferedImage spriteSheet = ImageIO.read(getClass().getResourceAsStream("/Hero/Hero.png"));
-                for (int j=0;j<3;j++){
-                    int width = spriteSheet.getWidth();
-                    int height = spriteSheet.getHeight();
-                    bi[j]=spriteSheet.getSubimage(j*width/3,i*height/4,width/3,height/4);
-                }
-            }
-            catch (Exception e){
-                e.printStackTrace();
+            for (int j=0;j<3;j++){  
+                bi[j]=spriteSheet.getSubimage(j*width,i*height,width,height);
             }
             sprites.add(bi);
-        }
+        }      
     }
 
     @Override
@@ -222,73 +235,160 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
     public void update(){
         if (movingUp){
             y-=moveSpeed;
+            checkTileCollision();
         }
         else if (movingDown){
             y+=moveSpeed;
+            checkTileCollision();
         }
         else if (movingRight){
             x+=moveSpeed;
+            checkTileCollision();
         }
         else if (movingLeft){
             x-=moveSpeed;
+            checkTileCollision();
         }
-        if (!isIdle()){
+        if (heroState==HeroState.MOVE){
             animation.update();
         }
+        if (heroState==HeroState.ATTACK){
+            heroState=HeroState.IDLE;
+        }
+        //ubah peta menjadi visible
+        int mx=(int)x/32;
+        int my=(int)y/32;
+        for (int i=Math.max(mx-3,0);i<=Math.min(mx+3,map.xsize-1);i++){
+            for (int j=Math.max(my-3,0);j<=Math.min(my+3,map.ysize-1);j++){
+                map.setVisible(i, j, true);
+            }
+        }
+        
+        //check if fireball should be remove
+        for (int i=0;i<fireballs.size();i++){
+            fireballs.get(i).update();
+            if (fireballs.get(i).shouldRemove()){
+                fireballs.remove(i);
+                i--;
+            }
+        }
     }
     
-    public boolean isIdle(){
-        return !(movingUp || movingDown || movingRight || movingLeft);
-    }
+    //Input Handling
     public void keyPressed(int k){
         //Reaction to KeyPressed
-        
-        if(k == KeyEvent.VK_UP){
-            if (!movingUp){
-                movingUp=true;
-                faceDirection = direction.UP;
-                animation.setFrames(sprites.get(3));
-            }
-        }
-        else if(k == KeyEvent.VK_DOWN) {
-            if (!movingDown){
-                movingDown=true;
-                faceDirection = direction.DOWN;
-                animation.setFrames(sprites.get(0));
-            }
-	}
-        else if(k == KeyEvent.VK_RIGHT) {
-            if (!movingRight){
-                movingRight=true;
-                faceDirection = direction.RIGHT;
-                animation.setFrames(sprites.get(2));
-            }
-	}
-        else if (k == KeyEvent.VK_LEFT) {
-            if (!movingLeft){
-                movingLeft=true;
-                faceDirection = direction.LEFT;
-                animation.setFrames(sprites.get(1));
-            }
+        if (heroState == HeroState.IDLE || heroState== HeroState.MOVE){
+                if(k == KeyEvent.VK_UP){
+                    if (!movingUp){
+                        movingUp=true;
+                        faceDirection = direction.UP;
+                        animation.setFrames(sprites.get(3));
+                        heroState=HeroState.MOVE;
+                    }
+                }
+                else if(k == KeyEvent.VK_DOWN) {
+                    if (!movingDown){
+                        movingDown=true;
+                        faceDirection = direction.DOWN;
+                        animation.setFrames(sprites.get(0));
+                        heroState=HeroState.MOVE;
+                    }
+                }
+                else if(k == KeyEvent.VK_RIGHT) {
+                    if (!movingRight){
+                        movingRight=true;
+                        faceDirection = direction.RIGHT;
+                        animation.setFrames(sprites.get(2));
+                        heroState=HeroState.MOVE;
+                    }
+                }
+                else if (k == KeyEvent.VK_LEFT) {
+                    if (!movingLeft){
+                        movingLeft=true;
+                        faceDirection = direction.LEFT;
+                        animation.setFrames(sprites.get(1));
+                        heroState=HeroState.MOVE;
+                    }
+                }
+                else if (k == KeyEvent.VK_O){
+                    
+                    //OPEN DOOR
+                    
+                    //cek apakah Tile pada arah yang dihadapi merupakan pintu
+                    boolean Openable=false;
+                    Tile cell = null;
+
+                    if (faceDirection == direction.RIGHT){
+                        cell = map.getCell((int)(x/width)+1, (int)y/height);
+                    }
+                    else if (faceDirection == direction.LEFT){
+                        cell=map.getCell((int)(x/width)-1,(int)y/height);
+                    }
+                    else if (faceDirection == direction.UP){
+                        cell=map.getCell((int)(x/width),(int)(y/height)-1);
+                    }
+                    else if (faceDirection == direction.DOWN){
+                        cell = map.getCell((int)x/width,(int)(y/height)+1);
+                    }
+                    
+                    if (cell.isOpenable()){
+                        //jika cell merupakan pintu maka buka pintu
+                        Openable tile;
+                        tile = (Openable)cell;
+                        tile.open();
+                    }
+                }
+                else if (k == KeyEvent.VK_A){
+    
+                    //heroState=HeroState.ATTACK;
+                    int direct = 0;
+                    if (faceDirection == direction.UP){
+                        direct = 1;
+                    }
+                    else if (faceDirection == direction.RIGHT){
+                        direct = 2;
+                    }
+                    else if (faceDirection == direction.DOWN){
+                        direct = 3;
+                    }
+                    else if (faceDirection == direction.LEFT){
+                        direct = 4;
+                    }
+                    fireballs.add(new FireBall((int)x+(width/4),(int)y+(height/4),direct));
+                }
         }
     }
     
-    public void draw(Graphics2D g){
-        g.drawImage(animation.getImage(),(int)x,(int)y,null);
+    public void draw(Graphics2D g,int offsetX,int offsetY){
+        g.drawImage(animation.getImage(),((int)x-offsetX),((int)y-offsetY),null);
+        for (int i=0;i<fireballs.size();i++){
+            fireballs.get(i).draw(g,offsetX,offsetY);
+        }
     }
     
     public void keyReleased(int k){
-        if(k == KeyEvent.VK_UP){
-            movingUp=false;
-        }
-        else if(k == KeyEvent.VK_DOWN) {
-            movingDown=false;
-	}
-        else if(k == KeyEvent.VK_RIGHT) {
-            movingRight=false;
-	}
-        else if (k == KeyEvent.VK_LEFT) {
-            movingLeft=false;
+        switch (heroState){
+            case IDLE :
+            case MOVE :
+                if(k == KeyEvent.VK_UP){
+                    movingUp=false;
+                    heroState = HeroState.IDLE;
+                }
+                else if(k == KeyEvent.VK_DOWN) {
+                    movingDown=false;
+                    heroState = HeroState.IDLE;
+                }
+                else if(k == KeyEvent.VK_RIGHT) {
+                    movingRight=false;
+                    heroState = HeroState.IDLE;
+                }
+                else if (k == KeyEvent.VK_LEFT) {
+                    movingLeft=false;
+                    heroState = HeroState.IDLE;
+                }
+                break;
+            case ATTACK :
+                break;
         }
     }
     

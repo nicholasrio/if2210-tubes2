@@ -33,6 +33,7 @@ public class Map{
         
 	//our map
 	private Tile[] dungeon_map = { };
+
         //Visible
         private boolean visible[][];
         
@@ -68,7 +69,6 @@ public class Map{
             visible[x][y] = v;
         }
         
-
 	//The RNG. the seed is based on seconds from the "java epoch" ( I think..)
 	//perhaps it's the same date as the unix epoch
 	private int getRand(int min, int max){
