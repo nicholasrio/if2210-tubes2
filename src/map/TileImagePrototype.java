@@ -27,13 +27,7 @@ public class TileImagePrototype {
     static HashMap<Integer, Image> ImageMap = new HashMap<Integer, Image> ();
     public static int tileHeight = 32;
     public static int tileWidth = 32;
-    
-    public static Image getTileImage(int id) {
-        static boolean hasLoadImage = false;
-        static HashMap<Integer, Image> ImageMap = new HashMap<Integer, Image> ();
-        public final static int tileHeight = 32;
-        public final static int tileWidth = 32;
-    }
+    static boolean hasLoadImage = false;
     
     public static Image getTileImage(int id) {
         if (!hasLoadImage) {

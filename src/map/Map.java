@@ -308,11 +308,7 @@ public class Map{
 			if (xsize <= xmax) System.out.println();
 		}
 	}
- 
-	//and here's the one generating the whole map
-	public Map createDungeon(int inx, int iny, int inobj){
-                TilePrototype.loadCache();
-        }
+        
 	//and here's the one generating the whole map
 	public Map createDungeon(int inx, int iny, int inobj){
                 TilePrototype.loadCache();
@@ -324,8 +320,6 @@ public class Map{
                         visible[i][j] = false;
                     }
                 } 
-                
->>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
 		if (inobj < 1) objects = 10;
 		else objects = inobj;
  
@@ -520,7 +514,6 @@ public class Map{
  
 		return this;
 	}
-<<<<<<< HEAD
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
 	public static void main(String[] args){
@@ -542,8 +535,4 @@ public class Map{
 			//always good to be able to see the results..
 			generator.showDungeon();
 	}
-        
-        
-=======
->>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
 }
