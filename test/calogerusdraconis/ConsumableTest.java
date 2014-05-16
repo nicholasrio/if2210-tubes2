@@ -45,8 +45,8 @@ public class ConsumableTest {
     @Test
     public void testGetImg() {
         System.out.println("getImg");
-        Consumable instance = null;
-        String expResult = "";
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
+        String expResult = "aa";
         String result = instance.getImg();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -60,7 +60,7 @@ public class ConsumableTest {
     public void testSetImg() {
         System.out.println("setImg");
         String val = "";
-        Consumable instance = null;
+        Consumable instance =new Consumable("aa","aa",0,0,0,0,0,0,0,0) ;
         instance.setImg(val);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -72,8 +72,8 @@ public class ConsumableTest {
     @Test
     public void testGetName() {
         System.out.println("getName");
-        Consumable instance = null;
-        String expResult = "";
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
+        String expResult = "aa";
         String result = instance.getName();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -87,7 +87,7 @@ public class ConsumableTest {
     public void testSetName() {
         System.out.println("setName");
         String val = "";
-        Consumable instance = null;
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
         instance.setName(val);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -99,7 +99,7 @@ public class ConsumableTest {
     @Test
     public void testGetHealthValue() {
         System.out.println("getHealthValue");
-        Consumable instance = null;
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
         float expResult = 0.0F;
         float result = instance.getHealthValue();
         assertEquals(expResult, result, 0.0);
@@ -113,7 +113,7 @@ public class ConsumableTest {
     @Test
     public void testGetThirstValue() {
         System.out.println("getThirstValue");
-        Consumable instance = null;
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
         float expResult = 0.0F;
         float result = instance.getThirstValue();
         assertEquals(expResult, result, 0.0);
@@ -127,7 +127,7 @@ public class ConsumableTest {
     @Test
     public void testGetHungerValue() {
         System.out.println("getHungerValue");
-        Consumable instance = null;
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
         float expResult = 0.0F;
         float result = instance.getHungerValue();
         assertEquals(expResult, result, 0.0);
@@ -141,7 +141,7 @@ public class ConsumableTest {
     @Test
     public void testGetCost() {
         System.out.println("getCost");
-        Consumable instance = null;
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
         float expResult = 0.0F;
         float result = instance.getCost();
         assertEquals(expResult, result, 0.0);
@@ -155,7 +155,7 @@ public class ConsumableTest {
     @Test
     public void testGetStaminaValue() {
         System.out.println("getStaminaValue");
-        Consumable instance = null;
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
         float expResult = 0.0F;
         float result = instance.getStaminaValue();
         assertEquals(expResult, result, 0.0);
@@ -169,7 +169,7 @@ public class ConsumableTest {
     @Test
     public void testGetMaxHealthValue() {
         System.out.println("getMaxHealthValue");
-        Consumable instance = null;
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
         float expResult = 0.0F;
         float result = instance.getMaxHealthValue();
         assertEquals(expResult, result, 0.0);
@@ -183,7 +183,7 @@ public class ConsumableTest {
     @Test
     public void testGetMaxStaminaValue() {
         System.out.println("getMaxStaminaValue");
-        Consumable instance = null;
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
         float expResult = 0.0F;
         float result = instance.getMaxStaminaValue();
         assertEquals(expResult, result, 0.0);
@@ -197,7 +197,7 @@ public class ConsumableTest {
     @Test
     public void testGetHappinessValue() {
         System.out.println("getHappinessValue");
-        Consumable instance = null;
+        Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
         float expResult = 0.0F;
         float result = instance.getHappinessValue();
         assertEquals(expResult, result, 0.0);
