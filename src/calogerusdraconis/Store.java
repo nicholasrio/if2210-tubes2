@@ -98,6 +98,7 @@ public class Store {
 	 * @return Consumable yang dibeli
 	 */
     public Consumable buy (int arrLoc) {
+		--arrLoc;
         return fdInventory.get(arrLoc);
     }
 }
