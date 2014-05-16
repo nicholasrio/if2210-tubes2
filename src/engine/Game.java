@@ -71,6 +71,8 @@ public class Game
             SceneManager.AddScene(new LevelMenuGUI());
             SceneManager.AddScene(new GameMenuGUI());
             SceneManager.AddScene(new AchievementMenuGUI());
+            SceneManager.AddScene(new OptionsMenuGUI());
+            SceneManager.AddScene(new AboutMenuGUI());
             SceneManager.SwitchScene("MainMenuGUI");
         }
     }
@@ -96,6 +98,7 @@ public class Game
             } 
         }   
         GameData.savePlayer("player.xml");
+        System.exit(0);
     }
     
     public static void main(String []args)
