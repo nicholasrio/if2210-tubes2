@@ -29,7 +29,10 @@ public class LevelMenuGUI extends Scene
 {
     // attributes
     private static Image bgTexture;
-    private static Image titleTexture;
+    private static Image groupnameTexture;
+    private static Image levelTexture;
+    private static Image titleLvlTexture;    
+    private static Image LorULTexture;    
     
     public LevelMenuGUI()
     {
@@ -52,8 +55,11 @@ public class LevelMenuGUI extends Scene
     {
         // load Image here
         // using ImageLoader.getImage
-        bgTexture = ImageLoader.getImage("background");
-        titleTexture = ImageLoader.getImage("cube_mazer(ice)");
+        bgTexture = ImageLoader.getImage("frozen_cube");
+        groupnameTexture = ImageLoader.getImage("cube_mazer_ice");
+        levelTexture = ImageLoader.getImage("level_ice");
+        titleLvlTexture = ImageLoader.getImage("ice_mage");
+        LorULTexture=ImageLoader.getImage("unlocked_ice");
         
     }
     
@@ -87,10 +93,12 @@ public class LevelMenuGUI extends Scene
     {
         if (Game.mode == 2)
         {
-            Graphics2D g2D = (Graphics2D) g;
-            g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
-            g2D.drawImage(titleTexture, (int) (getWidth()*0.05f), (int) (getHeight()*0.01f), (int) (titleTexture.getWidth(this)*0.7f),(int) (titleTexture.getHeight(this)*0.7f), this);          
-            //g2D.drawImage()
+            Graphics2D g2D = (Graphics2D) g;                                    
+            g2D.drawImage(bgTexture, 0, 0,getWidth(),getHeight(), this);
+            g2D.drawImage(groupnameTexture, (int) (getWidth()*0.05f), (int) (getHeight()*0.01f), (int) (groupnameTexture.getWidth(this)*0.7f),(int) (groupnameTexture.getHeight(this)*0.7f), this);                                  
+            g2D.drawImage(levelTexture, 0, 100, levelTexture.getWidth(this), levelTexture.getHeight(this), this);
+            g2D.drawImage(titleLvlTexture, 0, 200, titleLvlTexture.getWidth(this), titleLvlTexture.getHeight(this), this);
+            g2D.drawImage(LorULTexture, 0, 300, LorULTexture.getWidth(this), LorULTexture.getHeight(this), this);            
             // paint Image here
             // using g2D.drawImage
         }

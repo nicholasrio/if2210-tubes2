@@ -171,10 +171,18 @@ public class Map{
             for(int j=0;j<maxRow;j++)
                 for(int k=0;k<maxCol;k++)
                     if(matrix[i][j][k].getName().equalsIgnoreCase("start"))
-                        return new Location(i,j,k);
+                        return new Location(j,k,i);
         throw new Exception("Tidak menemukan start.");
     }
     
+    /**
+     * Draw Map to Canvas
+     * 
+     * @param canvas Canvas
+     * @param level Player Location level
+     * @param rowOffset drawing row offset
+     * @param colOffset drawing col offset
+     */
     public void Draw(CLICanvas canvas,int level, int rowOffset, int colOffset){
         for(int i=rowOffset-1;i<rowOffset+(maxRow*3+1);i++){
             canvas.setCanvasPixel(i, colOffset-1, '#');
@@ -184,7 +192,7 @@ public class Map{
             canvas.setCanvasPixel(rowOffset-1, i, '#');
             canvas.setCanvasPixel(rowOffset+maxRow*3, i, '#');
         }
-        System.out.println("Eroorrrr "+level);
+
         for(int i=0;i<maxRow;i++)
             for(int j=0;j<maxCol;j++)
                 matrix[level][i][j].Draw(canvas, rowOffset+3*i, colOffset+3*j);

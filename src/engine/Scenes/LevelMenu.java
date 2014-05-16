@@ -34,8 +34,8 @@ public class LevelMenu extends Scene
         level=1;
         nama_lvl="ICE MAZE";
 
-        height=GameData.height;
-        width=GameData.width;        
+        height=GameData.height-2;
+        width=GameData.width-2;        
 
         spacebetween=width/25;
         space=((width)-(spacebetween*10)-10-4)/2;         
@@ -51,21 +51,21 @@ public class LevelMenu extends Scene
         if (input==1){
             if (level<3){
                 level+=1;
-                height=55;
+                height=GameData.height-2;
             }
             else{
-                height=54;
+                height=GameData.height-3;
                 for (int i=0;i<60;i++) System.out.print(" ");
                 System.out.println("Tidak ada level diatas level 3!!");
             }
         }
         else if(input == 0){
             if (level>1){
-                height=55;
+                height=GameData.height-2;
                 level-=1;
             }            
             else{
-                height=54;
+                height=GameData.height-3;
                 for (int i=0;i<60;i++) System.out.print(" ");
                 System.out.println("Tidak ada level dibawah level 1!!");
             }
@@ -73,7 +73,7 @@ public class LevelMenu extends Scene
         else if (input==2)
         {
             if (level-1<=GameData.lastLogin.getLevelUnlocked()){
-                GameData.nowLevelPlayed = level;
+                GameData.nowLevelPlayed = level-1;
                 System.out.println("Level Chosen : " + level);
                 SceneManager.SwitchScene("GameMenu");
             }

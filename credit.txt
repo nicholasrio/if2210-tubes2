@@ -1,8 +1,10 @@
 
 cooltext.com -> MainMenu Font
 wallpoper.com -> MainMenu Background
-www.shutterstock.com -> LevelMenu asset
-www.clipartbest.com -> MainMenu exit asset
+shutterstock.com -> LevelMenu asset
+clipartbest.com -> MainMenu exit asset
+hdwallpapersimages.com/icy/1878/ -> wallpaper level
+ice
 pkmn.net -> GameMenu ice path & ice rock
 fc01.deviantart.net -> GameMenu ice teleporter
 openclipart.org -> GameMenu ice hole
@@ -13,3 +15,8 @@ cooltext.com/Logo-Design-Frosty -> LevelMenu level 1 Title
 
 
 tibiaml.com -> GameMenu fire path & fire wall
+officialpsds.com/images/thumbs/Ice-Arrow-psd24258.png -> Frozen Arrow
+colourbox.com/preview/2259952-129493-burning-fire-arrow-on-the-black-background.jpg -> Burning Fire Arrow
+istockimg.com/file_thumbview_approve/7990457/3/stock-photo-7990457-fire-flame-isolated-over-white-background.jpg
+gagsunlimited.mb.ca/seasonal/Christmas/Decorations/210844.jpg -> Ice Shard
+

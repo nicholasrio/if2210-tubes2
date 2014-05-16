@@ -128,6 +128,7 @@ public class MainMenuGUI extends Scene
         /* Rectangle */
         newgameRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.268f), 
                                    (int)(Game.ResolutionWidth*0.34f),(int)(Game.ResolutionHeight*0.145f));
+        
         achievementRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.425f), 
                                    (int)(Game.ResolutionWidth*0.34f),(int)(Game.ResolutionHeight*0.145f));
         optionsRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.595f), 

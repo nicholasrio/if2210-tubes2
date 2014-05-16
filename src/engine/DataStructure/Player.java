@@ -93,6 +93,11 @@ public class Player
         return achievementUnlocked;
     }
     
+    /**
+     * Get location of Player in Map
+     * 
+     * @return Player location
+     */
     public Location getLocation()
     {
         return position;
@@ -132,16 +137,28 @@ public class Player
         this.levelUnlocked = level;
     }
     
+    /**
+     * Reset temp score to zero
+     */
     public void resetTempScore()
     {
         temp_score = 0;
     }
     
+    /**
+     * Get temporary score while playing
+     * 
+     * @return temporary score
+     */
+    public int getTempScore(){
+        return temp_score;
+    }
     /* Method */
     /**
      * 
      * @param peta the peta in which the player is playing
      * @param command 1 for up, 2 for down, 3 for left, 4 for right
+     * @return -1 if error, 1 if finish
      */
     public int move(Map peta, int command)
     {
@@ -204,7 +221,6 @@ public class Player
             {
                 TeleporterItem tele = (TeleporterItem) itemHere;
                 Location teleLocation = tele.getArrivalLocation();
-                System.out.println("Tele Location : " +teleLocation);
                 position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
             }
             else if(itemHere.getName().equalsIgnoreCase("hole")){
@@ -224,6 +240,10 @@ public class Player
         }
     }
     
+    /**
+     * Set Player position at Map
+     * @param M Map
+     */
     public void initPlayerPosition(Map M){
         try{
             position = M.getStart();
@@ -232,6 +252,13 @@ public class Player
         }
     }
     
+    /**
+     * Draw Player to Canvas 
+     * 
+     * @param canvas canvas
+     * @param row row offset
+     * @param col col offset
+     */
     public void Draw(CLICanvas canvas, int row, int col){
         canvas.setCanvasPixel(row, col, ' ');
         canvas.setCanvasPixel(row, col+1, 'o');
