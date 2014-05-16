@@ -8,6 +8,7 @@ package engine.GUIScenes;
 
 import engine.*;
 import engine.DataStructure.GameData;
+import engine.Exception.SceneNotFoundException;
 import static engine.Game.gameFrame;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -19,6 +20,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -69,7 +72,11 @@ public class LevelMenuGUI extends Scene
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                mouseUpdateReleased(e);
+                try {
+                    mouseUpdateReleased(e);
+                } catch (SceneNotFoundException ex) {
+                    Logger.getLogger(LevelMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
             @Override
@@ -126,11 +133,12 @@ public class LevelMenuGUI extends Scene
     {
         if (menuPressed==3){
             if (level<2)   level+=1;            
+            menuPressed=-1;
         }
         else if (menuPressed==4){
             if (level>1)   level-=1;            
-        }
-        menuPressed=-1;
+            menuPressed=-1;
+        }        
         if (level==1){
             bgTexture = ImageLoader.getImage("frozen_cube");
             groupnameTexture = ImageLoader.getImage("cube_mazer_ice");
@@ -255,13 +263,13 @@ public class LevelMenuGUI extends Scene
         }
     }
     
-    void mouseUpdateReleased(MouseEvent event)
-    {
+    void mouseUpdateReleased(MouseEvent event) throws SceneNotFoundException
+    {        
         if (menuPressed ==1){
-            SceneManager.SwitchScene("GameMenuGUI");
+            SceneManager.SwitchScene("GameMenuGUI");     
         }
         else if (menuPressed==2){
-            SceneManager.SwitchScene("AchievementMenuGUI");
+            SceneManager.SwitchScene("MainMenuGUI");            
         }        
     }
 }
