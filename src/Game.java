@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 import javax.swing.*;
 
@@ -7,59 +8,87 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 
 	// Constants
 	static String TITLE = "The Plan(T)s";
-	
+
+	// for debugging
 	private static int COUNT_ID = 0;
 	int ID;
-	
-	static final int UPDATES_PER_SEC = 3; // number of game update per second
-	static final long UPDATE_PERIOD_NSEC = 100000000L / UPDATES_PER_SEC; // nanoseconds
+
+	// Game Attributes
+	private GridPlant land;
+	private int waterCapacity;
+	private int money;
+	private Player player;
+
+	static final int UPDATES_PER_SEC = 10; // number of game update per second
+	static final long UPDATE_PERIOD_NSEC = 1000000000L / UPDATES_PER_SEC; // nanoseconds
 	private Color COLOR_PIT = Color.LIGHT_GRAY;
-	
-	private static final int CANVAS_WIDTH = ThePlants.PANEL_WIDTH;
-	private static final int CANVAS_HEIGHT = ThePlants.PANEL_HEIGHT;
-	
+
 	private Thread gameThread = null;
 
 	// Enumeration for the states of the game.
 	static enum GameState {
 		INITIALIZED, PLAYING, PAUSED, GAMEOVER, DESTROYED
 	}
-	
+	boolean isWatering = false;
+
 	// current state of the game
 	private static GameState state;
-
-	// Define instance variables for the game objects
-	private Plant plant;
-	private GridPlant gridPlant;
 
 	// Constructor to initialize the UI components and game objects
 	public Game() {
 		ID = ++COUNT_ID;
-		
+
 		// Initialize the game objects
+		this.setLayout(null);
 		gameInit();
 
 		// UI components
-		this.setPreferredSize(new Dimension(ThePlants.PANEL_WIDTH, ThePlants.PANEL_HEIGHT));
-		//add(pit);
-		
+		this.setPreferredSize(new Dimension(ThePlants.PANEL_WIDTH,
+				ThePlants.PANEL_HEIGHT));
+		// add(pit);
+
 		// Add Action Listener
 		this.addKeyListener(this);
 		this.addMouseListener(this);
 		
-		JButton resetButton = new JButton("Reset");
-		resetButton.setBounds(0, 360, 100, 30);
-		resetButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				ThePlants.changePanel(new Game());
-				// Stop Current Thread
-				gameThread.interrupt();
-			}
-		});
-		this.add(resetButton);
 		
+
 		// Start the game.
 		gameStart();
+	}
+
+	// Getter-Setter
+
+	public GridPlant getLand() {
+		return land;
+	}
+
+	public void setLand(GridPlant land) {
+		this.land = land;
+	}
+
+	public int getWaterCapacity() {
+		return waterCapacity;
+	}
+
+	public void setWaterCapacity(int waterCapacity) {
+		this.waterCapacity = waterCapacity;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 	// ------ All the game related codes here ------
@@ -68,18 +97,50 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 	// main class.
 	public void gameInit() {
 		// Allocate a new snake and a food item, do not regenerate.
-		plant = new Plant();
-		gridPlant = new GridPlant();
+		land = new GridPlant();
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
-				gridPlant.createPlant(i, j);
+				land.createPlant(i, j);
 			}
 		}
 		state = GameState.INITIALIZED;
+		
+		// Add components
+		// Reset Button
+		JButton resetButton = new JButton("Reset");
+		resetButton.setBounds(650, 250, 120, 30);
+		resetButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				ThePlants.changePanel(new Game());
+				// Stop Current Thread
+				gameThread.interrupt();
+			}
+		});
+		this.add(resetButton);
+		// Water Button
+		final JButton waterButton = new JButton("Siram");
+		waterButton.setBounds(650, 300, 120, 30);
+		waterButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				// TODO Auto-generated method stub
+				if (!isWatering) {
+					waterButton.setText("Klik tanaman");
+					isWatering = true;
+				}
+				else {
+					waterButton.setText("Siram");
+					isWatering = false;
+				}
+			}
+		});
+		this.add(waterButton);
 	}
 
 	// Shutdown the game, clean up code that runs only once.
 	public void gameShutdown() {
+
 	}
 
 	// To start and re-start the game.
@@ -108,13 +169,13 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 		// Game loop
 		long beginTime, timeTaken, timeLeft; // in msec
 		while (state != GameState.GAMEOVER) {
-			System.out.println("Ini Game dengan ID = " + ID);
-			
+			//System.out.println("Ini Game dengan ID = " + ID);
+
 			beginTime = System.nanoTime();
 			if (state == GameState.PLAYING) {
 				// Update the state and position of all the game objects,
 				// detect collisions and provide responses.
-				gameUpdate();
+				gameUpdate(UPDATE_PERIOD_NSEC * 1e-9);
 			}
 			// Refresh the display
 			repaint();
@@ -130,17 +191,17 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 				// other thread can do work.
 				Thread.sleep(timeLeft);
 			} catch (InterruptedException ex) {
-			    Thread.currentThread().interrupt();//preserve the message
-			    return;//Stop doing whatever I am doing and terminate
+				Thread.currentThread().interrupt();// preserve the message
+				return;// Stop doing whatever I am doing and terminate
 			}
 		}
 	}
 
 	// Update the state and position of all the game objects,
 	// detect collisions and provide responses.
-	public void gameUpdate() {
+	public void gameUpdate(double timeElapsed) {
 		// plant.update();
-		gridPlant.update(0.);
+		land.update(timeElapsed);
 	}
 
 	// Collision detection and response
@@ -150,18 +211,18 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 	private void gameDraw(Graphics g) {
 		// draw game objects
 		// plant.draw(g,100,100);
-		gridPlant.draw(g);
+		land.draw(g);
 		// game info
 		g.setFont(new Font("Dialog", Font.PLAIN, 14));
 		g.setColor(Color.BLACK);
-		g.drawString(TITLE, 200, CANVAS_HEIGHT / 2);
+		g.drawString(TITLE, 200, 300);
 		if (state == GameState.GAMEOVER) {
 			g.setFont(new Font("Verdana", Font.BOLD, 30));
 			g.setColor(Color.RED);
-			g.drawString("GAME OVER!", 200, CANVAS_HEIGHT / 2);
+			g.drawString("GAME OVER!", 200, 300);
 		}
 	}
-	
+
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); // paint background
@@ -170,13 +231,26 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 		// Draw the game objects
 		gameDraw(g);
 	}
-	
-	/// Code for Action Listener (Mouse and Key Listener)
+
+	// / Code for Action Listener (Mouse and Key Listener)
 
 	@Override
 	public void mouseClicked(MouseEvent event) {
 		// TODO Auto-generated method stub
-		
+		if (state == GameState.PLAYING) {
+			ArrayList<Plant> allPlant = land.getAllPlants();
+			
+			// Watering plants
+			if (isWatering) {
+				for (Plant p : allPlant) {
+					if (p.contains(event.getPoint())) {
+						p.water(20);
+					}
+				}
+			}
+			
+			// Other ...
+		}
 	}
 
 	@Override
@@ -188,13 +262,13 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 	@Override
 	public void mouseExited(MouseEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent event) {
 		// TODO Auto-generated method stub
-		
+
 		switch (event.getButton()) {
 		case MouseEvent.BUTTON1:
 			TITLE = "Button 1 ceritanya";
@@ -211,7 +285,7 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -220,7 +294,6 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 
 		switch (event.getKeyCode()) {
 		case KeyEvent.VK_UP:
-			plant.watering();
 			TITLE = "UP";
 			break;
 		case KeyEvent.VK_DOWN:
@@ -232,18 +305,18 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 		case KeyEvent.VK_RIGHT:
 			TITLE = "RIGHT";
 			break;
-		}		
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyTyped(KeyEvent event) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

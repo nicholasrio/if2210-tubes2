@@ -27,7 +27,8 @@ public class Player {
         ID=nama;
     }
     public void beli(Plant P){
-        Money=Money-P.hargabibit();
+        // TODO resolve this
+    	// Money=Money-P.hargabibit();
     }
     public void addOb(Plant OB){
        ULPlant.add(OB);
