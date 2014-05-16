@@ -46,6 +46,9 @@ public class ImageLoader extends JPanel
         
         //Image ke-10
         allImages.add(loadImage("Image/LevelMenu/cube_mazer(fire).png"));
+    
+        allImages.add(loadImage("Image/AchievementBack.png"));
+
 }
     
     public static Image getImage(String imgName)
@@ -93,6 +96,10 @@ public class ImageLoader extends JPanel
         else if ("cube_mazer(fire)".equalsIgnoreCase(imgName))
         {
             return allImages.get(10);
+        }
+        else if ("AchievementBack".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(11);
         }
         return null;
     }
