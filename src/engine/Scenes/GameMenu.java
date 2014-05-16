@@ -40,6 +40,7 @@ public class GameMenu extends Scene
         
         player = GameData.lastLogin;
         player.initPlayerPosition(gameMap);
+        player.resetTempScore();
         
         canvas = new CLICanvas(MAXROWCANVAS,MAXCOLCANVAS);
     }

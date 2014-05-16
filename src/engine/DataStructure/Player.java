@@ -23,6 +23,7 @@ public class Player
     private int levelUnlocked;
     private int achievementUnlocked;
     private Location position;
+    private int temp_score;
     
     /* Constructor */
     /**
@@ -36,6 +37,7 @@ public class Player
         levelUnlocked = 0;
         achievementUnlocked = 0;
         position = new Location();
+        temp_score = 0;
     }
     
     @Override
@@ -130,6 +132,10 @@ public class Player
         this.levelUnlocked = level;
     }
     
+    public void resetTempScore()
+    {
+        temp_score = 0;
+    }
     
     /* Method */
     /**
@@ -145,73 +151,71 @@ public class Player
             
             /* Play */
             GameItem itemHere = peta.getElement(new Location(position.getRow(), position.getCol(), position.getLevel()));
-            if(!itemHere.getName().equalsIgnoreCase("finish")) /* Belum ketemu exit */
-            {
-                switch (command) {
-                    case 1: // move ke atas
-                        if(position.getRow() > 0) // periksa apakah posisi sudah diujung atas peta?
+            switch (command) {
+                case 1: // move ke atas
+                    if(position.getRow() > 0) // periksa apakah posisi sudah diujung atas peta?
+                    {
+                        itemHere = peta.getElement(new Location(position.getRow()-1, position.getCol(), position.getLevel()));
+                        if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                         {
-                            itemHere = peta.getElement(new Location(position.getRow()-1, position.getCol(), position.getLevel()));
-                            if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
-                            {
-                                position.setRow(position.getRow()-1);
-                            }
+                            position.setRow(position.getRow()-1);
                         }
-                        break;
-                    case 2: // move ke bawah
-                        if(position.getRow()<peta.getMaxRow()-1) // periksa apakah posisi sudah diujung bawah peta?
+                    }
+                    break;
+                case 2: // move ke bawah
+                    if(position.getRow()<peta.getMaxRow()-1) // periksa apakah posisi sudah diujung bawah peta?
+                    {
+                        itemHere = peta.getElement(new Location(position.getRow()+1, position.getCol(), position.getLevel()));
+                        if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                         {
-                            itemHere = peta.getElement(new Location(position.getRow()+1, position.getCol(), position.getLevel()));
-                            if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
-                            {
-                                position.setRow(position.getRow()+1);
-                            }
+                            position.setRow(position.getRow()+1);
                         }
-                        break;
-                    case 3: // move ke kiri
-                        if(position.getCol() > 0) // periksa apakah posisi sudah diujung kiri peta?
+                    }
+                    break;
+                case 3: // move ke kiri
+                    if(position.getCol() > 0) // periksa apakah posisi sudah diujung kiri peta?
+                    {
+                        itemHere = peta.getElement(new Location(position.getRow(), position.getCol()-1, position.getLevel()));
+                        if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                         {
-                            itemHere = peta.getElement(new Location(position.getRow(), position.getCol()-1, position.getLevel()));
-                            if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
-                            {
-                                position.setCol(position.getCol()-1);
-                            }
+                            position.setCol(position.getCol()-1);
                         }
-                        break;
-                    case 4: // move ke kanan
-                        if(position.getCol() < peta.getMaxCol()-1) // periksa apakah posisi sudah diujung kanan peta?
+                    }
+                    break;
+                case 4: // move ke kanan
+                    if(position.getCol() < peta.getMaxCol()-1) // periksa apakah posisi sudah diujung kanan peta?
+                    {
+                        itemHere = peta.getElement(new Location(position.getRow(), position.getCol()+1, position.getLevel()));
+                        if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                         {
-                            itemHere = peta.getElement(new Location(position.getRow(), position.getCol()+1, position.getLevel()));
-                            if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
-                            {
-                                position.setCol(position.getCol()+1);
-                            }
+                            position.setCol(position.getCol()+1);
                         }
-                        break;
-                }
-
-                if(itemHere.getName().equalsIgnoreCase("coin")) // ada coin
-
-                {
-                    score++;
-                    peta.setElement(new Location(position.getRow(), position.getCol(), position.getLevel()), new RoadItem());
-                }
-                else if(itemHere.getName().equalsIgnoreCase("teleporter")) // teleporter
-                {
-                    TeleporterItem tele = (TeleporterItem) itemHere;
-                    Location teleLocation = tele.getArrivalLocation();
-                    System.out.println("Tele Location : " +teleLocation);
-                    position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
-                }
-                else if(itemHere.getName().equalsIgnoreCase("hole")){
-                    position.setLocation(position.getLevel()-1, position.getRow(), position.getCol());
-                }
-                return 0;
+                    }
+                    break;
             }
-            else
+
+            if(itemHere.getName().equalsIgnoreCase("coin")) // ada coin
+
             {
+                temp_score++;
+                peta.setElement(new Location(position.getRow(), position.getCol(), position.getLevel()), new RoadItem());
+            }
+            else if(itemHere.getName().equalsIgnoreCase("teleporter")) // teleporter
+            {
+                TeleporterItem tele = (TeleporterItem) itemHere;
+                Location teleLocation = tele.getArrivalLocation();
+                System.out.println("Tele Location : " +teleLocation);
+                position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
+            }
+            else if(itemHere.getName().equalsIgnoreCase("hole")){
+                position.setLocation(position.getLevel()-1, position.getRow(), position.getCol());
+            }
+            else if(itemHere.getName().equalsIgnoreCase("finish"))
+            {
+                score += temp_score;
                 return 1;
             }
+            return 0;
         } 
         catch (Exception ex) 
         {
