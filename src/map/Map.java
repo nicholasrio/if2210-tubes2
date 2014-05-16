@@ -33,7 +33,11 @@ public class Map{
         
 	//our map
 	private Tile[] dungeon_map = { };
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> ddc66afaa1eefc2227e052fe2b3f0d153bc7978c
         //Visible
         private boolean visible[][];
         
@@ -60,7 +64,11 @@ public class Map{
 	public Tile getCell(int x, int y){
 		return dungeon_map[x + xsize * y];
 	}
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> ddc66afaa1eefc2227e052fe2b3f0d153bc7978c
         public boolean isVisible(int x,int y){
             return visible[x][y];
         }
@@ -268,6 +276,7 @@ public class Map{
  
 		//yay, all done
 		return true;
+<<<<<<< HEAD
 	} 
  
 	//used to print the map on the screen
@@ -307,6 +316,8 @@ public class Map{
 			}
 			if (xsize <= xmax) System.out.println();
 		}
+=======
+>>>>>>> ddc66afaa1eefc2227e052fe2b3f0d153bc7978c
 	}
         
 	//and here's the one generating the whole map
@@ -320,6 +331,10 @@ public class Map{
                         visible[i][j] = false;
                     }
                 } 
+<<<<<<< HEAD
+=======
+                
+>>>>>>> ddc66afaa1eefc2227e052fe2b3f0d153bc7978c
 		if (inobj < 1) objects = 10;
 		else objects = inobj;
  
@@ -514,6 +529,7 @@ public class Map{
  
 		return this;
 	}
+<<<<<<< HEAD
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
 	public static void main(String[] args){
@@ -535,4 +551,6 @@ public class Map{
 			//always good to be able to see the results..
 			generator.showDungeon();
 	}
+=======
+>>>>>>> ddc66afaa1eefc2227e052fe2b3f0d153bc7978c
 }

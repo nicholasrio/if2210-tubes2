@@ -23,6 +23,7 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
     public Hero(Map map){
             super(map);
             _money = 0;
+<<<<<<< HEAD
             _items = new ArrayList<Item>();
             
             //initialize movement
@@ -40,9 +41,13 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
             loadImage();
             animation.setFrames(sprites.get(3));
             fireballs = new ArrayList<FireBall>(100);  
+=======
+            _items = new ArrayList<>();
+>>>>>>> ddc66afaa1eefc2227e052fe2b3f0d153bc7978c
     }
     
     //implementasi interface useitem
+    
     @Override
     public void addItem(Item newItem){
         try{
@@ -54,8 +59,9 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
 
     @Override
     public void removeItem(int pos)  {
-            if (0 <= pos && pos < _items.size())
-                    _items.remove(pos);
+        if (0 <= pos && pos < _items.size()) {
+            _items.remove(pos);
+        }
     }
 
     @Override
@@ -70,12 +76,12 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
 
     @Override
     public boolean haveItem(Item item){
-            return (this.findItem(item)!=-1);
+        return (this.findItem(item)!=-1);
     }
 
     @Override
     public boolean haveMoney(int money){
-            return this._money >= money;
+        return this._money >= money;
     }
 
     @Override
@@ -91,13 +97,13 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
 
     @Override
     public boolean consume(Item item){
-            if (this.haveItem(item)){
-                    this.removeItem(this.findItem(item));
-                    this.applyEffect(item);
-                    return true;
-            } else {
-                    return false;
-            }
+        if (this.haveItem(item)){
+                this.removeItem(this.findItem(item));
+                this.applyEffect(item);
+                return true;
+        } else {
+                return false;
+        }
     }
     
     @Override
@@ -112,23 +118,13 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
 
     @Override
     public boolean buy(Item item){
-            if (haveMoney(item.getCost())){
-                    this._money -= item.getCost();
-                    this.addItem(item);
-                    return false;
-            } else{
-                    return false;
-            }
-    }
-
-    public boolean sell(Item item){
-            if (haveItem(item)){
-                    this.removeItem(item.getCost());
-                    this._money += item.getCost();
-                    return true;
-            } else {
-                    return false;
-            }
+        if (haveMoney(item.getCost())){
+                this._money -= item.getCost();
+                this.addItem(item);
+                return false;
+        } else{
+                return false;
+        }
     }
 
     //implementasi interface upgradeable
@@ -143,21 +139,7 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
     @Override
     public void addMaxMana(int x){ this._maxMana += x; }
 
-    //implementasi interface Recoverable
-    @Override
-    public void addCurrentHealth(int x){
-        this._currentHealth += x;
-        if (this._currentHealth > this._maxHealth) {
-            this._currentHealth = this._maxHealth;
-        }
-    }
-    @Override
-    public void addCurrentMana(int x){
-        this._currentMana += x;
-        if (this._currentMana > this._currentMana) {
-            this._currentMana = this._maxMana;
-        }
-    }
+    
     
     public void printStatus(){
         System.out.println("Status: "+this.getStr()+" "+this.getAgi()+" "+this.getInt());
@@ -213,22 +195,28 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
 
     @Override
     public boolean isDead() {
-        return this.getCurrentHealth() < 0;
+        return this.getCurrentHealth() <= 0;
     }
 
     @Override
     public boolean isAlive() {
         return !this.isDead();
     }
-
+    
     @Override
-    public void doDamageCalculation(int damage) {
-        this.addCurrentHealth(-damage);
+    public int getNetDamage(int damage){
+        int result = damage - this.getDefensePoint();
+        if (result < 0) result = 0;
+        return result;
+    }
+    @Override
+    public void doAbsorbDamage(int damage) {
+        this.addCurrentHealth(-this.getNetDamage(damage));
     }
 
     @Override
     public void doAttack(Fightable fight) {
-        fight.doDamageCalculation(fight.getAttackPoint());
+        fight.doAbsorbDamage(this.getAttackPoint());
     }
     
     //update

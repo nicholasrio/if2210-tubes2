@@ -29,26 +29,29 @@ public class Monster extends Character implements Recoverable,Fightable{
 
     @Override
     public boolean isDead() {
-        return this.getCurrentHealth() < 0;
+        return this.getCurrentHealth() <= 0;
     }
 
     @Override
     public boolean isAlive() {
         return !this.isDead();
     }
-
+    
+    
     @Override
-    public void doDamageCalculation(int damage) {
-        this.addCurrentHealth(-damage);
-    }
-
-    @Override
+<<<<<<< HEAD
     public void doAttack(Fightable fight) {
         fight.doDamageCalculation(this.getAttackPoint());
+=======
+    public int getNetDamage(int damage){
+        int result = damage - this.getDefensePoint();
+        if (result < 0) result = 0;
+        return result;
+>>>>>>> ddc66afaa1eefc2227e052fe2b3f0d153bc7978c
     }
     
-    //implementasi interface Recoverable
     @Override
+<<<<<<< HEAD
     public void addCurrentHealth(int x){
         this._currentHealth += x;
         if (this._currentHealth > this._maxHealth) {
@@ -59,12 +62,15 @@ public class Monster extends Character implements Recoverable,Fightable{
         }
     }
     
+=======
+    public void doAbsorbDamage(int damage) {
+        this.addCurrentHealth(-this.getNetDamage(damage));
+    }
+
+>>>>>>> ddc66afaa1eefc2227e052fe2b3f0d153bc7978c
     @Override
-    public void addCurrentMana(int x){
-        this._currentMana += x;
-        if (this._currentMana > this._currentMana) {
-            this._currentMana = this._maxMana;
-        }
+    public void doAttack(Fightable fight) {
+        fight.doAbsorbDamage(this.getAttackPoint());
     }
     
     public void draw(Graphics2D g,int offsetX,int offsetY){

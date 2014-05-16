@@ -23,10 +23,13 @@ import javax.imageio.ImageIO;
  * @author Calvin
  */
 public class TileImagePrototype {
+<<<<<<< HEAD
     
     static HashMap<Integer, Image> ImageMap = new HashMap<Integer, Image> ();
     public static int tileHeight = 32;
     public static int tileWidth = 32;
+=======
+>>>>>>> ddc66afaa1eefc2227e052fe2b3f0d153bc7978c
     static boolean hasLoadImage = false;
     
     public static Image getTileImage(int id) {

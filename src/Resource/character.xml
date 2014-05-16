@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<characterlist>
+    <character class="hero">
+        <id>1</id>
+        <name>Yuu</name>
+        <str>30</str>
+        <agi>30</agi>
+        <int>30</int>
+        <maxHealth>600</maxHealth>
+        <maxMana>400</maxMana>
+        <imagePath>Resource/Actor/hero.bmp</imagePath>
+    </character>
+    <character class="monster">
+        <id>2</id>
+        <name>Skeleton Warrior</name>
+        <str>10</str>
+        <agi>5</agi>
+        <int>10</int>
+        <maxHealth>300</maxHealth>
+        <maxMana>0</maxMana>
+        <imagePath>Resource/Actor/monster_skeleton.bmp</imagePath>
+    </character>
+</characterlist>
