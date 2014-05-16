@@ -302,43 +302,48 @@ public class UserDragonTest {
 	/**
 	 * Test of entertain method, of class UserDragon.
 	 */
-/*	@Test
+	@Test
 	public void testEntertain() {
 		System.out.println("entertain");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
+		float expHappiness = 100;
 		Event expResult = null;
 		Event result = instance.entertain();
-		assertEquals(expResult, result);
+		//assertEquals(expResult, result);
+		assertEquals(expHappiness, instance.getHappiness(), 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
 	 * Test of rest method, of class UserDragon.
 	 */
-/*	@Test
+	@Test
 	public void testRest() {
 		System.out.println("rest");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
+		float expStamina = instance.getMaxStamina();
+		float expHealth = instance.getMaxHealth();
 		Event expResult = new Event("Proses Selesai","Entertain Selesai");
 		Event result = instance.rest();
-		assertEquals(expResult, result);
+		//assertEquals(expResult, result);
+		assertEquals(expStamina, instance.getStamina(), 0.0);
+		assertEquals(expHealth, instance.getHealth(), 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
 	 * Test of toToilet method, of class UserDragon.
 	 */
-/*	@Test
+	@Test
 	public void testToToilet() {
 		System.out.println("toToilet");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
+		float expBladder = 0;
 		Event expResult = null;
 		Event result = instance.toToilet();
 		assertEquals(expResult, result);
+		assertEquals(expBladder, instance.getBladder(), 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
-	}*/
+	} 
 	
 }
