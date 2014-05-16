@@ -47,7 +47,7 @@ public class AchievementMenuGUI extends Scene
     
     private Font PlayerDataFont;
     
-    public AchievementMenuGUI() throws IOException
+    public AchievementMenuGUI()
     {
         super("AchievementMenuGUI");
         
@@ -107,6 +107,8 @@ public class AchievementMenuGUI extends Scene
             PlayerDataFont = PlayerDataFont.deriveFont(18, 18f);
         } catch (FontFormatException ex) {
             PlayerDataFont = new Font("Arial",18,18);
+            System.err.println(ex);
+        } catch (IOException ex) {
             System.err.println(ex);
         } 
     }
