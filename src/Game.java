@@ -4,7 +4,7 @@ import java.util.*;
 
 import javax.swing.*;
 
-public class Game extends JPanel implements KeyListener, MouseListener {
+public class Game extends JPanel implements KeyListener, MouseListener, MouseMotionListener {
 
 	// Constants
 	static String TITLE = "The Plan(T)s";
@@ -18,6 +18,9 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 	private int waterCapacity;
 	private int money;
 	private Player player;
+	
+	// Game Components
+	
 
 	static final int UPDATES_PER_SEC = 10; // number of game update per second
 	static final long UPDATE_PERIOD_NSEC = 1000000000L / UPDATES_PER_SEC; // nanoseconds
@@ -293,5 +296,17 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 	public void keyTyped(KeyEvent event) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
