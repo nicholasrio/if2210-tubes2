@@ -182,7 +182,7 @@ public class UserDragonTest {
 	@Test
 	public void testUseConsumable() {
 		System.out.println("useConsumable");
-		Consumable fd = null;
+		Consumable fd = new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0);
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		Event expResult = null;
 		Event result = instance.useConsumable(fd);
@@ -195,21 +195,27 @@ public class UserDragonTest {
 	 * Test of addConsumable method, of class UserDragon.
 	 */
 	@Test
-	public void testAddConsumable() throws Exception {
+	public void testAddConsumable(){
 		System.out.println("addConsumable");
-		Consumable what = null;
-		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
-		Event expResult = null;
-		Event result = instance.addConsumable(what);
-		assertEquals(expResult, result);
+		Consumable what = new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0);
+		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",350,66);
+		Event expResult = new Event("Proses Selesai","addConsumable Selesai");
+		Event result = null;
+		try {
+			result = instance.addConsumable(what);
+		} catch(Exception ex) {
+			System.err.println(ex.getMessage());
+		}
+		assertEquals(50, instance.getMoney(), 0.0);
+		//assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
+		//fail("The test case is a prototype.");
 	}
 
 	/**
 	 * Test of sebelumExit method, of class UserDragon.
 	 */
-/*	@Test
+	@Test
 	public void testSebelumExit() {
 		System.out.println("sebelumExit");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
@@ -267,7 +273,7 @@ public class UserDragonTest {
 	public void testRest() {
 		System.out.println("rest");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
-		Event expResult = null;
+		Event expResult = new Event("Proses Selesai","Entertain Selesai");
 		Event result = instance.rest();
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
