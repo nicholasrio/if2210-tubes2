@@ -189,9 +189,10 @@ public class UserDragonTest {
 		float expMaxHealth = instance.getMaxHealth() + fd.getMaxHealthValue();
 		float expMaxStamina = instance.getMaxStamina() + fd.getMaxStaminaValue();
 		float expHappiness = instance.getHappiness() + fd.getHappinessValue();
-		Event expResult = null;
+		Event expResult = new Event("Proses Selesai","useCosumable Selesai");
 		Event result = instance.useConsumable(fd);
-		//assertEquals(expResult, result);
+		assertEquals(expResult.getMessage(), result.getMessage());
+		assertEquals(expResult.getType(), result.getType());
 		assertEquals(expHealth, instance.getHealth(), 0.0);
 		assertEquals(expThirst, instance.getThirst(), 0.0);
 		assertEquals(expHunger, instance.getHunger(), 0.0);
@@ -212,28 +213,17 @@ public class UserDragonTest {
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",350,66);
 		float expMoney = instance.getMoney() - what.getCost();
 		Event expResult = new Event("Proses Selesai","addConsumable Selesai");
-		//Event result = null;
+		Event result = new Event();
 		try {
-			Event result = instance.addConsumable(what);
+			result = instance.addConsumable(what);
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}
 		assertEquals(expMoney, instance.getMoney(), 0.0);
 		assertEquals(what.getName(), instance.getFdInventory().get(0).getName());
-		//assertEquals(expResult, result);
+		assertEquals(expResult.getMessage(), result.getMessage());
+		assertEquals(expResult.getType(), result.getType());
 		// TODO review the generated test code and remove the default call to fail.
-	}
-
-	/**
-	 * Test of sebelumExit method, of class UserDragon.
-	 */
-	@Test
-	public void testSebelumExit() {
-		System.out.println("sebelumExit");
-		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
-		instance.sebelumExit();
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -247,14 +237,15 @@ public class UserDragonTest {
 		int expLevel = instance.getLevel() + 1;
 		float expMaxHealth = instance.getMaxHealth() + 30;
 		float expMaxStamina = instance.getMaxStamina() + 10;
-		Event expResult = null;
+		Event expResult = new Event("Proses Selesai","Train Selesai");
 		Event result = instance.train();
 		System.out.println(expExperience);
 		assertEquals(expExperience, instance.getExperience(), 0.0);
 		assertEquals(expLevel, instance.getLevel());
 		assertEquals(expMaxHealth, instance.getMaxHealth(), 0.0);
 		assertEquals(expMaxStamina, instance.getMaxStamina(), 0.0);
-		//assertEquals(expResult, result);
+		assertEquals(expResult.getMessage(), result.getMessage());
+		assertEquals(expResult.getType(), result.getType());
 		// TODO review the generated test code and remove the default call to fail.
 	}
 
@@ -267,6 +258,7 @@ public class UserDragonTest {
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,1,795,"pass",50,66);
 		Dragon expResult = null;
 		Dragon result = instance.generateEnemy();
+		
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
 		fail("The test case is a prototype.");
@@ -283,19 +275,27 @@ public class UserDragonTest {
 		float sum1 = (float)0.2 * instance.getHealth() + (float)0.2 * instance.getStamina() + (float)0.3 * instance.getExperience() + 5 * instance.getLevel() - (float)0.1 * instance.getThirst() - (float)0.1 * instance.getBladder() - (float)0.1 * instance.getHunger();
 		float sum2 = (float)0.2 * withWho.getHealth() + (float)0.2 * withWho.getStamina() + (float)0.3 * withWho.getExperience() + 5 * withWho.getLevel() - (float)0.1 * withWho.getThirst() - (float)0.1 * withWho.getBladder() - (float)0.1 * withWho.getHunger();
 		float expExperience, expStamina;
+		Event expResult = new Event();
 		if (sum1 > sum2){ // we win
+			expResult.setType("WinFight");
+            expResult.setMessage("Congrats!You Win.");
             expExperience = instance.getExperience() + 200 + 30 * instance.getLevel();
             //tambahMoney((float)(100 + (Math.random() * (500 - 100))));
         } else if (sum1 == sum2){ // draw
+			expResult.setType("DrawFight");
+			expResult.setMessage("This fight is Draw.");
             expExperience = instance.getExperience() + 25 * instance.getLevel();
         } else { // we lose
+			expResult.setType("LoseFight");
+	        expResult.setMessage("Sorry!You Lose.");
 			expExperience = instance.getExperience() + 20 * instance.getLevel();
 		}
 		expStamina = instance.getStamina() - (20 * instance.getLevel());
-		Event expResult = null;
 		Event result = instance.fight(withWho);
 		assertEquals(expExperience, instance.getExperience(), 0.0);
 		assertEquals(expStamina, instance.getStamina(), 0.0);
+		assertEquals(expResult.getMessage(), result.getMessage());
+		assertEquals(expResult.getType(), result.getType());
 		// TODO review the generated test code and remove the default call to fail.
 	}
 
@@ -307,9 +307,10 @@ public class UserDragonTest {
 		System.out.println("entertain");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		float expHappiness = 100;
-		Event expResult = null;
+		Event expResult = new Event("Proses Selesai","Entertain Selesai");
 		Event result = instance.entertain();
-		//assertEquals(expResult, result);
+		assertEquals(expResult.getMessage(), result.getMessage());
+		assertEquals(expResult.getType(), result.getType());
 		assertEquals(expHappiness, instance.getHappiness(), 0.0);
 		// TODO review the generated test code and remove the default call to fail.
 	}
@@ -323,9 +324,10 @@ public class UserDragonTest {
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		float expStamina = instance.getMaxStamina();
 		float expHealth = instance.getMaxHealth();
-		Event expResult = new Event("Proses Selesai","Entertain Selesai");
+		Event expResult = new Event("Proses Selesai","Rest Selesai");
 		Event result = instance.rest();
-		//assertEquals(expResult, result);
+		assertEquals(expResult.getMessage(), result.getMessage());
+		assertEquals(expResult.getType(), result.getType());
 		assertEquals(expStamina, instance.getStamina(), 0.0);
 		assertEquals(expHealth, instance.getHealth(), 0.0);
 		// TODO review the generated test code and remove the default call to fail.
@@ -339,10 +341,11 @@ public class UserDragonTest {
 		System.out.println("toToilet");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		float expBladder = 0;
-		Event expResult = null;
+		Event expResult = new Event("Proses Selesai","toToilet Selesai");
 		Event result = instance.toToilet();
-		assertEquals(expResult, result);
 		assertEquals(expBladder, instance.getBladder(), 0.0);
+		assertEquals(expResult.getMessage(), result.getMessage());
+		assertEquals(expResult.getType(), result.getType());
 		// TODO review the generated test code and remove the default call to fail.
 	} 
 	
