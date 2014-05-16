@@ -1,166 +1,218 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.*;
+import java.util.*;
 
 import javax.swing.ImageIcon;
 
 public class Plant extends SaleableObject implements Drawable {
-	private static int waterRottenLevel = -1;
-	private static int fertilizerRottenLevel = -1;
-	private static int waterMaxLevel = 10;
-	private static int waterDropSpeed = 4;
-	private static Image imgPlant;
-	private static Image imgPlant1 = getImg1();
-	private static Image imgPlant2 = getImg2();
-	private static Image imgPlant3 = getImg3();
-	private static int imgWidth = 100;
-	private static int imgHeight = 100;
+
+	private static int ID = 0;
+	private int id;
+
+	private double age;
+	private double waterLevel;
+	private double maxWaterLevel;
+	private double fertilizerLevel;
+	private double maxFertilizerLevel;
 	
-	private static Image getImg1(){
-		ImageIcon ii = new ImageIcon("images/level2.png");
-		return ii.getImage();
+	private Stage stage;
+	private ArrayList<Stage> stages;
+	
+	public Plant(String name, double maxWaterLevel, double maxFertilizerLevel) {
+		id = ++ID;
+		
+		this.name = name;
+		this.maxWaterLevel = maxWaterLevel;
+		this.maxFertilizerLevel = maxFertilizerLevel;
+		
+		this.age = 0;
+		this.setWaterLevel(maxWaterLevel);
+		this.setFertilizerLevel(maxFertilizerLevel);
+		
+		stages = new ArrayList<Stage>();
+		stage = null;
 	}
 	
-	private static Image getImg2(){
-		ImageIcon ii = new ImageIcon("images/level3.png");
-		return ii.getImage();
+	// Getter-Setter
+	public int getId() {
+		return this.id;
 	}
-	
-	private static Image getImg3(){
-		ImageIcon ii = new ImageIcon("images/level4.png");
-		return ii.getImage();
+	public double getWaterLevel() {
+		return waterLevel;
 	}
-	
-    public Plant(){
-    	age = 0;
-    	state = 1;
-		isFruitAvailable =  false;
-		isRotten = false;
-		waterLevel = waterMaxLevel * waterDropSpeed;
+	public void setWaterLevel(double waterLevel) {
+		this.waterLevel = waterLevel;
 	}
-	public double hargabibit(){
-        //harga persatuan
-        return price;
-    }
-    public double hargaUnlock(){
-        //harga untuk mengunlock
-        return 20;
-    }
-    
-    public Image getImage(){
-    	return imgPlant;
-    }
-    
-   
-	private int age;
-	private int waterLevel;
-	private int fertilizerLevel;
-	private int waterDropLevel = 1;
-	private int fertilizerDropLevel;
-	private int harvestTime;
-	private int harvestPeriod;
-	private int rottenTime;
-	private boolean isFruitAvailable;
-	private boolean isRotten;
-	private boolean isFruitRotten;
-	private int fruitTime;
-	private int fruitRottenTime;
-	private int maxFertilizer;
-	private int harvestTimeReset;
-	protected Fruit fruit;
-	
-	private int state;
-	
-	public Fruit takeFruit(){
-		isFruitAvailable = false;
-		harvestTime = harvestTimeReset;
-		Fruit temp = fruit;
-		fruit = null;
-		return temp;
+	public double getFertilizerLevel() {
+		return fertilizerLevel;
 	}
-	
-	public void watering(){
-		waterLevel = waterMaxLevel * waterDropSpeed;
+	public void setFertilizerLevel(double fertilizerLevel) {
+		this.fertilizerLevel = fertilizerLevel;
 	}
-	
-	public void fertilizering(){
-		if(fertilizerLevel<maxFertilizer){
-			fertilizerLevel++;
-			waterDropLevel++;
+
+	// An inner class that represents stage of Plants
+	public class Stage {
+		private String name;
+		private double waterDropLevel;
+		private double fertilizerDropLevel;
+		private double lifeTime;
+		private Image image;
+		
+		public Stage(String name) {
+			this.name = name;
 		}
-		else{
-			//pengennya throw exception
+		
+		// Getter Setter
+		public String getName() {
+			return name;
 		}
-	}
-	
-	private void fruiting(){
-		fruit = new Fruit();
-	}
-	
-	public void draw(Graphics g,int x,int y){
-		if(state==1){
-			g.drawImage(imgPlant1,x,y,imgWidth,imgHeight,null);
+		public void setName(String name) {
+			this.name = name;
 		}
-		else if(state==2){
-			g.drawImage(imgPlant2,x,y,imgWidth,imgHeight,null);
+		public double getWaterDropLevel() {
+			return waterDropLevel;
 		}
-		else if(state==3){
-			g.drawImage(imgPlant3,x,y,imgWidth,imgHeight,null);
+		public void setWaterDropLevel(double waterDropLevel) {
+			this.waterDropLevel = waterDropLevel;
 		}
-		g.setColor(Color.BLUE);
-		for(int i=0;i<waterLevel/waterDropSpeed;i++){
-			g.fillRect(x+(imgWidth-10), y+imgHeight-(i*10), 10, 10);
+		public double getFertilizerDropLevel() {
+			return fertilizerDropLevel;
 		}
-		g.setColor(Color.BLACK);
-		for(int i=waterLevel/waterDropSpeed;i<waterMaxLevel;i++){
-			g.fillRect(x+(imgWidth-10), y+imgHeight-(i*10), 10, 10);
+		public void setFertilizerDropLevel(double fertilizerDropLevel) {
+			this.fertilizerDropLevel = fertilizerDropLevel;
+		}
+		public double getLifeTime() {
+			return lifeTime;
+		}
+		public void setLifeTime(double lifeTime) {
+			this.lifeTime = lifeTime;
+		}
+		public Image getImage() {
+			return image;
+		}
+		public void setImage(Image image) {
+			this.image = image;
+		}
+		public void setImage(String path) {
+			ImageIcon ii = new ImageIcon(path);
+			this.image = ii.getImage();
 		}
 	}
 
+	// Add stage. This must be done in the correct order for
+	public void addStage(Stage newStage) {
+		stages.add(newStage);
+		
+		// if this is the first stage added, set it to be current stage
+		if (stage == null) {
+			stage = newStage;
+		}
+	}
+	public void addStage(String stageName, double lifeTime, double waterDropLevel, double fertilizerDropLevel, String imageSource) {
+		Stage newStage = new Stage(stageName);
+		newStage.setLifeTime(lifeTime);
+		newStage.setWaterDropLevel(waterDropLevel);
+		newStage.setFertilizerDropLevel(fertilizerDropLevel);
+		newStage.setImage(imageSource);
+		
+		addStage(newStage);
+	}
+
+	// Get current stage
+	public Stage getStage() {
+		return this.stage;
+	}
+	
+	// Get next stage of stage
+	private Stage getNextStage(Stage stage) {
+		int index = stages.indexOf(stage);
+		if (index >= stages.size() - 1) {
+			return null;
+		}
+		else {
+			return stages.get(index + 1);
+		}
+	}
+
+	// Set current stage to the next stage
+	public void evolve() {
+		if (getNextStage(stage) != null) {
+			stage = getNextStage(stage);
+		}
+	}
+	
+	// Gives water to Plant
+	public void water(double amount) {
+		waterLevel += amount;
+		if (waterLevel > maxWaterLevel) {
+			waterLevel = maxWaterLevel;
+		}
+	}
+	
+	// Gives fertilizer to Plant
+	public void fertilize(double amount) {
+		fertilizerLevel += amount;
+		if (fertilizerLevel > maxFertilizerLevel) {
+			fertilizerLevel = maxFertilizerLevel;
+		}
+	}
+	
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
+		// Draw plant
+		g.drawImage(stage.getImage(), bounds.x, bounds.y, bounds.width, bounds.height, null);
 		
+		// Draw water level
+		g.setColor(Color.BLUE);
+		for(int i = 0; i < maxWaterLevel; i++){
+			if (i >= waterLevel) {
+				g.setColor(Color.BLACK);
+			}
+			g.fillRect(bounds.x + (bounds.width-10), bounds.y+bounds.height-(i * 1), 10, 1);
+		}
+		
+		// TODO Draw fertilizer level
 	}
 
 	@Override
 	public void update(double timeElapsed) {
-		// TODO Auto-generated method stub
-
-		
-		if(waterLevel > 0){
-			waterLevel= waterLevel - waterDropLevel;
+		// Reduce water and fertilizer level
+		if (waterLevel > 0) {
+			waterLevel -= timeElapsed * stage.getWaterDropLevel();
 		}
-		fertilizerLevel = fertilizerLevel - fertilizerDropLevel;
-		if((waterLevel == waterRottenLevel) || (fertilizerLevel == fertilizerRottenLevel)){
-			isRotten = true;
+		if (fertilizerLevel > 0) {
+			fertilizerLevel -= timeElapsed * stage.getFertilizerDropLevel();
 		}
 		
-		age++;
-		if(age<=15){
-			state = 1;
+		// TODO Rotten management here
+		
+		// aging
+		age += timeElapsed;
+		if (age > stage.getLifeTime()) {
+			evolve();
 		}
-		if(age>15){
-			state = 2;
-		}
-		if(age>25){
-			state = 3;
-		}
-		if(!isFruitAvailable){
-			harvestTime++;
-			if(harvestTime == harvestPeriod){
-				fruiting();
-				isFruitAvailable = true;
-				isFruitRotten = false;
-			}
-		}
-		else{
-			if(!isFruitRotten){
-				fruitTime++;
-				if(fruitTime == fruitRottenTime){
-					isFruitRotten = true;
-				}
-			}
-		}
+		
+		// TODO Fruit management here
 	}
+
+	// Section for Shape interface
+	Rectangle bounds;
+	
+	public void setBounds(Rectangle bounds) {
+		this.bounds = bounds;
+	}
+	
+	public boolean contains(Point point) {
+		return bounds.contains(point);
+	}
+	
+	// Get copy of this object
+	public Plant clone() {
+		Plant p = new Plant(name, maxWaterLevel, maxFertilizerLevel);
+		for (Stage s : stages) {
+			p.addStage(s);
+		}
+		
+		return p;
+	}
+
 }

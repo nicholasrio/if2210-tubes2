@@ -1,5 +1,5 @@
-import java.awt.Graphics;
-import java.util.ArrayList;
+import java.awt.*;
+import java.util.*;
 
 public class GridPlant implements Drawable {
 	ArrayList<ArrayList<Plant>> arrPlant;
@@ -16,7 +16,23 @@ public class GridPlant implements Drawable {
 	}
 
 	public void createPlant(int i, int j) {
-		arrPlant.get(i).set(j, new Plant());
+		Plant p = PlantFactory.getInstance("Pohon Apel");
+		p.setBounds(new Rectangle(i * 100, j * 100, 80, 80));
+		arrPlant.get(i).set(j, p);
+	}
+	
+	public ArrayList<Plant> getAllPlants() {
+		ArrayList<Plant> allPlant = new ArrayList<Plant>();
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 6; j++) {
+				Plant now = arrPlant.get(i).get(j);
+				if (now != null) {
+					allPlant.add(now);
+				}
+			}
+		}
+		
+		return allPlant;
 	}
 
 	@Override
@@ -26,7 +42,7 @@ public class GridPlant implements Drawable {
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				if (arrPlant.get(i).get(j) != null) {
-					arrPlant.get(i).get(j).draw(g, i * 100, j * 100);
+					arrPlant.get(i).get(j).draw(g);
 				}
 			}
 		}
@@ -39,7 +55,7 @@ public class GridPlant implements Drawable {
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
 				if (arrPlant.get(i).get(j) != null) {
-					arrPlant.get(i).get(j).update(0.);
+					arrPlant.get(i).get(j).update(timeElapsed);
 				}
 			}
 		}

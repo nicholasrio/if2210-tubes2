@@ -39,6 +39,9 @@ public class ThePlants {
 
 	public static void main(String args[]) {
 		
+		//Load data
+		PlantFactory.loadData();
+		
 		// Initial configuration for mainFrame
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setResizable(false);
