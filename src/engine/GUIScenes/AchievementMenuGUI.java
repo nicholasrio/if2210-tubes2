@@ -7,7 +7,9 @@
 package engine.GUIScenes;
 
 import engine.*;
+import engine.DataStructure.GameData;
 import static engine.Game.gameFrame;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -27,14 +29,12 @@ public class AchievementMenuGUI extends Scene
     private Image bgTexture;
     private Image titleTexture;
     private Image backTexture;
+    private Image AchString;
     
     /* Rectangles */
     private Rectangle backRect;
-    private Rectangle achievementRect;
     
-    private final int NMenu = 1;
     private float transparentPercentage;
-    private Font playernameFont;
     private int menuHovered;
     private int menuPressed;
     private int menuReleased;
@@ -101,6 +101,7 @@ public class AchievementMenuGUI extends Scene
         bgTexture = ImageLoader.getImage("mainmenu_bg");
         titleTexture = ImageLoader.getImage("title");
         backTexture = ImageLoader.getImage("back");
+        AchString = ImageLoader.getImage("AchievementBack");
     }
     
     @Override
@@ -124,13 +125,11 @@ public class AchievementMenuGUI extends Scene
         
         if (menuHovered == (-1))
         {
-            for (int i=0;i<NMenu;i++)
+            if (deltapos > 0f)
             {
-                if (deltapos > 0f)
-                {
-                    deltapos -= 10f;
-                }
+                deltapos -= 10f;
             }
+            
         }
         else if (menuHovered == 1)
         {
@@ -138,9 +137,8 @@ public class AchievementMenuGUI extends Scene
             {
                 deltapos -= 10f;
             }
-            float lowerboundPos = 110f;
             
-            if (deltapos < lowerboundPos)
+            if (deltapos < 110f)
             {
                 deltapos += 10f;
             }
@@ -166,8 +164,14 @@ public class AchievementMenuGUI extends Scene
             
             g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
             g2D.drawImage(titleTexture,(int)(getWidth()*0.2f),(int)(getHeight()*0.025f),titleTexture.getWidth(this),titleTexture.getHeight(this),this);
-            g2D.drawImage(backTexture,(int)(getWidth()*(0f)+deltapos),(int)(getHeight()*0.80f),backTexture.getWidth(this),backTexture.getHeight(this),this);       
+            g2D.drawImage(backTexture,(int)(getWidth()*(-0.15f)+deltapos),(int)(getHeight()*0.80f),backTexture.getWidth(this),backTexture.getHeight(this),this);       
 
+            g2D.drawImage(AchString,(int)(Game.ResolutionWidth*0.33f),(int)(Game.ResolutionHeight*0.2f),(int)(AchString.getWidth(this)*1.5f),AchString.getHeight(this),this);       
+        
+            g2D.drawString("Player Name : " + GameData.lastLogin.getNama(), Game.ResolutionWidth*0.33f+50, Game.ResolutionHeight*0.2f+50);
+            g2D.drawString("Score : " + Integer.toString(GameData.lastLogin.getScore()), Game.ResolutionWidth*0.33f+50, Game.ResolutionHeight*0.2f+100);
+            g2D.drawString("Level Unlocked : " + Integer.toString(GameData.lastLogin.getLevelUnlocked()), Game.ResolutionWidth*0.33f+50, Game.ResolutionHeight*0.2f+150);
+            g2D.drawString("Achievement Unlocked : " + Integer.toString(GameData.lastLogin.getAchievmentUnlocked()), Game.ResolutionWidth*0.33f+50, Game.ResolutionHeight*0.2f+200);
         }
     }
     

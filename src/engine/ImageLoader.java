@@ -40,6 +40,8 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/MainMenu/fire-maze.png"));
         allImages.add(loadImage("Image/MainMenu/egypt.png"));
         allImages.add(loadImage("Image/MainMenu/back.png"));
+        
+        allImages.add(loadImage("Image/AchievementBack.png"));
 }
     
     public static Image getImage(String imgName)
@@ -87,6 +89,10 @@ public class ImageLoader extends JPanel
         else if ("back".equalsIgnoreCase(imgName))
         {
             return allImages.get(10);
+        }
+        else if ("AchievementBack".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(11);
         }
         return null;
     }
