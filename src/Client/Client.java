@@ -1,4 +1,4 @@
-package onlineprinter;
+package Client;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

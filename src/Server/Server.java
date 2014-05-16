@@ -1,4 +1,4 @@
-package onlineprinter;
+package Server;
 /**
  *
  * @author Aryya Dwisatya W / 13512043

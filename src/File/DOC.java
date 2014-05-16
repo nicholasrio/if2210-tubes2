@@ -1,10 +1,9 @@
-package onlineprinter;
-
+package File;
 /**
  *
  * @author Mamat Rahmat / 135120007
  */
-public class TXT extends File {
+public class DOC extends File {
 
 	public boolean isPDF()
 	{
@@ -23,6 +22,6 @@ public class TXT extends File {
 
 	public void print()
 	{
-		System.out.println("TXT");
+		System.out.println("DOC");
 	}
 }

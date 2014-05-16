@@ -1,4 +1,10 @@
 package onlineprinter;
+
+import File.File;
+import File.PDF;
+import File.TXT;
+import File.DOC;
+
 /**
  *
  * @author Mamat Rahmat / 135120007
