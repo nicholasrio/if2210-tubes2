@@ -22,6 +22,7 @@ public class Player
     private int score;
     private int levelUnlocked;
     private int achievementUnlocked;
+    private Location position;
     
     /* Constructor */
     /**
@@ -134,7 +135,6 @@ public class Player
         try 
         {
             Map map = new Map(peta);
-            Location position = map.getStart();
             Scanner read = new Scanner(System.in);
             ArrayList<String> validMove = new ArrayList<>();
             validMove.add("up");
@@ -227,6 +227,14 @@ public class Player
         catch (Exception ex) 
         {
             Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void initPlayerPosition(Map M){
+        try{
+            position = M.getStart();
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 }
