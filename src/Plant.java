@@ -159,15 +159,20 @@ public class Plant extends SaleableObject implements Drawable {
 	@Override
 	public void draw(Graphics g) {
 		// Draw plant
-		g.drawImage(stage.getImage(), bounds.x, bounds.y, bounds.width, bounds.height, null);
+		g.drawImage(stage.getImage(), bounds.x, bounds.y, bounds.width, bounds.height,  null);
 		
 		// Draw water level
-		g.setColor(Color.BLUE);
-		for(int i = 0; i < maxWaterLevel; i++){
-			if (i >= waterLevel) {
+		if (waterLevel / maxWaterLevel < 0.1) {
+			g.setColor(Color.RED);
+		}
+		else {
+			g.setColor(Color.BLUE);
+		}
+		for(int i = 0; i < bounds.height/2; i++){
+			if (i >= waterLevel * bounds.height/2 / maxWaterLevel) {
 				g.setColor(Color.BLACK);
 			}
-			g.fillRect(bounds.x + (bounds.width-10), bounds.y+bounds.height-(i * 1), 10, 1);
+			g.fillRect(bounds.x + (bounds.width-5), bounds.y + bounds.height/2 - i, 5, 1);
 		}
 		
 		// TODO Draw fertilizer level

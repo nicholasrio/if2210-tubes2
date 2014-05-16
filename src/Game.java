@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.util.*;
 
 import javax.swing.*;
@@ -10,8 +12,8 @@ public class Game extends JPanel implements KeyListener, MouseListener, MouseMot
 	static String TITLE = "The Plan(T)s";
 
 	// for debugging
-	private static int COUNT_ID = 0;
-	int ID;
+	private static int ID = 0;
+	int id;
 
 	// Game Attributes
 	private GridPlant land;
@@ -20,8 +22,10 @@ public class Game extends JPanel implements KeyListener, MouseListener, MouseMot
 	private Player player;
 	
 	// Game Components
-	
+	private Image background;
 
+	private static final int FRAMERATE = 10;
+	//TODO change UPDATES_PER_SEC to FRAMERATE
 	static final int UPDATES_PER_SEC = 10; // number of game update per second
 	static final long UPDATE_PERIOD_NSEC = 1000000000L / UPDATES_PER_SEC; // nanoseconds
 	private Color COLOR_PIT = Color.LIGHT_GRAY;
@@ -39,23 +43,20 @@ public class Game extends JPanel implements KeyListener, MouseListener, MouseMot
 
 	// Constructor to initialize the UI components and game objects
 	public Game() {
-		ID = ++COUNT_ID;
+		id = ++ID;
 
 		// Initialize the game objects
-		this.setLayout(null);
 		gameInit();
-
-		// UI components
+		
+		this.setLayout(null);
 		this.setPreferredSize(new Dimension(ThePlants.PANEL_WIDTH,
 				ThePlants.PANEL_HEIGHT));
-		// add(pit);
 
 		// Add Action Listener
 		this.addKeyListener(this);
 		this.addMouseListener(this);
+		this.addMouseMotionListener(this);
 		
-		
-
 		// Start the game.
 		gameStart();
 	}
@@ -65,48 +66,44 @@ public class Game extends JPanel implements KeyListener, MouseListener, MouseMot
 	public GridPlant getLand() {
 		return land;
 	}
-
 	public void setLand(GridPlant land) {
 		this.land = land;
 	}
-
 	public int getWaterCapacity() {
 		return waterCapacity;
 	}
-
 	public void setWaterCapacity(int waterCapacity) {
 		this.waterCapacity = waterCapacity;
 	}
-
 	public int getMoney() {
 		return money;
 	}
-
 	public void setMoney(int money) {
 		this.money = money;
 	}
-
 	public Player getPlayer() {
 		return player;
 	}
-
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
 
 	// ------ All the game related codes here ------
 
-	// Initialize all the game objects, run only once in the constructor of the
-	// main class.
+	// Initialize all the game objects
 	public void gameInit() {
-		// Allocate a new snake and a food item, do not regenerate.
+		state = GameState.INITIALIZED;
+
 		land = new GridPlant();
-		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 6; j++) {
+		//TODO remove this part
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
 				land.createPlant(i, j);
 			}
 		}
-		state = GameState.INITIALIZED;
+		
+		// Set background
+		background = (new ImageIcon("images/background_game.png")).getImage();
 		
 		// Add components
 		// Reset Button
@@ -120,6 +117,7 @@ public class Game extends JPanel implements KeyListener, MouseListener, MouseMot
 			}
 		});
 		this.add(resetButton);
+		
 		// Water Button
 		final JButton waterButton = new JButton("Siram");
 		waterButton.setBounds(650, 300, 120, 30);
@@ -148,20 +146,17 @@ public class Game extends JPanel implements KeyListener, MouseListener, MouseMot
 
 	// To start and re-start the game.
 	public void gameStart() {
-		// Create a new thread
 		gameThread = new Thread() {
-			// Override run() to provide the running behavior of this thread.
 			@Override
 			public void run() {
 				gameLoop();
 			}
 		};
-		// Start the thread. start() calls run(), which in turn calls
-		// gameLoop().
+		// Start the main game thread
 		gameThread.start();
 	}
 
-	// Run the game loop here.
+	// The main loop of game
 	private void gameLoop() {
 		// Regenerate and reset the game objects for a new game
 		if (state == GameState.INITIALIZED || state == GameState.GAMEOVER) {
@@ -200,39 +195,32 @@ public class Game extends JPanel implements KeyListener, MouseListener, MouseMot
 		}
 	}
 
-	// Update the state and position of all the game objects,
-	// detect collisions and provide responses.
+	// Update the state and position of all the game objects
 	public void gameUpdate(double timeElapsed) {
 		// plant.update();
 		land.update(timeElapsed);
 	}
 
-	// Collision detection and response
+	// Draw components
+	@Override
+	public void paintComponent(Graphics g) {
+		// Draw background
+		super.paintComponent(g);
+		g.drawImage(background, 0, 0, ThePlants.PANEL_WIDTH, ThePlants.PANEL_HEIGHT, null);
 
-	// Refresh the display. Called back via repaint(), which invoke the
-	// paintComponent().
-	private void gameDraw(Graphics g) {
-		// draw game objects
-		// plant.draw(g,100,100);
+		// Draw GridPlant
 		land.draw(g);
+		
+		// TODO remove this part
 		// game info
 		g.setFont(new Font("Dialog", Font.PLAIN, 14));
-		g.setColor(Color.BLACK);
+		g.setColor(Color.WHITE);
 		g.drawString(TITLE, 200, 300);
 		if (state == GameState.GAMEOVER) {
 			g.setFont(new Font("Verdana", Font.BOLD, 30));
 			g.setColor(Color.RED);
 			g.drawString("GAME OVER!", 200, 300);
 		}
-	}
-
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g); // paint background
-		setBackground(COLOR_PIT); // may use an image for background
-
-		// Draw the game objects
-		gameDraw(g);
 	}
 
 	// / Code for Action Listener (Mouse and Key Listener)
@@ -299,14 +287,14 @@ public class Game extends JPanel implements KeyListener, MouseListener, MouseMot
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
+	public void mouseDragged(MouseEvent event) {
 		// TODO Auto-generated method stub
-		
+		TITLE = "Dragged";
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent arg0) {
+	public void mouseMoved(MouseEvent event) {
 		// TODO Auto-generated method stub
-		
+		TITLE = "Position: " + event.getX() + ", " + event.getY();
 	}
 }
