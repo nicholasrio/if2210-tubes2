@@ -46,7 +46,13 @@ public class ImageLoader extends JPanel
         
         //Image ke-10
         allImages.add(loadImage("Image/LevelMenu/cube_mazer(fire).png"));
-    
+        allImages.add(loadImage("Image/LevelMenu/Frozen Cube2.png"));
+        allImages.add(loadImage("Image/LevelMenu/Burning Cube.png"));
+        allImages.add(loadImage("Image/LevelMenu/level(ice).png"));        
+        allImages.add(loadImage("Image/LevelMenu/Ice_Mage.png"));
+        allImages.add(loadImage("Image/LevelMenu/locked(ice).png"));
+        allImages.add(loadImage("Image/LevelMenu/Unlocked(ice).png"));
+        
         allImages.add(loadImage("Image/AchievementBack.png"));
 
 }
@@ -89,17 +95,41 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(8);
         }
-        else if ("cube_mazer(ice)".equalsIgnoreCase(imgName))
+        else if ("cube_mazer_ice".equalsIgnoreCase(imgName))
         {
             return allImages.get(9);
         }
-        else if ("cube_mazer(fire)".equalsIgnoreCase(imgName))
+        else if ("cube_mazer_fire".equalsIgnoreCase(imgName))
         {
             return allImages.get(10);
         }
-        else if ("AchievementBack".equalsIgnoreCase(imgName))
+        else if ("frozen_cube".equalsIgnoreCase(imgName))
         {
             return allImages.get(11);
+        }
+        else if ("burning_cube".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(12);
+        }
+        else if ("level_ice".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(13);
+        }
+        else if ("ice_mage".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(14);
+        }
+        else if ("locked_ice".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(15);
+        }
+        else if ("unlocked_ice".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(16);
+        }
+        else if ("AchievementBack".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(17);
         }
         return null;
     }
