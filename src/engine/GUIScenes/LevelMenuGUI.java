@@ -14,6 +14,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -31,6 +33,18 @@ public class LevelMenuGUI extends Scene
     public LevelMenuGUI()
     {
         super("LevelMenuGUI");
+        addMouseMotionListener(new MouseMotionListener() {
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                
+            };
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        })
     }
     
     public void LoadContent()
