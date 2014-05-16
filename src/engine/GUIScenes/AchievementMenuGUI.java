@@ -99,16 +99,6 @@ public class AchievementMenuGUI extends Scene
             public void mouseExited(MouseEvent e) 
             {}
         });
-        File fontfile = new File("Font/batmanforeveralternate.ttf");
-        try {
-            PlayerDataFont = Font.createFont(Font.TRUETYPE_FONT, fontfile);
-            PlayerDataFont = PlayerDataFont.deriveFont(18, 18f);
-        } catch (FontFormatException ex) {
-            PlayerDataFont = new Font("Arial",18,18);
-            System.err.println(ex);
-        } catch (IOException ex) {
-            System.err.println(ex);
-        } 
     }
     
     public void LoadContent()
@@ -128,6 +118,14 @@ public class AchievementMenuGUI extends Scene
         
         backRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.755f), 
                                    (int)(Game.ResolutionWidth*0.24f),(int)(Game.ResolutionHeight*0.145f));
+        File fontfile = new File("Font/batmanforeveralternate.ttf");
+            try {
+                PlayerDataFont = Font.createFont(Font.TRUETYPE_FONT, fontfile);
+                PlayerDataFont = PlayerDataFont.deriveFont(18, 18f);
+            } catch (FontFormatException | IOException ex) {
+                PlayerDataFont = new Font("Arial",18,18);
+                System.err.println(ex);
+            } 
     }
     
     @Override
