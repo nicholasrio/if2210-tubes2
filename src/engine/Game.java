@@ -63,7 +63,7 @@ public class Game
             SceneManager.AddScene(new MainMenu());
             SceneManager.AddScene(new LevelMenu());
             SceneManager.AddScene(new GameMenu());
-            SceneManager.SwitchScene("LevelMenu"); 
+            SceneManager.SwitchScene("MainMenu"); 
         }
         else if (mode == 2)
         {
@@ -73,7 +73,7 @@ public class Game
             SceneManager.AddScene(new AchievementMenuGUI());
             SceneManager.AddScene(new OptionsMenuGUI());
             SceneManager.AddScene(new AboutMenuGUI());
-            SceneManager.SwitchScene("LevelMenuGUI");
+            SceneManager.SwitchScene("MainMenuGUI");
         }
     }
     
