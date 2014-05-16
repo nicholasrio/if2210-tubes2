@@ -93,7 +93,7 @@ public class GameMenu extends Scene
             }
             if(output == 1){
                 isFinish = true;
-                if(GameData.nowLevelPlayed == player.getLevelUnlocked()){
+                if(GameData.nowLevelPlayed == player.getLevelUnlocked() && GameData.nowLevelPlayed<GameData.getJumlahMap()){
                     player.setLevelUnlocked(player.getLevelUnlocked()+1);
                     isLevelUnlocked = true;
                 }

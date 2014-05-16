@@ -42,7 +42,7 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/LevelMenu/background.png"));
         allImages.add(loadImage("Image/LevelMenu/cube_mazer(ice).png")); 
         allImages.add(loadImage("Image/LevelMenu/cube_mazer(fire).png"));
-        allImages.add(loadImage("Image/LevelMenu/Frozen Cube 800x600.png"));
+        allImages.add(loadImage("Image/LevelMenu/Frozen Cube 800x600.jpg"));
         allImages.add(loadImage("Image/LevelMenu/Burning Cube 800x600.png"));
         
         //Image buat level 1
@@ -74,6 +74,9 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_gold.png"));
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_char_right_left.png"));
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_char_up_down.png"));
+        
+        // Image OptionMenu
+        allImages.add(loadImage("Image/OptionMenu/AudioBar.png"));
     }
     
     public static Image getImage(String imgName)
@@ -190,8 +193,7 @@ public class ImageLoader extends JPanel
         else if ("back_fire".equalsIgnoreCase(imgName))
         {
             return allImages.get(26);
-        }
-        
+        }        
         else if ("AchievementBack".equalsIgnoreCase(imgName))
         {
             return allImages.get(27);
@@ -224,6 +226,10 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(34);
         }       
+        else if("AudioBar".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(35);
+        }
         return null;
     }
     

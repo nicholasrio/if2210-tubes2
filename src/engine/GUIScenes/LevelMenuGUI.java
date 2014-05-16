@@ -8,6 +8,7 @@ package engine.GUIScenes;
 
 import engine.*;
 import engine.DataStructure.GameData;
+import engine.Exception.SceneNotFoundException;
 import static engine.Game.gameFrame;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -19,6 +20,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -33,6 +36,7 @@ public class LevelMenuGUI extends Scene
     // attributes
     private int level;
     private int menuPressed;
+    private boolean unlocked;
     private static Image bgTexture;
     private static Image groupnameTexture;
     private static Image levelTexture;
@@ -69,7 +73,11 @@ public class LevelMenuGUI extends Scene
             @Override
             public void mouseReleased(MouseEvent e) 
             {
-                mouseUpdateReleased(e);
+                try {
+                    mouseUpdateReleased(e);
+                } catch (SceneNotFoundException ex) {
+                    Logger.getLogger(LevelMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
             @Override
@@ -110,7 +118,7 @@ public class LevelMenuGUI extends Scene
         this.LoadContent();        
         level=1;
         menuPressed=-1;
-        
+        unlocked=true;
         /* Rectangle */
         startRect = new Rectangle(250,150,300,300);        
         rightArrowRect = new Rectangle(624, 190,200,100);
@@ -126,11 +134,12 @@ public class LevelMenuGUI extends Scene
     {
         if (menuPressed==3){
             if (level<2)   level+=1;            
+            menuPressed=-1;
         }
         else if (menuPressed==4){
             if (level>1)   level-=1;            
-        }
-        menuPressed=-1;
+            menuPressed=-1;
+        }        
         if (level==1){
             bgTexture = ImageLoader.getImage("frozen_cube");
             groupnameTexture = ImageLoader.getImage("cube_mazer_ice");
@@ -140,6 +149,7 @@ public class LevelMenuGUI extends Scene
             ArrowTexture=ImageLoader.getImage("ice_arrow");
             Arrow2Texture=ImageLoader.getImage("ice_arrow_2");
             BackTexture=ImageLoader.getImage("back_ice");
+            unlocked=true;
         }
         else if (level==2){
             bgTexture = ImageLoader.getImage("burning_cube");
@@ -149,11 +159,13 @@ public class LevelMenuGUI extends Scene
             ArrowTexture=ImageLoader.getImage("fire_arrow");
             Arrow2Texture=ImageLoader.getImage("fire_arrow_2");
             BackTexture=ImageLoader.getImage("back_fire");
-            if (level-1<=GameData.lastLogin.getLevelUnlocked()){            
+            if (level<=GameData.lastLogin.getLevelUnlocked()){            
                 LorULTexture=ImageLoader.getImage("unlocked_fire");                        
+                unlocked=true;
             }
             else{
                 LorULTexture=ImageLoader.getImage("locked_fire");            
+                unlocked=false;
             }
         }
     }
@@ -194,10 +206,6 @@ public class LevelMenuGUI extends Scene
                         (int) (Arrow2Texture.getWidth(this)*0.5f),(int) (Arrow2Texture.getHeight(this)*0.5f), this);
                 g2D.drawImage(BackTexture, (int) (getWidth()*0.73f), (int) (getHeight()*0.85f), 
                         (int) (BackTexture.getWidth(this)*0.7f),(int) (BackTexture.getHeight(this)*0.7f), this);                
-                g2D.draw(startRect);
-                g2D.draw(rightArrowRect);
-                g2D.draw(leftArrowRect);
-                g2D.draw(backRect);
             }
             else if (level==2){
                 Graphics2D g2D = (Graphics2D) g;                                    
@@ -212,20 +220,16 @@ public class LevelMenuGUI extends Scene
                         (int) (ArrowTexture.getWidth(this)*0.5f),(int) (ArrowTexture.getHeight(this)*0.5f), this);
                 g2D.drawImage(Arrow2Texture, -20, (int) (getHeight()*0.35f), 
                         (int) (Arrow2Texture.getWidth(this)*0.5f),(int) (Arrow2Texture.getHeight(this)*0.5f), this);
-                if (level-1<=GameData.lastLogin.getLevelUnlocked()){                            
+                if (level<=GameData.lastLogin.getLevelUnlocked()){                            
                     g2D.drawImage(LorULTexture, (int) (getWidth()*0.35f), (int) (getHeight()*0.65f), 
-                        (int) (LorULTexture.getWidth(this)*0.73f),(int) (LorULTexture.getHeight(this)*0.7f), this);            
+                        (int) (LorULTexture.getWidth(this)*0.73f),(int) (LorULTexture.getHeight(this)*0.7f), this);                                
                 }
                 else{
                     g2D.drawImage(LorULTexture, (int) (getWidth()*0.38f), (int) (getHeight()*0.65f), 
-                        (int) (LorULTexture.getWidth(this)*0.73f),(int) (LorULTexture.getHeight(this)*0.7f), this);            
+                        (int) (LorULTexture.getWidth(this)*0.73f),(int) (LorULTexture.getHeight(this)*0.7f), this);                                
                 }
                 g2D.drawImage(BackTexture, (int) (getWidth()*0.73f), (int) (getHeight()*0.7f), 
                         (int) (BackTexture.getWidth(this)*0.7f),(int) (BackTexture.getHeight(this)*0.7f), this);
-                g2D.draw(startRect);
-                g2D.draw(rightArrowRect);
-                g2D.draw(leftArrowRect);
-                g2D.draw(backRect);
             }
 
             // paint Image here
@@ -255,15 +259,19 @@ public class LevelMenuGUI extends Scene
         }
     }
     
-    void mouseUpdateReleased(MouseEvent event)
-    {
-        /*
+    void mouseUpdateReleased(MouseEvent event) throws SceneNotFoundException
+    {        
         if (menuPressed ==1){
-            SceneManager.SwitchScene("GameMenuGUI");
+            if (unlocked){
+                SceneManager.SwitchScene("GameMenuGUI");     
+            }
+            /*else{
+                menuPressed=-1;
+            }*/
         }
         else if (menuPressed==2){
-            SceneManager.SwitchScene("AchievementMenuGUI");
-        } */       
+            SceneManager.SwitchScene("MainMenuGUI");                    
+        } 
     }
 }
 
