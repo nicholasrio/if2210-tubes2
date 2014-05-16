@@ -29,6 +29,7 @@ public class LevelMenuGUI extends Scene
 {
     // attributes
     private static Image bgTexture;
+    private static Image titleTexture;
     
     public LevelMenuGUI()
     {
@@ -51,7 +52,8 @@ public class LevelMenuGUI extends Scene
     {
         // load Image here
         // using ImageLoader.getImage
-        bgTexture = ImageLoader.getImage("egypt");
+        bgTexture = ImageLoader.getImage("background");
+        titleTexture = ImageLoader.getImage("cube_mazer(ice)");
         
     }
     
@@ -87,6 +89,8 @@ public class LevelMenuGUI extends Scene
         {
             Graphics2D g2D = (Graphics2D) g;
             g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
+            g2D.drawImage(titleTexture, (int) (getWidth()*0.05f), (int) (getHeight()*0.01f), (int) (titleTexture.getWidth(this)*0.7f),(int) (titleTexture.getHeight(this)*0.7f), this);          
+            //g2D.drawImage()
             // paint Image here
             // using g2D.drawImage
         }
