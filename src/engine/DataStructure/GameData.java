@@ -119,6 +119,8 @@ public class GameData {
     {
         try 
         {
+            filename = "Database Player/" + filename;
+            System.out.println(filename);
             int i;
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -206,7 +208,7 @@ public class GameData {
      */
     public static void loadPlayer (String filename)
     {
-        try 
+        try
         {
             dataPlayer.clear();
             int i;
@@ -214,6 +216,7 @@ public class GameData {
             /* Inisialisasi */
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            filename = "Database Player/" + filename;
             Document doc = docBuilder.parse(new File(filename));
             
             doc.getDocumentElement().normalize();

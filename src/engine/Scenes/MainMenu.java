@@ -32,7 +32,6 @@ public class MainMenu extends Scene
         height = 57; //57 height of half full screen, 25 is standard cmd size full screen
         width = 168; // 80 full width of standard cmd screen and half full screen cmd size, 168 full screen
         status = 0;
-        GameData.loadPlayer("player.xml");
     }
     
     /**
