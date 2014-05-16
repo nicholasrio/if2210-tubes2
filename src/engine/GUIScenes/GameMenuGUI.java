@@ -26,12 +26,14 @@ public class GameMenuGUI extends Scene
     private Image goldTexture;
     private Image teleporterTexture;
     private Image holeTexture;
+    private Image playerRLTexture;
+    private Image playerUDTexture;
             
     private int nowlevelPlay;
     private int mazeSize;
     private int nowFloor;
-    private int initMapPosHeight;
-    private int initMapPosWidth;
+    private int initPosMapWidth;
+    private int initPosMapHeight;
     private Map playedMap;
     
     public GameMenuGUI()
@@ -44,7 +46,10 @@ public class GameMenuGUI extends Scene
         playedMap = GameData.dataMap.get(nowlevelPlay);
         switch(nowlevelPlay)
         {
-            case 0: mazeSize = 6; break;
+            case 0: mazeSize = 6; 
+                    initPosMapWidth = 165;
+                    initPosMapHeight = 110;
+                    break;
         }
     }
     
@@ -57,8 +62,8 @@ public class GameMenuGUI extends Scene
                     holeTexture = ImageLoader.getImage("ice_hole");
                     teleporterTexture = ImageLoader.getImage("ice_teleporter");
                     goldTexture = ImageLoader.getImage("ice_gold");
-                    //ImageLoader.getImage("ice_char_RL");
-                    //ImageLoader.getImage("ice_char_UD");
+                    playerRLTexture = ImageLoader.getImage("ice_char_RL");
+                    playerUDTexture = ImageLoader.getImage("ice_char_UD");
                     break;
         }
     }
@@ -102,46 +107,48 @@ public class GameMenuGUI extends Scene
                     {
                         int width = pathTexture.getWidth(this);
                         int height = pathTexture.getHeight(this);
-                        g2D.drawImage(pathTexture,width*kol,height*bar,width,height,this);
+                        g2D.drawImage(pathTexture,width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height,this);
                     }
                     else if (playedMap.getElement(loc).getName().equalsIgnoreCase("wall"))
                     {
                         int width = wallTexture.getWidth(this);
                         int height = wallTexture.getHeight(this);
-                        g2D.drawImage(wallTexture,width*kol,height*bar,width,height,this);
+                        g2D.drawImage(wallTexture,width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height,this);
                     }
                     else if (playedMap.getElement(loc).getName().equalsIgnoreCase("coin"))
                     {
                         int width = goldTexture.getWidth(this);
                         int height = goldTexture.getHeight(this);
-                        g2D.drawImage(goldTexture,width*kol,height*bar,width,height,this);
+                        g2D.drawImage(goldTexture,width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height,this);
                     }
                     else if (playedMap.getElement(loc).getName().equalsIgnoreCase("hole"))
                     {
                         int width = holeTexture.getWidth(this);
                         int height = holeTexture.getHeight(this);
-                        g2D.drawImage(holeTexture,width*kol,height*bar,width,height,this);
+                        g2D.drawImage(holeTexture,width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height,this);
                     }
                     else if (playedMap.getElement(loc).getName().equalsIgnoreCase("teleporter"))
                     {
                         int width = teleporterTexture.getWidth(this);
                         int height = teleporterTexture.getHeight(this);
-                        g2D.drawImage(teleporterTexture,width*kol,height*bar,width,height,this);
+                        g2D.drawImage(teleporterTexture,width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height,this);
                     }
                     else if (playedMap.getElement(loc).getName().equalsIgnoreCase("start"))
                     {
                         int width = teleporterTexture.getWidth(this);
                         int height = teleporterTexture.getHeight(this);
-                        g2D.drawImage(teleporterTexture,width*kol,height*bar,width,height,this);
+                        g2D.drawImage(teleporterTexture,width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height,this);
                     }
                     else if (playedMap.getElement(loc).getName().equalsIgnoreCase("finish"))
                     {
                         int width = teleporterTexture.getWidth(this);
                         int height = teleporterTexture.getHeight(this);
-                        g2D.drawImage(teleporterTexture,width*kol,height*bar,width,height,this);
+                        g2D.drawImage(teleporterTexture,width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height,this);
                     }
                 }
             } 
+            
+            //g2D.drawImage(playerRLTexture,30,30,)
         }
     }
 }

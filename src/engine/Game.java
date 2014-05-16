@@ -85,7 +85,7 @@ public class Game
             SceneManager.AddScene(new OptionsMenuGUI());
             SceneManager.AddScene(new AboutMenuGUI());
             try{
-                SceneManager.SwitchScene("MainMenuGUI");
+                SceneManager.SwitchScene("GameMenuGUI");
             }catch(SceneNotFoundException e){
                 e.printStackTrace();
             }
