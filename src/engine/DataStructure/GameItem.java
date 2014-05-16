@@ -15,8 +15,22 @@ public abstract class GameItem {
     protected GameItem(String itemName){
         name = itemName;
     }
+
+    /**
+     * Get item's name
+     * 
+     * @return item name
+     */
     public String getName(){
         return name;
     }
+
+    /**
+     * Draw item to canvas
+     * 
+     * @param canvas canvas for drawing
+     * @param row drawing row offset
+     * @param col drawing col offset
+     */
     public abstract void Draw(CLICanvas canvas, int row, int col);
 }

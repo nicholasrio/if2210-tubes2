@@ -18,6 +18,10 @@ public class TeleporterItem extends GameItem{
         arrivalLocation = L;
     }
     
+    /**
+     * Get teleport arrive location
+     * @return arrive location
+     */
     public Location getArrivalLocation(){
         return arrivalLocation;
     }
