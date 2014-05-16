@@ -32,6 +32,8 @@ public class Game
         // Choice Mode
         mode = 1;
         
+        GameData.loadMap();
+        GameData.loadPlayer("player.xml");
         if (mode == 2)
         {
             ImageLoader.loadAllImages();
