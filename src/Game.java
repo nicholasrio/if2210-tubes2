@@ -256,7 +256,7 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent event) {
 		// TODO Auto-generated method stub
-		TITLE = "Masuk!";
+		
 	}
 
 	@Override
@@ -268,18 +268,7 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 	@Override
 	public void mousePressed(MouseEvent event) {
 		// TODO Auto-generated method stub
-
-		switch (event.getButton()) {
-		case MouseEvent.BUTTON1:
-			TITLE = "Button 1 ceritanya";
-			break;
-		case MouseEvent.BUTTON2:
-			TITLE = "Button 2 ceritanya";
-			break;
-		case MouseEvent.BUTTON3:
-			TITLE = "Button 3 ceritanya";
-			break;
-		}
+		
 	}
 
 	@Override
@@ -291,21 +280,7 @@ public class Game extends JPanel implements KeyListener, MouseListener {
 	@Override
 	public void keyPressed(KeyEvent event) {
 		// TODO Auto-generated method stub
-
-		switch (event.getKeyCode()) {
-		case KeyEvent.VK_UP:
-			TITLE = "UP";
-			break;
-		case KeyEvent.VK_DOWN:
-			TITLE = "DOWN";
-			break;
-		case KeyEvent.VK_LEFT:
-			TITLE = "LEFT";
-			break;
-		case KeyEvent.VK_RIGHT:
-			TITLE = "RIGHT";
-			break;
-		}
+		
 	}
 
 	@Override

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plants>
     <plant name="Pohon Apel" maxWaterLevel="100" maxFertilizerLevel="100">
-        <stage name="1" lifeTime="3" img="images/level2.png" waterDropLevel="10" fertilizerDropLevel="8" />
-        <stage name="2" lifeTime="6" img="images/level3.png" waterDropLevel="8" fertilizerDropLevel="8" />
-        <stage name="3" lifeTime="9" img="images/level4.png" waterDropLevel="6" fertilizerDropLevel="8" />
-        <stage name="4" lifeTime="999" img="images/level5.png" waterDropLevel="5" fertilizerDropLevel="8" >
+        <stage name="1" lifeTime="2" img="images/level1.png" waterDropLevel="10" fertilizerDropLevel="8" />
+        <stage name="2" lifeTime="3" img="images/level2.png" waterDropLevel="8" fertilizerDropLevel="8" />
+        <stage name="3" lifeTime="6" img="images/level3.png" waterDropLevel="6" fertilizerDropLevel="8" />
+        <stage name="4" lifeTime="9" img="images/level4.png" waterDropLevel="5" fertilizerDropLevel="8" />
+        <stage name="5" lifeTime="999" img="images/level5.png" waterDropLevel="3" fertilizerDropLevel="8" >
             <fruit name="Apel" harvestPeriod="4" rottenTime="8" />
         </stage>
     </plant>
