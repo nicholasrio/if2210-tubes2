@@ -43,8 +43,6 @@ public class UserDragon extends Dragon {
     protected float maxStamina;
     
     private Thread th;
-    
-	private volatile boolean pauseFlag;
 	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
     // #[regen=yes,id=DCE.39F10D0D-020E-7824-2E18-D995AC6ED214]
@@ -72,7 +70,7 @@ public class UserDragon extends Dragon {
         this.password = password;
         this.money = money;
         this.happiness = happiness;
-        pauseFlag = false;
+
 		th = new Thread() {
             @Override
             public void run() {
@@ -480,7 +478,6 @@ public class UserDragon extends Dragon {
 	 * @return Event entertain selesai
 	 */
     public Event entertain () {
-        pauseFlag = true;
 		try {
 			while (happiness < 100) {
 				System.out.print(happiness+" ");
@@ -490,7 +487,6 @@ public class UserDragon extends Dragon {
 		} catch(InterruptedException e) {
 			
 		}
-		pauseFlag = false;
 		return new Event("Proses Selesai","Entertain Selesai");
     }
 
@@ -502,7 +498,6 @@ public class UserDragon extends Dragon {
 	 * @return Event rest selesai
 	 */
     public Event rest () {
-        pauseFlag = true;
 		try {
 			while (stamina < maxStamina || health < maxHealth) {
 				sleep(1000);
@@ -512,7 +507,6 @@ public class UserDragon extends Dragon {
 		} catch(InterruptedException e) {
 			
 		}
-		pauseFlag = false;
 		return new Event("Proses Selesai","Rest Selesai");
     }
 
@@ -524,7 +518,6 @@ public class UserDragon extends Dragon {
 	 * @return Event toilet selesai 
 	 */
     public Event toToilet () {
-        pauseFlag = true;
 		try {
 			while (bladder > 0) {
 				System.out.print(bladder + " ");
@@ -534,7 +527,6 @@ public class UserDragon extends Dragon {
 		} catch(InterruptedException e) {
 			
 		}
-		pauseFlag = false;
 		return new Event("Proses Selesai","toToilet Selesai");
     }
 }
