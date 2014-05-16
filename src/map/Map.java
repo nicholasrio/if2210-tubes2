@@ -33,7 +33,14 @@ public class Map{
         
 	//our map
 	private Tile[] dungeon_map = { };
+<<<<<<< HEAD
  
+=======
+        
+        //Visible
+        private boolean visible[][];
+        
+>>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
 	//the old seed from the RNG is saved in this one
 	private long oldseed = 0;
  
@@ -57,7 +64,19 @@ public class Map{
 	public Tile getCell(int x, int y){
 		return dungeon_map[x + xsize * y];
 	}
+<<<<<<< HEAD
  
+=======
+        
+        public boolean isVisible(int x,int y){
+            return visible[x][y];
+        }
+        
+        public void setVisible(int x,int y,boolean v){
+            visible[x][y] = v;
+        }
+        
+>>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
 	//The RNG. the seed is based on seconds from the "java epoch" ( I think..)
 	//perhaps it's the same date as the unix epoch
 	private int getRand(int min, int max){
@@ -258,6 +277,7 @@ public class Map{
 		//yay, all done
 		return true;
 	}
+<<<<<<< HEAD
  
  
 	//used to print the map on the screen
@@ -302,6 +322,21 @@ public class Map{
 	//and here's the one generating the whole map
 	public Map createDungeon(int inx, int iny, int inobj){
                 TilePrototype.loadCache();
+=======
+        
+	//and here's the one generating the whole map
+	public Map createDungeon(int inx, int iny, int inobj){
+                TilePrototype.loadCache();
+                
+                //Set visibilitas
+                visible = new boolean [inx][iny];
+                for (int i = 0; i < inx; i++){
+                    for (int j = 0; j < iny; j++){
+                        visible[i][j] = false;
+                    }
+                } 
+                
+>>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
 		if (inobj < 1) objects = 10;
 		else objects = inobj;
  
@@ -496,6 +531,7 @@ public class Map{
  
 		return this;
 	}
+<<<<<<< HEAD
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
 	public static void main(String[] args){
@@ -519,4 +555,6 @@ public class Map{
 	}
         
         
+=======
+>>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
 }
