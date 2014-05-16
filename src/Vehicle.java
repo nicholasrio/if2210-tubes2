@@ -8,8 +8,9 @@
  * @author William Stefan
  */
 import java.awt.Image;
-import java.util.*;
-import javax.swing.*;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 
 public class Vehicle
 {
