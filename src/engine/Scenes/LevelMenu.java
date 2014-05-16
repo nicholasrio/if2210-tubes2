@@ -33,8 +33,10 @@ public class LevelMenu extends Scene
         lvl_LorUL="Level Unlocked";
         level=1;
         nama_lvl="ICE MAZE";
+
         height=GameData.height;
         width=GameData.width;        
+
         spacebetween=width/25;
         space=((width)-(spacebetween*10)-10-4)/2;         
     }
@@ -42,7 +44,8 @@ public class LevelMenu extends Scene
     @Override
     public void Update()
     {
-        System.out.print("Enter your choice (1 untuk ke level berikutnya,0 untuk ke level sebelumnya, 2 untuk memilih level) : ");
+        System.out.print("Enter your choice (1 untuk ke level berikutnya,0 untuk ke level sebelumnya,"
+                + "2 untuk memilih level,3 untuk kembali ke main menu) : ");
         Scanner sc = new Scanner(System.in);    
         int input = sc.nextInt();
         if (input==1){
@@ -67,7 +70,7 @@ public class LevelMenu extends Scene
                 System.out.println("Tidak ada level dibawah level 1!!");
             }
         }
-        else // input == 2
+        else if (input==2)
         {
             if (level-1<=GameData.lastLogin.getLevelUnlocked()){
                 GameData.nowLevelPlayed = level;
@@ -77,6 +80,10 @@ public class LevelMenu extends Scene
             else{
                 System.out.println("You still can't choose this level...Level Locked!!");
             }
+        }
+        else //input == 3
+        {
+            SceneManager.SwitchScene("MainMenu");
         }
         if (level==1){
             nama_lvl="ICE MAZE";
