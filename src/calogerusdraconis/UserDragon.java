@@ -363,10 +363,10 @@ public class UserDragon extends Dragon {
         }
 
         if (thirst > 75){ // haus banget
-            tambahHappiness(-3);
+            tambahHappiness(-5);
             tambahHealth(-10 * level);
         } else if (thirst > 50){
-            tambahHappiness(-5);
+            tambahHappiness(-3);
             tambahHealth (-5 * level);
         }
 
@@ -391,10 +391,10 @@ public class UserDragon extends Dragon {
         }
 		
         if (bladder > 75){ // kebelet banget
-            tambahHappiness(-3);
+            tambahHappiness(-5);
             tambahHealth(-10 * level);
         } else if (bladder > 50){
-            tambahHappiness(-5);
+            tambahHappiness(-3);
             tambahHealth (-5 * level);
         }
 
