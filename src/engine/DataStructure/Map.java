@@ -184,6 +184,7 @@ public class Map{
             canvas.setCanvasPixel(rowOffset-1, i, '#');
             canvas.setCanvasPixel(rowOffset+maxRow*3, i, '#');
         }
+        System.out.println("Eroorrrr "+level);
         for(int i=0;i<maxRow;i++)
             for(int j=0;j<maxCol;j++)
                 matrix[level][i][j].Draw(canvas, rowOffset+3*i, colOffset+3*j);

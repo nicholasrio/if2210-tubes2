@@ -148,14 +148,14 @@ public class Player
             GameItem status;
             
             /* Play */
-            GameItem itemHere = peta.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
+            GameItem itemHere = peta.getElement(new Location(position.getRow(), position.getCol(), position.getLevel()));
             if(!itemHere.getName().equalsIgnoreCase("finish")) /* Belum ketemu exit */
             {
                 switch (command) {
                     case 1: // move ke atas
                         if(position.getRow() > 0) // periksa apakah posisi sudah diujung atas peta?
                         {
-                            itemHere = peta.getElement(new Location(position.getLevel(), position.getRow()-1, position.getCol()));
+                            itemHere = peta.getElement(new Location(position.getRow()-1, position.getCol(), position.getLevel()));
                             if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getRow()-1);
@@ -165,7 +165,7 @@ public class Player
                     case 2: // move ke bawah
                         if(position.getRow()<peta.getMaxRow()-1) // periksa apakah posisi sudah diujung bawah peta?
                         {
-                            itemHere = peta.getElement(new Location(position.getLevel(), position.getRow()+1, position.getCol()));
+                            itemHere = peta.getElement(new Location(position.getRow()+1, position.getCol(), position.getLevel()));
                             if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getRow()+1);
@@ -175,7 +175,7 @@ public class Player
                     case 3: // move ke kiri
                         if(position.getCol() > 0) // periksa apakah posisi sudah diujung kiri peta?
                         {
-                            itemHere = peta.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()-1));
+                            itemHere = peta.getElement(new Location(position.getRow(), position.getCol()-1, position.getLevel()));
                             if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
                                 position.setCol(position.getCol()-1);
@@ -185,7 +185,7 @@ public class Player
                     case 4: // move ke kanan
                         if(position.getCol() < peta.getMaxCol()-1) // periksa apakah posisi sudah diujung kanan peta?
                         {
-                            itemHere = peta.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()+1));
+                            itemHere = peta.getElement(new Location(position.getRow(), position.getCol()+1, position.getLevel()));
                             if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
                                 position.setCol(position.getCol()+1);
@@ -193,16 +193,17 @@ public class Player
                         }
                         break;
                 }
-                status = peta.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
+                status = peta.getElement(new Location(position.getRow(), position.getCol(), position.getLevel()));
                 if(status.getName().equalsIgnoreCase("coin")) // ada coin
                 {
                     score++;
-                    peta.setElement(new Location(position.getLevel(), position.getRow(), position.getCol()), new RoadItem());
+                    peta.setElement(new Location(position.getRow(), position.getCol(), position.getLevel()), new RoadItem());
                 }
                 else if(status.getName().equalsIgnoreCase("teleporter")) // teleporter
                 {
                     TeleporterItem tele = (TeleporterItem) status;
                     Location teleLocation = tele.getArrivalLocation();
+                    System.out.println("Tele Location : " +teleLocation);
                     position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
                 }
                 else if(status.getName().equalsIgnoreCase("hole")){
