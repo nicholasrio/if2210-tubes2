@@ -105,17 +105,18 @@ public class Map{
     }
     /**
      * Copy Constructor
-     * <p>
-     * This copy constructor copy Map entity by reference
-     * </p>
+     * This is copy constructor of Map
      * @param others Map
      */
     public Map(Map others)
     {
-        this.matrix = others.matrix;
-        this.maxCol = others.maxCol;
-        this.maxRow = others.maxRow;
-        this.maxLevel = others.maxLevel;
+        maxCol = others.maxCol;
+        maxRow = others.maxRow;
+        maxLevel = others.maxLevel;
+        matrix = new GameItem[maxLevel][maxRow][maxCol];
+        for(int i=0;i<maxLevel;i++)
+            for(int j=0;j<maxRow;j++)
+                System.arraycopy(others.matrix[i][j], 0, matrix[i][j], 0, maxCol);
     }
 
     /**
@@ -172,6 +173,20 @@ public class Map{
                     if(matrix[i][j][k].getName().equalsIgnoreCase("start"))
                         return new Location(i,j,k);
         throw new Exception("Tidak menemukan start.");
+    }
+    
+    public void Draw(CLICanvas canvas,int level, int rowOffset, int colOffset){
+        for(int i=rowOffset-1;i<rowOffset+(maxRow*3+1);i++){
+            canvas.setCanvasPixel(i, colOffset-1, '#');
+            canvas.setCanvasPixel(i, colOffset+maxCol*3, '#');
+        }
+        for(int i=colOffset-1;i<colOffset+(maxCol*3+1);i++){
+            canvas.setCanvasPixel(rowOffset-1, i, '#');
+            canvas.setCanvasPixel(rowOffset+maxRow*3, i, '#');
+        }
+        for(int i=0;i<maxRow;i++)
+            for(int j=0;j<maxCol;j++)
+                matrix[level][i][j].Draw(canvas, rowOffset+3*i, colOffset+3*j);
     }
 }
 

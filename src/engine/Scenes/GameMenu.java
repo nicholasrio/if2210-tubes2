@@ -19,6 +19,10 @@ public class GameMenu extends Scene
     private Map gameMap;
     private Player player;
     private CLICanvas canvas;
+    private final int MAXROWCANVAS = 55;
+    private final int MAXCOLCANVAS = 166;
+    private int MAPROWOFFSET;
+    private int MAPCOLOFFSET;
     
     public GameMenu()
     {
@@ -29,41 +33,42 @@ public class GameMenu extends Scene
     public void Initialize()
     {
         GameData.loadMap();
-        gameMap = GameData.dataMap.get(GameData.nowLevelPlayed);
+        gameMap = new Map(GameData.dataMap.get(GameData.nowLevelPlayed));
+        
+        MAPROWOFFSET = (MAXROWCANVAS-gameMap.getMaxRow()*3)/2;
+        MAPCOLOFFSET = (MAXCOLCANVAS-gameMap.getMaxCol()*3)/2;
         
         player = GameData.lastLogin;
         player.initPlayerPosition(gameMap);
         
-        canvas = new CLICanvas(55,166);
-        
-        Game.gameRunning = true;
+        canvas = new CLICanvas(MAXROWCANVAS,MAXCOLCANVAS);
     }
     
     @Override
     public void Update()
     {
-            /*
-        System.out.println("Enter 1(up) 2(down) 3(down) 4(left) to move : ");
+        System.out.println("Enter 1(up) 2(down) 3(left) 4(right) to move : ");
         Scanner Sc = new Scanner(System.in);
         int choise = Sc.nextInt();
         switch(choise){
-            case 1 : player.move(gameMap);
+            case 1 : player.move(gameMap,1);
                      break;
-            case 2 : player.move(gameMap);
+            case 2 : player.move(gameMap,2);
                      break;
-            case 3 : player.move(gameMap);
+            case 3 : player.move(gameMap,3);
                      break;
-            case 4 : player.move(gameMap);
+            case 4 : player.move(gameMap,4);
                      break;
         }
-            */
     }
     
     @Override
     public void Draw()
     {
         canvas.clear();
-        //Gambar
+        Location L = player.getLocation();
+        gameMap.Draw(canvas,L.getLevel(),MAPROWOFFSET, MAPCOLOFFSET);
+        player.Draw(canvas, MAPROWOFFSET+L.getRow()*3, MAPCOLOFFSET+L.getCol()*3);
         canvas.repaint();
     }
 }
