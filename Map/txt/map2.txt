@@ -52,7 +52,7 @@ w p w w w w p w
 w p h p p w c w
 
 level 3
-c w w w w w w w
+c p p p p p p p
 w w w w w p w p
 c p w p p p w p
 w p h p w w p p

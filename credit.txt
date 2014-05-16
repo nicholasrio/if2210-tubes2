@@ -1,3 +1,7 @@
+cooltext.com -> MainMenu Font
 wallpoper.com -> MainMenu Background
+www.shutterstock.com -> LevelMenu asset
+www.clipartbest.com -> MainMenu exit asset
 http://www.flamingtext.com/Fire-Logos -> LevelMenu level 2 Title
 http://cooltext.com/Logo-Design-Frosty -> LevelMenu level 1 Title
+
