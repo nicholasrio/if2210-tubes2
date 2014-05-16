@@ -66,10 +66,7 @@ public class ImageLoader extends JPanel
         // Image achievement
         allImages.add(loadImage("Image/AchievementBack.png"));
         
-        // Image OptionMenu
-        allImages.add(loadImage("Image/OptionMenu/AudioBar.png"));
-
-		// Image GameMenu
+        // Image GameMenu
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_path.png"));
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_wall.png"));
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_hole.png"));
@@ -77,6 +74,9 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_gold.png"));
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_char_right_left.png"));
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_char_up_down.png"));
+        
+        // Image OptionMenu
+        allImages.add(loadImage("Image/OptionMenu/AudioBar.png"));
     }
     
     public static Image getImage(String imgName)
@@ -186,12 +186,6 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(24);
         }
-<<<<<<< HEAD
-        else if("AudioBar".equalsIgnoreCase(imgName))
-        {
-            return allImages.get(25);
-        }
-=======
         else if ("fire_arrow_2".equalsIgnoreCase(imgName))
         {
             return allImages.get(25);
@@ -199,9 +193,7 @@ public class ImageLoader extends JPanel
         else if ("back_fire".equalsIgnoreCase(imgName))
         {
             return allImages.get(26);
-        }
->>>>>>> origin/master
-        
+        }        
         else if ("AchievementBack".equalsIgnoreCase(imgName))
         {
             return allImages.get(27);
@@ -234,6 +226,10 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(34);
         }       
+        else if("AudioBar".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(35);
+        }
         return null;
     }
     
