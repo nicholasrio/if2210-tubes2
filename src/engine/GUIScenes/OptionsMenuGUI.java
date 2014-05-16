@@ -12,47 +12,24 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 /**
  *
  * @author Tony
  */
-public class LevelMenuGUI extends Scene
+public class OptionsMenuGUI extends Scene
 {
     // attributes
-    private static Image bgTexture;
     
-    public LevelMenuGUI()
+    public OptionsMenuGUI()
     {
-        super("LevelMenuGUI");
-        /*addMouseMotionListener(new MouseMotionListener()){
-
-            @Override
-            public void mouseDragged(MouseEvent f) {
-                
-            };
-
-            @Override
-            public void mouseMoved(MouseEvent f) {
-                
-            };
-        }*/
-}
+        super("OptionsMenuGUI");
+    }
     
     public void LoadContent()
     {
         // load Image here
         // using ImageLoader.getImage
-        bgTexture = ImageLoader.getImage("egypt");
-        
     }
     
     @Override
@@ -60,13 +37,11 @@ public class LevelMenuGUI extends Scene
     {
         gameFrame.getContentPane().removeAll();
         gameFrame.getContentPane().add(this);
-        this.LoadContent();
     }
     
     @Override
     public void Update()
     {
-        
         
     }
     
@@ -86,7 +61,6 @@ public class LevelMenuGUI extends Scene
         if (Game.mode == 2)
         {
             Graphics2D g2D = (Graphics2D) g;
-            g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
             // paint Image here
             // using g2D.drawImage
         }
