@@ -30,6 +30,9 @@ public class TerminalView implements View {
     }
 
 	@Override
+	/**
+	 * Print status Dragon ke layar
+	 */
     public void UpdateScreen (UserDragon drg) {
 		System.out.println(drg.getName()+"'s Attribute: ");
 		System.out.println("Level: " + drg.getLevel());
@@ -46,6 +49,9 @@ public class TerminalView implements View {
 	}
 
 	@Override
+	/**
+	 * Print daftar consumable di store ke layar
+	 */
     public void UpdateScreen (Store str) {
 		for (Consumable c : str.getFdInventory()) {
 			System.out.println(c);
@@ -54,15 +60,24 @@ public class TerminalView implements View {
     }
 
 	@Override
+	/**
+	 * 
+	 */
     public void UpdateScreen (UserDragon drg, Dragon enemy) {
 		
     }
 
 	@Override
+	/**
+	 * Print event yang telah dilakukan Dragon
+	 */
     public void UpdateScreen (UserDragon drg, Event evnt) {
 		System.out.println(evnt.getMessage());
     }
 	
+	/**
+	 * Print pilihan menu ke layar
+	 */
 	public void showMenu () {
 		System.out.println("Piliah menu: ");
 		System.out.println("1. See Attribute");
@@ -77,6 +92,9 @@ public class TerminalView implements View {
 	}
 
 	@Override
+	/**
+	 * Print daftar consumable yang dimiliki Dragon
+	 */
 	public void seeFoodDirectory(UserDragon drg) {
 		ArrayList<Consumable> ac = drg.getFdInventory();
 		for (Consumable c : ac) {

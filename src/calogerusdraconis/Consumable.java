@@ -156,6 +156,9 @@ public final class Consumable {
 	}
 	
 	@Override
+	/**
+	 * Print status consumable
+	 */
 	public String toString() {
 		return("Nama : " + getName() + '\n' +
 			   "Harga : " + getCost() + '\n' + 
