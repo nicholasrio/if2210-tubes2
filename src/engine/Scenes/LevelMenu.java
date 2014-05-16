@@ -73,7 +73,7 @@ public class LevelMenu extends Scene
         else if (input==2)
         {
             if (level-1<=GameData.lastLogin.getLevelUnlocked()){
-                GameData.nowLevelPlayed = level;
+                GameData.nowLevelPlayed = level-1;
                 System.out.println("Level Chosen : " + level);
                 SceneManager.SwitchScene("GameMenu");
             }

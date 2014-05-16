@@ -25,6 +25,10 @@ public class CLICanvas {
         if(row<MAXROWSIZE && col<MAXCOLSIZE && row>=0 && col>=0)
             drawBuffer[row][col] = c;
     }
+    public void writeHorisontal(int row, int col, String S){
+        for(int i=0;i<S.length();i++)
+            setCanvasPixel(row,col+i,S.charAt(i));
+    }
     public void clear(){
         for(int i=0;i<MAXROWSIZE;i++)
             for(int j=0;j<MAXCOLSIZE;j++){
