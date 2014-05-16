@@ -120,7 +120,7 @@ public class MainMenuGUI extends Scene
                 }
             }
         }
-        else if (menuHovered >= 0 && menuHovered <=5)
+        else if (menuHovered >= 1 && menuHovered <=4)
         {
             for (int i=0;i<NMenu;i++)
             {
@@ -132,43 +132,19 @@ public class MainMenuGUI extends Scene
                     }
                 }
             }
-            if (deltapos[menuHovered] < 100f)
+            float lowerboundPos = 0f;
+            switch (menuHovered)
+            {
+                case 1: lowerboundPos = 70f; break;
+                case 2: lowerboundPos = 82f; break;
+                case 3: lowerboundPos = 95f; break;
+                case 4: lowerboundPos = 105f; break;
+            }
+            
+            if (deltapos[menuHovered] < lowerboundPos)
             {
                 deltapos[menuHovered] += 10f;
             }
-        }
-        switch (menuHovered)
-        {
-            case -1: for (int i=0;i<NMenu;i++)
-                     {
-                         if (deltapos[i] > 0f)
-                         {
-                             deltapos[i] -= 10f;
-                         }
-                     }
-                     break;
-            case 0: break;
-            case 1: if (deltapos[menuHovered] < 100f)
-                    {
-                        deltapos[menuHovered] += 10f;
-                    }
-                    break;
-            case 2: if (deltapos[menuHovered] < 100f)
-                    {
-                        deltapos[menuHovered] += 10f;
-                    }
-                    break;
-            case 3: if (deltapos[menuHovered] < 100f)
-                    {
-                        deltapos[menuHovered] += 10f;
-                    }
-                    break;
-            case 4: if (deltapos[menuHovered] < 100f)
-                    {
-                        deltapos[menuHovered] += 10f;
-                    }
-                    break;
-            case 5: break;
         }
     }
     

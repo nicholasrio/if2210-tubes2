@@ -6,8 +6,7 @@
 
 package engine.DataStructure;
 
-import com.sun.corba.se.impl.protocol.AddressingDispositionException;
-import java.util.*;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -135,30 +134,28 @@ public class Player
     /* Method */
     /**
      * 
-     * @param peta the map in which the player is playing
+     * @param peta the peta in which the player is playing
      * @param command 1 for up, 2 for down, 3 for left, 4 for right
      */
-    public void move(Map peta, int command)
+    public int move(Map peta, int command)
     {
         try 
         {
-            Map map = new Map(peta);
-
             /* Ukuran Map */
-            int maxLevel = map.getMaxLevel();
-            int maxRow = map.getMaxRow();
-            int maxCol = map.getMaxCol();
+            int maxLevel = peta.getMaxLevel();
+            int maxRow = peta.getMaxRow();
+            int maxCol = peta.getMaxCol();
             GameItem status;
             
             /* Play */
-            GameItem itemHere = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
-            while(!itemHere.getName().equalsIgnoreCase("finish")) /* Belum ketemu exit */
+            GameItem itemHere = peta.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
+            if(!itemHere.getName().equalsIgnoreCase("finish")) /* Belum ketemu exit */
             {
                 switch (command) {
                     case 1: // move ke atas
-                        if(position.getRow() > 0) // periksa apakah posisi sudah diujung atas map?
+                        if(position.getRow() > 0) // periksa apakah posisi sudah diujung atas peta?
                         {
-                            itemHere = map.getElement(new Location(position.getLevel(), position.getRow()-1, position.getCol()));
+                            itemHere = peta.getElement(new Location(position.getLevel(), position.getRow()-1, position.getCol()));
                             if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getRow()-1);
@@ -166,9 +163,9 @@ public class Player
                         }
                         break;
                     case 2: // move ke bawah
-                        if(position.getRow()<map.getMaxRow()-1) // periksa apakah posisi sudah diujung bawah map?
+                        if(position.getRow()<peta.getMaxRow()-1) // periksa apakah posisi sudah diujung bawah peta?
                         {
-                            itemHere = map.getElement(new Location(position.getLevel(), position.getRow()+1, position.getCol()));
+                            itemHere = peta.getElement(new Location(position.getLevel(), position.getRow()+1, position.getCol()));
                             if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
                                 position.setRow(position.getRow()+1);
@@ -176,31 +173,31 @@ public class Player
                         }
                         break;
                     case 3: // move ke kiri
-                        if(position.getCol() > 0) // periksa apakah posisi sudah diujung kiri map?
+                        if(position.getCol() > 0) // periksa apakah posisi sudah diujung kiri peta?
                         {
-                            itemHere = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()-1));
+                            itemHere = peta.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()-1));
                             if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
-                                position.setRow(position.getCol()-1);
+                                position.setCol(position.getCol()-1);
                             }
                         }
                         break;
                     case 4: // move ke kanan
-                        if(position.getCol() < map.getMaxCol()-1) // periksa apakah posisi sudah diujung kanan map?
+                        if(position.getCol() < peta.getMaxCol()-1) // periksa apakah posisi sudah diujung kanan peta?
                         {
-                            itemHere = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()+1));
+                            itemHere = peta.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()+1));
                             if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                             {
-                                position.setRow(position.getCol()+1);
+                                position.setCol(position.getCol()+1);
                             }
                         }
                         break;
                 }
-                status = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
+                status = peta.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
                 if(status.getName().equalsIgnoreCase("coin")) // ada coin
                 {
                     score++;
-                    map.setElement(new Location(position.getLevel(), position.getRow(), position.getCol()), new RoadItem());
+                    peta.setElement(new Location(position.getLevel(), position.getRow(), position.getCol()), new RoadItem());
                 }
                 else if(status.getName().equalsIgnoreCase("teleporter")) // teleporter
                 {
@@ -211,11 +208,17 @@ public class Player
                 else if(status.getName().equalsIgnoreCase("hole")){
                     position.setLocation(position.getLevel()-1, position.getRow(), position.getCol());
                 }
+                return 0;
+            }
+            else
+            {
+                return 1;
             }
         } 
         catch (Exception ex) 
         {
             Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
         }
     }
     
@@ -225,5 +228,17 @@ public class Player
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    
+    public void Draw(CLICanvas canvas, int row, int col){
+        canvas.setCanvasPixel(row, col, ' ');
+        canvas.setCanvasPixel(row, col+1, 'o');
+        canvas.setCanvasPixel(row, col+2, ' ');
+        canvas.setCanvasPixel(row+1, col, '/');
+        canvas.setCanvasPixel(row+1, col+1, '|');
+        canvas.setCanvasPixel(row+1, col+2, '\\');
+        canvas.setCanvasPixel(row+2, col, '/');
+        canvas.setCanvasPixel(row+2, col+1, ' ');
+        canvas.setCanvasPixel(row+2, col+2, '\\');
     }
 }

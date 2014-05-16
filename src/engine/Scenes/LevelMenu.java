@@ -33,8 +33,10 @@ public class LevelMenu extends Scene
         lvl_LorUL="Level Unlocked";
         level=1;
         nama_lvl="ICE MAZE";
-        height=53;
-        width=168;        
+
+        height=GameData.height;
+        width=GameData.width;        
+
         spacebetween=width/25;
         space=((width)-(spacebetween*10)-10-4)/2;         
     }
@@ -73,8 +75,7 @@ public class LevelMenu extends Scene
             if (level-1<=GameData.lastLogin.getLevelUnlocked()){
                 GameData.nowLevelPlayed = level;
                 System.out.println("Level Chosen : " + level);
-                Game.gameRunning = false;
-                //SceneManager.SwitchScene("GameMenu");
+                SceneManager.SwitchScene("GameMenu");
             }
             else{
                 System.out.println("You still can't choose this level...Level Locked!!");

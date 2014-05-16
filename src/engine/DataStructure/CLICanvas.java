@@ -22,7 +22,7 @@ public class CLICanvas {
     }
     
     public void setCanvasPixel(int row, int col, char c){
-        if(row<MAXROWSIZE && col<MAXCOLSIZE)
+        if(row<MAXROWSIZE && col<MAXCOLSIZE && row>=0 && col>=0)
             drawBuffer[row][col] = c;
     }
     public void clear(){
