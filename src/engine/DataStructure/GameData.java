@@ -120,6 +120,8 @@ public class GameData {
         try 
         {
             int i;
+            GameData.deletePlayer(GameData.lastLogin.getNama());
+            GameData.dataPlayer.add(1, lastLogin);
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.newDocument();

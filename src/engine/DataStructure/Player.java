@@ -6,6 +6,7 @@
 
 package engine.DataStructure;
 
+import com.sun.corba.se.impl.protocol.AddressingDispositionException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,7 @@ public class Player
         score = 0;
         levelUnlocked = 0;
         achievementUnlocked = 0;
+        position = new Location();
     }
     
     @Override
@@ -90,6 +92,11 @@ public class Player
         return achievementUnlocked;
     }
     
+    public Location getLocation()
+    {
+        return position;
+    }
+    
     /* Setter */
     /**
      * 
@@ -124,6 +131,38 @@ public class Player
         this.levelUnlocked = level;
     }
     
+    private Map getMap()
+    {
+        return GameData.dataMap.get(GameData.nowLevelPlayed);
+    }
+    
+    public void moveDown()
+    {
+        GameItem itemHere;
+        if(position.getRow() < getMap().getMaxRow() - 1)
+        {
+            itemHere = getMap().getElement(new Location(position.getLevel(), position.getRow()+1, position.getCol()));
+            if(!itemHere.getName().equalsIgnoreCase("wall"))
+            {
+                position.setRow(position.getRow() + 1);
+            }
+            if(itemHere.getName().equalsIgnoreCase("coin"))
+            {
+                score++;
+            }
+            if(itemHere.getName().equalsIgnoreCase("hole"))
+            {
+                position.setLevel(position.getCol()-1);
+            }
+            if(itemHere.getName().equalsIgnoreCase("teleporter"))
+            {
+                TeleporterItem tele = (TeleporterItem) itemHere;
+                Location teleLocation = tele.getArrivalLocation();
+                position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
+            }
+        }
+    }
+    
     /* Method */
     /**
      * 
@@ -141,14 +180,6 @@ public class Player
             validMove.add("down");
             validMove.add("left");
             validMove.add("right");
-                        
-            /* Keterangan Map */
-            // start = -1;
-            // exit = -2;
-            // coin = -3;
-            // wall = -4;
-            //  0 : nothing
-            // >0 : teleporter
             
             /* Ukuran Map */
             int maxLevel = map.getMaxLevel();
