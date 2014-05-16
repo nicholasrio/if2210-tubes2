@@ -1,9 +1,21 @@
+/**
+ *
+ * @author 
+ * Darwin Prasetio (13512015)
+ * Chrestella Stephanie (13512005)
+ * Jan Wira Gotama Putra (13512015)
+ * Eric (13512021)
+ * Willy(13512070)
+ * Melvin FOnda (13512085)
+ */
+
 package controller;
 
 import java.util.*;
 import java.io.*;
 import exception.*;
 import model.Player;
+import model.Tower;
 
 public class MainMenu {
 
@@ -11,9 +23,11 @@ public class MainMenu {
     private Player loginPlayer;
     private static MainMenu instance = new MainMenu();
     
+    /** Default Constructor */
     private MainMenu() {
     }
     
+    /** Log player (username) to the game */
     public void Login(String username) throws NameNotExistException {
         int idx = searchPlayer(username);
         if (idx != -1) {
@@ -23,6 +37,7 @@ public class MainMenu {
         }
     }
 
+    /** Create new player within given username */
     public void newPlayer(String username) throws Exception {
         int idx = searchPlayer(username);
         if (idx != -1) {
@@ -33,6 +48,7 @@ public class MainMenu {
         }
     }
 
+    /** Delete player within given username */
     public void deletePlayer(String username) throws NameNotExistException {
         int idx = searchPlayer(username);
         if (idx != -1) {
@@ -41,7 +57,8 @@ public class MainMenu {
             throw new NameNotExistException();
         }
     }
-
+    
+    /** Search player within given username */
     public int searchPlayer(String username) {
         int idx = -1;
         int i = 0;
@@ -54,7 +71,8 @@ public class MainMenu {
         }
         return idx;
     }
-
+    
+    /** Playing tower defense game */
     public void PlayGame(boolean newGame) throws FileNotFoundException, IOException {
         Controller gameControl = Controller.getInstance();
         if (newGame==false) {
@@ -64,34 +82,39 @@ public class MainMenu {
             gameControl.newGame(loginPlayer);
         }
         Scanner in = new Scanner(System.in);
-        int menu=0, pos_x=0, pos_y=0;
-        while (gameControl.getCurrentLevel() <= gameControl.getMaxLevel() && menu!=6) { //TO DO : inget diganti
+        int menu=0, pos_row=0, pos_col=0;
+        /** Game menus */
+        while (gameControl.getCurrentLevel() <= gameControl.getMaxLevel() && menu!=7) { //TO DO : inget diganti
             gameControl.showGame(true);
             menu = in.nextInt();
-            if (menu==1 || menu==2 || menu==3) {
-                System.out.print(">Position(x,y) ");
-                pos_x = in.nextInt();
-                pos_y = in.nextInt();
+            if (menu<5) {
+                System.out.print(">Position(row,col) ");
+                pos_row = in.nextInt();
+                pos_col = in.nextInt();
             }
             switch(menu) {
-                case 1 : {
-                    boolean retval = gameControl.createNewTower(pos_x, pos_y);
+                case 1 : { //create tower 
+                    boolean retval = gameControl.createNewTower(pos_row, pos_col);
                     break;
                 }
-                case 2 : {
-                    gameControl.sellTower(pos_x, pos_y);
+                case 2 : { //sell tower
+                    gameControl.sellTower(pos_row, pos_col);
                     break;
                 }
-                case 3 : {
-                    gameControl.upgradeTower(pos_x, pos_y);
+                case 3 : { //upgrade tower
+                    gameControl.upgradeTower(pos_row, pos_col);
                     break;
                 }
-                case 4 : {
+                case 4 : { //see tower's info
+                    gameControl.towerInfo(pos_row,pos_col);
+                }
+                case 5 : { //save game
                     gameControl.saveToFile();
                     break;
                 }
-                case 5 : {
+                case 6 : { //level started
                     gameControl.spawnMonster();
+                    /** game level started */
                     while (gameControl.countSeenMonster() > 0 && gameControl.getLives() > 0) {
                         gameControl.showGame(false);
                         gameControl.allTowersAttack();
@@ -112,7 +135,7 @@ public class MainMenu {
                     }
                     break;
                 }
-                case 6 : { break; }
+                case 7 : { break; } //quit game
                 default : {
                     System.out.println("Menu not found!");
                     break;
@@ -129,11 +152,13 @@ public class MainMenu {
         players.get(idx).setHighScore(loginPlayer.getHighScore());
     }
 
+    /** Get player highscore */
     public List<Player> getHighScore() {
         SortPlayers();
         return players;
     }
 
+    /** Load player data */
     public void loadPlayer() throws FileNotFoundException {
         String name;
         int score;
@@ -148,6 +173,7 @@ public class MainMenu {
         in.close();
     }
 
+    /** Sort palyers by highscore */
     private void SortPlayers() {
         for (int i = 0; i < players.size() - 1; i++) {
             for (int j = i + 1; j < players.size(); j++) {
@@ -160,10 +186,12 @@ public class MainMenu {
         }
     }
 
+    /** get this class instance */
     public static MainMenu getInstance() {
         return instance;
     }
     
+    /** Showing Main menu */
     public void showMenus() {
         System.out.println("1. Login");
         System.out.println("2. New Player");
@@ -174,6 +202,7 @@ public class MainMenu {
         System.out.println("7. Exit");
     }
     
+    /** Save last player data to file */
     public void closePlayer() throws FileNotFoundException {
         String name;
         int score;
@@ -186,6 +215,7 @@ public class MainMenu {
         out.flush();
     }
     
+    /** True if there's any player logged to the game */
     public boolean logged() {
         return loginPlayer!=null;
     }

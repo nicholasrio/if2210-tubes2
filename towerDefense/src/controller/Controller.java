@@ -1,9 +1,16 @@
-package controller;
-
 /**
  *
- * @author wira gotama this is a singleton model class
+ * @author 
+ * Darwin Prasetio (13512015)
+ * Chrestella Stephanie (13512005)
+ * Jan Wira Gotama Putra (13512015)
+ * Eric (13512021)
+ * Willy(13512070)
+ * Melvin FOnda (13512085)
  */
+
+package controller;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.io.*;
@@ -30,33 +37,20 @@ public class Controller {
     private final int start_row = 2, start_col = 0;
     private final int monsterCount = 10;
     private model.Map map;
-
+    
+    /** Default consructor */
     private Controller() {
         maximumLevel = 2; //buat testing dulu
     }
 
-    public int getCurrentLevel() {
-        return currentLevel;
-    }
-
-    public int getMaxLevel() {
-        return maximumLevel;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public int getLives() {
-        return lives;
-    }
-
+    /** Show every monster hit point's to console */
     public void showMonsterLive() {
         for (int i = 0; i < listOfMonster.size(); i++) {
             System.out.println("Monster ke-" + i + " " + listOfMonster.get(i).getHP());
         }
     }
 
+    /** New game initialization */
     public void newGame(Player x) throws FileNotFoundException, IOException {
         map.readFile();
         player = x;
@@ -66,6 +60,7 @@ public class Controller {
         lives = INITIAL_LIFE;
     }
 
+    /** Load player x's last game */
     public void loadGame(Player x) throws FileNotFoundException, IOException {
         player = x;
         map.readFile();
@@ -74,6 +69,7 @@ public class Controller {
         readFromFile(in);
     }
 
+    /** Spawn monster */
     public void spawnMonster() {
         for (int i = 0; i < monsterCount; i++) {
             listOfMonster.add(new Monster(start_row, start_col - i, currentLevel));
@@ -102,6 +98,7 @@ public class Controller {
         }
     }
 
+    /** Move all monster to their next position*/
     public void moveAllMonster() {
         for (int it = 0; it < listOfMonster.size(); ++it) {
             /*
@@ -145,6 +142,7 @@ public class Controller {
         }
     }
 
+    /** Count current seen Monster on the UI */
     public int countSeenMonster() {
         int count = 0;
         for (int i = 0; i < listOfMonster.size(); i++) {
@@ -158,10 +156,12 @@ public class Controller {
         return count;
     }
 
+    /** Decrease player's live */
     public void decreaseLive() {
         --lives;
     }
 
+    /** Go to next level */
     public void nextLevel() {
         listOfMonster = new ArrayList<Monster>();
         ++currentLevel;
@@ -169,7 +169,7 @@ public class Controller {
     }
 
     /**
-     * sell (destroy) the tower at (pos_x, pos_y) to get pay back money
+     * Sell (destroy) the tower at (pos_x, pos_y) to get pay back money
      *
      * @param pos_row
      * @param pos_col
@@ -188,7 +188,7 @@ public class Controller {
     }
 
     /**
-     * upgrade tower at position (pos_x, pos_y) if player's money is sufficient,
+     * Upgrade tower at position (pos_x, pos_y) if player's money is sufficient,
      *
      * @param pos_row
      * @param pos_col
@@ -236,7 +236,7 @@ public class Controller {
     }
 
     /**
-     * get this class instance
+     * Get this class instance
      *
      * @return
      */
@@ -248,7 +248,7 @@ public class Controller {
     }
 
     /**
-     * Save ListOfTower to file
+     * Save ListOfTower to file and ListOfMonster
      *
      * @param out
      */
@@ -274,7 +274,7 @@ public class Controller {
     }
 
     /**
-     * read from file, then create new tower
+     * Read saved game from file, then create new tower and monster
      *
      * @param in
      */
@@ -290,11 +290,11 @@ public class Controller {
             // Ini ditambahkan di terakhir saja
 
             Tower temp = new Tower(x, y);
-            temp.setCurrentLevel(in.nextInt());
             temp.setUpgradeCost(in.nextInt());
             temp.setAttack(in.nextInt());
             temp.setRange(in.nextInt());
             temp.setCoolDown(in.nextInt());
+            temp.setCurrentLevel(in.nextInt());
             listOfTower.add(temp);
         }
         total = in.nextInt();
@@ -328,9 +328,7 @@ public class Controller {
         return simpan;
     }
 
-    /**
-     * write LisOfTower[idx] to file
-     */
+    /** Write tower data to file */
     private void writeTowerToFile(int idx, PrintWriter out) {
         out.println(listOfTower.get(idx).getPositionRow() + " "
                 + listOfTower.get(idx).getPositionCol() + " "
@@ -340,18 +338,76 @@ public class Controller {
                 + listOfTower.get(idx).getCoolDownCount() + " "
                 + listOfTower.get(idx).getCurrentLevel() + " ");
     }
-
+    
+    /** Write Monster data to file */
     private void writeMonsterToFile(int idx, PrintWriter out) {
         out.println(listOfMonster.get(idx).getHP() + " "
                 + listOfMonster.get(idx).getRow() + " "
                 + listOfMonster.get(idx).getCol());
     }
 
+    /** Show game UI */
     public void showGame(boolean ingame) {
         if (ingame) {
-            gameUI.showTransition(map, player, score, currentLevel, gold, lives, listOfTower, listOfMonster);
+            gameUI.showTransition(instance);
         } else {
-            gameUI.showMap(map, player, score, ROW, gold, listOfTower, listOfMonster);
+           gameUI.showMap(instance);
         }
+    }
+
+    /** Get List of tower */
+    public List<Tower> getListOfTower() {
+        return listOfTower;
+    }
+    
+    /** Get List of monster */
+    public List<Monster> getListOfMonster() {
+        return listOfMonster;
+    }
+    
+    /** Get map */
+    public model.Map getMap() {
+        return map;
+    }
+    
+    /** Get player */
+    public  model.Player getPlayer() {
+        return player;
+    }
+    
+    /** Get current level */
+    public int getCurrentLevel() {
+        return currentLevel;
+    }
+    
+    /** Get maximum level of the game */
+    public int getMaxLevel() {
+        return maximumLevel;
+    }
+
+    /** Get player's score */
+    public int getScore() {
+        return score;
+    }
+
+    /** Get player's lives */
+    public int getLives() {
+        return lives;
+    }
+    
+    /** Get player's gold */
+    public int getGold() {
+        return gold;
+    }
+    
+    /** Give tower information at (row,col) */
+    public void towerInfo(int row, int col) {
+        int idx = getTowerIdx(row, col);
+        Tower t = listOfTower.get(idx);
+        System.out.println("Tower Information at ("+row+","+col+")");
+        System.out.println("Level           : "+t.getCurrentLevel());
+        System.out.println("Attack          : "+t.getAttack());
+        System.out.println("Attack Range    : "+t.getRange());
+        System.out.println("Upgrade cost    : "+t.getUpgradeCost());
     }
 }
