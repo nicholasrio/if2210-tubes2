@@ -55,7 +55,7 @@ public class LevelMenuGUI extends Scene
     {
         // load Image here
         // using ImageLoader.getImage
-        bgTexture = ImageLoader.getImage("frozen_cube");
+        bgTexture = ImageLoader.getImage("burning_cube");
         groupnameTexture = ImageLoader.getImage("cube_mazer_ice");
         levelTexture = ImageLoader.getImage("level_ice");
         titleLvlTexture = ImageLoader.getImage("ice_mage");

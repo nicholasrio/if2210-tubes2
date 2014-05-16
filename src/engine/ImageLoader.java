@@ -46,8 +46,8 @@ public class ImageLoader extends JPanel
         
         //Image ke-10
         allImages.add(loadImage("Image/LevelMenu/cube_mazer(fire).png"));
-        allImages.add(loadImage("Image/LevelMenu/Frozen Cube2.png"));
-        allImages.add(loadImage("Image/LevelMenu/Burning Cube.png"));
+        allImages.add(loadImage("Image/LevelMenu/Frozen Cube 800x600.png"));
+        allImages.add(loadImage("Image/LevelMenu/Burning Cube 800x600.png"));
         allImages.add(loadImage("Image/LevelMenu/level(ice).png"));        
         allImages.add(loadImage("Image/LevelMenu/Ice_Mage.png"));
         allImages.add(loadImage("Image/LevelMenu/locked(ice).png"));
