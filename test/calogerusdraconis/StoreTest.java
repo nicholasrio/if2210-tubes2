@@ -59,7 +59,7 @@ public class StoreTest {
     @Test
     public void testGetFdInventory() {
         System.out.println("getFdInventory");
-        Store instance = null;
+        Store instance = new Store();
         ArrayList<Consumable> expResult = null;
         ArrayList<Consumable> result = instance.getFdInventory();
         assertEquals(expResult, result);
