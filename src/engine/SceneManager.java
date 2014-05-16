@@ -29,6 +29,10 @@ public class SceneManager
         Scenes.add(S);
     }
     
+    /**
+     * Pindah Scene dari satu scene ke scene lain.
+     * @param name Scene yang akan dijalankan
+     */
     static public void SwitchScene(String name)
     {
         for (Scene Scn : Scenes)
@@ -41,11 +45,17 @@ public class SceneManager
         }
     }
     
+    /**
+     * Melakukan inisialisasi Scene.
+     */
     static public void Initialize()
     {
         Started = true;
     }
     
+    /**
+     * Melakukan update scene dengan scene pada ActiveScene
+     */
     static public void Update()
     {
         if (!Started) return;
@@ -53,6 +63,9 @@ public class SceneManager
             activeScene.Update();
     }
     
+    /**
+     * Menggambar scene yang ada pada ActiveScene.
+     */
     static public void Draw()
     {
         if (!Started) return;
@@ -60,6 +73,9 @@ public class SceneManager
             activeScene.Draw();
     }
     
+    /**
+     * Menghentikan game CubeMazer.
+     */
     static public void ShutDown()
     {
         Game.gameRunning = false;

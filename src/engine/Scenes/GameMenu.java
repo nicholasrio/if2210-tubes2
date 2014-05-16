@@ -31,6 +31,9 @@ public class GameMenu extends Scene
         super("GameMenu");
     }
     
+    /**
+     * Menginisialisasi element-element pada scene GameMenu.
+     */
     @Override
     public void Initialize()
     {
@@ -50,6 +53,9 @@ public class GameMenu extends Scene
         canvas = new CLICanvas(MAXROWCANVAS,MAXCOLCANVAS);
     }
     
+    /**
+     * Mengupdate isi dari Scene GameMenu.
+     */
     @Override
     public void Update()
     {
@@ -86,6 +92,9 @@ public class GameMenu extends Scene
         }
     }
     
+    /**
+     * Menggambar scene Game Menu.
+     */
     @Override
     public void Draw()
     {

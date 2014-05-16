@@ -44,6 +44,9 @@ public class Game
         gameLoop();
     }
     
+    /**
+     * Menyiapkan frame untuk game Cube Mazer
+     */
     private static void prepareFrame()
     {
         gameFrame.setTitle("CubeMazer");
@@ -55,6 +58,9 @@ public class Game
         gameFrame.setVisible(true);
     }
     
+    /**
+     * Me-load semua scene yang akan digunakan di dalam game.
+     */
     private static void PrepareScenes()
     {
         SceneManager.Initialize();
@@ -77,6 +83,9 @@ public class Game
         }
     }
     
+    /**
+     * Memulai game
+     */
     private static void gameLoop()
     {
         while(gameRunning) 

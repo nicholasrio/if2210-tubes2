@@ -25,6 +25,9 @@ public class LevelMenu extends Scene
         super("LevelMenu");
     }
     
+    /**
+     * Melakukan inisialisasi Scene LevelMenu
+     */
     @Override
     public void Initialize()
     {
@@ -41,6 +44,9 @@ public class LevelMenu extends Scene
         space=((width)-(spacebetween*10)-10-4)/2;         
     }
     
+    /**
+     * Melakukan update isi Scene LevelMenu
+     */
     @Override
     public void Update()
     {
@@ -102,6 +108,9 @@ public class LevelMenu extends Scene
         }        
     }
     
+    /**
+     * Memprint border game LevelMenu
+     */
     public void PrintBR(){
         System.out.print("||");
         for (int i=0;i<width-4;i++) System.out.print(" ");
@@ -109,7 +118,9 @@ public class LevelMenu extends Scene
     }
     
     @Override 
-    //punya kevin
+    /**
+     * Menggambar Scene GameMenu
+     */
     public void Draw()
     {
         int k=0;
