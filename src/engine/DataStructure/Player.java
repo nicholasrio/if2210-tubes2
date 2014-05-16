@@ -137,11 +137,15 @@ public class Player
         temp_score = 0;
     }
     
+    public int getTempScore(){
+        return temp_score;
+    }
     /* Method */
     /**
      * 
      * @param peta the peta in which the player is playing
      * @param command 1 for up, 2 for down, 3 for left, 4 for right
+     * @return -1 if error, 1 if finish
      */
     public int move(Map peta, int command)
     {
@@ -204,7 +208,6 @@ public class Player
             {
                 TeleporterItem tele = (TeleporterItem) itemHere;
                 Location teleLocation = tele.getArrivalLocation();
-                System.out.println("Tele Location : " +teleLocation);
                 position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
             }
             else if(itemHere.getName().equalsIgnoreCase("hole")){
