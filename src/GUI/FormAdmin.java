@@ -5,7 +5,6 @@
  */
 
 package GUI;
-import com.sun.awt.AWTUtilities;
 import javax.swing.SwingUtilities;
 import main.CalonTerpilih;
 /**
@@ -36,7 +35,10 @@ public class FormAdmin extends javax.swing.JFrame{
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         TombolDapil = new javax.swing.JButton();
-        TombolCaleg = new javax.swing.JButton();
+        TombolDPR = new javax.swing.JButton();
+        TombolDPD = new javax.swing.JButton();
+        TombolDPRDProv = new javax.swing.JButton();
+        TombolDPRDKotKab = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,11 +50,35 @@ public class FormAdmin extends javax.swing.JFrame{
             }
         });
 
-        TombolCaleg.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
-        TombolCaleg.setText("Calon Legislatif");
-        TombolCaleg.addActionListener(new java.awt.event.ActionListener() {
+        TombolDPR.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDPR.setText("DPR");
+        TombolDPR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TombolCalegActionPerformed(evt);
+                TombolDPRActionPerformed(evt);
+            }
+        });
+
+        TombolDPD.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDPD.setText("DPD");
+        TombolDPD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TombolDPDActionPerformed(evt);
+            }
+        });
+
+        TombolDPRDProv.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDPRDProv.setText("DPRD Provinsi");
+        TombolDPRDProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TombolDPRDProvActionPerformed(evt);
+            }
+        });
+
+        TombolDPRDKotKab.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDPRDKotKab.setText("DPRD Kota/Kabupaten");
+        TombolDPRDKotKab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TombolDPRDKotKabActionPerformed(evt);
             }
         });
 
@@ -61,20 +87,29 @@ public class FormAdmin extends javax.swing.JFrame{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TombolCaleg, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TombolDapil))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TombolDPRDKotKab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TombolDPRDProv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TombolDapil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TombolDPR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TombolDPD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addGap(140, 140, 140)
                 .addComponent(TombolDapil)
                 .addGap(18, 18, 18)
-                .addComponent(TombolCaleg)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addComponent(TombolDPR)
+                .addGap(18, 18, 18)
+                .addComponent(TombolDPD)
+                .addGap(18, 18, 18)
+                .addComponent(TombolDPRDProv)
+                .addGap(18, 18, 18)
+                .addComponent(TombolDPRDKotKab)
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         pack();
@@ -89,12 +124,33 @@ public class FormAdmin extends javax.swing.JFrame{
         
     }//GEN-LAST:event_TombolDapilActionPerformed
 
-    private void TombolCalegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolCalegActionPerformed
+    private void TombolDPRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPRActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        FormCaleg FC = new FormCaleg();
+        FormCaleg FC = new FormCaleg("DPR");
         FC.setVisible(true);
-    }//GEN-LAST:event_TombolCalegActionPerformed
+    }//GEN-LAST:event_TombolDPRActionPerformed
+
+    private void TombolDPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPDActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        FormCaleg FC = new FormCaleg("DPD");
+        FC.setVisible(true);
+    }//GEN-LAST:event_TombolDPDActionPerformed
+
+    private void TombolDPRDProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPRDProvActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        FormCaleg FC = new FormCaleg("DPRD Provinsi");
+        FC.setVisible(true);
+    }//GEN-LAST:event_TombolDPRDProvActionPerformed
+
+    private void TombolDPRDKotKabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPRDKotKabActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        FormCaleg FC = new FormCaleg("DPRD Kota/Kabupaten");
+        FC.setVisible(true);
+    }//GEN-LAST:event_TombolDPRDKotKabActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,7 +188,10 @@ public class FormAdmin extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton TombolCaleg;
+    private javax.swing.JButton TombolDPD;
+    private javax.swing.JButton TombolDPR;
+    private javax.swing.JButton TombolDPRDKotKab;
+    private javax.swing.JButton TombolDPRDProv;
     private javax.swing.JButton TombolDapil;
     private javax.swing.ButtonGroup buttonGroup1;
     // End of variables declaration//GEN-END:variables

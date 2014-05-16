@@ -6,6 +6,16 @@
 
 package GUI;
 
+import Tools.KoneksiDatabase;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+import main.Caleg;
+import main.CalonTerpilih;
+
 /**
  *
  * @author linda.sekawati
@@ -15,34 +25,52 @@ public class FormCaleg extends javax.swing.JFrame {
     /**
      * Creates new form FormCaleg
      */
+    private DefaultTableModel model;
+    String Lingkup;
+    CalonTerpilih calonterpilih,daftarCaleg;
     public FormCaleg() {
         initComponents();
+        model = new DefaultTableModel();
+        TabelCaleg.setModel(model);
+        calonterpilih = new CalonTerpilih();
+        daftarCaleg = new CalonTerpilih();
+        
+        model.addColumn("NIK");
+        model.addColumn("Partai");
+        model.addColumn("No.Dapil");
+        model.addColumn("History");
+        loadData();
     }
     
+    public FormCaleg(String lingkup) {
+        initComponents();
+        Lingkup = lingkup;
+    }
     private void loadData()
     {
-        /* edit dari sini
+         
         try
         {
             Connection koneksi = KoneksiDatabase.getKoneksi();
             Statement statement = koneksi.createStatement();
             
-            String commandGetCaleg = "select * from Caleg";
+            String commandGetCaleg = "select * from Caleg where Lingkup = " + Lingkup;
             ResultSet resultCaleg = statement.executeQuery(commandGetCaleg);
             while(resultCaleg.next())
             {
-                daftarCaleg.add(new Caleg(resultCaleg.getString("NIKCaleg"), 
-                                            resultCaleg.getString("NamaPartai"), 
-                                            resultCaleg.getString("TrackRecord"), 
-                                            Integer.parseInt(resultCaleg.getString("NoDapil")), 
-                                            resultCaleg.getString("Lingkup")));
+//                daftarCaleg = new CalonTerpilih();
+//                 daftarCaleg.addCaleg(new Caleg(resultCaleg.getString("NIKCaleg"), 
+//                                            resultCaleg.getString("NamaPartai"), 
+//                                            resultCaleg.getString("TrackRecord"), 
+//                                            Integer.parseInt(resultCaleg.getString("NoDapil")), 
+//                                            resultCaleg.getString("Lingkup")));
             }
             koneksi.close();
         }
         catch (SQLException ex) {
             System.out.println("Error CalonTerpilih.java" + ex.getMessage());
         }
-        */
+        
     }
 
     /**
@@ -65,10 +93,10 @@ public class FormCaleg extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         NIK = new javax.swing.JTextField();
         Partai = new javax.swing.JTextField();
-        AddToList = new javax.swing.JButton();
+        Tambah = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TabelCaleg = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         NoDapil = new javax.swing.JTextField();
@@ -96,11 +124,16 @@ public class FormCaleg extends javax.swing.JFrame {
             }
         });
 
-        AddToList.setText("Tambah");
+        Tambah.setText("Tambah");
+        Tambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TambahActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Daftar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelCaleg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -121,7 +154,12 @@ public class FormCaleg extends javax.swing.JFrame {
                 "NIK", "Partai", "No. Dapil", "History"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        TabelCaleg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelCalegMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TabelCaleg);
 
         jLabel5.setText("No. Dapil   :");
 
@@ -154,34 +192,40 @@ public class FormCaleg extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(KembaliFormAdmin)
                 .addGap(26, 26, 26))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(AddToList)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NoDapil, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Partai, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NIK, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(Partai, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(NIK, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Tambah)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(NoDapil, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(94, 94, 94))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35))
+                .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,12 +239,12 @@ public class FormCaleg extends javax.swing.JFrame {
                         .addComponent(KembaliFormAdmin)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Partai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(NIK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(NIK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Partai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NoDapil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,13 +253,13 @@ public class FormCaleg extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(Tambah)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AddToList)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -239,6 +283,62 @@ public class FormCaleg extends javax.swing.JFrame {
         FormAdmin FA = new FormAdmin();
         FA.setVisible(true);
     }//GEN-LAST:event_KembaliFormAdminActionPerformed
+
+    private void TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahActionPerformed
+        // TODO add your handling code here:
+        String nik = NIK.getText();
+        String partai = Partai.getText();
+        String nodapil = NoDapil.getText();
+        String history = History.getText();
+        String lingkup = Lingkup;
+        try
+        {
+            Connection c = KoneksiDatabase.getKoneksi();
+            String sql = "INSERT INTO YukCoblos VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            calonterpilih = new CalonTerpilih();
+            int nodapilInt = Integer.parseInt(nodapil);
+            calonterpilih.AddCaleg(nik, partai, history, nodapilInt, lingkup);
+            
+            p.setString(1, nik);
+            p.setString(2, partai);
+            p.setString(3, nodapil);
+            p.setString(4, history);
+//            p.setString(5, pilihcaleg);
+            
+            p.executeUpdate();
+            p.close();
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Terjadi Error");
+        }
+        finally
+        {
+            loadData();
+        }
+    }//GEN-LAST:event_TambahActionPerformed
+
+    private void TabelCalegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelCalegMouseClicked
+        // TODO add your handling code here:
+        int i = TabelCaleg.getSelectedRow();
+        if(i == -1){
+            return;
+        }
+        
+        String nik = (String) model.getValueAt(i, 0);
+        NIK.setText(nik);
+        
+        String partai = (String) model.getValueAt(i, 1);
+        Partai.setText(partai);
+        
+        String nodapil = (String) model.getValueAt(i, 2);
+        NoDapil.setText(nodapil);
+        
+        String history = (String) model.getValueAt(i, 3);
+        History.setText(history);
+        
+    }//GEN-LAST:event_TabelCalegMouseClicked
 
     /**
      * @param args the command line arguments
@@ -276,12 +376,13 @@ public class FormCaleg extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddToList;
     private javax.swing.JTextArea History;
     private javax.swing.JButton KembaliFormAdmin;
     private javax.swing.JTextField NIK;
     private javax.swing.JTextField NoDapil;
     private javax.swing.JTextField Partai;
+    private javax.swing.JTable TabelCaleg;
+    private javax.swing.JButton Tambah;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.JColorChooser jColorChooser1;
@@ -296,6 +397,5 @@ public class FormCaleg extends javax.swing.JFrame {
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

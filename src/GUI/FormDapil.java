@@ -132,6 +132,11 @@ public class FormDapil extends javax.swing.JFrame {
                 "No. Dapil", "Kota/Kabupaten"
             }
         ));
+        TabelDapil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelDapilMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TabelDapil);
 
         KotKab.setColumns(20);
@@ -155,14 +160,11 @@ public class FormDapil extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(KembaliFormAdmin))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(264, 264, 264)
+                                .addComponent(KembaliFormAdmin))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +228,7 @@ public class FormDapil extends javax.swing.JFrame {
         try
         {
             Connection c = DataDapil.getKoneksi();
-            String sql = "INSERT INTO MAHASISWA VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO YukCoblos VALUES (?, ?)";
             PreparedStatement p = c.prepareStatement(sql);
             
             p.setString(1, nodapil);
@@ -244,8 +246,8 @@ public class FormDapil extends javax.swing.JFrame {
             loadData();
         }
     }//GEN-LAST:event_TambahActionPerformed
-    
-    private void TabelDapilMouseClicked(java.awt.event.MouseEvent evt) {                                            
+
+    private void TabelDapilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelDapilMouseClicked
         // TODO add your handling code here:
         int i = TabelDapil.getSelectedRow();
         if(i == -1){
@@ -257,8 +259,8 @@ public class FormDapil extends javax.swing.JFrame {
         
         String kotkab = (String) model.getValueAt(i, 1);
         KotKab.setText(kotkab);
-        
-    }
+    }//GEN-LAST:event_TabelDapilMouseClicked
+    
     /**
      * @param args the command line arguments
      */
