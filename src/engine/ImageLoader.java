@@ -49,7 +49,17 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/LevelMenu/locked(ice).png"));
         allImages.add(loadImage("Image/LevelMenu/Unlocked(ice).png"));
         
+        // Image achievement
         allImages.add(loadImage("Image/AchievementBack.png"));
+        
+        // Image GameMenu
+        allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_path"));
+        allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_wall"));
+        allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_hole"));
+        allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_teleporter"));
+        allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_gold"));
+        allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_char_right_left"));
+        allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_char_up_down"));
     }
     
     public static Image getImage(String imgName)
@@ -126,6 +136,34 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(17);
         }
+        else if ("Ice_Path".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(18);
+        }
+        else if ("Ice_Wall".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(19);
+        }
+        else if ("Ice_Hole".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(20);
+        }else if ("Ice_Teleporter".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(21);
+        }
+        else if ("Ice_Gold".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(22);
+        }
+        else if ("Ice_Char_RL".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(23);
+        }
+        else if ("Ice_Char_UD".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(24);
+        }
+        
         return null;
     }
     

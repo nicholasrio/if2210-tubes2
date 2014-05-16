@@ -7,6 +7,7 @@
 package engine.GUIScenes;
 
 import engine.*;
+import engine.DataStructure.*;
 import static engine.Game.gameFrame;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -19,11 +20,21 @@ import java.awt.Image;
  */
 public class GameMenuGUI extends Scene
 {
-    // attributes
+    private int nowlevelPlay;
+    private Map playedMap;
+    private int mazeSize;
     
     public GameMenuGUI()
     {
         super("GameMenuGUI");
+        
+        //nowlevelPlay = GameData.nowLevelPlayed;
+        nowlevelPlay = 0;
+        playedMap = GameData.dataMap.get(nowlevelPlay);
+        switch(nowlevelPlay)
+        {
+            case 0: mazeSize = 6; break;
+        }
     }
     
     public void LoadContent()
@@ -61,8 +72,21 @@ public class GameMenuGUI extends Scene
         if (Game.mode == 2)
         {
             Graphics2D g2D = (Graphics2D) g;
-            // paint Image here
-            // using g2D.drawImage
+            
+            for (int level=0;level<mazeSize;level++)
+            {
+                for (int bar=0;bar<mazeSize;bar++)
+                {
+                    for (int kol=0;kol<mazeSize;kol++)
+                    {
+                        Location loc = new Location(bar,kol,level);
+                        if (playedMap.getElement(loc).getName().equalsIgnoreCase("road"))
+                        {
+                            //g2D.drawImage(, , );
+                        }
+                    }
+                }
+            }
         }
     }
 }

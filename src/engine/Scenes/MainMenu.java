@@ -83,26 +83,33 @@ public class MainMenu extends Scene
             if(status == 1)
             {
                 status = 0;
-            try{
-                SceneManager.SwitchScene("LevelMenu");
-            }catch(SceneNotFoundException e){
-                e.printStackTrace();
-            }
+                try{
+                    SceneManager.SwitchScene("LevelMenu");
+                }catch(SceneNotFoundException e){
+                    e.printStackTrace();
+                }
             }
             if (status > 5) {
                 status = 0;
             }
         } else if(createdel == 1) {
+            System.out.print("Enter your desired username: ");
+            Scanner Sc = new Scanner(System.in);
+            String temp = Sc.nextLine();
+            GameData.addPlayer(temp);
             status = 0;
+            createdel = 0;
+            
         } else if(createdel == 2) {
             System.out.print("Enter your choice (0 to cancel and return to main menu): ");
             Scanner Sc = new Scanner(System.in);
             int temp = Sc.nextInt();
             if (temp != 0) GameData.deletePlayer(GameData.dataPlayer.get(temp-1).getNama());
+            status = 0;
+            createdel = 0;
         }
         if (status > 5) {
             status = 0;
-            createdel = 0;
         }
     }
     
@@ -134,7 +141,7 @@ public class MainMenu extends Scene
                  if(createdel == 0) {
                     DrawChange();
                 } else if (createdel == 1) {
-                    DrawNewPlayer(0);
+                    DrawNewPlayer();
                 } else if (createdel == 2) {
                     DrawDeletePlayer();
                 }
@@ -198,9 +205,11 @@ public class MainMenu extends Scene
     /**
      * Method menggambar body untuk menu new player
      */
-    private void DrawNewPlayer(int stage) {
-        String[] temp = new String[1];
-        temp[0] = "Pilih user : ";
+    private void DrawNewPlayer() {
+        String[] temp = new String[3];
+        temp[0] = "CREATE NEW USER";
+        temp[1] = "Enter your desired username";
+        temp[2] = "=";
         PrinterStringVertical(temp);
     }
     /**
