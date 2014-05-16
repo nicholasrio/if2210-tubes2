@@ -73,7 +73,7 @@ public class Game
             SceneManager.AddScene(new AchievementMenuGUI());
             SceneManager.AddScene(new OptionsMenuGUI());
             SceneManager.AddScene(new AboutMenuGUI());
-            SceneManager.SwitchScene("LevelMenuGUI");
+            SceneManager.SwitchScene("MainMenuGUI");
         }
     }
     
