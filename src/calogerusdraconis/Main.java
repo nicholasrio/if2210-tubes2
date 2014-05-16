@@ -43,9 +43,7 @@ public class Main {
 		ud = new UserDragon("S", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0);
 		//System.out.println("ASDFASD");
 		try {
-			System.out.println("ASFD");
 			ud = instance.LoadDragon("Xanareth");
-			System.out.println("ASFD1");
 			int menu = 0;
 			do {
 				view.showMenu();
@@ -53,6 +51,15 @@ public class Main {
 				menu = in.nextInt();
 				switch (menu) {
 					case 1: view.UpdateScreen(ud); break;
+					case 2: Event e = ud.entertain();
+							view.UpdateScreen(ud, e); break;
+					case 3: e = ud.rest();
+							view.UpdateScreen(ud, e); break;
+					case 4: e = ud.toToilet();
+							view.UpdateScreen(ud, e); break;
+					case 5: break;
+					case 6: e = ud.train();
+							view.UpdateScreen(ud, e); break;
 					case 7: view.seeFoodDirectory(ud); break;
 					default: break;
 				}
