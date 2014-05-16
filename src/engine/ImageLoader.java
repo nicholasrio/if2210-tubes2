@@ -72,6 +72,7 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(6);
         }
+        
         else if ("icecube".equalsIgnoreCase(imgName))
         {
             return allImages.get(7);

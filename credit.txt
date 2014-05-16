@@ -1,1 +1,4 @@
+cooltext.com -> MainMenu Font
 wallpoper.com -> MainMenu Background
+www.shutterstock.com -> LevelMenu asset
+www.clipartbest.com -> MainMenu exit asset
