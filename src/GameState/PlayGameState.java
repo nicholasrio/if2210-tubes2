@@ -9,6 +9,9 @@ package GameState;
 import java.awt.Graphics;
 import javagame.GameTime;
 import map.MapViewer;
+import character.*;
+import java.awt.Graphics2D;
+
 /**
  *
  * @author kevinyu
@@ -16,32 +19,34 @@ import map.MapViewer;
 public class PlayGameState extends GameState{
     private int currentLevel;
     private MapViewer map;
+    private Hero hero;
     
     public PlayGameState(){
         super();
         this.name="PlayGameState";
         currentLevel=1;
-        map = new MapViewer();
-        map.createAndShowGUI();
+        hero = new Hero();
+        //map = new MapViewer();
+        //map.createAndShowGUI();
     }
     public void initialize(){
         
     }
     
     public void draw(GameTime gameTime,Graphics g){
-        
+        hero.draw((Graphics2D)g);
     }
     
     public void update(GameTime gameTime){
-        
+        hero.update();
     }
     
     public void keyPressed(int k){
-        
+        hero.keyPressed(k);
     }
     
     public void keyReleased(int k){
-        
+        hero.keyReleased(k);
     }
     
     public void keyTyped(int k){

@@ -9,7 +9,22 @@ public class Character implements Cloneable{
     protected int _currentMana;
     protected int _maxHealth;
     protected int _maxMana;
-
+    
+    //position attribute
+    protected double x;
+    protected double y;
+    
+    //movement attribute
+    protected boolean movingDown;
+    protected boolean movingUp;
+    protected boolean movingLeft;
+    protected boolean movingRight;
+    protected int moveSpeed;
+    protected enum direction {DOWN,LEFT,RIGHT,UP};
+    protected direction faceDirection;
+    protected Animation animation;
+    
+    
     public int getStr() { return _str; }
     public int getAgi() { return _agi; }
     public int getInt() { return _int; }

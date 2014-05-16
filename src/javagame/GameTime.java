@@ -38,6 +38,6 @@ public class GameTime extends Timer {
      */
     public long getElapsedTime()
     {
-        return initialTime - System.nanoTime();
+        return System.nanoTime() - initialTime;
     }
 }

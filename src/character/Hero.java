@@ -2,25 +2,42 @@ package character;
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.*;
 import java.net.URL;
+import javax.imageio.ImageIO;
 
 public class Hero extends Character implements Useitem,Upgradeable,Recoverable,Fightable {
     protected int _money;
     ArrayList<Item> _items;
-
+    private static ArrayList<BufferedImage[]> sprites;
+    
     public Hero(){
             _money = 0;
             _items = new ArrayList<Item>();
+            
+            moveSpeed = 1;
+            movingUp=false;
+            movingDown=false;
+            movingRight=false;
+            movingLeft=false;
+            faceDirection = direction.UP;
+            animation = new Animation();
+            animation.setDelay(100);
+            loadImage();
+            animation.setFrames(sprites.get(3));
     }
+    
     //implementasi interface useitem
     @Override
     public void addItem(Item newItem){
         try{
             _items.add(newItem);
-        } catch(Exception e){ }
+        } catch(Exception e){ 
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -135,9 +152,9 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
         System.out.println("Current Health: "+this.getCurrentHealth()+" "+this.getCurrentMana()+" "+this.toString());
     }
     
-    public static BufferedImage bi;
+
     
-    public static void main(String[] args){
+    /*public static void main(String[] args){
         try {
             loadImage();
             Hero hero = new Hero();
@@ -149,11 +166,26 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
     
-    public static void loadImage() throws IOException{
-        bi = ImageIO.read(
-               Hero.class.getResource("Resources/tiles32.bmp"));
+    public void loadImage() {
+        
+        sprites = new ArrayList<BufferedImage[]>(4);
+        for (int i=0;i<4;i++){
+            BufferedImage[] bi= new BufferedImage[3];
+            try{
+                BufferedImage spriteSheet = ImageIO.read(getClass().getResourceAsStream("/Hero/Hero.png"));
+                for (int j=0;j<3;j++){
+                    int width = spriteSheet.getWidth();
+                    int height = spriteSheet.getHeight();
+                    bi[j]=spriteSheet.getSubimage(j*width/3,i*height/4,width/3,height/4);
+                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            sprites.add(bi);
+        }
     }
 
     @Override
@@ -185,5 +217,79 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
     public void doAttack(Fightable fight) {
         fight.doDamageCalculation(fight.getAttackPoint());
     }
-
+    
+    //update
+    public void update(){
+        if (movingUp){
+            y-=moveSpeed;
+        }
+        else if (movingDown){
+            y+=moveSpeed;
+        }
+        else if (movingRight){
+            x+=moveSpeed;
+        }
+        else if (movingLeft){
+            x-=moveSpeed;
+        }
+        if (!isIdle()){
+            animation.update();
+        }
+    }
+    
+    public boolean isIdle(){
+        return !(movingUp || movingDown || movingRight || movingLeft);
+    }
+    public void keyPressed(int k){
+        //Reaction to KeyPressed
+        
+        if(k == KeyEvent.VK_UP){
+            if (!movingUp){
+                movingUp=true;
+                faceDirection = direction.UP;
+                animation.setFrames(sprites.get(3));
+            }
+        }
+        else if(k == KeyEvent.VK_DOWN) {
+            if (!movingDown){
+                movingDown=true;
+                faceDirection = direction.DOWN;
+                animation.setFrames(sprites.get(0));
+            }
+	}
+        else if(k == KeyEvent.VK_RIGHT) {
+            if (!movingRight){
+                movingRight=true;
+                faceDirection = direction.RIGHT;
+                animation.setFrames(sprites.get(2));
+            }
+	}
+        else if (k == KeyEvent.VK_LEFT) {
+            if (!movingLeft){
+                movingLeft=true;
+                faceDirection = direction.LEFT;
+                animation.setFrames(sprites.get(1));
+            }
+        }
+    }
+    
+    public void draw(Graphics2D g){
+        g.drawImage(animation.getImage(),(int)x,(int)y,null);
+    }
+    
+    public void keyReleased(int k){
+        if(k == KeyEvent.VK_UP){
+            movingUp=false;
+        }
+        else if(k == KeyEvent.VK_DOWN) {
+            movingDown=false;
+	}
+        else if(k == KeyEvent.VK_RIGHT) {
+            movingRight=false;
+	}
+        else if (k == KeyEvent.VK_LEFT) {
+            movingLeft=false;
+        }
+    }
+    
 }
