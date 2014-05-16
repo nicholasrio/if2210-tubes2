@@ -58,7 +58,7 @@ public class StoreTest {
     public void testGetFdInventory() {
         System.out.println("getFdInventory");
         Store instance = Store.getInstance();
-        ArrayList<Consumable> expResult = new ArrayList<Consumable> ();
+        ArrayList<Consumable> expResult = new ArrayList<> ();
         expResult.add(new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0));
         ArrayList<Consumable> result = instance.getFdInventory();
         for (Consumable c : result){
