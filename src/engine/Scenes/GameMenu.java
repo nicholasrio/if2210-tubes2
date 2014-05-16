@@ -16,11 +16,9 @@ import java.util.Scanner;
  */
 public class GameMenu extends Scene
 {
-    private static final int MAXROWSIZE = 80;
-    private static final int MAXCOLSIZE = 160;
-    private Character[][] drawBuffer = new Character[MAXROWSIZE][MAXCOLSIZE];
     private Map gameMap;
     private Player player;
+    private CLICanvas canvas;
     
     public GameMenu()
     {
@@ -30,9 +28,15 @@ public class GameMenu extends Scene
     @Override
     public void Initialize()
     {
+        GameData.loadMap();
         gameMap = GameData.dataMap.get(GameData.nowLevelPlayed);
+        
         player = GameData.lastLogin;
         player.initPlayerPosition(gameMap);
+        
+        canvas = new CLICanvas(55,166);
+        
+        Game.gameRunning = true;
     }
     
     @Override
@@ -57,5 +61,6 @@ public class GameMenu extends Scene
     public void Draw()
     {
         
+        canvas.repaint();
     }
 }
