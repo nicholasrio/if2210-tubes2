@@ -54,18 +54,6 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(2);
         }
-        else if ("icecube".equalsIgnoreCase(imgName))
-        {
-            return allImages.get(6);
-        }
-        else if ("fire-maze".equalsIgnoreCase(imgName))
-        {
-            return allImages.get(7);
-        }
-        else if ("egypt".equalsIgnoreCase(imgName))
-        {
-            return allImages.get(8);
-        }
         else if ("achievement".equalsIgnoreCase(imgName))
         {
             return allImages.get(3);
@@ -82,7 +70,18 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(6);
         }
-        
+        else if ("icecube".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(7);
+        }
+        else if ("fire-maze".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(8);
+        }
+        else if ("egypt".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(9);
+        }
         return null;
     }
     
