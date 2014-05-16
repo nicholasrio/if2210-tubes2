@@ -28,7 +28,8 @@ public class ImageLoader extends JPanel
     
     public static void loadAllImages()
     {
-        allImages.add(loadImage("Image/title.png"));
+        // Image buat MainMenu
+        allImages.add(loadImage("Image/MainMenu/title.png"));
         allImages.add(loadImage("Image/MainMenu/mainmenu_bg.png"));
         allImages.add(loadImage("Image/MainMenu/newgame.png"));
         allImages.add(loadImage("Image/MainMenu/achievement.png"));
@@ -38,13 +39,8 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/MainMenu/back.png"));
         
         //Image buat level menu
-        //Image ke-8
         allImages.add(loadImage("Image/LevelMenu/background.png"));
-        
-        //Image ke-9
-        allImages.add(loadImage("Image/LevelMenu/cube_mazer(ice).png"));        
-        
-        //Image ke-10
+        allImages.add(loadImage("Image/LevelMenu/cube_mazer(ice).png")); 
         allImages.add(loadImage("Image/LevelMenu/cube_mazer(fire).png"));
         allImages.add(loadImage("Image/LevelMenu/Frozen Cube 800x600.png"));
         allImages.add(loadImage("Image/LevelMenu/Burning Cube 800x600.png"));
@@ -54,8 +50,7 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/LevelMenu/Unlocked(ice).png"));
         
         allImages.add(loadImage("Image/AchievementBack.png"));
-
-}
+    }
     
     public static Image getImage(String imgName)
     {

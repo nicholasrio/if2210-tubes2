@@ -175,6 +175,14 @@ public class Map{
         throw new Exception("Tidak menemukan start.");
     }
     
+    /**
+     * Draw Map to Canvas
+     * 
+     * @param canvas Canvas
+     * @param level Player Location level
+     * @param rowOffset drawing row offset
+     * @param colOffset drawing col offset
+     */
     public void Draw(CLICanvas canvas,int level, int rowOffset, int colOffset){
         for(int i=rowOffset-1;i<rowOffset+(maxRow*3+1);i++){
             canvas.setCanvasPixel(i, colOffset-1, '#');
