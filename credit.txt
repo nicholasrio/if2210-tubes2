@@ -11,3 +11,5 @@ topsmalibu.com -> GameMenu golden_ice
 img3.wikia.nocookie.net -> GameMenu char_ice
 flamingtext.com/Fire-Logos -> LevelMenu level 2 Title
 cooltext.com/Logo-Design-Frosty -> LevelMenu level 1 Title
+http://www.officialpsds.com/images/thumbs/Ice-Arrow-psd24258.png -> Frozen Arrow
+http://www.colourbox.com/preview/2259952-129493-burning-fire-arrow-on-the-black-background.jpg -> Burning Fire Arrow
