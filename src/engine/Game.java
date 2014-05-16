@@ -63,7 +63,6 @@ public class Game
             SceneManager.AddScene(new MainMenu());
             SceneManager.AddScene(new LevelMenu());
             SceneManager.AddScene(new GameMenu());
-            SceneManager.AddScene(new AchievementMenu());
             SceneManager.SwitchScene("MainMenu"); 
         }
         else if (mode == 2)
