@@ -19,7 +19,7 @@
       <thirst>0.0</thirst>
       <bladder>0.0</bladder>
       <hunger>0.0</hunger>
-      <level>0</level>
+      <level>1</level>
       <experience>0</experience>
     </userDragon>
   </save>
