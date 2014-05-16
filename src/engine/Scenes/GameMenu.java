@@ -19,8 +19,8 @@ public class GameMenu extends Scene
     private Map gameMap;
     private Player player;
     private CLICanvas canvas;
-    private final int MAXROWCANVAS = 53;
-    private final int MAXCOLCANVAS = 166;
+    private final int MAXROWCANVAS = GameData.height;
+    private final int MAXCOLCANVAS = GameData.width-2;
     private int MAPROWOFFSET;
     private int MAPCOLOFFSET;
     private boolean isFinish;
@@ -92,27 +92,31 @@ public class GameMenu extends Scene
         if(isFinish){
             canvas.clear();
             String S;
+            System.out.println("\n");
             S = "Congratulation";
-            canvas.writeHorisontal(20, (MAXROWCANVAS - S.length())/2 , S);
+            canvas.writeHorisontal(20, (MAXCOLCANVAS - S.length())/2 , S);
             S = "Score = "+player.getTempScore();
-            canvas.writeHorisontal(21, (MAXROWCANVAS - S.length())/2 , S);
+            canvas.writeHorisontal(22, (MAXCOLCANVAS - S.length())/2 , S);
             if(isLevelUnlocked){
                 S = "Level Unlocked!!!";
-                canvas.writeHorisontal(22, (MAXROWCANVAS - S.length())/2 , S);
+                canvas.writeHorisontal(25, (MAXCOLCANVAS - S.length())/2 , S);
                 S = "Level "+player.getLevelUnlocked();
-                canvas.writeHorisontal(23, (MAXROWCANVAS - S.length())/2 , S);
+                canvas.writeHorisontal(27, (MAXCOLCANVAS - S.length())/2 , S);
                 S = "Press Enter to Continue";
-                canvas.writeHorisontal(24, (MAXROWCANVAS - S.length())/2 , S);
+                canvas.writeHorisontal(30, (MAXCOLCANVAS - S.length())/2 , S);
             } 
             canvas.repaint();
         } else{
             canvas.clear();
             Location L = player.getLocation();
-            System.out.println("Floor: "+L.getLevel()+"; Score: "+player.getTempScore());
+            String S;
+            S = "Floor: "+L.getLevel()+"; Score: "+player.getTempScore();
+            canvas.writeHorisontal(2, 3, S);
             gameMap.Draw(canvas,L.getLevel(),MAPROWOFFSET, MAPCOLOFFSET);
             player.Draw(canvas, MAPROWOFFSET+L.getRow()*3, MAPCOLOFFSET+L.getCol()*3);
+            S = "Enter 1(up) 2(down) 3(left) 4(right) to move, 5 to return, 6 to exit : ";
+            canvas.writeHorisontal(MAXROWCANVAS-1, 0, S);
             canvas.repaint();
-            System.out.println("Enter 1(up) 2(down) 3(left) 4(right) to move, 5 to return, 6 to exit : ");
         }
     }
 }
