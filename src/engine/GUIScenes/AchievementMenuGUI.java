@@ -11,6 +11,7 @@ import engine.DataStructure.GameData;
 import static engine.Game.gameFrame;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -18,6 +19,10 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,7 +45,9 @@ public class AchievementMenuGUI extends Scene
     private int menuReleased;
     private float deltapos;
     
-    public AchievementMenuGUI()
+    private Font PlayerDataFont;
+    
+    public AchievementMenuGUI() throws IOException
     {
         super("AchievementMenuGUI");
         
@@ -94,6 +101,14 @@ public class AchievementMenuGUI extends Scene
             public void mouseExited(MouseEvent e) 
             {}
         });
+        File fontfile = new File("batmanforeveralternate.ttf");
+        try {
+            PlayerDataFont = Font.createFont(Font.TRUETYPE_FONT, fontfile);
+            PlayerDataFont = PlayerDataFont.deriveFont(18, 18f);
+        } catch (FontFormatException ex) {
+            PlayerDataFont = new Font("Arial",18,18);
+            System.err.println(ex);
+        } 
     }
     
     public void LoadContent()
@@ -167,7 +182,7 @@ public class AchievementMenuGUI extends Scene
             g2D.drawImage(backTexture,(int)(getWidth()*(-0.15f)+deltapos),(int)(getHeight()*0.80f),backTexture.getWidth(this),backTexture.getHeight(this),this);       
 
             g2D.drawImage(AchString,(int)(Game.ResolutionWidth*0.33f),(int)(Game.ResolutionHeight*0.2f),(int)(AchString.getWidth(this)*1.5f),AchString.getHeight(this),this);       
-        
+        g2D.setFont(PlayerDataFont);
             g2D.drawString("Player Name : " + GameData.lastLogin.getNama(), Game.ResolutionWidth*0.33f+50, Game.ResolutionHeight*0.2f+50);
             g2D.drawString("Score : " + Integer.toString(GameData.lastLogin.getScore()), Game.ResolutionWidth*0.33f+50, Game.ResolutionHeight*0.2f+100);
             g2D.drawString("Level Unlocked : " + Integer.toString(GameData.lastLogin.getLevelUnlocked()), Game.ResolutionWidth*0.33f+50, Game.ResolutionHeight*0.2f+150);
