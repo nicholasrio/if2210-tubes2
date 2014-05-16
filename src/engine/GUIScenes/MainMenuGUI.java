@@ -171,7 +171,7 @@ public class MainMenuGUI extends Scene
                 case 1: lowerboundPos = 70f; break;
                 case 2: lowerboundPos = 80f; break;
                 case 3: lowerboundPos = 90f; break;
-                case 4: lowerboundPos = 110f; break;
+                case 4: lowerboundPos = 105f; break;
             }
             
             if (deltapos[menuHovered] < lowerboundPos)
