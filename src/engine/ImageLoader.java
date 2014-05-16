@@ -35,11 +35,17 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/MainMenu/options.png"));
         allImages.add(loadImage("Image/MainMenu/about.png"));
         allImages.add(loadImage("Image/MainMenu/exit.png"));
-
-        allImages.add(loadImage("Image/MainMenu/icecube.png"));
-        allImages.add(loadImage("Image/MainMenu/fire-maze.png"));
-        allImages.add(loadImage("Image/MainMenu/egypt.png"));
         allImages.add(loadImage("Image/MainMenu/back.png"));
+        
+        //Image buat level menu
+        //Image ke-8
+        allImages.add(loadImage("Image/LevelMenu/background.png"));
+        
+        //Image ke-9
+        allImages.add(loadImage("Image/LevelMenu/cube_mazer(ice).png"));        
+        
+        //Image ke-10
+        allImages.add(loadImage("Image/LevelMenu/cube_mazer(fire).png"));
 }
     
     public static Image getImage(String imgName)
@@ -72,19 +78,19 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(6);
         }
-        else if ("icecube".equalsIgnoreCase(imgName))
+        else if ("back".equalsIgnoreCase(imgName))
         {
             return allImages.get(7);
         }
-        else if ("fire-maze".equalsIgnoreCase(imgName))
+        else if ("background".equalsIgnoreCase(imgName))
         {
             return allImages.get(8);
         }
-        else if ("egypt".equalsIgnoreCase(imgName))
+        else if ("cube_mazer(ice)".equalsIgnoreCase(imgName))
         {
             return allImages.get(9);
         }
-        else if ("back".equalsIgnoreCase(imgName))
+        else if ("cube_mazer(fire)".equalsIgnoreCase(imgName))
         {
             return allImages.get(10);
         }

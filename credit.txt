@@ -1,1 +1,3 @@
 wallpoper.com -> MainMenu Background
+http://www.flamingtext.com/Fire-Logos -> LevelMenu level 2 Title
+http://cooltext.com/Logo-Design-Frosty -> LevelMenu level 1 Title
