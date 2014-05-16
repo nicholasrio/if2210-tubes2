@@ -23,7 +23,6 @@ import java.util.LinkedList;
  */
 public class ViewerConsoleTest {
     Map M;
-    List<Character> LC; 
     MapAdapter MA;
     
     public ViewerConsoleTest() {
@@ -41,8 +40,6 @@ public class ViewerConsoleTest {
     public void setUp() {
         M =new Map();
         M.createDungeon(80, 25, 40);
-        LC = new LinkedList<Character>();
-        LC.add(new Character());
         MA = new MapAdapter(M);
         MA.addChar(new Character(), 3, 3);
     }
