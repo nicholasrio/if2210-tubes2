@@ -1,3 +1,14 @@
+/**
+ *
+ * @author 
+ * Darwin Prasetio (13512015)
+ * Chrestella Stephanie (13512005)
+ * Jan Wira Gotama Putra (13512015)
+ * Eric (13512021)
+ * Willy(13512070)
+ * Melvin FOnda (13512085)
+ */
+
 package model;
 
 import java.io.*;
@@ -9,6 +20,7 @@ public class Map {
     public static int row;
     public static int col;
 
+    /** Read Map data from file */
     public static void readFile() throws FileNotFoundException, IOException {
         row = 15;
         col = 20;
@@ -23,6 +35,7 @@ public class Map {
         fin.close();
     }
 
+    /** Show map to layar */
     public static void showMap() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -36,6 +49,7 @@ public class Map {
         }
     }
 
+    /** Testing purpose only */
     public static void main(String args[]) {
         Map M = new Map();
         try {

@@ -5,7 +5,10 @@
  */
 package gui;
 
+import com.sun.corba.se.pept.transport.ListenerThread;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
@@ -84,13 +87,16 @@ class Exit {
     }
 }
 
-class MyCanvas extends Canvas implements MouseListener {
+class MyCanvas extends Canvas implements MouseListener, KeyListener {
 
     private int currentIdx;
     private ArrayList<ImgComp> listOfImg;
+    private String typing;
 
     public MyCanvas() throws IOException {
+        typing = "";
         this.addMouseListener(this);
+        addKeyListener(this);
         currentIdx = -1;
     }
 
@@ -108,14 +114,15 @@ class MyCanvas extends Canvas implements MouseListener {
     public void setListOfImage(ArrayList _listOfImg) {
         listOfImg = _listOfImg;
     }
-
+    
     @Override
     public void paint(Graphics graphic) {
         for (ImgComp it : listOfImg) {
             if (it.isModified()) {
-                graphic.drawImage(it.getDisplayed(), it.getX(), it.getY(), this);
+                graphic.drawImage(it.getDisplayed(), it.getX(), it.getY(), null);
             }
         }
+        graphic.drawString(typing, 400, 60);
     }
 
     @Override
@@ -168,4 +175,17 @@ class MyCanvas extends Canvas implements MouseListener {
     public void update(Graphics g) {
         paint(g);
     }
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        typing += ke.getKeyChar();
+        System.out.println("yes");
+        repaint();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {}
+
+    @Override
+    public void keyReleased(KeyEvent ke) {}
 }
