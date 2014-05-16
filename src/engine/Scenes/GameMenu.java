@@ -19,7 +19,7 @@ public class GameMenu extends Scene
     private Map gameMap;
     private Player player;
     private CLICanvas canvas;
-    private final int MAXROWCANVAS = 55;
+    private final int MAXROWCANVAS = 53;
     private final int MAXCOLCANVAS = 166;
     private int MAPROWOFFSET;
     private int MAPCOLOFFSET;
@@ -47,7 +47,7 @@ public class GameMenu extends Scene
     @Override
     public void Update()
     {
-        System.out.println("Enter 1(up) 2(down) 3(left) 4(right) to move : ");
+        System.out.println("Enter 1(up) 2(down) 3(left) 4(right) to move, 5 to return, 6 to exit : ");
         Scanner Sc = new Scanner(System.in);
         int choise = Sc.nextInt();
         switch(choise){
@@ -59,6 +59,10 @@ public class GameMenu extends Scene
                      break;
             case 4 : player.move(gameMap,4);
                      break;
+            case 5 : SceneManager.SwitchScene("LevelMenu");
+                     break;
+            case 6 : Game.gameRunning = false;
+                     break;
         }
     }
     
@@ -67,6 +71,7 @@ public class GameMenu extends Scene
     {
         canvas.clear();
         Location L = player.getLocation();
+        System.out.println("Floor: "+L.getLevel());
         gameMap.Draw(canvas,L.getLevel(),MAPROWOFFSET, MAPCOLOFFSET);
         player.Draw(canvas, MAPROWOFFSET+L.getRow()*3, MAPCOLOFFSET+L.getCol()*3);
         canvas.repaint();
