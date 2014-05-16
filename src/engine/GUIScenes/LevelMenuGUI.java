@@ -95,10 +95,14 @@ public class LevelMenuGUI extends Scene
         {
             Graphics2D g2D = (Graphics2D) g;                                    
             g2D.drawImage(bgTexture, 0, 0,getWidth(),getHeight(), this);
-            g2D.drawImage(groupnameTexture, (int) (getWidth()*0.05f), (int) (getHeight()*0.01f), (int) (groupnameTexture.getWidth(this)*0.7f),(int) (groupnameTexture.getHeight(this)*0.7f), this);                                  
-            g2D.drawImage(levelTexture, 0, 100, levelTexture.getWidth(this), levelTexture.getHeight(this), this);
-            g2D.drawImage(titleLvlTexture, 0, 200, titleLvlTexture.getWidth(this), titleLvlTexture.getHeight(this), this);
-            g2D.drawImage(LorULTexture, 0, 300, LorULTexture.getWidth(this), LorULTexture.getHeight(this), this);            
+            g2D.drawImage(groupnameTexture, (int) (getWidth()*0.23f), (int) (getHeight()*0.05f),
+                    (int) (groupnameTexture.getWidth(this)*0.7f),(int) (groupnameTexture.getHeight(this)*0.7f), this);                                  
+            g2D.drawImage(levelTexture, (int) (getWidth()*0.32f), (int) (getHeight()*0.25f),
+                    (int) (levelTexture.getWidth(this)*0.7f),(int) (levelTexture.getHeight(this)*0.7f), this);
+            g2D.drawImage(titleLvlTexture, (int) (getWidth()*0.29f), (int) (getHeight()*0.45f), 
+                    (int) (titleLvlTexture.getWidth(this)*0.7f),(int) (titleLvlTexture.getHeight(this)*0.7f), this);
+            g2D.drawImage(LorULTexture, (int) (getWidth()*0.27f), (int) (getHeight()*0.65f), 
+                    (int) (LorULTexture.getWidth(this)*0.7f),(int) (LorULTexture.getHeight(this)*0.7f), this);            
             // paint Image here
             // using g2D.drawImage
         }
