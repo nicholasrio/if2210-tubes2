@@ -142,10 +142,6 @@ public class Player
         try 
         {
             /* Ukuran Map */
-            int maxLevel = peta.getMaxLevel();
-            int maxRow = peta.getMaxRow();
-            int maxCol = peta.getMaxCol();
-            GameItem status;
             
             /* Play */
             GameItem itemHere = peta.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
@@ -193,19 +189,19 @@ public class Player
                         }
                         break;
                 }
-                status = peta.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
-                if(status.getName().equalsIgnoreCase("coin")) // ada coin
+
+                if(itemHere.getName().equalsIgnoreCase("coin")) // ada coin
                 {
                     score++;
                     peta.setElement(new Location(position.getLevel(), position.getRow(), position.getCol()), new RoadItem());
                 }
-                else if(status.getName().equalsIgnoreCase("teleporter")) // teleporter
+                else if(itemHere.getName().equalsIgnoreCase("teleporter")) // teleporter
                 {
-                    TeleporterItem tele = (TeleporterItem) status;
+                    TeleporterItem tele = (TeleporterItem) itemHere;
                     Location teleLocation = tele.getArrivalLocation();
                     position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
                 }
-                else if(status.getName().equalsIgnoreCase("hole")){
+                else if(itemHere.getName().equalsIgnoreCase("hole")){
                     position.setLocation(position.getLevel()-1, position.getRow(), position.getCol());
                 }
                 return 0;

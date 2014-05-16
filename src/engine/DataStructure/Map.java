@@ -86,7 +86,7 @@ public class Map{
                             matrix[i][j][k] = new WallItem();
                         else if(el.getTextContent().equals("c"))
                             matrix[i][j][k] = new CoinItem();
-                         else if(el.getTextContent().equals("c"))
+                         else if(el.getTextContent().equals("h"))
                             matrix[i][j][k] = new HoleItem();
                         else if(el.getTextContent().equals("f"))
                             matrix[i][j][k] = new FinishItem();
