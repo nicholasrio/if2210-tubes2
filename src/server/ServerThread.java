@@ -55,7 +55,7 @@ public class ServerThread extends Thread{
                                 }
                                 System.out.println("Message sent");
                             socket.shutdownOutput();
-
+                            
                         }
                         //ois.close();
                     }

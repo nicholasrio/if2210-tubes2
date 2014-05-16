@@ -38,7 +38,7 @@ public class Client {
 				System.out.println("2. print");
 				System.out.println("3. exit");
 				input = reader.readLine();
-				if(input.equals("login")){
+				if(input.contains("login")){
 					login();
 				}
 				else if(input.equals("print")){
@@ -49,6 +49,7 @@ public class Client {
 		}catch(Exception e){
 			//e.printStackTrace();
 		}
+                System.out.println("Menu beres");
 	}
 	
 	public void login(){
@@ -67,13 +68,15 @@ public class Client {
                     oos.writeObject(obj);
                     //oos.writeBytes("\n");
                     //get response
-                    System.out.println(sockReader.readLine());
-                    while(!reader.readLine().contains(null)){
-                            oos.writeObject(obj);
-                            System.out.println(sockReader.readLine());
-                            //socket.shutdownInput();
-                    }
-                    oos.close();
+                        System.out.println("Dari server " + sockReader.readLine());
+                        /* 
+                        while(!sockReader.readLine().contains(null)){
+                                oos.writeObject(obj);
+                                System.out.println("Dari server2" + sockReader.readLine());
+                                //socket.shutdownInput();
+                        }
+                        */
+                    //oos.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -85,6 +88,7 @@ public class Client {
 				}
 			}
 		}
+                //System.out.println("Login beres");
 	}
 	
 	/*public void sendPrintInfo(){
