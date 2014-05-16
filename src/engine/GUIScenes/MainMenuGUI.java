@@ -40,18 +40,18 @@ public class MainMenuGUI extends Scene
     private Rectangle exitRect;
     
     private final int NMenu = 6;
-    private float transparentPercentage;
     private Font playernameFont;
+    
     private int menuHovered;
     private int menuPressed;
     private int menuReleased;
+    
     private float deltapos[];
     
     public MainMenuGUI() 
     {
         super("MainMenuGUI");
         
-        transparentPercentage = 0f;
         menuHovered = -1;
         menuPressed = -1;
         menuReleased = -1;
@@ -134,17 +134,13 @@ public class MainMenuGUI extends Scene
                                    (int)(Game.ResolutionWidth*0.34f),(int)(Game.ResolutionHeight*0.145f));
         aboutRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.755f), 
                                    (int)(Game.ResolutionWidth*0.34f),(int)(Game.ResolutionHeight*0.145f));
-        
+        exitRect = new Rectangle((int)(Game.ResolutionWidth*0.765f),(int)(Game.ResolutionHeight*0.71f),
+                                 (int)(Game.ResolutionWidth*0.20f),(int)(Game.ResolutionHeight*0.22f));
     }
     
     @Override
     public void Update()
     {
-        if (transparentPercentage < 1f)
-        {
-            transparentPercentage += 0.01f;
-        }
-        
         if (menuHovered == (-1))
         {
             for (int i=0;i<NMenu;i++)
@@ -208,7 +204,7 @@ public class MainMenuGUI extends Scene
             g2D.drawImage(optionsTexture,(int)(getWidth()*(-0.13f)+deltapos[3]),(int)(getHeight()*0.63f),optionsTexture.getWidth(this),optionsTexture.getHeight(this),this);
             g2D.drawImage(aboutTexture,(int)(getWidth()*(-0.15f)+deltapos[4]),(int)(getHeight()*0.80f),aboutTexture.getWidth(this),aboutTexture.getHeight(this),this);       
         
-            g2D.drawImage(exitTexture,(int)(getWidth()*(0.78f)),(int)(getHeight()*0.76f),exitTexture.getWidth(this),exitTexture.getHeight(this),this);       
+            g2D.drawImage(exitTexture,(int)(getWidth()*(0.78f)),(int)(getHeight()*0.76f),exitTexture.getWidth(this),exitTexture.getHeight(this),this);      
         }
     }
     
@@ -229,6 +225,10 @@ public class MainMenuGUI extends Scene
         else if (aboutRect.contains(event.getPoint()))
         {
             menuHovered = 4;
+        }
+        else if (exitRect.contains(event.getPoint()))
+        {
+            menuHovered = 5;
         }
         else
         {
@@ -254,6 +254,10 @@ public class MainMenuGUI extends Scene
         {
             menuPressed = 4;
         }
+        else if (exitRect.contains(event.getPoint()))
+        {
+            menuPressed = 5;
+        }
         else
         {
             menuPressed = -1;
@@ -262,7 +266,7 @@ public class MainMenuGUI extends Scene
     
     void mouseUpdateReleased(MouseEvent event)
     {
-        if (menuPressed >= 1 && menuPressed <= 4)
+        if (menuPressed >= 1 && menuPressed <= 5)
         {
             switch (menuPressed)
             {
@@ -270,6 +274,7 @@ public class MainMenuGUI extends Scene
                 case 2 : SceneManager.SwitchScene("AchievementMenuGUI"); break;
                 case 3 : SceneManager.SwitchScene("OptionsMenuGUI"); break;
                 case 4 : SceneManager.SwitchScene("AboutMenuGUI"); break;
+                case 5 : Game.gameRunning = false; break;
             }
         }
     }

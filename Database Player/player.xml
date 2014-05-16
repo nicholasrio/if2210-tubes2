@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <DatabasePlayer>
      <lastLogin>
-          <nama>Kevin Tjong</nama>
-          <score>1</score>
-          <levelUnlocked>0</levelUnlocked>
-          <achievementUnlocked>0</achievementUnlocked>
+          <nama>Eren Jaeger</nama>
+          <score>12</score>
+          <levelUnlocked>1</levelUnlocked>
+          <achievementUnlocked>1</achievementUnlocked>
      </lastLogin>
      <player id="0">
           <nama>dummy</nama>

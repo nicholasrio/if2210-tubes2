@@ -40,7 +40,7 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/MainMenu/fire-maze.png"));
         allImages.add(loadImage("Image/MainMenu/egypt.png"));
         allImages.add(loadImage("Image/MainMenu/back.png"));
-        
+    
         allImages.add(loadImage("Image/AchievementBack.png"));
 }
     
@@ -74,6 +74,7 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(6);
         }
+        
         else if ("icecube".equalsIgnoreCase(imgName))
         {
             return allImages.get(7);
