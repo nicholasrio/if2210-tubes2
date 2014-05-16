@@ -6,8 +6,6 @@
 
 package engine;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -35,6 +33,7 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/MainMenu/newgame.png"));
         allImages.add(loadImage("Image/MainMenu/achievement.png"));
         allImages.add(loadImage("Image/MainMenu/options.png"));
+        allImages.add(loadImage("Image/MainMenu/about.png"));
         allImages.add(loadImage("Image/MainMenu/exit.png"));
         allImages.add(loadImage("Image/MainMenu/icecube.png"));
         allImages.add(loadImage("Image/MainMenu/fire-maze.png"));
@@ -75,10 +74,15 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(4);
         }
-        else if ("exit".equalsIgnoreCase(imgName))
+        else if ("about".equalsIgnoreCase(imgName))
         {
             return allImages.get(5);
         }
+        else if ("exit".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(6);
+        }
+        
         return null;
     }
     
