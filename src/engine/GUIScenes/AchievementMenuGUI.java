@@ -8,6 +8,7 @@ package engine.GUIScenes;
 
 import engine.*;
 import engine.DataStructure.GameData;
+import engine.Exception.SceneNotFoundException;
 import static engine.Game.gameFrame;
 import java.awt.Color;
 import java.awt.Font;
@@ -220,7 +221,11 @@ public class AchievementMenuGUI extends Scene
     {
         if (menuPressed == 1)
         {
-            SceneManager.SwitchScene("MainMenuGUI");
+            try{
+                SceneManager.SwitchScene("MainMenuGUI");
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
+            }
         }
     }
 }

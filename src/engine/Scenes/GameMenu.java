@@ -8,6 +8,7 @@ package engine.Scenes;
 
 import engine.*;
 import engine.DataStructure.*;
+import engine.Exception.SceneNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -57,24 +58,32 @@ public class GameMenu extends Scene
         if(isFinish){
             //Press any key to continue
             Sc.nextLine();
-            SceneManager.SwitchScene("LevelMenu");
+            try{
+                SceneManager.SwitchScene("LevelMenu");
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
+            }
         }else{
             //Pilihan perintah pada GameMenu
             int choise = Sc.nextInt();
             int output = 0;
-            switch(choise){
-                case 1 : output = player.move(gameMap,1);
-                         break;
-                case 2 : output = player.move(gameMap,2);
-                         break;
-                case 3 : output = player.move(gameMap,3);
-                         break;
-                case 4 : output = player.move(gameMap,4);
-                         break;
-                case 5 : SceneManager.SwitchScene("LevelMenu");
-                         break;
-                case 6 : Game.gameRunning = false;
-                         break;
+            try{
+                switch(choise){
+                    case 1 : output = player.move(gameMap,1);
+                             break;
+                    case 2 : output = player.move(gameMap,2);
+                             break;
+                    case 3 : output = player.move(gameMap,3);
+                             break;
+                    case 4 : output = player.move(gameMap,4);
+                             break;
+                    case 5 : SceneManager.SwitchScene("LevelMenu");
+                             break;
+                    case 6 : Game.gameRunning = false;
+                             break;
+                }
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
             }
             if(output == 1){
                 isFinish = true;

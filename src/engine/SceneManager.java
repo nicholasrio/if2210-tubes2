@@ -7,6 +7,7 @@
 package engine;
 
 import java.util.ArrayList;
+import engine.Exception.SceneNotFoundException;
 
 /**
  *
@@ -29,7 +30,7 @@ public class SceneManager
         Scenes.add(S);
     }
     
-    static public void SwitchScene(String name)
+    static public void SwitchScene(String name) throws SceneNotFoundException
     {
         for (Scene Scn : Scenes)
         {
@@ -37,8 +38,10 @@ public class SceneManager
             {
                 activeScene = Scn;
                 Scn.Initialize();
+                return;
             }
         }
+        throw new SceneNotFoundException();
     }
     
     static public void Initialize()
