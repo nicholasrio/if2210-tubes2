@@ -7,6 +7,7 @@
 package engine.Scenes;
 import engine.*;
 import engine.DataStructure.*;
+import engine.Exception.SceneNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -73,7 +74,11 @@ public class MainMenu extends Scene
         if(status == 1)
         {
             status = 0;
-            SceneManager.SwitchScene("LevelMenu");
+            try{
+                SceneManager.SwitchScene("LevelMenu");
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
+            }
         }
         if (status > 5) {
             status = 0;
@@ -92,7 +97,13 @@ public class MainMenu extends Scene
        {
            Game.gameRunning = false;
        }
-       else if (status == 1) SceneManager.SwitchScene("LevelMenu");
+       else if (status == 1){
+            try{
+                SceneManager.SwitchScene("LevelMenu");
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
+            }
+       }
        else {
             DrawHeader();
             if(status == 0) {

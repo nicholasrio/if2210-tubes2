@@ -7,6 +7,7 @@
 package engine;
 
 import java.util.ArrayList;
+import engine.Exception.SceneNotFoundException;
 
 /**
  *
@@ -32,8 +33,9 @@ public class SceneManager
     /**
      * Pindah Scene dari satu scene ke scene lain.
      * @param name Scene yang akan dijalankan
+     * @throws engine.Exception.SceneNotFoundException
      */
-    static public void SwitchScene(String name)
+    static public void SwitchScene(String name) throws SceneNotFoundException
     {
         for (Scene Scn : Scenes)
         {
@@ -41,8 +43,10 @@ public class SceneManager
             {
                 activeScene = Scn;
                 Scn.Initialize();
+                return;
             }
         }
+        throw new SceneNotFoundException();
     }
     
     /**

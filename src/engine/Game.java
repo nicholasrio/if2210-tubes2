@@ -9,6 +9,7 @@ package engine;
 import engine.DataStructure.GameData;
 import engine.Scenes.*;
 import engine.GUIScenes.*;
+import engine.Exception.SceneNotFoundException;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -30,7 +31,7 @@ public class Game
     private Game()
     {
         // Choice Mode
-        mode = 1;
+        mode = 2;
         
         GameData.loadMap();
         GameData.loadPlayer("player.xml");
@@ -53,7 +54,7 @@ public class Game
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.pack();
         gameFrame.setSize(new Dimension(ResolutionWidth,ResolutionHeight));
-            gameFrame.setLocationRelativeTo(null);
+        gameFrame.setLocationRelativeTo(null);
         gameFrame.setResizable(true);
         gameFrame.setVisible(true);
     }
@@ -69,7 +70,11 @@ public class Game
             SceneManager.AddScene(new MainMenu());
             SceneManager.AddScene(new LevelMenu());
             SceneManager.AddScene(new GameMenu());
-            SceneManager.SwitchScene("MainMenu"); 
+            try{
+                SceneManager.SwitchScene("MainMenu");
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
+            }
         }
         else if (mode == 2)
         {
@@ -79,7 +84,11 @@ public class Game
             SceneManager.AddScene(new AchievementMenuGUI());
             SceneManager.AddScene(new OptionsMenuGUI());
             SceneManager.AddScene(new AboutMenuGUI());
-            SceneManager.SwitchScene("MainMenuGUI");
+            try{
+                SceneManager.SwitchScene("MainMenuGUI");
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
+            }
         }
     }
     
