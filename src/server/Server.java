@@ -1,49 +1,58 @@
-package server;
-/**
- *
- * @author Aryya Dwisatya W / 13512043
- */
+package Server;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import Entity.Credential;
+import Entity.TransObject;
+
 public class Server {
+ 
+	public static final int BUF_SIZE = 2048;
+	
+	public static void main(String[] args){
+		Server server = new Server();
+	}
 	
 	public Server() {
-		int portNumber = 8080; 
+		int portNumber = 8080;
 		try { 
 		    ServerSocket serverSocket = new ServerSocket(portNumber);
     	    while(true){
     	    	Socket clientSocket = serverSocket.accept();
-    	    	PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-    		    BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-    		    //System.out.println(in.readLine());
-    		    out.println("Message received");
-    		    BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(new File("ServerFolder/receive.pdf")));
-	    		int bytesread;
-    		    byte[] outBuf = new byte[1024];
-	    		while((bytesread = clientSocket.getInputStream().read(outBuf)) != -1){
-	    			bout.write(outBuf, 0, bytesread);
-	    			System.out.println(bytesread);
-	    		}
-	    		System.out.println("dummy1");
-    		    bout.close();
-    		    System.out.println("dummy2");
-    		    out.println("finish");
-    		    System.out.println("dummy3");
-    		    clientSocket.close();
-    		    break;
+    	    	ServerThread ss = ServerThreadFactory.get(clientSocket);
+    	    	ss.start();
     	    }
-    	    System.exit(0);
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
 	}
-
 }
+
+//buat kalo mau baca dari file
+
+/*PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+//System.out.println(in.readLine());
+out.println("Message received");
+BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(new File("ServerFolder/receive.pdf")));
+int bytesread;
+byte[] outBuf = new byte[2048];
+int retval;
+do{
+	retval = (bytesread = clientSocket.getInputStream().read(outBuf));
+	System.out.println(retval);
+	bout.write(outBuf, 0, bytesread);
+	System.out.println(bytesread);
+	System.out.println("dummy1");
+}while(retval == BUF_SIZE);*/
