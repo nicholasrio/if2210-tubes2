@@ -8,7 +8,6 @@
  *
  * @author William Stefan
  */
-import java.util.*;
 
 public class Fertilizer
 {
