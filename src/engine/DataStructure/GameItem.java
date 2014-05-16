@@ -10,7 +10,7 @@ package engine.DataStructure;
  *
  * @author Winson
  */
-public class GameItem {
+public abstract class GameItem {
     private final String name;
     protected GameItem(String itemName){
         name = itemName;
@@ -18,4 +18,5 @@ public class GameItem {
     public String getName(){
         return name;
     }
+    public abstract void Draw(CLICanvas canvas, int row, int col);
 }

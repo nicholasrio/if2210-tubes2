@@ -60,7 +60,8 @@ public class GameMenu extends Scene
     @Override
     public void Draw()
     {
-        
+        canvas.clear();
+        //Gambar
         canvas.repaint();
     }
 }

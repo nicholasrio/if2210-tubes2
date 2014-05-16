@@ -21,4 +21,16 @@ public class TeleporterItem extends GameItem{
     public Location getArrivalLocation(){
         return arrivalLocation;
     }
+    
+    public void Draw(CLICanvas canvas, int row, int col){
+        canvas.setCanvasPixel(row, col, '[');
+        canvas.setCanvasPixel(row, col+1, ' ');
+        canvas.setCanvasPixel(row, col+2, ']');
+        canvas.setCanvasPixel(row+1, col, '[');
+        canvas.setCanvasPixel(row+1, col+1, ' ');
+        canvas.setCanvasPixel(row+1, col+2, ']');
+        canvas.setCanvasPixel(row+2, col, '-');
+        canvas.setCanvasPixel(row+2, col+1, '-');
+        canvas.setCanvasPixel(row+2, col+2, '-');
+    }
 }
