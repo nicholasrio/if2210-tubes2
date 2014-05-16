@@ -1,9 +1,8 @@
 package Video;
 
-import java.sql.ResultSet;
+import mysql.*;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,39 +24,29 @@ public class Video {
                 Logger.getLogger(Video.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        /* insert attribut to database */
 	public void Insert() throws SQLException {
             s.insert_video(title, link, rating, view, no_tubes, group_name);
 	}
+        /* update attribut to database */
 	public void Update(int id) throws SQLException {
             s.update_video(id, title, link, rating, view, no_tubes, group_name);
         }
+        /* delete attribut to database */
 	public void Delete(int id) throws SQLException {
             s.delete_video(id);
 	}
-        public void select_video_by(int id) throws SQLException{
-            try (ResultSet rs = s.getStatement().executeQuery("select * from video where id = \"" + id + "\";")) {
-                while(rs.next()){
-                    this.setId(rs.getInt("id"));
-                    this.setTitle(rs.getString("title"));
-                    this.setGroup_name(rs.getString("group_name"));
-                    this.setLink(rs.getString("link"));
-                    this.setNo_tubes(rs.getInt("no_tubes"));
-                    this.setRating(rs.getInt("rating"));
-                    this.setView(rs.getInt("view"));
-                }
-            }
+        /* cek data apakah ada didatabase */
+        public boolean cekData(int id) throws SQLException{
+            return s.cekDataVideo(id);
         }
-	public List<String> SelectData(int id) {
-		List<String> L = new ArrayList<> ();
-		return L;
+        /* mengambil semua data yang ada didatabase */
+	public List<String[]> SelectData() throws SQLException {
+            return s.select_video();
 	}
 	//public GetThumbnail() {
 	
 	//}
-	public List<String> GetMember() {
-		List<String> L = new ArrayList<> ();
-		return L;
-	}
 	
 	// getter dan setter
 	public String getTitle() {

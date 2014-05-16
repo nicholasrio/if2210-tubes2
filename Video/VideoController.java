@@ -11,12 +11,11 @@ package Video;
  * @author asus
  */
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class VideoController {
-    private Video vid;
-    private VideoView view;
+    private final Video vid;
+    private final VideoView view;
     
     public VideoController() {
         vid = new Video();
@@ -31,8 +30,7 @@ public class VideoController {
     public void DeleteVideo(int id) throws SQLException {
         vid.Delete(id);
     }
-    public List<String> SelectVideoData(int id) {
-        List<String> L = new ArrayList<>();
-        return L;
+    public List<String[]> SelectVideoData() throws SQLException {
+        return vid.SelectData();
     }
 }
