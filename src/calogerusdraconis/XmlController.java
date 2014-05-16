@@ -33,7 +33,18 @@ import org.jdom2.output.XMLOutputter;
  * @author Dariel Valdano
  */
 public class XmlController {
-
+	
+	public static Consumable produceConsumable(String name) {
+		Store s = Store.getInstance();
+		ArrayList<Consumable> ac = s.getFdInventory();
+		for (Consumable c : ac){
+			if (c.getName().equals(name)) {
+				return c;
+			}
+		}
+		return null;
+	}
+	
 	/* 
 	 * Load Dragon from XML
 	 */
@@ -86,7 +97,7 @@ public class XmlController {
 						Element node = (Element) anObj;
 						String s  = node.getText();
 
-						Consumable ctemp = ConsumableFactory.produceConsumable(s);
+						Consumable ctemp = produceConsumable(s);
 						if (ctemp != null)
 							arr.add(ctemp);
 					}
