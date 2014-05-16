@@ -38,7 +38,7 @@ public class TerminalView implements View {
 		System.out.println("Level: " + drg.getLevel());
 		System.out.println("Experience: " + drg.getExperience());
 		System.out.println("Happiness: " + drg.getHappiness());
-		System.out.println("Bladdr: " + drg.getBladder());
+		System.out.println("Bladder: " + drg.getBladder());
 		System.out.println("Thirst: " + drg.getThirst());
 		System.out.println("Hunger: " + drg.getHunger());
 		System.out.println("Health: " + drg.getHealth());
@@ -57,7 +57,7 @@ public class TerminalView implements View {
 		if (str.getFdInventory() == null) return;
 		for (Consumable c : str.getFdInventory()) {
 			++i;
-			System.out.println(i + " " + c);
+			System.out.println(i + ". " + c);
 			System.out.println();
 		}
     }
@@ -82,7 +82,7 @@ public class TerminalView implements View {
 	 * Print pilihan menu ke layar
 	 */
 	public void showMenu () {
-		System.out.println("Piliah menu: ");
+		System.out.println("Pilihan menu: ");
 		System.out.println("1. See Attribute");
 		System.out.println("2. Entertain");
 		System.out.println("3. Rest");
@@ -99,10 +99,12 @@ public class TerminalView implements View {
 	 * Print daftar consumable yang dimiliki Dragon
 	 */
 	public void seeFoodDirectory(UserDragon drg) {
+		int i = 0;
 		ArrayList<Consumable> ac = drg.getFdInventory();
 		if (ac == null) return;
 		for (Consumable c : ac) {
-			System.out.println(c.getName());
+			++i;
+			System.out.println(i + ". "  + c.getName());
 		}
 	}
 	

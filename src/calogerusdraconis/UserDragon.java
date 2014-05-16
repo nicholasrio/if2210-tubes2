@@ -76,7 +76,6 @@ public class UserDragon extends Dragon {
             public void run() {
                 try {
                     while(true) {
-						System.out.println("jalan ");
                         sleep(5000);
                         modifyAttribute();
                     }
@@ -344,14 +343,6 @@ public class UserDragon extends Dragon {
 	 * Mengubah parameter-parameter Dragon seiring berjalannya waktu
 	 */
     private void modifyAttribute() {
-        //tambah attribute
-        tambahHealth(30 * level);
-        tambahStamina(1);
-        tambahMoney(1);
-        tambahHappiness(-1);
-        tambahThirst(1);
-        tambahHunger(1);
-
         if (hunger > 75){ // lapar banget
             tambahHappiness(-5);
             tambahHealth (-10 * level);
@@ -401,6 +392,14 @@ public class UserDragon extends Dragon {
         } else if (happiness < 25){
             tambahHealth(-5 * level);
         }
+		
+		//tambah attribute
+        tambahHealth(30 * level);
+        tambahStamina(1);
+        tambahMoney(1);
+        tambahHappiness(-1);
+        tambahThirst(1);
+        tambahHunger(1);
     }
 	
 	public Dragon generateEnemy() {
@@ -505,8 +504,9 @@ public class UserDragon extends Dragon {
 		try {
 			while (stamina < maxStamina || health < maxHealth) {
 				sleep(1000);
+				System.out.println(stamina + " " + health);
 				if (stamina < maxStamina) tambahStamina(1);
-				if (health < maxHealth) tambahHealth(3*level);
+				if (health < maxHealth) tambahHealth(4*level);
 			}
 		} catch(InterruptedException e) {
 			
