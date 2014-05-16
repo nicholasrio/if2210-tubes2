@@ -72,8 +72,7 @@ public class LevelMenu extends Scene
             if (level-1<=GameData.lastLogin.getLevelUnlocked()){
                 GameData.nowLevelPlayed = level;
                 System.out.println("Level Chosen : " + level);
-                Game.gameRunning = false;
-                //SceneManager.SwitchScene("GameMenu");
+                SceneManager.SwitchScene("GameMenu");
             }
             else{
                 System.out.println("You still can't choose this level...Level Locked!!");
