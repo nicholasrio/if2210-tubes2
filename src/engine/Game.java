@@ -30,7 +30,7 @@ public class Game
     private Game()
     {
         // Choice Mode
-        mode = 1;
+        mode = 2;
         
         GameData.loadMap();
         GameData.loadPlayer("player.xml");
@@ -73,7 +73,7 @@ public class Game
             SceneManager.AddScene(new AchievementMenuGUI());
             SceneManager.AddScene(new OptionsMenuGUI());
             SceneManager.AddScene(new AboutMenuGUI());
-            SceneManager.SwitchScene("MainMenuGUI");
+            SceneManager.SwitchScene("LevelMenuGUI");
         }
     }
     
