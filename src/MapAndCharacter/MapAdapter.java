@@ -6,6 +6,7 @@
 
 package MapAndCharacter;
 import character.Character;
+import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
 import map.Map;
@@ -16,11 +17,11 @@ import map.Map;
 public class MapAdapter {
     private Map M;
     private List<Character> LCharacter;
-    private List<point> LCharPos;
+    private List<Point> LCharPos;
     public MapAdapter(Map M){
         this.M = M;
         LCharacter = new LinkedList<Character>();
-        LCharPos = new LinkedList<point>();
+        LCharPos = new LinkedList<Point>();
     }
     
     public Map getMap(){ return M;}
@@ -28,7 +29,7 @@ public class MapAdapter {
     // x dan y adalah posisi C
     public void addChar(Character C, int x,int y){
         LCharacter.add(C);
-        LCharPos.add(new point(x,y));
+        LCharPos.add(new Point(x,y));
     }
     
     public List<Character> getAllCharacter(){
@@ -39,22 +40,13 @@ public class MapAdapter {
         return LCharacter.get(i);
     }
     
-    public point getPos (Character C){
+    public Point getPos (Character C){
         int i = LCharacter.indexOf(C);
         assert(i>-1);
         return LCharPos.get(i);
     }
     
-    public point getPos (int i){
+    public Point getPos (int i){
         return LCharPos.get(i);
     }
 }
-
-class point{
-        int x;
-        int y;
-        public point(int a,int b){x = a;y = b;}
-        public void setPoint(int a,int b){x = a;y = b;}
-        public int getX() {return x;}
-        public int getY() {return y;}
-    }
