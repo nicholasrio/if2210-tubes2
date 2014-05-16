@@ -30,7 +30,7 @@ public class Game
     private Game()
     {
         // Choice Mode
-        mode = 2;
+        mode = 1;
         
         GameData.loadMap();
         GameData.loadPlayer("player.xml");
