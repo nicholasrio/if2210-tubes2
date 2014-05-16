@@ -51,7 +51,6 @@ public class UserDragonTest {
 		float result = instance.getMaxHealth();
 		assertEquals(expResult, result, 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -65,7 +64,6 @@ public class UserDragonTest {
 		float result = instance.getMaxStamina();
 		assertEquals(expResult, result, 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -75,11 +73,12 @@ public class UserDragonTest {
 	public void testGetFdInventory() {
 		System.out.println("getFdInventory");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
-		ArrayList<Consumable> expResult = null;
+		instance.getFdInventory().add(new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0));
+		ArrayList<Consumable> expResult = new ArrayList<>();
+		expResult.add(new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0));
 		ArrayList<Consumable> result = instance.getFdInventory();
-		assertEquals(expResult, result);
+		assertEquals(expResult.get(0).getName(), result.get(0).getName());
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -88,11 +87,12 @@ public class UserDragonTest {
 	@Test
 	public void testSetFdInventory() {
 		System.out.println("setFdInventory");
-		ArrayList<Consumable> fd = null;
+		ArrayList<Consumable> fd = new ArrayList<>();
+		fd.add(new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0));
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		instance.setFdInventory(fd);
+		assertEquals(fd.get(0).getName(), instance.getFdInventory().get(0).getName());
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -106,7 +106,6 @@ public class UserDragonTest {
 		float result = instance.getHappiness();
 		assertEquals(expResult, result, 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -118,8 +117,8 @@ public class UserDragonTest {
 		float val = 0.0F;
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		instance.setHappiness(val);
+		assertEquals(val, instance.getHappiness(), 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -133,7 +132,6 @@ public class UserDragonTest {
 		float result = instance.getMoney();
 		assertEquals(expResult, result, 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -145,8 +143,8 @@ public class UserDragonTest {
 		float val = 0.0F;
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		instance.setMoney(val);
+		assertEquals(val, instance.getMoney(), 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -160,7 +158,6 @@ public class UserDragonTest {
 		String result = instance.getPassword();
 		assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -172,8 +169,8 @@ public class UserDragonTest {
 		String val = "";
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		instance.setPassword(val);
+		assertEquals(val, instance.getPassword());
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -182,13 +179,27 @@ public class UserDragonTest {
 	@Test
 	public void testUseConsumable() {
 		System.out.println("useConsumable");
-		Consumable fd = new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0);
-		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
+		Consumable fd = new Consumable("first-aid","res/first-aid.png",200,10,30,300,100,80,75,12);
+		UserDragon instance = new UserDragon("user",78,300,89,200,23,51,21,5,123,"pass",50,66);
+		instance.getFdInventory().add(fd);
+		float expHealth = instance.getHealth() + fd.getHealthValue();
+		float expThirst = instance.getThirst() + fd.getThirstValue();
+		float expHunger = instance.getHunger() + fd.getHungerValue();
+		float expStamina = instance.getStamina() + fd.getStaminaValue();
+		float expMaxHealth = instance.getMaxHealth() + fd.getMaxHealthValue();
+		float expMaxStamina = instance.getMaxStamina() + fd.getMaxStaminaValue();
+		float expHappiness = instance.getHappiness() + fd.getHappinessValue();
 		Event expResult = null;
 		Event result = instance.useConsumable(fd);
-		assertEquals(expResult, result);
+		//assertEquals(expResult, result);
+		assertEquals(expHealth, instance.getHealth(), 0.0);
+		assertEquals(expThirst, instance.getThirst(), 0.0);
+		assertEquals(expHunger, instance.getHunger(), 0.0);
+		assertEquals(expStamina, instance.getStamina(), 0.0);
+		assertEquals(expMaxStamina, instance.getMaxStamina(), 0.0);
+		assertEquals(expMaxHealth, instance.getMaxHealth(), 0.0);
+		assertEquals(expHappiness, instance.getHappiness(), 0.0);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**
@@ -199,17 +210,18 @@ public class UserDragonTest {
 		System.out.println("addConsumable");
 		Consumable what = new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0);
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",350,66);
+		float expMoney = instance.getMoney() - what.getCost();
 		Event expResult = new Event("Proses Selesai","addConsumable Selesai");
-		Event result = null;
+		//Event result = null;
 		try {
-			result = instance.addConsumable(what);
+			Event result = instance.addConsumable(what);
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}
-		assertEquals(50, instance.getMoney(), 0.0);
+		assertEquals(expMoney, instance.getMoney(), 0.0);
+		assertEquals(what.getName(), instance.getFdInventory().get(0).getName());
 		//assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		//fail("The test case is a prototype.");
 	}
 
 	/**
@@ -244,12 +256,20 @@ public class UserDragonTest {
 	@Test
 	public void testTrain() {
 		System.out.println("train");
-		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
+		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,1,795,"pass",50,66);
+		float expExperience = 20*instance.getLevel() + instance.getExperience();
+		int expLevel = instance.getLevel() + 1;
+		float expMaxHealth = instance.getMaxHealth() + 30;
+		float expMaxStamina = instance.getMaxStamina() + 10;
 		Event expResult = null;
 		Event result = instance.train();
-		assertEquals(expResult, result);
+		System.out.println(expExperience);
+		assertEquals(expExperience, instance.getExperience(), 0.0);
+		assertEquals(expLevel, instance.getLevel());
+		assertEquals(expMaxHealth, instance.getMaxHealth(), 0.0);
+		assertEquals(expMaxStamina, instance.getMaxStamina(), 0.0);
+		//assertEquals(expResult, result);
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 
 	/**

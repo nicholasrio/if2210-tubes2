@@ -70,7 +70,8 @@ public class UserDragon extends Dragon {
         this.password = password;
         this.money = money;
         this.happiness = happiness;
-
+		this.fdInventory = new ArrayList<>();
+		
 		th = new Thread() {
             @Override
             public void run() {
