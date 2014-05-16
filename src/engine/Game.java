@@ -30,8 +30,10 @@ public class Game
     private Game()
     {
         // Choice Mode
-        mode = 1;
+        mode = 2;
         
+        GameData.loadMap();
+        GameData.loadPlayer("player.xml");
         if (mode == 2)
         {
             ImageLoader.loadAllImages();
@@ -48,7 +50,7 @@ public class Game
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.pack();
         gameFrame.setSize(new Dimension(ResolutionWidth,ResolutionHeight));
-        gameFrame.setLocationRelativeTo(null);
+            gameFrame.setLocationRelativeTo(null);
         gameFrame.setResizable(true);
         gameFrame.setVisible(true);
     }
@@ -61,7 +63,6 @@ public class Game
             SceneManager.AddScene(new MainMenu());
             SceneManager.AddScene(new LevelMenu());
             SceneManager.AddScene(new GameMenu());
-            SceneManager.AddScene(new AchievementMenu());
             SceneManager.SwitchScene("MainMenu"); 
         }
         else if (mode == 2)

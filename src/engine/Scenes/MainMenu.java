@@ -29,10 +29,9 @@ public class MainMenu extends Scene
     @Override
     public void Initialize()
     {
-        height = 57; //57 height of half full screen, 25 is standard cmd size full screen
-        width = 168; // 80 full width of standard cmd screen and half full screen cmd size, 168 full screen
+        height = GameData.height; //57 height of half full screen, 25 is standard cmd size full screen
+        width = GameData.width; // 80 full width of standard cmd screen and half full screen cmd size, 168 full screen
         status = 0;
-        GameData.loadPlayer("player.xml");
     }
     
     /**
@@ -53,19 +52,21 @@ public class MainMenu extends Scene
         }
         else if (status == 3) {
             status = 0;
-            SceneManager.SwitchScene("AchievementMenu");
+            Sc.nextInt();
         }
         else if (status == 4) {
             status = 0;
             int temp = Sc.nextInt();
             if(temp != 0) {
                 if(temp == 1) {
-                    width = 80;
-                    height = 25;
+                    GameData.width = 80;
+                    GameData.height = 25;
+                    Initialize();
                 }
                 if(temp == 2) {
-                    width = 168;
-                    height = 57;
+                    GameData.width = 168;
+                    GameData.height = 57;
+                    Initialize();
                 }
             }
         }
@@ -73,6 +74,9 @@ public class MainMenu extends Scene
         {
             status = 0;
             SceneManager.SwitchScene("LevelMenu");
+        }
+        if (status > 5) {
+            status = 0;
         }
     }
     
@@ -89,7 +93,6 @@ public class MainMenu extends Scene
            Game.gameRunning = false;
        }
        else if (status == 1) SceneManager.SwitchScene("LevelMenu");
-       else if (status == 3) SceneManager.SwitchScene("AchievementMenu");
        else {
             DrawHeader();
             if(status == 0) {
@@ -97,6 +100,9 @@ public class MainMenu extends Scene
             }
             else if (status == 2) {
                 DrawChange();
+            }
+            else if (status == 3) {
+                DrawAchievement();
             }
             else if (status == 4) {
                 DrawOption();
@@ -146,6 +152,20 @@ public class MainMenu extends Scene
         for(int i = 1; i <= GameData.getJumlahPlayer();i++) {
             temp[i] = Integer.toString(i) + ". " + GameData.dataPlayer.get(i-1).getNama();
         }
+        PrinterStringVertical(temp);
+    }
+    
+    /**
+     * Method menggambar body untuk menu achievement
+     */
+    private void DrawAchievement() {
+        String[] temp = new String[6];
+        temp[0] = "Player Data";
+        temp[1] = "Name : " + GameData.lastLogin.getNama();
+        temp[2] = "Score: " + GameData.lastLogin.getScore();
+        temp[3] = "Level: " + GameData.lastLogin.getLevelUnlocked();
+        temp[4] = "Achievement Unlocked: " + GameData.lastLogin.getAchievmentUnlocked();
+        temp[5] = "=";
         PrinterStringVertical(temp);
     }
     

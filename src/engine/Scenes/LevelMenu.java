@@ -33,8 +33,8 @@ public class LevelMenu extends Scene
         lvl_LorUL="Level Unlocked";
         level=1;
         nama_lvl="ICE MAZE";
-        height=55;
-        width=168;        
+        height=GameData.height;
+        width=GameData.width;        
         spacebetween=width/25;
         space=((width)-(spacebetween*10)-10-4)/2;         
     }
