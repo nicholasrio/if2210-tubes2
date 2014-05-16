@@ -131,73 +131,31 @@ public class Player
         this.levelUnlocked = level;
     }
     
-    private Map getMap()
-    {
-        return GameData.dataMap.get(GameData.nowLevelPlayed);
-    }
-    
-    public void moveDown()
-    {
-        GameItem itemHere;
-        if(position.getRow() < getMap().getMaxRow() - 1)
-        {
-            itemHere = getMap().getElement(new Location(position.getLevel(), position.getRow()+1, position.getCol()));
-            if(!itemHere.getName().equalsIgnoreCase("wall"))
-            {
-                position.setRow(position.getRow() + 1);
-            }
-            if(itemHere.getName().equalsIgnoreCase("coin"))
-            {
-                score++;
-            }
-            if(itemHere.getName().equalsIgnoreCase("hole"))
-            {
-                position.setLevel(position.getCol()-1);
-            }
-            if(itemHere.getName().equalsIgnoreCase("teleporter"))
-            {
-                TeleporterItem tele = (TeleporterItem) itemHere;
-                Location teleLocation = tele.getArrivalLocation();
-                position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
-            }
-        }
-    }
     
     /* Method */
     /**
      * 
      * @param peta the map in which the player is playing
+     * @param command 1 for up, 2 for down, 3 for left, 4 for right
      */
-    public void move(Map peta) /* ? */
-    
+    public void move(Map peta, int command)
     {
         try 
         {
             Map map = new Map(peta);
-            Scanner read = new Scanner(System.in);
-            ArrayList<String> validMove = new ArrayList<>();
-            validMove.add("up");
-            validMove.add("down");
-            validMove.add("left");
-            validMove.add("right");
-            
+
             /* Ukuran Map */
             int maxLevel = map.getMaxLevel();
             int maxRow = map.getMaxRow();
             int maxCol = map.getMaxCol();
             GameItem status;
-            String command;
             
             /* Play */
             GameItem itemHere = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()));
-            while(!itemHere.getName().equalsIgnoreCase("finsih")) /* Belum ketemu exit */
+            while(!itemHere.getName().equalsIgnoreCase("finish")) /* Belum ketemu exit */
             {
-                do
-                {
-                    command = read.next();
-                } while (validMove.contains(command) == false);
                 switch (command) {
-                    case "up": // move ke atas
+                    case 1: // move ke atas
                         if(position.getRow() > 0) // periksa apakah posisi sudah diujung atas map?
                         {
                             itemHere = map.getElement(new Location(position.getLevel(), position.getRow()-1, position.getCol()));
@@ -207,7 +165,7 @@ public class Player
                             }
                         }
                         break;
-                    case "down": // move ke bawah
+                    case 2: // move ke bawah
                         if(position.getRow()<map.getMaxRow()-1) // periksa apakah posisi sudah diujung bawah map?
                         {
                             itemHere = map.getElement(new Location(position.getLevel(), position.getRow()+1, position.getCol()));
@@ -217,7 +175,7 @@ public class Player
                             }
                         }
                         break;
-                    case "left": // move ke kiri
+                    case 3: // move ke kiri
                         if(position.getCol() > 0) // periksa apakah posisi sudah diujung kiri map?
                         {
                             itemHere = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()-1));
@@ -227,7 +185,7 @@ public class Player
                             }
                         }
                         break;
-                    case "right": // move ke kanan
+                    case 4: // move ke kanan
                         if(position.getCol() < map.getMaxCol()-1) // periksa apakah posisi sudah diujung kanan map?
                         {
                             itemHere = map.getElement(new Location(position.getLevel(), position.getRow(), position.getCol()+1));

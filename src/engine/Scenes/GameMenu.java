@@ -42,6 +42,7 @@ public class GameMenu extends Scene
     @Override
     public void Update()
     {
+            /*
         System.out.println("Enter 1(up) 2(down) 3(down) 4(left) to move : ");
         Scanner Sc = new Scanner(System.in);
         int choise = Sc.nextInt();
@@ -55,12 +56,14 @@ public class GameMenu extends Scene
             case 4 : player.move(gameMap);
                      break;
         }
+            */
     }
     
     @Override
     public void Draw()
     {
-        
+        canvas.clear();
+        //Gambar
         canvas.repaint();
     }
 }

@@ -14,4 +14,10 @@ public class RoadItem extends GameItem{
     public RoadItem(){
         super("road");
     }
+    public void Draw(CLICanvas canvas, int row, int col){
+        for(int i=0;i<3;i++)
+           for(int j=0;j<3;j++){
+               canvas.setCanvasPixel(row+i, col+j, ' ');
+           }
+    }
 }

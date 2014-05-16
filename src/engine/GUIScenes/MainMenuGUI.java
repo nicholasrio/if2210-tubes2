@@ -8,7 +8,7 @@ package engine.GUIScenes;
 
 import engine.*;
 import static engine.Game.gameFrame;
-import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -25,7 +25,9 @@ public class MainMenuGUI extends Scene
     private Image newgameTexture;
     private Image achievementTexture;
     private Image optionsTexture;
+    private Image aboutTexture;
     private Image exitTexture;
+    private Font playernameFont;
     
     private float transparentPercentage;
     
@@ -43,6 +45,7 @@ public class MainMenuGUI extends Scene
         newgameTexture = ImageLoader.getImage("newgame");
         achievementTexture = ImageLoader.getImage("achievement");
         optionsTexture = ImageLoader.getImage("options");
+        aboutTexture = ImageLoader.getImage("about");
         exitTexture = ImageLoader.getImage("exit");
     }
     
@@ -91,7 +94,9 @@ public class MainMenuGUI extends Scene
             g2D.drawImage(newgameTexture,(int)(getWidth()*(-0.09f)),(int)(getHeight()*0.28f),newgameTexture.getWidth(this),newgameTexture.getHeight(this),this);
             g2D.drawImage(achievementTexture,(int)(getWidth()*(-0.11f)),(int)(getHeight()*0.45f),achievementTexture.getWidth(this),achievementTexture.getHeight(this),this);
             g2D.drawImage(optionsTexture,(int)(getWidth()*(-0.13f)),(int)(getHeight()*0.63f),optionsTexture.getWidth(this),optionsTexture.getHeight(this),this);
-            g2D.drawImage(exitTexture,(int)(getWidth()*(-0.15f)),(int)(getHeight()*0.80f),exitTexture.getWidth(this),exitTexture.getHeight(this),this);       
+            g2D.drawImage(aboutTexture,(int)(getWidth()*(-0.15f)),(int)(getHeight()*0.80f),aboutTexture.getWidth(this),aboutTexture.getHeight(this),this);       
+        
+            g2D.drawImage(exitTexture,(int)(getWidth()*(0.78f)),(int)(getHeight()*0.76f),exitTexture.getWidth(this),exitTexture.getHeight(this),this);       
         }
     }
 }
