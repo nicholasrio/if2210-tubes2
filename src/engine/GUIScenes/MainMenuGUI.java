@@ -7,9 +7,11 @@
 package engine.GUIScenes;
 
 import engine.*;
+import engine.DataStructure.GameData;
 import engine.Exception.SceneNotFoundException;
 import static engine.Game.gameFrame;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -17,6 +19,8 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -32,6 +36,7 @@ public class MainMenuGUI extends Scene
     private Image optionsTexture;
     private Image aboutTexture;
     private Image exitTexture;
+    private Image userBg;
     
     /* Rectangles */
     private Rectangle newgameRect;
@@ -39,6 +44,7 @@ public class MainMenuGUI extends Scene
     private Rectangle optionsRect;
     private Rectangle aboutRect;
     private Rectangle exitRect;
+    private Rectangle userMenu;
     
     private final int NMenu = 6;
     private Font playernameFont;
@@ -117,7 +123,9 @@ public class MainMenuGUI extends Scene
         optionsTexture = ImageLoader.getImage("options");
         aboutTexture = ImageLoader.getImage("about");
         exitTexture = ImageLoader.getImage("exit");
+        userBg = ImageLoader.getImage("AchievementBack");
     }
+    
     
     @Override
     public void Initialize()
@@ -127,9 +135,9 @@ public class MainMenuGUI extends Scene
         this.LoadContent();
         
         /* Rectangle */
+        userMenu = new Rectangle(0,(int)(Game.ResolutionHeight*0.175f),800,50);
         newgameRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.268f), 
                                    (int)(Game.ResolutionWidth*0.34f),(int)(Game.ResolutionHeight*0.145f));
-        
         achievementRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.425f), 
                                    (int)(Game.ResolutionWidth*0.34f),(int)(Game.ResolutionHeight*0.145f));
         optionsRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.595f), 
@@ -138,6 +146,16 @@ public class MainMenuGUI extends Scene
                                    (int)(Game.ResolutionWidth*0.34f),(int)(Game.ResolutionHeight*0.145f));
         exitRect = new Rectangle((int)(Game.ResolutionWidth*0.765f),(int)(Game.ResolutionHeight*0.71f),
                                  (int)(Game.ResolutionWidth*0.20f),(int)(Game.ResolutionHeight*0.22f));
+
+        try {
+            File fontfile = new File("Font/batmanforeveralternate.ttf");
+            playernameFont = Font.createFont(Font.TRUETYPE_FONT, fontfile);
+            playernameFont = playernameFont.deriveFont(18, 18f);
+        } catch (FontFormatException | IOException ex) {
+            playernameFont = new Font("Arial",18,18);
+            System.err.println(ex);
+        } 
+        
     }
     
     @Override
@@ -200,12 +218,17 @@ public class MainMenuGUI extends Scene
             
             g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
             g2D.drawImage(titleTexture,(int)(getWidth()*0.2f),(int)(getHeight()*0.025f),titleTexture.getWidth(this),titleTexture.getHeight(this),this);            
+            g2D.drawImage(userBg, 0,(int)(Game.ResolutionHeight*0.175f),800,50, this);
             g2D.drawImage(newgameTexture,(int)(getWidth()*(-0.09f)+deltapos[1]),(int)(getHeight()*0.28f),newgameTexture.getWidth(this),newgameTexture.getHeight(this),this);
             g2D.drawImage(achievementTexture,(int)(getWidth()*(-0.11f)+deltapos[2]),(int)(getHeight()*0.45f),achievementTexture.getWidth(this),achievementTexture.getHeight(this),this);
             g2D.drawImage(optionsTexture,(int)(getWidth()*(-0.13f)+deltapos[3]),(int)(getHeight()*0.63f),optionsTexture.getWidth(this),optionsTexture.getHeight(this),this);
             g2D.drawImage(aboutTexture,(int)(getWidth()*(-0.15f)+deltapos[4]),(int)(getHeight()*0.80f),aboutTexture.getWidth(this),aboutTexture.getHeight(this),this);       
         
             g2D.drawImage(exitTexture,(int)(getWidth()*(0.78f)),(int)(getHeight()*0.76f),exitTexture.getWidth(this),exitTexture.getHeight(this),this);      
+       
+            g2D.setFont(playernameFont);
+            g2D.drawString("WELCOME: "+GameData.lastLogin.getNama(), 5, (int)(Game.ResolutionHeight*0.175f)+30);
+        
         }
     }
     
@@ -259,6 +282,10 @@ public class MainMenuGUI extends Scene
         {
             menuPressed = 5;
         }
+        else if (userMenu.contains(event.getPoint()))
+        {
+            menuPressed = 6;
+        }
         else
         {
             menuPressed = -1;
@@ -267,7 +294,7 @@ public class MainMenuGUI extends Scene
     
     void mouseUpdateReleased(MouseEvent event)
     {
-        if (menuPressed >= 1 && menuPressed <= 5)
+        if (menuPressed >= 1 && menuPressed <= 6)
         {
             try{
                 switch (menuPressed)
@@ -277,6 +304,7 @@ public class MainMenuGUI extends Scene
                     case 3 : SceneManager.SwitchScene("OptionsMenuGUI"); break;
                     case 4 : SceneManager.SwitchScene("AboutMenuGUI"); break;
                     case 5 : Game.gameRunning = false; break;
+                    case 6 : SceneManager.SwitchScene("UserMenuGUI"); break;
                 }
             }catch(SceneNotFoundException e){
                 e.printStackTrace();
