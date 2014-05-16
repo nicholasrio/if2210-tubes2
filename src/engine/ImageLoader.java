@@ -35,9 +35,9 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/MainMenu/options.png"));
         allImages.add(loadImage("Image/MainMenu/about.png"));
         allImages.add(loadImage("Image/MainMenu/exit.png"));
-        allImages.add(loadImage("Image/MainMenu/icecube.png"));
-        allImages.add(loadImage("Image/MainMenu/fire-maze.png"));
-        allImages.add(loadImage("Image/MainMenu/egypt.png"));
+        allImages.add(loadImage("Image/LevelMenu/icecube.png"));
+        allImages.add(loadImage("Image/LevelMenu/fire-maze.png"));
+        allImages.add(loadImage("Image/LevelMenu/egypt.png"));
 }
     
     public static Image getImage(String imgName)
