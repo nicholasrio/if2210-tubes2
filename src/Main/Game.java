@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 
-package tes;
+package Main;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import javagame.*;
 import javax.swing.JFrame;
-import tes.scene.*;
 /**
  *
  * @author Luqman
@@ -21,8 +20,8 @@ public class Game{
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.setLayout(new BorderLayout());
     	
-    	frame.add(new GamePanel());
-    	
+        GamePanel gp = new GamePanel();
+    	frame.add(gp);
     	frame.setSize(800, 500);
     	frame.setVisible(true);
    }

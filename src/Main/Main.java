@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package tes;
+package Main;
 
 import java.awt.BorderLayout;
 import javagame.*;

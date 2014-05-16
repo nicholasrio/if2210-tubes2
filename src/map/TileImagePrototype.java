@@ -23,6 +23,13 @@ import javax.imageio.ImageIO;
  * @author Calvin
  */
 public class TileImagePrototype {
+<<<<<<< HEAD
+    static HashMap<Integer, Image> ImageMap = new HashMap<Integer, Image> ();
+    public static int tileHeight = 32;
+    public static int tileWidth = 32;
+    
+    public static Image getTileImage(int id) {
+=======
     static boolean hasLoadImage = false;
     static HashMap<Integer, Image> ImageMap = new HashMap<Integer, Image> ();
     public final static int tileHeight = 32;
@@ -37,6 +44,7 @@ public class TileImagePrototype {
                 Logger.getLogger(TileImagePrototype.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+>>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
         return ImageMap.get(id); 
     }
     

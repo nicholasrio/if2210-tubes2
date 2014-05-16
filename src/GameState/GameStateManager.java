@@ -4,26 +4,31 @@
  * and open the template in the editor.
  */
 
-package javagame;
+package GameState;
 
+import GameState.GameState;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
+import javagame.Drawable;
+import javagame.GamePanel;
+import javagame.GameTime;
+import javagame.Updateable;
 
 /**
  *
  * @author Luqman
  */
-public class SceneManager implements Drawable, Updateable{
+public class GameStateManager implements Drawable, Updateable{
     private GamePanel game;
-    private List<Scene> scenes;
-    private Scene activeScene;
+    private List<GameState> scenes;
+    private GameState activeScene;
 
     /**
      *
      * @param game
      */
-    public SceneManager(GamePanel game)
+    public GameStateManager(GamePanel game)
     {
         this.game = game;
         scenes = new ArrayList<>();
@@ -33,9 +38,9 @@ public class SceneManager implements Drawable, Updateable{
      *
      * @param scene
      */
-    public void addScene(Scene scene)
+    public void addScene(GameState scene)
     {
-        for(Scene s: scenes)
+        for(GameState s: scenes)
         {
             if(s.getName().equals(scene.getName())) return;
         }
@@ -48,7 +53,7 @@ public class SceneManager implements Drawable, Updateable{
      */
     public void switchScene(String name)
     {
-        for(Scene s: scenes)
+        for(GameState s: scenes)
         {
             if(s.getName().equals(name))
             {
@@ -68,4 +73,17 @@ public class SceneManager implements Drawable, Updateable{
     public void update(GameTime gameTime) {
         if(activeScene!=null) activeScene.update(gameTime);
     }
+    
+    public void keyReleased(int k){
+        activeScene.keyReleased(k);
+    }
+    
+    public void keyTyped(int k){
+        activeScene.keyTyped(k);
+    }
+    
+    public void keyPressed(int k){
+        activeScene.keyPressed(k);
+    }
+    
 }

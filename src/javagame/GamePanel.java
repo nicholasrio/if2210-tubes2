@@ -6,39 +6,70 @@
 
 package javagame;
 
+import GameState.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import java.awt.event.*;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import tes.scene.*;
 
 /**
  *
  * @author Luqman
  */
-public class GamePanel extends JPanel implements Drawable, Updateable, ActionListener{
+public class GamePanel extends JPanel implements Drawable,Updateable{
+    
     protected GameTime gameTime;
-    protected SceneManager sceneManager;
+    protected GameStateManager sceneManager;
     protected int maxFPS;
-
+    private Thread thread;
+    
+    //kelas yang menimplemen ActionListener untuk Timer
+    private class GameActionListener implements ActionListener{
+        
+         @Override
+        //Game loop setiap loop melakukan update dan repaint
+        public void actionPerformed(ActionEvent ae) {
+        update(gameTime);
+        repaint();
+        }
+    }
+    
+    private class GameKeyListener implements KeyListener{
+        
+        public void keyTyped(KeyEvent key){
+            sceneManager.keyTyped(key.getKeyCode());
+        }
+        
+        public void keyPressed(KeyEvent key){
+            sceneManager.keyPressed(key.getKeyCode());
+        }
+        
+        public void keyReleased(KeyEvent key){
+            sceneManager.keyReleased(key.getKeyCode());
+        }
+        
+    }
+    
     public GamePanel()
     {
-        this.maxFPS = 60;
-        setBackground(Color.BLACK);
-        sceneManager = new SceneManager(this);
-        sceneManager.addScene(new MainMenu());
-        sceneManager.switchScene("MainMenu");
-        gameTime = new GameTime(1000/getMaxFPS(), this);
-	gameTime.start();
+        this.initialize();
     }
-
     
     public void initialize()
     {
-
+        this.maxFPS = 60;
+        setBackground(Color.BLACK);
+        sceneManager = new GameStateManager(this);
+        sceneManager.addScene(new MainMenu());
+        sceneManager.addScene(new PlayGameState());
+        sceneManager.switchScene("PlayGameState");
+        setFocusable(true);
+        requestFocusInWindow();
+        addKeyListener(new GameKeyListener());
+        gameTime = new GameTime(1000/getMaxFPS(), new GameActionListener());
+	gameTime.start();
     }
     
     @Override
@@ -57,12 +88,6 @@ public class GamePanel extends JPanel implements Drawable, Updateable, ActionLis
     public void paint(Graphics g){
         super.paintComponent(g);
         draw(this.gameTime, g);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        update(gameTime);
-        repaint();
     }
 
     /**

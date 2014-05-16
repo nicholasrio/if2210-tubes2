@@ -4,16 +4,19 @@
  * and open the template in the editor.
  */
 
-package javagame;
+package GameState;
+
+import javagame.Drawable;
+import javagame.Updateable;
 
 /**
  *
  * @author Luqman
  */
-public abstract class Scene implements Drawable, Updateable {
+public abstract class GameState implements Drawable, Updateable {
     protected String name;
     
-    public Scene()
+    public GameState()
     {
     }
 
@@ -25,4 +28,10 @@ public abstract class Scene implements Drawable, Updateable {
     public String getName() {
         return name;
     }
+    
+    public abstract void keyTyped(int k);
+    
+    public abstract void keyReleased(int k);
+    
+    public abstract void keyPressed(int k);
 }

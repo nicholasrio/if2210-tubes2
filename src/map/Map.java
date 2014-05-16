@@ -33,10 +33,14 @@ public class Map{
         
 	//our map
 	private Tile[] dungeon_map = { };
+<<<<<<< HEAD
+ 
+=======
         
         //Visible
         private boolean visible[][];
         
+>>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
 	//the old seed from the RNG is saved in this one
 	private long oldseed = 0;
  
@@ -60,6 +64,9 @@ public class Map{
 	public Tile getCell(int x, int y){
 		return dungeon_map[x + xsize * y];
 	}
+<<<<<<< HEAD
+ 
+=======
         
         public boolean isVisible(int x,int y){
             return visible[x][y];
@@ -69,6 +76,7 @@ public class Map{
             visible[x][y] = v;
         }
         
+>>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
 	//The RNG. the seed is based on seconds from the "java epoch" ( I think..)
 	//perhaps it's the same date as the unix epoch
 	private int getRand(int min, int max){
@@ -269,6 +277,52 @@ public class Map{
 		//yay, all done
 		return true;
 	}
+<<<<<<< HEAD
+ 
+ 
+	//used to print the map on the screen
+	public void showDungeon(){
+		for (int y = 0; y < ysize; y++){
+			for (int x = 0; x < xsize; x++){
+				//System.out.print(getCell(x, y));
+				switch(getCell(x, y).getId()){
+				case Tile.tileUnused:
+					System.out.print(" ");
+					break;
+				case Tile.tileDirtWall:
+					System.out.print("+");
+					break;
+				case Tile.tileDirtFloor:
+					System.out.print(".");
+					break;
+				case Tile.tileStoneWall:
+					System.out.print("O");
+					break;
+				case Tile.tileCorridor:
+					System.out.print("#");
+					break;
+				case Tile.tileDoor:
+					System.out.print("D");
+					break;
+				case Tile.tileUpStairs:
+					System.out.print("<");
+					break;
+				case Tile.tileDownStairs:
+					System.out.print(">");
+					break;
+				case Tile.tileChest:
+					System.out.print("*");
+					break;
+				};
+			}
+			if (xsize <= xmax) System.out.println();
+		}
+	}
+ 
+	//and here's the one generating the whole map
+	public Map createDungeon(int inx, int iny, int inobj){
+                TilePrototype.loadCache();
+=======
         
 	//and here's the one generating the whole map
 	public Map createDungeon(int inx, int iny, int inobj){
@@ -282,6 +336,7 @@ public class Map{
                     }
                 } 
                 
+>>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
 		if (inobj < 1) objects = 10;
 		else objects = inobj;
  
@@ -476,4 +531,30 @@ public class Map{
  
 		return this;
 	}
+<<<<<<< HEAD
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+	public static void main(String[] args){
+		//initial stuff used in making the map
+		int x = 80; int y = 25; int dungeon_objects = 40;
+ 
+		//convert a string to a int, if there's more then one arg
+		if (args.length >= 1)
+			dungeon_objects = Integer.parseInt(args[0]);
+		if (args.length >= 2)
+			x = Integer.parseInt(args[1]);
+ 
+		if (args.length >= 3)
+			y = Integer.parseInt(args[2]);
+		//create a new class of "Map", so we can use all the goodies within it
+		Map generator = new Map();
+		//then we create a new dungeon map
+		generator.createDungeon(x, y, dungeon_objects);
+			//always good to be able to see the results..
+			generator.showDungeon();
+	}
+        
+        
+=======
+>>>>>>> 0c87d8e69b67d7a4d50d2ee229189d52177f8f04
 }
