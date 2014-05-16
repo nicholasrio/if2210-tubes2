@@ -30,8 +30,8 @@ public class ItemCache {
      * load all available resources and reset the cache.
      */
     public static void loadCache(){
-        loadItem();
-        loadImage();
+        loadItems();
+        loadImages();
     }
     
     /**
@@ -54,9 +54,9 @@ public class ItemCache {
     /**
      * load the item from database
      */
-    private static void loadItem(){
+    private static void loadItems(){
         try {
-            File file = new File(ItemCache.class.getResource("Resources/item.xml").getFile());
+            File file = new File(ItemCache.class.getClassLoader().getResource("Resource/item.xml").getFile());
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
@@ -103,12 +103,12 @@ public class ItemCache {
         }
     }
     
-    private static void loadImage()
+    private static void loadImages()
     {
         for(Map.Entry<String,Item> item: itemCache.entrySet())
         {
             try {
-                URL path = ItemCache.class.getResource(item.getValue().getImagePath());
+                URL path = ItemCache.class.getClassLoader().getResource(item.getValue().getImagePath());
                 imageCache.put(item.getValue().getName(), ImageIO.read(path));
             } catch (IOException ex) {
                 Logger.getLogger(ItemCache.class.getName()).log(Level.SEVERE, null, ex);

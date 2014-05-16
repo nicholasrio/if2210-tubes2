@@ -1,5 +1,11 @@
 package character;
 
+<<<<<<< HEAD
+public class Character implements Cloneable{
+    private int id;
+    private String name;
+    
+=======
 /**
  * the base class for character
  * all other characters should extends from here.
@@ -8,6 +14,7 @@ public class Character implements Cloneable,Recoverable{
     /**
      * the character strength
      */
+>>>>>>> 685352ef1abb80479d875cc9b62f4c6aa385a283
     protected int _str;
     /**
      * the character agility
@@ -35,10 +42,15 @@ public class Character implements Cloneable,Recoverable{
      */
     protected int _maxMana;
 
+<<<<<<< HEAD
+    private String imagePath;
+    
+=======
     /**
      * getter for strength
      * @return int
      */
+>>>>>>> 685352ef1abb80479d875cc9b62f4c6aa385a283
     public int getStr() { return _str; }
     
     /**
@@ -144,6 +156,49 @@ public class Character implements Cloneable,Recoverable{
     public Character clone() throws CloneNotSupportedException{
         return (Character) super.clone();
     }
+<<<<<<< HEAD
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the imagePath
+     */
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    /**
+     * @param imagePath the imagePath to set
+     */
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+=======
     
     //implementasi interface Recoverable
     @Override
@@ -165,5 +220,6 @@ public class Character implements Cloneable,Recoverable{
         if (this._currentMana < 0){
             this._currentMana = 0;
         }
+>>>>>>> 685352ef1abb80479d875cc9b62f4c6aa385a283
     }
 }
