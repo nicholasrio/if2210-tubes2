@@ -171,7 +171,7 @@ public class Map{
             for(int j=0;j<maxRow;j++)
                 for(int k=0;k<maxCol;k++)
                     if(matrix[i][j][k].getName().equalsIgnoreCase("start"))
-                        return new Location(i,j,k);
+                        return new Location(j,k,i);
         throw new Exception("Tidak menemukan start.");
     }
     
