@@ -202,10 +202,6 @@ public class LevelMenuGUI extends Scene
                         (int) (Arrow2Texture.getWidth(this)*0.5f),(int) (Arrow2Texture.getHeight(this)*0.5f), this);
                 g2D.drawImage(BackTexture, (int) (getWidth()*0.73f), (int) (getHeight()*0.85f), 
                         (int) (BackTexture.getWidth(this)*0.7f),(int) (BackTexture.getHeight(this)*0.7f), this);                
-                g2D.draw(startRect);
-                g2D.draw(rightArrowRect);
-                g2D.draw(leftArrowRect);
-                g2D.draw(backRect);
             }
             else if (level==2){
                 Graphics2D g2D = (Graphics2D) g;                                    
@@ -230,10 +226,6 @@ public class LevelMenuGUI extends Scene
                 }
                 g2D.drawImage(BackTexture, (int) (getWidth()*0.73f), (int) (getHeight()*0.7f), 
                         (int) (BackTexture.getWidth(this)*0.7f),(int) (BackTexture.getHeight(this)*0.7f), this);
-                g2D.draw(startRect);
-                g2D.draw(rightArrowRect);
-                g2D.draw(leftArrowRect);
-                g2D.draw(backRect);
             }
 
             // paint Image here
@@ -265,14 +257,12 @@ public class LevelMenuGUI extends Scene
     
     void mouseUpdateReleased(MouseEvent event) throws SceneNotFoundException
     {        
-        /*
         if (menuPressed ==1){
             SceneManager.SwitchScene("GameMenuGUI");     
         }
         else if (menuPressed==2){
             SceneManager.SwitchScene("MainMenuGUI");                    
-        } */       
-
+        } 
     }
 }
 
