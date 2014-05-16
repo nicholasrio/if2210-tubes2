@@ -1,0 +1,17 @@
+cooltext.com -> MainMenu Font
+wallpoper.com -> MainMenu Background
+shutterstock.com -> LevelMenu asset
+clipartbest.com -> MainMenu exit asset
+hdwallpapersimages.com -> wallpaper level ice
+pkmn.net -> GameMenu ice path & ice rock
+fc01.deviantart.net -> GameMenu ice teleporter
+openclipart.org -> GameMenu ice hole
+topsmalibu.com -> GameMenu golden_ice
+img3.wikia.nocookie.net -> GameMenu char_ice
+flamingtext.com -> LevelMenu level 2 Title
+cooltext.com -> LevelMenu level 1 Title
+tibiaml.com -> GameMenu fire path & fire wall
+officialpsds.com -> Frozen Arrow
+colourbox.com -> Burning Fire Arrow
+istockimg.com -> fire effect in button
+gagsunlimited.mb.ca -> Ice Shard

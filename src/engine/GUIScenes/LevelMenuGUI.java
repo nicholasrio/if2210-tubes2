@@ -82,6 +82,9 @@ public class LevelMenuGUI extends Scene
         });        
     }
     
+    /**
+     * Me-load semua isi dari scene LevelMenu
+     */
     public void LoadContent()
     {
         // load Image here
@@ -96,6 +99,9 @@ public class LevelMenuGUI extends Scene
         BackTexture=ImageLoader.getImage("back_ice");
     }
     
+    /**
+     * Menginisialisasi element di scene LevelMenuGUI
+     */
     @Override
     public void Initialize()
     {
@@ -112,6 +118,9 @@ public class LevelMenuGUI extends Scene
         backRect = new Rectangle(570,480,200,120);                                
     }
     
+    /**
+     * Update Scene levelMenuGUI
+     */
     @Override
     public void Update()
     {
@@ -159,6 +168,10 @@ public class LevelMenuGUI extends Scene
         }
     }
     
+    /**
+     * Melakukan drawing Scene LevelMenuGUI
+     * @param g 
+     */
     @Override
     public void paint(Graphics g)
     {

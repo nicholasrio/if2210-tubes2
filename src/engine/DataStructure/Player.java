@@ -40,6 +40,10 @@ public class Player
         temp_score = 0;
     }
     
+    /**
+     * Mencetak isi kelas Player ke layar
+     * @return hasil cetak
+     */
     @Override
     public String toString()
     {

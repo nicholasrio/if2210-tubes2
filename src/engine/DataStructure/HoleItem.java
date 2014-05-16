@@ -14,6 +14,7 @@ public class HoleItem extends GameItem{
     public HoleItem(){
         super("hole");
     }
+    
     public void Draw(CLICanvas canvas, int row, int col){
         for(int i=0;i<3;i++)
            for(int j=0;j<3;j++){

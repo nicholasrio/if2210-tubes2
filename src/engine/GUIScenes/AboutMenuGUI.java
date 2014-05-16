@@ -7,6 +7,7 @@
 package engine.GUIScenes;
 
 import engine.*;
+import engine.Exception.SceneNotFoundException;
 import static engine.Game.gameFrame;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -103,8 +104,8 @@ public class AboutMenuGUI extends Scene
         });
         Credits = new ArrayList<>();
         try {
-            File fontfile = new File("batmanforeveralternate.ttf");
-            File creditstxt = new File("credit.txt");
+            File fontfile = new File("Font/batmanforeveralternate.ttf");
+            File creditstxt = new File("Credit/credit.txt");
             CreditsDataFont = Font.createFont(Font.TRUETYPE_FONT, fontfile);
             CreatorDataFont = CreditsDataFont.deriveFont(14,14f);
             CreditsDataFont = CreditsDataFont.deriveFont(24, 24f);
@@ -136,7 +137,7 @@ public class AboutMenuGUI extends Scene
         this.LoadContent();
         
         backRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.755f), 
-                                   (int)(Game.ResolutionWidth*0.34f),(int)(Game.ResolutionHeight*0.145f));
+                                   (int)(Game.ResolutionWidth*0.24f),(int)(Game.ResolutionHeight*0.145f));
     }
     
     @Override
@@ -151,20 +152,15 @@ public class AboutMenuGUI extends Scene
         {
             if (deltapos > 0f)
             {
-                deltapos -= 10f;
+                deltapos -= 5f;
             }
             
         }
         else if (menuHovered == 1)
         {
-            if (deltapos > 0f)
+            if (deltapos < 25f)
             {
-                deltapos -= 10f;
-            }
-            
-            if (deltapos < 110f)
-            {
-                deltapos += 10f;
+                deltapos += 5f;
             }
         }
     }
@@ -187,7 +183,7 @@ public class AboutMenuGUI extends Scene
             Graphics2D g2D = (Graphics2D) g;
             g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
             g2D.drawImage(titleTexture,(int)(getWidth()*0.2f),(int)(getHeight()*0.025f),titleTexture.getWidth(this),titleTexture.getHeight(this),this);
-            g2D.drawImage(backTexture,(int)(getWidth()*(-0.15f)+deltapos),(int)(getHeight()*0.80f),backTexture.getWidth(this),backTexture.getHeight(this),this);       
+            g2D.drawImage(backTexture,(int)(getWidth()*(-0.2f)+deltapos),(int)(getHeight()*0.80f),backTexture.getWidth(this),backTexture.getHeight(this),this);       
 
             g2D.drawImage(AchString,(int)(Game.ResolutionWidth*0.33f),(int)(Game.ResolutionHeight*0.2f),(int)(AchString.getWidth(this)*1.5f),AchString.getHeight(this),this);       
             g2D.drawImage(AchString,(int)(Game.ResolutionWidth*0.0275f),(int)(Game.ResolutionHeight*0.2f),(int)(AchString.getWidth(this)*0.7f),(int)(AchString.getHeight(this)*0.75f),this);
@@ -245,7 +241,11 @@ public class AboutMenuGUI extends Scene
     {
         if (menuPressed == 1)
         {
-            SceneManager.SwitchScene("MainMenuGUI");
+            try{
+                SceneManager.SwitchScene("MainMenuGUI");
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
+            }
         }
     }
 }
