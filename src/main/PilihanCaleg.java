@@ -13,8 +13,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class PilihanCaleg implements Pilihan{
-    String NIKCaleg;
-    String NIKPemilih;
+    private String NIKCaleg;
+    private String NIKPemilih;
+    public PilihanCaleg(String NIKPemilih, String NIKCaleg)
+    {
+        this.NIKPemilih = NIKPemilih;
+        this.NIKCaleg = NIKCaleg;
+    }
     @Override
     public void addToDatabase()
     {
@@ -32,5 +37,14 @@ public class PilihanCaleg implements Pilihan{
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    public String getNIKPemilih()
+    {
+        return NIKPemilih;
+    }
+    public String getNIKCaleg()
+    {
+        return NIKCaleg;
     }
 }
