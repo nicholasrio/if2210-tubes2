@@ -48,7 +48,7 @@ public class XmlController {
 	/* 
 	 * Load Dragon from XML
 	 */
-	public UserDragon LoadDragon(String name) throws Exception {
+	public UserDragon LoadDragon(String name, String password) throws Exception {
 		UserDragon retval = null;
 		try {
 			// Load XML and get root Node
@@ -68,8 +68,7 @@ public class XmlController {
 				Element userDragon = (Element) save.getChildren("userDragon").get(0);
 
 				//check if name is equal
-				if (userDragon.getChildText("name").equals(name)) {
-					
+				if (userDragon.getChildText("name").equals(name) && userDragon.getChildText("password").equals(password)) {
 					// Make Dragon
 					retval = new UserDragon(
 							userDragon.getChildText("name"),
