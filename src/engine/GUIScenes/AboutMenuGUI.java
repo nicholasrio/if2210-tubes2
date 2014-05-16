@@ -113,10 +113,8 @@ public class AboutMenuGUI extends Scene
             while (Sc.hasNextLine()) {
                 Credits.add(Sc.nextLine());
             }
-        } catch (FontFormatException ex) {
+        } catch (FontFormatException | IOException ex) {
             CreditsDataFont = new Font("Arial",18,18);
-            System.err.println(ex);
-        } catch (IOException ex) {
             System.err.println(ex);
         } 
     }
@@ -138,6 +136,7 @@ public class AboutMenuGUI extends Scene
         
         backRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.755f), 
                                    (int)(Game.ResolutionWidth*0.24f),(int)(Game.ResolutionHeight*0.145f));
+       
     }
     
     @Override
@@ -203,12 +202,12 @@ public class AboutMenuGUI extends Scene
             g2D.setFont(CreditsDataFont);
             g2D.drawString("Credits: ", Game.ResolutionWidth*0.33f+5, Game.ResolutionHeight*0.2f+25);
             
-            CreditsDataFont = CreditsDataFont.deriveFont(10, 10f);
+            CreditsDataFont = CreditsDataFont.deriveFont(8, 8f);
             g2D.setFont(CreditsDataFont);
             int add = 40;
             for(String credline : Credits) {
                 g2D.drawString(credline, Game.ResolutionWidth*0.33f+5, Game.ResolutionHeight*0.2f+add);
-                add += 20;
+                add += 10;
             }
         }
     }
