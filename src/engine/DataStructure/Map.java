@@ -46,6 +46,7 @@ public class Map{
     public Map(String namaFile){
         try{
             //Open File
+            namaFile = "Map/xml/" + namaFile;
             File xmlFile = new File(namaFile);
             //SetParser
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
