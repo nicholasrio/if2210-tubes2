@@ -7,6 +7,7 @@
 package engine.GUIScenes;
 
 import engine.*;
+import engine.Exception.SceneNotFoundException;
 import static engine.Game.gameFrame;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -268,13 +269,17 @@ public class MainMenuGUI extends Scene
     {
         if (menuPressed >= 1 && menuPressed <= 5)
         {
-            switch (menuPressed)
-            {
-                case 1 : SceneManager.SwitchScene("LevelMenuGUI"); break;
-                case 2 : SceneManager.SwitchScene("AchievementMenuGUI"); break;
-                case 3 : SceneManager.SwitchScene("OptionsMenuGUI"); break;
-                case 4 : SceneManager.SwitchScene("AboutMenuGUI"); break;
-                case 5 : Game.gameRunning = false; break;
+            try{
+                switch (menuPressed)
+                {
+                    case 1 : SceneManager.SwitchScene("LevelMenuGUI"); break;
+                    case 2 : SceneManager.SwitchScene("AchievementMenuGUI"); break;
+                    case 3 : SceneManager.SwitchScene("OptionsMenuGUI"); break;
+                    case 4 : SceneManager.SwitchScene("AboutMenuGUI"); break;
+                    case 5 : Game.gameRunning = false; break;
+                }
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
             }
         }
     }

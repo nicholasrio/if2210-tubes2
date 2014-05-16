@@ -1,6 +1,7 @@
 package engine.Scenes;
 import engine.*;
 import engine.DataStructure.GameData;
+import engine.Exception.SceneNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -25,6 +26,9 @@ public class LevelMenu extends Scene
         super("LevelMenu");
     }
     
+    /**
+     * Melakukan inisialisasi Scene LevelMenu
+     */
     @Override
     public void Initialize()
     {
@@ -41,6 +45,9 @@ public class LevelMenu extends Scene
         space=((width)-(spacebetween*10)-10-4)/2;         
     }
     
+    /**
+     * Melakukan update isi Scene LevelMenu
+     */
     @Override
     public void Update()
     {
@@ -75,7 +82,11 @@ public class LevelMenu extends Scene
             if (level-1<=GameData.lastLogin.getLevelUnlocked()){
                 GameData.nowLevelPlayed = level-1;
                 System.out.println("Level Chosen : " + level);
-                SceneManager.SwitchScene("GameMenu");
+                try{
+                    SceneManager.SwitchScene("GameMenu");
+                }catch(SceneNotFoundException e){
+                    e.printStackTrace();
+                }
             }
             else{
                 System.out.println("You still can't choose this level...Level Locked!!");
@@ -83,7 +94,11 @@ public class LevelMenu extends Scene
         }
         else //input == 3
         {
-            SceneManager.SwitchScene("MainMenu");
+            try{
+                SceneManager.SwitchScene("MainMenu");
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
+            }
         }
         if (level==1){
             nama_lvl="ICE MAZE";
@@ -102,6 +117,9 @@ public class LevelMenu extends Scene
         }        
     }
     
+    /**
+     * Memprint border game LevelMenu
+     */
     public void PrintBR(){
         System.out.print("||");
         for (int i=0;i<width-4;i++) System.out.print(" ");
@@ -109,7 +127,9 @@ public class LevelMenu extends Scene
     }
     
     @Override 
-    //punya kevin
+    /**
+     * Menggambar Scene GameMenu
+     */
     public void Draw()
     {
         int k=0;

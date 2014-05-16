@@ -9,6 +9,7 @@ package engine;
 import engine.DataStructure.GameData;
 import engine.Scenes.*;
 import engine.GUIScenes.*;
+import engine.Exception.SceneNotFoundException;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -44,6 +45,9 @@ public class Game
         gameLoop();
     }
     
+    /**
+     * Menyiapkan frame untuk game Cube Mazer
+     */
     private static void prepareFrame()
     {
         gameFrame.setTitle("CubeMazer");
@@ -55,6 +59,9 @@ public class Game
         gameFrame.setVisible(true);
     }
     
+    /**
+     * Me-load semua scene yang akan digunakan di dalam game.
+     */
     private static void PrepareScenes()
     {
         SceneManager.Initialize();
@@ -63,7 +70,11 @@ public class Game
             SceneManager.AddScene(new MainMenu());
             SceneManager.AddScene(new LevelMenu());
             SceneManager.AddScene(new GameMenu());
-            SceneManager.SwitchScene("MainMenu"); 
+            try{
+                SceneManager.SwitchScene("MainMenu");
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
+            }
         }
         else if (mode == 2)
         {
@@ -73,10 +84,17 @@ public class Game
             SceneManager.AddScene(new AchievementMenuGUI());
             SceneManager.AddScene(new OptionsMenuGUI());
             SceneManager.AddScene(new AboutMenuGUI());
-            SceneManager.SwitchScene("MainMenuGUI");
+            try{
+                SceneManager.SwitchScene("MainMenuGUI");
+            }catch(SceneNotFoundException e){
+                e.printStackTrace();
+            }
         }
     }
     
+    /**
+     * Memulai game
+     */
     private static void gameLoop()
     {
         while(gameRunning) 

@@ -7,6 +7,7 @@
 package engine;
 
 import java.util.ArrayList;
+import engine.Exception.SceneNotFoundException;
 
 /**
  *
@@ -29,7 +30,12 @@ public class SceneManager
         Scenes.add(S);
     }
     
-    static public void SwitchScene(String name)
+    /**
+     * Pindah Scene dari satu scene ke scene lain.
+     * @param name Scene yang akan dijalankan
+     * @throws engine.Exception.SceneNotFoundException
+     */
+    static public void SwitchScene(String name) throws SceneNotFoundException
     {
         for (Scene Scn : Scenes)
         {
@@ -37,15 +43,23 @@ public class SceneManager
             {
                 activeScene = Scn;
                 Scn.Initialize();
+                return;
             }
         }
+        throw new SceneNotFoundException();
     }
     
+    /**
+     * Melakukan inisialisasi Scene.
+     */
     static public void Initialize()
     {
         Started = true;
     }
     
+    /**
+     * Melakukan update scene dengan scene pada ActiveScene
+     */
     static public void Update()
     {
         if (!Started) return;
@@ -53,6 +67,9 @@ public class SceneManager
             activeScene.Update();
     }
     
+    /**
+     * Menggambar scene yang ada pada ActiveScene.
+     */
     static public void Draw()
     {
         if (!Started) return;
@@ -60,6 +77,9 @@ public class SceneManager
             activeScene.Draw();
     }
     
+    /**
+     * Menghentikan game CubeMazer.
+     */
     static public void ShutDown()
     {
         Game.gameRunning = false;
