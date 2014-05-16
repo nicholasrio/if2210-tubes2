@@ -49,8 +49,6 @@ public class StoreTest {
         Store result = Store.getInstance();
         for (Consumable c : result.getFdInventory()){
             System.out.println(c.getName());}
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -60,11 +58,12 @@ public class StoreTest {
     public void testGetFdInventory() {
         System.out.println("getFdInventory");
         Store instance = Store.getInstance();
-        ArrayList<Consumable> expResult = null;
+        ArrayList<Consumable> expResult = new ArrayList<Consumable> ();
+        expResult.add(new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0));
         ArrayList<Consumable> result = instance.getFdInventory();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (Consumable c : result){
+            System.out.println(c.getName());}        
+        assertEquals(expResult.get(0).getName(),result.get(0).getName());
     }
 
     /**
@@ -74,11 +73,14 @@ public class StoreTest {
 
     public void testSetFdInventory() {
         System.out.println("setFdInventory");
-        ArrayList<Consumable> val = null;
-        Store instance = null;
+        ArrayList<Consumable> val = new ArrayList<Consumable> ();
+        val.add(new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0));
+        System.out.println(val.get(0).getName());
+        Store instance = Store.getInstance();
         instance.setFdInventory(val);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<Consumable> tes = instance.getFdInventory();
+        System.out.println(val.get(0).getName()+tes.get(0).getName());
+        assertEquals(val.get(0).getName(),tes.get(0).getName());
     }
 
     /**
@@ -88,12 +90,10 @@ public class StoreTest {
     public void testBuy() {
         System.out.println("buy");
         int arrLoc = 0;
-        Store instance = null;
-        Consumable expResult = null;
+        Store instance = Store.getInstance();
+        Consumable expResult = new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0);
         Consumable result = instance.buy(arrLoc);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(result.getName(),expResult.getName());
     }
     
 }

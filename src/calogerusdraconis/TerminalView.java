@@ -53,8 +53,11 @@ public class TerminalView implements View {
 	 * Print daftar consumable di store ke layar
 	 */
     public void UpdateScreen (Store str) {
+		int i = 0;
+		if (str.getFdInventory() == null) return;
 		for (Consumable c : str.getFdInventory()) {
-			System.out.println(c);
+			++i;
+			System.out.println(i + " " + c);
 			System.out.println();
 		}
     }
@@ -64,7 +67,7 @@ public class TerminalView implements View {
 	 * 
 	 */
     public void UpdateScreen (UserDragon drg, Dragon enemy) {
-		
+		System.out.println("Dragon anda sedang melawan musuh");
     }
 
 	@Override
@@ -97,6 +100,7 @@ public class TerminalView implements View {
 	 */
 	public void seeFoodDirectory(UserDragon drg) {
 		ArrayList<Consumable> ac = drg.getFdInventory();
+		if (ac == null) return;
 		for (Consumable c : ac) {
 			System.out.println(c.getName());
 		}

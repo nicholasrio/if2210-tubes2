@@ -49,8 +49,6 @@ public class ConsumableTest {
         String expResult = "aa";
         String result = instance.getImg();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -62,8 +60,6 @@ public class ConsumableTest {
         String val = "";
         Consumable instance =new Consumable("aa","aa",0,0,0,0,0,0,0,0) ;
         instance.setImg(val);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -76,8 +72,6 @@ public class ConsumableTest {
         String expResult = "aa";
         String result = instance.getName();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -89,8 +83,6 @@ public class ConsumableTest {
         String val = "";
         Consumable instance = new Consumable("aa","aa",0,0,0,0,0,0,0,0);
         instance.setName(val);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -103,8 +95,6 @@ public class ConsumableTest {
         float expResult = 0.0F;
         float result = instance.getHealthValue();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -117,8 +107,6 @@ public class ConsumableTest {
         float expResult = 0.0F;
         float result = instance.getThirstValue();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -131,8 +119,6 @@ public class ConsumableTest {
         float expResult = 0.0F;
         float result = instance.getHungerValue();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -145,8 +131,6 @@ public class ConsumableTest {
         float expResult = 0.0F;
         float result = instance.getCost();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -159,8 +143,6 @@ public class ConsumableTest {
         float expResult = 0.0F;
         float result = instance.getStaminaValue();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -173,8 +155,6 @@ public class ConsumableTest {
         float expResult = 0.0F;
         float result = instance.getMaxHealthValue();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -187,8 +167,6 @@ public class ConsumableTest {
         float expResult = 0.0F;
         float result = instance.getMaxStaminaValue();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -201,8 +179,6 @@ public class ConsumableTest {
         float expResult = 0.0F;
         float result = instance.getHappinessValue();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

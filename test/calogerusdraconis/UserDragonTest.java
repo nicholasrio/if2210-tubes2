@@ -237,20 +237,6 @@ public class UserDragonTest {
 	}
 
 	/**
-	 * Test of fight method, of class UserDragon.
-	 */
-	@Test
-	public void testFight() {
-		System.out.println("fight");
-		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
-		Event expResult = null;
-		Event result = instance.fight();
-		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
-	}
-
-	/**
 	 * Test of train method, of class UserDragon.
 	 */
 	@Test
@@ -269,6 +255,47 @@ public class UserDragonTest {
 		assertEquals(expMaxHealth, instance.getMaxHealth(), 0.0);
 		assertEquals(expMaxStamina, instance.getMaxStamina(), 0.0);
 		//assertEquals(expResult, result);
+		// TODO review the generated test code and remove the default call to fail.
+	}
+
+	/**
+	 * Test of generateEnemy method, of class UserDragon.
+	 */
+	@Test
+	public void testGenerateEnemy() {
+		System.out.println("generateEnemy");
+		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,1,795,"pass",50,66);
+		Dragon expResult = null;
+		Dragon result = instance.generateEnemy();
+		assertEquals(expResult, result);
+		// TODO review the generated test code and remove the default call to fail.
+		fail("The test case is a prototype.");
+	}
+
+	/**
+	 * Test of fight method, of class UserDragon.
+	 */
+	@Test
+	public void testFight() {
+		System.out.println("fight");
+		Dragon withWho = new Dragon("enemy",81,83,25,63,27,3,778);
+		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,1,795,"pass",50,66);
+		float sum1 = (float)0.2 * instance.getHealth() + (float)0.2 * instance.getStamina() + (float)0.3 * instance.getExperience() + 5 * instance.getLevel() - (float)0.1 * instance.getThirst() - (float)0.1 * instance.getBladder() - (float)0.1 * instance.getHunger();
+		float sum2 = (float)0.2 * withWho.getHealth() + (float)0.2 * withWho.getStamina() + (float)0.3 * withWho.getExperience() + 5 * withWho.getLevel() - (float)0.1 * withWho.getThirst() - (float)0.1 * withWho.getBladder() - (float)0.1 * withWho.getHunger();
+		float expExperience, expStamina;
+		if (sum1 > sum2){ // we win
+            expExperience = instance.getExperience() + 200 + 30 * instance.getLevel();
+            //tambahMoney((float)(100 + (Math.random() * (500 - 100))));
+        } else if (sum1 == sum2){ // draw
+            expExperience = instance.getExperience() + 25 * instance.getLevel();
+        } else { // we lose
+			expExperience = instance.getExperience() + 20 * instance.getLevel();
+		}
+		expStamina = instance.getStamina() - (20 * instance.getLevel());
+		Event expResult = null;
+		Event result = instance.fight(withWho);
+		assertEquals(expExperience, instance.getExperience(), 0.0);
+		assertEquals(expStamina, instance.getStamina(), 0.0);
 		// TODO review the generated test code and remove the default call to fail.
 	}
 
