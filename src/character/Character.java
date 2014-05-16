@@ -1,20 +1,15 @@
 package character;
 
-<<<<<<< HEAD
-public class Character implements Cloneable{
-    private int id;
-    private String name;
-    
-=======
 /**
  * the base class for character
  * all other characters should extends from here.
  */
 public class Character implements Cloneable,Recoverable{
+    private int id;
+    private String name;
     /**
      * the character strength
      */
->>>>>>> 685352ef1abb80479d875cc9b62f4c6aa385a283
     protected int _str;
     /**
      * the character agility
@@ -42,15 +37,11 @@ public class Character implements Cloneable,Recoverable{
      */
     protected int _maxMana;
 
-<<<<<<< HEAD
     private String imagePath;
-    
-=======
     /**
      * getter for strength
      * @return int
      */
->>>>>>> 685352ef1abb80479d875cc9b62f4c6aa385a283
     public int getStr() { return _str; }
     
     /**
@@ -156,7 +147,28 @@ public class Character implements Cloneable,Recoverable{
     public Character clone() throws CloneNotSupportedException{
         return (Character) super.clone();
     }
-<<<<<<< HEAD
+    
+    //implementasi interface Recoverable
+    @Override
+    public void addCurrentHealth(int x){
+        this._currentHealth += x;
+        if (this._currentHealth > this._maxHealth) {
+            this._currentHealth = this._maxHealth;
+        }
+        if (this._currentHealth < 0){
+            this._currentHealth = 0;
+        }
+    }
+    @Override
+    public void addCurrentMana(int x){
+        this._currentMana += x;
+        if (this._currentMana > this._maxMana) {
+            this._currentMana = this._maxMana;
+        }
+        if (this._currentMana < 0){
+            this._currentMana = 0;
+        }
+    }
 
     /**
      * @return the id
@@ -198,28 +210,5 @@ public class Character implements Cloneable,Recoverable{
      */
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
-=======
-    
-    //implementasi interface Recoverable
-    @Override
-    public void addCurrentHealth(int x){
-        this._currentHealth += x;
-        if (this._currentHealth > this._maxHealth) {
-            this._currentHealth = this._maxHealth;
-        }
-        if (this._currentHealth < 0){
-            this._currentHealth = 0;
-        }
-    }
-    @Override
-    public void addCurrentMana(int x){
-        this._currentMana += x;
-        if (this._currentMana > this._maxMana) {
-            this._currentMana = this._maxMana;
-        }
-        if (this._currentMana < 0){
-            this._currentMana = 0;
-        }
->>>>>>> 685352ef1abb80479d875cc9b62f4c6aa385a283
     }
 }
