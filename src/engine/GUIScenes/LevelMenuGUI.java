@@ -35,7 +35,8 @@ public class LevelMenuGUI extends Scene
     {
         // load Image here
         // using ImageLoader.getImage
-        bgTexture = ImageLoader.getImage("mainmenu_bg");
+        bgTexture = ImageLoader.getImage("egypt");
+        
     }
     
     @Override
@@ -57,7 +58,7 @@ public class LevelMenuGUI extends Scene
     {
         if (Game.mode == 2)
         {
-            JPanel panel=new JPanel();
+            /*JPanel panel=new JPanel();
             JLabel nama_klmpk;
             nama_klmpk = new JLabel("Cube Mazer");
             JLabel judul=new JLabel("Level Menu");
@@ -67,7 +68,7 @@ public class LevelMenuGUI extends Scene
             panel.add(judul);
             panel.add(nama_level);
             panel.add(level);
-            Game.gameFrame.add(panel);
+            Game.gameFrame.add(panel);*/
             Game.gameFrame.revalidate();
             Game.gameFrame.repaint();
         }
@@ -79,7 +80,7 @@ public class LevelMenuGUI extends Scene
         if (Game.mode == 2)
         {
             Graphics2D g2D = (Graphics2D) g;
-            //g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
+            g2D.drawImage(bgTexture, 0, 0, getWidth(), getHeight(), this);
             // paint Image here
             // using g2D.drawImage
         }

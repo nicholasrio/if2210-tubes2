@@ -33,7 +33,6 @@ public class MainMenu extends Scene
         width = 168; // 80 full width of standard cmd screen and half full screen cmd size, 168 full screen
         status = 0;
         GameData.loadPlayer("player.xml");
-        GameData.lastLogin = GameData.dataPlayer.get(0); 
     }
     
     /**
@@ -46,10 +45,6 @@ public class MainMenu extends Scene
         Scanner Sc = new Scanner(System.in);
         if(status == 0) {
             status = Sc.nextInt();
-        } 
-        else if(status == 1) {
-            status = 0;
-            SceneManager.SwitchScene("LevelMenu");
         }
         else if(status == 2) {
             status = 0;
@@ -74,6 +69,11 @@ public class MainMenu extends Scene
                 }
             }
         }
+        if(status == 1)
+        {
+            status = 0;
+            SceneManager.SwitchScene("LevelMenu");
+        }
     }
     
     /**
@@ -84,7 +84,10 @@ public class MainMenu extends Scene
     {
        System.out.flush();
        for (int i = 0; i < 100; i++) System.out.println();
-       if (status == 5) System.exit(0);
+       if (status == 5) 
+       {
+           Game.gameRunning = false;
+       }
        else if (status == 1) SceneManager.SwitchScene("LevelMenu");
        else if (status == 3) SceneManager.SwitchScene("AchievementMenu");
        else {

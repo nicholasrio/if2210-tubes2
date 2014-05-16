@@ -6,6 +6,7 @@
 
 package engine;
 
+import engine.DataStructure.GameData;
 import engine.Scenes.*;
 import engine.GUIScenes.*;
 
@@ -29,7 +30,7 @@ public class Game
     private Game()
     {
         // Choice Mode
-        mode = 2;
+        mode = 1;
         
         if (mode == 2)
         {
@@ -61,7 +62,7 @@ public class Game
             SceneManager.AddScene(new LevelMenu());
             SceneManager.AddScene(new GameMenu());
             SceneManager.AddScene(new AchievementMenu());
-            SceneManager.SwitchScene("LevelMenu"); 
+            SceneManager.SwitchScene("MainMenu"); 
         }
         else if (mode == 2)
         {
@@ -93,6 +94,7 @@ public class Game
                 catch(Exception e){} 
             } 
         }   
+        GameData.savePlayer("player.xml");
     }
     
     public static void main(String []args)
