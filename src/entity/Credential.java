@@ -8,7 +8,9 @@ public class Credential implements Serializable{
 	
 	private String id;
 	private String password;
-	
+	private String filePath;
+        private boolean LoginOnly;
+        
 	public Credential(String id, String password) {
 		this.id = id;
 		this.password = password;

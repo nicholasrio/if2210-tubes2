@@ -16,21 +16,24 @@ import Entity.TransObject;
 public class Client {
 
 	
-	String hostName = "127.0.0.1";
-	int portNumber = 8080;
+	String hostName = "localhost";
+	int portNumber = 5432;
 	Socket socket;
 	String input;
 	BufferedReader reader;
 	BufferedReader sockReader;
-	
+	private boolean LoggedIn;
+                
 	public static void main(String[] args){
 		Client client = new Client();
 	}
 	
 	public Client() {
-		reader = new BufferedReader(new InputStreamReader(System.in));
+            LoggedIn    =    false;
 		try {
 			do{
+                            		reader = new BufferedReader(new InputStreamReader(System.in));
+
 				System.out.println("1. login");
 				System.out.println("2. print");
 				System.out.println("3. exit");
@@ -41,33 +44,36 @@ public class Client {
 				else if(input.equals("print")){
 					//sendPrintInfo();
 				}
+                                
 			}while(!input.equals("exit"));
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
 	public void login(){
 		try {
-			String NIM;
-			String password;
-			System.out.println("Enter NIM: ");
-			NIM = reader.readLine();
-			System.out.println("Enter password: ");
-			password = reader.readLine();
-	    	socket = new Socket(hostName, portNumber);
-	    	ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-	    	sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	    	Credential obj = new Credential(NIM, password);
-	    	//send credential
-	    	oos.writeObject(obj);
-	    	//get response
-	    	System.out.println(sockReader.readLine());
-	    	while(reader.readLine() != null){
-	    		oos.writeObject(obj);
-	    		System.out.println(sockReader.readLine());
-	    	}
-	    	oos.close();
+                    String NIM;
+                    String password;
+                    System.out.println("Enter NIM: ");
+                    NIM = reader.readLine();
+                    System.out.println("Enter password: ");
+                    password = reader.readLine();
+                    socket = new Socket(hostName, portNumber);
+                    ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+                    sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    Credential obj = new Credential(NIM, password);
+                    //send credential
+                    oos.writeObject(obj);
+                    //oos.writeBytes("\n");
+                    //get response
+                    System.out.println(sockReader.readLine());
+                    while(!reader.readLine().contains(null)){
+                            oos.writeObject(obj);
+                            System.out.println(sockReader.readLine());
+                            //socket.shutdownInput();
+                    }
+                    oos.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{

@@ -24,14 +24,14 @@ public class Server {
 	}
 	
 	public Server() {
-		int portNumber = 8080;
+		int portNumber = 5432;
 		try { 
 		    ServerSocket serverSocket = new ServerSocket(portNumber);
-    	    while(true){
-    	    	Socket clientSocket = serverSocket.accept();
-    	    	ServerThread ss = ServerThreadFactory.get(clientSocket);
-    	    	ss.start();
-    	    }
+                    while(true){
+                        Socket clientSocket = serverSocket.accept();
+                        ServerThread ss = ServerThreadFactory.get(clientSocket);
+                        ss.start();
+                    }
 		}
 		catch(Exception e){
 			e.printStackTrace();

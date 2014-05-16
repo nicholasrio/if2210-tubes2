@@ -6,8 +6,5 @@ public class Main {
 
 		//File A = FF.getFile("PDF");
 		//A.print();
-        gui.Login login = new gui.Login();
-        login.show();
-       //     System.out.println("dsdasdasd");
 	}
 }
