@@ -265,12 +265,14 @@ public class LevelMenuGUI extends Scene
     
     void mouseUpdateReleased(MouseEvent event) throws SceneNotFoundException
     {        
+        /*
         if (menuPressed ==1){
             SceneManager.SwitchScene("GameMenuGUI");     
         }
         else if (menuPressed==2){
-            SceneManager.SwitchScene("MainMenuGUI");            
-        }        
+            SceneManager.SwitchScene("MainMenuGUI");                    
+        } */       
+
     }
 }
 
