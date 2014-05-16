@@ -31,7 +31,7 @@ public class Game
     private Game()
     {
         // Choice Mode
-        mode = 1;
+        mode = 2;
         
         GameData.loadMap();
         GameData.loadPlayer("player.xml");
@@ -51,7 +51,7 @@ public class Game
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gameFrame.pack();
         gameFrame.setSize(new Dimension(ResolutionWidth,ResolutionHeight));
-            gameFrame.setLocationRelativeTo(null);
+        gameFrame.setLocationRelativeTo(null);
         gameFrame.setResizable(true);
         gameFrame.setVisible(true);
     }
