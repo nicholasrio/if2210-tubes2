@@ -34,6 +34,8 @@ public class GameData {
     public static ArrayList<Map> dataMap = new ArrayList<>();
     public static Player lastLogin = new Player("Mikaza"); //Default nya Mikaza, digunakan untuk testing load map.
     public static int nowLevelPlayed; 
+    public static int height = 57; //57 height of half full screen, 25 is standard cmd size full screen
+    public static int width = 168; // 80 full width of standard cmd screen and half full screen cmd size, 168 full screen
     
     /**
      * Reset dataPlayer dan dataMap
@@ -119,6 +121,8 @@ public class GameData {
     {
         try 
         {
+            filename = "Database Player/" + filename;
+            System.out.println(filename);
             int i;
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -206,7 +210,7 @@ public class GameData {
      */
     public static void loadPlayer (String filename)
     {
-        try 
+        try
         {
             dataPlayer.clear();
             int i;
@@ -214,6 +218,7 @@ public class GameData {
             /* Inisialisasi */
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            filename = "Database Player/" + filename;
             Document doc = docBuilder.parse(new File(filename));
             
             doc.getDocumentElement().normalize();

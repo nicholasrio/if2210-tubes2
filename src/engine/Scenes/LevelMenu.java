@@ -13,6 +13,7 @@ public class LevelMenu extends Scene
     private String nama_klmpk;
     private String judul;
     private String nama_lvl;
+    private String lvl_LorUL;
     private int level;
     private int height;
     private int width;
@@ -28,7 +29,8 @@ public class LevelMenu extends Scene
     public void Initialize()
     {
         nama_klmpk="CUBE MAZER";
-        judul="LEVEL MENU";        
+        judul="LEVEL MENU";  
+        lvl_LorUL="Level Unlocked";
         level=1;
         nama_lvl="ICE MAZE";
         height=55;
@@ -67,10 +69,15 @@ public class LevelMenu extends Scene
         }
         else // input == 2
         {
-            GameData.nowLevelPlayed = level;
-            System.out.println("Level Chosen : " + level);
-            Game.gameRunning = false;
-            SceneManager.SwitchScene("GameMenu");
+            if (level-1<=GameData.lastLogin.getLevelUnlocked()){
+                GameData.nowLevelPlayed = level;
+                System.out.println("Level Chosen : " + level);
+                Game.gameRunning = false;
+                //SceneManager.SwitchScene("GameMenu");
+            }
+            else{
+                System.out.println("You still can't choose this level...Level Locked!!");
+            }
         }
         if (level==1){
             nama_lvl="ICE MAZE";
@@ -212,11 +219,41 @@ public class LevelMenu extends Scene
         PrintBR();
         k+=2;
         
+        //Print level unlocked or locked
+        spacebetween=width/25;
+        if (level-1<=GameData.lastLogin.getLevelUnlocked()){            
+            lvl_LorUL="Level Unlocked";            
+        }
+        else{
+            lvl_LorUL="Level Locked";
+        }
+        space=((width)-(spacebetween*lvl_LorUL.length())-lvl_LorUL.length()-4)/2;
+        System.out.print("||");        
+        for (int i=0;i<space;i++) System.out.print(" ");
+        for (int j=0;j<lvl_LorUL.length();j++){
+            System.out.print(lvl_LorUL.charAt(j));
+            for (int i=0;i<spacebetween;i++) System.out.print(" ");
+        }
+        if ((lvl_LorUL.length()%2)!=0){
+            for (int i=0;i<space+1;i++) System.out.print(" ");            
+        }
+        else{
+            for (int i=0;i<space;i++) System.out.print(" ");            
+        }
+        System.out.print("||");
+        System.out.println(" ");
+        k+=1;        
+        
+        //Print blank row
+        PrintBR();
+        PrintBR();
+        k+=2;
+        
         //Print tanda kiri dan kanan
         System.out.print("||  <");
         for (int i=0;i<width-10;i++) System.out.print(" ");
         System.out.println(">  ||");
-        k+=1;
+        k+=1;                
         
         while (k<height){
             System.out.print("||");
@@ -226,6 +263,6 @@ public class LevelMenu extends Scene
         }
         for (int i=0;i<width;i++) System.out.print("=");
         System.out.println("");
+                
     }
 }
-

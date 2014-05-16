@@ -32,6 +32,8 @@ public class Game
         // Choice Mode
         mode = 2;
         
+        GameData.loadMap();
+        GameData.loadPlayer("player.xml");
         if (mode == 2)
         {
             ImageLoader.loadAllImages();
@@ -61,7 +63,6 @@ public class Game
             SceneManager.AddScene(new MainMenu());
             SceneManager.AddScene(new LevelMenu());
             SceneManager.AddScene(new GameMenu());
-            SceneManager.AddScene(new AchievementMenu());
             SceneManager.SwitchScene("MainMenu"); 
         }
         else if (mode == 2)
