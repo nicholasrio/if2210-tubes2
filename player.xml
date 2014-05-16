@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <DatabasePlayer>
      <lastLogin>
-          <nama>Timothy Pratama</nama>
-          <score>12345</score>
-          <levelUnlocked>100</levelUnlocked>
-          <achievementUnlocked>20</achievementUnlocked>
+          <nama>Kevin Tjong</nama>
+          <score>1</score>
+          <levelUnlocked>0</levelUnlocked>
+          <achievementUnlocked>0</achievementUnlocked>
      </lastLogin>
      <player id="0">
           <nama>dummy</nama>
@@ -14,7 +14,7 @@
      </player>
      <player id="1">
           <nama>Timothy Pratama</nama>
-          <score>12345</score>
+          <score>31</score>
           <levelUnlocked>100</levelUnlocked>
           <achievementUnlocked>20</achievementUnlocked>
      </player>
@@ -26,7 +26,7 @@
      </player>
      <player id="3">
           <nama>Winson Waisakurnia</nama>
-          <score>10</score>
+          <score>555</score>
           <levelUnlocked>2</levelUnlocked>
           <achievementUnlocked>30</achievementUnlocked>
      </player>
@@ -44,7 +44,7 @@
      </player>
      <player id="6">
           <nama>Kevin Tjong</nama>
-          <score>10</score>
+          <score>555</score>
           <levelUnlocked>10</levelUnlocked>
           <achievementUnlocked>10</achievementUnlocked>
      </player>

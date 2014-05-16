@@ -94,7 +94,6 @@ public class Game
                 catch(Exception e){} 
             } 
         }   
-        GameData.lastLogin.setScore(12345);
         GameData.savePlayer("player.xml");
     }
     
