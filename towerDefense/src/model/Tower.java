@@ -152,6 +152,10 @@ public class Tower {
     public int getCoolDownCount() {
         return coolDownCount;
     }
+    
+    public int getCoolDown(){
+        return coolDown;
+    }
 
     /**
      * Shoot the enemy at (pos_x_enemy,pos_y_enemy) if the position is in range
