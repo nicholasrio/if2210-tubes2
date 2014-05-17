@@ -104,7 +104,6 @@ public class FormCaleg extends javax.swing.JFrame {
         NoDapil = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         History = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -182,7 +181,7 @@ public class FormCaleg extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TabelCaleg);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 500, 370));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 500, 280));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 153));
         jLabel5.setText("No. Dapil   :");
@@ -205,29 +204,14 @@ public class FormCaleg extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 390, 85));
 
-        jPanel1.setBackground(new java.awt.Color(169, 32, 31));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 221, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 191, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(882, 11, -1, -1));
-
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\linda.sekawati\\Pictures\\Design\\shutterstock_47142253.jpg")); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 160));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 140));
 
         jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\linda.sekawati\\Pictures\\Design\\shutterstock_47142253.jpg")); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 590, 460));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 590, 460));
 
         jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\linda.sekawati\\Pictures\\Design\\shutterstock_47142253.jpg")); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 590, 160));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 590, 160));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -364,7 +348,6 @@ public class FormCaleg extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

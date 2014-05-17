@@ -72,50 +72,21 @@ public class FormDapil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TabelDapil = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         KembaliFormAdmin = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         NoDapil = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         KotKab = new javax.swing.JTextArea();
         Tambah = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TabelDapil = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(22, 3, 29));
-
-        jPanel1.setBackground(new java.awt.Color(159, 30, 29));
-
-        KembaliFormAdmin.setText("Kembali");
-        KembaliFormAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KembaliFormAdminActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setText("No Dapil              :");
-
-        NoDapil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoDapilActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Kota/Kabupaten :");
-
-        KotKab.setColumns(20);
-        KotKab.setRows(5);
-        jScrollPane2.setViewportView(KotKab);
-
-        Tambah.setText("Tambah");
-        Tambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TambahActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Daftar");
 
@@ -152,51 +123,85 @@ public class FormDapil extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TabelDapil);
 
+        jPanel1.setBackground(new java.awt.Color(159, 30, 29));
+
+        KembaliFormAdmin.setText("Kembali");
+        KembaliFormAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KembaliFormAdminActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Input Dapil");
+
+        jLabel2.setText("No Dapil              :");
+
+        NoDapil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoDapilActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Kota/Kabupaten :");
+
+        KotKab.setColumns(20);
+        KotKab.setRows(5);
+        jScrollPane2.setViewportView(KotKab);
+
+        Tambah.setText("Tambah");
+        Tambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TambahActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(KembaliFormAdmin)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(Tambah)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(NoDapil, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel4)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(23, 23, 23)))
-                .addGap(0, 50, Short.MAX_VALUE))
+                        .addComponent(jLabel2)
+                        .addGap(46, 46, 46)
+                        .addComponent(NoDapil, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 201, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Tambah)
+                .addGap(45, 45, 45))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(KembaliFormAdmin)
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(KembaliFormAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(KembaliFormAdmin))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(NoDapil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(Tambah)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                        .addComponent(Tambah))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,31 +210,44 @@ public class FormDapil extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 356, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(378, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 80, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NoDapilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoDapilActionPerformed
+    private void TabelDapilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelDapilMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_NoDapilActionPerformed
+        int i = TabelDapil.getSelectedRow();
+        if(i == -1){
+            return;
+        }
 
-    private void KembaliFormAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembaliFormAdminActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        FormAdmin FA = new FormAdmin();
-        FA.setVisible(true);
-    }//GEN-LAST:event_KembaliFormAdminActionPerformed
+        String nodapil = (String) model.getValueAt(i, 0);
+        NoDapil.setText(nodapil);
+
+        String kotkab = (String) model.getValueAt(i, 1);
+        KotKab.setText(kotkab);
+    }//GEN-LAST:event_TabelDapilMouseClicked
 
     private void TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahActionPerformed
-         // TODO add your handling code here:
+        // TODO add your handling code here:
         /*String nodapil = NoDapil.getText();
         String kotkab = KotKab.getText();
         try
@@ -237,10 +255,10 @@ public class FormDapil extends javax.swing.JFrame {
             Connection c = DataDapil.getKoneksi();
             String sql = "INSERT INTO YukCoblos VALUES (?, ?)";
             PreparedStatement p = c.prepareStatement(sql);
-            
+
             p.setString(1, nodapil);
             p.setString(2, kotkab);
-            
+
             p.executeUpdate();
             p.close();
         }
@@ -254,19 +272,16 @@ public class FormDapil extends javax.swing.JFrame {
         }*/
     }//GEN-LAST:event_TambahActionPerformed
 
-    private void TabelDapilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelDapilMouseClicked
+    private void NoDapilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoDapilActionPerformed
         // TODO add your handling code here:
-        int i = TabelDapil.getSelectedRow();
-        if(i == -1){
-            return;
-        }
-        
-        String nodapil = (String) model.getValueAt(i, 0);
-        NoDapil.setText(nodapil);
-        
-        String kotkab = (String) model.getValueAt(i, 1);
-        KotKab.setText(kotkab);
-    }//GEN-LAST:event_TabelDapilMouseClicked
+    }//GEN-LAST:event_NoDapilActionPerformed
+
+    private void KembaliFormAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembaliFormAdminActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        FormAdmin FA = new FormAdmin();
+        FA.setVisible(true);
+    }//GEN-LAST:event_KembaliFormAdminActionPerformed
     
     /**
      * @param args the command line arguments
@@ -309,6 +324,7 @@ public class FormDapil extends javax.swing.JFrame {
     private javax.swing.JTextField NoDapil;
     private javax.swing.JTable TabelDapil;
     private javax.swing.JButton Tambah;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
