@@ -55,6 +55,7 @@ public class FormAdmin extends javax.swing.JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        TombolDapil.setBackground(java.awt.SystemColor.inactiveCaptionText);
         TombolDapil.setFont(new java.awt.Font("Belwe Bd BT", 0, 18)); // NOI18N
         TombolDapil.setForeground(new java.awt.Color(255, 153, 102));
         TombolDapil.setText("Daerah Pemilihan");

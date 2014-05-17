@@ -118,14 +118,19 @@ public class FormCaleg extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 153));
-        jLabel2.setText("NIK           :");
+        jLabel2.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel2.setText("Nama      :");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 153));
-        jLabel3.setText("Partai       :");
+        jLabel3.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel3.setText("Partai     :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
+        KembaliFormAdmin.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        KembaliFormAdmin.setFont(new java.awt.Font("Belwe Bd BT", 0, 12)); // NOI18N
+        KembaliFormAdmin.setForeground(new java.awt.Color(255, 153, 102));
         KembaliFormAdmin.setText("Kembali");
         KembaliFormAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +139,7 @@ public class FormCaleg extends javax.swing.JFrame {
         });
         getContentPane().add(KembaliFormAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
 
+        NIK.setBackground(new java.awt.Color(255, 255, 204));
         NIK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NIKActionPerformed(evt);
@@ -141,6 +147,7 @@ public class FormCaleg extends javax.swing.JFrame {
         });
         getContentPane().add(NIK, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 152, -1));
 
+        Nama.setBackground(new java.awt.Color(255, 255, 204));
         Nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NamaActionPerformed(evt);
@@ -148,10 +155,12 @@ public class FormCaleg extends javax.swing.JFrame {
         });
         getContentPane().add(Nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 152, -1));
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 153));
-        jLabel7.setText("NIK           :");
+        jLabel7.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel7.setText("NIK         :");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
 
+        Partai.setBackground(new java.awt.Color(255, 255, 204));
         Partai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PartaiActionPerformed(evt);
@@ -159,6 +168,9 @@ public class FormCaleg extends javax.swing.JFrame {
         });
         getContentPane().add(Partai, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 153, -1));
 
+        Tambah.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        Tambah.setFont(new java.awt.Font("Belwe Bd BT", 0, 12)); // NOI18N
+        Tambah.setForeground(new java.awt.Color(255, 153, 102));
         Tambah.setText("Tambah");
         Tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,9 +179,12 @@ public class FormCaleg extends javax.swing.JFrame {
         });
         getContentPane().add(Tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, -1, -1));
 
-        jLabel4.setText("Daftar");
+        jLabel4.setFont(new java.awt.Font("Belwe Bd BT", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel4.setText("Daftar Calon Legislatif");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
 
+        TabelCaleg.setBackground(new java.awt.Color(255, 255, 204));
         TabelCaleg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -197,17 +212,26 @@ public class FormCaleg extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(TabelCaleg);
+        if (TabelCaleg.getColumnModel().getColumnCount() > 0) {
+            TabelCaleg.getColumnModel().getColumn(0).setResizable(false);
+            TabelCaleg.getColumnModel().getColumn(1).setResizable(false);
+            TabelCaleg.getColumnModel().getColumn(2).setResizable(false);
+            TabelCaleg.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 470, 300));
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 153));
-        jLabel5.setText("No. Dapil   :");
+        jLabel5.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel5.setText("No.Dapil :");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 153));
-        jLabel6.setText("History     : ");
+        jLabel6.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 204));
+        jLabel6.setText("History   : ");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
 
+        NoDapil.setBackground(new java.awt.Color(255, 255, 204));
         NoDapil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NoDapilActionPerformed(evt);
@@ -215,6 +239,7 @@ public class FormCaleg extends javax.swing.JFrame {
         });
         getContentPane().add(NoDapil, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 46, -1));
 
+        History.setBackground(new java.awt.Color(255, 255, 204));
         History.setColumns(20);
         History.setRows(5);
         jScrollPane2.setViewportView(History);
