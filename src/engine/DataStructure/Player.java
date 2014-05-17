@@ -263,7 +263,7 @@ public class Player
                 if (Game.mode == 2)
                 {
                     GameMenuGUI.hitHole = true;
-                    GameMenuGUI.waitingTime = 100;
+                    GameMenuGUI.waitingTime = 75;
                 }
                 position.setLocation(position.getLevel()-1, position.getRow(), position.getCol());
             }
