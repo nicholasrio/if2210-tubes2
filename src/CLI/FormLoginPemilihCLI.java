@@ -7,6 +7,7 @@
 package CLI;
 
 import java.util.Scanner;
+import main.Pemilih;
 
 /**
  *
@@ -27,23 +28,22 @@ public class FormLoginPemilihCLI {
         System.out.println("\n");
         System.out.println("Selamat datang di Software Pemilu "+t+"\n");
         System.out.println("Silakan login terlebih dahulu\n");
-        System.out.println("Username > ");
+        System.out.println("NIK > ");
         Scanner input = new Scanner(System.in);
-        String username = new String();
-        username = input.next();
+        String NIK = new String();
+        NIK = input.next();
         System.out.println("\nPassword > ");
         String password = new String();
         password = input.next();
-    }
-    public boolean isTerdaftar(String username, String password){
-        boolean stop = false;
-        for (int i = 0; i < 10; i++){
-            if("entah".equals(username)){
-                if("entah".equals(password)){
-                    stop = true;
-                }
-            }
+        if(isTerdaftar(NIK,password))
+            System.out.println("Anda berhasil login!");
+        else{
+            System.out.println("NIK ataupun password salah. Ulangi lagi!");
         }
-            return stop;
-    } 
+    }
+    public boolean isTerdaftar(String NIK, String password){
+        boolean valid = false;
+        Pemilih pemilih = new Pemilih(NIK,password);
+        return pemilih.ValidateInput();
+    }
 }

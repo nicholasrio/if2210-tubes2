@@ -7,6 +7,7 @@
 package CLI;
 
 import java.util.Scanner;
+import main.DaftarAdmin;
 
 /**
  *
@@ -14,8 +15,10 @@ import java.util.Scanner;
  */
 public class FormAdminCLI {
     private final Scanner in;
+    private DaftarAdmin daftarAdmin;
     public FormAdminCLI(){
         in = new Scanner(System.in);
+        daftarAdmin = new DaftarAdmin();
     }
     public void start(){
         System.out.println("=========================");

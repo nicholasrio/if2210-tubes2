@@ -18,7 +18,10 @@ import javax.swing.JOptionPane;
 public class Pemilih {
     private String NIK;
     private String Password;
-    
+    public Pemilih(String _NIK, String _pass){
+        NIK = _NIK;
+        Password = _pass;
+    }
     /**
      * Mengecek apakah NIK dan Password Penduduk valid, termasuk apakah sudah mencoblos atau belum.
      * @return Return true jika NIK dan Password valid, serta belum mencoblos.
