@@ -18,7 +18,9 @@ public class NameNotExistException extends Exception {
 
     private static final String message = "username doesn't exist";
     
-    /** Default constructor */
+    /** 
+     * Default constructor 
+     */
     public NameNotExistException() {
         super(message);
     }

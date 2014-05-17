@@ -1,3 +1,14 @@
+/**
+ *
+ * @author 
+ * Darwin Prasetio (13512015)
+ * Chrestella Stephanie (13512005)
+ * Jan Wira Gotama Putra (13512015)
+ * Eric (13512021)
+ * Willy(13512070)
+ * Melvin Fonda (13512085)
+ */
+
 package gui;
 
 import controller.GameController;
@@ -23,7 +34,6 @@ import model.Tower;
 
 /**
  * MapGUI is for the map
- * @author Opel Howard
  */
 public class MapGUI {
 
@@ -222,15 +232,18 @@ public class MapGUI {
 }
 
 class ImageViewer extends Canvas implements MouseListener {
-
-    private ArrayList<BufferedImage> image;
-    private String path;
-    private MapGUI reference;
+    
     public static final int SIZE = 47;
     public static final int ROW = 15;
     public static final int COL = 20;
+    
+    private ArrayList<BufferedImage> image;
+    private String path;
+    private MapGUI reference;
     private BufferedImage[] sprites;
-
+    /** 
+     * Image Viewer 
+     */
     public ImageViewer(MapGUI alpha) throws IOException {
         addMouseListener(this);
         reference = alpha;
@@ -256,6 +269,9 @@ class ImageViewer extends Canvas implements MouseListener {
         }
     }
 
+    /** 
+     * Adding image to be loaded 
+     */
     public void addImage(String str) throws FileNotFoundException, IOException {
         String fullpath = path + str;
         BufferedImage mini = ImageIO.read(new FileInputStream(fullpath));
@@ -263,6 +279,9 @@ class ImageViewer extends Canvas implements MouseListener {
     }
 
     @Override
+    /** 
+     * Paint to screen 
+     */
     public void paint(Graphics g) {
         super.paint(g);
         for (int i = 0; i < COL; i++) {
@@ -324,6 +343,9 @@ class ImageViewer extends Canvas implements MouseListener {
     }
 
     @Override
+    /** 
+     * Action Listener mouse Clicked 
+     */
     public void mouseClicked(MouseEvent me) {
         int row = me.getY() / SIZE;
         int col = me.getX() / SIZE;
@@ -339,24 +361,34 @@ class ImageViewer extends Canvas implements MouseListener {
         } else {
             reference.setOption(0, -1);
         }
-        //reference.option.setVisible(false);
         reference.option.repaint();
-        //reference.option.setVisible(true);
     }
 
     @Override
+    /** 
+     * Action Listener mouse pressed 
+     */
     public void mousePressed(MouseEvent me) {
     }
 
     @Override
+    /** 
+     * Action Listener mouse released 
+     */
     public void mouseReleased(MouseEvent me) {
     }
 
     @Override
+    /** 
+     * Action Listener mouse entered 
+     */
     public void mouseEntered(MouseEvent me) {
     }
 
     @Override
+    /** 
+     * Action Listener mouse exited 
+     */
     public void mouseExited(MouseEvent me) {
     }
 }

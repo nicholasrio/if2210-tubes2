@@ -1,8 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author 
+ * Darwin Prasetio (13512015)
+ * Chrestella Stephanie (13512005)
+ * Jan Wira Gotama Putra (13512015)
+ * Eric (13512021)
+ * Willy(13512070)
+ * Melvin Fonda (13512085)
  */
+
 package gui;
 
 import java.awt.Canvas;
@@ -17,17 +23,12 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Opel Howard
- */
 class MyCanvas extends Canvas implements MouseListener, KeyListener {
 
     private int currentIdx;
     private ArrayList<GUIComponent> listOfComponent;
     /**
-    * the constructor
-    * @author Opel Howard
+    * Default constructor
     */
     public MyCanvas() throws IOException {
         //typing = "";
@@ -36,6 +37,9 @@ class MyCanvas extends Canvas implements MouseListener, KeyListener {
         currentIdx = -1;
     }
 
+    /** 
+     * image component Added
+     */
     public void addImage(String str, int _opt, int _x, int _y) throws IOException {
         ImageComponent temp = new ImageComponent(str, _opt);
         temp.setX(_x);
@@ -43,6 +47,9 @@ class MyCanvas extends Canvas implements MouseListener, KeyListener {
         listOfComponent.add(temp);
     }
 
+    /** 
+     * label Added
+     */
     public void addLabel(String str, int _opt, int _x, int _y, int _width, int _height, Font f) throws IOException {
         LabelComponent temp = new LabelComponent(str, _opt, f);
         temp.setX(_x);
@@ -52,20 +59,32 @@ class MyCanvas extends Canvas implements MouseListener, KeyListener {
         listOfComponent.add(temp);
     }
 
+    /** 
+     * return listOfComponent 
+     */
     public ArrayList getListOfImage() {
         return listOfComponent;
     }
 
+    /** 
+     * set listOfComponent 
+     */
     public void setListOfImage(ArrayList _listOfImg) {
         listOfComponent = _listOfImg;
     }
 
     @Override
+    /** 
+     * Update UI 
+     */
     public void update(Graphics g) {
         paint(g);
     }
 
     @Override
+    /** 
+     * Paint to screen 
+     */
     public void paint(Graphics graphic) {
         for (GUIComponent it : listOfComponent) {
             if (it.isModified()) {
@@ -83,10 +102,16 @@ class MyCanvas extends Canvas implements MouseListener, KeyListener {
     }
 
     @Override
+    /** 
+     * Action Listener mouse clicked 
+     */
     public void mouseClicked(MouseEvent e) {
     }
 
     @Override
+    /** 
+     * Action Listener mouse pressed 
+     */
     public void mousePressed(MouseEvent e) {
         int count = 0;
         for (GUIComponent comp : listOfComponent) {
@@ -104,6 +129,9 @@ class MyCanvas extends Canvas implements MouseListener, KeyListener {
     }
 
     @Override
+    /** 
+     * Action Listener mouse released 
+     */
     public void mouseReleased(MouseEvent e) {
         if (currentIdx == -1) {
             return;
@@ -125,16 +153,24 @@ class MyCanvas extends Canvas implements MouseListener, KeyListener {
     }
 
     @Override
+    /** 
+     * Action Listener mouse entered 
+     */
     public void mouseEntered(MouseEvent e) {
     }
 
     @Override
+    /** 
+     * Action Listener mouse exited 
+     */
     public void mouseExited(MouseEvent e) {
     }
 
     @Override
+    /** 
+     * Action Listener  key typed 
+     */
     public void keyTyped(KeyEvent ke) {
-        System.out.println("hahaha");
         if (Character.isLetter(ke.getKeyChar())) {
             TowerDefense.inputMenu += ke.getKeyChar();
         } else if (ke.getKeyChar() == 8) {
@@ -144,10 +180,16 @@ class MyCanvas extends Canvas implements MouseListener, KeyListener {
     }
 
     @Override
+    /** 
+     * Action Listener key pressed 
+     */
     public void keyPressed(KeyEvent ke) {
     }
 
     @Override
+    /** 
+     * Action Listener key released 
+     */
     public void keyReleased(KeyEvent ke) {
     }
 

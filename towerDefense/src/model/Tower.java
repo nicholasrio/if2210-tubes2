@@ -153,6 +153,9 @@ public class Tower {
         return coolDownCount;
     }
     
+    /**
+     * Return coolDown
+     */
     public int getCoolDown(){
         return coolDown;
     }

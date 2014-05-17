@@ -18,7 +18,9 @@ public class NameExistException extends Exception {
 
     private static final String message = "username already exist";
     
-    /** Default constructor */
+    /** 
+     * Default constructor 
+     */
     public NameExistException() {
         super(message);
     }

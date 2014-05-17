@@ -128,8 +128,8 @@ public class MainMenuConsole {
      */
     public void loadPlayer() throws FileNotFoundException {
         try {
-
-            File fXmlFile = new File("Playerlist.xml");
+            String path = "resources/";
+            File fXmlFile = new File(path + "Playerlist.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             org.w3c.dom.Document doc = dBuilder.parse(fXmlFile);
@@ -181,7 +181,10 @@ public class MainMenuConsole {
     public static MainMenuConsole getInstance() {
         return instance;
     }
-
+    
+    /**
+     * Save player data
+     */
     public void closePlayer() throws FileNotFoundException {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -212,7 +215,8 @@ public class MainMenuConsole {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("Playerlist.xml"));
+            String path = "resources/";
+            StreamResult result = new StreamResult(new File(path + "Playerlist.xml"));
 
             // Output to console for testing
             // StreamResult result = new StreamResult(System.out);

@@ -42,7 +42,7 @@ public class TowerDefense {
          */
         while (pilihanMenu != 7 && !cannotPlay) {
             //clearscreen???5
-            GameUI.showMainMenus();
+            GameConsoleUI.showMainMenus();
             pilihanMenu = in.nextInt();
             if (pilihanMenu == 1 || pilihanMenu == 2 || pilihanMenu == 4) {
                 str = in.next();
@@ -75,7 +75,7 @@ public class TowerDefense {
             } else if (pilihanMenu == 3 || pilihanMenu == 5 || pilihanMenu == 6) {
                 switch (pilihanMenu) {
                     case 3: {
-                        GameUI.showHighScore(mainMenuConsole.getHighScore());
+                        GameConsoleUI.showHighScore(mainMenuConsole.getHighScore());
                         break;
                     }
                     case 5: {

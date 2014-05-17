@@ -6,7 +6,7 @@
  */
 package controller;
 
-import console.GameUI;
+import console.GameConsoleUI;
 import gui.*;
 import java.io.*;
 import static java.lang.Thread.sleep;
@@ -19,12 +19,13 @@ import java.util.logging.Logger;
 import model.*;
 
 public class GameController {
-
+    public static int menu, pos_row, pos_col;
+    
     private List<Tower> listOfTower = Collections.synchronizedList(new ArrayList());
     private List<Monster> listOfMonster = new ArrayList<Monster>();
     private static final int ROW = 15, COL = 20, INITIAL_LIFE = 10;
-    public static int menu, pos_row, pos_col;
     private static GameController instance;
+    
     private final int maximumLevel;
     private final int goldRate = 5;
     
@@ -72,7 +73,8 @@ public class GameController {
     public void loadGame(Player x) throws FileNotFoundException, IOException {
         player = x;
         map.readFile();
-        String filename = player.getName() + ".txt";
+        String path = "resources/";
+        String filename = path + player.getName() + ".txt";
         Scanner in = new Scanner(new File(filename));
         readFromFile(in);
     }
@@ -277,7 +279,8 @@ public class GameController {
      * @param out
      */
     public void saveToFile() throws IOException {
-        File file = new File(player.getName() + ".txt");
+        String path = "resources/";
+        File file = new File(path + player.getName() + ".txt");
         FileWriter writer = new FileWriter(file);
         PrintWriter out = new PrintWriter(writer);
         out.println(score);
@@ -379,9 +382,9 @@ public class GameController {
      */
     public void showGame(boolean ingame) {
         if (ingame) {
-            GameUI.showTransition(instance);
+            GameConsoleUI.showTransition(instance);
         } else {
-            GameUI.showGame(instance);
+            GameConsoleUI.showGame(instance);
         }
     }
 
@@ -454,11 +457,11 @@ public class GameController {
     public void towerInfo(int row, int col) {
         int idx = getTowerIdx(row, col);
         Tower t = listOfTower.get(idx);
-        GameUI.showTowerInfo(t);
+        GameConsoleUI.showTowerInfo(t);
     }
 
     /**
-     * Gaming mode
+     * Gaming mode with console
      */
     public Player playGameConsole(Player loginPlayer) {
         Scanner in = new Scanner(System.in);
@@ -535,7 +538,9 @@ public class GameController {
         return loginPlayer;
     }
     
-
+    /**
+     * Gaming mode with GUI
+     */
     public Player playGameGUI(Player loginPlayer) throws IOException {
         gui.MapGUI mapGUI = new gui.MapGUI(getInstance());
         //int pos_row = 0, pos_col = 0;

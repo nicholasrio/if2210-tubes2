@@ -19,10 +19,16 @@ import static model.Map.Peta;
 import static model.Map.col;
 import static model.Map.row;
 
-public class GameUI {
+/** 
+ * This is console UI class 
+ */
+public class GameConsoleUI {
+    
     private static char MapView[][];
     
-    /** Showing game transition UI */
+    /** 
+     * Showing game transition UI 
+     */
     public static void showTransition(GameController controller) {
         model.Map Map = controller.getMap();
         List <Tower> T = controller.getListOfTower();
@@ -55,7 +61,9 @@ public class GameUI {
         System.out.print(">");
     }
     
-    /** Showing game started - UI */
+    /** 
+     * Showing game started - UI 
+     */
     public static void showGame(GameController controller) {
         model.Map Map = controller.getMap();
         List <Tower> T = controller.getListOfTower();
@@ -72,7 +80,9 @@ public class GameUI {
         System.out.println("---------------------------------------------------------");
     }
     
-    /** Make map view for UI */
+    /** 
+     * Make map view for UI 
+     */
     private static void makeMap(Map m, List<Tower> T, List<Monster> M) {
         for (int i = 0; i < Map.row ; i ++)
                 for (int j = 0; j < Map.col; j++)
@@ -105,7 +115,9 @@ public class GameUI {
         }
     }
     
-    /** Showing game main menu */
+    /** 
+     * Showing game main menu 
+     */
     public static void showMainMenus() {
         System.out.println("1. Login");
         System.out.println("2. New Player");
@@ -116,7 +128,9 @@ public class GameUI {
         System.out.println("7. Exit");
     }
     
-    /** Showing tower information */
+    /** 
+     * Showing tower information 
+     */
     public static void showTowerInfo(Tower t) {
         System.out.println("Tower Information at (" + row + "," + col + ")");
         System.out.println("Level           : " + t.getCurrentLevel());

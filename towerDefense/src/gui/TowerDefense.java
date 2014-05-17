@@ -10,21 +10,12 @@
  */
 
 package gui;
-
-/**
- *
- * @author Opel Howard
- */
 import controller.MainMenuConsole;
 import exception.NameNotExistException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Opel Howard, wiragotama
- */
 public class TowerDefense {
 
     public static int pilihanMenu;

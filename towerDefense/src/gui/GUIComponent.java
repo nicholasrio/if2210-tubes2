@@ -1,17 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author 
+ * Darwin Prasetio (13512015)
+ * Chrestella Stephanie (13512005)
+ * Jan Wira Gotama Putra (13512015)
+ * Eric (13512021)
+ * Willy(13512070)
+ * Melvin Fonda (13512085)
  */
+
 package gui;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-/**
- *
- * @author Opel Howard
- */
 abstract public class GUIComponent {
 
     private int x;
