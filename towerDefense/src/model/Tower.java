@@ -192,6 +192,7 @@ public class Tower {
      */
     public void upgradeTower() {
         //increase attack, attackSpeed and Cost by rate (static final variable)
+        currentLevel++;
         if (currentLevel < levelMax) {
             upgradeCost = upgradeCost + currentLevel;
             if (range < maxRange) {
