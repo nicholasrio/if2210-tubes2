@@ -213,6 +213,12 @@ public class GameMenuGUI extends Scene
             {
                 try 
                 {
+                    keyUpPressed = false;
+                    keyDownPressed = false;
+                    keyRightPressed = false;
+                    keyLeftPressed = false;
+                    keyEnterPressed = false;
+                    playerFaced = 4;
                     SceneManager.SwitchScene("LevelMenuGUI");
                 } 
                 catch (SceneNotFoundException ex) 
