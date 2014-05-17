@@ -35,6 +35,10 @@ public class Map {
         fin.close();
     }
 
+    public static int getElement(int i, int j){
+        return Peta[i][j];
+    }
+
     /** Show map to layar */
     public static void showMap() {
         for (int i = 0; i < row; i++) {
