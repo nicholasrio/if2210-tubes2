@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package videocoba2;
+package Video;
 
 import java.sql.SQLException;
 import java.util.List;
