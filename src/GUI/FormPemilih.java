@@ -53,79 +53,91 @@ public class FormPemilih extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        DPD = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         DPR = new javax.swing.JButton();
+        DPD = new javax.swing.JButton();
         DPRDProvinsi = new javax.swing.JButton();
         DPRDKabupaten = new javax.swing.JButton();
         Submit = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        DPD.setText("DPD");
-        DPD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DPDActionPerformed(evt);
-            }
-        });
-
+        DPR.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        DPR.setFont(new java.awt.Font("Belwe Bd BT", 1, 18)); // NOI18N
+        DPR.setForeground(new java.awt.Color(255, 153, 102));
         DPR.setText("DPR");
         DPR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DPRActionPerformed(evt);
             }
         });
+        getContentPane().add(DPR, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 259, 201, -1));
 
+        DPD.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        DPD.setFont(new java.awt.Font("Belwe Bd BT", 1, 18)); // NOI18N
+        DPD.setForeground(new java.awt.Color(255, 153, 102));
+        DPD.setText("DPD");
+        DPD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DPDActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 308, 201, -1));
+
+        DPRDProvinsi.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        DPRDProvinsi.setFont(new java.awt.Font("Belwe Bd BT", 1, 18)); // NOI18N
+        DPRDProvinsi.setForeground(new java.awt.Color(255, 153, 102));
         DPRDProvinsi.setText("DPRD Provinsi");
         DPRDProvinsi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DPRDProvinsiActionPerformed(evt);
             }
         });
+        getContentPane().add(DPRDProvinsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 357, 201, -1));
 
+        DPRDKabupaten.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        DPRDKabupaten.setFont(new java.awt.Font("Belwe Bd BT", 1, 18)); // NOI18N
+        DPRDKabupaten.setForeground(new java.awt.Color(255, 153, 102));
         DPRDKabupaten.setText("DPRD Kabupaten");
         DPRDKabupaten.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DPRDKabupatenActionPerformed(evt);
             }
         });
+        getContentPane().add(DPRDKabupaten, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 406, -1, -1));
 
+        Submit.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        Submit.setFont(new java.awt.Font("Belwe Bd BT", 1, 18)); // NOI18N
+        Submit.setForeground(new java.awt.Color(255, 153, 102));
         Submit.setText("Submit");
         Submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SubmitActionPerformed(evt);
             }
         });
+        getContentPane().add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 455, 201, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(DPR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DPRDProvinsi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DPRDKabupaten, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DPD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Submit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(119, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(DPR)
-                .addGap(18, 18, 18)
-                .addComponent(DPD)
-                .addGap(18, 18, 18)
-                .addComponent(DPRDProvinsi)
-                .addGap(18, 18, 18)
-                .addComponent(DPRDKabupaten)
-                .addGap(18, 18, 18)
-                .addComponent(Submit)
-                .addContainerGap(93, Short.MAX_VALUE))
-        );
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 140));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 590, 460));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 590, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -135,12 +147,6 @@ public class FormPemilih extends javax.swing.JFrame {
         formCaleg.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_DPRActionPerformed
-
-    private void DPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DPDActionPerformed
-        formCaleg = new FormDaftarCaleg("DPD", dataPemilih.GetNIK(), dataPemilih.GetDapil());
-        formCaleg.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_DPDActionPerformed
 
     private void DPRDProvinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DPRDProvinsiActionPerformed
         formCaleg = new FormDaftarCaleg("DPRD Provinsi", dataPemilih.GetNIK(), dataPemilih.GetDapil());
@@ -158,11 +164,21 @@ public class FormPemilih extends javax.swing.JFrame {
         
     }//GEN-LAST:event_SubmitActionPerformed
 
+    private void DPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DPDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DPDActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DPD;
     private javax.swing.JButton DPR;
     private javax.swing.JButton DPRDKabupaten;
     private javax.swing.JButton DPRDProvinsi;
     private javax.swing.JButton Submit;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     // End of variables declaration//GEN-END:variables
 }

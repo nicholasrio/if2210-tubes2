@@ -185,6 +185,7 @@ public class FormDaftarCaleg extends javax.swing.JFrame{
     private void initComponents() {
 
         Pilihan = new javax.swing.ButtonGroup();
+        jRadioButtonP5C7 = new javax.swing.JRadioButton();
         Dapil = new javax.swing.JLabel();
         jLabelLingkup = new javax.swing.JLabel();
         NoDapil = new javax.swing.JLabel();
@@ -231,9 +232,9 @@ public class FormDaftarCaleg extends javax.swing.JFrame{
         jRadioButtonP5C4 = new javax.swing.JRadioButton();
         jRadioButtonPartai5 = new javax.swing.JRadioButton();
         jRadioButtonP5C6 = new javax.swing.JRadioButton();
+        jRadioButtonP5C9 = new javax.swing.JRadioButton();
         jRadioButtonP5C5 = new javax.swing.JRadioButton();
         jRadioButtonP5C8 = new javax.swing.JRadioButton();
-        jRadioButtonP5C7 = new javax.swing.JRadioButton();
         jRadioButtonP6C7 = new javax.swing.JRadioButton();
         jRadioButtonP6C8 = new javax.swing.JRadioButton();
         jRadioButtonP6C5 = new javax.swing.JRadioButton();
@@ -279,727 +280,629 @@ public class FormDaftarCaleg extends javax.swing.JFrame{
         jRadioButtonP10C7 = new javax.swing.JRadioButton();
         jRadioButtonP10C6 = new javax.swing.JRadioButton();
         jRadioButtonPartai10 = new javax.swing.JRadioButton();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+
+        jRadioButtonP5C7.setBackground(java.awt.SystemColor.controlHighlight);
+        Pilihan.add(jRadioButtonP5C7);
+        jRadioButtonP5C7.setFont(new java.awt.Font("Belwe Bd BT", 0, 36)); // NOI18N
+        jRadioButtonP5C7.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Dapil.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Dapil.setFont(new java.awt.Font("Belwe Bd BT", 1, 36)); // NOI18N
+        Dapil.setForeground(new java.awt.Color(255, 255, 204));
         Dapil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Dapil.setText("Dapil");
+        getContentPane().add(Dapil, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 879, -1));
 
-        jLabelLingkup.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelLingkup.setFont(new java.awt.Font("Belwe Bd BT", 1, 24)); // NOI18N
+        jLabelLingkup.setForeground(new java.awt.Color(255, 255, 204));
         jLabelLingkup.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLingkup.setText("DPR");
+        getContentPane().add(jLabelLingkup, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 879, -1));
 
-        NoDapil.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        NoDapil.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 43)); // NOI18N
+        NoDapil.setForeground(new java.awt.Color(255, 255, 204));
         NoDapil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NoDapil.setText("0");
+        getContentPane().add(NoDapil, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 879, -1));
 
+        Submit.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        Submit.setFont(new java.awt.Font("Belwe Bd BT", 1, 24)); // NOI18N
+        Submit.setForeground(new java.awt.Color(255, 153, 102));
         Submit.setText("Submit");
+        getContentPane().add(Submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 130, -1));
 
-        jRadioButtonP1C4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP1C4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP1C4);
+        jRadioButtonP1C4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP1C4.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP1C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 103, -1));
 
-        jRadioButtonP1C5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP1C5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP1C5);
+        jRadioButtonP1C5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP1C5.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP1C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 103, -1));
 
-        jRadioButtonP1C6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP1C6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP1C6);
+        jRadioButtonP1C6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP1C6.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP1C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 103, -1));
 
-        jRadioButtonP1C7.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP1C7.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP1C7);
+        jRadioButtonP1C7.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP1C7.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP1C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 103, -1));
 
-        jRadioButtonP1C8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP1C8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP1C8);
+        jRadioButtonP1C8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP1C8.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP1C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 103, -1));
 
-        jRadioButtonP1C1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP1C1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP1C1);
+        jRadioButtonP1C1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP1C1.setText("jRadioButton1");
         jRadioButtonP1C1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonP1C1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jRadioButtonP1C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 103, -1));
 
-        jRadioButtonP1C3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP1C3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP1C3);
+        jRadioButtonP1C3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP1C3.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP1C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 103, -1));
 
-        jRadioButtonPartai1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPartai1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonPartai1);
+        jRadioButtonPartai1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonPartai1.setText("Partai 1");
+        getContentPane().add(jRadioButtonPartai1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 103, -1));
 
-        jRadioButtonP1C2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP1C2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP1C2);
+        jRadioButtonP1C2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP1C2.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP1C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 103, -1));
 
-        jRadioButtonP2C1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP2C1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP2C1);
+        jRadioButtonP2C1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP2C1.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP2C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 103, -1));
 
-        jRadioButtonP2C4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP2C4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP2C4);
+        jRadioButtonP2C4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP2C4.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP2C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 103, -1));
 
-        jRadioButtonP2C2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP2C2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP2C2);
+        jRadioButtonP2C2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP2C2.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP2C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 103, -1));
 
-        jRadioButtonP2C5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP2C5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP2C5);
+        jRadioButtonP2C5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP2C5.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP2C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 103, -1));
 
-        jRadioButtonP2C3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP2C3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP2C3);
+        jRadioButtonP2C3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP2C3.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP2C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 103, -1));
 
-        jRadioButtonP2C6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP2C6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP2C6);
+        jRadioButtonP2C6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP2C6.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP2C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 103, -1));
 
-        jRadioButtonP2C8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP2C8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP2C8);
+        jRadioButtonP2C8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP2C8.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP2C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 103, -1));
 
-        jRadioButtonP2C7.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP2C7.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP2C7);
+        jRadioButtonP2C7.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP2C7.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP2C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 103, -1));
 
-        jRadioButtonPartai2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPartai2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonPartai2);
+        jRadioButtonPartai2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonPartai2.setText("Partai 2");
+        getContentPane().add(jRadioButtonPartai2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 103, -1));
 
-        jRadioButtonP3C8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP3C8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP3C8);
+        jRadioButtonP3C8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP3C8.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP3C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 103, -1));
 
-        jRadioButtonP3C6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP3C6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP3C6);
+        jRadioButtonP3C6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP3C6.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP3C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 103, -1));
 
-        jRadioButtonP3C7.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP3C7.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP3C7);
+        jRadioButtonP3C7.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP3C7.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP3C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 103, -1));
 
-        jRadioButtonP3C2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP3C2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP3C2);
+        jRadioButtonP3C2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP3C2.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP3C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 103, -1));
 
-        jRadioButtonP3C1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP3C1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP3C1);
+        jRadioButtonP3C1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP3C1.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP3C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 103, -1));
 
-        jRadioButtonPartai3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPartai3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonPartai3);
+        jRadioButtonPartai3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonPartai3.setText("Partai 3");
+        getContentPane().add(jRadioButtonPartai3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 103, -1));
 
-        jRadioButtonP3C4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP3C4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP3C4);
+        jRadioButtonP3C4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP3C4.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP3C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 103, -1));
 
-        jRadioButtonP3C3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP3C3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP3C3);
+        jRadioButtonP3C3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP3C3.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP3C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 103, -1));
 
-        jRadioButtonP3C5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP3C5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP3C5);
+        jRadioButtonP3C5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP3C5.setText("jRadioButton1");
         jRadioButtonP3C5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonP3C5ActionPerformed(evt);
             }
         });
+        getContentPane().add(jRadioButtonP3C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 103, -1));
 
-        jRadioButtonP4C1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP4C1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP4C1);
+        jRadioButtonP4C1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP4C1.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP4C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 103, -1));
 
-        jRadioButtonP4C8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP4C8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP4C8);
+        jRadioButtonP4C8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP4C8.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP4C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 103, -1));
 
-        jRadioButtonP4C5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP4C5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP4C5);
+        jRadioButtonP4C5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP4C5.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP4C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 103, -1));
 
-        jRadioButtonP4C4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP4C4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP4C4);
+        jRadioButtonP4C4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP4C4.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP4C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 103, -1));
 
-        jRadioButtonP4C3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP4C3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP4C3);
+        jRadioButtonP4C3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP4C3.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP4C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 103, -1));
 
-        jRadioButtonP4C2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP4C2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP4C2);
+        jRadioButtonP4C2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP4C2.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP4C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, 103, -1));
 
-        jRadioButtonPartai4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPartai4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonPartai4);
+        jRadioButtonPartai4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonPartai4.setText("Partai 4");
         jRadioButtonPartai4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonPartai4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jRadioButtonPartai4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 103, -1));
 
-        jRadioButtonP4C7.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP4C7.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP4C7);
+        jRadioButtonP4C7.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP4C7.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP4C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 103, -1));
 
-        jRadioButtonP4C6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP4C6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP4C6);
+        jRadioButtonP4C6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP4C6.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP4C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 103, -1));
 
-        jRadioButtonP5C1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP5C1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP5C1);
+        jRadioButtonP5C1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP5C1.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP5C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 190, 103, -1));
 
-        jRadioButtonP5C2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP5C2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP5C2);
+        jRadioButtonP5C2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP5C2.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP5C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 210, 103, -1));
 
-        jRadioButtonP5C3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP5C3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP5C3);
+        jRadioButtonP5C3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP5C3.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP5C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 230, 103, -1));
 
-        jRadioButtonP5C4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP5C4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP5C4);
+        jRadioButtonP5C4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP5C4.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP5C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, 103, -1));
 
-        jRadioButtonPartai5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPartai5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonPartai5);
+        jRadioButtonPartai5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonPartai5.setText("Partai 5");
+        getContentPane().add(jRadioButtonPartai5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 103, -1));
 
-        jRadioButtonP5C6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP5C6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP5C6);
+        jRadioButtonP5C6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP5C6.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP5C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 103, -1));
 
-        jRadioButtonP5C5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP5C9.setBackground(java.awt.SystemColor.controlHighlight);
+        Pilihan.add(jRadioButtonP5C9);
+        jRadioButtonP5C9.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
+        jRadioButtonP5C9.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP5C9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 310, 103, -1));
+
+        jRadioButtonP5C5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP5C5);
+        jRadioButtonP5C5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP5C5.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP5C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 270, 103, -1));
 
-        jRadioButtonP5C8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP5C8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP5C8);
+        jRadioButtonP5C8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP5C8.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP5C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 330, 103, -1));
 
-        jRadioButtonP5C7.setBackground(new java.awt.Color(255, 255, 255));
-        Pilihan.add(jRadioButtonP5C7);
-        jRadioButtonP5C7.setText("jRadioButton1");
-
-        jRadioButtonP6C7.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP6C7.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP6C7);
+        jRadioButtonP6C7.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP6C7.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP6C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 103, -1));
 
-        jRadioButtonP6C8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP6C8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP6C8);
+        jRadioButtonP6C8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP6C8.setText("jRadioButton1");
         jRadioButtonP6C8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonP6C8ActionPerformed(evt);
             }
         });
+        getContentPane().add(jRadioButtonP6C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, 103, -1));
 
-        jRadioButtonP6C5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP6C5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP6C5);
+        jRadioButtonP6C5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP6C5.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP6C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 103, -1));
 
-        jRadioButtonP6C6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP6C6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP6C6);
+        jRadioButtonP6C6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP6C6.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP6C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 530, 103, -1));
 
-        jRadioButtonP6C3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP6C3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP6C3);
+        jRadioButtonP6C3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP6C3.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP6C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 103, -1));
 
-        jRadioButtonP6C4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP6C4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP6C4);
+        jRadioButtonP6C4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP6C4.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP6C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 103, -1));
 
-        jRadioButtonP6C2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP6C2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP6C2);
+        jRadioButtonP6C2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP6C2.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP6C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 103, -1));
 
-        jRadioButtonPartai6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPartai6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonPartai6);
+        jRadioButtonPartai6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonPartai6.setText("Partai 6");
+        getContentPane().add(jRadioButtonPartai6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 103, -1));
 
-        jRadioButtonP6C1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP6C1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP6C1);
+        jRadioButtonP6C1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP6C1.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP6C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 103, -1));
 
-        jRadioButtonP7C3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP7C3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP7C3);
+        jRadioButtonP7C3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP7C3.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP7C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 103, -1));
 
-        jRadioButtonP7C1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP7C1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP7C1);
+        jRadioButtonP7C1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP7C1.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP7C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 103, -1));
 
-        jRadioButtonP7C2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP7C2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP7C2);
+        jRadioButtonP7C2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP7C2.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP7C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, 103, -1));
 
-        jRadioButtonPartai7.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPartai7.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonPartai7);
+        jRadioButtonPartai7.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonPartai7.setText("Partai 7");
+        getContentPane().add(jRadioButtonPartai7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 103, -1));
 
-        jRadioButtonP7C7.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP7C7.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP7C7);
+        jRadioButtonP7C7.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP7C7.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP7C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, 103, -1));
 
-        jRadioButtonP7C6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP7C6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP7C6);
+        jRadioButtonP7C6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP7C6.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP7C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, 103, -1));
 
-        jRadioButtonP7C5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP7C5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP7C5);
+        jRadioButtonP7C5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP7C5.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP7C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 510, 103, -1));
 
-        jRadioButtonP7C4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP7C4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP7C4);
+        jRadioButtonP7C4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP7C4.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP7C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 103, -1));
 
-        jRadioButtonP7C8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP7C8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP7C8);
+        jRadioButtonP7C8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP7C8.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP7C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 570, 103, -1));
 
-        jRadioButtonPartai8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPartai8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonPartai8);
+        jRadioButtonPartai8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonPartai8.setText("Partai 8");
+        getContentPane().add(jRadioButtonPartai8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 103, -1));
 
-        jRadioButtonP8C5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP8C5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP8C5);
+        jRadioButtonP8C5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP8C5.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP8C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 103, -1));
 
-        jRadioButtonP8C4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP8C4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP8C4);
+        jRadioButtonP8C4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP8C4.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP8C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 103, -1));
 
-        jRadioButtonP8C3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP8C3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP8C3);
+        jRadioButtonP8C3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP8C3.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP8C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, 103, -1));
 
-        jRadioButtonP8C2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP8C2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP8C2);
+        jRadioButtonP8C2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP8C2.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP8C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 450, 103, -1));
 
-        jRadioButtonP8C1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP8C1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP8C1);
+        jRadioButtonP8C1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP8C1.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP8C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, 103, -1));
 
-        jRadioButtonP8C8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP8C8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP8C8);
+        jRadioButtonP8C8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP8C8.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP8C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 570, 103, -1));
 
-        jRadioButtonP8C7.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP8C7.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP8C7);
+        jRadioButtonP8C7.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP8C7.setText("jRadioButton1");
         jRadioButtonP8C7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonP8C7ActionPerformed(evt);
             }
         });
+        getContentPane().add(jRadioButtonP8C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, 103, -1));
 
-        jRadioButtonP8C6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP8C6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP8C6);
+        jRadioButtonP8C6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP8C6.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP8C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 103, -1));
 
-        jRadioButtonP9C8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP9C8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP9C8);
+        jRadioButtonP9C8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP9C8.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP9C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 570, 103, -1));
 
-        jRadioButtonPartai9.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPartai9.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonPartai9);
+        jRadioButtonPartai9.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonPartai9.setText("Partai 9");
+        getContentPane().add(jRadioButtonPartai9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 103, -1));
 
-        jRadioButtonP9C2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP9C2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP9C2);
+        jRadioButtonP9C2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP9C2.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP9C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 450, 103, -1));
 
-        jRadioButtonP9C1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP9C1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP9C1);
+        jRadioButtonP9C1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP9C1.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP9C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 103, -1));
 
-        jRadioButtonP9C7.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP9C7.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP9C7);
+        jRadioButtonP9C7.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP9C7.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP9C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 550, 103, -1));
 
-        jRadioButtonP9C4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP9C4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP9C4);
+        jRadioButtonP9C4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP9C4.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP9C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, 103, -1));
 
-        jRadioButtonP9C3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP9C3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP9C3);
+        jRadioButtonP9C3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP9C3.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP9C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 103, -1));
 
-        jRadioButtonP9C6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP9C6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP9C6);
+        jRadioButtonP9C6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP9C6.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP9C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, 103, -1));
 
-        jRadioButtonP9C5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP9C5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP9C5);
+        jRadioButtonP9C5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP9C5.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP9C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 103, -1));
 
-        jRadioButtonP10C1.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP10C1.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP10C1);
+        jRadioButtonP10C1.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP10C1.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP10C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 430, 103, -1));
 
-        jRadioButtonP10C5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP10C5.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP10C5);
+        jRadioButtonP10C5.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP10C5.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP10C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 510, 103, -1));
 
-        jRadioButtonP10C4.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP10C4.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP10C4);
+        jRadioButtonP10C4.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP10C4.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP10C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 103, -1));
 
-        jRadioButtonP10C3.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP10C3.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP10C3);
+        jRadioButtonP10C3.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP10C3.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP10C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, 103, -1));
 
-        jRadioButtonP10C2.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP10C2.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP10C2);
+        jRadioButtonP10C2.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP10C2.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP10C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 450, 103, -1));
 
-        jRadioButtonP10C8.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP10C8.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP10C8);
+        jRadioButtonP10C8.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP10C8.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP10C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 570, 103, -1));
 
-        jRadioButtonP10C7.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP10C7.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP10C7);
+        jRadioButtonP10C7.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP10C7.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP10C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 550, 103, -1));
 
-        jRadioButtonP10C6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonP10C6.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonP10C6);
+        jRadioButtonP10C6.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonP10C6.setText("jRadioButton1");
+        getContentPane().add(jRadioButtonP10C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 103, -1));
 
-        jRadioButtonPartai10.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButtonPartai10.setBackground(java.awt.SystemColor.controlHighlight);
         Pilihan.add(jRadioButtonPartai10);
+        jRadioButtonPartai10.setFont(new java.awt.Font("Belwe Bd BT", 0, 11)); // NOI18N
         jRadioButtonPartai10.setText("Partai 10");
+        getContentPane().add(jRadioButtonPartai10, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, 103, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jRadioButtonP1C1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP1C2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP1C3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP1C4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP1C5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP1C6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP1C7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP1C8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonPartai1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP6C1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP6C2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP6C3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP6C4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP6C5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP6C6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP6C7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP6C8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonPartai6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jRadioButtonP2C1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP2C2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP2C3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP2C4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP2C5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP2C6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP2C7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP2C8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonPartai2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP7C1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP7C2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP7C3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP7C4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP7C5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP7C6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP7C7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP7C8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonPartai7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jRadioButtonP3C1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP3C2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP3C3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP3C4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP3C5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP3C6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP3C7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP3C8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonPartai3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonPartai8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP8C1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP8C2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP8C3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP8C4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP8C5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP8C6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP8C7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP8C8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jRadioButtonP4C1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonPartai4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP4C2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP4C3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP4C4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP4C5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP4C6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP4C7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP4C8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonPartai9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP9C1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP9C2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP9C3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP9C4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP9C5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP9C6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP9C7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP9C8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jRadioButtonP5C1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP5C2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP5C3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP5C4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP5C5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP5C6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP5C7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP5C8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonPartai5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonPartai10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP10C1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP10C2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP10C3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP10C4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP10C5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP10C6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP10C7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRadioButtonP10C8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(59, 59, 59))
-            .addComponent(jLabelLingkup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Dapil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(NoDapil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(309, 309, 309)
-                .addComponent(Submit, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(302, 302, 302))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelLingkup)
-                .addGap(7, 7, 7)
-                .addComponent(Dapil)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NoDapil)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jRadioButtonPartai5)
-                        .addGap(12, 12, 12)
-                        .addComponent(jRadioButtonP5C1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP5C2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP5C3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP5C4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP5C5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP5C6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP5C7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP5C8)
-                        .addGap(27, 27, 27)
-                        .addComponent(jRadioButtonPartai10)
-                        .addGap(12, 12, 12)
-                        .addComponent(jRadioButtonP10C1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP10C2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP10C3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP10C4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP10C5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP10C6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP10C7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonP10C8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButtonPartai1)
-                                .addGap(12, 12, 12)
-                                .addComponent(jRadioButtonP1C1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(23, 23, 23)
-                                        .addComponent(jRadioButtonP1C3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP1C4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP1C5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP1C6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP1C7))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP1C2)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP1C8))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jRadioButtonPartai4)
-                                    .addGap(12, 12, 12)
-                                    .addComponent(jRadioButtonP4C1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jRadioButtonP4C2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jRadioButtonP4C3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jRadioButtonP4C4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jRadioButtonP4C5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jRadioButtonP4C6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jRadioButtonP4C7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jRadioButtonP4C8))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButtonPartai3)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jRadioButtonP3C1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP3C2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP3C3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP3C4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP3C5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP3C6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP3C7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP3C8))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButtonPartai2)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jRadioButtonP2C1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP2C2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP2C3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP2C4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP2C5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP2C6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP2C7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jRadioButtonP2C8)))))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jRadioButtonPartai9)
-                                .addGap(12, 12, 12)
-                                .addComponent(jRadioButtonP9C1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP9C2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP9C3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP9C4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP9C5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP9C6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP9C7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP9C8))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jRadioButtonPartai6)
-                                .addGap(12, 12, 12)
-                                .addComponent(jRadioButtonP6C1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP6C2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP6C3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP6C4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP6C5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP6C6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP6C7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP6C8))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jRadioButtonPartai7)
-                                .addGap(12, 12, 12)
-                                .addComponent(jRadioButtonP7C1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP7C2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP7C3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP7C4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP7C5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP7C6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP7C7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP7C8))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jRadioButtonPartai8)
-                                .addGap(12, 12, 12)
-                                .addComponent(jRadioButtonP8C1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP8C2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP8C3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP8C4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP8C5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP8C6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP8C7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButtonP8C8)))))
-                .addGap(18, 18, 18)
-                .addComponent(Submit)
-                .addContainerGap())
-        );
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 290, 140));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 140, 290, 460));
+
+        jLabel16.setFont(new java.awt.Font("Belwe Bd BT", 1, 24)); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 600, 290, 110));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 140));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 590, 460));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 590, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1025,375 +928,17 @@ public class FormDaftarCaleg extends javax.swing.JFrame{
     }//GEN-LAST:event_jRadioButtonP8C7ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel DPR;
-    private javax.swing.JPanel DPR1;
-    private javax.swing.JPanel DPR2;
-    private javax.swing.JPanel DPR3;
     private javax.swing.JLabel Dapil;
     private javax.swing.JLabel NoDapil;
-    private javax.swing.JLabel Partai10DPR;
-    private javax.swing.JLabel Partai10DPR1;
-    private javax.swing.JLabel Partai10DPR2;
-    private javax.swing.JLabel Partai10DPR3;
-    private javax.swing.JLabel Partai1DPR;
-    private javax.swing.JLabel Partai1DPR1;
-    private javax.swing.JLabel Partai1DPR2;
-    private javax.swing.JLabel Partai1DPR3;
-    private javax.swing.JLabel Partai2DPR;
-    private javax.swing.JLabel Partai2DPR1;
-    private javax.swing.JLabel Partai2DPR2;
-    private javax.swing.JLabel Partai2DPR3;
-    private javax.swing.JLabel Partai3DPR;
-    private javax.swing.JLabel Partai3DPR1;
-    private javax.swing.JLabel Partai3DPR2;
-    private javax.swing.JLabel Partai3DPR3;
-    private javax.swing.JLabel Partai4DPR;
-    private javax.swing.JLabel Partai4DPR1;
-    private javax.swing.JLabel Partai4DPR2;
-    private javax.swing.JLabel Partai4DPR3;
-    private javax.swing.JLabel Partai5DPR;
-    private javax.swing.JLabel Partai5DPR1;
-    private javax.swing.JLabel Partai5DPR2;
-    private javax.swing.JLabel Partai5DPR3;
-    private javax.swing.JLabel Partai6DPR;
-    private javax.swing.JLabel Partai6DPR1;
-    private javax.swing.JLabel Partai6DPR2;
-    private javax.swing.JLabel Partai6DPR3;
-    private javax.swing.JLabel Partai7DPR;
-    private javax.swing.JLabel Partai7DPR1;
-    private javax.swing.JLabel Partai7DPR2;
-    private javax.swing.JLabel Partai7DPR3;
-    private javax.swing.JLabel Partai8DPR;
-    private javax.swing.JLabel Partai8DPR1;
-    private javax.swing.JLabel Partai8DPR2;
-    private javax.swing.JLabel Partai8DPR3;
-    private javax.swing.JLabel Partai9DPR;
-    private javax.swing.JLabel Partai9DPR1;
-    private javax.swing.JLabel Partai9DPR2;
-    private javax.swing.JLabel Partai9DPR3;
     private javax.swing.ButtonGroup Pilihan;
     private javax.swing.JButton Submit;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabelLingkup;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton100;
-    private javax.swing.JRadioButton jRadioButton101;
-    private javax.swing.JRadioButton jRadioButton102;
-    private javax.swing.JRadioButton jRadioButton103;
-    private javax.swing.JRadioButton jRadioButton104;
-    private javax.swing.JRadioButton jRadioButton105;
-    private javax.swing.JRadioButton jRadioButton106;
-    private javax.swing.JRadioButton jRadioButton107;
-    private javax.swing.JRadioButton jRadioButton108;
-    private javax.swing.JRadioButton jRadioButton109;
-    private javax.swing.JRadioButton jRadioButton11;
-    private javax.swing.JRadioButton jRadioButton110;
-    private javax.swing.JRadioButton jRadioButton111;
-    private javax.swing.JRadioButton jRadioButton112;
-    private javax.swing.JRadioButton jRadioButton113;
-    private javax.swing.JRadioButton jRadioButton114;
-    private javax.swing.JRadioButton jRadioButton115;
-    private javax.swing.JRadioButton jRadioButton116;
-    private javax.swing.JRadioButton jRadioButton117;
-    private javax.swing.JRadioButton jRadioButton118;
-    private javax.swing.JRadioButton jRadioButton119;
-    private javax.swing.JRadioButton jRadioButton12;
-    private javax.swing.JRadioButton jRadioButton120;
-    private javax.swing.JRadioButton jRadioButton121;
-    private javax.swing.JRadioButton jRadioButton122;
-    private javax.swing.JRadioButton jRadioButton123;
-    private javax.swing.JRadioButton jRadioButton124;
-    private javax.swing.JRadioButton jRadioButton125;
-    private javax.swing.JRadioButton jRadioButton126;
-    private javax.swing.JRadioButton jRadioButton127;
-    private javax.swing.JRadioButton jRadioButton128;
-    private javax.swing.JRadioButton jRadioButton129;
-    private javax.swing.JRadioButton jRadioButton13;
-    private javax.swing.JRadioButton jRadioButton130;
-    private javax.swing.JRadioButton jRadioButton131;
-    private javax.swing.JRadioButton jRadioButton132;
-    private javax.swing.JRadioButton jRadioButton133;
-    private javax.swing.JRadioButton jRadioButton134;
-    private javax.swing.JRadioButton jRadioButton135;
-    private javax.swing.JRadioButton jRadioButton136;
-    private javax.swing.JRadioButton jRadioButton137;
-    private javax.swing.JRadioButton jRadioButton138;
-    private javax.swing.JRadioButton jRadioButton139;
-    private javax.swing.JRadioButton jRadioButton14;
-    private javax.swing.JRadioButton jRadioButton140;
-    private javax.swing.JRadioButton jRadioButton141;
-    private javax.swing.JRadioButton jRadioButton142;
-    private javax.swing.JRadioButton jRadioButton143;
-    private javax.swing.JRadioButton jRadioButton144;
-    private javax.swing.JRadioButton jRadioButton145;
-    private javax.swing.JRadioButton jRadioButton146;
-    private javax.swing.JRadioButton jRadioButton147;
-    private javax.swing.JRadioButton jRadioButton148;
-    private javax.swing.JRadioButton jRadioButton149;
-    private javax.swing.JRadioButton jRadioButton15;
-    private javax.swing.JRadioButton jRadioButton150;
-    private javax.swing.JRadioButton jRadioButton151;
-    private javax.swing.JRadioButton jRadioButton152;
-    private javax.swing.JRadioButton jRadioButton153;
-    private javax.swing.JRadioButton jRadioButton154;
-    private javax.swing.JRadioButton jRadioButton155;
-    private javax.swing.JRadioButton jRadioButton156;
-    private javax.swing.JRadioButton jRadioButton157;
-    private javax.swing.JRadioButton jRadioButton158;
-    private javax.swing.JRadioButton jRadioButton159;
-    private javax.swing.JRadioButton jRadioButton16;
-    private javax.swing.JRadioButton jRadioButton160;
-    private javax.swing.JRadioButton jRadioButton161;
-    private javax.swing.JRadioButton jRadioButton162;
-    private javax.swing.JRadioButton jRadioButton163;
-    private javax.swing.JRadioButton jRadioButton164;
-    private javax.swing.JRadioButton jRadioButton165;
-    private javax.swing.JRadioButton jRadioButton166;
-    private javax.swing.JRadioButton jRadioButton167;
-    private javax.swing.JRadioButton jRadioButton168;
-    private javax.swing.JRadioButton jRadioButton169;
-    private javax.swing.JRadioButton jRadioButton17;
-    private javax.swing.JRadioButton jRadioButton170;
-    private javax.swing.JRadioButton jRadioButton171;
-    private javax.swing.JRadioButton jRadioButton172;
-    private javax.swing.JRadioButton jRadioButton173;
-    private javax.swing.JRadioButton jRadioButton174;
-    private javax.swing.JRadioButton jRadioButton175;
-    private javax.swing.JRadioButton jRadioButton176;
-    private javax.swing.JRadioButton jRadioButton177;
-    private javax.swing.JRadioButton jRadioButton178;
-    private javax.swing.JRadioButton jRadioButton179;
-    private javax.swing.JRadioButton jRadioButton18;
-    private javax.swing.JRadioButton jRadioButton180;
-    private javax.swing.JRadioButton jRadioButton181;
-    private javax.swing.JRadioButton jRadioButton182;
-    private javax.swing.JRadioButton jRadioButton183;
-    private javax.swing.JRadioButton jRadioButton184;
-    private javax.swing.JRadioButton jRadioButton185;
-    private javax.swing.JRadioButton jRadioButton186;
-    private javax.swing.JRadioButton jRadioButton187;
-    private javax.swing.JRadioButton jRadioButton188;
-    private javax.swing.JRadioButton jRadioButton189;
-    private javax.swing.JRadioButton jRadioButton19;
-    private javax.swing.JRadioButton jRadioButton190;
-    private javax.swing.JRadioButton jRadioButton191;
-    private javax.swing.JRadioButton jRadioButton192;
-    private javax.swing.JRadioButton jRadioButton193;
-    private javax.swing.JRadioButton jRadioButton194;
-    private javax.swing.JRadioButton jRadioButton195;
-    private javax.swing.JRadioButton jRadioButton196;
-    private javax.swing.JRadioButton jRadioButton197;
-    private javax.swing.JRadioButton jRadioButton198;
-    private javax.swing.JRadioButton jRadioButton199;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton20;
-    private javax.swing.JRadioButton jRadioButton200;
-    private javax.swing.JRadioButton jRadioButton201;
-    private javax.swing.JRadioButton jRadioButton202;
-    private javax.swing.JRadioButton jRadioButton203;
-    private javax.swing.JRadioButton jRadioButton204;
-    private javax.swing.JRadioButton jRadioButton205;
-    private javax.swing.JRadioButton jRadioButton206;
-    private javax.swing.JRadioButton jRadioButton207;
-    private javax.swing.JRadioButton jRadioButton208;
-    private javax.swing.JRadioButton jRadioButton209;
-    private javax.swing.JRadioButton jRadioButton21;
-    private javax.swing.JRadioButton jRadioButton210;
-    private javax.swing.JRadioButton jRadioButton211;
-    private javax.swing.JRadioButton jRadioButton212;
-    private javax.swing.JRadioButton jRadioButton213;
-    private javax.swing.JRadioButton jRadioButton214;
-    private javax.swing.JRadioButton jRadioButton215;
-    private javax.swing.JRadioButton jRadioButton216;
-    private javax.swing.JRadioButton jRadioButton217;
-    private javax.swing.JRadioButton jRadioButton218;
-    private javax.swing.JRadioButton jRadioButton219;
-    private javax.swing.JRadioButton jRadioButton22;
-    private javax.swing.JRadioButton jRadioButton220;
-    private javax.swing.JRadioButton jRadioButton221;
-    private javax.swing.JRadioButton jRadioButton222;
-    private javax.swing.JRadioButton jRadioButton223;
-    private javax.swing.JRadioButton jRadioButton224;
-    private javax.swing.JRadioButton jRadioButton225;
-    private javax.swing.JRadioButton jRadioButton226;
-    private javax.swing.JRadioButton jRadioButton227;
-    private javax.swing.JRadioButton jRadioButton228;
-    private javax.swing.JRadioButton jRadioButton229;
-    private javax.swing.JRadioButton jRadioButton23;
-    private javax.swing.JRadioButton jRadioButton230;
-    private javax.swing.JRadioButton jRadioButton231;
-    private javax.swing.JRadioButton jRadioButton232;
-    private javax.swing.JRadioButton jRadioButton233;
-    private javax.swing.JRadioButton jRadioButton234;
-    private javax.swing.JRadioButton jRadioButton235;
-    private javax.swing.JRadioButton jRadioButton236;
-    private javax.swing.JRadioButton jRadioButton237;
-    private javax.swing.JRadioButton jRadioButton238;
-    private javax.swing.JRadioButton jRadioButton239;
-    private javax.swing.JRadioButton jRadioButton24;
-    private javax.swing.JRadioButton jRadioButton240;
-    private javax.swing.JRadioButton jRadioButton241;
-    private javax.swing.JRadioButton jRadioButton242;
-    private javax.swing.JRadioButton jRadioButton243;
-    private javax.swing.JRadioButton jRadioButton244;
-    private javax.swing.JRadioButton jRadioButton245;
-    private javax.swing.JRadioButton jRadioButton246;
-    private javax.swing.JRadioButton jRadioButton247;
-    private javax.swing.JRadioButton jRadioButton248;
-    private javax.swing.JRadioButton jRadioButton249;
-    private javax.swing.JRadioButton jRadioButton25;
-    private javax.swing.JRadioButton jRadioButton250;
-    private javax.swing.JRadioButton jRadioButton251;
-    private javax.swing.JRadioButton jRadioButton252;
-    private javax.swing.JRadioButton jRadioButton253;
-    private javax.swing.JRadioButton jRadioButton254;
-    private javax.swing.JRadioButton jRadioButton255;
-    private javax.swing.JRadioButton jRadioButton256;
-    private javax.swing.JRadioButton jRadioButton257;
-    private javax.swing.JRadioButton jRadioButton258;
-    private javax.swing.JRadioButton jRadioButton259;
-    private javax.swing.JRadioButton jRadioButton26;
-    private javax.swing.JRadioButton jRadioButton260;
-    private javax.swing.JRadioButton jRadioButton261;
-    private javax.swing.JRadioButton jRadioButton262;
-    private javax.swing.JRadioButton jRadioButton263;
-    private javax.swing.JRadioButton jRadioButton264;
-    private javax.swing.JRadioButton jRadioButton265;
-    private javax.swing.JRadioButton jRadioButton266;
-    private javax.swing.JRadioButton jRadioButton267;
-    private javax.swing.JRadioButton jRadioButton268;
-    private javax.swing.JRadioButton jRadioButton269;
-    private javax.swing.JRadioButton jRadioButton27;
-    private javax.swing.JRadioButton jRadioButton270;
-    private javax.swing.JRadioButton jRadioButton271;
-    private javax.swing.JRadioButton jRadioButton272;
-    private javax.swing.JRadioButton jRadioButton273;
-    private javax.swing.JRadioButton jRadioButton274;
-    private javax.swing.JRadioButton jRadioButton275;
-    private javax.swing.JRadioButton jRadioButton276;
-    private javax.swing.JRadioButton jRadioButton277;
-    private javax.swing.JRadioButton jRadioButton278;
-    private javax.swing.JRadioButton jRadioButton279;
-    private javax.swing.JRadioButton jRadioButton28;
-    private javax.swing.JRadioButton jRadioButton280;
-    private javax.swing.JRadioButton jRadioButton281;
-    private javax.swing.JRadioButton jRadioButton282;
-    private javax.swing.JRadioButton jRadioButton283;
-    private javax.swing.JRadioButton jRadioButton284;
-    private javax.swing.JRadioButton jRadioButton285;
-    private javax.swing.JRadioButton jRadioButton286;
-    private javax.swing.JRadioButton jRadioButton287;
-    private javax.swing.JRadioButton jRadioButton288;
-    private javax.swing.JRadioButton jRadioButton289;
-    private javax.swing.JRadioButton jRadioButton29;
-    private javax.swing.JRadioButton jRadioButton290;
-    private javax.swing.JRadioButton jRadioButton291;
-    private javax.swing.JRadioButton jRadioButton292;
-    private javax.swing.JRadioButton jRadioButton293;
-    private javax.swing.JRadioButton jRadioButton294;
-    private javax.swing.JRadioButton jRadioButton295;
-    private javax.swing.JRadioButton jRadioButton296;
-    private javax.swing.JRadioButton jRadioButton297;
-    private javax.swing.JRadioButton jRadioButton298;
-    private javax.swing.JRadioButton jRadioButton299;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton30;
-    private javax.swing.JRadioButton jRadioButton300;
-    private javax.swing.JRadioButton jRadioButton301;
-    private javax.swing.JRadioButton jRadioButton302;
-    private javax.swing.JRadioButton jRadioButton303;
-    private javax.swing.JRadioButton jRadioButton304;
-    private javax.swing.JRadioButton jRadioButton305;
-    private javax.swing.JRadioButton jRadioButton306;
-    private javax.swing.JRadioButton jRadioButton307;
-    private javax.swing.JRadioButton jRadioButton308;
-    private javax.swing.JRadioButton jRadioButton309;
-    private javax.swing.JRadioButton jRadioButton31;
-    private javax.swing.JRadioButton jRadioButton310;
-    private javax.swing.JRadioButton jRadioButton311;
-    private javax.swing.JRadioButton jRadioButton312;
-    private javax.swing.JRadioButton jRadioButton313;
-    private javax.swing.JRadioButton jRadioButton314;
-    private javax.swing.JRadioButton jRadioButton315;
-    private javax.swing.JRadioButton jRadioButton316;
-    private javax.swing.JRadioButton jRadioButton317;
-    private javax.swing.JRadioButton jRadioButton318;
-    private javax.swing.JRadioButton jRadioButton319;
-    private javax.swing.JRadioButton jRadioButton32;
-    private javax.swing.JRadioButton jRadioButton320;
-    private javax.swing.JRadioButton jRadioButton33;
-    private javax.swing.JRadioButton jRadioButton34;
-    private javax.swing.JRadioButton jRadioButton35;
-    private javax.swing.JRadioButton jRadioButton36;
-    private javax.swing.JRadioButton jRadioButton37;
-    private javax.swing.JRadioButton jRadioButton38;
-    private javax.swing.JRadioButton jRadioButton39;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton40;
-    private javax.swing.JRadioButton jRadioButton41;
-    private javax.swing.JRadioButton jRadioButton42;
-    private javax.swing.JRadioButton jRadioButton43;
-    private javax.swing.JRadioButton jRadioButton44;
-    private javax.swing.JRadioButton jRadioButton45;
-    private javax.swing.JRadioButton jRadioButton46;
-    private javax.swing.JRadioButton jRadioButton47;
-    private javax.swing.JRadioButton jRadioButton48;
-    private javax.swing.JRadioButton jRadioButton49;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton50;
-    private javax.swing.JRadioButton jRadioButton51;
-    private javax.swing.JRadioButton jRadioButton52;
-    private javax.swing.JRadioButton jRadioButton53;
-    private javax.swing.JRadioButton jRadioButton54;
-    private javax.swing.JRadioButton jRadioButton55;
-    private javax.swing.JRadioButton jRadioButton56;
-    private javax.swing.JRadioButton jRadioButton57;
-    private javax.swing.JRadioButton jRadioButton58;
-    private javax.swing.JRadioButton jRadioButton59;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton60;
-    private javax.swing.JRadioButton jRadioButton61;
-    private javax.swing.JRadioButton jRadioButton62;
-    private javax.swing.JRadioButton jRadioButton63;
-    private javax.swing.JRadioButton jRadioButton64;
-    private javax.swing.JRadioButton jRadioButton65;
-    private javax.swing.JRadioButton jRadioButton66;
-    private javax.swing.JRadioButton jRadioButton67;
-    private javax.swing.JRadioButton jRadioButton68;
-    private javax.swing.JRadioButton jRadioButton69;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton70;
-    private javax.swing.JRadioButton jRadioButton71;
-    private javax.swing.JRadioButton jRadioButton72;
-    private javax.swing.JRadioButton jRadioButton73;
-    private javax.swing.JRadioButton jRadioButton74;
-    private javax.swing.JRadioButton jRadioButton75;
-    private javax.swing.JRadioButton jRadioButton76;
-    private javax.swing.JRadioButton jRadioButton77;
-    private javax.swing.JRadioButton jRadioButton78;
-    private javax.swing.JRadioButton jRadioButton79;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton80;
-    private javax.swing.JRadioButton jRadioButton81;
-    private javax.swing.JRadioButton jRadioButton82;
-    private javax.swing.JRadioButton jRadioButton83;
-    private javax.swing.JRadioButton jRadioButton84;
-    private javax.swing.JRadioButton jRadioButton85;
-    private javax.swing.JRadioButton jRadioButton86;
-    private javax.swing.JRadioButton jRadioButton87;
-    private javax.swing.JRadioButton jRadioButton88;
-    private javax.swing.JRadioButton jRadioButton89;
-    private javax.swing.JRadioButton jRadioButton9;
-    private javax.swing.JRadioButton jRadioButton90;
-    private javax.swing.JRadioButton jRadioButton91;
-    private javax.swing.JRadioButton jRadioButton92;
-    private javax.swing.JRadioButton jRadioButton93;
-    private javax.swing.JRadioButton jRadioButton94;
-    private javax.swing.JRadioButton jRadioButton95;
-    private javax.swing.JRadioButton jRadioButton96;
-    private javax.swing.JRadioButton jRadioButton97;
-    private javax.swing.JRadioButton jRadioButton98;
-    private javax.swing.JRadioButton jRadioButton99;
     private javax.swing.JRadioButton jRadioButtonP10C1;
     private javax.swing.JRadioButton jRadioButtonP10C2;
     private javax.swing.JRadioButton jRadioButtonP10C3;
@@ -1442,6 +987,7 @@ public class FormDaftarCaleg extends javax.swing.JFrame{
     private javax.swing.JRadioButton jRadioButtonP5C6;
     private javax.swing.JRadioButton jRadioButtonP5C7;
     private javax.swing.JRadioButton jRadioButtonP5C8;
+    private javax.swing.JRadioButton jRadioButtonP5C9;
     private javax.swing.JRadioButton jRadioButtonP6C1;
     private javax.swing.JRadioButton jRadioButtonP6C2;
     private javax.swing.JRadioButton jRadioButtonP6C3;
