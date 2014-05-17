@@ -20,7 +20,7 @@ public class FormLoginAdminCLI {
         formAdminCLI = new FormAdminCLI();
         formSuperAdminCLI = new FormSuperAdminCLI();
     }
-    private void start(){
+    public void start(){
         System.out.println("=============================================");
         System.out.println("=============================================");
         System.out.println("==              Kolom Admin                ==");
