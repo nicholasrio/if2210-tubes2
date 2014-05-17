@@ -26,7 +26,7 @@ import javax.swing.JScrollPane;
  * @author Dariel Valdano
  */
 public class GUIView extends javax.swing.JFrame implements View {
-
+	
 	/**
 	 * Creates new form GuiVIew
 	 */
@@ -450,6 +450,8 @@ public class GUIView extends javax.swing.JFrame implements View {
 
     private void InventoryPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseMoved
         // TODO add your handling code here:
+		if (evt.getX() > 64 || evt.getY() < 10) InventoryDisplay.pilihan = null;
+		else InventoryDisplay.pilihan = (evt.getY()-10)/64;
 		System.out.println(evt.getX() + " " + evt.getY());
     }//GEN-LAST:event_InventoryPanelMouseMoved
 

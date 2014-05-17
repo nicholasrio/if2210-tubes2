@@ -35,6 +35,7 @@ import javax.swing.JPanel;
  */
 public class InventoryDisplay extends JPanel {
 	private ImageIcon[] image;
+	public static Integer pilihan = null;
 	public static UserDragon drgon;
 	public InventoryDisplay(UserDragon drg) {
 		if (drg == null)
@@ -73,6 +74,18 @@ public class InventoryDisplay extends JPanel {
 		for (int i = 0; i < image.length; ++i) {
 			image[i].paintIcon(this, g, 0, i*64+10);
 		}
+		if(pilihan!=null) {
+			g.drawString("Nama : "+drgon.getFdInventory().get(pilihan).getName(), 100 , pilihan*64+10);
+			g.drawString("Harga : "+drgon.getFdInventory().get(pilihan).getCost(), 100 , pilihan*64+30);
+			g.drawString("Happiness : "+drgon.getFdInventory().get(pilihan).getHappinessValue(), 100 , pilihan*64+50);
+			g.drawString("Health : "+drgon.getFdInventory().get(pilihan).getHealthValue(), 100 , pilihan*64+70);
+			g.drawString("MaxHealth : "+drgon.getFdInventory().get(pilihan).getMaxHealthValue(), 100 , pilihan*64+90);
+			g.drawString("Hunger : "+drgon.getFdInventory().get(pilihan).getHungerValue(), 100 , pilihan*64+110);
+			g.drawString("Stamina : "+drgon.getFdInventory().get(pilihan).getStaminaValue(), 100 , pilihan*64+130);
+			g.drawString("MaxStamina : "+drgon.getFdInventory().get(pilihan).getMaxStaminaValue(), 100 , pilihan*64+150);
+			g.drawString("Thirst : "+drgon.getFdInventory().get(pilihan).getThirstValue(), 100 , pilihan*64+170);
+		}
+		
 		repaint();
 	}
 }
