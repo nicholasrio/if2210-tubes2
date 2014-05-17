@@ -23,6 +23,6 @@ public class WallItem extends GameItem{
            }
     }
     public void makeSound(){
-        SoundManager.playSound("coin");
+        SoundManager.playSound("impact");
     }
 }

@@ -46,6 +46,9 @@ public class LevelMenuGUI extends Scene
     private static Image Arrow2Texture;
     private static Image BackTexture;
     
+    /*Sound*/
+    private static String arrowSound;
+    
     /* Rectangles */
     private Rectangle startRect;
     private Rectangle rightArrowRect;
@@ -154,6 +157,7 @@ public class LevelMenuGUI extends Scene
             ArrowTexture=ImageLoader.getImage("ice_arrow");
             Arrow2Texture=ImageLoader.getImage("ice_arrow_2");
             BackTexture=ImageLoader.getImage("back_ice");
+            arrowSound="fall";
             unlocked=true;
         }
         else if (level==2){
@@ -164,6 +168,7 @@ public class LevelMenuGUI extends Scene
             ArrowTexture=ImageLoader.getImage("fire_arrow");
             Arrow2Texture=ImageLoader.getImage("fire_arrow_2");
             BackTexture=ImageLoader.getImage("back_fire");
+            arrowSound="fall";
             if (level<=GameData.lastLogin.getLevelUnlocked()+1){            
                 LorULTexture=ImageLoader.getImage("unlocked_fire");                        
                 unlocked=true;
@@ -252,10 +257,12 @@ public class LevelMenuGUI extends Scene
         else if (rightArrowRect.contains(event.getPoint()))
         {
             menuPressed = 3;
+            SoundManager.playSound(arrowSound);
         }
         else if (leftArrowRect.contains(event.getPoint()))
         {
-            menuPressed = 4;                        
+            menuPressed = 4;
+            SoundManager.playSound(arrowSound);
         }
         else if (backRect.contains(event.getPoint()))
         {

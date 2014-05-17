@@ -264,6 +264,8 @@ public class MainMenuGUI extends Scene
         }
         else if (exitRect.contains(event.getPoint()))
         {
+            if(menuHovered != 5)
+                SoundManager.playSound("fbutton");
             menuHovered = 5;
         }
         else

@@ -91,13 +91,16 @@ public class Game
             SoundManager.addSound(new Sound("button","button.wav",Sound.SoundType.sfx));
             SoundManager.addSound(new Sound("fall","fall.wav",Sound.SoundType.sfx));
             SoundManager.addSound(new Sound("icebreak","icebreak.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("impact","impact.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("fbutton","futuristic_button.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("glass","glass_break.wav",Sound.SoundType.sfx));
             SoundManager.addSound(new Sound("mainBm","MainMenu.au",Sound.SoundType.bgm));
             SoundManager.addSound(new Sound("levelBm","LevelMenu.au",Sound.SoundType.bgm));
             SoundManager.addSound(new Sound("lv1bm","Level1.au",Sound.SoundType.bgm));
             SoundManager.addSound(new Sound("lv2bm","Level2.au",Sound.SoundType.bgm));
             SoundManager.Initialize();
             try{
-                SceneManager.SwitchScene("GameMenuGUI");
+                SceneManager.SwitchScene("MainMenuGUI");
             }catch(SceneNotFoundException e){
                 e.printStackTrace();
             }
