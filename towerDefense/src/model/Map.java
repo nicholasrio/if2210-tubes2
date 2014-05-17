@@ -23,6 +23,10 @@ public class Map {
         fin.close();
     }
 
+    public static int getElement(int i, int j){
+        return Peta[i][j];
+    }
+
     public static void showMap() {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
