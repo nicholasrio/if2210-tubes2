@@ -12,13 +12,13 @@
         <item>first-aid</item>
         <item>ether</item>
       </inventory>
-      <health>0.0</health>
-      <maxHealth>100.0</maxHealth>
-      <stamina>0.0</stamina>
+      <health>20.0</health>
+      <maxHealth>200.0</maxHealth>
+      <stamina>2.0</stamina>
       <maxStamina>120.0</maxStamina>
       <thirst>0.0</thirst>
-      <bladder>0.0</bladder>
-      <hunger>0.0</hunger>
+      <bladder>23.0</bladder>
+      <hunger>12.0</hunger>
       <level>1</level>
       <experience>0</experience>
     </userDragon>

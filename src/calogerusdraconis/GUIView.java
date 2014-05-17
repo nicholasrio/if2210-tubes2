@@ -59,7 +59,7 @@ public class GUIView extends javax.swing.JFrame implements View {
         ProgBladder = new javax.swing.JProgressBar();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        ProgHapppy = new javax.swing.JProgressBar();
+        ProgHappy = new javax.swing.JProgressBar();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         InventoryPane = new javax.swing.JScrollPane();
         StorePane = new javax.swing.JScrollPane();
@@ -139,8 +139,8 @@ public class GUIView extends javax.swing.JFrame implements View {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel10.setText("Happiness");
 
-        ProgHapppy.setString("0");
-        ProgHapppy.setStringPainted(true);
+        ProgHappy.setString("0");
+        ProgHappy.setStringPainted(true);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -172,7 +172,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ProgHapppy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(ProgHappy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -188,7 +188,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ProgHapppy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ProgHappy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -413,6 +413,37 @@ public class GUIView extends javax.swing.JFrame implements View {
 	
 	@Override
     public void UpdateScreen (UserDragon drg) {
+		int health = (int) drg.getHealth();
+		int maxhealth = (int) drg.getMaxHealth();
+		int bladder = (int) drg.getBladder();
+		int stamina = (int) drg.getStamina();
+		int maxstamina = (int) drg.getMaxStamina();
+		int happiness = (int) drg.getHappiness();
+		int hunger = (int) drg.getHunger();
+		int thirst = (int) drg.getThirst();
+		
+		ProgHealth.setValue(health);
+		ProgHealth.setMaximum(maxhealth);
+		ProgHealth.setString(""+health+"/"+maxhealth);
+		
+		ProgStamina.setValue(stamina);
+		ProgStamina.setMaximum(maxstamina);
+		ProgStamina.setString(""+stamina+"/"+maxstamina);
+		
+		ProgHappy.setValue(happiness);
+		ProgHappy.setString(""+happiness+"/100");
+		
+		ProgHunger.setValue(hunger);
+		ProgHunger.setString(""+hunger+"/100");
+		
+		ProgThirst.setValue(thirst);
+		ProgThirst.setString(""+thirst+"/100");
+		
+		ProgBladder.setValue(bladder);
+		ProgBladder.setString(""+bladder+"/100");
+		//TODO : progXP, money
+		//100*(lvl+1)^3
+		
     }
 
 	
@@ -443,7 +474,7 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JLabel DragonName;
     private javax.swing.JScrollPane InventoryPane;
     private javax.swing.JProgressBar ProgBladder;
-    private javax.swing.JProgressBar ProgHapppy;
+    private javax.swing.JProgressBar ProgHappy;
     private javax.swing.JProgressBar ProgHealth;
     private javax.swing.JProgressBar ProgHunger;
     private javax.swing.JProgressBar ProgStamina;
