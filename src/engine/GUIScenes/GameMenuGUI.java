@@ -38,6 +38,7 @@ public class GameMenuGUI extends Scene
     private int nowlevelPlay;
     private int mazeSize;
     private int nowFloor;
+    private int prevFloor;
     private int initPosMapWidth;
     private int initPosMapHeight;
     private int startPlayerPosX;
@@ -171,6 +172,7 @@ public class GameMenuGUI extends Scene
     {
         if(isFinish)
         {
+            prevFloor = currentPlayer.getLocation().getLevel();
             if(keyEnterPressed)
             {
                 try 
@@ -299,9 +301,19 @@ public class GameMenuGUI extends Scene
                 playerdisplayState %= 8;
                 System.out.println(currentPlayer.getLocation());
             }
-            
-            
+                        
             nowFloor = currentPlayer.getLocation().getLevel();
+            
+            if(prevFloor != nowFloor)
+            {
+                prevFloor = nowFloor;
+                System.out.println("TELEPORT!!");
+                int offset = 10;
+                playerPosX = 165 + offset + (currentPlayer.getLocation().getCol() * pathTexture.getWidth(this));
+                playerPosY = 110 + offset + (currentPlayer.getLocation().getRow() * pathTexture.getHeight(this));
+                playerRect = new Rectangle(playerPosX, playerPosY, 48, 63);
+            }
+            
             if(output == 1)
             {
                 isFinish = true;
@@ -391,7 +403,6 @@ public class GameMenuGUI extends Scene
                         break;
             }
             
-        g2D.draw(playerRect);
         }
     }
     

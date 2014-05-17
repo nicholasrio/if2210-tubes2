@@ -89,7 +89,7 @@ public class Game
             SoundManager.addSound(new Sound("teleport","teleport.wav",Sound.SoundType.sfx));
             SoundManager.addSound(new Sound("coin","cling.wav",Sound.SoundType.sfx));
             try{
-                SceneManager.SwitchScene("MainMenuGUI");
+                SceneManager.SwitchScene("GameMenuGUI");
             }catch(SceneNotFoundException e){
                 e.printStackTrace();
             }
