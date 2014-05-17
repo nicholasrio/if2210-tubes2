@@ -397,6 +397,16 @@ public class GUIView extends javax.swing.JFrame implements View {
 		});
 	}
 	
+	public void test() {
+		ProgHealth.setValue(80);
+		DragonName.setText("asdf");
+		ProgHealth.revalidate();
+		ProgHealth.repaint();
+		revalidate();
+		repaint();
+		System.out.println("tested");
+	}
+	
 	@Override
 	public void showMenu() {
 		
