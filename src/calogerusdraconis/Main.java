@@ -38,6 +38,9 @@ public class Main {
 		System.exit(0);
 	}
 	
+	/**
+	 * Main program in terminal
+	 */
 	public static void terminal() {
 		Scanner in = new Scanner(System.in);
 		int loadNew = 0;
@@ -144,14 +147,14 @@ public class Main {
 	}
 
 	/**
-	 * 
+	 * Mengembalikan dragon baru di saat new game
 	 */
 	public static UserDragon newGame(String name, String password) {
 		return new UserDragon(name, 100, 100, 100, 100, 0, 0, 0, 1, 0, password, 100, 100);
 	}
 
 	/**
-	 * 
+	 * Mengembalikan dragon lama di saat load game
 	 */
 	public static UserDragon loadGame(String name, String password) throws Exception {
 		XmlController instance = new XmlController();

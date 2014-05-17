@@ -334,7 +334,7 @@ public class UserDragon extends Dragon {
     }
     
 	/**
-	 * 
+	 * sebelum melakukan Exit meng-interrupt thread
 	 */
     public void sebelumExit() {
         th.interrupt();
