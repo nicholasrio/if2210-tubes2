@@ -6,7 +6,7 @@
  * Jan Wira Gotama Putra (13512015)
  * Eric (13512021)
  * Willy(13512070)
- * Melvin FOnda (13512085)
+ * Melvin Fonda (13512085)
  */
 
 package console;
@@ -19,11 +19,11 @@ import static model.Map.Peta;
 import static model.Map.col;
 import static model.Map.row;
 
-public class gameUI {
+public class GameUI {
     private static char MapView[][];
     
     /** Showing game transition UI */
-    public static void showTransition(Controller controller) {
+    public static void showTransition(GameController controller) {
         model.Map Map = controller.getMap();
         List <Tower> T = controller.getListOfTower();
         List <Monster> M = controller.getListOfMonster();
@@ -56,7 +56,7 @@ public class gameUI {
     }
     
     /** Showing game started - UI */
-    public static void showMap(Controller controller) {
+    public static void showGame(GameController controller) {
         model.Map Map = controller.getMap();
         List <Tower> T = controller.getListOfTower();
         List <Monster> M = controller.getListOfMonster();
@@ -89,5 +89,37 @@ public class gameUI {
                     MapView[M.get(i).getRow()][M.get(i).getCol()] = 'M'; //tanda tower
             }
         }
+    }
+    
+    /**
+     * Showing all players highscore
+     *
+     * @param menuList
+     */
+    public static void showHighScore(List<Player> players) {
+        
+        for (Player Player_each : players) {
+            System.out.println(Player_each.getName() + " " + Player_each.getHighScore());
+        }
+    }
+    
+    /** Showing game main menu */
+    public static void showMainMenus() {
+        System.out.println("1. Login");
+        System.out.println("2. New Player");
+        System.out.println("3. High Scores");
+        System.out.println("4. Detele Player");
+        System.out.println("5. New Game");
+        System.out.println("6. Load Game");
+        System.out.println("7. Exit");
+    }
+    
+    /** Showing tower information */
+    public static void showTowerInfo(Tower t) {
+        System.out.println("Tower Information at (" + row + "," + col + ")");
+        System.out.println("Level           : " + t.getCurrentLevel());
+        System.out.println("Attack          : " + t.getAttack());
+        System.out.println("Attack Range    : " + t.getRange());
+        System.out.println("Upgrade cost    : " + t.getUpgradeCost());
     }
 }

@@ -1,20 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author 
+ * Darwin Prasetio (13512015)
+ * Chrestella Stephanie (13512005)
+ * Jan Wira Gotama Putra (13512015)
+ * Eric (13512021)
+ * Willy(13512070)
+ * Melvin Fonda (13512085)
  */
+
 package gui;
 
 /**
  *
  * @author Opel Howard
  */
-import controller.MainMenu;
+import controller.MainMenuConsole;
 import exception.NameNotExistException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,9 +31,9 @@ public class TowerDefense {
     public static String inputMenu;
 
     public static void main(String[] args) throws IOException {
-        MainMenu menuList = MainMenu.getInstance();
+        MainMenuConsole mainMenuConsole = MainMenuConsole.getInstance();
         try {
-            menuList.loadPlayer();
+            mainMenuConsole.loadPlayer();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
             return;
@@ -42,13 +46,13 @@ public class TowerDefense {
             display.showMenu();
             while (pilihanMenu == 0) {
             };
-            if (pilihanMenu <= 2 && inputMenu == null) {
+            if (pilihanMenu <= 2 && (!mainMenuConsole.logged())) {
                 pilihanMenu = 5;
             }
             switch (pilihanMenu) {
                 case 1: {
                     try {
-                        menuList.Login(inputMenu);
+                        mainMenuConsole.login(inputMenu);
                     } catch (NameNotExistException ex) {
                         System.out.println(ex);
                     }
@@ -56,7 +60,7 @@ public class TowerDefense {
                 }
                 case 2: {
                     try {
-                        menuList.newPlayer(inputMenu);
+                        mainMenuConsole.newPlayer(inputMenu);
                     } catch (Exception ex) {
                         System.out.println(ex);
                     }
@@ -64,7 +68,7 @@ public class TowerDefense {
                 }
                 case 3: {
                     pilihanMenu = 0;
-                    display.showHighScore(menuList.getHighScore());
+                    display.showHighScore(mainMenuConsole.getHighScore());
                     while (pilihanMenu == 0) {
                     };
                     pilihanMenu = 0;
@@ -85,7 +89,7 @@ public class TowerDefense {
                     boolean not_exist = true;
                     display.showLogin("Input Username");
                     try {
-                        menuList.Login(inputMenu);
+                        mainMenuConsole.login(inputMenu);
                         not_exist = false;
                     } catch (NameNotExistException ex) {
                         display.showWarning(ex.toString());
@@ -94,7 +98,7 @@ public class TowerDefense {
                         if (display.showChoice("Create New User") == JOptionPane.YES_OPTION) {
                             display.showLogin("Input New Username");
                             try {
-                                menuList.newPlayer(inputMenu);
+                                mainMenuConsole.newPlayer(inputMenu);
                                 not_exist = false;
                             } catch (Exception ex) {
                                 display.showWarning(ex.toString());
@@ -105,7 +109,7 @@ public class TowerDefense {
                 }
                 case 6: {
                     try {
-                        menuList.deletePlayer(inputMenu);
+                        mainMenuConsole.deletePlayer(inputMenu);
                         inputMenu = null;
                     } catch (NameNotExistException ex) {
                         System.out.println(ex);
