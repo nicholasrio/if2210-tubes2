@@ -409,14 +409,36 @@ public class UserDragon extends Dragon {
 	 */
 	public Dragon generateEnemy() {
 		Random rand = new Random();
-        float ranHealth = (float) Math.ceil(rand.nextGaussian()*(0.2*health)+health);
-        float ranStamina = (float) Math.ceil(rand.nextGaussian()*(0.2*stamina)+stamina);
-        int ranExperience = (int) Math.ceil(rand.nextGaussian()*(0.2*experience)+experience);
-        int ranLevel = (int) Math.ceil(rand.nextGaussian()*(0.2*level)+level);
-        float ranThirst = (float) Math.ceil(rand.nextGaussian()*(0.2*thirst)+thirst);
-        float ranBladder = (float) Math.ceil(rand.nextGaussian()*(0.2*bladder)+bladder);
-        float ranHunger = (float) Math.ceil(rand.nextGaussian()*(0.2*hunger)+hunger);
-        Dragon withWho = new Dragon("Random Dragon", ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranExperience);
+		
+		double x = rand.nextGaussian();
+		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
+        float ranHealth = (float) Math.ceil(x*(0.2*health)+health);
+		
+		x = rand.nextGaussian();
+		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
+        float ranStamina = (float) Math.ceil(x*(0.2*stamina)+stamina);
+        
+		x = rand.nextGaussian();
+		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
+		int ranExperience = (int) Math.ceil(x*(0.2*experience)+experience);
+        
+		x = rand.nextGaussian();
+		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
+		int ranLevel = (int) Math.ceil(x*(0.2*level)+level);
+        
+		x = rand.nextGaussian();
+		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
+		float ranThirst = (float) Math.ceil(x*(0.2*thirst)+thirst);
+        
+		x = rand.nextGaussian();
+		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
+		float ranBladder = (float) Math.ceil(x*(0.2*bladder)+bladder);
+        
+		x = rand.nextGaussian();
+		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
+		float ranHunger = (float) Math.ceil(x*(0.2*hunger)+hunger);
+        
+		Dragon withWho = new Dragon("Random Dragon", ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranExperience);
 		
 		return withWho;
 	}
