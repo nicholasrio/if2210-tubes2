@@ -1,6 +1,6 @@
 package Video;
 
-import mysql.*;
+import mysql.SqlStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,11 +26,11 @@ public class Video {
         }
         /* insert attribut to database */
 	public void Insert() throws SQLException {
-            s.insert_video(title, link, rating, view, no_tubes, group_name);
+            s.insert_video(title, link, rating, view, group_name);
 	}
         /* update attribut to database */
 	public void Update(int id) throws SQLException {
-            s.update_video(id, title, link, rating, view, no_tubes, group_name);
+            s.update_video(id, title, link, rating, view, group_name);
         }
         /* delete attribut to database */
 	public void Delete(int id) throws SQLException {

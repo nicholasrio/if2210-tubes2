@@ -10,6 +10,8 @@ import Admin.AdministratorController;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+
 /**
  *
  * @author Rikysamuel
@@ -138,18 +140,21 @@ public class KataMa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{
+        try
+        {
            String passString = new String(jPasswordField1.getPassword());
-           if( !AC.checkLoginAdmin(jTextField1.getText(), passString)){
+           if (!AC.checkLoginAdmin(jTextField1.getText(), passString)){
                JOptionPane.showMessageDialog(null, "Wrong Username/Password", "Ignored",0);
            }
-           else{
+           else
+           {
                JOptionPane.showMessageDialog(null, "Welcome You're logged in now", "Welcome",1);
            }
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
+    //GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
@@ -171,6 +176,7 @@ public class KataMa extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+    	NativeInterface.open();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

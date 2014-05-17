@@ -75,7 +75,7 @@ public class Group {
     }
     
     public void select_group_by(int _no_tubes, String _group_name) throws SQLException{
-        ResultSet rs = s.getStatement().executeQuery("select * from group_tubes where no_tubes = \"" + _no_tubes + "\" and group_name = \"" + _group_name + "\";");
+        ResultSet rs = s.makeStatement().executeQuery("select * from group_tubes where no_tubes = \"" + _no_tubes + "\" and group_name = \"" + _group_name + "\";");
         
         while(rs.next()){
             //Retrieve by column name
@@ -92,7 +92,7 @@ public class Group {
     }
     
     public boolean cekDataGroup(int _no_tubes, String _group_name) throws SQLException{
-        ResultSet rs = s.getStatement().executeQuery("select * from group_tubes where no_tubes = \"" + _no_tubes + "\" and group_name = \"" + _group_name + "\";");
+        ResultSet rs = s.makeStatement().executeQuery("select * from group_tubes where no_tubes = \"" + _no_tubes + "\" and group_name = \"" + _group_name + "\";");
         boolean ketemu = false;
         
         if(rs.first()){
