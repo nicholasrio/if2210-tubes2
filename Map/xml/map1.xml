@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<map>
+     <baris>6</baris>
+     <kolom>6</kolom>
+     <level>6</level>
+     <matrix>
+          <el idx="0">p</el>
+          <el idx="1">w</el>
+          <el idx="2">w</el>
+          <el idx="3">p</el>
+          <el idx="4">p</el>
+          <el idx="5">p</el>
+          <el idx="6">p</el>
+          <el idx="7">p</el>
+          <el idx="8">p</el>
+          <el idx="9">p</el>
+          <el idx="10">w</el>
+          <el idx="11">w</el>
+          <el idx="12">p</el>
+          <el idx="13">w</el>
+          <el idx="14">w</el>
+          <el idx="15">p</el>
+          <el idx="16">w</el>
+          <el idx="17">c</el>
+          <el idx="18">p</el>
+          <el idx="19">w</el>
+          <el idx="20">c</el>
+          <el idx="21">p</el>
+          <el idx="22">p</el>
+          <el idx="23">p</el>
+          <el idx="24">p</el>
+          <el idx="25">w</el>
+          <el idx="26">w</el>
+          <el idx="27">p</el>
+          <el idx="28">w</el>
+          <el idx="29">p</el>
+          <el idx="30">s</el>
+          <el idx="31">p</el>
+          <el idx="32">p</el>
+          <el idx="33">p</el>
+          <el idx="34">w</el>
+          <el idx="35">t0</el>
+          <el idx="36">p</el>
+          <el idx="37">p</el>
+          <el idx="38">p</el>
+          <el idx="39">p</el>
+          <el idx="40">p</el>
+          <el idx="41">p</el>
+          <el idx="42">p</el>
+          <el idx="43">w</el>
+          <el idx="44">p</el>
+          <el idx="45">w</el>
+          <el idx="46">w</el>
+          <el idx="47">p</el>
+          <el idx="48">p</el>
+          <el idx="49">w</el>
+          <el idx="50">p</el>
+          <el idx="51">w</el>
+          <el idx="52">c</el>
+          <el idx="53">p</el>
+          <el idx="54">p</el>
+          <el idx="55">p</el>
+          <el idx="56">w</el>
+          <el idx="57">t3</el>
+          <el idx="58">w</el>
+          <el idx="59">p</el>
+          <el idx="60">p</el>
+          <el idx="61">w</el>
+          <el idx="62">w</el>
+          <el idx="63">p</el>
+          <el idx="64">w</el>
+          <el idx="65">p</el>
+          <el idx="66">h</el>
+          <el idx="67">p</el>
+          <el idx="68">p</el>
+          <el idx="69">p</el>
+          <el idx="70">p</el>
+          <el idx="71">p</el>
+          <el idx="72">w</el>
+          <el idx="73">p</el>
+          <el idx="74">w</el>
+          <el idx="75">w</el>
+          <el idx="76">c</el>
+          <el idx="77">w</el>
+          <el idx="78">p</el>
+          <el idx="79">p</el>
+          <el idx="80">p</el>
+          <el idx="81">p</el>
+          <el idx="82">p</el>
+          <el idx="83">p</el>
+          <el idx="84">w</el>
+          <el idx="85">p</el>
+          <el idx="86">w</el>
+          <el idx="87">w</el>
+          <el idx="88">w</el>
+          <el idx="89">h</el>
+          <el idx="90">p</el>
+          <el idx="91">p</el>
+          <el idx="92">p</el>
+          <el idx="93">p</el>
+          <el idx="94">w</el>
+          <el idx="95">w</el>
+          <el idx="96">w</el>
+          <el idx="97">p</el>
+          <el idx="98">w</el>
+          <el idx="99">p</el>
+          <el idx="100">p</el>
+          <el idx="101">p</el>
+          <el idx="102">c</el>
+          <el idx="103">p</el>
+          <el idx="104">w</el>
+          <el idx="105">p</el>
+          <el idx="106">w</el>
+          <el idx="107">t1</el>
+          <el idx="108">p</el>
+          <el idx="109">w</el>
+          <el idx="110">p</el>
+          <el idx="111">w</el>
+          <el idx="112">p</el>
+          <el idx="113">w</el>
+          <el idx="114">p</el>
+          <el idx="115">w</el>
+          <el idx="116">p</el>
+          <el idx="117">w</el>
+          <el idx="118">p</el>
+          <el idx="119">w</el>
+          <el idx="120">p</el>
+          <el idx="121">p</el>
+          <el idx="122">p</el>
+          <el idx="123">p</el>
+          <el idx="124">p</el>
+          <el idx="125">w</el>
+          <el idx="126">p</el>
+          <el idx="127">w</el>
+          <el idx="128">h</el>
+          <el idx="129">w</el>
+          <el idx="130">p</el>
+          <el idx="131">w</el>
+          <el idx="132">p</el>
+          <el idx="133">w</el>
+          <el idx="134">w</el>
+          <el idx="135">w</el>
+          <el idx="136">p</el>
+          <el idx="137">p</el>
+          <el idx="138">p</el>
+          <el idx="139">p</el>
+          <el idx="140">c</el>
+          <el idx="141">w</el>
+          <el idx="142">t4</el>
+          <el idx="143">w</el>
+          <el idx="144">p</el>
+          <el idx="145">p</el>
+          <el idx="146">p</el>
+          <el idx="147">w</el>
+          <el idx="148">p</el>
+          <el idx="149">t2</el>
+          <el idx="150">p</el>
+          <el idx="151">w</el>
+          <el idx="152">p</el>
+          <el idx="153">w</el>
+          <el idx="154">p</el>
+          <el idx="155">w</el>
+          <el idx="156">p</el>
+          <el idx="157">h</el>
+          <el idx="158">p</el>
+          <el idx="159">p</el>
+          <el idx="160">p</el>
+          <el idx="161">w</el>
+          <el idx="162">w</el>
+          <el idx="163">w</el>
+          <el idx="164">p</el>
+          <el idx="165">w</el>
+          <el idx="166">h</el>
+          <el idx="167">w</el>
+          <el idx="168">p</el>
+          <el idx="169">p</el>
+          <el idx="170">p</el>
+          <el idx="171">p</el>
+          <el idx="172">c</el>
+          <el idx="173">p</el>
+          <el idx="174">c</el>
+          <el idx="175">w</el>
+          <el idx="176">w</el>
+          <el idx="177">w</el>
+          <el idx="178">p</el>
+          <el idx="179">w</el>
+          <el idx="180">p</el>
+          <el idx="181">p</el>
+          <el idx="182">p</el>
+          <el idx="183">p</el>
+          <el idx="184">w</el>
+          <el idx="185">f</el>
+          <el idx="186">p</el>
+          <el idx="187">w</el>
+          <el idx="188">w</el>
+          <el idx="189">w</el>
+          <el idx="190">c</el>
+          <el idx="191">p</el>
+          <el idx="192">p</el>
+          <el idx="193">w</el>
+          <el idx="194">p</el>
+          <el idx="195">p</el>
+          <el idx="196">p</el>
+          <el idx="197">w</el>
+          <el idx="198">p</el>
+          <el idx="199">w</el>
+          <el idx="200">p</el>
+          <el idx="201">w</el>
+          <el idx="202">p</el>
+          <el idx="203">p</el>
+          <el idx="204">p</el>
+          <el idx="205">w</el>
+          <el idx="206">p</el>
+          <el idx="207">w</el>
+          <el idx="208">w</el>
+          <el idx="209">h</el>
+          <el idx="210">p</el>
+          <el idx="211">p</el>
+          <el idx="212">p</el>
+          <el idx="213">p</el>
+          <el idx="214">p</el>
+          <el idx="215">c</el>
+     </matrix>
+     <teleporters>5</teleporters>
+     <destination>
+          <teleporter id="0">
+               <baris>1</baris>
+               <kolom>1</kolom>
+               <level>2</level>
+          </teleporter>
+          <teleporter id="1">
+               <baris>0</baris>
+               <kolom>0</kolom>
+               <level>4</level>
+          </teleporter>
+          <teleporter id="2">
+               <baris>0</baris>
+               <kolom>0</kolom>
+               <level>1</level>
+          </teleporter>
+          <teleporter id="3">
+               <baris>2</baris>
+               <kolom>2</kolom>
+               <level>3</level>
+          </teleporter>
+          <teleporter id="4">
+               <baris>0</baris>
+               <kolom>3</kolom>
+               <level>5</level>
+          </teleporter>
+     </destination>
+</map>
