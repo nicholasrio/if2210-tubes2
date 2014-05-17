@@ -25,10 +25,10 @@ public class SoundManagerTest {
     public void testAddSound() {
         System.out.println("addSound");
         
-        SoundManager instance = new SoundManager();
-        instance.addSound(new Sound("teleport","teleport.wav",Sound.SoundType.sfx));
-        instance.playSound("teleport");
+        SoundManager.addSound(new Sound("teleport","teleport.wav",Sound.SoundType.sfx));
+        SoundManager.playSound("teleport");
         
+        assertFalse(SoundManager.sounds.isEmpty());
     }
     
 }

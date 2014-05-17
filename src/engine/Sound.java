@@ -40,6 +40,7 @@ public class Sound {
         new Thread(new Runnable(){
             public void run(){
                 if(clip != null){
+                    clip.setFramePosition(0);
                     clip.start();
                 }
             }

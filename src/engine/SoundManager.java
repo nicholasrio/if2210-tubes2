@@ -13,21 +13,21 @@ import javax.sound.sampled.*;
  * @author Winson
  */
 public class SoundManager {
-    public ArrayList<Sound> sounds = new ArrayList<>();
-    
-    public SoundManager(){
+    public static ArrayList<Sound> sounds = new ArrayList<>();
+
+    public static void Initialize(){
         sounds.clear();
     }
     
-    public void addSound(Sound sound){
+    public static void addSound(Sound sound){
         sounds.add(sound);
     }
     
-    public void removeSound(Sound sound){
+    public static void removeSound(Sound sound){
         sounds.remove(sound);
     }
     
-    public void playSound(String name){
+    public static void playSound(String name){
         for(Sound s : sounds){
             if(s.name.equals(name)){
                 s.play();
@@ -35,7 +35,7 @@ public class SoundManager {
         }
     }
     
-    public void loopSound(String name){
+    public static void loopSound(String name){
         for(Sound s : sounds){
             if(s.name.equals(name)){
                 s.loop();
@@ -43,7 +43,7 @@ public class SoundManager {
         }
     }
     
-    public void stopSound(String name){
+    public static void stopSound(String name){
         for(Sound s : sounds){
             if(s.name.equals(name)){
                 s.stop();
@@ -51,13 +51,13 @@ public class SoundManager {
         }
     }
     
-    public void stopAllSound(String name){
+    public static void stopAllSound(String name){
         for(Sound s : sounds){
             s.stop();
         }
     }
     
-    public void setSFXVolume(float value){
+    public static void setSFXVolume(float value){
         if (value<0f) value = 0f;
         if (value>100f) value = 100f;
         for(Sound s : sounds){
@@ -70,7 +70,7 @@ public class SoundManager {
         }
     }
     
-    public void setBGMVolume(float value){
+    public static void setBGMVolume(float value){
         if (value<0f) value = 0f;
         if (value>100f) value = 100f;
         for(Sound s : sounds){
