@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Video;
+package videocoba2;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -245,7 +245,6 @@ public class VideoSwing extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 new VideoSwing().setVisible(true);
             }
