@@ -35,6 +35,10 @@ public class GroupController {
     public List<String> GetXHistory(String group_name){
         return new ArrayList<>();
     }
+    
+    public List<String[]> GroupData() throws SQLException{
+        return team.GroupData();
+    }
 
 
 }

@@ -1,5 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
+
+/* * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package mysql;
@@ -47,6 +47,31 @@ public final class SqlStatement {
     public void delete_video(int id) throws SQLException {
         statement.execute("DELETE * FROM video WHERE id = \"" + id + "\";");
     }
+    
+    public List<String[]> select_group() throws SQLException{
+        List<String[]> details = new ArrayList<>();
+        try (ResultSet rs = statement.executeQuery("select * from group_tubes")) {
+            while(rs.next()){
+                //Retrieve by column name
+                String[] data = {rs.getString("no_tubes"), rs.getString("group_name"), rs.getString("anggota_1"), rs.getString("anggota_2"), rs.getString("anggota_3")};                
+                details.add(data);
+            }
+        }
+        return details;
+    }
+    
+    public boolean cekDataGroup(int _no_tubes, String _group_name) throws SQLException{
+        ResultSet rs = statement.executeQuery("select * from group_tubes where no_tubes = \"" + _no_tubes + "\" and group_name = \"" + _group_name + "\";");
+        boolean ketemu = false;
+        
+        if(rs.first()){
+            ketemu = true;
+        }
+        rs.close();
+        
+        return ketemu;
+    }
+    
     public List<String[]> select_admin() throws SQLException{
         List<String[]> details = new ArrayList<>();
         try (ResultSet rs = statement.executeQuery("select * from administrator")) {
@@ -57,29 +82,6 @@ public final class SqlStatement {
             }
         }
         return details;
-    }
-    
-    public void select_group() throws SQLException{
-        try (ResultSet rs = statement.executeQuery("select * from group_tubes")) {
-            while(rs.next()){
-                //Retrieve by column name
-                int no_tubes  = rs.getInt("no_tubes");
-                String grup  = rs.getString("group_name");
-                String anggota_1  = rs.getString("anggota_1");
-                String anggota_2  = rs.getString("anggota_2");
-                String anggota_3  = rs.getString("anggota_3");
-                
-                //Display values
-                System.out.print("No Tubes: " + no_tubes + " ");
-                System.out.println("Nama Kelompok: " + grup);
-                System.out.println("Member :");
-                System.out.println("Nama 1: " + anggota_1);
-                System.out.println("Nama 2: " + anggota_2);
-                if(anggota_3!=null){
-                    System.out.println("Nama 3: " + anggota_3);
-                }
-            }
-        }
     }
     
     public List<String[]> select_video() throws SQLException{
@@ -97,13 +99,13 @@ public final class SqlStatement {
     }
     
     public boolean cekDataVideo(int id) throws SQLException{
-        ResultSet rs = statement.executeQuery("select * from video WHERE id = \"" + id + "\";");
-        boolean ketemu = false;
-        
-        if(rs.first()){
-            ketemu = true;
+        boolean ketemu;
+        try (ResultSet rs = statement.executeQuery("select * from video WHERE id = \"" + id + "\";")) {
+            ketemu = false;
+            if(rs.first()){
+                ketemu = true;
+            }
         }
-        rs.close();
         
         return ketemu;
     }

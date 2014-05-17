@@ -220,7 +220,7 @@ public class GroupJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void b_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_editActionPerformed
-       
+    /*   
         try {
             if(cek() && g.cekDataGroup(Integer.parseInt(no_tubes.getText()), group_name.getText())){
                 GroupJFrameEdit gjf = new GroupJFrameEdit(no_tubes.getText(), group_name.getText());
@@ -245,7 +245,7 @@ public class GroupJFrame extends javax.swing.JFrame {
             
             Logger.getLogger(GroupJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        */
     }//GEN-LAST:event_b_editActionPerformed
 
     private void b_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_updateActionPerformed
