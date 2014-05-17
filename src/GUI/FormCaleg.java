@@ -204,13 +204,13 @@ public class FormCaleg extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 390, 85));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\linda.sekawati\\Pictures\\Design\\shutterstock_47142253.jpg")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 140));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\linda.sekawati\\Pictures\\Design\\shutterstock_47142253.jpg")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 590, 460));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\linda.sekawati\\Pictures\\Design\\shutterstock_47142253.jpg")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 590, 160));
 
         pack();
