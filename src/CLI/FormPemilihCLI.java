@@ -22,10 +22,10 @@ public class FormPemilihCLI {
         daftarPilihan = new DaftarPilihan(dapil);
     }
     public void start(){
-        System.out.println("==========================================================================");
-        System.out.println("==========================================================================");
-        System.out.println("=                                  Form Pemilih                          =");
-        System.out.println("==========================================================================\n\n\n");
+        System.out.println("==================================================================");
+        System.out.println("==================================================================");
+        System.out.println("=                          Form Pemilih                          =");
+        System.out.println("==================================================================\n\n\n");
         kertasSuaraBerdPartai(daftarPilihan.GetDaftarPartai());
     }
     
@@ -35,21 +35,65 @@ public class FormPemilihCLI {
         }
     }
     public void kertasSuaraDPR(){//ArrayList<Caleg> daftarCalegDPR){
-        
+        int i = 0;
+        ArrayList<String> daftarPartai = daftarPilihan.GetDaftarPartai();
+        while (i < daftarPartai.size()){
+            ArrayList<Caleg> daftarCalegDPR = daftarPilihan.GetDaftarCalegDPR(daftarPartai.get(i));
+            int j = 0;
+            while (j < daftarCalegDPR.size()){
+                println(j + 1, daftarCalegDPR.get(j));
+                j++;
+            }
+            i++;
+        }
     }
     public void kertasSuaraDPRDProv(){//ArrayList<Caleg> daftarCalegDPRDPROV){
-        
+        int i = 0;
+        ArrayList<String> daftarPartai = daftarPilihan.GetDaftarPartai();
+        while (i < daftarPartai.size()){
+            ArrayList<Caleg> daftarCalegDPRDProv = daftarPilihan.GetDaftarCalegDPRDProvinsi(daftarPartai.get(i));
+            int j = 0;
+            while (j < daftarCalegDPRDProv.size()){
+                println(j + 1, daftarCalegDPRDProv.get(j));
+                j++;
+            }
+            i++;
+        }
     }
     public void kertasSuaraDPRDKab(){//ArrayList<Caleg> daftarCalegDPRDKab){
-        
+        int i = 0;
+        ArrayList<String> daftarPartai = daftarPilihan.GetDaftarPartai();
+        while (i < daftarPartai.size()){
+            ArrayList<Caleg> daftarCalegDPRDKab = daftarPilihan.GetDaftarCalegDPRDKabupaten(daftarPartai.get(i));
+            int j = 0;
+            while (j < daftarCalegDPRDKab.size()){
+                println(j + 1, daftarCalegDPRDKab.get(j));
+                j++;
+            }
+            i++;
+        }
     }
     public void kertasSuaraDPD(){//ArrayList<Caleg> daftarCalegDPD){
-        
+        int i = 0;
+        ArrayList<String> daftarPartai = daftarPilihan.GetDaftarPartai();
+        while (i < daftarPartai.size()){
+            ArrayList<Caleg> daftarCalegDPD = daftarPilihan.GetDaftarCalegDPD(daftarPartai.get(i));
+            int j = 0;
+            while (j < daftarCalegDPD.size()){
+                println(j+1, daftarCalegDPD.get(j));
+                j++;
+            }
+            i++;
+        }
     }
-    public boolean isExist(int pilihan){
-        return pilihan < 10;
+    public boolean isExist(int pilihan, ArrayList<Caleg> daftarCaleg){
+        return pilihan > 0 && pilihan <= daftarCaleg.size() || pilihan == -1;
     }
-    public void println(Caleg caleg){
-        System.out.println(caleg.GetPartai() + caleg.getLingkup() + caleg.GetDapil());
+    public void println(int no, Caleg caleg){
+        System.out.println(no + ". " + caleg.GetDapil());
+    }
+    public void input(){
+        Scanner in = new Scanner(System.in);
+        int pilihan = in.nextInt();
     }
 }
