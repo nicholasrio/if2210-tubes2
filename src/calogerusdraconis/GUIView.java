@@ -62,8 +62,8 @@ public class GUIView extends javax.swing.JFrame implements View {
         ProgHapppy = new javax.swing.JProgressBar();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        InventoryPanel = new javax.swing.JLabel();
+        StorePane = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
         ButtEntertain = new javax.swing.JButton();
         ButtTrain = new javax.swing.JButton();
@@ -77,7 +77,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Your Dragon"));
 
-        DragonImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/neutral.png"))); // NOI18N
+        DragonImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/neutral r.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -205,14 +205,12 @@ public class GUIView extends javax.swing.JFrame implements View {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/sacred-root.png"))); // NOI18N
-        jLabel2.setText("Sacred Root");
-        jPanel2.add(jLabel2);
+        InventoryPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/sacred-root.png"))); // NOI18N
+        InventoryPanel.setText("Sacred Root");
+        jPanel2.add(InventoryPanel);
 
         jTabbedPane1.addTab("Inventory", jPanel2);
-
-        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
-        jTabbedPane1.addTab("Store", jPanel4);
+        jTabbedPane1.addTab("Store", StorePane);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Actions"));
 
@@ -432,6 +430,7 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JLabel DragonImg;
     private javax.swing.JLabel DragonLevel;
     private javax.swing.JLabel DragonName;
+    private javax.swing.JLabel InventoryPanel;
     private javax.swing.JProgressBar ProgBladder;
     private javax.swing.JProgressBar ProgHapppy;
     private javax.swing.JProgressBar ProgHealth;
@@ -439,9 +438,9 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JProgressBar ProgStamina;
     private javax.swing.JProgressBar ProgThirst;
     private javax.swing.JProgressBar ProgXP;
+    private javax.swing.JScrollPane StorePane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
@@ -450,7 +449,6 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
