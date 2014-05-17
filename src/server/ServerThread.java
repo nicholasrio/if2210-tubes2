@@ -88,6 +88,6 @@ public class ServerThread extends Thread{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		ServerThreadFactory.release(id);
+		ServerManager.release(id);
 	}
 }

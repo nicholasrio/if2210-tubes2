@@ -2,8 +2,7 @@ package Server;
 
 import java.net.Socket;
 
-public class ServerThreadFactory {
-
+public class ServerManager {
 	public static final int MAX_THREADS = 10;
 	public static int availableThreads = 10;
 	private static boolean[] available = {true, true, true, true, true, true, true, true, true, true};

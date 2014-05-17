@@ -29,7 +29,7 @@ public class Server {
 		    ServerSocket serverSocket = new ServerSocket(portNumber);
                     while(true){
                         Socket clientSocket = serverSocket.accept();
-                        ServerThread ss = ServerThreadFactory.get(clientSocket);
+                        ServerThread ss = ServerManager.get(clientSocket);
                         ss.start();
                     }
 		}
