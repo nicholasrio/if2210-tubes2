@@ -41,7 +41,7 @@ public class GameController {
      * Default consructor
      */
     private GameController() {
-        maximumLevel = 2; //buat testing dulu
+        maximumLevel = 3; 
     }
 
     /**
@@ -232,9 +232,7 @@ public class GameController {
      * Enemies are being attacked by tower(s)
      */
     public void allTowersAttack() {
-        System.out.println("Attacking!");
         for (int i = 0; i < listOfTower.size(); i++) {
-            System.out.println("Tower ke-" + i + " Cooldown : " + listOfTower.get(i).getCoolDownCount());
             for (int j = 0; j < listOfMonster.size(); ++j) {
                 /* 
                  if (there's ')enemy in tower's sight, then attack those enemy

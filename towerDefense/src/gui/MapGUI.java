@@ -317,6 +317,8 @@ class ImageViewer extends Canvas implements MouseListener {
                 int i = mm.getCol();
                 int j = mm.getRow();
                 g.drawImage(sprites[0], i*SIZE, j*SIZE, SIZE, SIZE, this);
+                g.setColor(Color.red);
+                g.drawString(String.valueOf(mm.getHP()), i*SIZE, j*SIZE);
             }
         }
     }
