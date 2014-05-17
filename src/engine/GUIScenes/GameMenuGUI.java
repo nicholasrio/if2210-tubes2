@@ -45,6 +45,16 @@ public class GameMenuGUI extends Scene
     private int startPlayerPosY;
     private int playerPosX;
     private int playerPosY;
+    private int charSpriteWidth;
+    private int charSpriteHeight;
+    private int playerdisplayState;
+    private int nbCharSprite;
+    private int playerSpeed;
+    private int playerFaced; // 1 for Up
+                             // 2 for Down
+                             // 3 for Left
+                             // 4 for Right
+    
     private Map playedMap;
     
     private boolean keyUpPressed;
@@ -52,29 +62,20 @@ public class GameMenuGUI extends Scene
     private boolean keyRightPressed;
     private boolean keyLeftPressed;
     private boolean keyEnterPressed;
+    private boolean isFinish;
+    private boolean isLevelUnlocked;
+    private boolean hitHole;
     
-    private int playerdisplayState;
+    public static boolean playerCollide;
     
     private Rectangle [][]tileRect;
     private Rectangle playerRect;
     
-    
-    public static boolean playerCollide;
-    
-    private int playerFaced; // 1 for Up
-                             // 2 for Down
-                             // 3 for Left
-                             // 4 for Right
-    
     private Player currentPlayer;
-    private boolean isFinish;
-    private boolean isLevelUnlocked;
     
     public GameMenuGUI()
     {
         super("GameMenuGUI");
-        
-        
         
         nowlevelPlay = GameData.nowLevelPlayed;
         //nowlevelPlay = 0;
@@ -89,17 +90,22 @@ public class GameMenuGUI extends Scene
         keyEnterPressed = false;
         
         playerCollide = false;
+        hitHole = false;
         
+        playerSpeed = 6;
         switch(nowlevelPlay)
         {
             case 0: mazeSize = 6; 
+                    nbCharSprite = 8;
                     initPosMapWidth = 165;
                     initPosMapHeight = 110;
-                    playerFaced = 3;
+                    playerFaced = 4;
+                    charSpriteWidth = 48;
+                    charSpriteHeight = 63;
                     
                     startPlayerPosX = 180;
                     startPlayerPosY = 490;
-                    playerRect = new Rectangle(180,490,48,63);
+                    playerRect = new Rectangle(startPlayerPosX,startPlayerPosY,charSpriteWidth,charSpriteHeight);
                     tileRect = new Rectangle[mazeSize][mazeSize];
                     break;
         }
@@ -205,8 +211,8 @@ public class GameMenuGUI extends Scene
                 
                 if (!playerCollide)
                 {
-                    playerPosY-=5;
-                    playerRect = new Rectangle((int)playerRect.getMinX(),(int)playerRect.getMinY()-5,
+                    playerPosY-=playerSpeed;
+                    playerRect = new Rectangle((int)playerRect.getMinX(),(int)playerRect.getMinY()-playerSpeed,
                                            (int)playerRect.getWidth(),(int)playerRect.getHeight());
                 }
                 else
@@ -214,7 +220,7 @@ public class GameMenuGUI extends Scene
                     playerCollide = false;
                 }
                 playerdisplayState ++;
-                playerdisplayState %= 8;
+                playerdisplayState %= nbCharSprite;
                 System.out.println(currentPlayer.getLocation());
             }
             else if(keyDownPressed)
@@ -233,8 +239,8 @@ public class GameMenuGUI extends Scene
                 
                 if (!playerCollide)
                 {
-                    playerPosY+=5;
-                    playerRect = new Rectangle((int)playerRect.getMinX(),(int)playerRect.getMinY()+5,
+                    playerPosY+=playerSpeed;
+                    playerRect = new Rectangle((int)playerRect.getMinX(),(int)playerRect.getMinY()+playerSpeed,
                                            (int)playerRect.getWidth(),(int)playerRect.getHeight());
                 }
                 else
@@ -242,7 +248,7 @@ public class GameMenuGUI extends Scene
                     playerCollide = false;
                 }
                 playerdisplayState++;
-                playerdisplayState %= 8;
+                playerdisplayState %= nbCharSprite;
                 System.out.println(currentPlayer.getLocation());
             }
             else if(keyLeftPressed)
@@ -261,8 +267,8 @@ public class GameMenuGUI extends Scene
                 
                 if (!playerCollide)
                 {
-                    playerPosX-=5;
-                    playerRect = new Rectangle((int)playerRect.getMinX()-5,(int)playerRect.getMinY(),
+                    playerPosX-=playerSpeed;
+                    playerRect = new Rectangle((int)playerRect.getMinX()-playerSpeed,(int)playerRect.getMinY(),
                                            (int)playerRect.getWidth(),(int)playerRect.getHeight());
                 }
                 else
@@ -270,7 +276,7 @@ public class GameMenuGUI extends Scene
                     playerCollide = false;
                 }
                 playerdisplayState++;
-                playerdisplayState %= 8;
+                playerdisplayState %= nbCharSprite;
                 System.out.println(currentPlayer.getLocation());
             }
             else if(keyRightPressed)
@@ -289,8 +295,8 @@ public class GameMenuGUI extends Scene
                 
                 if (!playerCollide)
                 {
-                    playerPosX+=5;
-                    playerRect = new Rectangle((int)playerRect.getMinX()+5,(int)playerRect.getMinY(),
+                    playerPosX+=playerSpeed;
+                    playerRect = new Rectangle((int)playerRect.getMinX()+playerSpeed,(int)playerRect.getMinY(),
                                            (int)playerRect.getWidth(),(int)playerRect.getHeight());
                 }
                 else
@@ -298,7 +304,7 @@ public class GameMenuGUI extends Scene
                     playerCollide = false;
                 }
                 playerdisplayState++;
-                playerdisplayState %= 8;
+                playerdisplayState %= nbCharSprite;
                 System.out.println(currentPlayer.getLocation());
             }
                         
@@ -309,9 +315,9 @@ public class GameMenuGUI extends Scene
                 prevFloor = nowFloor;
                 System.out.println("TELEPORT!!");
                 int offset = 10;
-                playerPosX = 165 + offset + (currentPlayer.getLocation().getCol() * pathTexture.getWidth(this));
-                playerPosY = 110 + offset + (currentPlayer.getLocation().getRow() * pathTexture.getHeight(this));
-                playerRect = new Rectangle(playerPosX, playerPosY, 48, 63);
+                playerPosX = initPosMapWidth + offset + (currentPlayer.getLocation().getCol() * pathTexture.getWidth(this));
+                playerPosY = initPosMapHeight + offset + (currentPlayer.getLocation().getRow() * pathTexture.getHeight(this));
+                playerRect = new Rectangle(playerPosX, playerPosY, charSpriteWidth, charSpriteHeight);
             }
             
             if(output == 1)
