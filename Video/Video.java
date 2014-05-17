@@ -36,9 +36,6 @@ public class Video {
         public boolean cekData(int id) throws SQLException{
             return s.cekDataVideo(id);
         }
-        public List<String[]> select_video(int id) throws SQLException{
-            return s.select_video();
-        }
 	public List<String[]> SelectData() throws SQLException {
                 return s.select_video();
 	}
