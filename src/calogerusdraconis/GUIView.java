@@ -47,7 +47,6 @@ public class GUIView extends javax.swing.JFrame implements View {
         DragonImg = new javax.swing.JLabel();
         DragonName = new javax.swing.JLabel();
         DragonLevel = new javax.swing.JLabel();
-        ProgXP = new javax.swing.JProgressBar();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -102,25 +101,22 @@ public class GUIView extends javax.swing.JFrame implements View {
 
         DragonLevel.setText("Level 20");
 
-        ProgXP.setString("0");
-        ProgXP.setStringPainted(true);
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Exp");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Exp 10000/15000");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Stats"));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Health");
 
-        ProgHealth.setValue(50);
-        ProgHealth.setString("0");
+        ProgHealth.setString("0/150");
         ProgHealth.setStringPainted(true);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Stamina");
 
-        ProgStamina.setString("0");
+        ProgStamina.setRequestFocusEnabled(false);
+        ProgStamina.setString("0/130");
         ProgStamina.setStringPainted(true);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -300,11 +296,6 @@ public class GUIView extends javax.swing.JFrame implements View {
                 ButtSaveQuitMouseClicked(evt);
             }
         });
-        ButtSaveQuit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtSaveQuitActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -348,7 +339,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        TextMoney.setText("Money 50");
+        TextMoney.setText("Money 2400");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -359,16 +350,13 @@ public class GUIView extends javax.swing.JFrame implements View {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(DragonName, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TextMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProgXP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(TextMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(DragonLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(DragonLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -395,9 +383,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                                     .addComponent(DragonLevel)
                                     .addComponent(TextMoney))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ProgXP, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(DragonName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -412,40 +398,59 @@ public class GUIView extends javax.swing.JFrame implements View {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtEntertainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtEntertainMouseClicked
-        selection = 1;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 1;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtEntertainMouseClicked
 
     private void ButtTrainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtTrainMouseClicked
-        selection = 2;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 2;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtTrainMouseClicked
 
     private void ButtSleepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSleepMouseClicked
-        selection = 3;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 3;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtSleepMouseClicked
 
     private void ButtToiletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtToiletMouseClicked
-        selection = 4;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 4;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtToiletMouseClicked
 
     private void ButtFightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtFightMouseClicked
-        selection = 5;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 5;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtFightMouseClicked
 
-    private void ButtSaveQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtSaveQuitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtSaveQuitActionPerformed
-
     private void ButtSaveQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSaveQuitMouseClicked
-        // TODO add your handling code here:
+        synchronized(SelectionNotifier) {
+			selection = -1;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtSaveQuitMouseClicked
 
     private void ButtSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSaveMouseClicked
-        // TODO add your handling code here:
+        synchronized(SelectionNotifier) {
+			selection = 6;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtSaveMouseClicked
 
     private void InventoryPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseMoved
@@ -457,7 +462,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 
 	@Override
 	public void showMenu() {
-		
+		//NOP. already shown.
 	}
 	
 	@Override
@@ -504,6 +509,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 	
 	@Override
     public void UpdateScreen (UserDragon drg, Dragon enemy) {
+		//NOP. already shown.
     }
 
 	
@@ -530,7 +536,6 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JProgressBar ProgHunger;
     private javax.swing.JProgressBar ProgStamina;
     private javax.swing.JProgressBar ProgThirst;
-    private javax.swing.JProgressBar ProgXP;
     private javax.swing.JScrollPane StorePane;
     private javax.swing.JPanel StorePanel;
     private javax.swing.JLabel TextMoney;
@@ -549,14 +554,17 @@ public class GUIView extends javax.swing.JFrame implements View {
 
 	private boolean selectionUpdate = false;
 	private int selection = 0;
+	private final Object SelectionNotifier = new Object();
 	
 	public int waitForSelection(){
-		while (!selectionUpdate) {
-			try {
-				sleep(50);
-			} catch (InterruptedException ex) {
-				System.out.println("interrupted");
+		try {
+			synchronized(SelectionNotifier) {
+				while (!selectionUpdate) {
+					SelectionNotifier.wait();
+				}
 			}
+		} catch (InterruptedException ex) {
+			System.out.println("interrupted");
 		}
 		selectionUpdate = false;
 		return selection;

@@ -1,11 +1,17 @@
 package calogerusdraconis;
 
+import java.io.File;
+import java.io.IOException;
 import static java.lang.Thread.sleep; 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
 // #[regen=yes,id=DCE.DF71A32C-B40F-498E-E6D5-9F4513B43A22]
@@ -79,6 +85,7 @@ public class UserDragon extends Dragon {
 						//System.out.println("jalan ");
                         sleep(5000);
                         modifyAttribute();
+						//TODO: notify GUI?
                     }
                 } catch (InterruptedException ex) {
                     System.out.println("interrupted");
@@ -438,9 +445,43 @@ public class UserDragon extends Dragon {
 		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
 		float ranHunger = (float) Math.ceil(x*(0.2*hunger)+hunger);
         
-		Dragon withWho = new Dragon("Random Dragon", ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranExperience);
+		Dragon withWho = new Dragon(getRandomName(), ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranExperience);
 		
 		return withWho;
+	}
+	
+	/**
+	 * Mengambil nama dragon enemy secara random dari XML
+	 * @return nama dragon enemy
+	 */
+	private String getRandomName(){
+		String retval = "Enemy Dragon";
+		try {
+			// Load XML and get root Node
+			SAXBuilder builder = new SAXBuilder();
+			File xmlFile = new File("enemyDragons.xml");
+			Document document = (Document) builder.build(xmlFile);
+			Element rootNode = document.getRootElement();
+			
+			int len = Integer.parseInt(rootNode.getChildren("length").get(0).getText());
+			
+			//get list of root/save nodes
+			retval = rootNode.getChildren("name").get(randomInt(0,len-1)).getText();
+			
+		} catch (IOException | JDOMException io) {
+			io.printStackTrace();
+		}
+		return retval;
+	}
+	
+	/**
+	 * Mengembalikan random integer pada range input
+	 * @param min  batas minimal hasil random
+	 * @param max  batas maksimal hasil random
+	 * @return	hasil random integer
+	 */
+	public static int randomInt(int min, int max) {
+		return new Random().nextInt((max - min) + 1) + min;
 	}
 	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 

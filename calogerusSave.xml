@@ -51,4 +51,43 @@
       <experience>252</experience>
     </userDragon>
   </save>
+  <save>
+    <userDragon>
+      <name>user</name>
+      <password>pass</password>
+      <money>50.0</money>
+      <happiness>66.0</happiness>
+      <health>78.0</health>
+      <maxHealth>150.0</maxHealth>
+      <stamina>89.0</stamina>
+      <maxStamina>200.0</maxStamina>
+      <thirst>23.0</thirst>
+      <bladder>51.0</bladder>
+      <hunger>21.0</hunger>
+      <level>5.0</level>
+      <experience>123.0</experience>
+      <inventory>
+        <item>first-aid</item>
+        <item>potion</item>
+      </inventory>
+    </userDragon>
+  </save>
+  <save>
+    <userDragon>
+      <name>calogerus</name>
+      <password>muahaha</password>
+      <money>103.0</money>
+      <happiness>99.0</happiness>
+      <health>100.0</health>
+      <maxHealth>100.0</maxHealth>
+      <stamina>100.0</stamina>
+      <maxStamina>100.0</maxStamina>
+      <thirst>3.0</thirst>
+      <bladder>24.0</bladder>
+      <hunger>3.0</hunger>
+      <level>1.0</level>
+      <experience>0.0</experience>
+      <inventory />
+    </userDragon>
+  </save>
 </calogerusSave>

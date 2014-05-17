@@ -34,6 +34,11 @@ import org.jdom2.output.XMLOutputter;
  */
 public class XmlController {
 	
+	/**
+	 * Mengembalikan Consumable yang sesuai berdasarkan input nama
+	 * @param name nama Consumable yang dicari
+	 * @return Consumable yang dicari
+	 */
 	public static Consumable produceConsumable(String name) {
 		Store s = Store.getInstance();
 		ArrayList<Consumable> ac = s.getFdInventory();
@@ -48,7 +53,7 @@ public class XmlController {
 	/* 
 	 * Load Dragon from XML
 	 */
-	public UserDragon LoadDragon(String name, String password) throws Exception {
+	public static UserDragon LoadDragon(String name, String password) throws Exception {
 		UserDragon retval = null;
 		try {
 			// Load XML and get root Node
@@ -89,9 +94,8 @@ public class XmlController {
 					// Make Inventory
 					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
 					
-					ArrayList<Consumable> arr = new ArrayList<Consumable>();
+					ArrayList<Consumable> arr = new ArrayList<>();
 					for (Object anObj : invList) {
-						// TODO: get inventory for DRAGON
 						
 						Element node = (Element) anObj;
 						String s  = node.getText();
@@ -117,7 +121,7 @@ public class XmlController {
 	/* 
 	 * Save Dragon to XML
 	 */
-	public void SaveDragon(UserDragon dragon) {
+	public static void SaveDragon(UserDragon dragon) {
 		try {
 
 			//Initial setup
@@ -149,37 +153,52 @@ public class XmlController {
 					userDragon.getChild("maxHealth").setText(Float.toString(dragon.getMaxHealth()));
 					userDragon.getChild("stamina").setText(Float.toString(dragon.getStamina()));
 					userDragon.getChild("maxStamina").setText(Float.toString(dragon.getMaxStamina()));
-					userDragon.getChild("thirst").setText(Float.toString(dragon.getThirst()));userDragon.getChild("money").setText(Float.toString(dragon.getMoney()));
+					userDragon.getChild("thirst").setText(Float.toString(dragon.getThirst()));
 					userDragon.getChild("bladder").setText(Float.toString(dragon.getBladder()));
 					userDragon.getChild("hunger").setText(Float.toString(dragon.getHunger()));
 					userDragon.getChild("level").setText(Float.toString(dragon.getLevel()));
 					userDragon.getChild("experience").setText(Float.toString(dragon.getExperience()));
 					
-					// Make Inventory
-					List invList = userDragon.getChildren("inventory").get(0).getChildren("item");
-					for (Object anObj : invList) {
-						// TODO: get inventory for DRAGON
-						Element node = (Element) anObj;
-						System.out.println("Inventory Name : " + node.getText());
+					ArrayList<Element> invList = new ArrayList<>(); 
+					for(Consumable c : dragon.getFdInventory()){
+						Element item = new Element("item").setText(c.getName());
+						invList.add(item);
 					}
+					userDragon.getChildren("inventory").get(0).setContent(invList);
 				}
 			}
 			
-			//TODO: make new entry if dragon not found
-			
-			/*
-			// Unfinished, still following example
-			// update staff id attribute
-			Element staff = rootNode.getChild("staff");
-			staff.getAttribute("id").setValue("2");
-			// add new age element
-			Element age = new Element("age").setText("28");
-			staff.addContent(age);
-			// update salary value
-			staff.getChild("salary").setText("7000");
-			// remove firstname element
-			staff.removeChild("firstname");
-			*/
+			//make new entry if dragon not found
+			if (!found){
+				Element save = new Element("save");
+				
+				Element userDragon = new Element("userDragon");
+				
+				userDragon.addContent(new Element("name").setText(dragon.getName()));
+				userDragon.addContent(new Element("password").setText(dragon.getPassword()));
+				userDragon.addContent(new Element("money").setText(Float.toString(dragon.getMoney())));
+				userDragon.addContent(new Element("happiness").setText(Float.toString(dragon.getHappiness())));
+				userDragon.addContent(new Element("health").setText(Float.toString(dragon.getHealth())));
+				userDragon.addContent(new Element("maxHealth").setText(Float.toString(dragon.getMaxHealth())));
+				userDragon.addContent(new Element("stamina").setText(Float.toString(dragon.getStamina())));
+				userDragon.addContent(new Element("maxStamina").setText(Float.toString(dragon.getMaxStamina())));
+				userDragon.addContent(new Element("thirst").setText(Float.toString(dragon.getThirst())));
+				userDragon.addContent(new Element("bladder").setText(Float.toString(dragon.getBladder())));
+				userDragon.addContent(new Element("hunger").setText(Float.toString(dragon.getHunger())));
+				userDragon.addContent(new Element("level").setText(Float.toString(dragon.getLevel())));
+				userDragon.addContent(new Element("experience").setText(Float.toString(dragon.getExperience())));
+				
+				ArrayList<Element> invList = new ArrayList<>(); 
+				for(Consumable c : dragon.getFdInventory()){
+					System.out.println(c.getName());
+					Element item = new Element("item").setText(c.getName());
+					invList.add(item);
+				}
+				userDragon.addContent(new Element("inventory").addContent(invList));
+				
+				save.addContent(userDragon);
+				rootNode.addContent(save);
+			}
 
 			// Formatting and Outputting
 			XMLOutputter xmlOutput = new XMLOutputter();
