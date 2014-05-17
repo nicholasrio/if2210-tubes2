@@ -76,7 +76,7 @@ public class UserDragon extends Dragon {
             public void run() {
                 try {
                     while(true) {
-						System.out.println("jalan ");
+						//System.out.println("jalan ");
                         sleep(5000);
                         modifyAttribute();
                     }

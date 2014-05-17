@@ -201,9 +201,10 @@ public class GUIView extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setLayout(new java.awt.GridLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/sacred-root.png"))); // NOI18N
+        jLabel2.setText("Sacred Root");
         jPanel2.add(jLabel2);
 
         jTabbedPane1.addTab("Inventory", jPanel2);
@@ -313,7 +314,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 	/**
 	 * Main GUI
 	 */
-	private void guiMain() {
+	private static void guiMain() {
 		/* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
