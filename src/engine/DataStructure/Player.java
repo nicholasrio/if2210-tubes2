@@ -258,7 +258,8 @@ public class Player
                 Location teleLocation = tele.getArrivalLocation();
                 position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
             }
-            else if(itemHere.getName().equalsIgnoreCase("hole")){
+            else if(itemHere.getName().equalsIgnoreCase("hole"))
+            {
                 position.setLocation(position.getLevel()-1, position.getRow(), position.getCol());
             }
             else if(itemHere.getName().equalsIgnoreCase("finish"))
