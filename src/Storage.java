@@ -1,8 +1,15 @@
+/**
+ * @author Eldwin
+ */
+import java.util.ArrayList;
+
 public class Storage{
 	private int capacity;
+	ArrayList<SaleableObject> arrStorage;
 	
 	public Storage(){
-		capacity = 0;
+		this.capacity = 6;
+		arrStorage = new ArrayList<SaleableObject>(capacity);
 	}
 	
 	public Storage(int x){
@@ -17,4 +24,15 @@ public class Storage{
 		return capacity;
 	}
 	
+	public void addPlant(Plant P) {
+		this.arrStorage.add(P);
+	}
+	
+	public void addPest(Pest P) {
+		this.arrStorage.add(P);
+	}
+	
+	public void addFruit(Fruit F) {
+		this.arrStorage.add(F);
+	}
 }

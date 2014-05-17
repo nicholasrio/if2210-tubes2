@@ -1,3 +1,7 @@
+/**
+ * @author Eldwin
+ */
+
 public class SaleableObject {
 	protected String name;
 	protected int price;
