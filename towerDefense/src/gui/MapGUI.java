@@ -108,7 +108,7 @@ class ImageViewer extends Canvas {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        Map peta = new Map();
+        model.Map peta = new model.Map();
         try{
             peta.readFile(); 
         }catch (IOException ex){

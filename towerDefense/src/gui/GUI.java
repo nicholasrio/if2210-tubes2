@@ -5,187 +5,125 @@
  */
 package gui;
 
-import com.sun.corba.se.pept.transport.ListenerThread;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Opel Howard
  */
 public class GUI {
-    public static JFrame mainFrame;
-    public static MyCanvas mainCanvas;
-    public static void main(String[] arg) throws IOException {
+
+    protected static JFrame mainFrame;
+    protected static MyCanvas mainCanvas;
+
+    public GUI() {
         System.setProperty("sun.awt.noerasebackground", "true");
 
         mainFrame = new JFrame();
-        mainCanvas = new MyCanvas();
+        mainFrame.setTitle("Tower Defense");
+        try {
+            mainCanvas = new MyCanvas();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         mainCanvas.setPreferredSize(new Dimension(720, 380));
         mainFrame.add(mainCanvas);
-        
-        MainMenuGUI mmg = new MainMenuGUI();
-        mmg.run();
-        /*try {
-            mmg.run();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }*/
+
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setResizable(false);
+
+        mainFrame.pack();
+        mainFrame.setVisible(true);
     }
 }
-class MainMenuGUI {
-    public void run() {
-        GUI.mainCanvas.setListOfImage(new ArrayList<ImgComp>());
+
+class MainMenuGUI extends GUI {
+
+    public void showMenu() {
+        mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
         try {
-            GUI.mainCanvas.addImage("background_mainmenu", null, 0, 0);
-            GUI.mainCanvas.addImage("newgame", null, 0, 29);
-            GUI.mainCanvas.addImage("loadgame", null, 0, 86);
-            GUI.mainCanvas.addImage("highscore", HighScoreGUI.class, 0, 143);
-            GUI.mainCanvas.addImage("about", null, 0, 200);
-            GUI.mainCanvas.addImage("exit", Exit.class, 0, 257);
-            GUI.mainCanvas.addImage("towerDefense", null, 420, 0);
+            mainCanvas.addImage("background_mainmenu", 0, 0, 0);
+            mainCanvas.addImage("newgame", 1, 0, 29);
+            mainCanvas.addImage("loadgame", 2, 0, 86);
+            mainCanvas.addImage("highscore", 3, 0, 143);
+            mainCanvas.addImage("about", 4, 0, 200);
+            mainCanvas.addImage("exit", 7, 0, 257);
+            mainCanvas.addImage("towerDefense", 0, 420, 0);
+            if ((TowerDefense.inputMenu == null) || (TowerDefense.inputMenu.equalsIgnoreCase(""))) {
+                mainCanvas.addLabel("Hi Guest", 5, 15, 350, 100, 100, new Font("AR DECODE", Font.BOLD, 60));
+            } else {
+                mainCanvas.addLabel("Hi " + TowerDefense.inputMenu, 5, 50, 350, 100, 100, new Font("AR DECODE", Font.BOLD, 60));
+                mainCanvas.addLabel("X", 6, 5, 350, 100, 100, new Font("AR DECODE", Font.BOLD, 60));
+            }
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-        // set window button
-        GUI.mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        GUI.mainFrame.setResizable(false);
-
-        GUI.mainFrame.pack();
-
-        //mainFrame.setSize(new Dimension(720, 380));
-        GUI.mainFrame.setVisible(true);
+        mainCanvas.repaint();
     }
-}
 
-class HighScoreGUI {
-    public void run() {
-        GUI.mainCanvas.setListOfImage(new ArrayList<ImgComp>());
+    public void showHighScore(List<model.Player> listOfPlayers) {
+        mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
         try {
-            GUI.mainCanvas.addImage("highscore_display", null, 0, 0);
-            GUI.mainCanvas.addImage("exit", MainMenuGUI.class, 200, 200);
+            mainCanvas.addImage("highscore_display", 0, 0, 0);
+            int count = 0;
+            for (model.Player P : listOfPlayers) {
+                ++count;
+                if (count == 5)
+                    break;
+                mainCanvas.addLabel(P.getName() + " " + P.getHighScore(), 0, 300, 80 + count * 30, 0, 0, new Font("AR DECODE", Font.BOLD, 30));
+            }
+            mainCanvas.addLabel("Exit", 6, 300, 350, 100, 100, new Font("AR DECODE", Font.BOLD, 60));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }
-}
-
-class Exit {
-
-    public void run() {
-        System.exit(0);
-    }
-}
-
-class MyCanvas extends Canvas implements MouseListener, KeyListener {
-
-    private int currentIdx;
-    private ArrayList<ImgComp> listOfImg;
-    private String typing;
-
-    public MyCanvas() throws IOException {
-        typing = "";
-        this.addMouseListener(this);
-        addKeyListener(this);
-        currentIdx = -1;
+        mainCanvas.repaint();
     }
 
-    public void addImage(String str, Class _class, int _x, int _y) throws IOException {
-        ImgComp temp = new ImgComp(str, _class);
-        temp.setX(_x);
-        temp.setY(_y);
-        listOfImg.add(temp);
+    class refreshInput extends Thread {
+
+        public void run() {
+            TowerDefense.inputMenu = "";
+
+        }
     }
 
-    public ArrayList getListOfImage() {
-        return listOfImg;
+    public void showLogin(String str) {
+        mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
+        TowerDefense.inputMenu = JOptionPane.showInputDialog(mainFrame, null, str, JOptionPane.QUESTION_MESSAGE);
+        mainCanvas.repaint();
     }
 
-    public void setListOfImage(ArrayList _listOfImg) {
-        listOfImg = _listOfImg;
+    public int showChoice(String str) {
+        mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
+        mainCanvas.repaint();
+        return JOptionPane.showConfirmDialog(mainFrame, str, null, JOptionPane.YES_NO_OPTION);
     }
     
-    @Override
-    public void paint(Graphics graphic) {
-        for (ImgComp it : listOfImg) {
-            if (it.isModified()) {
-                graphic.drawImage(it.getDisplayed(), it.getX(), it.getY(), null);
-            }
+    public void showWarning(String str) {
+        mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
+        mainCanvas.repaint();
+        JOptionPane.showMessageDialog(mainFrame, str, "ERROR", JOptionPane.ERROR_MESSAGE);
+    }
+    public void showAbout() {
+        mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
+        try {
+            mainCanvas.addImage("about_us", 0, 0, 0);
+            mainCanvas.addLabel("Exit", 6, 300, 350, 100, 100, new Font("AR DECODE", Font.BOLD, 60));
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        graphic.drawString(typing, 400, 60);
+        mainCanvas.repaint();
     }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        int count = 0;
-        for (ImgComp img : listOfImg) {
-            if (img.getClicked() != null) {
-                if (img.isInvoked(e.getX(), e.getY())) {
-                    currentIdx = count;
-                    img.setDisplayed(img.getClicked());
-                    repaint();
-                }
-            }
-            ++count;
-        }
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        if (currentIdx == -1) {
-            return;
-        }
-        ImgComp img = listOfImg.get(currentIdx);
-        if (img.isInvoked(e.getX(), e.getY())) {
-            try {
-                img.invoke();
-            } catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | InstantiationException ex) {
-                Logger.getLogger(MyCanvas.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        img.setDisplayed(img.getUnclicked());
-        currentIdx = -1;
-        repaint();
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
-
-    @Override
-    public void update(Graphics g) {
-        paint(g);
-    }
-
-    @Override
-    public void keyTyped(KeyEvent ke) {
-        typing += ke.getKeyChar();
-        System.out.println("yes");
-        repaint();
-    }
-
-    @Override
-    public void keyPressed(KeyEvent ke) {}
-
-    @Override
-    public void keyReleased(KeyEvent ke) {}
 }
