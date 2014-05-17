@@ -85,7 +85,6 @@ public class InventoryDisplay extends JPanel {
 			g.drawString("MaxStamina : "+drgon.getFdInventory().get(pilihan).getMaxStaminaValue(), 100 , pilihan*64+150);
 			g.drawString("Thirst : "+drgon.getFdInventory().get(pilihan).getThirstValue(), 100 , pilihan*64+170);
 		}
-		
 		repaint();
 	}
 }

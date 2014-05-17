@@ -344,7 +344,7 @@
                 <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="InventoryPanelMouseMoved"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new InventoryDisplay(null); "/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new InventoryDisplay(null);"/>
                 <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="InventoryPanel.setPreferredSize(new Dimension(100,600));"/>
               </AuxValues>
 
@@ -364,6 +364,9 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="StorePane">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JScrollPane(StorePanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Store">
@@ -375,6 +378,13 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="StorePanel">
+              <Events>
+                <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="StorePanelMouseMoved"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new StoreDisplay(Store.getInstance());"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="InventoryPanel.setPreferredSize(new Dimension(100,600));"/>
+              </AuxValues>
 
               <Layout>
                 <DimensionLayout dim="0">

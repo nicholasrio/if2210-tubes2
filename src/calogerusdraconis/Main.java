@@ -197,7 +197,7 @@ public class Main {
 		} catch (InterruptedException e) {
 			
 		}*/
-		
+		view.UpdateScreen(Store.getInstance());
 		view.UpdateScreen(draco);
 		
 		Event e;

@@ -63,10 +63,11 @@ public class GUIView extends javax.swing.JFrame implements View {
         ProgHappy = new javax.swing.JProgressBar();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         InventoryPane = new JScrollPane(InventoryPanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        InventoryPanel = new InventoryDisplay(null); ;
+        InventoryPanel = new InventoryDisplay(null);
         InventoryPanel.setPreferredSize(new Dimension(100,600));
-        StorePane = new javax.swing.JScrollPane();
-        StorePanel = new javax.swing.JPanel();
+        StorePane = new JScrollPane(StorePanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        StorePanel = new StoreDisplay(Store.getInstance());
+        InventoryPanel.setPreferredSize(new Dimension(100,600));
         jPanel6 = new javax.swing.JPanel();
         ButtEntertain = new javax.swing.JButton();
         ButtTrain = new javax.swing.JButton();
@@ -230,6 +231,12 @@ public class GUIView extends javax.swing.JFrame implements View {
         InventoryPane.setViewportView(InventoryPanel);
 
         jTabbedPane1.addTab("Inventory", InventoryPane);
+
+        StorePanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                StorePanelMouseMoved(evt);
+            }
+        });
 
         javax.swing.GroupLayout StorePanelLayout = new javax.swing.GroupLayout(StorePanel);
         StorePanel.setLayout(StorePanelLayout);
@@ -457,8 +464,12 @@ public class GUIView extends javax.swing.JFrame implements View {
         // TODO add your handling code here:
 		if (evt.getX() > 64 || evt.getY() < 10) InventoryDisplay.pilihan = null;
 		else InventoryDisplay.pilihan = (evt.getY()-10)/64;
-		System.out.println(evt.getX() + " " + evt.getY());
     }//GEN-LAST:event_InventoryPanelMouseMoved
+
+    private void StorePanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StorePanelMouseMoved
+		if (evt.getX() > 64 || evt.getY() < 10) StoreDisplay.pilihan = null;
+		else StoreDisplay.pilihan = (evt.getY()-10)/64;
+    }//GEN-LAST:event_StorePanelMouseMoved
 
 	@Override
 	public void showMenu() {
@@ -504,6 +515,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 	
 	@Override
     public void UpdateScreen (Store str) {
+		StorePanel.repaint();
     }
 
 	
