@@ -6,6 +6,7 @@
 
 package Main;
 
+<<<<<<< HEAD
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
@@ -15,19 +16,36 @@ import javax.swing.WindowConstants;
 
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import VideoPlayer.YoutubeDataMedia;
+=======
+import Admin.AdministratorController;
+import Video.VideoController;
+>>>>>>> 22d11af49f7198f76453dea023339f59f143a85e
 import VideoPlayer.YoutubeMediaPlayer;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Rikysamuel
  */
 public class GuestView extends javax.swing.JFrame {
-
+    private int videodata;
+    private final List<String[]> viddetails;
+    private final VideoController VC;
+    
     /**
      * Creates new form GuestView
+     * @throws java.sql.SQLException
      */
-    public GuestView() {
+    public GuestView() throws SQLException {
         initComponents();
+        videodata = 0;
+        VC = new VideoController();
+        viddetails = VC.SelectVideoData();
+        jLabel1.setText(viddetails.get(0)[1]);
+        jLabel2.setText(viddetails.get(0)[5]);
+        jButton1.setEnabled(false);
     }
 
     /**
@@ -246,7 +264,17 @@ public class GuestView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        if (videodata>0){
+            jButton2.setEnabled(true);
+            videodata--;
+            jLabel1.setText(viddetails.get(videodata)[1]);
+            jLabel2.setText(viddetails.get(videodata)[5]);
+            if (videodata==0){
+                jButton1.setEnabled(false);
+            }
+        } else{
+            jButton1.setEnabled(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -255,6 +283,7 @@ public class GuestView extends javax.swing.JFrame {
         jRadioButton4.setSelected(false);
         jRadioButton5.setSelected(false);
         jLabel4.setText("Rating : 1");
+        
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
@@ -295,7 +324,18 @@ public class GuestView extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        if (videodata<viddetails.size()-1){
+            jButton1.setEnabled(true);
+            videodata++;
+            jLabel1.setText(viddetails.get(videodata)[1]);
+            jLabel2.setText(viddetails.get(videodata)[5]);
+            if (videodata==viddetails.size()-1){
+                jButton2.setEnabled(false);
+            }
+        }
+        else{
+            jButton2.setEnabled(false);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -82,7 +82,7 @@ public class VideoSwing extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("NIM");
+        jLabel5.setText("Id");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,6 +173,9 @@ public class VideoSwing extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Ada Kesalahan...");
                     Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (AttributeException a) {
+                    JOptionPane.showMessageDialog(null, a.getMessage());
+                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, a);
                 }
             }
         }
@@ -245,7 +248,6 @@ public class VideoSwing extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 new VideoSwing().setVisible(true);
             }

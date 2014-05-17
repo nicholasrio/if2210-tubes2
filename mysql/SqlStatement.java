@@ -89,7 +89,7 @@ public final class SqlStatement {
             while(rs.next()) {
                 String[] data = {Integer.toString(rs.getInt("id")), rs.getString("title"), rs.getString("link"),
                     Integer.toString(rs.getInt("view")),
-                    Integer.toString(rs.getInt("no_tubes")), rs.getString("group_name")};
+                    Integer.toString(rs.getInt("no_tubes")), rs.getString("group_nama")};
                 details.add(data);
             }
         }
