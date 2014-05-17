@@ -79,7 +79,7 @@ public class TowerDefense {
             } else if (pilihanMenu == 3 || pilihanMenu == 5 || pilihanMenu == 6) {
                 switch (pilihanMenu) {
                     case 3: {
-                        showHighScore(menuList);
+                        //menuList.showHighScore(menuList);
                         break;
                     }
                     case 5: {
