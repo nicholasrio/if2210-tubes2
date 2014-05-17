@@ -450,6 +450,10 @@ public class UserDragon extends Dragon {
 		return withWho;
 	}
 	
+	/**
+	 * Mengambil nama dragon enemy secara random dari XML
+	 * @return nama dragon enemy
+	 */
 	private String getRandomName(){
 		String retval = "Enemy Dragon";
 		try {
@@ -470,6 +474,12 @@ public class UserDragon extends Dragon {
 		return retval;
 	}
 	
+	/**
+	 * Mengembalikan random integer pada range input
+	 * @param min  batas minimal hasil random
+	 * @param max  batas maksimal hasil random
+	 * @return	hasil random integer
+	 */
 	public static int randomInt(int min, int max) {
 		return new Random().nextInt((max - min) + 1) + min;
 	}
