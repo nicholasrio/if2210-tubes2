@@ -61,6 +61,7 @@ public class StoreDisplay extends JPanel {
 			int minus = 0;
 			if (pilihan == ac.size()-1) minus = 120;
 			else if (pilihan == ac.size()-2) minus = 60;
+			else if (pilihan == 0) minus = -10;
 			g.drawString("Nama : "+ac.get(pilihan).getName(), 100 , pilihan*64+20-minus);
 			g.drawString("Harga : "+ac.get(pilihan).getCost(), 100 , pilihan*64+40-minus);
 			g.drawString("Happiness : "+ac.get(pilihan).getHappinessValue(), 100 , pilihan*64+60-minus);

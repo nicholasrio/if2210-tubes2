@@ -486,6 +486,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 		int happiness = (int) drg.getHappiness();
 		int hunger = (int) drg.getHunger();
 		int thirst = (int) drg.getThirst();
+		int money = (int) drg.getMoney();
 		
 		ProgHealth.setValue(health);
 		ProgHealth.setMaximum(maxhealth);
@@ -506,7 +507,9 @@ public class GUIView extends javax.swing.JFrame implements View {
 		
 		ProgBladder.setValue(bladder);
 		ProgBladder.setString(""+bladder+"/100");
-		//TODO : progXP, money
+		
+		TextMoney.setText("Money: " + money);
+		//TODO : progXP
 		//100*(lvl+1)^3
 		InventoryDisplay.change(drg,(InventoryDisplay) InventoryPanel);
 		InventoryPanel.repaint();
