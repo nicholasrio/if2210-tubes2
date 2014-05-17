@@ -94,14 +94,19 @@ public class MainMenuConsole {
         int idx = searchPlayer(loginPlayer.getName());
         players.get(idx).setHighScore(loginPlayer.getHighScore());
     }
+    
+    /*
+    * Playing tower defense game with GIU
+    */
     public void playGameGUI(boolean newGame) throws FileNotFoundException, IOException {
         GameController gameControl = GameController.getInstance();
+        System.out.println("Cabo ");
         if (newGame == false) {
             gameControl.loadGame(loginPlayer);
         } else {
             gameControl.newGame(loginPlayer);
         }
-        //loginPlayer = gameControl.playGameGUI(loginPlayer);
+        loginPlayer = gameControl.playGameGUI(loginPlayer);
         int idx = searchPlayer(loginPlayer.getName());
         players.get(idx).setHighScore(loginPlayer.getHighScore());
     }

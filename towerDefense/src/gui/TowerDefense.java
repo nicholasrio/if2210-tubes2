@@ -53,11 +53,13 @@ public class TowerDefense {
                 case 1: {
                     display.hide();
                     mainMenuConsole.playGameGUI(false);
+                    display.show();
                     break;
                 }
                 case 2: {
                     display.hide();
                     mainMenuConsole.playGameGUI(true);
+                    display.show();
                     break;
                 }
                 case 3: {
