@@ -74,16 +74,20 @@ public class InventoryDisplay extends JPanel {
 		for (int i = 0; i < image.length; ++i) {
 			image[i].paintIcon(this, g, 0, i*64+10);
 		}
+		
 		if(pilihan!=null) {
-			g.drawString("Nama : "+drgon.getFdInventory().get(pilihan).getName(), 100 , pilihan*64+10);
-			g.drawString("Harga : "+drgon.getFdInventory().get(pilihan).getCost(), 100 , pilihan*64+30);
-			g.drawString("Happiness : "+drgon.getFdInventory().get(pilihan).getHappinessValue(), 100 , pilihan*64+50);
-			g.drawString("Health : "+drgon.getFdInventory().get(pilihan).getHealthValue(), 100 , pilihan*64+70);
-			g.drawString("MaxHealth : "+drgon.getFdInventory().get(pilihan).getMaxHealthValue(), 100 , pilihan*64+90);
-			g.drawString("Hunger : "+drgon.getFdInventory().get(pilihan).getHungerValue(), 100 , pilihan*64+110);
-			g.drawString("Stamina : "+drgon.getFdInventory().get(pilihan).getStaminaValue(), 100 , pilihan*64+130);
-			g.drawString("MaxStamina : "+drgon.getFdInventory().get(pilihan).getMaxStaminaValue(), 100 , pilihan*64+150);
-			g.drawString("Thirst : "+drgon.getFdInventory().get(pilihan).getThirstValue(), 100 , pilihan*64+170);
+			int minus = 0;
+			if (pilihan == drgon.getFdInventory().size()-1) minus = 120;
+			else if (pilihan == drgon.getFdInventory().size()-2) minus = 60;
+			g.drawString("Nama : "+drgon.getFdInventory().get(pilihan).getName(), 100 , pilihan*64+20-minus);
+			g.drawString("Harga : "+drgon.getFdInventory().get(pilihan).getCost(), 100 , pilihan*64+40-minus);
+			g.drawString("Happiness : "+drgon.getFdInventory().get(pilihan).getHappinessValue(), 100 , pilihan*64+60-minus);
+			g.drawString("Health : "+drgon.getFdInventory().get(pilihan).getHealthValue(), 100 , pilihan*64+80-minus);
+			g.drawString("MaxHealth : "+drgon.getFdInventory().get(pilihan).getMaxHealthValue(), 100 , pilihan*64+100-minus);
+			g.drawString("Hunger : "+drgon.getFdInventory().get(pilihan).getHungerValue(), 100 , pilihan*64+120-minus);
+			g.drawString("Stamina : "+drgon.getFdInventory().get(pilihan).getStaminaValue(), 100 , pilihan*64+140-minus);
+			g.drawString("MaxStamina : "+drgon.getFdInventory().get(pilihan).getMaxStaminaValue(), 100 , pilihan*64+160-minus);
+			g.drawString("Thirst : "+drgon.getFdInventory().get(pilihan).getThirstValue(), 100 , pilihan*64+180-minus);
 		}
 		repaint();
 	}

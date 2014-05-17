@@ -58,15 +58,18 @@ public class StoreDisplay extends JPanel {
 			image[i].paintIcon(this, g, 0, i*64+10);
 		}
 		if(pilihan!=null) {
-			g.drawString("Nama : "+ac.get(pilihan).getName(), 100 , pilihan*64+10);
-			g.drawString("Harga : "+ac.get(pilihan).getCost(), 100 , pilihan*64+30);
-			g.drawString("Happiness : "+ac.get(pilihan).getHappinessValue(), 100 , pilihan*64+50);
-			g.drawString("Health : "+ac.get(pilihan).getHealthValue(), 100 , pilihan*64+70);
-			g.drawString("MaxHealth : "+ac.get(pilihan).getMaxHealthValue(), 100 , pilihan*64+90);
-			g.drawString("Hunger : "+ac.get(pilihan).getHungerValue(), 100 , pilihan*64+110);
-			g.drawString("Stamina : "+ac.get(pilihan).getStaminaValue(), 100 , pilihan*64+130);
-			g.drawString("MaxStamina : "+ac.get(pilihan).getMaxStaminaValue(), 100 , pilihan*64+150);
-			g.drawString("Thirst : "+ac.get(pilihan).getThirstValue(), 100 , pilihan*64+170);
+			int minus = 0;
+			if (pilihan == ac.size()-1) minus = 120;
+			else if (pilihan == ac.size()-2) minus = 60;
+			g.drawString("Nama : "+ac.get(pilihan).getName(), 100 , pilihan*64+20-minus);
+			g.drawString("Harga : "+ac.get(pilihan).getCost(), 100 , pilihan*64+40-minus);
+			g.drawString("Happiness : "+ac.get(pilihan).getHappinessValue(), 100 , pilihan*64+60-minus);
+			g.drawString("Health : "+ac.get(pilihan).getHealthValue(), 100 , pilihan*64+80-minus);
+			g.drawString("MaxHealth : "+ac.get(pilihan).getMaxHealthValue(), 100 , pilihan*64+100-minus);
+			g.drawString("Hunger : "+ac.get(pilihan).getHungerValue(), 100 , pilihan*64+120-minus);
+			g.drawString("Stamina : "+ac.get(pilihan).getStaminaValue(), 100 , pilihan*64+140-minus);
+			g.drawString("MaxStamina : "+ac.get(pilihan).getMaxStaminaValue(), 100 , pilihan*64+160-minus);
+			g.drawString("Thirst : "+ac.get(pilihan).getThirstValue(), 100 , pilihan*64+180-minus);
 		}
 		repaint();
 	}
