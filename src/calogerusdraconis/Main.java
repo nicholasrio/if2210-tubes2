@@ -188,6 +188,15 @@ public class Main {
 			}
 		});
 		
+		try {
+			sleep(5000);
+			GUIView g = new GUIView();
+			Scanner in = new Scanner(System.in);
+			String a = in.next();
+		} catch (InterruptedException e) {
+			
+		}
+		
 		/*try {
 			int menu = 0;
 			do {
