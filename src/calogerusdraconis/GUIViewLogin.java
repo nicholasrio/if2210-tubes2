@@ -145,7 +145,7 @@ public class GUIViewLogin extends javax.swing.JFrame {
     private void ButtLoadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtLoadMouseClicked
 		try {
 			synchronized(Notifier) {
-				XmlController.LoadDragon(FieldName.getText(), FieldPass.getText());
+				UD = XmlController.LoadDragon(FieldName.getText(), FieldPass.getText());
 				got = true;
 				Notifier.notifyAll();
 			}
