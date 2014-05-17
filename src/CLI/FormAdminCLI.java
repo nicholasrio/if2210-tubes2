@@ -15,6 +15,9 @@ import java.util.Scanner;
 public class FormAdminCLI {
     private final Scanner in;
     public FormAdminCLI(){
+        in = new Scanner(System.in);
+    }
+    public void start(){
         System.out.println("=========================");
         System.out.println("=========================");
         System.out.println("=       Form Admin      =");
@@ -22,8 +25,7 @@ public class FormAdminCLI {
         System.out.println("Apa yang ingin Anda lakukan?\n");
         System.out.println("1. Menambahkan Daerah Pemilihan\n");
         System.out.println("2. Menambahkan Calon Legislatif\n");
-        System.out.println("Silakan pilih (1/2) >");
-        in = new Scanner(System.in);
+        System.out.println("Silakan pilih (1/2) > ");
     }
     
     public void input(){
@@ -36,9 +38,9 @@ public class FormAdminCLI {
         }
     }
     public void inputDapil(){
-        String w = in.nextLine();
+        String dapil = in.nextLine();
     }
     public void inputCaleg(){
-        String w = in.nextLine();
+        String NIK = in.nextLine();
     }
 }

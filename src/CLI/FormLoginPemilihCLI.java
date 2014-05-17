@@ -13,10 +13,11 @@ import java.util.Scanner;
  * @author user
  */
 public class FormLoginPemilihCLI {
+    private FormPemilihCLI formPemilihCLI;
     public FormLoginPemilihCLI(){
-    
+        formPemilihCLI = new FormPemilihCLI();
     }
-    public void login(){
+    public void start(){
         int t=2014;
         System.out.println("=============================================");
         System.out.println("=============================================");

@@ -7,6 +7,8 @@
 package CLI;
 
 import java.util.Scanner;
+import main.Admin;
+import main.DaftarAdmin;
 
 /**
  *
@@ -14,7 +16,12 @@ import java.util.Scanner;
  */
 public class FormSuperAdminCLI {
     private final Scanner in;
+    private DaftarAdmin daftarAdmin;
     public FormSuperAdminCLI(){
+        in = new Scanner(System.in);
+        daftarAdmin = new DaftarAdmin();
+    }
+    public void start(){
         System.out.println("===============================");
         System.out.println("===============================");
         System.out.println("=       Form Super Admin      =");
@@ -23,7 +30,6 @@ public class FormSuperAdminCLI {
         System.out.println("1. Menambahkan Admin");
         System.out.println("2. Menghapus Admin");
         System.out.println("Silakan pilih (1/2) > ");
-        in = new Scanner(System.in);
     }
     public void addOrDelete(){
         int pil = in.nextInt();
@@ -39,7 +45,7 @@ public class FormSuperAdminCLI {
         String usernameAdmin = in.next();
         System.out.print("\nPassword > ");
         String passwordAdmin = in.next();
-        System.out.println(usernameAdmin + " " + passwordAdmin);
+        Admin admin = new Admin(usernameAdmin, passwordAdmin, true);
     }
     public void deleteAdmin(){
         System.out.println("Masukkan username yang akan dihapus :");

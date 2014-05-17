@@ -13,11 +13,13 @@ import java.util.Scanner;
  * @author user
  */
 public class FormLoginAdminCLI {
-    private boolean superAdmin;
+    private FormAdminCLI formAdminCLI;
+    private FormSuperAdminCLI formSuperAdminCLI;
     public FormLoginAdminCLI(){
-        loginAdmin();
+        formAdminCLI = new FormAdminCLI();
+        formSuperAdminCLI = new FormSuperAdminCLI();
     }
-    private void loginAdmin(){
+    private void start(){
         System.out.println("=============================================");
         System.out.println("=============================================");
         System.out.println("==              Kolom Admin                ==");
