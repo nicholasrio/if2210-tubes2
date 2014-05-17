@@ -155,12 +155,8 @@ public class Main {
 	 */
 	public static void gui() {
 		UserDragon draco = GUIViewLogin.getDragon();
-		System.out.println(draco.getName());
-
+		
 		/*try {
-			if (loadNew == 2)
-				draco = loadGame(nama, password);
-			else draco = newGame(nama, password);
 			int menu = 0;
 			do {
 				view.showMenu();

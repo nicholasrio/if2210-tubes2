@@ -17,6 +17,8 @@
 
 package calogerusdraconis;
 
+import static java.lang.Thread.sleep; 
+
 /**
  *
  * @author Dariel Valdano
@@ -143,12 +145,14 @@ public class GUIViewLogin extends javax.swing.JFrame {
 			UD = instance.LoadDragon(FieldName.getText(), FieldPass.getText());
 			loaded = true;
 		} catch (Exception ex) {
+			loaded = false;
 			System.err.println(ex.getMessage());
 		}
     }//GEN-LAST:event_ButtLoadMouseClicked
 
 	/**
 	 * Main GUI
+	 * @return UserDragon
 	 */
 	public static UserDragon getDragon() {
 		/* Set the Nimbus look and feel */
@@ -175,16 +179,15 @@ public class GUIViewLogin extends javax.swing.JFrame {
         //</editor-fold>
 		
 		GUIViewLogin GVL = new GUIViewLogin();
-		
 		GVL.setVisible(true);
-		
-		System.out.println("test");
-		
 		while (!GVL.loaded) {
-			//busy wait?
+			try {
+				sleep(50);
+			} catch (InterruptedException ex) {
+				System.out.println("interrupted");
+			}
 		}
-		
-		GVL.setVisible(false);
+		GVL.dispose();
 		return GVL.UD;
 	}
 
@@ -201,5 +204,5 @@ public class GUIViewLogin extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 	private UserDragon UD = null;
-	public boolean loaded = false;
+	private boolean loaded = false;
 }
