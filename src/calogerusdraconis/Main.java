@@ -143,10 +143,13 @@ public class Main {
 									}
 								} while(pil8!=pilExit);
 							} break;
+					case 9 : {
+								XmlController.SaveDragon(draco);
+							} break;
 					default: break;
 				}
 				//System.out.println("menu " + menu);
-			} while (menu != 9);
+			} while (menu != 10);
 			draco.sebelumExit();
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
