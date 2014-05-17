@@ -1,6 +1,5 @@
 package Video;
 
-import mysql.*;
 import mysql.SqlStatement;
 import java.sql.SQLException;
 import java.util.List;
