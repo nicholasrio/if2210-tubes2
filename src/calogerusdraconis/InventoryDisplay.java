@@ -1,6 +1,7 @@
 package calogerusdraconis;
 
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -34,9 +35,12 @@ import javax.swing.JPanel;
  */
 public class InventoryDisplay extends JPanel {
 	private ImageIcon[] image;
-	public InventoryDisplay() {
-		try {
-			UserDragon drg = new XmlController().LoadDragon("Xanareth", "anotherPass");
+	public static UserDragon drgon;
+	public InventoryDisplay(UserDragon drg) {
+		if (drg == null)
+			setPreferredSize(new Dimension(100,1000));
+		else {
+			setPreferredSize(new Dimension(100,1000));
 			ArrayList<Consumable> ac = drg.getFdInventory();
 			int jum = drg.getFdInventory().size();
 			if (jum!=0) {
@@ -45,17 +49,30 @@ public class InventoryDisplay extends JPanel {
 					image[i] = new ImageIcon(getClass().getResource("/calogerusdraconis/" + ac.get(i).getImg()));
 				}
 			}
-		} catch (Exception ex) {
-			Logger.getLogger(InventoryDisplay.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+	
+	public static void change (UserDragon ud, InventoryDisplay id) {
+		drgon = ud;
+		if (drgon == null) return;
+		ArrayList<Consumable> ac = drgon.getFdInventory();
+		int jum = drgon.getFdInventory().size();
+		id.setPreferredSize(new Dimension(100,64*jum+10));
+		if (jum!=0) {
+			id.image = new ImageIcon[jum];
+			for (int i = 0; i < jum; ++i) {
+				id.image[i] = new ImageIcon(id.getClass().getResource("/calogerusdraconis/" + ac.get(i).getImg()));
+			}
 		}
 	}
 	
 	@Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+		super.paintComponent(g);
 		if (image==null) return;
 		for (int i = 0; i < image.length; ++i) {
 			image[i].paintIcon(this, g, 0, i*64+10);
 		}
+		repaint();
 	}
 }

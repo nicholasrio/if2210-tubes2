@@ -17,7 +17,9 @@
 
 package calogerusdraconis;
 
-import static java.lang.Thread.sleep; 
+import java.awt.Dimension; 
+import static java.lang.Thread.sleep;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -61,8 +63,11 @@ public class GUIView extends javax.swing.JFrame implements View {
         jLabel10 = new javax.swing.JLabel();
         ProgHappy = new javax.swing.JProgressBar();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        InventoryPane = new javax.swing.JScrollPane();
+        InventoryPane = new JScrollPane(InventoryPanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        InventoryPanel = new InventoryDisplay(null); ;
+        InventoryPanel.setPreferredSize(new Dimension(100,600));
         StorePane = new javax.swing.JScrollPane();
+        StorePanel = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         ButtEntertain = new javax.swing.JButton();
         ButtTrain = new javax.swing.JButton();
@@ -205,7 +210,44 @@ public class GUIView extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        InventoryPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        InventoryPane.setMinimumSize(new java.awt.Dimension(0, 0));
+
+        InventoryPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        InventoryPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                InventoryPanelMouseMoved(evt);
+            }
+        });
+
+        javax.swing.GroupLayout InventoryPanelLayout = new javax.swing.GroupLayout(InventoryPanel);
+        InventoryPanel.setLayout(InventoryPanelLayout);
+        InventoryPanelLayout.setHorizontalGroup(
+            InventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 497, Short.MAX_VALUE)
+        );
+        InventoryPanelLayout.setVerticalGroup(
+            InventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 383, Short.MAX_VALUE)
+        );
+
+        InventoryPane.setViewportView(InventoryPanel);
+
         jTabbedPane1.addTab("Inventory", InventoryPane);
+
+        javax.swing.GroupLayout StorePanelLayout = new javax.swing.GroupLayout(StorePanel);
+        StorePanel.setLayout(StorePanelLayout);
+        StorePanelLayout.setHorizontalGroup(
+            StorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 497, Short.MAX_VALUE)
+        );
+        StorePanelLayout.setVerticalGroup(
+            StorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 381, Short.MAX_VALUE)
+        );
+
+        StorePane.setViewportView(StorePanel);
+
         jTabbedPane1.addTab("Store", StorePane);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Actions"));
@@ -335,7 +377,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -362,7 +404,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPane1)))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -406,6 +448,11 @@ public class GUIView extends javax.swing.JFrame implements View {
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtSaveMouseClicked
 
+    private void InventoryPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseMoved
+        // TODO add your handling code here:
+		System.out.println(evt.getX() + " " + evt.getY());
+    }//GEN-LAST:event_InventoryPanelMouseMoved
+
 	@Override
 	public void showMenu() {
 		
@@ -443,7 +490,8 @@ public class GUIView extends javax.swing.JFrame implements View {
 		ProgBladder.setString(""+bladder+"/100");
 		//TODO : progXP, money
 		//100*(lvl+1)^3
-		
+		InventoryDisplay.change(drg,(InventoryDisplay) InventoryPanel);
+		InventoryPanel.repaint();
     }
 
 	
@@ -473,6 +521,7 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JLabel DragonLevel;
     private javax.swing.JLabel DragonName;
     private javax.swing.JScrollPane InventoryPane;
+    private javax.swing.JPanel InventoryPanel;
     private javax.swing.JProgressBar ProgBladder;
     private javax.swing.JProgressBar ProgHappy;
     private javax.swing.JProgressBar ProgHealth;
@@ -481,6 +530,7 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JProgressBar ProgThirst;
     private javax.swing.JProgressBar ProgXP;
     private javax.swing.JScrollPane StorePane;
+    private javax.swing.JPanel StorePanel;
     private javax.swing.JLabel TextMoney;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

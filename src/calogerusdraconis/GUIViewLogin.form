@@ -47,7 +47,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="ButtCreate" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="ButtLoad" min="-2" pref="110" max="-2" attributes="0"/>
+                      <Component id="ButtLoad" pref="121" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -73,8 +73,8 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ButtLoad" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ButtCreate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ButtLoad" alignment="3" max="32767" attributes="0"/>
+                  <Component id="ButtCreate" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
