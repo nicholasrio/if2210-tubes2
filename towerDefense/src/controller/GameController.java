@@ -6,9 +6,8 @@
  * Jan Wira Gotama Putra (13512015)
  * Eric (13512021)
  * Willy(13512070)
- * Melvin FOnda (13512085)
+ * Melvin Fonda (13512085)
  */
-
 package controller;
 
 import java.util.List;
@@ -16,16 +15,17 @@ import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
 import java.util.Collections;
-import exception.*;
 import model.*;
-import console.gameUI;
+import console.GameUI;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Controller {
+public class GameController {
 
     private List<Tower> listOfTower = Collections.synchronizedList(new ArrayList());
     private List<Monster> listOfMonster = new ArrayList<Monster>();
     private static final int ROW = 15, COL = 20, INITIAL_LIFE = 10;
-    private static Controller instance;
+    private static GameController instance;
     private final int maximumLevel;
     private final int goldRate = 5;
 
@@ -37,20 +37,26 @@ public class Controller {
     private final int start_row = 2, start_col = 0;
     private final int monsterCount = 10;
     private model.Map map;
-    
-    /** Default consructor */
-    private Controller() {
+
+    /**
+     * Default consructor
+     */
+    public GameController() {
         maximumLevel = 2; //buat testing dulu
     }
 
-    /** Show every monster hit point's to console */
+    /**
+     * Show every monster hit point's to console
+     */
     public void showMonsterLive() {
         for (int i = 0; i < listOfMonster.size(); i++) {
             System.out.println("Monster ke-" + i + " " + listOfMonster.get(i).getHP());
         }
     }
 
-    /** New game initialization */
+    /**
+     * New game initialization
+     */
     public void newGame(Player x) throws FileNotFoundException, IOException {
         map.readFile();
         player = x;
@@ -60,7 +66,9 @@ public class Controller {
         lives = INITIAL_LIFE;
     }
 
-    /** Load player x's last game */
+    /**
+     * Load player x's last game
+     */
     public void loadGame(Player x) throws FileNotFoundException, IOException {
         player = x;
         map.readFile();
@@ -69,7 +77,9 @@ public class Controller {
         readFromFile(in);
     }
 
-    /** Spawn monster */
+    /**
+     * Spawn monster
+     */
     public void spawnMonster() {
         for (int i = 0; i < monsterCount; i++) {
             listOfMonster.add(new Monster(start_row, start_col - i, currentLevel));
@@ -98,7 +108,9 @@ public class Controller {
         }
     }
 
-    /** Move all monster to their next position*/
+    /**
+     * Move all monster to their next position
+     */
     public void moveAllMonster() {
         for (int it = 0; it < listOfMonster.size(); ++it) {
             /*
@@ -142,7 +154,9 @@ public class Controller {
         }
     }
 
-    /** Count current seen Monster on the UI */
+    /**
+     * Count current seen Monster on the UI
+     */
     public int countSeenMonster() {
         int count = 0;
         for (int i = 0; i < listOfMonster.size(); i++) {
@@ -156,12 +170,16 @@ public class Controller {
         return count;
     }
 
-    /** Decrease player's live */
+    /**
+     * Decrease player's live
+     */
     public void decreaseLive() {
         --lives;
     }
 
-    /** Go to next level */
+    /**
+     * Go to next level
+     */
     public void nextLevel() {
         listOfMonster = new ArrayList<Monster>();
         ++currentLevel;
@@ -240,9 +258,9 @@ public class Controller {
      *
      * @return
      */
-    public static Controller getInstance() {
+    public static GameController getInstance() {
         if (instance == null) {
-            instance = new Controller();
+            instance = new GameController();
         }
         return instance;
     }
@@ -328,7 +346,9 @@ public class Controller {
         return simpan;
     }
 
-    /** Write tower data to file */
+    /**
+     * Write tower data to file
+     */
     private void writeTowerToFile(int idx, PrintWriter out) {
         out.println(listOfTower.get(idx).getPositionRow() + " "
                 + listOfTower.get(idx).getPositionCol() + " "
@@ -338,76 +358,180 @@ public class Controller {
                 + listOfTower.get(idx).getCoolDownCount() + " "
                 + listOfTower.get(idx).getCurrentLevel() + " ");
     }
-    
-    /** Write Monster data to file */
+
+    /**
+     * Write Monster data to file
+     */
     private void writeMonsterToFile(int idx, PrintWriter out) {
         out.println(listOfMonster.get(idx).getHP() + " "
                 + listOfMonster.get(idx).getRow() + " "
                 + listOfMonster.get(idx).getCol());
     }
 
-    /** Show game UI */
+    /**
+     * Show game UI
+     */
     public void showGame(boolean ingame) {
         if (ingame) {
-            gameUI.showTransition(instance);
+            GameUI.showTransition(instance);
         } else {
-           gameUI.showMap(instance);
+            GameUI.showGame(instance);
         }
     }
 
-    /** Get List of tower */
+    /**
+     * Get List of tower
+     */
     public List<Tower> getListOfTower() {
         return listOfTower;
     }
-    
-    /** Get List of monster */
+
+    /**
+     * Get List of monster
+     */
     public List<Monster> getListOfMonster() {
         return listOfMonster;
     }
-    
-    /** Get map */
+
+    /**
+     * Get map
+     */
     public model.Map getMap() {
         return map;
     }
-    
-    /** Get player */
-    public  model.Player getPlayer() {
+
+    /**
+     * Get player
+     */
+    public model.Player getPlayer() {
         return player;
     }
-    
-    /** Get current level */
+
+    /**
+     * Get current level
+     */
     public int getCurrentLevel() {
         return currentLevel;
     }
-    
-    /** Get maximum level of the game */
+
+    /**
+     * Get maximum level of the game
+     */
     public int getMaxLevel() {
         return maximumLevel;
     }
 
-    /** Get player's score */
+    /**
+     * Get player's score
+     */
     public int getScore() {
         return score;
     }
 
-    /** Get player's lives */
+    /**
+     * Get player's lives
+     */
     public int getLives() {
         return lives;
     }
-    
-    /** Get player's gold */
+
+    /**
+     * Get player's gold
+     */
     public int getGold() {
         return gold;
     }
-    
-    /** Give tower information at (row,col) */
+
+    /**
+     * Give tower information at (row,col)
+     */
     public void towerInfo(int row, int col) {
         int idx = getTowerIdx(row, col);
         Tower t = listOfTower.get(idx);
-        System.out.println("Tower Information at ("+row+","+col+")");
-        System.out.println("Level           : "+t.getCurrentLevel());
-        System.out.println("Attack          : "+t.getAttack());
-        System.out.println("Attack Range    : "+t.getRange());
-        System.out.println("Upgrade cost    : "+t.getUpgradeCost());
+        GameUI.showTowerInfo(t);
+    }
+
+    /**
+     * Gaming mode
+     */
+    public Player playGame(Player loginPlayer) {
+        Scanner in = new Scanner(System.in);
+        int menu = 0, pos_row = 0, pos_col = 0;
+        /**
+         * Game menus
+         */
+        while (getCurrentLevel() <= getMaxLevel() && menu != 7) { //TO DO : inget diganti
+            showGame(true);
+            menu = in.nextInt();
+            if (menu < 5) {
+                System.out.print(">Position(row,col) ");
+                pos_row = in.nextInt();
+                pos_col = in.nextInt();
+            }
+            switch (menu) {
+                case 1: { //create tower 
+                    boolean retval = createNewTower(pos_row, pos_col);
+                    break;
+                }
+                case 2: { //sell tower
+                    sellTower(pos_row, pos_col);
+                    break;
+                }
+                case 3: { //upgrade tower
+                    upgradeTower(pos_row, pos_col);
+                    break;
+                }
+                case 4: { //see tower's info
+                    towerInfo(pos_row, pos_col);
+                }
+                case 5: {
+                    try {
+                        //save game
+                        saveToFile();
+                    } catch (IOException ex) {
+                        Logger.getLogger(GameController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
+                }
+                case 6: { //level started
+                    spawnMonster();
+                    /**
+                     * game level started
+                     */
+                    while (countSeenMonster() > 0 && getLives() > 0) {
+                        showGame(false);
+                        allTowersAttack();
+                        moveAllMonster();
+                        coolDownAllTower();
+                        showMonsterLive(); //for testing purpose only
+                        if (getScore() > loginPlayer.getHighScore()) {
+                            loginPlayer.setHighScore(getScore());
+                        }
+                        in.nextLine();
+                    }
+                    if (getLives() > 0) {
+                        System.out.println("Congratulations... you may advance to next level!");
+                        nextLevel();
+                    } else {
+                        System.out.println("You lose!");
+                    }
+                    break;
+                }
+                case 7: {
+                    break;
+                } //quit game
+                default: {
+                    System.out.println("Menu not found!");
+                    break;
+                }
+            }
+        }
+        if (getCurrentLevel() > getMaxLevel()) {
+            System.out.println("Congratulation... you've win the game!");
+        }
+        if (getScore() > loginPlayer.getHighScore()) {
+            loginPlayer.setHighScore(getScore());
+        }
+        return loginPlayer;
     }
 }

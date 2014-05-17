@@ -3,62 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gui;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import javax.imageio.ImageIO;
 
 /**
  *
  * @author Opel Howard
  */
-public class ImgComp {
+abstract public class GUIComponent {
 
-    private final BufferedImage img_unclicked;
-    private final BufferedImage img_clicked;
-    private BufferedImage img_displayed;
     private int x;
     private int y;
+    int option;
     private final Class event;
-    private boolean dirtyBit;
+    protected boolean dirtyBit;
+    final private String status;
 
-    public ImgComp(String str, Class _event) throws IOException {
-        if (new File("img\\"+str+".png").exists())
-            img_displayed = ImageIO.read(new File("img\\"+str+".png"));
-        
-        if (new File("img\\"+str+"_unclicked.png").exists())
-            img_displayed = img_unclicked = ImageIO.read(new File("img\\"+str+"_unclicked.png"));
-        else
-            img_unclicked = null;
-        if (new File("img\\"+str+"_clicked.png").exists())
-            img_clicked = ImageIO.read(new File("img\\"+str+"_clicked.png"));
-        else
-            img_clicked = null;
-        event = _event;
-        
+    public GUIComponent(String _status, int _opt) throws IOException {
+        //event = _event;
+        status = _status;
+        event = null;
+        option = _opt;
         dirtyBit = true;
-    }
-
-    public void setDisplayed(BufferedImage _img_diplayed) {
-        dirtyBit = true;
-        img_displayed = _img_diplayed;
-    }
-
-    public BufferedImage getClicked() {
-        return img_clicked;
-    }
-
-    public BufferedImage getUnclicked() {
-        return img_unclicked;
-    }
-
-    public BufferedImage getDisplayed() {
-        dirtyBit = false;
-        return img_displayed;
     }
 
     public void setX(int _x) {
@@ -82,21 +50,35 @@ public class ImgComp {
     }
 
     public boolean isInvoked(int _x, int _y) {
-        return (x < _x) && (_x < x + img_displayed.getWidth()) && ((y < _y) && (_y < y + img_displayed.getHeight()));
+        return (x < _x) && (_x < x + getWidth()) && ((y < _y) && (_y < y + getHeight()));
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public int getOption() {
+        return option;
+    }
+
     public void invoke() throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException {
-        if (event != null) {
-            Class[] interfaces = event.getInterfaces();
-            boolean isThread = false;
-            for (Class implement : interfaces) {
-                if (implement == Runnable.class)
-                    isThread = true;
-            }
-            if (isThread)
-                new Thread((Runnable) event.newInstance()).start();
-            else {
-                event.getMethod("run", null).invoke(event.newInstance(), null);
-            }
-        }
+        TowerDefense.pilihanMenu = option;
+        /*if (event != null) {
+         Class[] interfaces = event.getInterfaces();
+         boolean isThread = false;
+         for (Class implement : interfaces) {
+         if (implement == Runnable.class)
+         isThread = true;
+         }
+         if (isThread)
+         new Thread((Runnable) event.newInstance()).start();
+         else {
+         event.getMethod("run", null).invoke(event.newInstance(), null);
+         }
+         }*/
     }
+
+    abstract protected int getWidth();
+
+    abstract protected int getHeight();
 }
