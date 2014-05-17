@@ -14,9 +14,13 @@ import javax.sound.sampled.*;
  */
 public class SoundManager {
     public static ArrayList<Sound> sounds = new ArrayList<>();
-
+    
+    private static float bgmVol;
+    private static float sfxVol;
+    
     public static void Initialize(){
-        sounds.clear();
+        setSFXVolume(90f);
+        setBGMVolume(80f);
     }
     
     public static void addSound(Sound sound){
@@ -51,7 +55,7 @@ public class SoundManager {
         }
     }
     
-    public static void stopAllSound(String name){
+    public static void stopAllSound(){
         for(Sound s : sounds){
             s.stop();
         }
@@ -60,12 +64,13 @@ public class SoundManager {
     public static void setSFXVolume(float value){
         if (value<0f) value = 0f;
         if (value>100f) value = 100f;
+        sfxVol = value;
         for(Sound s : sounds){
             if (s.type == Sound.SoundType.sfx){
                 FloatControl volume = (FloatControl) s.clip.getControl(FloatControl.Type.MASTER_GAIN);
                 float maxVal = volume.getMaximum();
                 float minVal = volume.getMinimum();
-                volume.setValue(minVal+value/100*(maxVal-minVal));
+                volume.setValue(minVal+sfxVol/100*(maxVal-minVal));
             }
         }
     }
@@ -73,13 +78,22 @@ public class SoundManager {
     public static void setBGMVolume(float value){
         if (value<0f) value = 0f;
         if (value>100f) value = 100f;
+        bgmVol = value;
         for(Sound s : sounds){
             if (s.type == Sound.SoundType.bgm){
                 FloatControl volume = (FloatControl) s.clip.getControl(FloatControl.Type.MASTER_GAIN);
                 float maxVal = volume.getMaximum();
                 float minVal = volume.getMinimum();
-                volume.setValue(minVal+value/100*(maxVal-minVal));
+                volume.setValue(minVal+bgmVol/100*(maxVal-minVal));
             }
         }
+    }
+    
+    public static float getSFXVolume(){
+        return sfxVol;
+    }
+    
+    public static float getBGMVolume(){
+        return bgmVol;
     }
 }

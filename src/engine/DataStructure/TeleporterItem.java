@@ -6,6 +6,8 @@
 
 package engine.DataStructure;
 
+import engine.SoundManager;
+
 /**
  *
  * @author Winson
@@ -36,5 +38,9 @@ public class TeleporterItem extends GameItem{
         canvas.setCanvasPixel(row+2, col, '-');
         canvas.setCanvasPixel(row+2, col+1, '-');
         canvas.setCanvasPixel(row+2, col+2, '-');
+    }
+    
+    public void makeSound(){
+        SoundManager.playSound("teleport");
     }
 }

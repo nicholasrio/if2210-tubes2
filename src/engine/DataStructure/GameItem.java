@@ -33,4 +33,5 @@ public abstract class GameItem {
      * @param col drawing col offset
      */
     public abstract void Draw(CLICanvas canvas, int row, int col);
+    public abstract void makeSound();
 }

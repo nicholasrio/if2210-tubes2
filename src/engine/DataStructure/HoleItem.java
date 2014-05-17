@@ -6,6 +6,8 @@
 
 package engine.DataStructure;
 
+import engine.SoundManager;
+
 /**
  *
  * @author Winson
@@ -22,5 +24,8 @@ public class HoleItem extends GameItem{
            }
         canvas.setCanvasPixel(row+1, col, '(');
         canvas.setCanvasPixel(row+1, col+2, ')');
+    }
+    public void makeSound(){
+        SoundManager.playSound("fall");
     }
 }

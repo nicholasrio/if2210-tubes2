@@ -6,6 +6,8 @@
 
 package engine.DataStructure;
 
+import engine.SoundManager;
+
 /**
  *
  * @author Winson
@@ -19,5 +21,8 @@ public class RoadItem extends GameItem{
            for(int j=0;j<3;j++){
                canvas.setCanvasPixel(row+i, col+j, ' ');
            }
+    }
+    public void makeSound(){
+        //NoSound
     }
 }

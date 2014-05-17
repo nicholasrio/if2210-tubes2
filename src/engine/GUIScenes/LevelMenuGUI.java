@@ -119,6 +119,11 @@ public class LevelMenuGUI extends Scene
         level=1;
         menuPressed=-1;
         unlocked=true;
+        
+        /*Background music*/
+        SoundManager.stopAllSound();
+        SoundManager.playSound("levelBm");
+        
         /* Rectangle */
         startRect = new Rectangle(250,150,300,300);        
         rightArrowRect = new Rectangle(624, 190,200,100);
