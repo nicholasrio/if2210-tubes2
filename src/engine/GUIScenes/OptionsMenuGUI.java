@@ -57,9 +57,12 @@ public class OptionsMenuGUI extends Scene
     {
         super("OptionsMenuGUI");
         deltapos = 0f;
-        lengthsfx = 200;
-        lengthbgm =200;
         
+        /*set ukuran awal dari sound*/
+        lengthsfx = (int) ((SoundManager.getSFXVolume()/100f)*394f+250f);
+        lengthbgm = (int) ((SoundManager.getBGMVolume()/100f)*195f+205f);
+        
+        System.out.println(lengthsfx+" "+lengthbgm);
         addMouseMotionListener(new MouseMotionListener()
         {
             @Override
@@ -167,6 +170,8 @@ public class OptionsMenuGUI extends Scene
             if(event.getX()>lengthmin + 150 && event.getX()<lengthmax + 150)
             {
                 lengthsfx = event.getX();
+                /*Update SFX volume*/
+                SoundManager.setSFXVolume( getVolumeSFX() );
             }
         }
         if(bgmpressed == 1)
@@ -174,6 +179,10 @@ public class OptionsMenuGUI extends Scene
             if(event.getX()>lengthmin + 150 && event.getX()<lengthmax + 150)
             {
                 lengthbgm = event.getX();
+                /*Update BGM volume*/
+                float volPercent = getVolumeBGM();
+                System.out.println(volPercent);
+                SoundManager.setBGMVolume( volPercent );
             }
         }
     }
@@ -224,7 +233,7 @@ public class OptionsMenuGUI extends Scene
     
     public float getVolumeBGM()
     {
-        return (((float)lengthsfx - 205) / (400 - 205) * 100);
+        return (((float)lengthbgm - 205) / (400 - 205) * 100);
     }       
     
     @Override
