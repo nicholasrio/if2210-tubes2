@@ -57,6 +57,8 @@ public class OptionsMenuGUI extends Scene
     {
         super("OptionsMenuGUI");
         deltapos = 0f;
+        lengthsfx = 200;
+        lengthbgm =200;
         
         addMouseMotionListener(new MouseMotionListener()
         {
@@ -193,8 +195,6 @@ public class OptionsMenuGUI extends Scene
         gameFrame.getContentPane().add(this);
         lengthmin = 50;
         lengthmax = 450;
-        lengthsfx = 200;
-        lengthbgm =200;
         sfxpressed = 0;
         bgmpressed = 0;
         sfxhover = 0;

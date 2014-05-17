@@ -65,6 +65,7 @@ public class Game
     private static void PrepareScenes()
     {
         SceneManager.Initialize();
+        SoundManager.Initialize();
         if (mode == 1)
         {
             SceneManager.AddScene(new MainMenu());
@@ -85,8 +86,10 @@ public class Game
             SceneManager.AddScene(new OptionsMenuGUI());
             SceneManager.AddScene(new AboutMenuGUI());
             SceneManager.AddScene(new UserMenuGUI());
+            SoundManager.addSound(new Sound("teleport","teleport.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("coin","cling.wav",Sound.SoundType.sfx));
             try{
-                SceneManager.SwitchScene("MainMenuGUI");
+                SceneManager.SwitchScene("GameMenuGUI");
             }catch(SceneNotFoundException e){
                 e.printStackTrace();
             }
