@@ -3,29 +3,24 @@ import java.awt.*;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.*;
-import java.awt.event.MouseAdapter;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import model.Map;
 
 class MapGUI {
 
     private JFrame mainFrame;
     private JPanel optionPanel;
     private JPanel status;
-    private MyPanel option;
+    public JPanel option, option0, option1, option2;
     private ImageViewer pictureCanvas;
 
     public MapGUI() throws IOException {
@@ -37,20 +32,22 @@ class MapGUI {
         optionPanel.setLayout(new BorderLayout());
         optionPanel.setBackground(Color.BLUE);
         optionPanel.setBounds(100, 100, 200, 360);
-        
+
         status = new JPanel();
-        status.setPreferredSize(new Dimension(100,250));
+        status.setPreferredSize(new Dimension(100, 250));
         Border compound;
-        Border raisedbevel = BorderFactory.createRaisedBevelBorder();  
+        Border raisedbevel = BorderFactory.createRaisedBevelBorder();
         Border loweredbevel = BorderFactory.createLoweredBevelBorder();
         compound = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel);
         status.setBorder(compound);
-        
-        
-        option = new MyPanel();
-        option.setBorder(compound);
-        
-        pictureCanvas = new ImageViewer();
+
+        option0 = new JPanel();
+        option0.add(new JLabel("Option awal"));
+        option1 = new JPanel();
+        option1.add(new JLabel("Option klik rumput"));
+        option = option0;
+
+        pictureCanvas = new ImageViewer(this);
         pictureCanvas.addImage("0.jpg"); //0
         pictureCanvas.addImage("bottom-left.jpg"); //1
         pictureCanvas.addImage("bottom-right.jpg"); //2
@@ -58,16 +55,16 @@ class MapGUI {
         pictureCanvas.addImage("up-down.jpg"); //4 
         pictureCanvas.addImage("up-left.jpg"); //5
         pictureCanvas.addImage("up-right.jpg"); //6
-        
+
         pictureCanvas.setBounds(0, 0, 940, 360);
         //pictureCanvas.setIgnoreRepaint(true);
 
         //mainFrame.add(titleBlock, BorderLayout.PAGE_START);
         mainFrame.add(pictureCanvas, BorderLayout.WEST);
         mainFrame.add(optionPanel, BorderLayout.CENTER);
-        optionPanel.add(status,BorderLayout.NORTH);
+        optionPanel.add(status, BorderLayout.NORTH);
         optionPanel.add(option, BorderLayout.CENTER);
-        
+
         mainFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent) {
                 System.exit(0);
@@ -76,7 +73,7 @@ class MapGUI {
         //pictureBlock.setMaximumSize(new Dimension(Integer.valueOf(100), Integer.valueOf(100)));
 
         pictureCanvas.setBackground(Color.red);
-        
+
         mainFrame.setResizable(false);
         mainFrame.setVisible(true);
     }
@@ -86,15 +83,17 @@ class MapGUI {
     }
 }
 
-class ImageViewer extends Canvas {
+class ImageViewer extends Canvas implements MouseListener {
 
-    ArrayList<Image> image;
-    String path;
+    private ArrayList<Image> image;
+    private String path;
+    private MapGUI reference;
     public final int SIZE = 47;
     public final int ROW = 15;
     public final int COL = 20;
 
-    public ImageViewer() {
+    public ImageViewer(MapGUI alpha) {
+        reference = alpha;
         image = new ArrayList<>();
         path = "src/img/";
     }
@@ -109,38 +108,50 @@ class ImageViewer extends Canvas {
     public void paint(Graphics g) {
         super.paint(g);
         Map peta = new Map();
-        try{
-            peta.readFile(); 
-        }catch (IOException ex){
+        try {
+            peta.readFile();
+        } catch (IOException ex) {
             System.out.println("File not found");
         }
-            
-        for (int i=0; i<COL; i++) {
+
+        for (int i = 0; i < COL; i++) {
             System.out.println("loop i");
-            for (int j=0; j<ROW; j++){
+            for (int j = 0; j < ROW; j++) {
                 System.out.println("loop j");
-                if(peta.Peta[j][i] == 256 ){
+                if (peta.Peta[j][i] == 256) {
                     System.out.println("rumput");
                     g.drawImage(image.get(0), i * SIZE, j * SIZE, SIZE, SIZE, this);
-                }
-                else {
+                } else {
                     System.out.println("masuk ke else");
 
                     int last4bit = peta.Peta[j][i] >> 4;
-                    switch (last4bit){
-                        case 5 : {g.drawImage(image.get(3), i * SIZE, j * SIZE, SIZE, SIZE, this);
-                                 break;}
-                        case 3 : {g.drawImage(image.get(6), i * SIZE, j * SIZE, SIZE, SIZE, this);
-                                 break;}
-                        case 9 : {g.drawImage(image.get(2), i * SIZE, j * SIZE, SIZE, SIZE, this);
-                                 break;}
-                        case 6 : {g.drawImage(image.get(5), i * SIZE, j * SIZE, SIZE, SIZE, this);
-                                 break;}
-                        case 10 : {g.drawImage(image.get(4), i * SIZE, j * SIZE, SIZE, SIZE, this);
-                                 break;}
-                        case 12: {g.drawImage(image.get(1), i * SIZE, j * SIZE, SIZE, SIZE, this);
-                                 break;}
-                        default : assert(false);
+                    switch (last4bit) {
+                        case 5: {
+                            g.drawImage(image.get(3), i * SIZE, j * SIZE, SIZE, SIZE, this);
+                            break;
+                        }
+                        case 3: {
+                            g.drawImage(image.get(6), i * SIZE, j * SIZE, SIZE, SIZE, this);
+                            break;
+                        }
+                        case 9: {
+                            g.drawImage(image.get(2), i * SIZE, j * SIZE, SIZE, SIZE, this);
+                            break;
+                        }
+                        case 6: {
+                            g.drawImage(image.get(5), i * SIZE, j * SIZE, SIZE, SIZE, this);
+                            break;
+                        }
+                        case 10: {
+                            g.drawImage(image.get(4), i * SIZE, j * SIZE, SIZE, SIZE, this);
+                            break;
+                        }
+                        case 12: {
+                            g.drawImage(image.get(1), i * SIZE, j * SIZE, SIZE, SIZE, this);
+                            break;
+                        }
+                        default:
+                            assert (false);
                     }
                 }
 
@@ -148,9 +159,32 @@ class ImageViewer extends Canvas {
             }
         }
     }
-}
 
-class MyPanel extends JPanel{
-    
-    
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        int row = me.getY() / SIZE;
+        int col = me.getX() / SIZE;
+        if (Map.Peta[row][col] == 256) {
+            reference.option = reference.option1;
+        } else {
+            reference.option = reference.option0;
+
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+    }
 }
