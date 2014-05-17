@@ -63,7 +63,7 @@ public class GuestView extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
-        //jPanel3 = new YoutubeMediaPlayer();
+        jPanel3 = new YoutubeMediaPlayer();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
