@@ -175,135 +175,65 @@ public class Main {
         //</editor-fold>
 		
 		GUIViewLogin GVL = new GUIViewLogin();
-		
 		draco = GVL.getDragon();
 		
-		final GUIView mainGUI = new GUIView();
-		
+		final GUIView view = new GUIView();
 		Runnable thread = new Runnable() {
 			@Override
 			public void run() {
-				mainGUI.setVisible(true);
+				view.setVisible(true);
 			}
 		};
-		
 		java.awt.EventQueue.invokeLater(thread);
 		
+		view.UpdateScreen(draco);
+		
+		Event e;
 		int selection;
+		boolean willFight;
 		do {
-			selection = mainGUI.waitForSelection();
+			selection = view.waitForSelection();
 			switch (selection) {
-				case 1: {
-					
+				case 1:
+					e = draco.entertain();
+					view.UpdateScreen(draco, e);
 					break;
-				}
-				case 2: {
-					
+				case 2:
+					e = draco.train();
+					view.UpdateScreen(draco, e);
 					break;
-				}
-				case 3: {
-					
+				case 3:
+					e = draco.rest();
+					view.UpdateScreen(draco, e);
 					break;
-				}
-				case 4: {
-					
+				case 4:
+					e = draco.toToilet();
+					view.UpdateScreen(draco, e);
 					break;
-				}
-				case 5: {
-					
+				case 5:
+					Dragon enemy = draco.generateEnemy();
+					//view.UpdateScreen(draco, enemy); //not used due to the need of retval.
+					final GUIViewFight fightView = new GUIViewFight(draco, enemy);
+					Runnable fightThread = new Runnable() {
+						@Override
+						public void run() {
+							fightView.setVisible(true);
+						}
+					};
+					java.awt.EventQueue.invokeLater(fightThread);
+					willFight = fightView.waitForSelection();
+					if (willFight) {
+						e = draco.fight(enemy);
+						view.UpdateScreen(draco, e);
+					}
 					break;
-				}
-				case 6: {
+				case 6:
 					XmlController.SaveDragon(draco);
 					break;
-				}
 			}
 		} while (selection != -1);
 		XmlController.SaveDragon(draco);
 		draco.sebelumExit();
-		
-		/*try {
-			int menu = 0;
-			do {
-				view.showMenu();
-				System.out.println("Input menu yang diinginkan : ");
-				menu = in.nextInt();
-				switch (menu) {
-					case 1: view.UpdateScreen(draco); break;
-					case 2: Event e = draco.entertain();
-							view.UpdateScreen(draco, e); break;
-					case 3: e = draco.rest();
-							view.UpdateScreen(draco, e); break;
-					case 4: e = draco.toToilet();
-							view.UpdateScreen(draco, e); break;
-					case 5: Dragon enemy = draco.generateEnemy();
-							e = draco.fight(enemy); 
-							view.UpdateScreen(draco, enemy);
-							view.UpdateScreen(draco, e);
-							break;
-					case 6: e = draco.train();
-							view.UpdateScreen(draco, e); break;
-					case 7: {
-								int pil7;
-								int jum; int pilExit;
-								do {
-									view.seeFoodDirectory(draco);
-									jum = draco.getFdInventory().size();
-									if (jum==0) {
-										System.out.println("Tidak ada barang yang anda miliki");
-									} else {
-										System.out.println("Tekan 1 sampai " + jum + " untuk menggunakan barang sesuai pilihan");
-									}
-									pilExit = jum + 1;
-									System.out.println("Tekan " + pilExit + " untuk keluar");
-									pil7 = in.nextInt();
-									System.out.println("pil7: " + pil7);
-									if (pil7 > pilExit || pil7 < 1) {
-										System.out.println("Pilihan salah!");
-									} else if (pil7!=pilExit) {
-										System.out.println("halo");
-										draco.useConsumable(draco.getFdInventory().get(pil7-1));
-										System.out.println("Anda berhasil menggunakan barang dengan nomor " + pil7);
-									}
-									System.out.println(pil7 + " " + pilExit);
-								} while(pil7!=pilExit);
-								System.out.println("keluar");
-							}System.out.println("keluar1");
-							break;
-					case 8: {
-								int pil8;
-								int jum; int pilExit;
-								do {
-									view.UpdateScreen(Store.getInstance());
-									jum = Store.getInstance().getFdInventory().size();
-									if (jum==0) {
-										System.out.println("Tidak ada barang di Store");
-									} else {
-										System.out.println("Tekan 1 sampai " + jum + " untuk membeli barang sesuai pilihan");
-									}
-									pilExit = jum + 1;
-									System.out.println("Tekan " + pilExit + " untuk keluar");
-									pil8 = in.nextInt();
-									if (pil8 > pilExit || pil8 < 1) {
-										System.out.println("Pilihan salah!");
-									} else if (pil8!=pilExit) {
-										try {
-											draco.addConsumable(Store.getInstance().buy(pil8));
-											System.out.println("Anda berhasil membeli barang dengan nomor " + pil8);
-										} catch (Exception ex) {
-											System.out.println(ex.getMessage());
-										}
-									}
-								} while(pil8!=pilExit);
-							} break;
-					default: break;
-				}
-				//System.out.println("menu " + menu);
-			} while (menu != 9);
-			draco.sebelumExit();
-		} catch(Exception ex) {
-			System.err.println(ex.getMessage());
-		}*/
 	}
 
 	/**

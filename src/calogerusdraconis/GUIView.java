@@ -17,7 +17,6 @@
 
 package calogerusdraconis;
 
-import static java.lang.Thread.sleep; 
 
 /**
  *
@@ -45,7 +44,6 @@ public class GUIView extends javax.swing.JFrame implements View {
         DragonImg = new javax.swing.JLabel();
         DragonName = new javax.swing.JLabel();
         DragonLevel = new javax.swing.JLabel();
-        ProgXP = new javax.swing.JProgressBar();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -59,7 +57,7 @@ public class GUIView extends javax.swing.JFrame implements View {
         ProgBladder = new javax.swing.JProgressBar();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        ProgHapppy = new javax.swing.JProgressBar();
+        ProgHappy = new javax.swing.JProgressBar();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         InventoryPane = new javax.swing.JScrollPane();
         StorePane = new javax.swing.JScrollPane();
@@ -97,25 +95,22 @@ public class GUIView extends javax.swing.JFrame implements View {
 
         DragonLevel.setText("Level 20");
 
-        ProgXP.setString("0");
-        ProgXP.setStringPainted(true);
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Exp");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Exp 10000/15000");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Stats"));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Health");
 
-        ProgHealth.setValue(50);
-        ProgHealth.setString("0");
+        ProgHealth.setString("0/150");
         ProgHealth.setStringPainted(true);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Stamina");
 
-        ProgStamina.setString("0");
+        ProgStamina.setRequestFocusEnabled(false);
+        ProgStamina.setString("0/130");
         ProgStamina.setStringPainted(true);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -139,8 +134,8 @@ public class GUIView extends javax.swing.JFrame implements View {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel10.setText("Happiness");
 
-        ProgHapppy.setString("0");
-        ProgHapppy.setStringPainted(true);
+        ProgHappy.setString("0");
+        ProgHappy.setStringPainted(true);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -172,7 +167,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ProgHapppy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(ProgHappy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -188,7 +183,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ProgHapppy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ProgHappy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -301,7 +296,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        TextMoney.setText("Money 50");
+        TextMoney.setText("Money 2400");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -312,16 +307,13 @@ public class GUIView extends javax.swing.JFrame implements View {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(DragonName, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TextMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProgXP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(TextMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(DragonLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(DragonLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -348,9 +340,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                                     .addComponent(DragonLevel)
                                     .addComponent(TextMoney))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ProgXP, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(DragonName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -437,6 +427,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 	
 	@Override
     public void UpdateScreen (UserDragon drg, Dragon enemy) {
+		//NOP. already shown.
     }
 
 	
@@ -457,12 +448,11 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JLabel DragonName;
     private javax.swing.JScrollPane InventoryPane;
     private javax.swing.JProgressBar ProgBladder;
-    private javax.swing.JProgressBar ProgHapppy;
+    private javax.swing.JProgressBar ProgHappy;
     private javax.swing.JProgressBar ProgHealth;
     private javax.swing.JProgressBar ProgHunger;
     private javax.swing.JProgressBar ProgStamina;
     private javax.swing.JProgressBar ProgThirst;
-    private javax.swing.JProgressBar ProgXP;
     private javax.swing.JScrollPane StorePane;
     private javax.swing.JLabel TextMoney;
     private javax.swing.JLabel jLabel1;

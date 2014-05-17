@@ -91,7 +91,6 @@ public class XmlController {
 					
 					ArrayList<Consumable> arr = new ArrayList<Consumable>();
 					for (Object anObj : invList) {
-						// TODO: get inventory for DRAGON
 						
 						Element node = (Element) anObj;
 						String s  = node.getText();
