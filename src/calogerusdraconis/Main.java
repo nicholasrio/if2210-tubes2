@@ -238,9 +238,9 @@ public class Main {
 
 	/**
 	 * Mengembalikan dragon baru di saat new game
-	 * @param name
-	 * @param password
-	 * @return 
+	 * @param name		nama untuk dragon baru
+	 * @param password	password untuk dragon baru
+	 * @return			dragon baru yang dibuat
 	 */
 	public static UserDragon newGame(String name, String password) {
 		return new UserDragon(name, 100, 100, 100, 100, 0, 0, 0, 1, 0, password, 100, 100);
@@ -248,9 +248,9 @@ public class Main {
 
 	/**
 	 * Mengembalikan dragon lama di saat load game
-	 * @param name
-	 * @param password
-	 * @return 
+	 * @param name		nama dari dragon lama
+	 * @param password	password dari dragon lama
+	 * @return			dragon lama yang ingin di-load
 	 * @throws java.lang.Exception 
 	 */
 	public static UserDragon loadGame(String name, String password) throws Exception {
