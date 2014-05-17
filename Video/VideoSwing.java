@@ -82,7 +82,7 @@ public class VideoSwing extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("NIM");
+        jLabel5.setText("Id");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
