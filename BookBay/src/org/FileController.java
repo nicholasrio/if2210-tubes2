@@ -6,107 +6,138 @@ import java.util.Date;
 import java.util.List;
 
 
-public class FileController implements Contoller {
+public class FileController implements IFileController {
 	private static String uploadURL = "http://localhost/bookbay/upload.php";
 	private static String downloadURL = "http://localhost/bookbay/download.php";
+	private static String syncURL = "http://localhost/bookbay/sync.php";
 	private static String charset = "UTF-8"; // character set
 	
 	private FileExt model;
-	@SuppressWarnings("unused") // TODO: stub
-	private FileView view;
+	private IFileView view;
 	
-	public FileController(FileExt model, FileView view) {
+	public FileController(FileExt model, IFileView view) {
+		registerModel(model);
+		registerView(view);
+		
+		updateView();
+	}
+	
+	@Override
+	public void registerModel(FileExt model) {
 		this.model = model;
-		this.view = view; 
 	}
 	
-	public String getFileLocation() {
-		return model.getName();
+	@Override
+	public void registerView(IFileView view) {
+		this.view = view;
 	}
 	
-	public void rename(String name) throws SecurityException, NullPointerException {
-		model.renameTo(new File(model.getPath() + "\\" + name)); // TODO: ubah jadi hash.
+	@Override
+	public boolean isModelEmpty() {
+		return model == null;
+	}
+	
+	@Override
+	public String getFileNamedName() {
+		return model.getNamedName();
+	}
+	
+	@Override
+	public void setFileNamedName(String name) {
 		model.setNamedName(name);
 	}
 	
+	@Override
+	public String getFileLocation() {
+		return model.getAbsolutePath();
+	}
+	
+	@Override
+	public void rename(String name) throws SecurityException, NullPointerException {
+		model.renameTo(new File(model.getPath() + name)); // TODO: ubah jadi hash.
+		model.setNamedName(name);
+	}
+	
+	@Override
 	public long getFileSize() {
 		return model.length();
 	}
 	
+	@Override
 	public User getFileUploader() {
 		return model.getUploader();
 	}
 	
-	public void setFileUploader(User newUploader) {
-		model.setUploader(newUploader);
-	}
-	
-	public long setFileDownloadCount() {
+	@Override
+	public long getFileDownloadCount() {
 		return model.getDownloadCount();
 	}
 	
-	public void getFileDownloadCount(long count) {
-		model.setDownloadCount(count);
-	}
-	
-	public String fileCategory() {
+	@Override
+	public String getFileCategory() {
 		return model.getCategory();
 	}
 	
-	public void fileCategory(FileCategory cat) {
+	@Override
+	public void setFileCategory(FileCategory cat) {
 		model.setCategory(cat);
 	}
 	
-	public Date fileUploadTime() {
+	@Override
+	public Date getFileUploadTime() {
 		return model.getUploadTime();
 	}
 	
-	public String fileDescription() {
+	@Override
+	public String getFileDescription() {
 		return model.getDesc();
 	}
 	
-	public void fileDescription(String desc) {
+	@Override
+	public void setFileDescription(String desc) {
 		model.setDesc(desc);
 	}
 	
+	@Override
 	public void delete() {
 		model.delete();
 		model = null;
 	}
 	
-	public static String uploadURL() {
+	public static String getUploadURL() {
 		return uploadURL;
 	}
 	
-	public static void uploadURL(String newURL) {
+	public static void setUploadURL(String newURL) {
 		uploadURL = newURL;
 	}
 	
-	public static String downloadURL() {
+	public static String getDownloadURL() {
 		return downloadURL;
 	}
 	
-	public static void downloadURL(String newURL) {
+	public static void setDownloadURL(String newURL) {
 		downloadURL = newURL;
 	}
 	
-	public static String charset() {
+	public static String getCharset() {
 		return charset;
 	}
 	
-	public static void charset(String newCharset) {
+	public static void setCharset(String newCharset) {
 		charset = newCharset;
 	}
 	
+	@Override
 	public void upload() throws IOException {
 		ServerPOST sp = new ServerPOST(uploadURL, charset, false);
 		
 		sp.addFormField("File-Name", model.getNamedName());
-		sp.addFormField("File-Uploader", model.getUploader().name());
+		sp.addFormField("File-Uploader", model.getUploader().getID());
 		sp.addFormField("File-Category", model.getCategory().toString());
 		sp.addFormField("File-Desc", model.getDesc());
 		
-		sp.addFile("ebook", model);
+		sp.addFile("file", model);
 		
 		List<String> response =	sp.execute();
 		
@@ -116,19 +147,36 @@ public class FileController implements Contoller {
 		}
 	}
 	
-	public void download(String saveLocation, User user) throws IOException {
+	@Override
+	public void download(File saveLocation, User user) throws IOException {
 		ServerPOST sp = new ServerPOST(uploadURL, charset, true);
 		
-		sp.addFormField("File-Name", model.getName());
+		sp.addFormField("File-Name", model.getNamedName());
 		sp.addFormField("User-Name", user.name());
 		
-		sp.execute(new File(saveLocation));
+		sp.execute(saveLocation);
 	}
 
 	@Override
 	public void updateView() {
-		// TODO soal view, mau diapain?
-		// masih berupa stub
-		view = null;
+		if(!isModelEmpty())
+			view.updateModel();
+	}
+
+	@Override
+	public void sync() throws IOException {
+		assert(model != null);
+		
+		ServerPOST sp = new ServerPOST(syncURL, charset, false);
+		
+		sp.addFormField("File-Name", model.getNamedName());
+		sp.addFormField("File-Category", model.getCategory());
+		sp.addFormField("File-Desc", model.getDesc());
+		
+		List<String> response = sp.execute();
+		
+		for(String s: response) {
+			System.out.println(s);
+		}
 	}
 }

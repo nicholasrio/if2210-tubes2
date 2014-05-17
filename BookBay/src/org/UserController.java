@@ -2,7 +2,7 @@ package org;
 
 import java.util.List;
 
-public class UserController implements Contoller {
+public class UserController implements Controller {
 	private User _model;
 	private UserView _view;
 	public UserController(User model, UserView view ){
@@ -16,7 +16,7 @@ public class UserController implements Contoller {
 		_model.name(name);
 	}
 	public String getUserID(){
-		return _model.id();
+		return _model.getID();
 	}
 	public void setUserID(String ID){
 		_model.id(ID);
