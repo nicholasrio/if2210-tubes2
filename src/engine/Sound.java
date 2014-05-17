@@ -6,37 +6,42 @@
 
 package engine;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
-import java.net.URL;
+import javax.sound.sampled.*;
 import java.io.*;
 /**
  *
  * @author Winson
  */
 public class Sound {
-    
-    private static Sound staticSound = new Sound();
+
+    public static enum SoundType {bgm,sfx};
     
     public String name;
-    public AudioClip sound;
+    public Clip clip;
+    public SoundType type;
     
-    private Sound(){}
-    
-    public Sound(String name, URL url){
+    public Sound(String name, String fileName, SoundType type){
         this.name = name;
+        this.type = type;
         try{
-            sound = Applet.newAudioClip(url);
+            File file = new File("Sound/"+fileName);
+            if(file.exists()){
+                AudioInputStream sound = AudioSystem.getAudioInputStream(file);
+                clip = AudioSystem.getClip();
+                clip.open(sound);
+            }else
+                throw new RuntimeException("Sound file not found : Sound/"+fileName);
         }catch(Exception e){
-            e.printStackTrace(System.err);
+            e.printStackTrace();
         }
     }
     
     public void play(){
         new Thread(new Runnable(){
             public void run(){
-                if(sound != null)
-                    sound.play();
+                if(clip != null){
+                    clip.start();
+                }
             }
         }).start();
     }
@@ -44,23 +49,16 @@ public class Sound {
     public void loop(){
         new Thread(new Runnable(){
             public void run(){
-                if(sound != null)
-                    sound.loop();
+                if(clip != null){
+                    clip.loop(Clip.LOOP_CONTINUOUSLY);
+                }
             }
         }).start();
     } 
     
     public void stop(){
-        if(sound != null)
-            sound.stop();
+        if(clip != null)
+            clip.stop();
     }
-    
-    public static URL getURL(String fileName){
-        try{
-            return new File("Sound/"+fileName).toURI().toURL();
-        }catch(Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
+   
 }

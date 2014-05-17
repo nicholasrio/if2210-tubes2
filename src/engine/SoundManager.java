@@ -7,6 +7,7 @@
 package engine;
 
 import java.util.ArrayList;
+import javax.sound.sampled.*;
 /**
  *
  * @author Winson
@@ -53,6 +54,32 @@ public class SoundManager {
     public void stopAllSound(String name){
         for(Sound s : sounds){
             s.stop();
+        }
+    }
+    
+    public void setSFXVolume(float value){
+        if (value<0f) value = 0f;
+        if (value>100f) value = 100f;
+        for(Sound s : sounds){
+            if (s.type == Sound.SoundType.sfx){
+                FloatControl volume = (FloatControl) s.clip.getControl(FloatControl.Type.MASTER_GAIN);
+                float maxVal = volume.getMaximum();
+                float minVal = volume.getMinimum();
+                volume.setValue(minVal+value/100*(maxVal-minVal));
+            }
+        }
+    }
+    
+    public void setBGMVolume(float value){
+        if (value<0f) value = 0f;
+        if (value>100f) value = 100f;
+        for(Sound s : sounds){
+            if (s.type == Sound.SoundType.bgm){
+                FloatControl volume = (FloatControl) s.clip.getControl(FloatControl.Type.MASTER_GAIN);
+                float maxVal = volume.getMaximum();
+                float minVal = volume.getMinimum();
+                volume.setValue(minVal+value/100*(maxVal-minVal));
+            }
         }
     }
 }
