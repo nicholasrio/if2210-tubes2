@@ -28,8 +28,17 @@ public class FormCaleg extends javax.swing.JFrame {
     private DefaultTableModel model;
     String Lingkup;
     CalonTerpilih calonterpilih,daftarCaleg;
-    public FormCaleg() {
+  
+    public FormCaleg(String lingkup) {
         initComponents();
+        Lingkup = lingkup;
+        if(lingkup.equals("DPRDKabupaten")){
+            Lingkup="DPRD Kota/Kabupaten";
+        }
+        else if(lingkup.equals("DPRDProvinsi")){
+            Lingkup="DPRD Provinsi";
+        }
+        this.setTitle(Lingkup);
         model = new DefaultTableModel();
         TabelCaleg.setModel(model);
         calonterpilih = new CalonTerpilih();
@@ -42,37 +51,31 @@ public class FormCaleg extends javax.swing.JFrame {
         model.addColumn("History");
         loadData();
     }
-    
-    public FormCaleg(String lingkup) {
-        initComponents();
-        Lingkup = lingkup;
-        this.setTitle(Lingkup);
-    }
     private void loadData()
     {
          
-        try
-        {
-            Connection koneksi = KoneksiDatabase.getKoneksi();
-            Statement statement = koneksi.createStatement();
-            
-            String commandGetCaleg = "select * from Caleg where Lingkup = " + Lingkup;
-            ResultSet resultCaleg = statement.executeQuery(commandGetCaleg);
-            while(resultCaleg.next())
-            {
-//                daftarCaleg = new CalonTerpilih();
-//                 daftarCaleg.addCaleg(new Caleg(resultCaleg.getString("NIKCaleg"), 
-//                                            resultCaleg.getString("NamaPartai"), 
-//                                            resultCaleg.getString("TrackRecord"), 
-//                                            Integer.parseInt(resultCaleg.getString("NoDapil")), 
-//                                            resultCaleg.getString("Lingkup")));
-            }
-            koneksi.close();
-        }
-        catch (SQLException ex) {
-            System.out.println("Error CalonTerpilih.java" + ex.getMessage());
-        }
-        
+//        try
+//        {
+//            Connection koneksi = KoneksiDatabase.getKoneksi();
+//            Statement statement = koneksi.createStatement();
+//            
+//            String commandGetCaleg = "select * from Caleg where Lingkup = " + Lingkup;
+//            ResultSet resultCaleg = statement.executeQuery(commandGetCaleg);
+//            while(resultCaleg.next())
+//            {
+////                daftarCaleg = new CalonTerpilih();
+////                 daftarCaleg.addCaleg(new Caleg(resultCaleg.getString("NIKCaleg"), 
+////                                            resultCaleg.getString("NamaPartai"), 
+////                                            resultCaleg.getString("TrackRecord"), 
+////                                            Integer.parseInt(resultCaleg.getString("NoDapil")), 
+////                                            resultCaleg.getString("Lingkup")));
+//            }
+//            koneksi.close();
+//        }
+//        catch (SQLException ex) {
+//            System.out.println("Error CalonTerpilih.java" + ex.getMessage());
+//        }
+//        
     }
 
     /**
@@ -181,7 +184,7 @@ public class FormCaleg extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TabelCaleg);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 500, 280));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 470, 300));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 153));
         jLabel5.setText("No. Dapil   :");
@@ -211,7 +214,7 @@ public class FormCaleg extends javax.swing.JFrame {
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 590, 460));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 590, 160));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 590, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -290,42 +293,6 @@ public class FormCaleg extends javax.swing.JFrame {
         History.setText(history);
         
     }//GEN-LAST:event_TabelCalegMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormCaleg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormCaleg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormCaleg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormCaleg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormCaleg().setVisible(true);
-            }
-            
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea History;

@@ -34,18 +34,27 @@ public class FormAdmin extends javax.swing.JFrame{
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         TombolDapil = new javax.swing.JButton();
         TombolDPR = new javax.swing.JButton();
         TombolDPD = new javax.swing.JButton();
         TombolDPRDProv = new javax.swing.JButton();
         TombolDPRDKotKab = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(158, 30, 29));
-
-        TombolDapil.setBackground(new java.awt.Color(255, 213, 157));
         TombolDapil.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         TombolDapil.setText("Daerah Pemilihan");
         TombolDapil.addActionListener(new java.awt.event.ActionListener() {
@@ -53,6 +62,7 @@ public class FormAdmin extends javax.swing.JFrame{
                 TombolDapilActionPerformed(evt);
             }
         });
+        getContentPane().add(TombolDapil, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 229, -1));
 
         TombolDPR.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         TombolDPR.setText("DPR");
@@ -61,6 +71,7 @@ public class FormAdmin extends javax.swing.JFrame{
                 TombolDPRActionPerformed(evt);
             }
         });
+        getContentPane().add(TombolDPR, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 229, -1));
 
         TombolDPD.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         TombolDPD.setText("DPD");
@@ -69,6 +80,7 @@ public class FormAdmin extends javax.swing.JFrame{
                 TombolDPDActionPerformed(evt);
             }
         });
+        getContentPane().add(TombolDPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 229, -1));
 
         TombolDPRDProv.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         TombolDPRDProv.setText("DPRD Provinsi");
@@ -77,6 +89,7 @@ public class FormAdmin extends javax.swing.JFrame{
                 TombolDPRDProvActionPerformed(evt);
             }
         });
+        getContentPane().add(TombolDPRDProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 229, -1));
 
         TombolDPRDKotKab.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         TombolDPRDKotKab.setText("DPRD Kota/Kabupaten");
@@ -85,66 +98,33 @@ public class FormAdmin extends javax.swing.JFrame{
                 TombolDPRDKotKabActionPerformed(evt);
             }
         });
+        getContentPane().add(TombolDPRDKotKab, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TombolDPR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TombolDPRDKotKab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TombolDPRDProv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TombolDPD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TombolDapil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(103, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(TombolDapil)
-                .addGap(18, 18, 18)
-                .addComponent(TombolDPR)
-                .addGap(18, 18, 18)
-                .addComponent(TombolDPD)
-                .addGap(18, 18, 18)
-                .addComponent(TombolDPRDProv)
-                .addGap(18, 18, 18)
-                .addComponent(TombolDPRDKotKab)
-                .addContainerGap(188, Short.MAX_VALUE))
-        );
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 140));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 590, 460));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 590, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TombolDapilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDapilActionPerformed
+    private void TombolDPRDKotKabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPRDKotKabActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        FormDapil FD = new FormDapil();
-        FD.setVisible(true);
-        //this.setVisible(true);
-        
-    }//GEN-LAST:event_TombolDapilActionPerformed
-
-    private void TombolDPRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPRActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        FormCaleg FC = new FormCaleg("DPR");
+        FormCaleg FC = new FormCaleg("DPRDKabupaten");
         FC.setVisible(true);
-    }//GEN-LAST:event_TombolDPRActionPerformed
+    }//GEN-LAST:event_TombolDPRDKotKabActionPerformed
+
+    private void TombolDPRDProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPRDProvActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        FormCaleg FC = new FormCaleg("DPRDProvinsi");
+        FC.setVisible(true);
+    }//GEN-LAST:event_TombolDPRDProvActionPerformed
 
     private void TombolDPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPDActionPerformed
         // TODO add your handling code here:
@@ -153,19 +133,21 @@ public class FormAdmin extends javax.swing.JFrame{
         FC.setVisible(true);
     }//GEN-LAST:event_TombolDPDActionPerformed
 
-    private void TombolDPRDProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPRDProvActionPerformed
+    private void TombolDPRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPRActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        FormCaleg FC = new FormCaleg("DPRD Provinsi");
+        FormCaleg FC = new FormCaleg("DPR");
         FC.setVisible(true);
-    }//GEN-LAST:event_TombolDPRDProvActionPerformed
+    }//GEN-LAST:event_TombolDPRActionPerformed
 
-    private void TombolDPRDKotKabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDPRDKotKabActionPerformed
+    private void TombolDapilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolDapilActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        FormCaleg FC = new FormCaleg("DPRD Kota/Kabupaten");
-        FC.setVisible(true);
-    }//GEN-LAST:event_TombolDPRDKotKabActionPerformed
+        FormDapil FD = new FormDapil();
+        FD.setVisible(true);
+        //this.setVisible(true);
+
+    }//GEN-LAST:event_TombolDapilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +191,11 @@ public class FormAdmin extends javax.swing.JFrame{
     private javax.swing.JButton TombolDPRDProv;
     private javax.swing.JButton TombolDapil;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
