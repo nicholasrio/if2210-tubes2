@@ -173,6 +173,9 @@ public class VideoSwing extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Ada Kesalahan...");
                     Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (AttributeException a) {
+                    JOptionPane.showMessageDialog(null, a.getMessage());
+                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, a);
                 }
             }
         }
