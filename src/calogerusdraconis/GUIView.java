@@ -47,7 +47,7 @@ public class GUIView extends javax.swing.JFrame implements View {
         DragonImg = new javax.swing.JLabel();
         DragonName = new javax.swing.JLabel();
         DragonLevel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        DragonExp = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ProgHealth = new javax.swing.JProgressBar();
@@ -102,8 +102,8 @@ public class GUIView extends javax.swing.JFrame implements View {
 
         DragonLevel.setText("Level 20");
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Exp 10000/15000");
+        DragonExp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        DragonExp.setText("Exp 10000/15000");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Stats"));
 
@@ -368,7 +368,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                                 .addComponent(TextMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(DragonLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(DragonExp, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -395,7 +395,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                                     .addComponent(DragonLevel)
                                     .addComponent(TextMoney))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(DragonExp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(DragonName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -499,6 +499,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 		int hunger = (int) drg.getHunger();
 		int thirst = (int) drg.getThirst();
 		int money = (int) drg.getMoney();
+		int level = (int) drg.getLevel();
 		
 		ProgHealth.setValue(health);
 		ProgHealth.setMaximum(maxhealth);
@@ -521,6 +522,10 @@ public class GUIView extends javax.swing.JFrame implements View {
 		ProgBladder.setString(""+bladder+"/100");
 		
 		TextMoney.setText("Money: " + money);
+		DragonLevel.setText("Level: " + level);
+		
+		int next = 100 * (level+1) * (level+1) * (level+1);
+		DragonExp.setText("Exp: " + drg.getExperience() +"/"+next);
 		//TODO : progXP
 		//100*(lvl+1)^3
 		InventoryDisplay.change(drg,(InventoryDisplay) InventoryPanel);
@@ -552,6 +557,7 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JButton ButtSleep;
     private javax.swing.JButton ButtToilet;
     private javax.swing.JButton ButtTrain;
+    private javax.swing.JLabel DragonExp;
     private javax.swing.JLabel DragonImg;
     private javax.swing.JLabel DragonLevel;
     private javax.swing.JLabel DragonName;
@@ -569,7 +575,6 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
