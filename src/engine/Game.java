@@ -88,6 +88,13 @@ public class Game
             SceneManager.AddScene(new UserMenuGUI());
             SoundManager.addSound(new Sound("teleport","teleport.wav",Sound.SoundType.sfx));
             SoundManager.addSound(new Sound("coin","cling.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("button","button.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("fall","fall.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("icebreak","icebreak.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("mainBm","MainMenu.au",Sound.SoundType.bgm));
+            SoundManager.addSound(new Sound("levelBm","LevelMenu.au",Sound.SoundType.bgm));
+            SoundManager.addSound(new Sound("lv1bm","Level1.au",Sound.SoundType.bgm));
+            SoundManager.addSound(new Sound("lv2bm","Level2.au",Sound.SoundType.bgm));
             try{
                 SceneManager.SwitchScene("MainMenuGUI");
             }catch(SceneNotFoundException e){

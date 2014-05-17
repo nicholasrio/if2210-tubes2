@@ -51,7 +51,7 @@ public class SoundManager {
         }
     }
     
-    public static void stopAllSound(String name){
+    public static void stopAllSound(){
         for(Sound s : sounds){
             s.stop();
         }

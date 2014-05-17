@@ -134,6 +134,10 @@ public class MainMenuGUI extends Scene
         gameFrame.getContentPane().add(this);
         this.LoadContent();
         
+        /*Background music*/
+        SoundManager.stopAllSound();
+        SoundManager.loopSound("mainBm");
+        
         /* Rectangle */
         userMenu = new Rectangle(0,(int)(Game.ResolutionHeight*0.175f),800,50);
         newgameRect = new Rectangle(0,(int)(Game.ResolutionHeight*0.268f), 
@@ -237,31 +241,29 @@ public class MainMenuGUI extends Scene
         if (newgameRect.contains(event.getPoint()))
         {
             if(menuHovered != 1)
-                SoundManager.playSound("coin");
+                SoundManager.playSound("button");
             menuHovered = 1;
         }
         else if (achievementRect.contains(event.getPoint()))
         {
             if(menuHovered != 2)
-                SoundManager.playSound("coin");
+                SoundManager.playSound("button");
             menuHovered = 2;
         }
         else if(optionsRect.contains(event.getPoint()))
         {
             if(menuHovered != 3)
-                SoundManager.playSound("coin");
+                SoundManager.playSound("button");
             menuHovered = 3;
         }
         else if (aboutRect.contains(event.getPoint()))
         {
             if(menuHovered != 4)
-                SoundManager.playSound("coin");
+                SoundManager.playSound("button");
             menuHovered = 4;
         }
         else if (exitRect.contains(event.getPoint()))
         {
-            if(menuHovered != 5)
-                SoundManager.playSound("coin");
             menuHovered = 5;
         }
         else
