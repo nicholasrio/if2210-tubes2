@@ -64,7 +64,7 @@ public class TerminalView implements View {
 
 	@Override
 	/**
-	 * 
+	 * Print event saat dragon fight
 	 */
     public void UpdateScreen (UserDragon drg, Dragon enemy) {
 		System.out.println("Dragon anda sedang melawan musuh");

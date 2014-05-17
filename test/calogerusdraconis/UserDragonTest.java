@@ -254,25 +254,30 @@ public class UserDragonTest {
 	@Test
 	public void testGenerateEnemy() {
 		System.out.println("generateEnemy");
-		UserDragon instance = new UserDragon("user",100,150,89,200,23,51,21,1,795,"pass",50,66);
+		UserDragon instance = new UserDragon("user",100,150,100,200,50,50,50,1,500,"pass",50,66);
 		Dragon result = instance.generateEnemy();
 		System.out.println(result.getHealth());
-		assert(result.getHealth() > 0.8*instance.getHealth());
-		assert(result.getHealth() < 1.2*instance.getHealth());
-		assert(result.getStamina() > 0.8*instance.getStamina());
-		assert(result.getStamina() < 1.2*instance.getStamina());
-		assert(result.getExperience() > 0.8*instance.getExperience());
-		assert(result.getExperience() < 1.2*instance.getExperience());
-		assert(result.getLevel() > 0.8*instance.getLevel());
-		assert(result.getLevel() < 1.2*instance.getLevel());
-		assert(result.getHunger() > 0.8*instance.getHunger());
-		assert(result.getHunger() < 1.2*instance.getHunger());
-		assert(result.getBladder() > 0.8*instance.getBladder());
-		assert(result.getBladder() < 1.2*instance.getBladder());
-		assert(result.getThirst() > 0.8*instance.getThirst());
-		assert(result.getThirst() < 1.2*instance.getThirst());
+		System.out.println(result.getStamina());
+		System.out.println(result.getExperience());
+		System.out.println(result.getLevel());
+		System.out.println(result.getHunger());
+		System.out.println(result.getBladder());
+		System.out.println(result.getThirst());
+		assert(result.getHealth() >= (float)Math.ceil(0.8*instance.getHealth()));
+		assert(result.getHealth() <= (float)Math.ceil(1.2*instance.getHealth()));
+		assert(result.getStamina() >= (float)Math.ceil(0.8*instance.getStamina()));
+		assert(result.getStamina() <= (float)Math.ceil(1.2*instance.getStamina()));
+		assert(result.getExperience() >= (int)Math.ceil(0.8*instance.getExperience()));
+		assert(result.getExperience() <= (int)Math.ceil(1.2*instance.getExperience()));
+		assert(result.getLevel() >= (int)Math.ceil(0.8*instance.getLevel()));
+		assert(result.getLevel() <= (int)Math.ceil(1.2*instance.getLevel()));
+		assert(result.getHunger() >= (float)Math.ceil(0.8*instance.getHunger()));
+		assert(result.getHunger() <= (float)Math.ceil(1.2*instance.getHunger()));
+		assert(result.getBladder() >= (float)Math.ceil(0.8*instance.getBladder()));
+		assert(result.getBladder() <= (float)Math.ceil(1.2*instance.getBladder()));
+		assert(result.getThirst() >= (float)Math.ceil(0.8*instance.getThirst()));
+		assert(result.getThirst() <= (float)Math.ceil(1.2*instance.getThirst()));
 		// TODO review the generated test code and remove the default call to fail.
-		//fail("The test case is a prototype.");
 	}
 
 	/**
@@ -313,7 +318,7 @@ public class UserDragonTest {
 	/**
 	 * Test of entertain method, of class UserDragon.
 	 */
-/*	@Test
+	@Test
 	public void testEntertain() {
 		System.out.println("entertain");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
@@ -329,7 +334,7 @@ public class UserDragonTest {
 	/**
 	 * Test of rest method, of class UserDragon.
 	 */
-/*	@Test
+	@Test
 	public void testRest() {
 		System.out.println("rest");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
@@ -347,7 +352,7 @@ public class UserDragonTest {
 	/**
 	 * Test of toToilet method, of class UserDragon.
 	 */
-/*	@Test
+	@Test
 	public void testToToilet() {
 		System.out.println("toToilet");
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
@@ -359,5 +364,5 @@ public class UserDragonTest {
 		assertEquals(expResult.getType(), result.getType());
 		// TODO review the generated test code and remove the default call to fail.
 	} 
-	*/
+	
 }
