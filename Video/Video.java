@@ -1,4 +1,4 @@
-package videocoba2;
+package Video;
 
 import mysql.*;
 import mysql.SqlStatement;
