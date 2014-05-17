@@ -1,38 +1,34 @@
 /**
  *
- * @author Darwin Prasetio (13512015) Chrestella Stephanie (13512005) Jan Wira
- * Gotama Putra (13512015) Eric (13512021) Willy(13512070) Melvin FOnda
- * (13512085)
+ * @author 
+ * Darwin Prasetio (13512015)
+ * Chrestella Stephanie (13512005)
+ * Jan Wira Gotama Putra (13512015)
+ * Eric (13512021)
+ * Willy(13512070)
+ * Melvin Fonda (13512085)
  */
 package console;
 
 import model.Player;
-import controller.MainMenu;
+import controller.MainMenuConsole;
 import java.io.FileNotFoundException;
 import java.util.*;
 import exception.*;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class TowerDefense {    
-
-    public static void showMenus() {
-        System.out.println("1. Login");
-        System.out.println("2. New Player");
-        System.out.println("3. High Scores");
-        System.out.println("4. Detele Player");
-        System.out.println("5. New Game");
-        System.out.println("6. Load Game");
-        System.out.println("7. Exit");
-    }
+public class TowerDefense {  
 
     public static void main(String[] args) {
-        MainMenu menuList = MainMenu.getInstance();
+        MainMenuConsole mainMenuConsole = MainMenuConsole.getInstance();
         boolean cannotPlay = false;
         /**
          * Load player data from file
          */
         try {
-            menuList.loadPlayer();
+            mainMenuConsole.loadPlayer();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
             cannotPlay = true;
@@ -46,14 +42,14 @@ public class TowerDefense {
          */
         while (pilihanMenu != 7 && !cannotPlay) {
             //clearscreen???5
-            showMenus();
+            GameUI.showMainMenus();
             pilihanMenu = in.nextInt();
             if (pilihanMenu == 1 || pilihanMenu == 2 || pilihanMenu == 4) {
                 str = in.next();
                 switch (pilihanMenu) {
                     case 1: {
                         try {
-                            menuList.Login(str);
+                            mainMenuConsole.login(str);
                         } catch (NameNotExistException ex) {
                             System.out.println(ex);
                         }
@@ -61,7 +57,7 @@ public class TowerDefense {
                     }
                     case 2: {
                         try {
-                            menuList.newPlayer(str);
+                            mainMenuConsole.newPlayer(str);
                         } catch (Exception ex) {
                             System.out.println(ex);
                         }
@@ -69,7 +65,7 @@ public class TowerDefense {
                     }
                     case 4: {
                         try {
-                            menuList.deletePlayer(str);
+                            mainMenuConsole.deletePlayer(str);
                         } catch (NameNotExistException ex) {
                             System.out.println(ex);
                         }
@@ -79,32 +75,26 @@ public class TowerDefense {
             } else if (pilihanMenu == 3 || pilihanMenu == 5 || pilihanMenu == 6) {
                 switch (pilihanMenu) {
                     case 3: {
-                        //menuList.showHighScore(menuList);
+                        GameUI.showHighScore(mainMenuConsole.getHighScore());
                         break;
                     }
                     case 5: {
-                        if (menuList.logged()) {
-                            /**
-                             * new game
-                             */
+                        if (mainMenuConsole.logged()) {
                             try {
-                                menuList.PlayGame(true);
-                            } catch (FileNotFoundException ex) {
-                                System.out.println("Map not found");
-                                cannotPlay = true;
+                                mainMenuConsole.playGame(true);
                             } catch (IOException ex) {
-                                System.out.println("Interrupted");
+                                Logger.getLogger(TowerDefense.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
                         break;
                     }
                     case 6: {
-                        if (menuList.logged()) {
+                        if (mainMenuConsole.logged()) {
                             /**
                              * load game
                              */
                             try {
-                                menuList.PlayGame(false);
+                                mainMenuConsole.playGame(false);
                             } catch (FileNotFoundException ex) {
                                 System.out.println("Cannot load game");
                                 cannotPlay = true;
@@ -121,7 +111,7 @@ public class TowerDefense {
             }
         }
         try {
-            menuList.closePlayer();
+            mainMenuConsole.closePlayer();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
