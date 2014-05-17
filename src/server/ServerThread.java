@@ -15,7 +15,7 @@ public class ServerThread extends Thread{
 	private int id;
 	private Credential credential;
 	private boolean isLoggedIn;
-	
+	private List<String> loggedinUser;
 	public ServerThread(Socket clientSocket, int id){
 		socket = clientSocket;
                 
@@ -28,10 +28,7 @@ public class ServerThread extends Thread{
 		try { 
                     ois = new ObjectInputStream(socket.getInputStream());
                     pw = new PrintWriter(socket.getOutputStream(), true);
-                    while(true){
-                        //System.out.println("dummy1");
                         Object obj = ois.readObject();
-                        //System.out.println("dummy12");
                         if(obj instanceof TransObject){
                                 if(isLoggedIn)
                                         pw.write("Print information received");
@@ -47,6 +44,7 @@ public class ServerThread extends Thread{
                                     //System.out.println("dasdsadsa");
                                     pw.write("Login sukses");
                                     pw.flush();
+                                    //loggedinUser.add(credential.getId());
                                     isLoggedIn  =    true;
                                 }
                                 else{
@@ -54,12 +52,9 @@ public class ServerThread extends Thread{
                                         pw.flush();
                                 }
                                 System.out.println("Message sent");
-                            socket.shutdownOutput();
-                            
+                           
                         }
-                        //ois.close();
-                    }
-                   
+                        ois.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();

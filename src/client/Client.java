@@ -14,84 +14,64 @@ import Entity.Credential;
 import Entity.TransObject;
 
 public class Client {
+    String hostName = "localhost";
+    int portNumber = 5432;
+    Socket socket;
+    String input;
+    BufferedReader reader;
+    BufferedReader sockReader;
+    private boolean LoggedIn;
 
-	
-	String hostName = "localhost";
-	int portNumber = 5432;
-	Socket socket;
-	String input;
-	BufferedReader reader;
-	BufferedReader sockReader;
-	private boolean LoggedIn;
-                
-	public static void main(String[] args){
-		Client client = new Client();
-	}
-	
-	public Client() {
-            LoggedIn    =    false;
-		try {
-			do{
-                            		reader = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args){
+            Client client = new Client();
+    }
 
-				System.out.println("1. login");
-				System.out.println("2. print");
-				System.out.println("3. exit");
-				input = reader.readLine();
-				if(input.contains("login")){
-					login();
-				}
-				else if(input.equals("print")){
-					//sendPrintInfo();
-				}
-                                
-			}while(!input.equals("exit"));
-		}catch(Exception e){
-			//e.printStackTrace();
-		}
-                System.out.println("Menu beres");
+    public Client() {
+        LoggedIn    =    false;
+        try {
+            do{
+                reader = new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("1. login");
+                System.out.println("2. print");
+                System.out.println("3. exit");
+                input = reader.readLine();
+                if(input.contains("login")){
+                        login();
+                }
+                else if(input.equals("print")){
+                    sendPrintInfo();
+                }
+            }while(!input.equals("exit"));
+        }catch(Exception e){
+                e.printStackTrace();
+        }
+    }
+
+    public void login(){
+            try {
+                String NIM;
+                String password;
+                System.out.println("Enter NIM: ");
+                NIM = reader.readLine();
+                System.out.println("Enter password: ");
+                password = reader.readLine();
+                socket = new Socket(hostName, portNumber);
+                ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+                sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                Credential obj = new Credential(NIM, password);
+                oos.writeObject(obj);
+                System.out.println("Dari server " + sockReader.readLine());
+                if(sockReader.readLine().contains("Login sukses")){
+                    LoggedIn    =    true;
+                }
+                oos.close();
+            }catch(Exception e){
+                    e.printStackTrace();
+            }
 	}
 	
-	public void login(){
-		try {
-                    String NIM;
-                    String password;
-                    System.out.println("Enter NIM: ");
-                    NIM = reader.readLine();
-                    System.out.println("Enter password: ");
-                    password = reader.readLine();
-                    socket = new Socket(hostName, portNumber);
-                    ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-                    sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    Credential obj = new Credential(NIM, password);
-                    //send credential
-                    oos.writeObject(obj);
-                    //oos.writeBytes("\n");
-                    //get response
-                        System.out.println("Dari server " + sockReader.readLine());
-                        /* 
-                        while(!sockReader.readLine().contains(null)){
-                                oos.writeObject(obj);
-                                System.out.println("Dari server2" + sockReader.readLine());
-                                //socket.shutdownInput();
-                        }
-                        */
-                    //oos.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			if(socket != null){
-				try {
-					socket.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-                //System.out.println("Login beres");
-	}
-	
-	/*public void sendPrintInfo(){
+	public void sendPrintInfo(){
+            if(LoggedIn){
 		try {
 			while(!(input = reader.readLine()).equals("exit")){
 				
@@ -99,8 +79,8 @@ public class Client {
 			while ((input = reader.readLine()) != null) {
 		    	socket = new Socket(hostName, portNumber);
 		    	ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-		    	TransObject obj = new TransObject(13512045, "Gilang Julian Suherik");
-		    	TransObject obj2 = new TransObject(13512000, "Siapa nih?");
+		    	TransObject obj = new TransObject("13512045", "Gilang Julian Suherik");
+		    	TransObject obj2 = new TransObject("13512000", "Siapa nih?");
 		    	oos.writeObject(obj);
 		    	oos.writeObject(obj2);
 		    	oos.close();
@@ -117,7 +97,11 @@ public class Client {
 				}
 			}
 		}
-	}*/
+            }else{
+                System.out.println("Silahkan login terlebih dahulu.");
+                login();
+            }
+	}
 }
 
 
