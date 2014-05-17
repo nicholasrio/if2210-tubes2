@@ -22,7 +22,7 @@ public class Vehicle implements Drawable {
 	public Vehicle() {
 		ImageIcon i = new ImageIcon("images/veh1.png");
 		Vehicle.imgVeh = i.getImage();
-		this.setImage(1, 1);
+		this.setImage(1);
 		this.speed = 5;
 		this.capacity = 6;
 		this.id = 1;
@@ -38,7 +38,7 @@ public class Vehicle implements Drawable {
 		// ganti gambar yang sesuai
 		if (this.id < 3) {
 			this.id++;
-			setImage(this.id, 1);
+			setImage(this.id);
 			// ubah nilai atribut
 			this.speed += 5;
 			this.capacity += 2;
@@ -54,7 +54,7 @@ public class Vehicle implements Drawable {
 		// ganti gambar yang sesuai
 		if (this.id > 1) {
 			this.id--;
-			setImage(this.id, 1);
+			setImage(this.id);
 			// ubah nilai atribut
 			this.speed -= 5;
 			this.capacity -= 2;
@@ -164,14 +164,14 @@ public class Vehicle implements Drawable {
 				}
 			}
 			else {
-				setImage(this.id, 0);
+				setImage(this.id);
 				if(this.x > this.startx) {
 					this.x -= this.speed;
 				}
 				else {
 					this.arah = 1;
 					this.status = 0;
-					setImage(this.id, 1);
+					setImage(this.id);
 				}
 			}
 		}
