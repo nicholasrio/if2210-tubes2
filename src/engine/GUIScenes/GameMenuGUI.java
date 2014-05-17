@@ -10,12 +10,17 @@ import engine.*;
 import engine.DataStructure.*;
 import engine.Exception.SceneNotFoundException;
 import static engine.Game.gameFrame;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +39,9 @@ public class GameMenuGUI extends Scene
     private Image holeTexture;
     private Image playerRLTexture;
     private Image playerUDTexture;
+    private Image backgroundTexture;
+    private Image titleTexture;
+    private Image coinTexture;
             
     private int nowlevelPlay;
     private int mazeSize;
@@ -73,6 +81,8 @@ public class GameMenuGUI extends Scene
     private Rectangle [][]tileRect;
     private Rectangle playerRect;
     
+    private Font font;
+    private File fontfile;
     private Player currentPlayer;
     
     public GameMenuGUI()
@@ -110,6 +120,16 @@ public class GameMenuGUI extends Scene
                     startPlayerPosY = 490;
                     playerRect = new Rectangle(startPlayerPosX,startPlayerPosY,charSpriteWidth,charSpriteHeight);
                     tileRect = new Rectangle[mazeSize][mazeSize];
+                    fontfile = new File("Font/batmanforeveralternate.ttf");
+                    try 
+                    {
+                        font = font.createFont(Font.TRUETYPE_FONT, fontfile);
+                        font = font.deriveFont(Font.TRUETYPE_FONT, 20);
+                    } 
+                    catch (FontFormatException | IOException ex) 
+                    {
+                        Logger.getLogger(GameMenuGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
         }
         
@@ -146,6 +166,9 @@ public class GameMenuGUI extends Scene
                     goldTexture = ImageLoader.getImage("ice_gold");
                     playerRLTexture = ImageLoader.getImage("ice_char_RL");
                     playerUDTexture = ImageLoader.getImage("ice_char_UD");
+                    backgroundTexture = ImageLoader.getImage("ice");
+                    titleTexture = ImageLoader.getImage("title");
+                    coinTexture = ImageLoader.getImage("coin");
                     break;
         }
     }
@@ -365,6 +388,7 @@ public class GameMenuGUI extends Scene
         if (Game.mode == 2)
         {
             Graphics2D g2D = (Graphics2D) g;
+            g2D.drawImage(backgroundTexture, 0  , 0, getWidth(), getHeight(), this);
             for (int bar=0;bar<mazeSize;bar++)
             {
                 for (int kol=0;kol<mazeSize;kol++)
@@ -434,7 +458,11 @@ public class GameMenuGUI extends Scene
                 case 4: g2D.drawImage(playerRLTexture,playerPosX,playerPosY,playerPosX+49,playerPosY+63,(49*playerdisplayState),0,(49*(playerdisplayState+1)),63,this);
                         break;
             }
-            
+            g2D.drawImage(coinTexture, (int)(getWidth()*0.80f), (int) (getHeight()*0.2f), (int) (coinTexture.getWidth(this)*0.55f),(int) (coinTexture.getHeight(this) * 0.55f), this);
+            g2D.drawImage(titleTexture, (int) (getWidth()*0.24f), (int) (getHeight()*0.03f), (int) (titleTexture.getWidth(this) * 0.80f), (int) (titleTexture.getHeight(this) * 0.80f), this);
+            g2D.setFont(font);
+            this.setForeground(Color.GREEN);
+            g2D.drawString(String.valueOf(currentPlayer.getTempScore()),(int)(this.getWidth()*0.9f), (int)(this.getHeight()*0.275f));
         }
     }
     
