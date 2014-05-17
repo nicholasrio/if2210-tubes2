@@ -145,6 +145,8 @@ public class KataMa extends javax.swing.JFrame {
            }
            else{
                JOptionPane.showMessageDialog(null, "Welcome You're logged in now", "Welcome",1);
+               new MenuLoginAdmin().setVisible(true);
+               this.setVisible(false);
            }
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 0);
@@ -152,8 +154,12 @@ public class KataMa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        setVisible(false);
-        new GuestView().setVisible(true);
+        try{
+            new GuestView().setVisible(true);
+            setVisible(false);
+        }
+        catch(SQLException e){
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -178,13 +184,7 @@ public class KataMa extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(KataMa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(KataMa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(KataMa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(KataMa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

@@ -73,7 +73,7 @@ public class Group {
     public void SelectAllData(){
         
     }
-    
+ /*   
     public void select_group_by(int _no_tubes, String _group_name) throws SQLException{
         ResultSet rs = s.getStatement().executeQuery("select * from group_tubes where no_tubes = \"" + _no_tubes + "\" and group_name = \"" + _group_name + "\";");
         
@@ -102,7 +102,7 @@ public class Group {
         
         return ketemu;
     }
-    
+    */
     public List<String> getHistory(){
         return member;
     }
