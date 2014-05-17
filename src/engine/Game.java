@@ -101,7 +101,7 @@ public class Game
         while(gameRunning) 
         { 
             long time = System.currentTimeMillis(); 
-            final int fps = 60;
+            final int fps = 40;
             
             SceneManager.Draw(); 
             SceneManager.Update(); 

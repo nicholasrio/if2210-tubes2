@@ -214,6 +214,7 @@ public class Player
                     }
                     break;
             }
+            System.out.println("Item Here : " + itemHere.getName());
 
             if(itemHere.getName().equalsIgnoreCase("coin")) // ada coin
 
