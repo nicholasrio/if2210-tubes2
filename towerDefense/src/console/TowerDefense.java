@@ -81,7 +81,7 @@ public class TowerDefense {
                     case 5: {
                         if (mainMenuConsole.logged()) {
                             try {
-                                mainMenuConsole.playGameConsole(false);
+                                mainMenuConsole.playGameConsole(true);
                             } catch (IOException ex) {
                                 Logger.getLogger(TowerDefense.class.getName()).log(Level.SEVERE, null, ex);
                             }

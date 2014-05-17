@@ -52,13 +52,13 @@ public class TowerDefense {
             switch (pilihanMenu) {
                 case 1: {
                     display.hide();
-                    mainMenuConsole.playGameGUI(false);
+                    mainMenuConsole.playGameGUI(true);
                     display.show();
                     break;
                 }
                 case 2: {
                     display.hide();
-                    mainMenuConsole.playGameGUI(true);
+                    mainMenuConsole.playGameGUI(false);
                     display.show();
                     break;
                 }
@@ -113,6 +113,11 @@ public class TowerDefense {
                     break;
                 }
             }
+        }
+        try {
+            mainMenuConsole.closePlayer();
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
         }
         System.exit(0);
     }

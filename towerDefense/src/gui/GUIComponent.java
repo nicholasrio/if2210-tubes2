@@ -21,6 +21,13 @@ abstract public class GUIComponent {
     protected boolean dirtyBit;
     final private String status;
 
+    /**
+     * the Constructor for any component
+     *
+     * @param _status
+     * @param _opt
+     * @throws IOException
+     */
     public GUIComponent(String _status, int _opt) throws IOException {
         //event = _event;
         status = _status;
@@ -29,53 +36,83 @@ abstract public class GUIComponent {
         dirtyBit = true;
     }
 
+    /**
+     * setting the x position for the component
+     * @param _x
+     */
     public void setX(int _x) {
         x = _x;
     }
 
+    /**
+     * setting the y position for the component
+     * @param _y
+     */
     public void setY(int _y) {
         y = _y;
     }
 
+    /**
+     * 
+     * @return the x position
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     *
+     * @return the y position
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     *
+     * @return if the component has been modified
+     */
     public boolean isModified() {
         return dirtyBit;
     }
 
+    /**
+     *
+     * @param _x
+     * @param _y
+     * @return check if the component is invoked
+     */
     public boolean isInvoked(int _x, int _y) {
         return (x < _x) && (_x < x + getWidth()) && ((y < _y) && (_y < y + getHeight()));
     }
 
+    /**
+     *
+     * @return get the status of the component
+     */
     public String getStatus() {
         return status;
     }
 
+    /**
+     *
+     * @return get option of the component
+     */
     public int getOption() {
         return option;
     }
 
+    /**
+     *
+     * @throws NoSuchMethodException
+     * @throws IllegalAccessException
+     * @throws IllegalArgumentException
+     * @throws InvocationTargetException
+     * @throws InstantiationException
+     * the option menu is new
+     */
     public void invoke() throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, InstantiationException {
         TowerDefense.pilihanMenu = option;
-        /*if (event != null) {
-         Class[] interfaces = event.getInterfaces();
-         boolean isThread = false;
-         for (Class implement : interfaces) {
-         if (implement == Runnable.class)
-         isThread = true;
-         }
-         if (isThread)
-         new Thread((Runnable) event.newInstance()).start();
-         else {
-         event.getMethod("run", null).invoke(event.newInstance(), null);
-         }
-         }*/
     }
 
     abstract protected int getWidth();

@@ -6,6 +6,7 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,8 +18,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import model.Map;
+import model.Monster;
 import model.Tower;
 
+/**
+ * MapGUI is for the map
+ * @author Opel Howard
+ */
 public class MapGUI {
 
     public GameController GController;
@@ -29,6 +35,11 @@ public class MapGUI {
     public int state;
     private ImageViewer pictureCanvas;
 
+    /**
+     * the constructor for the MapGUI
+     * @param _GController
+     * @throws IOException
+     */
     public MapGUI(GameController _GController) throws IOException {
         GController = _GController;
         mainFrame = new JFrame("Tower Defense");
@@ -51,7 +62,7 @@ public class MapGUI {
         changeStatus();
         option = new JPanel();
         option.setLayout(new BoxLayout(option, BoxLayout.PAGE_AXIS));
-        setOption(0,-1);
+        setOption(0, -1);
 
         pictureCanvas = new ImageViewer(this);
         pictureCanvas.addImage("0.jpg"); //0
@@ -64,10 +75,7 @@ public class MapGUI {
         pictureCanvas.addImage("tower.jpg");
 
         pictureCanvas.setBounds(0, 0, 940, 360);
-        //pictureCanvas.setIgnoreRepaint(true);
-        //pictureCanvas.we();
-
-        //mainFrame.add(titleBlock, BorderLayout.PAGE_START);
+        
         mainFrame.add(pictureCanvas, BorderLayout.WEST);
         mainFrame.add(optionPanel, BorderLayout.CENTER);
         optionPanel.add(status, BorderLayout.NORTH);
@@ -78,23 +86,24 @@ public class MapGUI {
                 System.exit(0);
             }
         });
-        //pictureBlock.setMaximumSize(new Dimension(Integer.valueOf(100), Integer.valueOf(100)));
-
         pictureCanvas.setBackground(Color.red);
 
         mainFrame.setResizable(false);
         mainFrame.setVisible(true);
     }
-    
+
+    /**
+     * Change the panel of the game
+     */
     public void changeStatus() {
-        assert(status!=null);
-        status.removeAll(); 
+        assert (status != null);
+        status.removeAll();
         status.add(new JLabel("Game Status   "));
-        status.add(new JLabel("Player Name : "+GController.getPlayer().getName()));
-        status.add(new JLabel("Current Level : "+GController.getCurrentLevel()));
-        status.add(new JLabel("Score : "+GController.getScore()));
-        status.add(new JLabel("Gold : "+GController.getGold()));
-        status.add(new JLabel("Lives : "+GController.getLives()));
+        status.add(new JLabel("Player Name : " + GController.getPlayer().getName()));
+        status.add(new JLabel("Current Level : " + GController.getCurrentLevel()));
+        status.add(new JLabel("Score : " + GController.getScore()));
+        status.add(new JLabel("Gold : " + GController.getGold()));
+        status.add(new JLabel("Lives : " + GController.getLives()));
         JButton quitButton = new JButton("Quit Game");
         quitButton.addActionListener(new ActionListener() {
 
@@ -119,6 +128,7 @@ public class MapGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GameController.menu = 6;
+                mainFrame.setVisible(true);
             }
 
         });
@@ -126,15 +136,34 @@ public class MapGUI {
         status.add(saveButton);
         status.add(startButton);
     }
+    
+    /**
+     * add announcement of the x
+     * @param x
+     */
+    public void addAnnouncement(String x) {
+        status.add(new JLabel(x));
+    }
 
+    /**
+     * show the window
+     */
     public void show() {
         mainFrame.setVisible(true);
     }
 
+    /**
+     * hide the window
+     */
     public void hide() {
         mainFrame.setVisible(false);
     }
 
+    /**
+     * the clicked button
+     * @param n
+     * @param idx
+     */
     public void setOption(int n, int idx) {
         final int alpha = idx;
         JButton jButton1, jButton2;
@@ -194,37 +223,48 @@ public class MapGUI {
 
 class ImageViewer extends Canvas implements MouseListener {
 
-    private ArrayList<Image> image;
+    private ArrayList<BufferedImage> image;
     private String path;
     private MapGUI reference;
     public static final int SIZE = 47;
     public static final int ROW = 15;
     public static final int COL = 20;
+    private BufferedImage[] sprites;
 
-    public ImageViewer(MapGUI alpha) {
+    public ImageViewer(MapGUI alpha) throws IOException {
         addMouseListener(this);
         reference = alpha;
         image = new ArrayList<>();
         path = "img/";
+
+        BufferedImage bigImg = ImageIO.read(new FileInputStream(path + "monster.png"));
+        final int rows = 5;
+        final int cols = 5;
+        sprites = new BufferedImage[rows * cols];
+        final int width = 50;
+        final int height = 60;
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                sprites[(i * cols) + j] = bigImg.getSubimage(
+                        j * width,
+                        i * height,
+                        width,
+                        height
+                );
+            }
+        }
     }
 
     public void addImage(String str) throws FileNotFoundException, IOException {
         String fullpath = path + str;
-        Image mini = ImageIO.read(new FileInputStream(fullpath));
+        BufferedImage mini = ImageIO.read(new FileInputStream(fullpath));
         image.add(mini);
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        /*Map Map = new Map();
-        try {
-            Map.readFile();
-        } catch (IOException ex) {
-
-            System.out.println("File not found");
-        }*/
-
         for (int i = 0; i < COL; i++) {
             for (int j = 0; j < ROW; j++) {
                 if (Map.Peta[j][i] == 256) {
@@ -261,16 +301,23 @@ class ImageViewer extends Canvas implements MouseListener {
                             assert (false);
                     }
                 }
-
-                //g.drawImage(image.get(i%5), i % 20 * 50, i / 20 * 50, 50, 50, this);
             }
         }
-        
+
         List<Tower> lot = reference.GController.getListOfTower();
-        for (Tower tt: lot) {
+        for (Tower tt : lot) {
             int i = tt.getPositionCol();
             int j = tt.getPositionRow();
-            g.drawImage(image.get(7), i * SIZE, j * SIZE, SIZE, SIZE, this); 
+            g.drawImage(image.get(7), i * SIZE, j * SIZE, SIZE, SIZE, this);
+        }
+
+        List<Monster> lom = reference.GController.getListOfMonster();
+        for (Monster mm : lom) {
+            if (mm.getHP()>0) {
+                int i = mm.getCol();
+                int j = mm.getRow();
+                g.drawImage(sprites[0], i*SIZE, j*SIZE, SIZE, SIZE, this);
+            }
         }
     }
 
@@ -282,12 +329,13 @@ class ImageViewer extends Canvas implements MouseListener {
         GameController.pos_col = col;
         if (Map.Peta[row][col] == 256) {
             int idx = reference.GController.getTowerIdx(row, col);
-            if (idx==-1) {
-                reference.setOption(1,idx);
+            if (idx == -1) {
+                reference.setOption(1, idx);
+            } else {
+                reference.setOption(2, idx);
             }
-            else reference.setOption(2,idx);
         } else {
-            reference.setOption(0,-1);
+            reference.setOption(0, -1);
         }
         //reference.option.setVisible(false);
         reference.option.repaint();

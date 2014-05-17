@@ -25,7 +25,10 @@ class MyCanvas extends Canvas implements MouseListener, KeyListener {
 
     private int currentIdx;
     private ArrayList<GUIComponent> listOfComponent;
-
+    /**
+    * the constructor
+    * @author Opel Howard
+    */
     public MyCanvas() throws IOException {
         //typing = "";
         this.addMouseListener(this);

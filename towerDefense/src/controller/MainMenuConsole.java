@@ -100,7 +100,6 @@ public class MainMenuConsole {
     */
     public void playGameGUI(boolean newGame) throws FileNotFoundException, IOException {
         GameController gameControl = GameController.getInstance();
-        System.out.println("Cabo ");
         if (newGame == false) {
             gameControl.loadGame(loginPlayer);
         } else {

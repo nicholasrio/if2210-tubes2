@@ -1,35 +1,33 @@
 /**
  *
- * @author 
- * Darwin Prasetio (13512015)
- * Chrestella Stephanie (13512005)
- * Jan Wira Gotama Putra (13512015)
- * Eric (13512021)
- * Willy(13512070)
- * Melvin Fonda (13512085)
+ * @author Darwin Prasetio (13512015) Chrestella Stephanie (13512005) Jan Wira
+ * Gotama Putra (13512015) Eric (13512021) Willy(13512070) Melvin Fonda
+ * (13512085)
  */
 package controller;
 
-import gui.*;
-import java.util.List;
-import java.util.ArrayList;
-import java.io.*;
-import java.util.*;
-import java.util.Collections;
-import model.*;
 import console.GameUI;
+import gui.*;
+import java.io.*;
+import static java.lang.Thread.sleep;
+import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.*;
 
 public class GameController {
 
     private List<Tower> listOfTower = Collections.synchronizedList(new ArrayList());
     private List<Monster> listOfMonster = new ArrayList<Monster>();
     private static final int ROW = 15, COL = 20, INITIAL_LIFE = 10;
+    public static int menu, pos_row, pos_col;
     private static GameController instance;
     private final int maximumLevel;
     private final int goldRate = 5;
-
+    
     private model.Player player;
     private int currentLevel;
     private int score;
@@ -207,10 +205,13 @@ public class GameController {
         gold = gold + payBack;
     }
 
-    /** Get tower at idx */
+    /**
+     * Get tower at idx
+     */
     public Tower getTower(int idx) {
         return listOfTower.get(idx);
     }
+
     /**
      * Upgrade tower at position (pos_x, pos_y) if player's money is sufficient,
      *
@@ -231,9 +232,9 @@ public class GameController {
      * Enemies are being attacked by tower(s)
      */
     public void allTowersAttack() {
-        System.out.println("Attacking!");
+        //System.out.println("Attacking!");
         for (int i = 0; i < listOfTower.size(); i++) {
-            System.out.println("Tower ke-" + i + " Cooldown : " + listOfTower.get(i).getCoolDownCount());
+            //System.out.println("Tower ke-" + i + " Cooldown : " + listOfTower.get(i).getCoolDownCount());
             for (int j = 0; j < listOfMonster.size(); ++j) {
                 /* 
                  if (there's ')enemy in tower's sight, then attack those enemy
@@ -464,7 +465,7 @@ public class GameController {
      */
     public Player playGameConsole(Player loginPlayer) {
         Scanner in = new Scanner(System.in);
-        int menu = 0, pos_row = 0, pos_col = 0;
+        //int menu = 0, pos_row = 0, pos_col = 0;
         /**
          * Game menus
          */
@@ -479,7 +480,7 @@ public class GameController {
             switch (menu) {
                 case 1: { //create tower 
                     boolean retval = createNewTower(pos_row, pos_col);
-                    
+
                     break;
                 }
                 case 2: { //sell tower
@@ -529,39 +530,28 @@ public class GameController {
                 case 7: {
                     break;
                 } //quit game
-                default: {
-                    System.out.println("Menu not found!");
-                    break;
-                }
             }
         }
         if (getCurrentLevel() > getMaxLevel()) {
             System.out.println("Congratulation... you've win the game!");
         }
-        if (getScore() > loginPlayer.getHighScore()) {
-            loginPlayer.setHighScore(getScore());
-        }
         return loginPlayer;
     }
-    public static int menu, pos_row, pos_col;
+    
+
     public Player playGameGUI(Player loginPlayer) throws IOException {
         gui.MapGUI mapGUI = new gui.MapGUI(getInstance());
-        
         //int pos_row = 0, pos_col = 0;
-        menu = 0; pos_row = 0; pos_col = 0;
+        menu = 0;
+        pos_row = 0;
+        pos_col = 0;
         /**
          * Game menus
          */
-        //while (getCurrentLevel() <= getMaxLevel() && menu != 7) { //TO DO : inget diganti
-            //mapGUI.show();
-            //menu = in.nextInt();
-            //if (menu < 5) {
-                //System.out.print(">Position(row,col) ");
-                //pos_row = in.nextInt();
-                //pos_col = in.nextInt();
-            //}
+        boolean exit = false;
         while (menu != 7) {
-            while (menu == 0){}
+            while (menu == 0) {
+            }
             switch (menu) {
                 case 1: { //create tower 
                     mapGUI.hide();
@@ -602,59 +592,59 @@ public class GameController {
                     break;
                 }
                 case 6: { //level started
-                    //spawnMonster();
+                    spawnMonster();
+                    mapGUI.hide();
                     /**
                      * game level started
                      */
+
                     while (countSeenMonster() > 0 && getLives() > 0) {
-                        showGame(false);
+                        //showGame(false);
                         allTowersAttack();
                         moveAllMonster();
+                        try {
+                            Thread.sleep(333);
+                        } catch (InterruptedException ex) {
+                            System.out.println("Alpha");
+                        }
+
                         coolDownAllTower();
-                        showMonsterLive(); //for testing purpose only
+                        //showMonsterLive(); //for testing purpose only
                         if (getScore() > loginPlayer.getHighScore()) {
                             loginPlayer.setHighScore(getScore());
                         }
-                        //in.nextLine();
+                        mapGUI.hide();
+                        mapGUI.changeStatus();
+                        mapGUI.status.updateUI();
+                        mapGUI.mainFrame.repaint();
+                        mapGUI.show();
                     }
+                    mapGUI.hide();
+                    mapGUI.changeStatus();
+                    mapGUI.status.updateUI();
+                    mapGUI.mainFrame.repaint();
+                    mapGUI.show();
+
                     if (getLives() > 0) {
-                        System.out.println("Congratulations... you may advance to next level!");
+                        mapGUI.addAnnouncement("Congratulations... you may advance to next level!");
                         nextLevel();
                     } else {
-                        System.out.println("You lose!");
+                        mapGUI.addAnnouncement("You lose!");
+                        break;
                     }
                     break;
                 }
                 case 7: {
                     mapGUI.hide();
                     break;
-                } 
-                default: {
-                    System.out.println("Menu not found!");
-                    break;
                 }
             }
-            menu = 0;
+            if (menu!=7)
+                menu = 0;
         }
-        /*if (getCurrentLevel() > getMaxLevel()) {
-            System.out.println("Congratulation... you've win the game!");
+        if (getCurrentLevel() > getMaxLevel()) {
+            mapGUI.addAnnouncement("Congratulation... you've win the game!");
         }
-        if (getScore() > loginPlayer.getHighScore()) {
-            loginPlayer.setHighScore(getScore());
-        }*/
-        System.exit(0);
         return loginPlayer;
-    }
-    
-    public static void main(String[] arg) {
-        GameController temp = GameController.getInstance();
-        try {
-            //model.Map.readFile();
-            Player temp_player = new Player("Willy", 0);
-            temp.newGame(temp_player);
-            temp.playGameGUI(temp_player);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
     }
 }

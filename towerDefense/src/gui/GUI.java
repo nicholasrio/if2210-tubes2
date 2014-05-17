@@ -6,10 +6,6 @@
 package gui;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +15,17 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * 
  * @author Opel Howard
  */
 public class GUI {
 
     protected static JFrame mainFrame;
     protected static MyCanvas mainCanvas;
-
+    
+    /**
+     * Default Constructor
+     */
     public GUI() {
         System.setProperty("sun.awt.noerasebackground", "true");
 
@@ -54,8 +53,16 @@ public class GUI {
     }
 }
 
+
+/**
+ * 
+ * @author Opel Howard
+ */
 class MainMenuGUI extends GUI {
 
+    /**
+     * show menu for main menu
+     */
     public void showMenu() {
         mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
         try {
@@ -79,6 +86,9 @@ class MainMenuGUI extends GUI {
         mainCanvas.repaint();
     }
 
+    /**
+     * show highscore for main menu
+     */
     public void showHighScore(List<model.Player> listOfPlayers) {
         mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
         try {
@@ -97,6 +107,9 @@ class MainMenuGUI extends GUI {
         mainCanvas.repaint();
     }
 
+    /**
+     * refresh the input
+     */
     class refreshInput extends Thread {
 
         public void run() {
@@ -105,23 +118,38 @@ class MainMenuGUI extends GUI {
         }
     }
 
+    /**
+     * show login dialog
+     */
     public void showLogin(String str) {
         mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
         TowerDefense.inputMenu = JOptionPane.showInputDialog(mainFrame, null, str, JOptionPane.QUESTION_MESSAGE);
         mainCanvas.repaint();
     }
+    
+    /**
+     * show choice dialog
+     */
 
     public int showChoice(String str) {
         mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
         mainCanvas.repaint();
         return JOptionPane.showConfirmDialog(mainFrame, str, null, JOptionPane.YES_NO_OPTION);
     }
-    
+    /**
+     * show warning for the desired string
+     */
+
     public void showWarning(String str) {
         mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
         mainCanvas.repaint();
         JOptionPane.showMessageDialog(mainFrame, str, "ERROR", JOptionPane.ERROR_MESSAGE);
     }
+    
+    /**
+     * show about menu
+     */
+
     public void showAbout() {
         mainCanvas.setListOfImage(new ArrayList<GUIComponent>());
         try {
