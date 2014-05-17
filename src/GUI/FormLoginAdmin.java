@@ -9,6 +9,7 @@ package GUI;
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import main.Admin;
 
 /**
  *
@@ -32,89 +33,140 @@ public class FormLoginAdmin extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        usernameLabel = new javax.swing.JLabel();
-        LoginButton = new javax.swing.JToggleButton();
+        LoginAdminButton = new javax.swing.JToggleButton();
         passwordTextField = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         usernameTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        LoginSuperadminButton = new javax.swing.JToggleButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        usernameLabel.setText("username");
-
-        LoginButton.setText("Login");
-        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+        LoginAdminButton.setText("Login as Admin");
+        LoginAdminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButtonActionPerformed(evt);
+                LoginAdminButtonActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("SimSun-ExtB", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 102));
         jLabel1.setText("LOGIN");
 
+        passwordLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        passwordLabel.setForeground(new java.awt.Color(255, 255, 51));
         passwordLabel.setText("password");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 102));
         jLabel2.setText("Admin");
+
+        LoginSuperadminButton.setText("Login as Superadmin");
+        LoginSuperadminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginSuperadminButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+
+        usernameLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        usernameLabel.setForeground(new java.awt.Color(255, 255, 102));
+        usernameLabel.setText("username");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(146, 146, 146)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(usernameLabel)
+                        .addComponent(passwordLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameLabel)
-                            .addComponent(passwordLabel))
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                            .addComponent(passwordTextField)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
+                        .addGap(1, 1, 1)
+                        .addComponent(LoginAdminButton)
+                        .addGap(70, 70, 70)
+                        .addComponent(LoginSuperadminButton)))
+                .addGap(112, 139, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(235, 235, 235))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(LoginButton)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(152, 152, 152))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(156, 156, 156)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(29, 29, 29)
+                .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernameLabel)
+                    .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLabel)
-                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(LoginButton)
-                .addGap(53, 53, 53))
+                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordLabel))
+                .addGap(116, 116, 116)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LoginAdminButton)
+                    .addComponent(LoginSuperadminButton))
+                .addContainerGap(186, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, 0)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, 0)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+    private void LoginAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginAdminButtonActionPerformed
         // TODO add your handling code here:
         String password = passwordTextField.getText();
         String username = usernameTextField.getText();
+        
+        Admin admin1 = new Admin(username,password,false);
 
-        if (password.contains("TextPassword") && username.contains("TextUsername"))
+        if (admin1.ValidateInput())
         {
             usernameTextField.setText("");
             passwordTextField.setText("");
-            close();
+            //close();
+            this.dispose();
             FormAdmin fa = new FormAdmin();
             fa.setVisible(true);
         }
@@ -124,7 +176,33 @@ public class FormLoginAdmin extends javax.swing.JFrame{
             usernameTextField.setText("");
             passwordTextField.setText("");
         }
-    }//GEN-LAST:event_LoginButtonActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_LoginAdminButtonActionPerformed
+
+    private void LoginSuperadminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginSuperadminButtonActionPerformed
+        // TODO add your handling code here:
+        String password = passwordTextField.getText();
+        String username = usernameTextField.getText();
+        
+        Admin admin1 = new Admin (username,password,true);
+
+        if (admin1.ValidateInput())
+        {
+            usernameTextField.setText("");
+            passwordTextField.setText("");
+            close();
+            FormSuperAdmin fs = new FormSuperAdmin();
+            fs.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Password yang Anda masukkan salah.", "Password Salah",JOptionPane.ERROR_MESSAGE);
+            usernameTextField.setText("");
+            passwordTextField.setText("");
+        }
+    }//GEN-LAST:event_LoginSuperadminButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,8 +240,12 @@ public class FormLoginAdmin extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton LoginButton;
+    private javax.swing.JToggleButton LoginAdminButton;
+    private javax.swing.JToggleButton LoginSuperadminButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordTextField;
