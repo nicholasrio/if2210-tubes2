@@ -171,6 +171,10 @@ public class GameMenuGUI extends Scene
                 tileRect[bar][kol] = new Rectangle(width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height);
             }
         }
+        
+        /*Jalankan Suara*/
+        SoundManager.stopAllSound();
+        SoundManager.loopSound("lv1bm");
     }
     
     @Override

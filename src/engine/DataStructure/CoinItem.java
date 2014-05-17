@@ -6,6 +6,8 @@
 
 package engine.DataStructure;
 
+import engine.SoundManager;
+
 /**
  *
  * @author Winson
@@ -20,5 +22,8 @@ public class CoinItem extends GameItem {
                canvas.setCanvasPixel(row+i, col+j, ' ');
            }
         canvas.setCanvasPixel(row+1, col+1, '*');
+    }
+    public void makeSound(){
+        SoundManager.playSound("coin");
     }
 }

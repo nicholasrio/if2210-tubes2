@@ -245,7 +245,11 @@ public class Player
                     break;
             }
             System.out.println("Item Here : " + itemHere.getName());
-
+            
+            //Mengeluarkan suara item
+            if(Game.mode == 2)
+                    itemHere.makeSound();
+                            
             if(itemHere.getName().equalsIgnoreCase("coin")) // ada coin
 
             {
