@@ -4,34 +4,31 @@
 import java.util.ArrayList;
 
 public class Storage{
-	private int capacity;
-	ArrayList<SaleableObject> arrStorage;
-	
-	public Storage(){
+	private int capacity; /** The capacity of the storage */
+	ArrayList<SaleableObject> arrStorage; /** The array container */
+
+	/** CTOR */
+	public Storage() {
 		this.capacity = 6;
 		arrStorage = new ArrayList<SaleableObject>(capacity);
 	}
-	
-	public Storage(int x){
-		capacity = x;
-	}
-	
+
+	/** Set the capacity */
 	public void SetCapacity(int x){
 		capacity = x;
 	}
-	
-	public int GetCapacity(){
-		return capacity;
-	}
-	
+
+	/** Add plant to storage */
 	public void addPlant(Plant P) {
 		this.arrStorage.add(P);
 	}
-	
+
+	/** Add pest to storage */
 	public void addPest(Pest P) {
 		this.arrStorage.add(P);
 	}
-	
+
+	/** Add fruit to storage */
 	public void addFruit(Fruit F) {
 		this.arrStorage.add(F);
 	}

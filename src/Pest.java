@@ -1,19 +1,19 @@
 /**
  * @author William Stefan
  */
+
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Pest extends SaleableObject implements Drawable {
-	
-	// Class Attributes
-	private double speed;
-	private double strength;
-	private double hp;
-	private int id;
-	private static Image imgPest;
-	
+	private double speed; /** The speed of the pest */
+	private double strength; /** The strength of the pest  */
+	private double hp; /** The hit points of the pest */
+	private int id; /** The ID of the pest */
+	private static Image imgPest; /** The image container for the pest */
+
+	/** CTOR */
 	public Pest() {
 		this.id = 1 + (int)(Math.random() * ((3 - 1) + 1));
 		if(this.id == 1) {
@@ -32,19 +32,8 @@ public class Pest extends SaleableObject implements Drawable {
 			this.hp = 9;			
 		}
 	}
-	
-	public double getSpeed() {
-		return this.speed;
-	}
 
-	public double getStrength() {
-		return this.strength;
-	}
-	
-	public double getHP() {
-		return this.hp;
-	}
-	
+	/** Set the images according to the pest's ID */
 	public void setImage(int ID) {
 		ImageIcon i;
 		if(ID == 1) {
@@ -60,27 +49,28 @@ public class Pest extends SaleableObject implements Drawable {
 			Pest.imgPest = i.getImage();
 		}
 	}
-	
+
+	/** Destroy the desired plant/fruit at position i, j */
 	public void destroy(int x, int y) {
-		
+
 	}
-	
-	// Hit pest; decrease its strength
+
+	/** Hit the pest to decrease their HP */
 	public void hit() {
 		// TODO
-		
+
 	}
 
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update(double timeElapsed) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

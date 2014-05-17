@@ -6,11 +6,11 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-
 public class Fruit extends SaleableObject implements Drawable {
 	private int id;
 	private static Image imgFruit;
-	
+
+	/** Set the image */
 	public void setImage(int ID) {
 		ImageIcon i;
 		if(ID == 1) {
@@ -26,7 +26,7 @@ public class Fruit extends SaleableObject implements Drawable {
 			Fruit.imgFruit = i.getImage();
 		}
 	}
-	
+
 	@Override
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
@@ -38,5 +38,4 @@ public class Fruit extends SaleableObject implements Drawable {
 		// TODO Auto-generated method stub
 
 	}
-
 }
