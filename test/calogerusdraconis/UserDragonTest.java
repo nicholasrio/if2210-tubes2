@@ -256,13 +256,6 @@ public class UserDragonTest {
 		System.out.println("generateEnemy");
 		UserDragon instance = new UserDragon("user",100,150,100,200,50,50,50,1,500,"pass",50,66);
 		Dragon result = instance.generateEnemy();
-		System.out.println(result.getHealth());
-		System.out.println(result.getStamina());
-		System.out.println(result.getExperience());
-		System.out.println(result.getLevel());
-		System.out.println(result.getHunger());
-		System.out.println(result.getBladder());
-		System.out.println(result.getThirst());
 		assert(result.getHealth() >= (float)Math.ceil(0.8*instance.getHealth()));
 		assert(result.getHealth() <= (float)Math.ceil(1.2*instance.getHealth()));
 		assert(result.getStamina() >= (float)Math.ceil(0.8*instance.getStamina()));
@@ -281,33 +274,23 @@ public class UserDragonTest {
 	}
 
 	/**
-	 * Test of fight method, of class UserDragon.
+	 * Test of fight method, of class UserDragon, if the UserDragon win.
 	 */
 	@Test
-	public void testFight() {
+	public void testFightWin() {
 		System.out.println("fight");
 		Dragon withWho = new Dragon("enemy",81,83,25,63,27,3,778);
-		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,1,795,"pass",50,66);
-		float sum1 = (float)0.2 * instance.getHealth() + (float)0.2 * instance.getStamina() + (float)0.3 * instance.getExperience() + 5 * instance.getLevel() - (float)0.1 * instance.getThirst() - (float)0.1 * instance.getBladder() - (float)0.1 * instance.getHunger();
-		float sum2 = (float)0.2 * withWho.getHealth() + (float)0.2 * withWho.getStamina() + (float)0.3 * withWho.getExperience() + 5 * withWho.getLevel() - (float)0.1 * withWho.getThirst() - (float)0.1 * withWho.getBladder() - (float)0.1 * withWho.getHunger();
-		float expExperience, expStamina;
+		UserDragon instance = new UserDragon("user",78,150,89,200,23,22,21,1,795,"pass",50,66);
 		Event expResult = new Event();
-		if (sum1 > sum2){ // we win
-			expResult.setType("WinFight");
-            expResult.setMessage("Congrats!You Win.");
-            expExperience = instance.getExperience() + 200 + 30 * instance.getLevel();
-            //tambahMoney((float)(100 + (Math.random() * (500 - 100))));
-        } else if (sum1 == sum2){ // draw
-			expResult.setType("DrawFight");
-			expResult.setMessage("This fight is Draw.");
-            expExperience = instance.getExperience() + 25 * instance.getLevel();
-        } else { // we lose
-			expResult.setType("LoseFight");
-	        expResult.setMessage("Sorry!You Lose.");
-			expExperience = instance.getExperience() + 20 * instance.getLevel();
-		}
-		expStamina = instance.getStamina() - (20 * instance.getLevel());
+		expResult.setType("WinFight");
+		expResult.setMessage("Congrats!You Win.");
+		float expExperience = instance.getExperience() + 200 + 30 * instance.getLevel();
+		float expMoneyMin = instance.getMoney() + 100;
+		float expMoneyMax = instance.getMoney() + 500;
+		float expStamina = instance.getStamina() - (20 * instance.getLevel());
 		Event result = instance.fight(withWho);
+		assert(instance.getMoney() >= expMoneyMin);
+		assert(instance.getMoney() <= expMoneyMax);
 		assertEquals(expExperience, instance.getExperience(), 0.0);
 		assertEquals(expStamina, instance.getStamina(), 0.0);
 		assertEquals(expResult.getMessage(), result.getMessage());
@@ -315,6 +298,48 @@ public class UserDragonTest {
 		// TODO review the generated test code and remove the default call to fail.
 	}
 
+	/**
+	 * Test of fight method, of class UserDragon, if the result is draw.
+	 */
+	@Test
+	public void testFightDraw() {
+		System.out.println("fight");
+		Dragon withWho = new Dragon("enemy",81,89,25,51,27,1,778);
+		UserDragon instance = new UserDragon("user",81,150,89,200,25,51,27,1,778,"pass",50,66);
+		Event expResult = new Event();
+		expResult.setType("DrawFight");
+		expResult.setMessage("This fight is Draw.");
+		float expExperience = instance.getExperience() + 25 * instance.getLevel();
+        float expStamina = instance.getStamina() - (20 * instance.getLevel());
+		Event result = instance.fight(withWho);
+		assertEquals(expExperience, instance.getExperience(), 0.0);
+		assertEquals(expStamina, instance.getStamina(), 0.0);
+		assertEquals(expResult.getMessage(), result.getMessage());
+		assertEquals(expResult.getType(), result.getType());
+		// TODO review the generated test code and remove the default call to fail.
+	}
+	
+	/**
+	 * Test of fight method, of class UserDragon, if the UserDragon lose.
+	 */
+	@Test
+	public void testFightLose() {
+		System.out.println("fight");
+		Dragon withWho = new Dragon("enemy",81,83,25,63,27,3,778);
+		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,1,795,"pass",50,66);
+		Event expResult = new Event();
+		expResult.setType("LoseFight");
+		expResult.setMessage("Sorry!You Lose.");
+		float expExperience = instance.getExperience() + 20 * instance.getLevel();
+		float expStamina = instance.getStamina() - (20 * instance.getLevel());
+		Event result = instance.fight(withWho);
+		assertEquals(expExperience, instance.getExperience(), 0.0);
+		assertEquals(expStamina, instance.getStamina(), 0.0);
+		assertEquals(expResult.getMessage(), result.getMessage());
+		assertEquals(expResult.getType(), result.getType());
+		// TODO review the generated test code and remove the default call to fail.
+	}
+	
 	/**
 	 * Test of entertain method, of class UserDragon.
 	 */
