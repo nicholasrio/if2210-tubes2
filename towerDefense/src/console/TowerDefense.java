@@ -1,4 +1,15 @@
-package towerdefense;
+/**
+ *
+ * @author 
+ * Darwin Prasetio (13512015)
+ * Chrestella Stephanie (13512005)
+ * Jan Wira Gotama Putra (13512015)
+ * Eric (13512021)
+ * Willy(13512070)
+ * Melvin FOnda (13512085)
+ */
+
+package console;
 
 import model.Player;
 import controller.MainMenu;
@@ -11,11 +22,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Opel Howard, wiragotama
- */
 public class TowerDefense {
+    
+    /** Showing all players highscore */
     public static void showHighScore(MainMenu menuList) {
         List<Player> highScore = menuList.getHighScore();
         for (Player Player_each : highScore) {
@@ -26,6 +35,7 @@ public class TowerDefense {
     public static void main(String[] args) {
         MainMenu menuList = MainMenu.getInstance();
         boolean cannotPlay = false;
+        /** Load player data from file */
         try {
             menuList.loadPlayer();
         } catch (FileNotFoundException ex) {
@@ -36,8 +46,8 @@ public class TowerDefense {
         Scanner in = new Scanner(System.in);
         String str;
         int pilihanMenu = 0;
+        /** Game menu */
         while (pilihanMenu!=7 && !cannotPlay) {
-            //clearscreen???5
             menuList.showMenus();
             pilihanMenu = in.nextInt();
             if (pilihanMenu==1 || pilihanMenu==2 || pilihanMenu==4) {
@@ -77,7 +87,7 @@ public class TowerDefense {
                     } 
                     case 5 : {
                         if (menuList.logged()) {
-                            System.out.println("ada login");
+                            /** new game */
                             try {
                                 menuList.PlayGame(true);
                             } catch (FileNotFoundException ex) {
@@ -91,7 +101,7 @@ public class TowerDefense {
                     }
                     case 6 : {
                         if (menuList.logged()) {
-                            System.out.println("ada login");
+                            /** load game */
                             try {
                                 menuList.PlayGame(false);   
                             } catch (FileNotFoundException ex) {
@@ -116,5 +126,4 @@ public class TowerDefense {
             System.out.println(ex);
         }
     }
-    
 }

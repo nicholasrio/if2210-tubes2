@@ -1,6 +1,14 @@
-/*  File    : Tower.java
- Author  : Chrestella Stephanie (13512005) & Jan Wira Gotama Putra (13512015)
+/**
+ *
+ * @author 
+ * Darwin Prasetio (13512015)
+ * Chrestella Stephanie (13512005)
+ * Jan Wira Gotama Putra (13512015)
+ * Eric (13512021)
+ * Willy(13512070)
+ * Melvin FOnda (13512085)
  */
+
 package model;
 
 public class Tower {
@@ -35,56 +43,56 @@ public class Tower {
     }
 
     /**
-     * set currentLevel to level
+     * Set currentLevel to level
      */
     public void setCurrentLevel(int level) {
         currentLevel = level;
     }
 
     /**
-     * set position_row to row
+     * Set position_row to row
      */
     public void setPositionRow(int row) {
         position_row = row;
     }
 
     /**
-     * set position_col to col
+     * Set position_col to col
      */
     public void setPositionCol(int col) {
         position_col = col;
     }
 
     /**
-     * set upgradeCost to cost
+     * Set upgradeCost to cost
      */
     public void setUpgradeCost(int cost) {
         upgradeCost = cost;
     }
 
     /**
-     * set attack to att
+     * Set attack to att
      */
     public void setAttack(int att) {
         attack = att;
     }
 
     /**
-     * set range to r
+     * Set range to r
      */
     public void setRange(int r) {
         range = r;
     }
 
     /**
-     * set attackSpeed to attSpeed
+     * Set attackSpeed to attSpeed
      */
     public void setCoolDown(int attSpeed) {
         coolDown = attSpeed;
     }
 
     /**
-     * decrease coolDownCount
+     * Decrease coolDownCount
      */
     public void resetCoolingDownTime() {
         coolDownCount = coolDown;
@@ -97,56 +105,56 @@ public class Tower {
     }
 
     /**
-     * return currentLevel
+     * Return currentLevel
      */
     public int getCurrentLevel() {
         return currentLevel;
     }
 
     /**
-     * return position_row
+     * Return position_row
      */
     public int getPositionRow() {
         return position_row;
     }
 
     /**
-     * return position_col
+     * Return position_col
      */
     public int getPositionCol() {
         return position_col;
     }
 
     /**
-     * return upgradeCost
+     * Return upgradeCost
      */
     public int getUpgradeCost() {
         return upgradeCost;
     }
 
     /**
-     * return attack
+     * Return attack
      */
     public int getAttack() {
         return attack;
     }
 
     /**
-     * return range
+     * Return range
      */
     public int getRange() {
         return range;
     }
 
     /**
-     * return coolDownCount coolDownCount >0 means the tower cannot attack
+     * Return coolDownCount coolDownCount >0 means the tower cannot attack
      */
     public int getCoolDownCount() {
         return coolDownCount;
     }
 
     /**
-     * shoot the enemy at (pos_x_enemy,pos_y_enemy) if the position is in range
+     * Shoot the enemy at (pos_x_enemy,pos_y_enemy) if the position is in range
      */
     public boolean rangeCheck(int enemy_row, int enemy_col, int row, int col) {
         //check if the enemy's position is in range
@@ -176,7 +184,7 @@ public class Tower {
     }
 
     /**
-     * upgrade the tower, precondition : player's gold is enough
+     * Upgrade the tower, precondition : player's gold is enough
      */
     public void upgradeTower() {
         //increase attack, attackSpeed and Cost by rate (static final variable)
@@ -194,7 +202,7 @@ public class Tower {
     }
 
     /**
-     * sell the tower to get payback money
+     * Sell the tower to get payback money
      */
     public int sellTower() {                                                                       // ini maksudnya public int sellTower? -> betul
         //menjual tower, mengembalikan uang sejumlah sekian persen dari cost terakhir tower
