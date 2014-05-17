@@ -11,59 +11,67 @@ public class FileController implements Contoller {
 	private static String downloadURL = "http://localhost/bookbay/download.php";
 	private static String charset = "UTF-8"; // character set
 	
-	private FileExt _model;
-	@SuppressWarnings("unused")
-	private FileView _view;
+	private FileExt model;
+	@SuppressWarnings("unused") // TODO: stub
+	private FileView view;
 	
 	public FileController(FileExt model, FileView view) {
-		_model = model;
-		_view = view; 
+		this.model = model;
+		this.view = view; 
 	}
 	
-	public String fileName() {
-		return _model.getName();
+	public String getFileLocation() {
+		return model.getName();
 	}
 	
 	public void rename(String name) throws SecurityException, NullPointerException {
-		_model.renameTo(new File(_model.getPath() + "\\" + name)); // TODO: ubah jadi hash.
-		_model.name(name);
+		model.renameTo(new File(model.getPath() + "\\" + name)); // TODO: ubah jadi hash.
+		model.setNamedName(name);
 	}
 	
-	public long fileSize() {
-		return _model.length();
+	public long getFileSize() {
+		return model.length();
 	}
 	
-	public User fileUploader() {
-		return _model.uploader();
+	public User getFileUploader() {
+		return model.getUploader();
 	}
 	
-	public void fileUploader(User newUploader) {
-		_model.uploader(newUploader);
+	public void setFileUploader(User newUploader) {
+		model.setUploader(newUploader);
 	}
 	
-	public long fileDownloadCount() {
-		return _model.downloadCount();
+	public long setFileDownloadCount() {
+		return model.getDownloadCount();
 	}
 	
-	public void fileDownloadCount(long count) {
-		_model.downloadCount(count);
+	public void getFileDownloadCount(long count) {
+		model.setDownloadCount(count);
 	}
 	
 	public String fileCategory() {
-		return _model.category();
+		return model.getCategory();
 	}
 	
 	public void fileCategory(FileCategory cat) {
-		_model.category(cat);
+		model.setCategory(cat);
 	}
 	
 	public Date fileUploadTime() {
-		return _model.uploadTime();
+		return model.getUploadTime();
+	}
+	
+	public String fileDescription() {
+		return model.getDesc();
+	}
+	
+	public void fileDescription(String desc) {
+		model.setDesc(desc);
 	}
 	
 	public void delete() {
-		_model.delete();
-		_model = null;
+		model.delete();
+		model = null;
 	}
 	
 	public static String uploadURL() {
@@ -91,33 +99,36 @@ public class FileController implements Contoller {
 	}
 	
 	public void upload() throws IOException {
-		ServerPOST sp = new ServerPOST(uploadURL, charset);
+		ServerPOST sp = new ServerPOST(uploadURL, charset, false);
 		
-		sp.addFormField("File-Name", _model.name());
-		sp.addFormField("File-Uploader", _model.uploader().id());
-		sp.addFormField("File-Category", _model.category().toString());
+		sp.addFormField("File-Name", model.getNamedName());
+		sp.addFormField("File-Uploader", model.getUploader().name());
+		sp.addFormField("File-Category", model.getCategory().toString());
+		sp.addFormField("File-Desc", model.getDesc());
 		
-		sp.addFile("ebook", _model);
+		sp.addFile("ebook", model);
 		
 		List<String> response =	sp.execute();
 		
-		// TODO: ini output di-alihkan ke tempat lain
+		// TODO: output dialihkan ke tempat lain
 		for(String s: response) {
 			System.out.println(s);
 		}
 	}
 	
-	/**
-	 * NOTE: this will remove the current model reference
-	 */
-	public void download() {
+	public void download(String saveLocation, User user) throws IOException {
+		ServerPOST sp = new ServerPOST(uploadURL, charset, true);
 		
+		sp.addFormField("File-Name", model.getName());
+		sp.addFormField("User-Name", user.name());
+		
+		sp.execute(new File(saveLocation));
 	}
 
 	@Override
 	public void updateView() {
 		// TODO soal view, mau diapain?
 		// masih berupa stub
-		_view = null;
+		view = null;
 	}
 }

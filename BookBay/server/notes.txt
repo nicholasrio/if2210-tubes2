@@ -1,0 +1,1 @@
+Put all of these (except the SQL; execute it in PHPMyAdmin) into the htdocs/www folder of your XAMPP/WAMP/LAMP/etc.

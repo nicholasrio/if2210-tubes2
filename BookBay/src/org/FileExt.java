@@ -8,58 +8,68 @@ public class FileExt extends File {
 	 * 
 	 */
 	private static final long serialVersionUID = 4560430887734007570L;
-	private User _uploader; // uploader
-	private String _name; // real file name
-	private Date _uploadtime; // upload time
-	private long _downloadCount; // download count
-	private FileCategory _cat; // file category
+	private User uploader; // uploader
+	private String namedName; // real file name
+	private Date uploadTime; // upload time
+	private long downloadCount; // download count
+	private FileCategory cat; // file category
+	private String description;
 	
-	public FileExt(String location, String filename, User uploader, Date uploadTime) {
+	public FileExt(String location, String filename, User uploader, Date uploadTime, String desc) {
 		super(location); // physical location of the file
-		_name = filename;
-		_uploader = uploader;
-		_downloadCount = 0;
-		_uploadtime = uploadTime;
+		this.namedName = filename;
+		this.uploader = uploader;
+		this.downloadCount = 0;
+		this.uploadTime = uploadTime;
+		this.description = desc;
 	}
 	
-	public User uploader() {
-		return _uploader;
+	public User getUploader() {
+		return uploader;
 	}
 	
-	public void uploader(User newUploader) {
-		_uploader = newUploader;
+	public void setUploader(User newUploader) {
+		uploader = newUploader;
 	}
 	
-	public String name() {
-		return _name;
+	public String getNamedName() {
+		return namedName;
 	}
 	
-	public void name(String newName) {
-		_name = newName;
+	public void setNamedName(String newName) {
+		namedName = newName;
 	}
 	
-	public Date uploadTime() {
-		return _uploadtime;
+	public Date getUploadTime() {
+		return uploadTime;
 	}
 	
 	// TODO: cek, ini butuh ato ngga?
 	public void uploadTime(Date uploadTime) {
-		_uploadtime = uploadTime;
+		this.uploadTime = uploadTime;
 	}
 	
-	public long downloadCount() {
-		return _downloadCount;
+	public long getDownloadCount() {
+		return downloadCount;
 	}
 	
-	public void downloadCount(long count) {
-		_downloadCount = count;
+	public void setDownloadCount(long count) {
+		downloadCount = count;
 	}
 	
-	public String category() {
-		return _cat.toString();
+	public String getCategory() {
+		return cat.toString();
 	}
 	
-	public void category(FileCategory cat) {
-		_cat = cat;
+	public void setCategory(FileCategory cat) {
+		this.cat = cat;
+	}
+	
+	public String getDesc() {
+		return description;
+	}
+	
+	public void setDesc(String desc) {
+		description = desc;
 	}
 }
