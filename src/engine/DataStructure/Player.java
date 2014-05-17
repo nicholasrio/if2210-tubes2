@@ -7,6 +7,8 @@
 package engine.DataStructure;
 
 
+import engine.GUIScenes.GameMenuGUI;
+import engine.Game;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -179,7 +181,14 @@ public class Player
                         itemHere = peta.getElement(new Location(position.getRow()-1, position.getCol(), position.getLevel()));
                         if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                         {
+                            if (Game.mode == 2)
+                                GameMenuGUI.playerCollide = false;
                             position.setRow(position.getRow()-1);
+                        }
+                        else
+                        {
+                            if (Game.mode == 2)
+                                GameMenuGUI.playerCollide = true;
                         }
                     }
                     break;
@@ -189,7 +198,14 @@ public class Player
                         itemHere = peta.getElement(new Location(position.getRow()+1, position.getCol(), position.getLevel()));
                         if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                         {
+                            if (Game.mode == 2)
+                                GameMenuGUI.playerCollide = false;
                             position.setRow(position.getRow()+1);
+                        }
+                        else
+                        {
+                            if (Game.mode == 2)
+                                GameMenuGUI.playerCollide = true;
                         }
                     }
                     break;
@@ -199,7 +215,14 @@ public class Player
                         itemHere = peta.getElement(new Location(position.getRow(), position.getCol()-1, position.getLevel()));
                         if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                         {
+                            if (Game.mode == 2)
+                                GameMenuGUI.playerCollide = false;
                             position.setCol(position.getCol()-1);
+                        }
+                        else
+                        {
+                            if (Game.mode == 2)
+                                GameMenuGUI.playerCollide = true;
                         }
                     }
                     break;
@@ -209,7 +232,14 @@ public class Player
                         itemHere = peta.getElement(new Location(position.getRow(), position.getCol()+1, position.getLevel()));
                         if(!itemHere.getName().equalsIgnoreCase("wall")) // periksa apakah ada tembok?
                         {
+                            if (Game.mode == 2)
+                                GameMenuGUI.playerCollide = false;
                             position.setCol(position.getCol()+1);
+                        }
+                        else
+                        {
+                            if (Game.mode == 2)
+                                GameMenuGUI.playerCollide = true;
                         }
                     }
                     break;

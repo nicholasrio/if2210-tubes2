@@ -13,6 +13,7 @@ import static engine.Game.gameFrame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Scanner;
@@ -51,6 +52,14 @@ public class GameMenuGUI extends Scene
     private boolean keyLeftPressed;
     private boolean keyEnterPressed;
     
+    private int playerdisplayState;
+    
+    private Rectangle [][]tileRect;
+    private Rectangle playerRect;
+    
+    
+    public static boolean playerCollide;
+    
     private int playerFaced; // 1 for Up
                              // 2 for Down
                              // 3 for Left
@@ -66,9 +75,10 @@ public class GameMenuGUI extends Scene
         
         
         
-        //nowlevelPlay = GameData.nowLevelPlayed;
-        nowlevelPlay = 0;
+        nowlevelPlay = GameData.nowLevelPlayed;
+        //nowlevelPlay = 0;
         nowFloor = 0;
+        playerdisplayState = 0;
         playedMap = new Map(GameData.dataMap.get(nowlevelPlay));
         
         keyUpPressed = false;
@@ -77,20 +87,24 @@ public class GameMenuGUI extends Scene
         keyLeftPressed = false;
         keyEnterPressed = false;
         
+        playerCollide = false;
+        
         switch(nowlevelPlay)
         {
             case 0: mazeSize = 6; 
                     initPosMapWidth = 165;
                     initPosMapHeight = 110;
-                    playerFaced = 4;
-                    startPlayerPosY = 490;
+                    playerFaced = 3;
+                    
                     startPlayerPosX = 180;
+                    startPlayerPosY = 490;
+                    playerRect = new Rectangle(180,490,48,63);
+                    tileRect = new Rectangle[mazeSize][mazeSize];
                     break;
         }
         
         addKeyListener(new KeyListener() 
         {
-
             @Override
             public void keyTyped(KeyEvent e) 
             {
@@ -140,6 +154,16 @@ public class GameMenuGUI extends Scene
         isLevelUnlocked = false;
         playerPosX = startPlayerPosX;
         playerPosY = startPlayerPosY;
+        
+        for (int bar=0;bar<mazeSize;bar++)
+        {
+            for (int kol=0;kol<mazeSize;kol++)
+            {
+                int width = pathTexture.getWidth(this);
+                int height = pathTexture.getHeight(this);
+                tileRect[bar][kol] = new Rectangle(width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height);
+            }
+        }
     }
     
     @Override
@@ -164,32 +188,119 @@ public class GameMenuGUI extends Scene
             int output = 0;
             if(keyUpPressed)
             {
-                output = currentPlayer.move(playedMap, 1);
-                playerPosY = startPlayerPosY - ((playedMap.getMaxCol()-1 - currentPlayer.getLocation().getRow()) * pathTexture.getHeight(this));
-                playerPosX = startPlayerPosX + (currentPlayer.getLocation().getCol() * wallTexture.getWidth(this));
+                if (currentPlayer.getLocation().getRow() > 0)
+                {
+                    
+                    if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()-1]
+                                                      [currentPlayer.getLocation().getCol()]))
+                    {
+                        output = currentPlayer.move(playedMap, 1);
+                    }
+                }
+                
+                if (playerRect.getMinY() <= initPosMapHeight)
+                        playerCollide = true;
+                
+                if (!playerCollide)
+                {
+                    playerPosY-=5;
+                    playerRect = new Rectangle((int)playerRect.getMinX(),(int)playerRect.getMinY()-5,
+                                           (int)playerRect.getWidth(),(int)playerRect.getHeight());
+                }
+                else
+                {
+                    playerCollide = false;
+                }
+                playerdisplayState ++;
+                playerdisplayState %= 8;
                 System.out.println(currentPlayer.getLocation());
             }
             else if(keyDownPressed)
             {
-                output = currentPlayer.move(playedMap, 2);
-                playerPosY = startPlayerPosY - ((playedMap.getMaxCol()-1 - currentPlayer.getLocation().getRow()) * pathTexture.getHeight(this));
-                playerPosX = startPlayerPosX + (currentPlayer.getLocation().getCol() * wallTexture.getWidth(this));
+                if (currentPlayer.getLocation().getRow() < (mazeSize-1))
+                {
+                    if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()+1]
+                                                      [currentPlayer.getLocation().getCol()]))
+                    {
+                        output = currentPlayer.move(playedMap, 2);
+                    }
+                }
+                
+                if (playerRect.getMaxY() >= ((6*75)+initPosMapHeight))
+                        playerCollide = true;
+                
+                if (!playerCollide)
+                {
+                    playerPosY+=5;
+                    playerRect = new Rectangle((int)playerRect.getMinX(),(int)playerRect.getMinY()+5,
+                                           (int)playerRect.getWidth(),(int)playerRect.getHeight());
+                }
+                else
+                {
+                    playerCollide = false;
+                }
+                playerdisplayState++;
+                playerdisplayState %= 8;
                 System.out.println(currentPlayer.getLocation());
             }
             else if(keyLeftPressed)
             {
-                output = currentPlayer.move(playedMap, 3);
-                playerPosX = startPlayerPosX + (currentPlayer.getLocation().getCol() * wallTexture.getWidth(this));
-                playerPosY = startPlayerPosY - ((playedMap.getMaxCol()-1 - currentPlayer.getLocation().getRow()) * pathTexture.getHeight(this));
+                if (currentPlayer.getLocation().getCol() > 0)
+                {
+                    if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()]
+                                                      [currentPlayer.getLocation().getCol()-1]))
+                    {
+                        output = currentPlayer.move(playedMap, 3);
+                    }
+                }
+                
+                if (playerRect.getMinX() <= initPosMapWidth)
+                        playerCollide = true;
+                
+                if (!playerCollide)
+                {
+                    playerPosX-=5;
+                    playerRect = new Rectangle((int)playerRect.getMinX()-5,(int)playerRect.getMinY(),
+                                           (int)playerRect.getWidth(),(int)playerRect.getHeight());
+                }
+                else
+                {
+                    playerCollide = false;
+                }
+                playerdisplayState++;
+                playerdisplayState %= 8;
                 System.out.println(currentPlayer.getLocation());
             }
             else if(keyRightPressed)
             {
-                output = currentPlayer.move(playedMap, 4);
-                playerPosX = startPlayerPosX + (currentPlayer.getLocation().getCol() * wallTexture.getWidth(this));
-                playerPosY = startPlayerPosY - ((playedMap.getMaxCol()-1 - currentPlayer.getLocation().getRow()) * pathTexture.getHeight(this));
+                if (currentPlayer.getLocation().getCol() < (mazeSize-1))
+                {
+                    if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()]
+                                                      [currentPlayer.getLocation().getCol()+1]))
+                    {
+                        output = currentPlayer.move(playedMap, 4);
+                    }
+                }
+                
+                if (playerRect.getMaxX() >= ((6*75)+initPosMapWidth))
+                        playerCollide = true;
+                
+                if (!playerCollide)
+                {
+                    playerPosX+=5;
+                    playerRect = new Rectangle((int)playerRect.getMinX()+5,(int)playerRect.getMinY(),
+                                           (int)playerRect.getWidth(),(int)playerRect.getHeight());
+                }
+                else
+                {
+                    playerCollide = false;
+                }
+                playerdisplayState++;
+                playerdisplayState %= 8;
                 System.out.println(currentPlayer.getLocation());
             }
+            
+            
             nowFloor = currentPlayer.getLocation().getLevel();
             if(output == 1)
             {
@@ -270,83 +381,112 @@ public class GameMenuGUI extends Scene
             
             switch (playerFaced)
             {
-                case 1: g2D.drawImage(playerUDTexture,playerPosX,playerPosY,playerPosX+39,playerPosY+71,0,76,39,152,this);
+                case 1: g2D.drawImage(playerUDTexture,playerPosX,playerPosY,playerPosX+39,playerPosY+71,(39*playerdisplayState),76,(39*(playerdisplayState+1)),152,this);
                         break;
-                case 2: g2D.drawImage(playerUDTexture,playerPosX,playerPosY,playerPosX+39,playerPosY+71,0,0,39,76,this);
+                case 2: g2D.drawImage(playerUDTexture,playerPosX,playerPosY,playerPosX+39,playerPosY+71,(39*playerdisplayState),0,(39*(playerdisplayState+1)),76,this);
                         break;
-                case 3: g2D.drawImage(playerRLTexture,playerPosX,playerPosY,playerPosX+48,playerPosY+63,0,63,48,126,this);
+                case 3: g2D.drawImage(playerRLTexture,playerPosX,playerPosY,playerPosX+50,playerPosY+63,(50*playerdisplayState),63,(50*(playerdisplayState+1)),126,this);
                         break;
-                case 4: g2D.drawImage(playerRLTexture,playerPosX,playerPosY,playerPosX+48,playerPosY+63,0,0,48,63,this);
+                case 4: g2D.drawImage(playerRLTexture,playerPosX,playerPosY,playerPosX+49,playerPosY+63,(49*playerdisplayState),0,(49*(playerdisplayState+1)),63,this);
                         break;
             }
+            
+        g2D.draw(playerRect);
         }
     }
     
     public void keyboardUpdatePressed(KeyEvent e)
     {
-                int keyCode = e.getKeyCode();
-                switch (keyCode)
-                {
-                    case KeyEvent.VK_UP: keyUpPressed = true;
-                                         playerFaced = 1;
-                                         break;
+        int keyCode = e.getKeyCode();
+        switch (keyCode)
+        {
+            case KeyEvent.VK_UP: if (!(keyDownPressed || keyLeftPressed || keyRightPressed))
+                                 {
+                                    keyUpPressed = true;
+                                    if (playerFaced != 1)
+                                    {
+                                        playerdisplayState = 0;
+                                    }
+                                    playerFaced = 1;
+                                    break;
+                                 }
 
-                    case KeyEvent.VK_DOWN: keyDownPressed = true;
-                                           playerFaced = 2;
-                                           break;
+            case KeyEvent.VK_DOWN: if (!(keyUpPressed || keyLeftPressed || keyRightPressed))
+                                   {
+                                        keyDownPressed = true;
+                                        if (playerFaced != 2)
+                                        {
+                                            playerdisplayState = 0;
+                                        }
+                                        playerFaced = 2;
+                                   }
+                                   break;
 
-                    case KeyEvent.VK_LEFT: keyLeftPressed = true;
-                                            playerFaced = 3;
-                                            break;
+            case KeyEvent.VK_LEFT: if (!(keyUpPressed || keyDownPressed || keyRightPressed))
+                                   {
+                                        keyLeftPressed = true;
+                                        if (playerFaced != 3)
+                                        {
+                                            playerdisplayState = 0;
+                                        }
+                                        playerFaced = 3;
+                                        break;
+                                   }
 
-                    case KeyEvent.VK_RIGHT: keyRightPressed = true;
-                                           playerFaced = 4;
-                                           break;
-                    case KeyEvent.VK_ENTER: keyEnterPressed = true;
-                                            break;
-                }
+            case KeyEvent.VK_RIGHT: if (!(keyUpPressed || keyLeftPressed || keyDownPressed))
+                                    {
+                                        keyRightPressed = true;
+                                        if (playerFaced != 4)
+                                        {
+                                            playerdisplayState = 0;
+                                        }
+                                        playerFaced = 4;
+                                    }
+                   
+            case KeyEvent.VK_ENTER: keyEnterPressed = true;
+                                    break;
+        }
     }
     
     public void keyboardUpdateReleased(KeyEvent e)
     {
-                int keyCode = e.getKeyCode();
-                 switch (keyCode)
-                 {
-                     case KeyEvent.VK_UP: 
-                         if (keyUpPressed)
-                         {
-                             keyUpPressed = false;
-                             break;
-                         }
-
-                    case KeyEvent.VK_DOWN: 
-                        if (keyDownPressed)
-                        {
-                            keyDownPressed = false;
-                            break;
-                        }
-
-                    case KeyEvent.VK_RIGHT: 
-                        if (keyRightPressed)
-                        {
-                            keyRightPressed = false;
-                            break;
-                        }
-
-                    case KeyEvent.VK_LEFT: 
-                        if (keyLeftPressed)
-                        {
-                            keyLeftPressed = false;
-                            break;
-                        }
-                    case KeyEvent.VK_ENTER:
-                    {
-                        if (keyEnterPressed)
-                        {
-                            keyEnterPressed = false;
-                            break;
-                        }
-                    }
+        int keyCode = e.getKeyCode();
+        switch (keyCode)
+        {
+            case KeyEvent.VK_UP: 
+                if (keyUpPressed)
+                {
+                    keyUpPressed = false;
+                    break;
                 }
+
+            case KeyEvent.VK_DOWN: 
+                if (keyDownPressed)
+                {
+                    keyDownPressed = false;
+                    break;
+                }
+
+                case KeyEvent.VK_RIGHT: 
+                    if (keyRightPressed)
+                    {
+                        keyRightPressed = false;
+                         break;
+                    }
+
+                case KeyEvent.VK_LEFT: 
+                    if (keyLeftPressed)
+                    {
+                        keyLeftPressed = false;
+                        break;
+                    }
+                
+                case KeyEvent.VK_ENTER:
+                    if (keyEnterPressed)
+                    {
+                        keyEnterPressed = false;
+                        break;
+                    }
+        }
     }
 }
