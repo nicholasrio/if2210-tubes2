@@ -17,7 +17,6 @@
 
 package calogerusdraconis;
 
-import static java.lang.Thread.sleep; 
 
 /**
  *
@@ -45,7 +44,6 @@ public class GUIView extends javax.swing.JFrame implements View {
         DragonImg = new javax.swing.JLabel();
         DragonName = new javax.swing.JLabel();
         DragonLevel = new javax.swing.JLabel();
-        ProgXP = new javax.swing.JProgressBar();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -59,10 +57,9 @@ public class GUIView extends javax.swing.JFrame implements View {
         ProgBladder = new javax.swing.JProgressBar();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        ProgHapppy = new javax.swing.JProgressBar();
+        ProgHappy = new javax.swing.JProgressBar();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        InventoryPanel = new javax.swing.JLabel();
+        InventoryPane = new javax.swing.JScrollPane();
         StorePane = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
         ButtEntertain = new javax.swing.JButton();
@@ -70,6 +67,9 @@ public class GUIView extends javax.swing.JFrame implements View {
         ButtFight = new javax.swing.JButton();
         ButtSleep = new javax.swing.JButton();
         ButtToilet = new javax.swing.JButton();
+        ButtSave = new javax.swing.JButton();
+        ButtSaveQuit = new javax.swing.JButton();
+        TextMoney = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calogerus Draconis");
@@ -93,27 +93,24 @@ public class GUIView extends javax.swing.JFrame implements View {
         DragonName.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
         DragonName.setText("Xanareth Viserus");
 
-        DragonLevel.setText("Level 20 Dragon");
+        DragonLevel.setText("Level 20");
 
-        ProgXP.setString("0");
-        ProgXP.setStringPainted(true);
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Exp");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Exp 10000/15000");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Stats"));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Health");
 
-        ProgHealth.setValue(50);
-        ProgHealth.setString("0");
+        ProgHealth.setString("0/150");
         ProgHealth.setStringPainted(true);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel3.setText("Stamina");
 
-        ProgStamina.setString("0");
+        ProgStamina.setRequestFocusEnabled(false);
+        ProgStamina.setString("0/130");
         ProgStamina.setStringPainted(true);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -137,8 +134,8 @@ public class GUIView extends javax.swing.JFrame implements View {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel10.setText("Happiness");
 
-        ProgHapppy.setString("0");
-        ProgHapppy.setStringPainted(true);
+        ProgHappy.setString("0");
+        ProgHappy.setStringPainted(true);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -170,7 +167,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ProgHapppy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(ProgHappy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -186,7 +183,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ProgHapppy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ProgHappy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -203,13 +200,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
-
-        InventoryPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/sacred-root.png"))); // NOI18N
-        InventoryPanel.setText("Sacred Root");
-        jPanel2.add(InventoryPanel);
-
-        jTabbedPane1.addTab("Inventory", jPanel2);
+        jTabbedPane1.addTab("Inventory", InventoryPane);
         jTabbedPane1.addTab("Store", StorePane);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Actions"));
@@ -249,36 +240,63 @@ public class GUIView extends javax.swing.JFrame implements View {
             }
         });
 
+        ButtSave.setText("Save");
+        ButtSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtSaveMouseClicked(evt);
+            }
+        });
+
+        ButtSaveQuit.setText("Save and Quit");
+        ButtSaveQuit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtSaveQuitMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ButtEntertain, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtTrain, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtSleep, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtToilet)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(ButtTrain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtEntertain, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ButtSleep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtToilet, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(ButtFight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ButtSaveQuit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ButtFight, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ButtEntertain)
-                        .addComponent(ButtSleep)
-                        .addComponent(ButtTrain)
-                        .addComponent(ButtToilet)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(ButtSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtSaveQuit))
+                    .addComponent(ButtFight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ButtEntertain)
+                            .addComponent(ButtSleep))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ButtTrain)
+                            .addComponent(ButtToilet))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        TextMoney.setText("Money 2400");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -289,13 +307,13 @@ public class GUIView extends javax.swing.JFrame implements View {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(DragonName, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TextMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProgXP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(DragonLevel)))
+                                .addComponent(DragonLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -304,8 +322,8 @@ public class GUIView extends javax.swing.JFrame implements View {
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -318,11 +336,11 @@ public class GUIView extends javax.swing.JFrame implements View {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(DragonLevel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ProgXP, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(DragonLevel)
+                                    .addComponent(TextMoney))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(DragonName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -337,69 +355,64 @@ public class GUIView extends javax.swing.JFrame implements View {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtEntertainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtEntertainMouseClicked
-        selection = 1;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 1;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtEntertainMouseClicked
 
     private void ButtTrainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtTrainMouseClicked
-        selection = 2;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 2;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtTrainMouseClicked
 
     private void ButtSleepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSleepMouseClicked
-        selection = 3;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 3;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtSleepMouseClicked
 
     private void ButtToiletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtToiletMouseClicked
-        selection = 4;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 4;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtToiletMouseClicked
 
     private void ButtFightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtFightMouseClicked
-        selection = 5;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 5;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtFightMouseClicked
 
-	/**
-	 * Main GUI
-	 */
-	public static void guiMain() {
-		/* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-		 * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-		 */
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(GUIView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(GUIView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(GUIView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(GUIView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void ButtSaveQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSaveQuitMouseClicked
+        synchronized(SelectionNotifier) {
+			selection = -1;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
 		}
-        //</editor-fold>
+    }//GEN-LAST:event_ButtSaveQuitMouseClicked
 
-		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new GUIView().setVisible(true);
-			}
-		});
-	}
-	
+    private void ButtSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSaveMouseClicked
+        synchronized(SelectionNotifier) {
+			selection = 6;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
+    }//GEN-LAST:event_ButtSaveMouseClicked
+
 	@Override
 	public void showMenu() {
-		
+		//NOP. already shown.
 	}
 	
 	@Override
@@ -414,6 +427,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 	
 	@Override
     public void UpdateScreen (UserDragon drg, Dragon enemy) {
+		//NOP. already shown.
     }
 
 	
@@ -424,21 +438,23 @@ public class GUIView extends javax.swing.JFrame implements View {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtEntertain;
     private javax.swing.JButton ButtFight;
+    private javax.swing.JButton ButtSave;
+    private javax.swing.JButton ButtSaveQuit;
     private javax.swing.JButton ButtSleep;
     private javax.swing.JButton ButtToilet;
     private javax.swing.JButton ButtTrain;
     private javax.swing.JLabel DragonImg;
     private javax.swing.JLabel DragonLevel;
     private javax.swing.JLabel DragonName;
-    private javax.swing.JLabel InventoryPanel;
+    private javax.swing.JScrollPane InventoryPane;
     private javax.swing.JProgressBar ProgBladder;
-    private javax.swing.JProgressBar ProgHapppy;
+    private javax.swing.JProgressBar ProgHappy;
     private javax.swing.JProgressBar ProgHealth;
     private javax.swing.JProgressBar ProgHunger;
     private javax.swing.JProgressBar ProgStamina;
     private javax.swing.JProgressBar ProgThirst;
-    private javax.swing.JProgressBar ProgXP;
     private javax.swing.JScrollPane StorePane;
+    private javax.swing.JLabel TextMoney;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -447,7 +463,6 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -455,14 +470,17 @@ public class GUIView extends javax.swing.JFrame implements View {
 
 	private boolean selectionUpdate = false;
 	private int selection = 0;
+	private final Object SelectionNotifier = new Object();
 	
 	public int waitForSelection(){
-		while (!selectionUpdate) {
-			try {
-				sleep(50);
-			} catch (InterruptedException ex) {
-				System.out.println("interrupted");
+		try {
+			synchronized(SelectionNotifier) {
+				while (!selectionUpdate) {
+					SelectionNotifier.wait();
+				}
 			}
+		} catch (InterruptedException ex) {
+			System.out.println("interrupted");
 		}
 		selectionUpdate = false;
 		return selection;

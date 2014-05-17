@@ -17,7 +17,7 @@
 
 package calogerusdraconis;
 
-import static java.lang.Thread.sleep; 
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -135,18 +135,23 @@ public class GUIViewLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtCreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtCreateMouseClicked
-		UD = new UserDragon(FieldName.getText(), 100, 100, 100, 100, 0, 0, 0, 1, 0, FieldPass.getText(), 100, 100);
-		loaded = true;
+		synchronized(Notifier) {
+			UD = new UserDragon(FieldName.getText(), 100, 100, 100, 100, 0, 0, 0, 1, 0, FieldPass.getText(), 100, 100);
+			got = true;
+			Notifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtCreateMouseClicked
 
     private void ButtLoadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtLoadMouseClicked
-        XmlController instance = new XmlController();
 		try {
-			UD = instance.LoadDragon(FieldName.getText(), FieldPass.getText());
-			loaded = true;
+			synchronized(Notifier) {
+				XmlController.LoadDragon(FieldName.getText(), FieldPass.getText());
+				got = true;
+				Notifier.notifyAll();
+			}
 		} catch (Exception ex) {
-			loaded = false;
-			System.err.println(ex.getMessage());
+			got = false;
+			JOptionPane.showMessageDialog(null, ex.getMessage());
 		}
     }//GEN-LAST:event_ButtLoadMouseClicked
 
@@ -154,41 +159,27 @@ public class GUIViewLogin extends javax.swing.JFrame {
 	 * Main GUI
 	 * @return UserDragon
 	 */
-	public static UserDragon getDragon() {
-		/* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-		 * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-		 */
+	public UserDragon getDragon() {
+		Runnable thread = new Runnable() {
+			@Override
+			public void run() {
+				setVisible(true);
+			}
+		};
+		
+		java.awt.EventQueue.invokeLater(thread);
+		
 		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
+			synchronized(Notifier) {
+				while (!got) {
+					Notifier.wait();
 				}
 			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(GUIViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(GUIViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(GUIViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(GUIViewLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (InterruptedException ex) {
+			System.out.println("interrupted");
 		}
-        //</editor-fold>
-		
-		GUIViewLogin GVL = new GUIViewLogin();
-		GVL.setVisible(true);
-		while (!GVL.loaded) {
-			try {
-				sleep(50);
-			} catch (InterruptedException ex) {
-				System.out.println("interrupted");
-			}
-		}
-		GVL.dispose();
-		return GVL.UD;
+		dispose();
+		return UD;
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -203,6 +194,7 @@ public class GUIViewLogin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-	private UserDragon UD = null;
-	private boolean loaded = false;
+	private UserDragon UD;
+	private boolean got = false;
+	private final Object Notifier = new Object();
 }
