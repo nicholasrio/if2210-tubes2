@@ -58,16 +58,16 @@ p p p w p t2
 p w p w p w
 p h p p p w
 w w p w p w
-p p p p p p
+p p p p h c
 c w w w p w
 
 level 5
 p p p p w f
-p w p w c p
-p w p w w p
-p w p c w p
-p w w w w p
-p p p p p p
+p w w w c p
+p w p p p w
+p w p w p p
+p w p w w h
+p p p p p c
 
 jumlah teleporter
 5

@@ -77,6 +77,8 @@ public class ImageLoader extends JPanel
         
         // Image OptionMenu
         allImages.add(loadImage("Image/OptionMenu/AudioBar.png"));
+        allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice.JPG"));
+        allImages.add(loadImage("Image/GameMenu/Ice_Maze/coin.png"));
     }
     
     public static Image getImage(String imgName)
@@ -229,6 +231,14 @@ public class ImageLoader extends JPanel
         else if("AudioBar".equalsIgnoreCase(imgName))
         {
             return allImages.get(35);
+        }
+        else if("ice".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(36);
+        }
+        else if("coin".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(37);
         }
         return null;
     }
