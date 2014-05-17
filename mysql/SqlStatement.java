@@ -38,11 +38,11 @@ public final class SqlStatement {
         statement.execute("INSERT INTO `group_tubes` (`no_tubes`, `group_name`, `anggota_1`, `anggota_2`, `anggota_3`) VALUES (\""+no_tubes+"\", \""+group_name+"\", \""+anggota_1+"\", \""+anggota_2+"\", \""+anggota_3+"\");");
     }
     
-    public void insert_video(String title, String link, int rating, int view, int no_tubes, String group_name)throws SQLException{
-        statement.execute("INSERT INTO `video` (`title`, `link`, `rating`, `view`, `no_tubes`, `group_nama`) VALUES (\""+title+"\", \""+link+"\", \""+rating+"\", \""+view+"\", \""+no_tubes+"\", \""+group_name+"\");");
+    public void insert_video(String title, String link, int view, int no_tubes, String group_name)throws SQLException{
+        statement.execute("INSERT INTO `video` (`title`, `link`, `view`, `no_tubes`, `group_nama`) VALUES (\""+title+"\", \""+link+"\", \""+view+"\", \""+no_tubes+"\", \""+group_name+"\");");
     }
-    public void update_video(int id, String title, String link, int rating, int view, int no_tubes, String group_name) throws SQLException {
-        statement.execute("UPDATE `video` SET (`title` = "+title+"\", `link` = "+link+"\", `rating` = "+rating+"\", `view` = "+view+"\", `no_tubes` = "+no_tubes+"\", `group_nama` = "+group_name+"\") WHERE id = "+id+"\";");
+    public void update_video(int id, String title, String link, int view, int no_tubes, String group_name) throws SQLException {
+        statement.execute("UPDATE `video` SET (`title` = "+title+"\", `link` = "+link+"\", `view` = "+view+"\", `no_tubes` = "+no_tubes+"\", `group_nama` = "+group_name+"\") WHERE id = "+id+"\";");
     }
     public void delete_video(int id) throws SQLException {
         statement.execute("DELETE * FROM video WHERE id = \"" + id + "\";");
@@ -88,7 +88,7 @@ public final class SqlStatement {
             details = new ArrayList<>();
             while(rs.next()) {
                 String[] data = {Integer.toString(rs.getInt("id")), rs.getString("title"), rs.getString("link"),
-                    Integer.toString(rs.getInt("rating")), Integer.toString(rs.getInt("view")),
+                    Integer.toString(rs.getInt("view")),
                     Integer.toString(rs.getInt("no_tubes")), rs.getString("group_name")};
                 details.add(data);
             }
