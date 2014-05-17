@@ -55,28 +55,32 @@ public class FormCaleg extends javax.swing.JFrame {
     private void loadData()
     {
          
-//        try
-//        {
-//            Connection koneksi = KoneksiDatabase.getKoneksi();
-//            Statement statement = koneksi.createStatement();
-//            
-//            String commandGetCaleg = "select * from Caleg where Lingkup = " + Lingkup;
-//            ResultSet resultCaleg = statement.executeQuery(commandGetCaleg);
-//            while(resultCaleg.next())
-//            {
-////                daftarCaleg = new CalonTerpilih();
-////                 daftarCaleg.addCaleg(new Caleg(resultCaleg.getString("NIKCaleg"), 
-////                                            resultCaleg.getString("NamaPartai"), 
-////                                            resultCaleg.getString("TrackRecord"), 
-////                                            Integer.parseInt(resultCaleg.getString("NoDapil")), 
-////                                            resultCaleg.getString("Lingkup")));
-//            }
-//            koneksi.close();
-//        }
-//        catch (SQLException ex) {
-//            System.out.println("Error CalonTerpilih.java" + ex.getMessage());
-//        }
-//        
+        try
+        {
+            Connection koneksi = KoneksiDatabase.getKoneksi();
+            Statement statement = koneksi.createStatement();
+            
+            String commandGetCaleg = "select * from Caleg where Lingkup = " + Lingkup;
+            ResultSet resultCaleg = statement.executeQuery(commandGetCaleg);
+            while(resultCaleg.next())
+            {
+                Object [] o = new Object[6];
+                o[0] = resultCaleg.getString("NIKCaleg");
+                o[1] = resultCaleg.getString("Nama");
+                o[2] = resultCaleg.getString("NamaPartai");
+                o[3] = resultCaleg.getString("TrackRecord");
+                o[4] = resultCaleg.getString("NoDapil");
+                o[5] = resultCaleg.getString("Lingkup");
+                
+                model.addRow(o);
+
+            }
+            koneksi.close();
+        }
+        catch (SQLException ex) {
+            System.out.println("Error CalonTerpilih.java" + ex.getMessage());
+        }
+        
     }
 
     /**

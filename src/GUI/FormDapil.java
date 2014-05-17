@@ -37,7 +37,7 @@ public class FormDapil extends javax.swing.JFrame {
         //loadData();
     }
     
-    /*private void loadData(){
+    private void loadData(){
      model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
         try
@@ -200,10 +200,9 @@ public class FormDapil extends javax.swing.JFrame {
                 .addGap(56, 56, 56))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(64, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(Tambah)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
@@ -212,7 +211,8 @@ public class FormDapil extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(NoDapil, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(56, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
