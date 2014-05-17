@@ -26,21 +26,23 @@ public class FormLoginPemilihCLI {
         System.out.println("\n");
         System.out.println("Selamat datang di Software Pemilu "+t+"\n");
         System.out.println("Silakan login terlebih dahulu\n");
-        System.out.println("username>");
+        System.out.println("Username > ");
         Scanner input = new Scanner(System.in);
         String username = new String();
         username = input.next();
-        System.out.println("\npassword>");
+        System.out.println("\nPassword > ");
         String password = new String();
         password = input.next();
     }
     public boolean isTerdaftar(String username, String password){
         boolean stop = false;
-        if("entah".equals(username)){
-            if("entah".equals(password)){
-                stop = true;
+        for (int i = 0; i < 10; i++){
+            if("entah".equals(username)){
+                if("entah".equals(password)){
+                    stop = true;
+                }
             }
         }
-        return stop;
+            return stop;
     } 
 }
