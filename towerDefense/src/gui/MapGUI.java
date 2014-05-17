@@ -107,10 +107,12 @@ class ImageViewer extends Canvas implements MouseListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
+
         Map peta = new Map();
         try {
             peta.readFile();
         } catch (IOException ex) {
+
             System.out.println("File not found");
         }
 
