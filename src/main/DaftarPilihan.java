@@ -19,6 +19,7 @@ public class DaftarPilihan {
     private ArrayList<Caleg> DaftarCalegDPD;
     private ArrayList<Caleg> DaftarCalegDPRDProvinsi;
     private ArrayList<Caleg> DaftarCalegDPRDKabupaten;
+    private ArrayList<String> DaftarPartai;
     
     /**
      * CTOR memiliki parameter No Dapil. CTOR memasukkan Daftar Caleg DPR, DPD, DPRD Provinsi dan DPRD Kabupaten
@@ -77,37 +78,80 @@ public class DaftarPilihan {
             koneksi.close();
             
         } catch (SQLException ex) {
-            System.out.println("Error DaftarPilihan.java" + ex.getMessage());
+            System.out.println(ex.getMessage());
         }
         
     }
     
     /**
-     * @return Daftar caleg DPR
+     * @return Daftar partai
      */
-    public ArrayList<Caleg> GetDaftarCalegDPR(){
-        return DaftarCalegDPR;
+    public ArrayList<String> GetDaftarPartai(){
+        ArrayList<String> DaftarPartai = new ArrayList<>();
+        for(int i = 0; i < DaftarCalegDPR.size(); i++){
+            DaftarPartai.add(DaftarCalegDPR.get(i).GetPartai());
+        }
+        HashSet UniqueDaftarPartai = new HashSet();
+        UniqueDaftarPartai.addAll(DaftarPartai);
+        DaftarPartai.clear();
+        DaftarPartai.addAll(UniqueDaftarPartai);
+        return DaftarPartai;
+    }
+    
+    /**
+     * @return Daftar caleg DPR
+     * @param  NamaPartai
+     */
+    public ArrayList<Caleg> GetDaftarCalegDPR(String NamaPartai){
+        ArrayList<Caleg> DaftarCaleg = new ArrayList<>();
+        for(int i = 0; i < DaftarCalegDPR.size(); i++){
+            if(DaftarCalegDPR.get(i).GetPartai().equals(NamaPartai)){
+                DaftarCaleg.add(DaftarCalegDPR.get(i));
+            }
+        }
+        return DaftarCaleg;
     }
     
     /**
      * @return Daftar caleg DPD
+     * @param NamaPartai
      */
-    public ArrayList<Caleg> GetDaftarCalegDPD(){
-        return DaftarCalegDPD;
+    public ArrayList<Caleg> GetDaftarCalegDPD(String NamaPartai){
+        ArrayList<Caleg> DaftarCaleg = new ArrayList<>();
+        for(int i = 0; i < DaftarCalegDPD.size(); i++){
+            if(DaftarCalegDPD.get(i).GetPartai().equals(NamaPartai)){
+                DaftarCaleg.add(DaftarCalegDPD.get(i));
+            }
+        }
+        return DaftarCaleg;
     }
     
     /**
      * @return Daftar caleg DPRD Provinsi
+     * @param NamaPartai
      */
-    public ArrayList<Caleg> GetDaftarCalegDPRDProvinsi(){
-        return DaftarCalegDPRDProvinsi;
+    public ArrayList<Caleg> GetDaftarCalegDPRDProvinsi(String NamaPartai){
+        ArrayList<Caleg> DaftarCaleg = new ArrayList<>();
+        for(int i = 0; i < DaftarCalegDPRDProvinsi.size(); i++){
+            if(DaftarCalegDPRDProvinsi.get(i).GetPartai().equals(NamaPartai)){
+                DaftarCaleg.add(DaftarCalegDPRDProvinsi.get(i));
+            }
+        }
+        return DaftarCaleg;
     }
     
     /**
      * @return Daftar caleg DPRD Kabupaten
+     * @param NamaPartai
      */
-    public ArrayList<Caleg> GetDaftarCalegDPRDKabupaten(){
-        return DaftarCalegDPRDKabupaten;
+    public ArrayList<Caleg> GetDaftarCalegDPRDKabupaten(String NamaPartai){
+        ArrayList<Caleg> DaftarCaleg = new ArrayList<>();
+        for(int i = 0; i < DaftarCalegDPRDKabupaten.size(); i++){
+            if(DaftarCalegDPRDKabupaten.get(i).GetPartai().equals(NamaPartai)){
+                DaftarCaleg.add(DaftarCalegDPRDKabupaten.get(i));
+            }
+        }
+        return DaftarCaleg;
     }
     
     
