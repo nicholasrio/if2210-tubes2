@@ -55,50 +55,59 @@ public class FormAdmin extends javax.swing.JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TombolDapil.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDapil.setFont(new java.awt.Font("Belwe Bd BT", 0, 18)); // NOI18N
+        TombolDapil.setForeground(new java.awt.Color(255, 153, 102));
         TombolDapil.setText("Daerah Pemilihan");
         TombolDapil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TombolDapilActionPerformed(evt);
             }
         });
-        getContentPane().add(TombolDapil, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 229, -1));
+        getContentPane().add(TombolDapil, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 240, 40));
 
-        TombolDPR.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDPR.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        TombolDPR.setFont(new java.awt.Font("Belwe Bd BT", 0, 18)); // NOI18N
+        TombolDPR.setForeground(new java.awt.Color(255, 153, 102));
         TombolDPR.setText("DPR");
         TombolDPR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TombolDPRActionPerformed(evt);
             }
         });
-        getContentPane().add(TombolDPR, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 229, -1));
+        getContentPane().add(TombolDPR, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 240, 40));
 
-        TombolDPD.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDPD.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        TombolDPD.setFont(new java.awt.Font("Belwe Bd BT", 0, 18)); // NOI18N
+        TombolDPD.setForeground(new java.awt.Color(255, 153, 102));
         TombolDPD.setText("DPD");
         TombolDPD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TombolDPDActionPerformed(evt);
             }
         });
-        getContentPane().add(TombolDPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 229, -1));
+        getContentPane().add(TombolDPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 240, 40));
 
-        TombolDPRDProv.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDPRDProv.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        TombolDPRDProv.setFont(new java.awt.Font("Belwe Bd BT", 0, 18)); // NOI18N
+        TombolDPRDProv.setForeground(new java.awt.Color(255, 153, 102));
         TombolDPRDProv.setText("DPRD Provinsi");
         TombolDPRDProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TombolDPRDProvActionPerformed(evt);
             }
         });
-        getContentPane().add(TombolDPRDProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 229, -1));
+        getContentPane().add(TombolDPRDProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 240, 40));
 
-        TombolDPRDKotKab.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        TombolDPRDKotKab.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        TombolDPRDKotKab.setFont(new java.awt.Font("Belwe Bd BT", 0, 18)); // NOI18N
+        TombolDPRDKotKab.setForeground(new java.awt.Color(255, 153, 102));
         TombolDPRDKotKab.setText("DPRD Kota/Kabupaten");
         TombolDPRDKotKab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TombolDPRDKotKabActionPerformed(evt);
             }
         });
-        getContentPane().add(TombolDPRDKotKab, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
+        getContentPane().add(TombolDPRDKotKab, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 240, 40));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 140));

@@ -12,8 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
+import main.CalonTerpilih;
 import main.Dapil;
-import main.DataDapil;
 /**
  *
  * @author linda.sekawati
@@ -24,11 +24,13 @@ public class FormDapil extends javax.swing.JFrame {
      * Creates new form FormDapil
      */
     private DefaultTableModel model;
+    CalonTerpilih calonterpilih;
     public FormDapil() {
         initComponents();
         model = new DefaultTableModel();
         TabelDapil.setModel(model);
         this.setTitle("Daerah Pemilihan");
+        calonterpilih = new CalonTerpilih();
         
         model.addColumn("No. Dapil");
         model.addColumn("Kota/Kabupaten");
@@ -240,28 +242,15 @@ public class FormDapil extends javax.swing.JFrame {
 
     private void TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahActionPerformed
         // TODO add your handling code here:
-        /*String nodapil = NoDapil.getText();
-        String kotkab = KotKab.getText();
-        try
+        String[] parts = (KotKab.getText()).split(";");
+        for(int i=0;i<parts.length;i++)
         {
-            Connection c = DataDapil.getKoneksi();
-            String sql = "INSERT INTO YukCoblos VALUES (?, ?)";
-            PreparedStatement p = c.prepareStatement(sql);
-
-            p.setString(1, nodapil);
-            p.setString(2, kotkab);
-
-            p.executeUpdate();
-            p.close();
+            if(parts[i].startsWith(" ")){
+                parts[i]=parts[i].substring(1);
+            }
         }
-        catch(SQLException e)
-        {
-            System.out.println("Terjadi Error");
-        }
-        finally
-        {
-            loadData();
-        }*/
+        calonterpilih.AddDapil(Integer.parseInt(NoDapil.getText()), parts);
+        
     }//GEN-LAST:event_TambahActionPerformed
 
     private void KembaliFormAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembaliFormAdminActionPerformed

@@ -46,6 +46,7 @@ public class FormCaleg extends javax.swing.JFrame {
         
         
         model.addColumn("NIK");
+        model.addColumn("Nama");
         model.addColumn("Partai");
         model.addColumn("No.Dapil");
         model.addColumn("History");
@@ -97,6 +98,8 @@ public class FormCaleg extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         KembaliFormAdmin = new javax.swing.JButton();
         NIK = new javax.swing.JTextField();
+        Nama = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         Partai = new javax.swing.JTextField();
         Tambah = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -117,11 +120,11 @@ public class FormCaleg extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 153));
         jLabel2.setText("NIK           :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 153));
         jLabel3.setText("Partai       :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
         KembaliFormAdmin.setText("Kembali");
         KembaliFormAdmin.addActionListener(new java.awt.event.ActionListener() {
@@ -136,14 +139,25 @@ public class FormCaleg extends javax.swing.JFrame {
                 NIKActionPerformed(evt);
             }
         });
-        getContentPane().add(NIK, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 152, -1));
+        getContentPane().add(NIK, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 152, -1));
+
+        Nama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NamaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 152, -1));
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 153));
+        jLabel7.setText("NIK           :");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
 
         Partai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PartaiActionPerformed(evt);
             }
         });
-        getContentPane().add(Partai, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 153, -1));
+        getContentPane().add(Partai, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 153, -1));
 
         Tambah.setText("Tambah");
         Tambah.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +168,7 @@ public class FormCaleg extends javax.swing.JFrame {
         getContentPane().add(Tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, -1, -1));
 
         jLabel4.setText("Daftar");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
 
         TabelCaleg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,7 +202,7 @@ public class FormCaleg extends javax.swing.JFrame {
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 153));
         jLabel5.setText("No. Dapil   :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 153));
         jLabel6.setText("History     : ");
@@ -199,7 +213,7 @@ public class FormCaleg extends javax.swing.JFrame {
                 NoDapilActionPerformed(evt);
             }
         });
-        getContentPane().add(NoDapil, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 46, -1));
+        getContentPane().add(NoDapil, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 46, -1));
 
         History.setColumns(20);
         History.setRows(5);
@@ -241,6 +255,7 @@ public class FormCaleg extends javax.swing.JFrame {
     private void TambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahActionPerformed
         // TODO add your handling code here:
         String nik = NIK.getText();
+        String nama = Nama.getText();
         String partai = Partai.getText();
         String nodapil = NoDapil.getText();
         String history = History.getText();
@@ -252,12 +267,13 @@ public class FormCaleg extends javax.swing.JFrame {
             PreparedStatement p = c.prepareStatement(sql);
             calonterpilih = new CalonTerpilih();
             int nodapilInt = Integer.parseInt(nodapil);
-            calonterpilih.AddCaleg(nik, partai, history, nodapilInt, lingkup);
+            calonterpilih.AddCaleg(nik, nama, partai, history, nodapilInt, lingkup);
             
             p.setString(1, nik);
-            p.setString(2, partai);
-            p.setString(3, nodapil);
-            p.setString(4, history);
+            p.setString(2, nama);
+            p.setString(3, partai);
+            p.setString(4, nodapil);
+            p.setString(5, history);
 //            p.setString(5, pilihcaleg);
             
             p.executeUpdate();
@@ -283,21 +299,29 @@ public class FormCaleg extends javax.swing.JFrame {
         String nik = (String) model.getValueAt(i, 0);
         NIK.setText(nik);
         
-        String partai = (String) model.getValueAt(i, 1);
+        String nama = (String) model.getValueAt(i, 1);
+        NIK.setText(nama);
+        
+        String partai = (String) model.getValueAt(i, 2);
         Partai.setText(partai);
         
-        String nodapil = (String) model.getValueAt(i, 2);
+        String nodapil = (String) model.getValueAt(i, 3);
         NoDapil.setText(nodapil);
         
-        String history = (String) model.getValueAt(i, 3);
+        String history = (String) model.getValueAt(i, 4);
         History.setText(history);
         
     }//GEN-LAST:event_TabelCalegMouseClicked
+
+    private void NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NamaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea History;
     private javax.swing.JButton KembaliFormAdmin;
     private javax.swing.JTextField NIK;
+    private javax.swing.JTextField Nama;
     private javax.swing.JTextField NoDapil;
     private javax.swing.JTextField Partai;
     private javax.swing.JTable TabelCaleg;
@@ -313,6 +337,7 @@ public class FormCaleg extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollBar jScrollBar1;

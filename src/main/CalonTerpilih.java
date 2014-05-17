@@ -27,21 +27,31 @@ public class CalonTerpilih {
         daerahPemilihan = new ArrayList<>();
         daftarCaleg = new ArrayList<>();
     }
-    public void AddCaleg(String NIK, String Partai,String History, int _NoDapil, String lingkup){
+    public void AddCaleg(String NIK, String Nama, String Partai,String History, int _NoDapil, String lingkup){
         //Jangan lupa pengecekan udah ada Caleg apa belum
+        Caleg caleg = new Caleg(NIK, Nama, Partai, History, _NoDapil, lingkup);
+        daftarCaleg.add(caleg);
     }
     
     public void AddCaleg(Caleg caleg){
         //Jangan lupa pengecekan udah ada Caleg apa belum
+        daftarCaleg.add(caleg);
     }
     
-    public void AddDapil(int NomorDapil, String Kabupaten[] ){
+    public void AddDapil(int NomorDapil, String Kabupaten[]){
         //Jangan lupa pengecekan noDapilnya udah ada apa belum
+        Dapil dapil = new Dapil(NomorDapil, Kabupaten[0]);
+        for(int i =1; i<Kabupaten.length;i++){
+            dapil.addKabupaten(Kabupaten[i]);
+        }
+        daerahPemilihan.add(dapil);
     }
     
     public void AddDapil(Dapil dapil){
         //Jangan lupa pengecekan noDapilnya udah ada apa belum
+        daerahPemilihan.add(dapil);
     }
+    
     
     /**
      * Menyimpan list dapil dan list caleg ke database. Isi list harus sudah unik dan belum ada di database.
