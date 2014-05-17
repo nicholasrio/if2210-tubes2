@@ -258,11 +258,6 @@ public class GUIView extends javax.swing.JFrame implements View {
                 ButtSaveQuitMouseClicked(evt);
             }
         });
-        ButtSaveQuit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtSaveQuitActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -370,45 +365,64 @@ public class GUIView extends javax.swing.JFrame implements View {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtEntertainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtEntertainMouseClicked
-        selection = 1;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 1;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtEntertainMouseClicked
 
     private void ButtTrainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtTrainMouseClicked
-        selection = 2;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 2;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtTrainMouseClicked
 
     private void ButtSleepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSleepMouseClicked
-        selection = 3;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 3;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtSleepMouseClicked
 
     private void ButtToiletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtToiletMouseClicked
-        selection = 4;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 4;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtToiletMouseClicked
 
     private void ButtFightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtFightMouseClicked
-        selection = 5;
-		selectionUpdate = true;
+        synchronized(SelectionNotifier) {
+			selection = 5;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtFightMouseClicked
 
-    private void ButtSaveQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtSaveQuitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtSaveQuitActionPerformed
-
     private void ButtSaveQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSaveQuitMouseClicked
-        // TODO add your handling code here:
+        synchronized(SelectionNotifier) {
+			selection = -1;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtSaveQuitMouseClicked
 
     private void ButtSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSaveMouseClicked
-        // TODO add your handling code here:
+        synchronized(SelectionNotifier) {
+			selection = 6;
+			selectionUpdate = true;
+			SelectionNotifier.notifyAll();
+		}
     }//GEN-LAST:event_ButtSaveMouseClicked
 
 	@Override
 	public void showMenu() {
-		
+		//NOP. already shown.
 	}
 	
 	@Override
@@ -466,14 +480,17 @@ public class GUIView extends javax.swing.JFrame implements View {
 
 	private boolean selectionUpdate = false;
 	private int selection = 0;
+	private final Object SelectionNotifier = new Object();
 	
 	public int waitForSelection(){
-		while (!selectionUpdate) {
-			try {
-				sleep(50);
-			} catch (InterruptedException ex) {
-				System.out.println("interrupted");
+		try {
+			synchronized(SelectionNotifier) {
+				while (!selectionUpdate) {
+					SelectionNotifier.wait();
+				}
 			}
+		} catch (InterruptedException ex) {
+			System.out.println("interrupted");
 		}
 		selectionUpdate = false;
 		return selection;

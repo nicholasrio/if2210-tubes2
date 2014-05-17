@@ -48,7 +48,7 @@ public class XmlController {
 	/* 
 	 * Load Dragon from XML
 	 */
-	public UserDragon LoadDragon(String name, String password) throws Exception {
+	public static UserDragon LoadDragon(String name, String password) throws Exception {
 		UserDragon retval = null;
 		try {
 			// Load XML and get root Node
@@ -117,7 +117,7 @@ public class XmlController {
 	/* 
 	 * Save Dragon to XML
 	 */
-	public void SaveDragon(UserDragon dragon) {
+	public static void SaveDragon(UserDragon dragon) {
 		try {
 
 			//Initial setup
