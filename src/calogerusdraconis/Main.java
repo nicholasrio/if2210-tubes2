@@ -198,6 +198,8 @@ public class Main {
 			
 		}*/
 		
+		System.out.println(draco==null);
+		
 		view.UpdateScreen(draco);
 		
 		Event e;
