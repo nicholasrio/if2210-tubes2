@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import model.Map;
 
-class MapGUI {
+public class MapGUI {
 
     public JFrame mainFrame;
     private JPanel optionPanel;
@@ -76,6 +76,12 @@ class MapGUI {
 
         mainFrame.setResizable(false);
         mainFrame.setVisible(true);
+    }
+    public void show() {
+        mainFrame.setVisible(true);
+    }
+    public void hide() {
+        mainFrame.setVisible(false);
     }
 
     public static void main(String[] args) throws IOException {

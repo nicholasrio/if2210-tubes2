@@ -10,6 +10,7 @@
  */
 package controller;
 
+import gui.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.*;
@@ -454,7 +455,7 @@ public class GameController {
     /**
      * Gaming mode
      */
-    public Player playGame(Player loginPlayer) {
+    public Player playGameConsole(Player loginPlayer) {
         Scanner in = new Scanner(System.in);
         int menu = 0, pos_row = 0, pos_col = 0;
         /**
@@ -533,5 +534,12 @@ public class GameController {
             loginPlayer.setHighScore(getScore());
         }
         return loginPlayer;
+    }
+    public static void playGameGUI() {
+        //Scanner in = new Scanner(System.in);
+        MapGUI mapGUI = new MapGUI();
+    }
+    public static void main(String[] arg) {
+        playGameGUI();
     }
 }
