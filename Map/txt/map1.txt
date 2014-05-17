@@ -57,8 +57,8 @@ level 4
 p p p w p t2
 p w p w p w
 p h p p p w
-w w p w p w
-p p p p h c
+w w p w h w
+p p p p c p
 c w w w p w
 
 level 5
