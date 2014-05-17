@@ -66,7 +66,7 @@ public class XmlControllerTest {
 		System.out.println("LoadDragon");
 		XmlController instance = new XmlController();
 		try {
-			UserDragon ud = instance.LoadDragon("Xanareth");
+			UserDragon ud = instance.LoadDragon("Xanareth","anotherpasT");
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}
@@ -83,7 +83,7 @@ public class XmlControllerTest {
 		UserDragon dragon = null;
 		XmlController instance = new XmlController();
 		try {
-			UserDragon ud = instance.LoadDragon("Xanareth");
+			UserDragon ud = instance.LoadDragon("Xanareth","anotherpasT");
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}

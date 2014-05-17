@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 
 public class Main {
 
-	public Dragon draco;
+	public static UserDragon draco;
 
 	public Main() {
 
@@ -33,45 +33,62 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Tekan 1 untuk GUI atau tekan 2 untuk Terminal: ");
-		//int pil = in.nextInt();
-		System.out.println("Tekan 1 untuk New Game atau tekan 2 untuk Load Game:");
-		int loadNew = in.nextInt();
-		View view = null;
-		//if (pil == 2)
-		view = new TerminalView();
-		
-		XmlController instance = new XmlController();
-		UserDragon ud = null;
-		ud = new UserDragon("S", 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0);
+		int pil = in.nextInt();
+		if (pil == 2) terminal();
+		System.exit(0);
+	}
+	
+	/**
+	 * Main program in terminal
+	 */
+	public static void terminal() {
+		Scanner in = new Scanner(System.in);
+		int loadNew = 0;
+		do {
+			System.out.println("Tekan 1 untuk New Game atau tekan 2 untuk Load Game:");
+			loadNew = in.nextInt();
+			if (!(loadNew==1 || loadNew==2)) {
+				System.out.println("Input tidak valid. Ulangi!");
+			}
+		} while (!(loadNew==1 || loadNew==2));
+		String nama = null;
+		String password = null;
+		System.out.println("Masukkan nama: ");
+		nama = in.next();
+		System.out.println("Masukkan password: ");
+		password = in.next();
+		View view = new TerminalView();
 
 		try {
-			ud = instance.LoadDragon("Xanareth");
+			if (loadNew == 2)
+				draco = loadGame(nama, password);
+			else draco = newGame(nama, password);
 			int menu = 0;
 			do {
 				view.showMenu();
 				System.out.println("Input menu yang diinginkan : ");
 				menu = in.nextInt();
 				switch (menu) {
-					case 1: view.UpdateScreen(ud); break;
-					case 2: Event e = ud.entertain();
-							view.UpdateScreen(ud, e); break;
-					case 3: e = ud.rest();
-							view.UpdateScreen(ud, e); break;
-					case 4: e = ud.toToilet();
-							view.UpdateScreen(ud, e); break;
-					case 5: Dragon enemy = ud.generateEnemy();
-							e = ud.fight(enemy); 
-							view.UpdateScreen(ud, enemy);
-							view.UpdateScreen(ud, e);
+					case 1: view.UpdateScreen(draco); break;
+					case 2: Event e = draco.entertain();
+							view.UpdateScreen(draco, e); break;
+					case 3: e = draco.rest();
+							view.UpdateScreen(draco, e); break;
+					case 4: e = draco.toToilet();
+							view.UpdateScreen(draco, e); break;
+					case 5: Dragon enemy = draco.generateEnemy();
+							e = draco.fight(enemy); 
+							view.UpdateScreen(draco, enemy);
+							view.UpdateScreen(draco, e);
 							break;
-					case 6: e = ud.train();
-							view.UpdateScreen(ud, e); break;
+					case 6: e = draco.train();
+							view.UpdateScreen(draco, e); break;
 					case 7: {
 								int pil7;
 								int jum; int pilExit;
 								do {
-									view.seeFoodDirectory(ud);
-									jum = ud.getFdInventory().size();
+									view.seeFoodDirectory(draco);
+									jum = draco.getFdInventory().size();
 									if (jum==0) {
 										System.out.println("Tidak ada barang yang anda miliki");
 									} else {
@@ -85,7 +102,7 @@ public class Main {
 										System.out.println("Pilihan salah!");
 									} else if (pil7!=pilExit) {
 										System.out.println("halo");
-										ud.useConsumable(ud.getFdInventory().get(pil7-1));
+										draco.useConsumable(draco.getFdInventory().get(pil7-1));
 										System.out.println("Anda berhasil menggunakan barang dengan nomor " + pil7);
 									}
 									System.out.println(pil7 + " " + pilExit);
@@ -111,7 +128,7 @@ public class Main {
 										System.out.println("Pilihan salah!");
 									} else if (pil8!=pilExit) {
 										try {
-											ud.addConsumable(Store.getInstance().buy(pil8));
+											draco.addConsumable(Store.getInstance().buy(pil8));
 											System.out.println("Anda berhasil membeli barang dengan nomor " + pil8);
 										} catch (Exception ex) {
 											System.out.println(ex.getMessage());
@@ -121,43 +138,27 @@ public class Main {
 							} break;
 					default: break;
 				}
-				System.out.println("mehu" + menu);
-				//view.UpdateScreen(Store.getInstance());
+				//System.out.println("menu " + menu);
 			} while (menu != 9);
+			draco.sebelumExit();
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}
-		ud.sebelumExit();
-		System.exit(0);
 	}
 
 	/**
-	 * 
+	 * Mengembalikan dragon baru di saat new game
 	 */
-	public void newGame() {
+	public static UserDragon newGame(String name, String password) {
+		return new UserDragon(name, 100, 100, 100, 100, 0, 0, 0, 1, 0, password, 100, 100);
 	}
 
 	/**
-	 * 
+	 * Mengembalikan dragon lama di saat load game
 	 */
-	public void loadGame() {
-	}
-
-	
-	/**
-	 * Getter Dragon
-	 * @return Dragon of user
-	 */
-
-	public Dragon getDraco() {
-		return draco;
-	}
-
-	/**
-	 * Setter Dragon
-	 * @param val new Dragon of User
-	 */
-	public void setDraco(Dragon val) {
-		this.draco = val;
+	public static UserDragon loadGame(String name, String password) throws Exception {
+		XmlController instance = new XmlController();
+		UserDragon ud = instance.LoadDragon(name, password);
+		return ud;
 	}
 }
