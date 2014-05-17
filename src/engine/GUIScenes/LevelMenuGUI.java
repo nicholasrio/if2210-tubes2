@@ -159,7 +159,7 @@ public class LevelMenuGUI extends Scene
             ArrowTexture=ImageLoader.getImage("fire_arrow");
             Arrow2Texture=ImageLoader.getImage("fire_arrow_2");
             BackTexture=ImageLoader.getImage("back_fire");
-            if (level<=GameData.lastLogin.getLevelUnlocked()){            
+            if (level<=GameData.lastLogin.getLevelUnlocked()+1){            
                 LorULTexture=ImageLoader.getImage("unlocked_fire");                        
                 unlocked=true;
             }
