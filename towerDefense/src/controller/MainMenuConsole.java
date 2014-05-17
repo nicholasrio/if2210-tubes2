@@ -1,19 +1,24 @@
 /**
  *
- * @author 
- * Darwin Prasetio (13512015)
- * Chrestella Stephanie (13512005)
- * Jan Wira Gotama Putra (13512015)
- * Eric (13512021)
- * Willy(13512070)
- * Melvin Fonda (13512085)
+ * @author Darwin Prasetio (13512015) Chrestella Stephanie (13512005) Jan Wira
+ * Gotama Putra (13512015) Eric (13512021) Willy(13512070) Melvin Fonda
+ * (13512085)
  */
 package controller;
 
-import java.util.*;
-import java.io.*;
 import exception.*;
+import java.io.*;
+import java.util.*;
+import javax.xml.parsers.*;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import model.Player;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
 
 public class MainMenuConsole {
 
@@ -94,10 +99,10 @@ public class MainMenuConsole {
         int idx = searchPlayer(loginPlayer.getName());
         players.get(idx).setHighScore(loginPlayer.getHighScore());
     }
-    
+
     /*
-    * Playing tower defense game with GIU
-    */
+     * Playing tower defense game with GIU
+     */
     public void playGameGUI(boolean newGame) throws FileNotFoundException, IOException {
         GameController gameControl = GameController.getInstance();
         if (newGame == false) {
@@ -122,17 +127,35 @@ public class MainMenuConsole {
      * Load player data
      */
     public void loadPlayer() throws FileNotFoundException {
-        String name;
-        int score;
-        File fin = new File("Playerlist.txt");
-        Scanner in = new Scanner(fin);
-        while (in.hasNext()) {
-            name = in.next();
-            score = in.nextInt();
-            Player x = new Player(name, score);
-            players.add(x);
+        try {
+
+            File fXmlFile = new File("Playerlist.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            org.w3c.dom.Document doc = dBuilder.parse(fXmlFile);
+
+            //optional, but recommended
+            //read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+            doc.getDocumentElement().normalize();
+
+            NodeList nList = doc.getElementsByTagName("player");
+
+            for (int temp = 0; temp < nList.getLength(); temp++) {
+
+                Node nNode = nList.item(temp);
+
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+                    Element eElement = (Element) nNode;
+
+                    String name = eElement.getElementsByTagName("name").item(0).getTextContent();
+                    int highscore = Integer.parseInt(eElement.getElementsByTagName("highscore").item(0).getTextContent());
+                    players.add(new Player(name, highscore));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        in.close();
     }
 
     /**
@@ -152,22 +175,51 @@ public class MainMenuConsole {
 
     /**
      * get this class instance
-     * @return 
+     *
+     * @return
      */
     public static MainMenuConsole getInstance() {
         return instance;
     }
 
     public void closePlayer() throws FileNotFoundException {
-        String name;
-        int score;
-        File fin = new File("Playerlist.txt");
-        PrintWriter out = new PrintWriter(fin);
-        for (Player px : players) {
-            out.println(px.getName());
-            out.println(px.getHighScore());
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            // root elements
+            org.w3c.dom.Document doc = docBuilder.newDocument();
+            org.w3c.dom.Element rootElement = doc.createElement("tower_defense");
+            doc.appendChild(rootElement);
+
+            for (Player px : players) {
+                // staff elements
+                org.w3c.dom.Element player = doc.createElement("player");
+                rootElement.appendChild(player);
+
+                // firstname elements
+                org.w3c.dom.Element name = doc.createElement("name");
+                name.appendChild(doc.createTextNode(px.getName()));
+                player.appendChild(name);
+
+                // highscore elements
+                org.w3c.dom.Element highscore = doc.createElement("highscore");
+                highscore.appendChild(doc.createTextNode(String.valueOf(px.getHighScore())));
+                player.appendChild(highscore);
+            }
+
+            // write the content into xml file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("Playerlist.xml"));
+
+            // Output to console for testing
+            // StreamResult result = new StreamResult(System.out);
+            transformer.transform(source, result);
+        } catch (ParserConfigurationException | TransformerException ex) {
+            assert (false);
         }
-        out.flush();
     }
 
     /**

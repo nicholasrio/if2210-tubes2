@@ -49,7 +49,8 @@ public class GameController {
      */
     public void showMonsterLive() {
         for (int i = 0; i < listOfMonster.size(); i++) {
-            System.out.println("Monster ke-" + i + " " + listOfMonster.get(i).getHP());
+            if (listOfMonster.get(i).getHP()>0)
+                System.out.println("Monster ke-" + i + " " + listOfMonster.get(i).getHP());
         }
     }
 
@@ -97,7 +98,6 @@ public class GameController {
         /* ?Precondition, there should not exist any tower at position (pos_x, pos_y) */
         int idx = getTowerIdx(pos_row, pos_col);
         assert (idx == -1) : "There's already tower in there";
-        System.out.println(idx + " " + pos_row + " " + pos_col + " " + gold);
         if (idx == -1 && gold >= Tower.towerCost) {
             Tower temp = new Tower(pos_row, pos_col);
             listOfTower.add(temp);
@@ -232,14 +232,13 @@ public class GameController {
      * Enemies are being attacked by tower(s)
      */
     public void allTowersAttack() {
-        //System.out.println("Attacking!");
+        System.out.println("Attacking!");
         for (int i = 0; i < listOfTower.size(); i++) {
-            //System.out.println("Tower ke-" + i + " Cooldown : " + listOfTower.get(i).getCoolDownCount());
+            System.out.println("Tower ke-" + i + " Cooldown : " + listOfTower.get(i).getCoolDownCount());
             for (int j = 0; j < listOfMonster.size(); ++j) {
                 /* 
                  if (there's ')enemy in tower's sight, then attack those enemy
                  */
-                //System.out.println(listOfTower.get(i).rangeCheck(2, 2,map.row,map.col));
                 if (listOfMonster.get(j).getHP() > 0 && listOfMonster.get(j).getCol() >= 0
                         && listOfTower.get(i).rangeCheck(listOfMonster.get(j).getRow(), listOfMonster.get(j).getCol(), map.row, map.col)) {
                     listOfTower.get(i).resetCoolingDownTime();
@@ -513,7 +512,7 @@ public class GameController {
                         allTowersAttack();
                         moveAllMonster();
                         coolDownAllTower();
-                        showMonsterLive(); //for testing purpose only
+                        showMonsterLive(); 
                         if (getScore() > loginPlayer.getHighScore()) {
                             loginPlayer.setHighScore(getScore());
                         }
@@ -609,7 +608,6 @@ public class GameController {
                         }
 
                         coolDownAllTower();
-                        //showMonsterLive(); //for testing purpose only
                         if (getScore() > loginPlayer.getHighScore()) {
                             loginPlayer.setHighScore(getScore());
                         }
@@ -632,6 +630,10 @@ public class GameController {
                         mapGUI.addAnnouncement("You lose!");
                         break;
                     }
+                    
+                    if (getCurrentLevel() > getMaxLevel()) {
+                        mapGUI.addAnnouncement("Congratulation... you've win the game!");
+                    }
                     break;
                 }
                 case 7: {
@@ -641,9 +643,6 @@ public class GameController {
             }
             if (menu!=7)
                 menu = 0;
-        }
-        if (getCurrentLevel() > getMaxLevel()) {
-            mapGUI.addAnnouncement("Congratulation... you've win the game!");
         }
         return loginPlayer;
     }

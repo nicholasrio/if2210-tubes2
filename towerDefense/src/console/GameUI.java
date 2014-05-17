@@ -97,9 +97,11 @@ public class GameUI {
      * @param menuList
      */
     public static void showHighScore(List<Player> players) {
-        
+        int i=0;
         for (Player Player_each : players) {
             System.out.println(Player_each.getName() + " " + Player_each.getHighScore());
+            i++;
+            if (i==5)break;
         }
     }
     
@@ -108,7 +110,7 @@ public class GameUI {
         System.out.println("1. Login");
         System.out.println("2. New Player");
         System.out.println("3. High Scores");
-        System.out.println("4. Detele Player");
+        System.out.println("4. Delete Player");
         System.out.println("5. New Game");
         System.out.println("6. Load Game");
         System.out.println("7. Exit");
