@@ -35,44 +35,56 @@ public class DaftarPilihan {
             Connection koneksi = KoneksiDatabase.getKoneksi();
             Statement statement = koneksi.createStatement();
             // Mengambil data Caleg 1 dari database lalu memasukkan ke array list DaftarCalegDPR
-            String commandEkstrakCalegDPR = "select * from caleg where Lingkup = \'DPR\'";
+            String commandEkstrakCalegDPR = "select Caleg.*, Penduduk.Nama "
+                    + "from Caleg, Penduduk "
+                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPR\'";
             ResultSet CalegDPR = statement.executeQuery(commandEkstrakCalegDPR);
             while(CalegDPR.next()){
                 String NIK = CalegDPR.getString("NIK");
                 String NamaPartai = CalegDPR.getString("NamaPartai");
                 String TrackRecord = CalegDPR.getString("TrackRecord");
                 int NoDapil = CalegDPR.getInt("NoDapil");
-                DaftarCalegDPR.add(new Caleg(NIK, NamaPartai, TrackRecord, NoDapil,"DPR"));
+                String nama = CalegDPR.getString("Nama");
+                DaftarCalegDPR.add(new Caleg(NIK, nama, NamaPartai, TrackRecord, NoDapil,"DPR"));
             }
             // Mengambil data Caleg 2 dari database lalu memasukkan ke array list DaftarCalegDPD
-            String commandEkstrakCalegDPD = "select * from caleg where Lingkup = \'DPD\'";
+            String commandEkstrakCalegDPD = "select Caleg.*, Penduduk.Nama "
+                    + "from Caleg, Penduduk "
+                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPD\'";
             ResultSet CalegDPD = statement.executeQuery(commandEkstrakCalegDPD);
             while(CalegDPD.next()){
                 String NIK = CalegDPD.getString("NIK");
                 String NamaPartai = CalegDPD.getString("NamaPartai");
                 String TrackRecord = CalegDPD.getString("TrackRecord");
                 int NoDapil = CalegDPD.getInt("NoDapil");
-                DaftarCalegDPD.add(new Caleg(NIK, NamaPartai, TrackRecord, NoDapil,"DPD"));
+                String nama = CalegDPD.getString("Nama");
+                DaftarCalegDPD.add(new Caleg(NIK, nama, NamaPartai, TrackRecord, NoDapil,"DPD"));
             }
             // Mengambil data Caleg 3 dari database lalu memasukkan ke array list DaftarCalegDPRDProvinsi
-            String commandEkstrakCalegDPRDProvinsi = "select * from caleg where Lingkup = \'DPRDProvinsi\'";
+            String commandEkstrakCalegDPRDProvinsi = "select Caleg.*, Penduduk.Nama "
+                    + "from Caleg, Penduduk "
+                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPRDProvinsi\'";
             ResultSet CalegDPRDProvinsi = statement.executeQuery(commandEkstrakCalegDPRDProvinsi);
             while(CalegDPRDProvinsi.next()){
                 String NIK = CalegDPRDProvinsi.getString("NIK");
                 String NamaPartai = CalegDPRDProvinsi.getString("NamaPartai");
                 String TrackRecord = CalegDPRDProvinsi.getString("TrackRecord");
                 int NoDapil = CalegDPRDProvinsi.getInt("NoDapil");
-                DaftarCalegDPRDProvinsi.add(new Caleg(NIK, NamaPartai, TrackRecord, NoDapil,"DPRDProv"));
+                String nama = CalegDPRDProvinsi.getString("Nama");
+                DaftarCalegDPRDProvinsi.add(new Caleg(NIK, nama, NamaPartai, TrackRecord, NoDapil,"DPRDProvinsi"));
             }
             // Mengambil data Caleg 4 dari database lalu memasukkan ke array list DaftarCalegDPRDKabupaten
-            String commandEkstrakCalegDPRDKabupaten = "select * from caleg where ";
+            String commandEkstrakCalegDPRDKabupaten = "select Caleg.*, Penduduk.Nama "
+                    + "from Caleg, Penduduk "
+                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPRDKabupaten\'";
             ResultSet CalegDPRDKabupaten = statement.executeQuery(commandEkstrakCalegDPRDKabupaten);
             while(CalegDPRDKabupaten.next()){
                 String NIK = CalegDPRDKabupaten.getString("NIK");
                 String NamaPartai = CalegDPRDKabupaten.getString("NamaPartai");
                 String TrackRecord = CalegDPRDKabupaten.getString("TrackRecord");
                 int NoDapil = CalegDPRDKabupaten.getInt("NoDapil");
-                DaftarCalegDPRDKabupaten.add(new Caleg(NIK, NamaPartai, TrackRecord, NoDapil,"DPRDKab"));
+                String nama = CalegDPRDKabupaten.getString("Nama");
+                DaftarCalegDPRDKabupaten.add(new Caleg(NIK, nama, NamaPartai, TrackRecord, NoDapil,"DPRDKabupaten"));
             }
             
             koneksi.close();
