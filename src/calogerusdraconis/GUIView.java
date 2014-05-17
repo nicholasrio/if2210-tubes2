@@ -17,6 +17,8 @@
 
 package calogerusdraconis;
 
+import static java.lang.Thread.sleep; 
+
 /**
  *
  * @author Dariel Valdano
@@ -28,7 +30,6 @@ public class GUIView extends javax.swing.JFrame implements View {
 	 */
 	public GUIView() {
 		initComponents();
-		guiMain();
 	}
 
 	/**
@@ -65,11 +66,12 @@ public class GUIView extends javax.swing.JFrame implements View {
         jPanel6 = new javax.swing.JPanel();
         ButtEntertain = new javax.swing.JButton();
         ButtTrain = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ButtFight = new javax.swing.JButton();
         ButtSleep = new javax.swing.JButton();
         ButtToilet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Calogerus Draconis");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Your Dragon"));
@@ -207,14 +209,39 @@ public class GUIView extends javax.swing.JFrame implements View {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Actions"));
 
         ButtEntertain.setText("Entertain");
+        ButtEntertain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtEntertainMouseClicked(evt);
+            }
+        });
 
         ButtTrain.setText("Training");
+        ButtTrain.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtTrainMouseClicked(evt);
+            }
+        });
 
-        jButton3.setText("Fight another Dragon");
+        ButtFight.setText("Fight another Dragon");
+        ButtFight.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtFightMouseClicked(evt);
+            }
+        });
 
         ButtSleep.setText("Sleep");
+        ButtSleep.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtSleepMouseClicked(evt);
+            }
+        });
 
         ButtToilet.setText("Go to Toilet");
+        ButtToilet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtToiletMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -230,7 +257,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButtToilet)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtFight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -238,7 +265,7 @@ public class GUIView extends javax.swing.JFrame implements View {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtFight, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(ButtEntertain)
                         .addComponent(ButtSleep)
@@ -303,10 +330,35 @@ public class GUIView extends javax.swing.JFrame implements View {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ButtEntertainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtEntertainMouseClicked
+        selection = 1;
+		selectionUpdate = true;
+    }//GEN-LAST:event_ButtEntertainMouseClicked
+
+    private void ButtTrainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtTrainMouseClicked
+        selection = 2;
+		selectionUpdate = true;
+    }//GEN-LAST:event_ButtTrainMouseClicked
+
+    private void ButtSleepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSleepMouseClicked
+        selection = 3;
+		selectionUpdate = true;
+    }//GEN-LAST:event_ButtSleepMouseClicked
+
+    private void ButtToiletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtToiletMouseClicked
+        selection = 4;
+		selectionUpdate = true;
+    }//GEN-LAST:event_ButtToiletMouseClicked
+
+    private void ButtFightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtFightMouseClicked
+        selection = 5;
+		selectionUpdate = true;
+    }//GEN-LAST:event_ButtFightMouseClicked
+
 	/**
 	 * Main GUI
 	 */
-	private static void guiMain() {
+	public static void guiMain() {
 		/* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -339,6 +391,16 @@ public class GUIView extends javax.swing.JFrame implements View {
 		});
 	}
 	
+	public void test() {
+		ProgHealth.setValue(80);
+		DragonName.setText("asdf");
+		ProgHealth.revalidate();
+		ProgHealth.repaint();
+		revalidate();
+		repaint();
+		System.out.println("tested");
+	}
+	
 	@Override
 	public void showMenu() {
 		
@@ -365,6 +427,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtEntertain;
+    private javax.swing.JButton ButtFight;
     private javax.swing.JButton ButtSleep;
     private javax.swing.JButton ButtToilet;
     private javax.swing.JButton ButtTrain;
@@ -380,7 +443,6 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JProgressBar ProgThirst;
     private javax.swing.JProgressBar ProgXP;
     private javax.swing.JScrollPane StorePane;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -394,6 +456,21 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 
+	private boolean selectionUpdate = false;
+	private int selection = 0;
+	
+	public int waitForSelection(){
+		while (!selectionUpdate) {
+			try {
+				sleep(50);
+			} catch (InterruptedException ex) {
+				System.out.println("interrupted");
+			}
+		}
+		selectionUpdate = false;
+		return selection;
+	}
+	
 	@Override
 	public void seeFoodDirectory(UserDragon drg) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Calogerus Draconis"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Default Cursor"/>
     </Property>
@@ -370,7 +371,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ButtToilet" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton3" max="32767" attributes="0"/>
+                  <Component id="ButtFight" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -380,7 +381,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jButton3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="ButtFight" alignment="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="ButtEntertain" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ButtSleep" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -398,26 +399,41 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Entertain"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ButtEntertainMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ButtTrain">
           <Properties>
             <Property name="text" type="java.lang.String" value="Training"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ButtTrainMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="ButtFight">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fight another Dragon"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ButtFightMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ButtSleep">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sleep"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ButtSleepMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ButtToilet">
           <Properties>
             <Property name="text" type="java.lang.String" value="Go to Toilet"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ButtToiletMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
