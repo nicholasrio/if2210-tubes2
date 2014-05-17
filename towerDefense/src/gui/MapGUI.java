@@ -17,14 +17,15 @@ import model.Map;
 
 class MapGUI {
 
-    private JFrame mainFrame;
+    public JFrame mainFrame;
     private JPanel optionPanel;
     private JPanel status;
-    public JPanel option, option0, option1, option2;
+    public JPanel option;
+    public int state;
     private ImageViewer pictureCanvas;
 
     public MapGUI() throws IOException {
-        mainFrame = new JFrame("peta peta peta");
+        mainFrame = new JFrame("Tower Defense v1.0");
         mainFrame.setLayout(new BorderLayout());
         mainFrame.setSize(1200, 700);
 
@@ -41,12 +42,10 @@ class MapGUI {
         compound = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel);
         status.setBorder(compound);
 
-        option0 = new JPanel();
-        option0.add(new JLabel("Option awal"));
-        option1 = new JPanel();
-        option1.add(new JLabel("Option klik rumput"));
-        option = option0;
-
+        option = new JPanel();
+        option.setLayout(new BoxLayout(option, BoxLayout.PAGE_AXIS));
+        setOption(0);
+        
         pictureCanvas = new ImageViewer(this);
         pictureCanvas.addImage("0.jpg"); //0
         pictureCanvas.addImage("bottom-left.jpg"); //1
@@ -58,6 +57,7 @@ class MapGUI {
 
         pictureCanvas.setBounds(0, 0, 940, 360);
         //pictureCanvas.setIgnoreRepaint(true);
+        //pictureCanvas.we();
 
         //mainFrame.add(titleBlock, BorderLayout.PAGE_START);
         mainFrame.add(pictureCanvas, BorderLayout.WEST);
@@ -81,6 +81,25 @@ class MapGUI {
     public static void main(String[] args) throws IOException {
         MapGUI map = new MapGUI();
     }
+    
+    public void setOption(int n) {
+        switch (n) {
+            case 0:
+                option.removeAll();
+                option.add(new JLabel("This is Sparta"));
+                break;
+            case 1:
+                option.removeAll();
+                option.add(new JLabel("Tower Cost 9999"));
+                option.add(new JButton("Build Tower"));
+                break;
+            case 2:
+                break;
+            default:
+                assert(false) : "Option can't be other than 0, 1, or 2";
+        }
+        option.updateUI();
+    }
 }
 
 class ImageViewer extends Canvas implements MouseListener {
@@ -93,11 +112,12 @@ class ImageViewer extends Canvas implements MouseListener {
     public final int COL = 20;
 
     public ImageViewer(MapGUI alpha) {
+        addMouseListener(this);
         reference = alpha;
         image = new ArrayList<>();
-        path = "src/img/";
+        path = "img/";
     }
-
+    
     public void addImage(String str) throws FileNotFoundException, IOException {
         String fullpath = path + str;
         Image mini = ImageIO.read(new FileInputStream(fullpath));
@@ -164,14 +184,17 @@ class ImageViewer extends Canvas implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent me) {
+        System.out.println("mouseClicked");
         int row = me.getY() / SIZE;
         int col = me.getX() / SIZE;
         if (Map.Peta[row][col] == 256) {
-            reference.option = reference.option1;
+            reference.setOption(1);
         } else {
-            reference.option = reference.option0;
-
+            reference.setOption(0);
         }
+        //reference.option.setVisible(false);
+        reference.option.repaint();
+        //reference.option.setVisible(true);
     }
 
     @Override

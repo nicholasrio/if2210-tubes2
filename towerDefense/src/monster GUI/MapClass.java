@@ -39,7 +39,7 @@ class MapClass {
 //        titleBlock.setSize(300, 300);
 //        pictureBlock.setBackground(Color.red);
 
-        pictureCanvas = new ImageViewer();
+        //pictureCanvas = new ImageViewer();
         pictureCanvas.addImage("left-right.jpg");
         pictureCanvas.addImage("left-right.jpg");
         pictureCanvas.addImage("left-right.jpg");
@@ -71,7 +71,7 @@ class MapClass {
     }
 }
 
-class ImageViewer extends Canvas {
+/*class ImageViewer extends Canvas {
 
     ArrayList<Image> image;
     String path;
@@ -94,4 +94,4 @@ class ImageViewer extends Canvas {
             g.drawImage(image.get(i),  i % 20 * 70, i / 20 * 70, 100, 100, this);
         }
     }
-}
+}*/
