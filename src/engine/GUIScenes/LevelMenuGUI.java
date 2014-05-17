@@ -265,9 +265,9 @@ public class LevelMenuGUI extends Scene
             if (unlocked){
                 SceneManager.SwitchScene("GameMenuGUI");     
             }
-            /*else{
+            else{
                 menuPressed=-1;
-            }*/
+            }
         }
         else if (menuPressed==2){
             SceneManager.SwitchScene("MainMenuGUI");                    
