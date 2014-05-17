@@ -156,8 +156,8 @@ public class XmlController {
 					userDragon.getChild("thirst").setText(Float.toString(dragon.getThirst()));
 					userDragon.getChild("bladder").setText(Float.toString(dragon.getBladder()));
 					userDragon.getChild("hunger").setText(Float.toString(dragon.getHunger()));
-					userDragon.getChild("level").setText(Float.toString(dragon.getLevel()));
-					userDragon.getChild("experience").setText(Float.toString(dragon.getExperience()));
+					userDragon.getChild("level").setText((int)dragon.getLevel()+"");
+					userDragon.getChild("experience").setText((int)dragon.getExperience()+"");
 					
 					ArrayList<Element> invList = new ArrayList<>(); 
 					for(Consumable c : dragon.getFdInventory()){
@@ -185,8 +185,12 @@ public class XmlController {
 				userDragon.addContent(new Element("thirst").setText(Float.toString(dragon.getThirst())));
 				userDragon.addContent(new Element("bladder").setText(Float.toString(dragon.getBladder())));
 				userDragon.addContent(new Element("hunger").setText(Float.toString(dragon.getHunger())));
-				userDragon.addContent(new Element("level").setText(Float.toString(dragon.getLevel())));
-				userDragon.addContent(new Element("experience").setText(Float.toString(dragon.getExperience())));
+				int x = (int) dragon.getLevel();
+				System.out.println("level " + x);
+				userDragon.addContent(new Element("level").setText(x+""));
+				System.out.println("exp " + x);
+				x = (int) dragon.getExperience();
+				userDragon.addContent(new Element("experience").setText(x+""));
 				
 				ArrayList<Element> invList = new ArrayList<>(); 
 				for(Consumable c : dragon.getFdInventory()){

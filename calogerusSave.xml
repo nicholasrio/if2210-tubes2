@@ -3,27 +3,17 @@
   <save>
     <userDragon>
       <name>Xanareth</name>
-      <password>anotherPass</password>
-      <money>500.0</money>
-      <happiness>80.0</happiness>
-      <inventory>
-        <item>potion</item>
-        <item>x-potion</item>
-        <item>first-aid</item>
-        <item>first-aid</item>
-        <item>ether</item>
-        <item>ether</item>
-        <item>ether</item>
-        <item>ether</item>
-        <item>ether</item>
-      </inventory>
-      <health>20.0</health>
-      <maxHealth>200.0</maxHealth>
-      <stamina>2.0</stamina>
-      <maxStamina>120.0</maxStamina>
+      <password>anon</password>
+      <money>100.0</money>
+      <happiness>100.0</happiness>
+      <inventory />
+      <health>100.0</health>
+      <maxHealth>100.0</maxHealth>
+      <stamina>100.0</stamina>
+      <maxStamina>100.0</maxStamina>
       <thirst>0.0</thirst>
-      <bladder>23.0</bladder>
-      <hunger>12.0</hunger>
+      <bladder>0.0</bladder>
+      <hunger>0.0</hunger>
       <level>1</level>
       <experience>0</experience>
     </userDragon>
@@ -87,6 +77,24 @@
       <hunger>3.0</hunger>
       <level>1.0</level>
       <experience>0.0</experience>
+      <inventory />
+    </userDragon>
+  </save>
+  <save>
+    <userDragon>
+      <name>saya</name>
+      <password>kamu</password>
+      <money>100.0</money>
+      <happiness>100.0</happiness>
+      <health>100.0</health>
+      <maxHealth>100.0</maxHealth>
+      <stamina>100.0</stamina>
+      <maxStamina>100.0</maxStamina>
+      <thirst>0.0</thirst>
+      <bladder>0.0</bladder>
+      <hunger>0.0</hunger>
+      <level>1</level>
+      <experience>0</experience>
       <inventory />
     </userDragon>
   </save>
