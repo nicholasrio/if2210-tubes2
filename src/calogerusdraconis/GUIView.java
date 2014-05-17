@@ -202,7 +202,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        InventoryPanel.setLayout(new java.awt.GridLayout());
+        InventoryPanel.setLayout(new java.awt.GridLayout(1, 0));
         jTabbedPane1.addTab("Inventory", InventoryPanel);
         jTabbedPane1.addTab("Store", StorePane);
 

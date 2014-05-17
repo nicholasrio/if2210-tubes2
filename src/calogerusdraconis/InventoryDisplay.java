@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -32,14 +34,19 @@ import javax.swing.JPanel;
  */
 public class InventoryDisplay extends JPanel {
 	private ImageIcon[] image;
-	public InventoryDisplay(UserDragon drg) {
-		ArrayList<Consumable> ac = drg.getFdInventory();
-		int jum = drg.getFdInventory().size();
-		if (jum!=0) {
-			image = new ImageIcon[jum];
-			for (int i = 0; i < jum; ++i) {
-				image[i] = new ImageIcon(getClass().getResource("/calogerusdraconis/" + ac.get(i).getImg()));
+	public InventoryDisplay() {
+		try {
+			UserDragon drg = new XmlController().LoadDragon("Xanareth", "anotherPass");
+			ArrayList<Consumable> ac = drg.getFdInventory();
+			int jum = drg.getFdInventory().size();
+			if (jum!=0) {
+				image = new ImageIcon[jum];
+				for (int i = 0; i < jum; ++i) {
+					image[i] = new ImageIcon(getClass().getResource("/calogerusdraconis/" + ac.get(i).getImg()));
+				}
 			}
+		} catch (Exception ex) {
+			Logger.getLogger(InventoryDisplay.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 	
