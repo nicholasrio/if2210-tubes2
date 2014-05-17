@@ -18,10 +18,14 @@ import javax.swing.JOptionPane;
 public class Pemilih {
     private String NIK;
     private String Password;
-    public Pemilih(String _NIK, String _pass){
-        NIK = _NIK;
-        Password = _pass;
+    private int NoDapil;
+    
+    public Pemilih(String nik, String password){
+        NIK = nik;
+        Password = Tools.Hashing.StringToMD5(password);
+        NoDapil = 1;
     }
+    
     /**
      * Mengecek apakah NIK dan Password Penduduk valid, termasuk apakah sudah mencoblos atau belum.
      * @return Return true jika NIK dan Password valid, serta belum mencoblos.
@@ -61,7 +65,20 @@ public class Pemilih {
     }
     
     public int GetDapil(){
-        return 1;
+        return NoDapil;
+    }
+    
+    public String GetNIK(){
+        return NIK;
+    }
+    
+    public boolean[] LoadStatusSudahMemilihAtauBelum(){
+        boolean test[] = new boolean[4];
+        test[0] = false;
+        test[1] = false;
+        test[2] = true;
+        test[3] = true;
+        return test;
     }
     
 }
