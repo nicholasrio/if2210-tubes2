@@ -70,6 +70,10 @@ public class GUIView extends javax.swing.JFrame implements View {
         ButtFight = new javax.swing.JButton();
         ButtSleep = new javax.swing.JButton();
         ButtToilet = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        TextMoney = new javax.swing.JLabel();
+        ButtSaveQuit = new javax.swing.JButton();
+        ButtSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calogerus Draconis");
@@ -277,8 +281,31 @@ public class GUIView extends javax.swing.JFrame implements View {
                         .addComponent(ButtSleep)
                         .addComponent(ButtTrain)
                         .addComponent(ButtToilet)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
+
+        jLabel2.setText("Money");
+
+        TextMoney.setText("50");
+
+        ButtSaveQuit.setText("Save and Quit");
+        ButtSaveQuit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtSaveQuitMouseClicked(evt);
+            }
+        });
+        ButtSaveQuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtSaveQuitActionPerformed(evt);
+            }
+        });
+
+        ButtSave.setText("Save");
+        ButtSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ButtSaveMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -303,9 +330,18 @@ public class GUIView extends javax.swing.JFrame implements View {
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(TextMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtSave, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(ButtSaveQuit)))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -327,6 +363,13 @@ public class GUIView extends javax.swing.JFrame implements View {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(ButtSaveQuit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ButtSave))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(TextMoney, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane1)))
@@ -361,52 +404,18 @@ public class GUIView extends javax.swing.JFrame implements View {
 		selectionUpdate = true;
     }//GEN-LAST:event_ButtFightMouseClicked
 
-	/**
-	 * Main GUI
-	 */
-	public static void guiMain() {
-		/* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-		 * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-		 */
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(GUIView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(GUIView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(GUIView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(GUIView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		}
-        //</editor-fold>
+    private void ButtSaveQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtSaveQuitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtSaveQuitActionPerformed
 
-		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new GUIView().setVisible(true);
-			}
-		});
-	}
-	
-	public void test() {
-		ProgHealth.setValue(80);
-		DragonName.setText("asdf");
-		ProgHealth.revalidate();
-		ProgHealth.repaint();
-		revalidate();
-		repaint();
-		System.out.println("tested");
-	}
-	
+    private void ButtSaveQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSaveQuitMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtSaveQuitMouseClicked
+
+    private void ButtSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSaveMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtSaveMouseClicked
+
 	@Override
 	public void showMenu() {
 		
@@ -434,6 +443,8 @@ public class GUIView extends javax.swing.JFrame implements View {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtEntertain;
     private javax.swing.JButton ButtFight;
+    private javax.swing.JButton ButtSave;
+    private javax.swing.JButton ButtSaveQuit;
     private javax.swing.JButton ButtSleep;
     private javax.swing.JButton ButtToilet;
     private javax.swing.JButton ButtTrain;
@@ -449,8 +460,10 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JProgressBar ProgThirst;
     private javax.swing.JProgressBar ProgXP;
     private javax.swing.JScrollPane StorePane;
+    private javax.swing.JLabel TextMoney;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
