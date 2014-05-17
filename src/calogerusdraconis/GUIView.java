@@ -60,8 +60,7 @@ public class GUIView extends javax.swing.JFrame implements View {
         jLabel10 = new javax.swing.JLabel();
         ProgHapppy = new javax.swing.JProgressBar();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        InventoryPanel = new javax.swing.JLabel();
+        InventoryPanel = new InventoryDisplay();
         StorePane = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
         ButtEntertain = new javax.swing.JButton();
@@ -201,13 +200,8 @@ public class GUIView extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
-
-        InventoryPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/sacred-root.png"))); // NOI18N
-        InventoryPanel.setText("Sacred Root");
-        jPanel2.add(InventoryPanel);
-
-        jTabbedPane1.addTab("Inventory", jPanel2);
+        InventoryPanel.setLayout(new java.awt.GridLayout());
+        jTabbedPane1.addTab("Inventory", InventoryPanel);
         jTabbedPane1.addTab("Store", StorePane);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Actions"));
@@ -377,7 +371,7 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JLabel DragonImg;
     private javax.swing.JLabel DragonLevel;
     private javax.swing.JLabel DragonName;
-    private javax.swing.JLabel InventoryPanel;
+    private javax.swing.JPanel InventoryPanel;
     private javax.swing.JProgressBar ProgBladder;
     private javax.swing.JProgressBar ProgHapppy;
     private javax.swing.JProgressBar ProgHealth;
@@ -395,7 +389,6 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
