@@ -55,6 +55,8 @@ public class GameMenuGUI extends Scene
                              // 3 for Left
                              // 4 for Right
     
+    public static int waitingTime;
+    
     private Map playedMap;
     
     private boolean keyUpPressed;
@@ -64,8 +66,8 @@ public class GameMenuGUI extends Scene
     private boolean keyEnterPressed;
     private boolean isFinish;
     private boolean isLevelUnlocked;
-    private boolean hitHole;
     
+    public static boolean hitHole;
     public static boolean playerCollide;
     
     private Rectangle [][]tileRect;
@@ -81,6 +83,7 @@ public class GameMenuGUI extends Scene
         //nowlevelPlay = 0;
         nowFloor = 0;
         playerdisplayState = 0;
+        waitingTime = 0;
         playedMap = new Map(GameData.dataMap.get(nowlevelPlay));
         
         keyUpPressed = false;
@@ -194,121 +197,134 @@ public class GameMenuGUI extends Scene
         else // belum finish
         {
             int output = 0;
-            if(keyUpPressed)
+            if (!hitHole)
             {
-                if (currentPlayer.getLocation().getRow() > 0)
+                if(keyUpPressed)
                 {
-                    
-                    if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()-1]
-                                                      [currentPlayer.getLocation().getCol()]))
+                    if (currentPlayer.getLocation().getRow() > 0)
                     {
-                        output = currentPlayer.move(playedMap, 1);
+
+                        if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()-1]
+                                                          [currentPlayer.getLocation().getCol()]))
+                        {
+                            output = currentPlayer.move(playedMap, 1);
+                        }
                     }
+
+                    if (playerRect.getMinY() <= initPosMapHeight)
+                            playerCollide = true;
+
+                    if (!playerCollide)
+                    {
+                        playerPosY-=playerSpeed;
+                        playerRect = new Rectangle((int)playerRect.getMinX(),(int)playerRect.getMinY()-playerSpeed,
+                                               (int)playerRect.getWidth(),(int)playerRect.getHeight());
+                    }
+                    else
+                    {
+                        playerCollide = false;
+                    }
+                    playerdisplayState ++;
+                    playerdisplayState %= nbCharSprite;
+                }
+                else if(keyDownPressed)
+                {
+                    if (currentPlayer.getLocation().getRow() < (mazeSize-1))
+                    {
+                        if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()+1]
+                                                          [currentPlayer.getLocation().getCol()]))
+                        {
+                            output = currentPlayer.move(playedMap, 2);
+                        }
+                    }
+
+                    if (playerRect.getMaxY() >= ((6*75)+initPosMapHeight))
+                            playerCollide = true;
+
+                    if (!playerCollide)
+                    {
+                        playerPosY+=playerSpeed;
+                        playerRect = new Rectangle((int)playerRect.getMinX(),(int)playerRect.getMinY()+playerSpeed,
+                                               (int)playerRect.getWidth(),(int)playerRect.getHeight());
+                    }
+                    else
+                    {
+                        playerCollide = false;
+                    }
+                    playerdisplayState++;
+                    playerdisplayState %= nbCharSprite;
+                }
+                else if(keyLeftPressed)
+                {
+                    if (currentPlayer.getLocation().getCol() > 0)
+                    {
+                        if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()]
+                                                          [currentPlayer.getLocation().getCol()-1]))
+                        {
+                            output = currentPlayer.move(playedMap, 3);
+                        }
+                    }
+
+                    if (playerRect.getMinX() <= initPosMapWidth)
+                            playerCollide = true;
+
+                    if (!playerCollide)
+                    {
+                        playerPosX-=playerSpeed;
+                        playerRect = new Rectangle((int)playerRect.getMinX()-playerSpeed,(int)playerRect.getMinY(),
+                                               (int)playerRect.getWidth(),(int)playerRect.getHeight());
+                    }
+                    else
+                    {
+                        playerCollide = false;
+                    }
+                    playerdisplayState++;
+                    playerdisplayState %= nbCharSprite;
+                }
+                else if(keyRightPressed)
+                {
+                    if (currentPlayer.getLocation().getCol() < (mazeSize-1))
+                    {
+                        if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()]
+                                                          [currentPlayer.getLocation().getCol()+1]))
+                        {
+                            output = currentPlayer.move(playedMap, 4);
+                        }
+                    }
+
+                    if (playerRect.getMaxX() >= ((6*75)+initPosMapWidth))
+                            playerCollide = true;
+
+                    if (!playerCollide)
+                    {
+                        playerPosX+=playerSpeed;
+                        playerRect = new Rectangle((int)playerRect.getMinX()+playerSpeed,(int)playerRect.getMinY(),
+                                               (int)playerRect.getWidth(),(int)playerRect.getHeight());
+                    }
+                    else
+                    {
+                        playerCollide = false;
+                    }
+                    playerdisplayState++;
+                    playerdisplayState %= nbCharSprite;
                 }
                 
-                if (playerRect.getMinY() <= initPosMapHeight)
-                        playerCollide = true;
-                
-                if (!playerCollide)
+                if (!hitHole)
                 {
-                    playerPosY-=playerSpeed;
-                    playerRect = new Rectangle((int)playerRect.getMinX(),(int)playerRect.getMinY()-playerSpeed,
-                                           (int)playerRect.getWidth(),(int)playerRect.getHeight());
+                    nowFloor = currentPlayer.getLocation().getLevel();
+                }
+            }
+            else
+            {
+                if (waitingTime > 0)
+                {
+                    waitingTime--;
                 }
                 else
                 {
-                    playerCollide = false;
+                    hitHole = false;
                 }
-                playerdisplayState ++;
-                playerdisplayState %= nbCharSprite;
-                System.out.println(currentPlayer.getLocation());
             }
-            else if(keyDownPressed)
-            {
-                if (currentPlayer.getLocation().getRow() < (mazeSize-1))
-                {
-                    if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()+1]
-                                                      [currentPlayer.getLocation().getCol()]))
-                    {
-                        output = currentPlayer.move(playedMap, 2);
-                    }
-                }
-                
-                if (playerRect.getMaxY() >= ((6*75)+initPosMapHeight))
-                        playerCollide = true;
-                
-                if (!playerCollide)
-                {
-                    playerPosY+=playerSpeed;
-                    playerRect = new Rectangle((int)playerRect.getMinX(),(int)playerRect.getMinY()+playerSpeed,
-                                           (int)playerRect.getWidth(),(int)playerRect.getHeight());
-                }
-                else
-                {
-                    playerCollide = false;
-                }
-                playerdisplayState++;
-                playerdisplayState %= nbCharSprite;
-                System.out.println(currentPlayer.getLocation());
-            }
-            else if(keyLeftPressed)
-            {
-                if (currentPlayer.getLocation().getCol() > 0)
-                {
-                    if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()]
-                                                      [currentPlayer.getLocation().getCol()-1]))
-                    {
-                        output = currentPlayer.move(playedMap, 3);
-                    }
-                }
-                
-                if (playerRect.getMinX() <= initPosMapWidth)
-                        playerCollide = true;
-                
-                if (!playerCollide)
-                {
-                    playerPosX-=playerSpeed;
-                    playerRect = new Rectangle((int)playerRect.getMinX()-playerSpeed,(int)playerRect.getMinY(),
-                                           (int)playerRect.getWidth(),(int)playerRect.getHeight());
-                }
-                else
-                {
-                    playerCollide = false;
-                }
-                playerdisplayState++;
-                playerdisplayState %= nbCharSprite;
-                System.out.println(currentPlayer.getLocation());
-            }
-            else if(keyRightPressed)
-            {
-                if (currentPlayer.getLocation().getCol() < (mazeSize-1))
-                {
-                    if (playerRect.intersects(tileRect[currentPlayer.getLocation().getRow()]
-                                                      [currentPlayer.getLocation().getCol()+1]))
-                    {
-                        output = currentPlayer.move(playedMap, 4);
-                    }
-                }
-                
-                if (playerRect.getMaxX() >= ((6*75)+initPosMapWidth))
-                        playerCollide = true;
-                
-                if (!playerCollide)
-                {
-                    playerPosX+=playerSpeed;
-                    playerRect = new Rectangle((int)playerRect.getMinX()+playerSpeed,(int)playerRect.getMinY(),
-                                           (int)playerRect.getWidth(),(int)playerRect.getHeight());
-                }
-                else
-                {
-                    playerCollide = false;
-                }
-                playerdisplayState++;
-                playerdisplayState %= nbCharSprite;
-                System.out.println(currentPlayer.getLocation());
-            }
-                        
-            nowFloor = currentPlayer.getLocation().getLevel();
             
             if(prevFloor != nowFloor)
             {
@@ -328,6 +344,8 @@ public class GameMenuGUI extends Scene
                     isLevelUnlocked = true;
                 }
             }
+            
+            System.out.println(nowFloor);
         }
     }
 
@@ -372,9 +390,9 @@ public class GameMenuGUI extends Scene
                     }
                     else if (playedMap.getElement(loc).getName().equalsIgnoreCase("hole"))
                     {
-                        int width = holeTexture.getWidth(this);
-                        int height = holeTexture.getHeight(this);
-                        g2D.drawImage(holeTexture,width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height,this);
+                        int width = pathTexture.getWidth(this);
+                        int height = pathTexture.getHeight(this);
+                        g2D.drawImage(pathTexture,width*kol+initPosMapWidth,height*bar+initPosMapHeight,width,height,this);
                     }
                     else if (playedMap.getElement(loc).getName().equalsIgnoreCase("teleporter"))
                     {
@@ -396,6 +414,14 @@ public class GameMenuGUI extends Scene
                     }
                 }
             } 
+            
+            if (hitHole)
+            {
+                Location loc = currentPlayer.getLocation();
+                int width = holeTexture.getWidth(this);
+                int height = holeTexture.getHeight(this);
+                g2D.drawImage(holeTexture,width*loc.getCol()+initPosMapWidth,height*loc.getRow()+initPosMapHeight,width,height,this);    
+            }
             
             switch (playerFaced)
             {
