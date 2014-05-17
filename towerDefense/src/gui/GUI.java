@@ -46,6 +46,12 @@ public class GUI {
         mainFrame.pack();
         mainFrame.setVisible(true);
     }
+    public void show() {
+        mainFrame.setVisible(true);
+    }
+    public void hide() {
+        mainFrame.setVisible(false);
+    }
 }
 
 class MainMenuGUI extends GUI {

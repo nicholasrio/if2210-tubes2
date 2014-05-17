@@ -199,6 +199,7 @@ public class Tower {
                 ++range;
             }
             attack = attack + (currentLevel * attackIncreaseRate);
+            currentLevel++;
             if (coolDown > 1) {
                 coolDown--;
                 coolDownCount = coolDown;

@@ -10,6 +10,7 @@
  */
 package controller;
 
+import gui.*;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.*;
@@ -41,7 +42,7 @@ public class GameController {
     /**
      * Default consructor
      */
-    public GameController() {
+    private GameController() {
         maximumLevel = 2; //buat testing dulu
     }
 
@@ -98,6 +99,7 @@ public class GameController {
         /* ?Precondition, there should not exist any tower at position (pos_x, pos_y) */
         int idx = getTowerIdx(pos_row, pos_col);
         assert (idx == -1) : "There's already tower in there";
+        System.out.println(idx + " " + pos_row + " " + pos_col + " " + gold);
         if (idx == -1 && gold >= Tower.towerCost) {
             Tower temp = new Tower(pos_row, pos_col);
             listOfTower.add(temp);
@@ -205,6 +207,10 @@ public class GameController {
         gold = gold + payBack;
     }
 
+    /** Get tower at idx */
+    public Tower getTower(int idx) {
+        return listOfTower.get(idx);
+    }
     /**
      * Upgrade tower at position (pos_x, pos_y) if player's money is sufficient,
      *
@@ -215,8 +221,10 @@ public class GameController {
         /* ?Precondition, there should exist a tower at position (pos_x, pos_y) */
         int idx = getTowerIdx(pos_row, pos_col);
         assert (idx != -1) : "Tower not found";
-        gold = gold - listOfTower.get(idx).getUpgradeCost();
-        listOfTower.get(idx).upgradeTower();
+        if (listOfTower.get(idx).getUpgradeCost() <= gold) {
+            gold = gold - listOfTower.get(idx).getUpgradeCost();
+            listOfTower.get(idx).upgradeTower();
+        }
     }
 
     /**
@@ -454,7 +462,7 @@ public class GameController {
     /**
      * Gaming mode
      */
-    public Player playGame(Player loginPlayer) {
+    public Player playGameConsole(Player loginPlayer) {
         Scanner in = new Scanner(System.in);
         int menu = 0, pos_row = 0, pos_col = 0;
         /**
@@ -471,6 +479,7 @@ public class GameController {
             switch (menu) {
                 case 1: { //create tower 
                     boolean retval = createNewTower(pos_row, pos_col);
+                    
                     break;
                 }
                 case 2: { //sell tower
@@ -533,5 +542,119 @@ public class GameController {
             loginPlayer.setHighScore(getScore());
         }
         return loginPlayer;
+    }
+    public static int menu, pos_row, pos_col;
+    public Player playGameGUI(Player loginPlayer) throws IOException {
+        gui.MapGUI mapGUI = new gui.MapGUI(getInstance());
+        
+        //int pos_row = 0, pos_col = 0;
+        menu = 0; pos_row = 0; pos_col = 0;
+        /**
+         * Game menus
+         */
+        //while (getCurrentLevel() <= getMaxLevel() && menu != 7) { //TO DO : inget diganti
+            //mapGUI.show();
+            //menu = in.nextInt();
+            //if (menu < 5) {
+                //System.out.print(">Position(row,col) ");
+                //pos_row = in.nextInt();
+                //pos_col = in.nextInt();
+            //}
+        while (menu != 7) {
+            while (menu == 0){}
+            switch (menu) {
+                case 1: { //create tower 
+                    mapGUI.hide();
+                    boolean retval = createNewTower(pos_row, pos_col);
+                    if (retval) {
+                        mapGUI.changeStatus();
+                        mapGUI.status.updateUI();
+                        mapGUI.mainFrame.repaint();
+                    }
+                    mapGUI.show();
+                    break;
+                }
+                case 2: { //sell tower
+                    mapGUI.hide();
+                    sellTower(pos_row, pos_col);
+                    mapGUI.changeStatus();
+                    mapGUI.status.updateUI();
+                    mapGUI.mainFrame.repaint();
+                    mapGUI.show();
+                    break;
+                }
+                case 3: { //upgrade tower
+                    mapGUI.hide();
+                    upgradeTower(pos_row, pos_col);
+                    mapGUI.changeStatus();
+                    mapGUI.status.updateUI();
+                    mapGUI.mainFrame.repaint();
+                    mapGUI.show();
+                    break;
+                }
+                case 5: {
+                    try {
+                        //save game
+                        saveToFile();
+                    } catch (IOException ex) {
+                        Logger.getLogger(GameController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
+                }
+                case 6: { //level started
+                    //spawnMonster();
+                    /**
+                     * game level started
+                     */
+                    while (countSeenMonster() > 0 && getLives() > 0) {
+                        showGame(false);
+                        allTowersAttack();
+                        moveAllMonster();
+                        coolDownAllTower();
+                        showMonsterLive(); //for testing purpose only
+                        if (getScore() > loginPlayer.getHighScore()) {
+                            loginPlayer.setHighScore(getScore());
+                        }
+                        //in.nextLine();
+                    }
+                    if (getLives() > 0) {
+                        System.out.println("Congratulations... you may advance to next level!");
+                        nextLevel();
+                    } else {
+                        System.out.println("You lose!");
+                    }
+                    break;
+                }
+                case 7: {
+                    mapGUI.hide();
+                    break;
+                } 
+                default: {
+                    System.out.println("Menu not found!");
+                    break;
+                }
+            }
+            menu = 0;
+        }
+        /*if (getCurrentLevel() > getMaxLevel()) {
+            System.out.println("Congratulation... you've win the game!");
+        }
+        if (getScore() > loginPlayer.getHighScore()) {
+            loginPlayer.setHighScore(getScore());
+        }*/
+        System.exit(0);
+        return loginPlayer;
+    }
+    
+    public static void main(String[] arg) {
+        GameController temp = GameController.getInstance();
+        try {
+            //model.Map.readFile();
+            Player temp_player = new Player("Willy", 0);
+            temp.newGame(temp_player);
+            temp.playGameGUI(temp_player);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

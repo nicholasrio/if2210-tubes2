@@ -81,7 +81,7 @@ public class TowerDefense {
                     case 5: {
                         if (mainMenuConsole.logged()) {
                             try {
-                                mainMenuConsole.playGame(true);
+                                mainMenuConsole.playGameConsole(false);
                             } catch (IOException ex) {
                                 Logger.getLogger(TowerDefense.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -94,7 +94,7 @@ public class TowerDefense {
                              * load game
                              */
                             try {
-                                mainMenuConsole.playGame(false);
+                                mainMenuConsole.playGameConsole(false);
                             } catch (FileNotFoundException ex) {
                                 System.out.println("Cannot load game");
                                 cannotPlay = true;

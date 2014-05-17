@@ -51,19 +51,15 @@ public class TowerDefense {
             }
             switch (pilihanMenu) {
                 case 1: {
-                    try {
-                        mainMenuConsole.login(inputMenu);
-                    } catch (NameNotExistException ex) {
-                        System.out.println(ex);
-                    }
+                    display.hide();
+                    mainMenuConsole.playGameGUI(false);
+                    display.show();
                     break;
                 }
                 case 2: {
-                    try {
-                        mainMenuConsole.newPlayer(inputMenu);
-                    } catch (Exception ex) {
-                        System.out.println(ex);
-                    }
+                    display.hide();
+                    mainMenuConsole.playGameGUI(true);
+                    display.show();
                     break;
                 }
                 case 3: {

@@ -1,4 +1,6 @@
+package gui;
 
+import controller.GameController;
 import java.awt.*;
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -8,24 +10,28 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import model.Map;
+import model.Tower;
 
-class MapGUI {
+public class MapGUI {
 
+    public GameController GController;
     public JFrame mainFrame;
     private JPanel optionPanel;
-    private JPanel status;
+    public JPanel status;
     public JPanel option;
     public int state;
     private ImageViewer pictureCanvas;
 
-    public MapGUI() throws IOException {
-        mainFrame = new JFrame("Tower Defense v1.0");
+    public MapGUI(GameController _GController) throws IOException {
+        GController = _GController;
+        mainFrame = new JFrame("Tower Defense");
         mainFrame.setLayout(new BorderLayout());
         mainFrame.setSize(1200, 700);
 
@@ -35,17 +41,18 @@ class MapGUI {
         optionPanel.setBounds(100, 100, 200, 360);
 
         status = new JPanel();
-        status.setPreferredSize(new Dimension(100, 250));
         Border compound;
         Border raisedbevel = BorderFactory.createRaisedBevelBorder();
         Border loweredbevel = BorderFactory.createLoweredBevelBorder();
         compound = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel);
         status.setBorder(compound);
-
+        status.setLayout(new BoxLayout(status, BoxLayout.PAGE_AXIS));
+        status.setPreferredSize(new Dimension(100, 250));
+        changeStatus();
         option = new JPanel();
         option.setLayout(new BoxLayout(option, BoxLayout.PAGE_AXIS));
-        setOption(0);
-        
+        setOption(0,-1);
+
         pictureCanvas = new ImageViewer(this);
         pictureCanvas.addImage("0.jpg"); //0
         pictureCanvas.addImage("bottom-left.jpg"); //1
@@ -54,6 +61,7 @@ class MapGUI {
         pictureCanvas.addImage("up-down.jpg"); //4 
         pictureCanvas.addImage("up-left.jpg"); //5
         pictureCanvas.addImage("up-right.jpg"); //6
+        pictureCanvas.addImage("tower.jpg");
 
         pictureCanvas.setBounds(0, 0, 940, 360);
         //pictureCanvas.setIgnoreRepaint(true);
@@ -77,26 +85,108 @@ class MapGUI {
         mainFrame.setResizable(false);
         mainFrame.setVisible(true);
     }
-
-    public static void main(String[] args) throws IOException {
-        MapGUI map = new MapGUI();
-    }
     
-    public void setOption(int n) {
+    public void changeStatus() {
+        assert(status!=null);
+        status.removeAll(); 
+        status.add(new JLabel("Game Status   "));
+        status.add(new JLabel("Player Name : "+GController.getPlayer().getName()));
+        status.add(new JLabel("Current Level : "+GController.getCurrentLevel()));
+        status.add(new JLabel("Score : "+GController.getScore()));
+        status.add(new JLabel("Gold : "+GController.getGold()));
+        status.add(new JLabel("Lives : "+GController.getLives()));
+        JButton quitButton = new JButton("Quit Game");
+        quitButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameController.menu = 7;
+            }
+
+        });
+        JButton saveButton = new JButton("Save Game");
+        saveButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameController.menu = 5;
+            }
+
+        });
+        JButton startButton = new JButton("Start Level");
+        startButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameController.menu = 6;
+            }
+
+        });
+        status.add(quitButton);
+        status.add(saveButton);
+        status.add(startButton);
+    }
+
+    public void show() {
+        mainFrame.setVisible(true);
+    }
+
+    public void hide() {
+        mainFrame.setVisible(false);
+    }
+
+    public void setOption(int n, int idx) {
+        final int alpha = idx;
+        JButton jButton1, jButton2;
+        option.removeAll();
         switch (n) {
             case 0:
-                option.removeAll();
-                option.add(new JLabel("This is Sparta"));
                 break;
             case 1:
-                option.removeAll();
-                option.add(new JLabel("Tower Cost 9999"));
-                option.add(new JButton("Build Tower"));
+                option.add(new JLabel("Tower Cost " + Tower.towerCost));
+                jButton1 = new JButton("Build Tower");
+                jButton1.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GameController.menu = 1;
+                        setOption(0, -1);
+                    }
+
+                });
+                option.add(jButton1);
                 break;
             case 2:
+                jButton2 = new JButton("Sell Tower");
+                jButton2.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GameController.menu = 2;
+                        setOption(0, -1);
+                    }
+
+                });
+                Tower tt = GController.getTower(idx);
+                option.add(new JLabel("Level " + tt.getCurrentLevel()));
+                option.add(new JLabel("Upgrade Cost " + tt.getUpgradeCost()));
+                option.add(new JLabel("Attack " + tt.getAttack()));
+                option.add(new JLabel("Range " + tt.getRange()));
+                jButton1 = new JButton("Upgrade Tower");
+                jButton1.addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GameController.menu = 3;
+                        setOption(2, alpha);
+                    }
+
+                });
+                option.add(jButton1);
+                option.add(jButton2);
                 break;
             default:
-                assert(false) : "Option can't be other than 0, 1, or 2";
+                assert (false) : "Option can't be other than 0, 1, or 2";
         }
         option.updateUI();
     }
@@ -107,9 +197,9 @@ class ImageViewer extends Canvas implements MouseListener {
     private ArrayList<Image> image;
     private String path;
     private MapGUI reference;
-    public final int SIZE = 47;
-    public final int ROW = 15;
-    public final int COL = 20;
+    public static final int SIZE = 47;
+    public static final int ROW = 15;
+    public static final int COL = 20;
 
     public ImageViewer(MapGUI alpha) {
         addMouseListener(this);
@@ -117,7 +207,7 @@ class ImageViewer extends Canvas implements MouseListener {
         image = new ArrayList<>();
         path = "img/";
     }
-    
+
     public void addImage(String str) throws FileNotFoundException, IOException {
         String fullpath = path + str;
         Image mini = ImageIO.read(new FileInputStream(fullpath));
@@ -127,26 +217,21 @@ class ImageViewer extends Canvas implements MouseListener {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-
-        Map peta = new Map();
+        /*Map Map = new Map();
         try {
-            peta.readFile();
+            Map.readFile();
         } catch (IOException ex) {
 
             System.out.println("File not found");
-        }
+        }*/
 
         for (int i = 0; i < COL; i++) {
-            System.out.println("loop i");
             for (int j = 0; j < ROW; j++) {
-                System.out.println("loop j");
-                if (peta.Peta[j][i] == 256) {
-                    System.out.println("rumput");
+                if (Map.Peta[j][i] == 256) {
                     g.drawImage(image.get(0), i * SIZE, j * SIZE, SIZE, SIZE, this);
                 } else {
-                    System.out.println("masuk ke else");
 
-                    int last4bit = peta.Peta[j][i] >> 4;
+                    int last4bit = Map.Peta[j][i] >> 4;
                     switch (last4bit) {
                         case 5: {
                             g.drawImage(image.get(3), i * SIZE, j * SIZE, SIZE, SIZE, this);
@@ -180,17 +265,29 @@ class ImageViewer extends Canvas implements MouseListener {
                 //g.drawImage(image.get(i%5), i % 20 * 50, i / 20 * 50, 50, 50, this);
             }
         }
+        
+        List<Tower> lot = reference.GController.getListOfTower();
+        for (Tower tt: lot) {
+            int i = tt.getPositionCol();
+            int j = tt.getPositionRow();
+            g.drawImage(image.get(7), i * SIZE, j * SIZE, SIZE, SIZE, this); 
+        }
     }
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        System.out.println("mouseClicked");
         int row = me.getY() / SIZE;
         int col = me.getX() / SIZE;
+        GameController.pos_row = row;
+        GameController.pos_col = col;
         if (Map.Peta[row][col] == 256) {
-            reference.setOption(1);
+            int idx = reference.GController.getTowerIdx(row, col);
+            if (idx==-1) {
+                reference.setOption(1,idx);
+            }
+            else reference.setOption(2,idx);
         } else {
-            reference.setOption(0);
+            reference.setOption(0,-1);
         }
         //reference.option.setVisible(false);
         reference.option.repaint();

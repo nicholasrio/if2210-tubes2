@@ -83,14 +83,30 @@ public class MainMenuConsole {
     /**
      * Playing tower defense game
      */
-    public void playGame(boolean newGame) throws FileNotFoundException, IOException {
+    public void playGameConsole(boolean newGame) throws FileNotFoundException, IOException {
         GameController gameControl = GameController.getInstance();
         if (newGame == false) {
             gameControl.loadGame(loginPlayer);
         } else {
             gameControl.newGame(loginPlayer);
         }
-        loginPlayer = gameControl.playGame(loginPlayer);
+        loginPlayer = gameControl.playGameConsole(loginPlayer);
+        int idx = searchPlayer(loginPlayer.getName());
+        players.get(idx).setHighScore(loginPlayer.getHighScore());
+    }
+    
+    /*
+    * Playing tower defense game with GIU
+    */
+    public void playGameGUI(boolean newGame) throws FileNotFoundException, IOException {
+        GameController gameControl = GameController.getInstance();
+        System.out.println("Cabo ");
+        if (newGame == false) {
+            gameControl.loadGame(loginPlayer);
+        } else {
+            gameControl.newGame(loginPlayer);
+        }
+        loginPlayer = gameControl.playGameGUI(loginPlayer);
         int idx = searchPlayer(loginPlayer.getName());
         players.get(idx).setHighScore(loginPlayer.getHighScore());
     }
