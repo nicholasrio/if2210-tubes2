@@ -18,25 +18,39 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
-class MapClass {
+class MapGUI {
 
     private JFrame mainFrame;
-    private JPanel titleBlock;
+    private JPanel optionPanel;
+    private JPanel status;
+    private MyPanel option;
     private ImageViewer pictureCanvas;
 
-    public MapClass() throws IOException {
+    public MapGUI() throws IOException {
         mainFrame = new JFrame("peta peta peta");
         mainFrame.setLayout(new BorderLayout());
-        mainFrame.setSize(946, 700);
-        //pictureBlock = new ImageViewer(/*fixed*//*new BoxLayout(pictureBlock, BoxLayout.LINE_AXIS)*/);
+        mainFrame.setSize(1200, 700);
 
-//        titleBlock = new JPanel();
-//        titleBlock.setBackground(Color.blue);
-//        titleBlock.setSize(300, 300);
-
+        optionPanel = new JPanel();
+        optionPanel.setLayout(new BorderLayout());
+        optionPanel.setBackground(Color.BLUE);
+        optionPanel.setBounds(100, 100, 200, 360);
+        
+        status = new JPanel();
+        status.setPreferredSize(new Dimension(100,250));
+        Border compound;
+        Border raisedbevel = BorderFactory.createRaisedBevelBorder();  
+        Border loweredbevel = BorderFactory.createLoweredBevelBorder();
+        compound = BorderFactory.createCompoundBorder(raisedbevel, loweredbevel);
+        status.setBorder(compound);
+        
+        
+        option = new MyPanel();
+        option.setBorder(compound);
+        
         pictureCanvas = new ImageViewer();
-//        mainFrame.setLayout(new FlowLayout());
         pictureCanvas.addImage("0.jpg"); //0
         pictureCanvas.addImage("bottom-left.jpg"); //1
         pictureCanvas.addImage("bottom-right.jpg"); //2
@@ -45,12 +59,15 @@ class MapClass {
         pictureCanvas.addImage("up-left.jpg"); //5
         pictureCanvas.addImage("up-right.jpg"); //6
         
-        pictureCanvas.setBounds(0, 0, 1003, 360);
+        pictureCanvas.setBounds(0, 0, 940, 360);
         //pictureCanvas.setIgnoreRepaint(true);
 
         //mainFrame.add(titleBlock, BorderLayout.PAGE_START);
         mainFrame.add(pictureCanvas, BorderLayout.WEST);
-
+        mainFrame.add(optionPanel, BorderLayout.CENTER);
+        optionPanel.add(status,BorderLayout.NORTH);
+        optionPanel.add(option, BorderLayout.CENTER);
+        
         mainFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent) {
                 System.exit(0);
@@ -59,17 +76,13 @@ class MapClass {
         //pictureBlock.setMaximumSize(new Dimension(Integer.valueOf(100), Integer.valueOf(100)));
 
         pictureCanvas.setBackground(Color.red);
-
         
-        
-        
-//        mainFrame.pack();
         mainFrame.setResizable(false);
         mainFrame.setVisible(true);
     }
 
     public static void main(String[] args) throws IOException {
-        MapClass map = new MapClass();
+        MapGUI map = new MapGUI();
     }
 }
 
@@ -78,7 +91,9 @@ class ImageViewer extends Canvas {
     ArrayList<Image> image;
     String path;
     public final int SIZE = 47;
-    
+    public final int ROW = 15;
+    public final int COL = 20;
+
     public ImageViewer() {
         image = new ArrayList<>();
         path = "src/img/";
@@ -99,12 +114,10 @@ class ImageViewer extends Canvas {
         }catch (IOException ex){
             System.out.println("File not found");
         }
-        
-        
-        
-        for (int i=0; i<20; i++) {
+            
+        for (int i=0; i<COL; i++) {
             System.out.println("loop i");
-            for (int j=0; j<15; j++){
+            for (int j=0; j<ROW; j++){
                 System.out.println("loop j");
                 if(peta.Peta[j][i] == 256 ){
                     System.out.println("rumput");
@@ -135,4 +148,9 @@ class ImageViewer extends Canvas {
             }
         }
     }
+}
+
+class MyPanel extends JPanel{
+    
+    
 }
