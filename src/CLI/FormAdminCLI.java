@@ -15,6 +15,14 @@ import java.util.Scanner;
 public class FormAdminCLI {
     private final Scanner in;
     public FormAdminCLI(){
+        System.out.println("=========================");
+        System.out.println("=========================");
+        System.out.println("=       Form Admin      =");
+        System.out.println("=========================\n\n\n");
+        System.out.println("Apa yang ingin Anda lakukan?\n");
+        System.out.println("1. Menambahkan Daerah Pemilihan\n");
+        System.out.println("2. Menambahkan Calon Legislatif\n");
+        System.out.println("Silakan pilih (1/2) >");
         in = new Scanner(System.in);
     }
     
