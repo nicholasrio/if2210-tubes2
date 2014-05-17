@@ -135,7 +135,7 @@ public class Main {
 										System.out.println("Pilihan salah!");
 									} else if (pil8!=pilExit) {
 										try {
-											draco.addConsumable(Store.getInstance().buy(pil8));
+											draco.addConsumable(Store.getInstance().buy(pil8-1));
 											System.out.println("Anda berhasil membeli barang dengan nomor " + pil8);
 										} catch (Exception ex) {
 											System.out.println(ex.getMessage());

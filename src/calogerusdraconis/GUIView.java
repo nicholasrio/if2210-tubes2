@@ -211,6 +211,11 @@ public class GUIView extends javax.swing.JFrame implements View {
         InventoryPane.setMinimumSize(new java.awt.Dimension(0, 0));
 
         InventoryPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        InventoryPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                InventoryPanelMouseClicked(evt);
+            }
+        });
         InventoryPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 InventoryPanelMouseMoved(evt);
@@ -461,15 +466,22 @@ public class GUIView extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_ButtSaveMouseClicked
 
     private void InventoryPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseMoved
-        // TODO add your handling code here:
-		if (evt.getX() > 64 || evt.getY() < 10) InventoryDisplay.pilihan = null;
+		if (evt.getX() > 64 || evt.getY() < 10) InventoryDisplay.pilihan = null; //tipe data Integer
 		else InventoryDisplay.pilihan = (evt.getY()-10)/64;
     }//GEN-LAST:event_InventoryPanelMouseMoved
 
     private void StorePanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StorePanelMouseMoved
-		if (evt.getX() > 64 || evt.getY() < 10) StoreDisplay.pilihan = null;
+		if (evt.getX() > 64 || evt.getY() < 10) StoreDisplay.pilihan = null; //tipe data Integer
 		else StoreDisplay.pilihan = (evt.getY()-10)/64;
     }//GEN-LAST:event_StorePanelMouseMoved
+
+    private void InventoryPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseClicked
+        // TODO add your handling code here:
+		if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+			System.out.println(evt.getX() + " " + evt.getY());
+		}
+		/*algoritma penentuan barang apa, lihat di atas. dia atas itu indexnya mulai dari 0*/
+    }//GEN-LAST:event_InventoryPanelMouseClicked
 
 	@Override
 	public void showMenu() {
