@@ -4,10 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import static java.lang.Thread.sleep; 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -61,7 +57,6 @@ public class UserDragon extends Dragon {
 						//System.out.println("jalan ");
                         sleep(5000);
                         modifyAttribute();
-						//TODO: notify GUI?
                     }
                 } catch (InterruptedException ex) {
                     System.out.println("interrupted");
@@ -123,7 +118,7 @@ public class UserDragon extends Dragon {
 	 * Menambah parameter Bladder pada Dragon
 	 * @param val jumlah bladder point yang akan ditambah
 	 */
-    private void tambahBladder (int val) {
+    private void tambahBladder (float val) {
         synchronized(this) {
             if (bladder + val < 0) {
                 bladder = 0;
@@ -330,6 +325,8 @@ public class UserDragon extends Dragon {
         if (hunger > 75){ // lapar banget
             tambahHappiness(-5);
             tambahHealth (-10 * level);
+			tambahHunger (2);
+			tambahThirst (2);
         } else if (hunger > 50){
             tambahHappiness(-3);
             tambahHealth (-5 * level);
@@ -343,24 +340,24 @@ public class UserDragon extends Dragon {
             tambahHealth (-5 * level);
         }
 
-		if (hunger < 30){ // kalau baru makan
-            tambahBladder(4);
-        } else if (hunger < 60){
-            tambahBladder(3);
-        } else if (hunger < 90){
-            tambahBladder(2);
+		if (hunger < 20){ // kalau baru makan
+            tambahBladder(2.0f);
+        } else if (hunger < 40){
+            tambahBladder(1.6f);
+        } else if (hunger < 80){
+            tambahBladder(0.8f);
         } else {
-            tambahBladder(1);
+            tambahBladder(0.4f);
         }
 
-        if (thirst < 30){ // kalau baru makan
-            tambahBladder(4);
-        } else if (thirst < 60){
-            tambahBladder(3);
-        } else if (thirst < 90){
-            tambahBladder(2);
+        if (thirst < 20){ // kalau baru makan
+            tambahBladder(2.0f);
+        } else if (thirst < 40){
+            tambahBladder(1.6f);
+        } else if (thirst < 80){
+            tambahBladder(0.8f);
         } else {
-            tambahBladder(1);
+            tambahBladder(0.4f);
         }
 		
         if (bladder > 75){ // kebelet banget
@@ -378,12 +375,12 @@ public class UserDragon extends Dragon {
         }
 		
 		//tambah attribute
-        tambahHealth(30 * level);
-        tambahStamina(1);
-        tambahMoney(1);
-        tambahHappiness(-1);
-        tambahThirst(1);
-        tambahHunger(1);
+        tambahHealth(util.randomInt(5,10) * level);
+        tambahStamina(util.randomInt(5,10)/10);
+        tambahMoney(util.randomInt(1,5));
+        tambahHappiness(-util.randomInt(5,10)/10);
+        tambahThirst(util.randomInt(5,20)/10);
+        tambahHunger(util.randomInt(5,20)/10);
     }
 	
 	/**
@@ -391,35 +388,13 @@ public class UserDragon extends Dragon {
 	 * @return Dragon Enemy hasil generate
 	 */
 	public Dragon generateEnemy() {
-		Random rand = new Random();
-		
-		double x = rand.nextGaussian();
-		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
-        float ranHealth = (float) Math.ceil(x*(0.2*health)+health);
-		
-		x = rand.nextGaussian();
-		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
-        float ranStamina = (float) Math.ceil(x*(0.2*stamina)+stamina);
-        
-		x = rand.nextGaussian();
-		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
-		int ranExperience = (int) Math.ceil(x*(0.2*experience)+experience);
-        
-		x = rand.nextGaussian();
-		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
-		int ranLevel = (int) Math.ceil(x*(0.2*level)+level);
-        
-		x = rand.nextGaussian();
-		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
-		float ranThirst = (float) Math.ceil(x*(0.2*thirst)+thirst);
-        
-		x = rand.nextGaussian();
-		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
-		float ranBladder = (float) Math.ceil(x*(0.2*bladder)+bladder);
-        
-		x = rand.nextGaussian();
-		if (x > 1.0) x = 1.0; else if (x < -1.0) x = -1.0;
-		float ranHunger = (float) Math.ceil(x*(0.2*hunger)+hunger);
+        float ranHealth = util.gaussBasedOn(health);
+        float ranStamina = util.gaussBasedOn(stamina);
+		int ranExperience = (int) util.gaussBasedOn(experience);
+		int ranLevel = (int) util.gaussBasedOn(level);
+		float ranThirst = util.gaussBasedOn(thirst);
+		float ranBladder = util.gaussBasedOn(bladder);
+		float ranHunger = util.gaussBasedOn(hunger);
         
 		Dragon withWho = new Dragon(getRandomName(), ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranExperience);
 		
@@ -442,22 +417,12 @@ public class UserDragon extends Dragon {
 			int len = Integer.parseInt(rootNode.getChildren("length").get(0).getText());
 			
 			//get list of root/save nodes
-			retval = rootNode.getChildren("name").get(randomInt(0,len-1)).getText();
+			retval = rootNode.getChildren("name").get(util.randomInt(0,len-1)).getText();
 			
 		} catch (IOException | JDOMException io) {
 			io.printStackTrace();
 		}
 		return retval;
-	}
-	
-	/**
-	 * Mengembalikan random integer pada range input
-	 * @param min  batas minimal hasil random
-	 * @param max  batas maksimal hasil random
-	 * @return	hasil random integer
-	 */
-	public static int randomInt(int min, int max) {
-		return new Random().nextInt((max - min) + 1) + min;
 	}
 	
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -475,17 +440,20 @@ public class UserDragon extends Dragon {
         Event e = new Event();
         if (sum1 > sum2){ // we win
             e.setType("WinFight");
-            e.setMessage("Congrats!You Win.");
+            e.setMessage("Congrats! You Win.");
+			health -= 10 * level;
             experience += 200 + 30 * level;
             tambahMoney((float)(100 + (Math.random() * (500 - 100))));
         } else if (sum1 == sum2){ // draw
             experience += 25 * level;
 			e.setType("DrawFight");
-			e.setMessage("This fight is Draw.");
+			e.setMessage("This fight is a Draw.");
+			health -= 20 * level;
         } else { // we lose
 			experience += 20 * level;
+			health -= 30 * level;
 			e.setType("LoseFight");
-	        e.setMessage("Sorry!You Lose.");
+	        e.setMessage("Sorry! You Lose.");
 		}
 		tambahStamina(-20 * level);
         // jika naik level
@@ -516,7 +484,7 @@ public class UserDragon extends Dragon {
 		} catch (InterruptedException e) {
 			
 		}
-        return new Event("Proses Selesai","Train Selesai");
+        return new Event("Proses Selesai","The dragon is now Trained");
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -528,7 +496,7 @@ public class UserDragon extends Dragon {
 	 */
     public Event entertain () {
 		try {
-			while (happiness < 100) {
+			for (int i = 0; i<10; i++) {
 				System.out.print(happiness+" ");
 				sleep(1000);
 				tambahHappiness(4);
@@ -536,7 +504,7 @@ public class UserDragon extends Dragon {
 		} catch(InterruptedException e) {
 			
 		}
-		return new Event("Proses Selesai","Entertain Selesai");
+		return new Event("Proses Selesai","The dragon is now more entertained");
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -551,13 +519,13 @@ public class UserDragon extends Dragon {
 			while (stamina < maxStamina || health < maxHealth) {
 				sleep(1000);
 				System.out.println(stamina + " " + health);
-				if (stamina < maxStamina) tambahStamina(1);
-				if (health < maxHealth) tambahHealth(4*level);
+				if (stamina < maxStamina) tambahStamina(5);
+				if (health < maxHealth) tambahHealth(2*level);
 			}
 		} catch(InterruptedException e) {
 			
 		}
-		return new Event("Proses Selesai","Rest Selesai");
+		return new Event("Proses Selesai","The dragon feels well-rested");
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
@@ -572,11 +540,11 @@ public class UserDragon extends Dragon {
 			while (bladder > 0) {
 				System.out.print(bladder + " ");
 				sleep(1000);
-				tambahBladder(-2);
+				tambahBladder(-10);
 			}
 		} catch(InterruptedException e) {
 			
 		}
-		return new Event("Proses Selesai","toToilet Selesai");
+		return new Event("Proses Selesai","The dragon's bladder is emptied.");
     }
 }

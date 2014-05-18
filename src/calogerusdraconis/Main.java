@@ -16,14 +16,13 @@
  */
 package calogerusdraconis;
 
-import java.util.ArrayList;
+import static java.lang.Thread.sleep;
 import java.util.Scanner;
 
 public class Main {
 
 	public static UserDragon draco;
 	
-	private final static Object SelectionNotifier = new Object();
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -185,9 +184,33 @@ public class Main {
 			@Override
 			public void run() {
 				view.setVisible(true);
+				/*while (true) {
+					try {
+						sleep(300);
+					} catch (InterruptedException ex) {
+						Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+					}
+					view.UpdateScreen(draco);
+				}*/
 			}
 		};
 		java.awt.EventQueue.invokeLater(thread);
+		
+		Thread updater;
+		updater = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while(true) {
+                        sleep(100);
+                        view.UpdateScreen(draco);
+                    }
+                } catch (InterruptedException ex) {
+                    System.out.println("interrupted");
+                }
+            }
+        };
+        updater.start();
 		
 		/*try {
 			sleep(5000);

@@ -19,6 +19,7 @@ package calogerusdraconis;
 
 import java.awt.Dimension; 
 import static java.lang.Thread.sleep;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 /**
@@ -27,9 +28,10 @@ import javax.swing.JScrollPane;
  */
 public class GUIView extends javax.swing.JFrame implements View {
 	
-	/**
-	 * Creates new form GuiVIew
-	 */
+	private boolean selectionUpdate = false;
+	private int selection = 0;
+	private final Object SelectionNotifier = new Object();
+	
 	public GUIView() {
 		initComponents();
 	}
@@ -414,6 +416,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 			selection = 1;
 			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
+			disableButts();
 		}
     }//GEN-LAST:event_ButtEntertainMouseClicked
 
@@ -422,6 +425,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 			selection = 2;
 			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
+			disableButts();
 		}
     }//GEN-LAST:event_ButtTrainMouseClicked
 
@@ -430,6 +434,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 			selection = 3;
 			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
+			disableButts();
 		}
     }//GEN-LAST:event_ButtSleepMouseClicked
 
@@ -438,6 +443,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 			selection = 4;
 			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
+			disableButts();
 		}
     }//GEN-LAST:event_ButtToiletMouseClicked
 
@@ -446,6 +452,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 			selection = 5;
 			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
+			disableButts();
 		}
     }//GEN-LAST:event_ButtFightMouseClicked
 
@@ -454,6 +461,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 			selection = -1;
 			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
+			disableButts();
 		}
     }//GEN-LAST:event_ButtSaveQuitMouseClicked
 
@@ -462,6 +470,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 			selection = 6;
 			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
+			disableButts();
 		}
     }//GEN-LAST:event_ButtSaveMouseClicked
 
@@ -521,6 +530,9 @@ public class GUIView extends javax.swing.JFrame implements View {
 		ProgBladder.setValue(bladder);
 		ProgBladder.setString(""+bladder+"/100");
 		
+		DragonName.setText(drg.getName());
+		DragonImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/neutral.png")));
+		
 		TextMoney.setText("Money: " + money);
 		DragonLevel.setText("Level: " + level);
 		
@@ -547,7 +559,48 @@ public class GUIView extends javax.swing.JFrame implements View {
 	
 	@Override
     public void UpdateScreen (UserDragon drg, Event evnt) {
+		enableButts();
+		JOptionPane.showMessageDialog(null, evnt.getMessage());
     }
+	
+	private void disableButts() {
+		ButtEntertain.setEnabled(false);
+		ButtFight.setEnabled(false);
+		ButtSave.setEnabled(false);
+		ButtSaveQuit.setEnabled(false);
+		ButtSleep.setEnabled(false);
+		ButtToilet.setEnabled(false);
+		ButtTrain.setEnabled(false);
+	}
+	
+	private void enableButts() {
+		ButtEntertain.setEnabled(true);
+		ButtFight.setEnabled(true);
+		ButtSave.setEnabled(true);
+		ButtSaveQuit.setEnabled(true);
+		ButtSleep.setEnabled(true);
+		ButtToilet.setEnabled(true);
+		ButtTrain.setEnabled(true);
+	}
+	
+	public int waitForSelection(){
+		try {
+			synchronized(SelectionNotifier) {
+				while (!selectionUpdate) {
+					SelectionNotifier.wait();
+				}
+			}
+		} catch (InterruptedException ex) {
+			System.out.println("interrupted");
+		}
+		selectionUpdate = false;
+		return selection;
+	}
+	
+	@Override
+	public void seeFoodDirectory(UserDragon drg) {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtEntertain;
@@ -584,26 +637,4 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 
-	private boolean selectionUpdate = false;
-	private int selection = 0;
-	private final Object SelectionNotifier = new Object();
-	
-	public int waitForSelection(){
-		try {
-			synchronized(SelectionNotifier) {
-				while (!selectionUpdate) {
-					SelectionNotifier.wait();
-				}
-			}
-		} catch (InterruptedException ex) {
-			System.out.println("interrupted");
-		}
-		selectionUpdate = false;
-		return selection;
-	}
-	
-	@Override
-	public void seeFoodDirectory(UserDragon drg) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
 }

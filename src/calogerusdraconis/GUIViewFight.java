@@ -17,7 +17,6 @@
 
 package calogerusdraconis;
 
-import java.util.Random;
 
 /**
  *
@@ -25,7 +24,6 @@ import java.util.Random;
  */
 public class GUIViewFight extends javax.swing.JFrame {
 	
-	private boolean selectionUpdate = false;
 	private boolean selection = false;
 	private final Object SelectionNotifier = new Object();
 	
@@ -42,7 +40,7 @@ public class GUIViewFight extends javax.swing.JFrame {
 		enemy = _enemy;
 		initComponents();
 		
-		enemyDragon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/enemy" + randomInt(1,9) + ".png")));
+		enemyDragon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/enemy" + util.randomInt(1,9) + ".png")));
 		enemyDragon.setText(enemy.name);
 		// TODO: set user dragon's image
 		userDragon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/bladder- r.png")));
@@ -84,10 +82,6 @@ public class GUIViewFight extends javax.swing.JFrame {
 		return (int) ((x-y)/((x+y)/2)*49)+50;
 	}
 	
-	public static int randomInt(int min, int max) {
-		return new Random().nextInt((max - min) + 1) + min;
-	}
-
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always
@@ -332,7 +326,6 @@ public class GUIViewFight extends javax.swing.JFrame {
     private void ButtFightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtFightMouseClicked
         synchronized(SelectionNotifier) {
 			selection = true;
-			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
 		}
     }//GEN-LAST:event_ButtFightMouseClicked
@@ -340,7 +333,6 @@ public class GUIViewFight extends javax.swing.JFrame {
     private void ButtEscapeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtEscapeMouseClicked
         synchronized(SelectionNotifier) {
 			selection = false;
-			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
 		}
     }//GEN-LAST:event_ButtEscapeMouseClicked
@@ -356,31 +348,19 @@ public class GUIViewFight extends javax.swing.JFrame {
 			}
 		};
 		java.awt.EventQueue.invokeLater(thread);
-		
-		try {
-			synchronized(SelectionNotifier) {
-				while (!selectionUpdate) {
-					SelectionNotifier.wait();
-				}
-			}
-		} catch (InterruptedException ex) {
-			System.out.println("interrupted");
-		}
-		dispose();
 	}
 
 	
 	public boolean waitForSelection(){
 		try {
 			synchronized(SelectionNotifier) {
-				while (!selectionUpdate) {
-					SelectionNotifier.wait();
-				}
+				SelectionNotifier.wait();
+				
 			}
 		} catch (InterruptedException ex) {
 			System.out.println("interrupted");
 		}
-		selectionUpdate = false;
+		dispose();
 		return selection;
 	}
 	
