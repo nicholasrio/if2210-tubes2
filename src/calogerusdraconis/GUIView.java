@@ -87,6 +87,8 @@ public class GUIView extends javax.swing.JFrame implements View {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calogerus Draconis");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(809, 490));
+        setMinimumSize(new java.awt.Dimension(809, 490));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Your Dragon"));
 
@@ -456,7 +458,6 @@ public class GUIView extends javax.swing.JFrame implements View {
 			selection = -1;
 			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
-			disableButts();
 		}
     }//GEN-LAST:event_ButtSaveQuitMouseClicked
 
@@ -465,7 +466,6 @@ public class GUIView extends javax.swing.JFrame implements View {
 			selection = 6;
 			selectionUpdate = true;
 			SelectionNotifier.notifyAll();
-			disableButts();
 		}
     }//GEN-LAST:event_ButtSaveMouseClicked
 
