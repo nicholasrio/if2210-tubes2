@@ -6,7 +6,11 @@
 
 package Main;
 
+import Group.Group;
+import Group.GroupJFrame;
 import Video.VideoSwing;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,6 +41,11 @@ public class MenuLoginAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(732, 413));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jButton1.setText("Tambah Video");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -46,6 +55,11 @@ public class MenuLoginAdmin extends javax.swing.JFrame {
         });
 
         jButton2.setText("Buat Kelompok");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +109,23 @@ public class MenuLoginAdmin extends javax.swing.JFrame {
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        final int WIDTH = screenSize.width;
+        final int HEIGHT = screenSize.height;
+        int lebar = (int) this.getSize().getWidth() / 2;
+        int tinggi = (int) this.getSize().getHeight() / 2;
+        // Setup the frame accordingly
+        // This is assuming you are extending the JFrame //class
+        this.setLocation((WIDTH/2) - lebar, (HEIGHT/2) - tinggi);
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new GroupJFrame().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
