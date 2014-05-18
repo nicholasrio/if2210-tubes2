@@ -6,20 +6,20 @@ package file;
  */
 public class PDF extends MyFile {
 
-	public boolean isPDF() {
-		return true;
-	}
+    public boolean isPDF() {
+        return true;
+    }
 
-	public void setEkstensi(String _ekstensi) {
+    public void setEkstensi(String _ekstensi) {
 
-	}
+    }
 
-	public void toPDF() {
+    public void toPDF() {
 
-	}
+    }
 
-	public void print() {
-		System.out.println("PDF");
-	}
+    public void print() {
+        System.out.println("PDF");
+    }
 
 }
