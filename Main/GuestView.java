@@ -9,6 +9,8 @@ package Main;
 
 import Video.VideoController;
 import VideoPlayer.YoutubeMediaPlayer;
+import Xml.StaxWriter;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -17,6 +19,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 
 /**
  *
@@ -369,6 +373,7 @@ public class GuestView extends javax.swing.JFrame {
         if(JOptionPane.showConfirmDialog(this, "Are You Sure Want to Logout?", "Confirmation", 0)==0){
             new KataMa().setVisible(true);
             this.setVisible(false);
+            NativeInterface.close();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
