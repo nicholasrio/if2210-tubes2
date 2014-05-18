@@ -263,10 +263,10 @@ public class FormDapil extends javax.swing.JFrame {
             return;
         }
 
-        String nodapil = (String) model.getValueAt(i, 0);
+        String nodapil = "" + model.getValueAt(i, 0);
         NoDapil.setText(nodapil);
 
-        String kotkab = (String) model.getValueAt(i, 1);
+        String kotkab = ""+ model.getValueAt(i, 1);
         KotKab.setText(kotkab);
     }//GEN-LAST:event_TabelDapilMouseClicked
     
