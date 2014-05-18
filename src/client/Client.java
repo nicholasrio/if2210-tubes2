@@ -79,18 +79,19 @@ public class Client {
 			//while(!(input = reader.readLine()).equals("exit")){
 				
 			//}
-			while ((input = reader.readLine()) != null) {
-		    	/*socket = new Socket(hostName, portNumber);
+			//while ((input = reader.readLine()) != null) {
+		    	socket = new Socket(hostName, portNumber);
                             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
                             TransObject obj = new TransObject("13512045", "Gilang Julian Suherik");
-                            TransObject obj2 = new TransObject("13512000", "Siapa nih?");
+                            //TransObject obj2 = new TransObject("13512000", "Siapa nih?");
                             oos.writeObject(obj);
-                            oos.writeObject(obj2);
+                            //oos.writeObject(obj2);
+                            kirimFile();
+
                             oos.close();
                             //System.exit(0);
-                                */
-                            kirimFile();
-			}
+                                
+			//}
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -117,7 +118,7 @@ public class Client {
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 if(true){
-                        File f = new File("TSocket.pdf");
+                        File f = new File("C:\\Users\\adwisatya\\Documents\\NetBeansProjects\\if2210-tubes2\\TSocket.pdf");
                         BufferedInputStream inFile = new BufferedInputStream(new FileInputStream(f));
                         byte[] buf = new byte[(int)f.length()];
                         inFile.read(buf);
