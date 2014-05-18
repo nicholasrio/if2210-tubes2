@@ -10,6 +10,7 @@ package Main;
 import Video.VideoController;
 import VideoPlayer.YoutubeMediaPlayer;
 import Xml.StaxWriter;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -29,18 +30,18 @@ public class GuestView extends javax.swing.JFrame {
     private int videodata;
     private final List<String[]> viddetails;
     private final VideoController VC;
-    private final List<String> vidRating;
+    private List<String> vidRating;
     
     /**
      * Creates new form GuestView
      * @throws java.sql.SQLException
      */
     public GuestView() throws SQLException {
-        initComponents();
         videodata = 0;
         VC = new VideoController();
         viddetails = VC.SelectVideoData();
         vidRating =  new ArrayList<>();
+        initComponents();
         jLabel1.setText(viddetails.get(0)[1]);
         jLabel2.setText(viddetails.get(0)[5]);
         jButton1.setEnabled(false);
@@ -70,9 +71,10 @@ public class GuestView extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel3 = new YoutubeMediaPlayer("http://www.youtube.com/v/WIJm_eLXDP4&feature=youtube_gdata_player");
         jButton4 = new javax.swing.JButton();
         b_rating = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -109,7 +111,6 @@ public class GuestView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("KataMa Player");
-        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -128,7 +129,7 @@ public class GuestView extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Rating :");
 
-        jButton1.setText("Previous");
+        jButton1.setText("Sebelumnya");
         jButton1.setPreferredSize(new java.awt.Dimension(70, 70));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +137,7 @@ public class GuestView extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Next");
+        jButton2.setText("Selanjutnya");
         jButton2.setPreferredSize(new java.awt.Dimension(70, 70));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,11 +175,9 @@ public class GuestView extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setPreferredSize(new java.awt.Dimension(675, 550));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 667, Short.MAX_VALUE)
@@ -188,7 +187,7 @@ public class GuestView extends javax.swing.JFrame {
             .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        jButton4.setText("Log Out");
+        jButton4.setText("Keluar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -202,6 +201,8 @@ public class GuestView extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("jLabel5");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -210,9 +211,10 @@ public class GuestView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(276, 276, 276)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(244, 244, 244)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 667, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,9 +242,11 @@ public class GuestView extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(86, 86, 86)
                                 .addComponent(jButton4)))
-                        .addContainerGap(64, Short.MAX_VALUE))
+                        .addContainerGap(72, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(b_rating)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(b_rating)
+                            .addComponent(jLabel5))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -267,6 +271,8 @@ public class GuestView extends javax.swing.JFrame {
                             .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(b_rating)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4))
                     .addGroup(layout.createSequentialGroup()
@@ -288,8 +294,9 @@ public class GuestView extends javax.swing.JFrame {
             videodata--;
             jLabel1.setText(viddetails.get(videodata)[1]);
             jLabel2.setText(viddetails.get(videodata)[5]);
-            jLabel4.setText(vidRating.get(videodata));
+            //jLabel4.setText(vidRating.get(videodata));
             jPanel3 = new YoutubeMediaPlayer(viddetails.get(videodata)[2]);
+            jLabel5.setText(viddetails.get(videodata)[2]);
             if (videodata==0){
                 jButton1.setEnabled(false);
             }
@@ -331,6 +338,11 @@ public class GuestView extends javax.swing.JFrame {
         jLabel4.setText("Rating : 4");
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        // don't forget to properly close native components
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         jRadioButton2.setSelected(false);
         jRadioButton3.setSelected(false);
@@ -345,8 +357,11 @@ public class GuestView extends javax.swing.JFrame {
             videodata++;
             jLabel1.setText(viddetails.get(videodata)[1]);
             jLabel2.setText(viddetails.get(videodata)[5]);
-            jLabel4.setText(vidRating.get(videodata));
+            //jLabel4.setText(vidRating.get(videodata));
+            NativeInterface.close();
+            NativeInterface.open();
             jPanel3 = new YoutubeMediaPlayer(viddetails.get(videodata)[2]);
+            jLabel5.setText(viddetails.get(videodata)[2]);
             if (videodata==viddetails.size()-1){
                 jButton2.setEnabled(false);
             }
@@ -402,6 +417,7 @@ public class GuestView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
