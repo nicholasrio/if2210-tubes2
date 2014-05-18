@@ -76,8 +76,8 @@ public class Pemilih {
         boolean test[] = new boolean[4];
         test[0] = false;
         test[1] = false;
-        test[2] = true;
-        test[3] = true;
+        test[2] = false;
+        test[3] = false;
         return test;
     }
     

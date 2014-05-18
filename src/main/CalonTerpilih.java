@@ -141,7 +141,7 @@ public class CalonTerpilih {
                 P.setString(2, caleg.GetPartai());
                 P.setString(3, caleg.GetHistory());
                 P.setString(4, Integer.toString(caleg.GetDapil()));
-                P.setString(5, caleg.getLingkup());
+                P.setString(5, caleg.GetLingkup());
                 P.executeUpdate();
             }
             P.close();

@@ -31,7 +31,7 @@ public class DaftarPilihan {
         DaftarCalegDPRDProvinsi = new ArrayList<>();
         DaftarCalegDPRDKabupaten = new ArrayList<>();
         /* Load database */
-        try {
+        /*try {
             Connection koneksi = KoneksiDatabase.getKoneksi();
             Statement statement = koneksi.createStatement();
             // Mengambil data Caleg 1 dari database lalu memasukkan ke array list DaftarCalegDPR
@@ -91,7 +91,47 @@ public class DaftarPilihan {
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
+        }*/
+        DaftarCalegDPR.add(new Caleg("123123", "Stefanie", "partai lalala", "hhe", 1, "DPR"));
+        DaftarCalegDPR.add(new Caleg("123123", "Stefanisd", "partai lalalu", "hhe", 1, "DPR"));
+        DaftarCalegDPR.add(new Caleg("123123", "Stefansaasde", "partai lalalu", "hhe", 1, "DPR"));
+        DaftarCalegDPR.add(new Caleg("123123", "Stefasdse", "partai lalala", "hhe", 1, "DPR"));
+        DaftarCalegDPR.add(new Caleg("123123", "Stefaaie", "partai lalale", "hhe", 1, "DPR"));
+        DaftarCalegDPR.add(new Caleg("123123", "Stefggnie", "partai lalale", "hhe", 1, "DPR"));
+        DaftarCalegDPR.add(new Caleg("123123", "Stefannnie", "partai lalalu", "hhe", 1, "DPR"));
+        DaftarCalegDPR.add(new Caleg("123123", "Stefaniiie", "partai lalala", "hhe", 1, "DPR"));
+        DaftarCalegDPR.add(new Caleg("123123", "Stefanieeee", "partai lalale", "hhe", 1, "DPR"));
+        DaftarCalegDPR.add(new Caleg("123123", "Stefanieqqq", "partai lalalo", "hhe", 1, "DPR"));
+        DaftarCalegDPD.add(new Caleg("123123", "Stefanie", "partai lalala", "hhe", 1, "DPD"));
+        DaftarCalegDPD.add(new Caleg("123123", "Stefanisd", "partai lalalu", "hhe", 1, "DPD"));
+        DaftarCalegDPD.add(new Caleg("123123", "Stefansaasde", "partai lalalu", "hhe", 1, "DPD"));
+        DaftarCalegDPD.add(new Caleg("123123", "Stefasdse", "partai lalala", "hhe", 1, "DPD"));
+        DaftarCalegDPD.add(new Caleg("123123", "Stefaaie", "partai lalale", "hhe", 1, "DPD"));
+        DaftarCalegDPD.add(new Caleg("123123", "Stefggnie", "partai lalale", "hhe", 1, "DPD"));
+        DaftarCalegDPD.add(new Caleg("123123", "Stefannnie", "partai lalalu", "hhe", 1, "DPD"));
+        DaftarCalegDPD.add(new Caleg("123123", "Stefaniiie", "partai lalala", "hhe", 1, "DPD"));
+        DaftarCalegDPD.add(new Caleg("123123", "Stefanieeee", "partai lalale", "hhe", 1, "DPD"));
+        DaftarCalegDPD.add(new Caleg("123123", "Stefanieqqq", "partai lalalo", "hhe", 1, "DPR"));
+        DaftarCalegDPRDProvinsi.add(new Caleg("123123", "Stefanie", "partai lalala", "hhe", 1, "DPRDProvinsi"));
+        DaftarCalegDPRDProvinsi.add(new Caleg("123123", "Stefanisd", "partai lalalu", "hhe", 1, "DPRDProvinsi"));
+        DaftarCalegDPRDProvinsi.add(new Caleg("123123", "Stefansaasde", "partai lalalu", "hhe", 1, "DPRDProvinsi"));
+        DaftarCalegDPRDProvinsi.add(new Caleg("123123", "Stefasdse", "partai lalala", "hhe", 1, "DPRDProvinsi"));
+        DaftarCalegDPRDProvinsi.add(new Caleg("123123", "Stefaaie", "partai lalale", "hhe", 1, "DPRDProvinsi"));
+        DaftarCalegDPRDProvinsi.add(new Caleg("123123", "Stefggnie", "partai lalale", "hhe", 1, "DPRDProvinsi"));
+        DaftarCalegDPRDProvinsi.add(new Caleg("123123", "Stefannnie", "partai lalalu", "hhe", 1, "DPRDProvinsi"));
+        DaftarCalegDPRDProvinsi.add(new Caleg("123123", "Stefaniiie", "partai lalala", "hhe", 1, "DPRDProvinsi"));
+        DaftarCalegDPRDProvinsi.add(new Caleg("123123", "Stefanieeee", "partai lalale", "hhe", 1, "DPRDProvinsi"));
+        DaftarCalegDPRDProvinsi.add(new Caleg("123123", "Stefanieqqq", "partai lalalo", "hhe", 1, "DPRDProvinsi"));
+        DaftarCalegDPRDKabupaten.add(new Caleg("123123", "Stefanie", "partai lalala", "hhe", 1, "DPRDKabupaten"));
+        DaftarCalegDPRDKabupaten.add(new Caleg("123123", "Stefanisd", "partai lalalu", "hhe", 1, "DPRDKabupaten"));
+        DaftarCalegDPRDKabupaten.add(new Caleg("123123", "Stefansaasde", "partai lalalu", "hhe", 1, "DPRDKabupaten"));
+        DaftarCalegDPRDKabupaten.add(new Caleg("123123", "Stefasdse", "partai lalala", "hhe", 1, "DPRDKabupaten"));
+        DaftarCalegDPRDKabupaten.add(new Caleg("123123", "Stefaaie", "partai lalale", "hhe", 1, "DPRDKabupaten"));
+        DaftarCalegDPRDKabupaten.add(new Caleg("123123", "Stefggnie", "partai lalale", "hhe", 1, "DPRDKabupaten"));
+        DaftarCalegDPRDKabupaten.add(new Caleg("123123", "Stefannnie", "partai lalalu", "hhe", 1, "DPRDKabupaten"));
+        DaftarCalegDPRDKabupaten.add(new Caleg("123123", "Stefaniiie", "partai lalala", "hhe", 1, "DPRDKabupaten"));
+        DaftarCalegDPRDKabupaten.add(new Caleg("123123", "Stefanieeee", "partai lalale", "hhe", 1, "DPRDKabupaten"));
+        DaftarCalegDPRDKabupaten.add(new Caleg("123123", "Stefanieqqq", "partai lalalo", "hhe", 1, "DPRDKabupaten"));
         
     }
     

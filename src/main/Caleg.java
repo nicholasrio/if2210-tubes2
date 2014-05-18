@@ -43,9 +43,13 @@ public class Caleg {
         return NoDapil;
     }
     
-    public String getLingkup()
+    public String GetLingkup()
     {
         return Lingkup;
+    }
+    
+    public String GetNama(){
+        return Nama;
     }
     
 }

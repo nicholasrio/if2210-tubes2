@@ -6,6 +6,8 @@
 
 package GUI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sakurai
@@ -117,7 +119,7 @@ public class FormPemilih extends javax.swing.JFrame {
                 DPRDKabupatenActionPerformed(evt);
             }
         });
-        getContentPane().add(DPRDKabupaten, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 406, -1, -1));
+        getContentPane().add(DPRDKabupaten, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 406, 200, -1));
 
         Submit.setBackground(java.awt.SystemColor.inactiveCaptionText);
         Submit.setFont(new java.awt.Font("Belwe Bd BT", 1, 18)); // NOI18N
@@ -161,11 +163,16 @@ public class FormPemilih extends javax.swing.JFrame {
     }//GEN-LAST:event_DPRDKabupatenActionPerformed
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
-        
+        JOptionPane.showMessageDialog(null,"Terima Kasih atas partisipasi anda");
+        FormLoginPemilih form = new FormLoginPemilih();
+        form.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_SubmitActionPerformed
 
     private void DPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DPDActionPerformed
-        // TODO add your handling code here:
+        formCaleg = new FormDaftarCaleg("DPD", dataPemilih.GetNIK(), dataPemilih.GetDapil());
+        formCaleg.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_DPDActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
