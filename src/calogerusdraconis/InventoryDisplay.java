@@ -36,11 +36,11 @@ import javax.swing.JPanel;
 public class InventoryDisplay extends JPanel {
 	private ImageIcon[] image;
 	public static Integer pilihan = null;
-	public static UserDragon drgon;
+	public static UserDragon drgon = null;
 	public InventoryDisplay(UserDragon drg) {
-		if (drg == null)
+		if (drg == null) {
 			setPreferredSize(new Dimension(100,1000));
-		else {
+		} else {
 			setPreferredSize(new Dimension(100,1000));
 			ArrayList<Consumable> ac = drg.getFdInventory();
 			int jum = drg.getFdInventory().size();
@@ -64,30 +64,42 @@ public class InventoryDisplay extends JPanel {
 			for (int i = 0; i < jum; ++i) {
 				id.image[i] = new ImageIcon(id.getClass().getResource("/calogerusdraconis/" + ac.get(i).getImg()));
 			}
-		}
+		} else id.image = null;
 	}
 	
 	@Override
     protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if (image==null) return;
-		for (int i = 0; i < image.length; ++i) {
-			image[i].paintIcon(this, g, 0, i*64+10);
-		}
-		
-		if(pilihan!=null) {
-			int minus = 0;
-			if (pilihan == drgon.getFdInventory().size()-1) minus = 120;
-			else if (pilihan == drgon.getFdInventory().size()-2) minus = 60;
-			g.drawString("Nama : "+drgon.getFdInventory().get(pilihan).getName(), 100 , pilihan*64+20-minus);
-			g.drawString("Harga : "+drgon.getFdInventory().get(pilihan).getCost(), 100 , pilihan*64+40-minus);
-			g.drawString("Happiness : "+drgon.getFdInventory().get(pilihan).getHappinessValue(), 100 , pilihan*64+60-minus);
-			g.drawString("Health : "+drgon.getFdInventory().get(pilihan).getHealthValue(), 100 , pilihan*64+80-minus);
-			g.drawString("MaxHealth : "+drgon.getFdInventory().get(pilihan).getMaxHealthValue(), 100 , pilihan*64+100-minus);
-			g.drawString("Hunger : "+drgon.getFdInventory().get(pilihan).getHungerValue(), 100 , pilihan*64+120-minus);
-			g.drawString("Stamina : "+drgon.getFdInventory().get(pilihan).getStaminaValue(), 100 , pilihan*64+140-minus);
-			g.drawString("MaxStamina : "+drgon.getFdInventory().get(pilihan).getMaxStaminaValue(), 100 , pilihan*64+160-minus);
-			g.drawString("Thirst : "+drgon.getFdInventory().get(pilihan).getThirstValue(), 100 , pilihan*64+180-minus);
+		if (image!=null) {
+			for (int i = 0; i < image.length; ++i) {
+				try {
+					image[i].paintIcon(this, g, 0, i*64+10);
+				} catch (Exception ex) {
+				}
+			}
+
+			if(pilihan!=null) {
+				int minus = 0;
+				if (!(drgon.getFdInventory().size() == 1 || drgon.getFdInventory().size() == 2)) {
+					if (pilihan == drgon.getFdInventory().size()-1) minus = 120;
+					else if (pilihan == drgon.getFdInventory().size()-2) minus = 60;
+				}
+				try {
+					synchronized(this) {
+						g.drawString("Nama : "+drgon.getFdInventory().get(pilihan).getName(), 100 , pilihan*64+20-minus);
+						g.drawString("Harga : "+drgon.getFdInventory().get(pilihan).getCost(), 100 , pilihan*64+40-minus);
+						g.drawString("Happiness : "+drgon.getFdInventory().get(pilihan).getHappinessValue(), 100 , pilihan*64+60-minus);
+						g.drawString("Health : "+drgon.getFdInventory().get(pilihan).getHealthValue(), 100 , pilihan*64+80-minus);
+						g.drawString("MaxHealth : "+drgon.getFdInventory().get(pilihan).getMaxHealthValue(), 100 , pilihan*64+100-minus);
+						g.drawString("Hunger : "+drgon.getFdInventory().get(pilihan).getHungerValue(), 100 , pilihan*64+120-minus);
+						g.drawString("Stamina : "+drgon.getFdInventory().get(pilihan).getStaminaValue(), 100 , pilihan*64+140-minus);
+						g.drawString("MaxStamina : "+drgon.getFdInventory().get(pilihan).getMaxStaminaValue(), 100 , pilihan*64+160-minus);
+						g.drawString("Thirst : "+drgon.getFdInventory().get(pilihan).getThirstValue(), 100 , pilihan*64+180-minus);
+					}
+				} catch (IndexOutOfBoundsException e) {
+
+				}
+			}
 		}
 		repaint();
 	}

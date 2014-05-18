@@ -471,6 +471,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 
     private void InventoryPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseMoved
 		if (evt.getX() > 64 || evt.getY() < 10) InventoryDisplay.pilihan = null; //tipe data Integer
+		else if (evt.getY() > draco.getFdInventory().size()*64+10) InventoryDisplay.pilihan = null;
 		else InventoryDisplay.pilihan = (evt.getY()-10)/64;
     }//GEN-LAST:event_InventoryPanelMouseMoved
 
@@ -480,31 +481,37 @@ public class GUIView extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_StorePanelMouseMoved
 
     private void InventoryPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseClicked
-		int pilihan = (evt.getY()-10)/64;
-		if (evt.getX() > 64 || evt.getY() < 10) {
-			pilihan = -1;
-		}
-		if (pilihan < draco.getFdInventory().size()) {
-			try {
-				System.out.println((evt.getY()-10)/64);
-				draco.useConsumable(draco.getFdInventory().get(pilihan));
-			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(null, ex.getMessage());
+		if (evt.getClickCount()==2 && !evt.isConsumed()) {
+			int pilihan = (evt.getY()-10)/64;
+			if (evt.getX() > 64 || evt.getY() < 10) {
+				pilihan = -1;
+			} else
+			if (pilihan < draco.getFdInventory().size()) {
+				try {
+					System.out.println((evt.getY()-10)/64 + " di invent");
+					draco.useConsumable(draco.getFdInventory().get(pilihan));
+					//System.out.println(draco.getFdInventory().size());
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, ex.getMessage());
+				}
 			}
 		}
+		UpdateScreen(draco);
     }//GEN-LAST:event_InventoryPanelMouseClicked
 
     private void StorePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StorePanelMouseClicked
-		int pilihan = (evt.getY()-10)/64;
-		if (evt.getX() > 64 || evt.getY() < 10) {
-			pilihan = -1;
-		}
-		if (pilihan < str.getFdInventory().size()) {
-			try {
-				System.out.println((evt.getY()-10)/64);
-				draco.addConsumable(str.getFdInventory().get(pilihan));
-			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(null, ex.getMessage());
+		if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+			int pilihan = (evt.getY()-10)/64;
+			if (evt.getX() > 64 || evt.getY() < 10) {
+				pilihan = -1;
+			} else
+			if (pilihan < str.getFdInventory().size()) {
+				try {
+					System.out.println((evt.getY()-10)/64);
+					draco.addConsumable(str.getFdInventory().get(pilihan));
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, ex.getMessage());
+				}
 			}
 		}
     }//GEN-LAST:event_StorePanelMouseClicked
