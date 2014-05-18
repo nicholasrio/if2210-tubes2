@@ -17,12 +17,13 @@ public class Plant extends SaleableObject implements Drawable {
 	private Stage stage;
 	private ArrayList<Stage> stages;
 	
-	public Plant(String name, double maxWaterLevel, double maxFertilizerLevel) {
+	public Plant(String name, double maxWaterLevel, double maxFertilizerLevel, int price) {
 		id = ++ID;
 		
 		this.name = name;
 		this.maxWaterLevel = maxWaterLevel;
 		this.maxFertilizerLevel = maxFertilizerLevel;
+		this.price = price;
 		
 		this.age = 0;
 		this.setWaterLevel(maxWaterLevel);
@@ -141,11 +142,8 @@ public class Plant extends SaleableObject implements Drawable {
 	}
 	
 	// Gives water to Plant
-	public void water(double amount) {
-		waterLevel += amount;
-		if (waterLevel > maxWaterLevel) {
-			waterLevel = maxWaterLevel;
-		}
+	public void water() {
+		waterLevel = maxWaterLevel;
 	}
 	
 	// Gives fertilizer to Plant
@@ -212,7 +210,7 @@ public class Plant extends SaleableObject implements Drawable {
 	
 	// Get copy of this object
 	public Plant clone() {
-		Plant p = new Plant(name, maxWaterLevel, maxFertilizerLevel);
+		Plant p = new Plant(name, maxWaterLevel, maxFertilizerLevel, price);
 		for (Stage s : stages) {
 			p.addStage(s);
 		}

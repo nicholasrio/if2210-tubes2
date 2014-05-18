@@ -301,7 +301,7 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 			if (isWatering) {
 				for (Plant p : allPlant) {
 					if (p.contains(event.getPoint())) {
-						p.water(20);
+						p.water();
 					}
 				}
 			}

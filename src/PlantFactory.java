@@ -47,10 +47,11 @@ public class PlantFactory {
 							.getAttribute("maxWaterLevel"));
 					double maxFertilizerLevel = Double.parseDouble(e
 							.getAttribute("maxFertilizerLevel"));
+					int price = Integer.parseInt(e.getAttribute("price"));
 
 					// Create new Plants
 					Plant plant = new Plant(name, maxWaterLevel,
-							maxFertilizerLevel);
+							maxFertilizerLevel, price);
 					plantPrototype.add(plant);
 
 					System.out.println("Plant name = " + name
