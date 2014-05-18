@@ -14,6 +14,7 @@ import Entity.Credential;
 import Entity.TransObject;
 
 public class Client {
+
     String hostName = "localhost";
     int portNumber = 5432;
     Socket socket;
@@ -22,116 +23,130 @@ public class Client {
     BufferedReader sockReader;
     private boolean LoggedIn;
 
-    public static void main(String[] args){
-            Client client = new Client();
+    public static void main(String[] args) {
+        Client client = new Client();
     }
 
     public Client() {
-        LoggedIn    =    false;
+        LoggedIn = false;
         try {
-            do{
+            do {
                 reader = new BufferedReader(new InputStreamReader(System.in));
                 System.out.println("1. login");
                 System.out.println("2. print");
                 System.out.println("3. exit");
                 input = reader.readLine();
-                if(input.contains("login")){
-                        login();
-                }
-                else if(input.equals("print")){
+                if (input.contains("login")) {
+                    login();
+                } else if (input.equals("print")) {
                     sendPrintInfo();
                 }
-            }while(!input.equals("exit"));
-        }catch(Exception e){
-                e.printStackTrace();
+            } while (!input.equals("exit"));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    public void login(){
+    public void login() {
+        try {
+            String NIM;
+            String password;
+            String tempSR;
+            System.out.println("Enter NIM: ");
+            NIM = reader.readLine();
+            System.out.println("Enter password: ");
+            password = reader.readLine();
+            socket = new Socket(hostName, portNumber);
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            Credential obj = new Credential(NIM, password);
+            oos.writeObject(obj);
+            tempSR = sockReader.readLine();
+            System.out.println("Dari server " + tempSR);
+            if (tempSR.contains("Login sukses")) {
+                LoggedIn = true;
+            }
+            oos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendPrintInfo() {
+        //System.out.println(LoggedIn);
+        if (LoggedIn) {
             try {
-                String NIM;
-                String password;
-                String tempSR;
-                System.out.println("Enter NIM: ");
-                NIM = reader.readLine();
-                System.out.println("Enter password: ");
-                password = reader.readLine();
+			//while(!(input = reader.readLine()).equals("exit")){
+
+			//}
+                //while ((input = reader.readLine()) != null) {
                 socket = new Socket(hostName, portNumber);
                 ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-                sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                Credential obj = new Credential(NIM, password);
+                TransObject obj = new TransObject("13512045", "Gilang Julian Suherik");
+                //TransObject obj2 = new TransObject("13512000", "Siapa nih?");
                 oos.writeObject(obj);
-                tempSR  =   sockReader.readLine();
-                System.out.println("Dari server " + tempSR);
-                if(tempSR.contains("Login sukses")){
-                    LoggedIn    =    true;
-                }
-                oos.close();
-            }catch(Exception e){
-                    e.printStackTrace();
-            }
-	}
-	
-	public void sendPrintInfo(){
-            //System.out.println(LoggedIn);
-            if(LoggedIn){
-		try {
-			//while(!(input = reader.readLine()).equals("exit")){
-				
-			//}
-			while ((input = reader.readLine()) != null) {
-		    	/*socket = new Socket(hostName, portNumber);
-                            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-                            TransObject obj = new TransObject("13512045", "Gilang Julian Suherik");
-                            TransObject obj2 = new TransObject("13512000", "Siapa nih?");
-                            oos.writeObject(obj);
-                            oos.writeObject(obj2);
-                            oos.close();
-                            //System.exit(0);
-                                */
-                            kirimFile();
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			if(socket != null){
-				try {
-					socket.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-            }else{
-                System.out.println("Silahkan login terlebih dahulu.");
-                login();
-            }
-	}
-        public void kirimFile(){
-            //buat kalo mau pake file
-            String Path;
-            System.out.println("Masukkan path file yang akan diupload:");
-            try{
-                //Path    =  reader.readLine().replace("\\","\\\\");
-                //System.out.println(Path);
-                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                if(true){
-                        File f = new File("TSocket.pdf");
-                        BufferedInputStream inFile = new BufferedInputStream(new FileInputStream(f));
-                        byte[] buf = new byte[(int)f.length()];
-                        inFile.read(buf);
-                        socket.getOutputStream().write(buf);
-                }
-                //send message to server
-                System.out.println("Someone send a message: "+input);
+                //oos.writeObject(obj2);
+                kirimFile();
 
-                //read message from server
-                System.out.println(in.readLine());
-            }catch(Exception e){
-                System.out.println("Terjadi kesalahan dalam pengiriman");
+                oos.close();
+                            //System.exit(0);
+
+                //}
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (socket != null) {
+                    try {
+                        socket.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
+        } else {
+            System.out.println("Silahkan login terlebih dahulu.");
+            login();
         }
+    }
+
+    public void kirimFile() {
+        //buat kalo mau pake file
+        String Path;
+        System.out.println("Masukkan path file yang akan diupload:");
+        try {
+                //Path    =  reader.readLine().replace("\\","\\\\");
+            //System.out.println(Path);
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            if (true) {
+                File f = new File("C:\\Users\\adwisatya\\Documents\\NetBeansProjects\\if2210-tubes2\\TSocket.pdf");
+                BufferedInputStream inFile = new BufferedInputStream(new FileInputStream(f));
+                byte[] buf = new byte[(int) f.length()];
+                inFile.read(buf);
+                socket.getOutputStream().write(buf);
+            }
+            //send message to server
+            System.out.println("Someone send a message: " + input);
+
+            //read message from server
+            System.out.println(in.readLine());
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan dalam pengiriman");
+        }
+    }
 }
 
+//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+//BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+/*if(true){
+	File f = new File("ClientFolder/send.pdf");
+	BufferedInputStream inFile = new BufferedInputStream(new FileInputStream(f));
+	byte[] buf = new byte[(int)f.length()];
+	inFile.read(buf);
+	socket.getOutputStream().write(buf);
+}*/
+//	send message to server
+//out.println("Someone send a message: "+input);
 
+//	read message from server
+//System.out.println(in.readLine());

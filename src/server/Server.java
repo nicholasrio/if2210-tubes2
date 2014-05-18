@@ -26,13 +26,14 @@ public class Server {
 	
 	public Server() {
 		int portNumber = 5432;
+		ServerManager manager = ServerManager.getSingleton();
 		try { 
 		    ServerSocket serverSocket = new ServerSocket(portNumber);
-                    while(true){
-                        Socket clientSocket = serverSocket.accept();
-                        ServerThread ss = ServerManager.get(clientSocket);
-                        ss.start();
-                    }
+    	    while(true){
+    	    	Socket clientSocket = serverSocket.accept();
+    	    	ServerThread ss = manager.get(clientSocket);
+    	    	ss.start();
+    	    }
 		}
 		catch(Exception e){
 			e.printStackTrace();
