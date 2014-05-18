@@ -22,10 +22,6 @@ public final class SqlStatement {
     public SqlStatement() throws SQLException{
         makeStatement();
     }
-	
-	public Statement getStatement(){
-        return statement;
-    }
     
     public Statement makeStatement() throws SQLException{
         Connect c = new Connect();
