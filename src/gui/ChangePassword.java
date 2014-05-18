@@ -10,12 +10,12 @@ package gui;
  *
  * @author Rosi
  */
-public class Login extends javax.swing.JFrame {
+public class ChangePassword extends javax.swing.JFrame {
 
     /**
      * Creates new form SistemCetakGUI
      */
-    public Login() {
+    public ChangePassword() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -30,6 +30,10 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jPasswordField2 = new javax.swing.JPasswordField();
         jButton5 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
@@ -47,9 +51,66 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel2.setText("Masukkan NIM dan password untuk mengakses layanan pencetakan.");
+        jLabel2.setText("Ganti password");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 230, 400, 20);
+        jLabel2.setBounds(370, 230, 90, 15);
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Logout");
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(720, 30, 37, 15);
+
+        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Ganti password");
+        jButton6.setBorder(null);
+        jButton6.setContentAreaFilled(false);
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6);
+        jButton6.setBounds(600, 30, 81, 15);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel8.setText("Rosiana Rozi (13512666)");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(450, 30, 123, 15);
+
+        jPasswordField2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jPasswordField2.setText("New password");
+        jPasswordField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        jPasswordField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordField2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPasswordField2FocusLost(evt);
+            }
+        });
+        jPasswordField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jPasswordField2);
+        jPasswordField2.setBounds(336, 320, 151, 22);
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
@@ -92,7 +153,7 @@ public class Login extends javax.swing.JFrame {
         jTextField1.setBounds(336, 264, 151, 22);
 
         jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jPasswordField1.setText("Password");
+        jPasswordField1.setText("Old password");
         jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -105,6 +166,11 @@ public class Login extends javax.swing.JFrame {
         jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPasswordField1MouseClicked(evt);
+            }
+        });
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
             }
         });
         getContentPane().add(jPasswordField1);
@@ -129,7 +195,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(386, 332, 50, 25);
+        jButton1.setBounds(390, 360, 50, 25);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cetak/bg2.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -144,7 +210,6 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -182,7 +247,7 @@ public class Login extends javax.swing.JFrame {
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
         if (jTextField1.getText().equals(""))
         {
-            jTextField1.setText("NIM");
+            jTextField1.setText("Username");
         }
     }//GEN-LAST:event_jTextField1FocusLost
 
@@ -199,13 +264,58 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jPasswordField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusGained
+        // TODO add your handling code here:
+        jPasswordField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
+        jPasswordField2.setText("");
+    }//GEN-LAST:event_jPasswordField2FocusGained
+
+    private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
+        // TODO add your handling code here:
+        jPasswordField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        if (jPasswordField2.getText().equals(""))
+        {
+            jPasswordField2.setText("Password");
+        }
+    }//GEN-LAST:event_jPasswordField2FocusLost
+
+    private void jPasswordField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2MouseClicked
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        this.hide();
+        Login login = new Login();
+        login.show();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        this.hide();
+        ChangePassword cpass = new ChangePassword();
+        cpass.show();
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

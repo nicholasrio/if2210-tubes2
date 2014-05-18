@@ -10,12 +10,12 @@ package gui;
  *
  * @author Rosi
  */
-public class Login extends javax.swing.JFrame {
+public class EnterNIM extends javax.swing.JFrame {
 
     /**
      * Creates new form SistemCetakGUI
      */
-    public Login() {
+    public EnterNIM() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -29,10 +29,12 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -46,10 +48,48 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel3.setText("Admin Teknik Tenaga Listrik");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(423, 30, 150, 15);
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Ganti password");
+        jButton2.setBorder(null);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(600, 30, 81, 15);
+
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Logout");
+        jButton3.setBorder(null);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(720, 30, 37, 15);
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel2.setText("Masukkan NIM dan password untuk mengakses layanan pencetakan.");
+        jLabel2.setText("Masukkan NIM untuk mengecek status mahasiswa dan kuota.");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 230, 400, 20);
+        jLabel2.setBounds(260, 250, 330, 15);
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
@@ -89,31 +129,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(336, 264, 151, 22);
-
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jPasswordField1.setText("Password");
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
-        jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPasswordField1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPasswordField1FocusLost(evt);
-            }
-        });
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(336, 292, 151, 22);
+        jTextField1.setBounds(340, 290, 151, 22);
 
         jButton1.setBackground(new java.awt.Color(138, 138, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Login");
+        jButton1.setText("Cek");
         jButton1.setAlignmentX(0.5F);
         jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -129,7 +150,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(386, 332, 50, 25);
+        jButton1.setBounds(387, 330, 60, 25);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cetak/bg2.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -144,14 +165,13 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         this.hide();
-        User user = new User();
-        user.show();
+        UserManagement usman = new UserManagement();
+        usman.show();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
@@ -160,22 +180,11 @@ public class Login extends javax.swing.JFrame {
         jTextField1.setText("");
     }//GEN-LAST:event_jTextField1MouseClicked
 
-    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
-        // TODO add your handling code here:
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
-    }//GEN-LAST:event_jPasswordField1MouseClicked
-
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         // TODO add your handling code here:
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
         jTextField1.setText("");
     }//GEN-LAST:event_jTextField1FocusGained
-
-    private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
-        // TODO add your handling code here:
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
-        jPasswordField1.setText("");
-    }//GEN-LAST:event_jPasswordField1FocusGained
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         // TODO add your handling code here:
@@ -186,26 +195,37 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField1FocusLost
 
-    private void jPasswordField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusLost
-        // TODO add your handling code here:
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
-        if (jPasswordField1.getText().equals(""))
-        {
-            jPasswordField1.setText("Password");
-        }
-    }//GEN-LAST:event_jPasswordField1FocusLost
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        this.hide();
+        ChangePasswordAdmin cpassmin = new ChangePasswordAdmin();
+        cpassmin.show();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        this.hide();
+        Login login = new Login();
+        login.show();
+    }//GEN-LAST:event_jButton3MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

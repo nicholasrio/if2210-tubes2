@@ -6,16 +6,18 @@
 
 package gui;
 
+import gui.AdminIndex;
+
 /**
  *
  * @author Rosi
  */
-public class Login extends javax.swing.JFrame {
+public class LoginAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form SistemCetakGUI
      */
-    public Login() {
+    public LoginAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -47,9 +49,9 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
-        jLabel2.setText("Masukkan NIM dan password untuk mengakses layanan pencetakan.");
+        jLabel2.setText("Masukkan username dan password untuk mengakses laman administrasi.");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 230, 400, 20);
+        jLabel2.setBounds(225, 230, 400, 20);
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
@@ -68,7 +70,7 @@ public class Login extends javax.swing.JFrame {
         jButton5.setBounds(-10, 0, 340, 50);
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jTextField1.setText("NIM");
+        jTextField1.setText("Username");
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -144,14 +146,13 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         this.hide();
-        User user = new User();
-        user.show();
+        AdminIndex admindex = new AdminIndex();
+        admindex.show();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked

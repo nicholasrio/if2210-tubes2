@@ -14,11 +14,10 @@ public class ServerThread extends Thread{
         private Socket socket;
 	private int id;
 	private Credential credential;
-	private boolean isLoggedIn;
-	
+	private boolean isLoggedIn =  false;
+	private List<String> loggedinUser;
 	public ServerThread(Socket clientSocket, int id){
 		socket = clientSocket;
-                
 		this.id = id;
 	}
 	
@@ -72,6 +71,7 @@ public class ServerThread extends Thread{
                         e.printStackTrace();
                 }
             }
+
 	}
 	
 	private boolean checkCredential(Credential c){
@@ -89,6 +89,6 @@ public class ServerThread extends Thread{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		ServerThreadFactory.release(id);
+		ServerManager.release(id);
 	}
 }

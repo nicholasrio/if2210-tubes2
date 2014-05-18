@@ -8,7 +8,7 @@ package gui;
 
 /**
  *
- * @author Annisaur Rosi Lutfiana / 13512088
+ * @author Rosi
  */
 public class FileDialog extends javax.swing.JFrame {
 
@@ -17,6 +17,7 @@ public class FileDialog extends javax.swing.JFrame {
      */
     public FileDialog() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,6 +32,16 @@ public class FileDialog extends javax.swing.JFrame {
         jFileChooser1 = new javax.swing.JFileChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
+
+        jFileChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        jFileChooser1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jFileChooser1.setBorder(null);
+        jFileChooser1.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,6 +62,10 @@ public class FileDialog extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.hide();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

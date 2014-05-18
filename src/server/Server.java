@@ -11,6 +11,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.io.*;
 
 import Entity.Credential;
 import Entity.TransObject;
@@ -29,7 +30,7 @@ public class Server {
 		    ServerSocket serverSocket = new ServerSocket(portNumber);
                     while(true){
                         Socket clientSocket = serverSocket.accept();
-                        ServerThread ss = ServerThreadFactory.get(clientSocket);
+                        ServerThread ss = ServerManager.get(clientSocket);
                         ss.start();
                     }
 		}
@@ -39,20 +40,9 @@ public class Server {
 	}
 }
 
-//buat kalo mau baca dari file
+/*
 
-/*PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-//System.out.println(in.readLine());
-out.println("Message received");
-BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(new File("ServerFolder/receive.pdf")));
-int bytesread;
-byte[] outBuf = new byte[2048];
-int retval;
-do{
-	retval = (bytesread = clientSocket.getInputStream().read(outBuf));
-	System.out.println(retval);
-	bout.write(outBuf, 0, bytesread);
-	System.out.println(bytesread);
-	System.out.println("dummy1");
-}while(retval == BUF_SIZE);*/
+//buat kalo mau baca dari file
+                        
+*/
+
