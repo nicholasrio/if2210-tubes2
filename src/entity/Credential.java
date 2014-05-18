@@ -8,16 +8,21 @@ public class Credential implements Serializable {
 
 	public static final int LOGIN = 0;
 	public static final int LOGOUT = 1;
+	public static final int PRINT = 2;
 	
 	private String id;
 	private String password;
-	private String filePath;
+	private String fileName;
 	private int type;
 
 	public Credential(String id, String password, int type) {
 		this.id = id;
 		this.password = password;
 		this.type = type;
+	}
+	
+	public void setFile(String fileName){
+		this.fileName = fileName;
 	}
 
 	public String getId() {
@@ -26,6 +31,10 @@ public class Credential implements Serializable {
 
 	public String getPassword() {
 		return password;
+	}
+	
+	public String getFile(){
+		return fileName;
 	}
 	
 	public int getType(){

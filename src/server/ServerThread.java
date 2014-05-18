@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.util.*;
 import entity.TransObject;
 import java.io.*;
+import java.net.URI;
 
 public class ServerThread extends Thread {
 
@@ -32,10 +33,14 @@ public class ServerThread extends Thread {
 			if (obj instanceof TransObject) {
 				TransObject transObj = (TransObject) obj;
 				if (ServerManager.getSingleton().isLoggedIn(transObj.getSenderNIM())) {
+					File file = new File("serverFolder/" + transObj.getSenderNIM());
+					file.mkdirs();
+					file = new File(transObj.getFileName());
+					
 					InputStream in = socket.getInputStream(); //used  
-
-					DataInputStream clientData = new DataInputStream(in); //used   
-					OutputStream output = new FileOutputStream("serverFolder/TSocket.pdf");
+					DataInputStream clientData = new DataInputStream(in); //used
+					
+					OutputStream output = new FileOutputStream("serverFolder/" + transObj.getSenderNIM() + "/" + file.getName());
 
                                 //clientData.readLong();  
 					byte[] buffer = new byte[BUF_SIZE];
@@ -57,9 +62,12 @@ public class ServerThread extends Thread {
 						pw.write("Login sukses");
 						pw.flush();
 					}
-					else{
+					else if(credential.getType() == Credential.LOGOUT){
 						// todo when logout
 						ServerManager.getSingleton().removeLoggedUser(credential.getId());
+					}
+					else if(credential.getType() == Credential.PRINT){
+						//call to method print("serverFolder/" + credential.getId() + "/" + credential.getFile())
 					}
 				} else {
 					pw.write("Wrong username or password");
