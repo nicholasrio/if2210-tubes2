@@ -8,6 +8,7 @@ package Main;
 
 
 import Video.VideoController;
+import VideoPlayer.YoutubeDataMedia;
 import VideoPlayer.YoutubeMediaPlayer;
 import Xml.StaxWriter;
 
@@ -289,13 +290,13 @@ public class GuestView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (videodata>0){
+        jPanel3.setURL("www.facebook.com");
+    	if (videodata>0){
             jButton2.setEnabled(true);
             videodata--;
             jLabel1.setText(viddetails.get(videodata)[1]);
             jLabel2.setText(viddetails.get(videodata)[5]);
             //jLabel4.setText(vidRating.get(videodata));
-            jPanel3 = new YoutubeMediaPlayer(viddetails.get(videodata)[2]);
             jLabel5.setText(viddetails.get(videodata)[2]);
             if (videodata==0){
                 jButton1.setEnabled(false);
@@ -352,15 +353,14 @@ public class GuestView extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (videodata<viddetails.size()-1){
+        jPanel3.setURL("www.google.com");
+    	if (videodata<viddetails.size()-1){
             jButton1.setEnabled(true);
             videodata++;
             jLabel1.setText(viddetails.get(videodata)[1]);
             jLabel2.setText(viddetails.get(videodata)[5]);
-            //jLabel4.setText(vidRating.get(videodata));
-            NativeInterface.close();
-            NativeInterface.open();
-            jPanel3 = new YoutubeMediaPlayer(viddetails.get(videodata)[2]);
+            jLabel4.setText(vidRating.get(videodata));
+            jPanel3.setURL("www.google.com");
             jLabel5.setText(viddetails.get(videodata)[2]);
             if (videodata==viddetails.size()-1){
                 jButton2.setEnabled(false);
@@ -420,7 +420,7 @@ public class GuestView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private YoutubeMediaPlayer jPanel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
