@@ -159,39 +159,26 @@ public class CalonTerpilih {
             koneksi = KoneksiDatabase.getKoneksi();
             
             Statement statement = koneksi.createStatement();
-            String command = "Select * from Kabupaten";
-            ResultSet result = statement.executeQuery(command);
-            List <String> noDapil = new ArrayList<>();
-            List<String> NamaKabupaten = new ArrayList<>();
-            while(result.next())
+            String commandNoDapil = "select Max(No_Dapil) from Dapil";
+            ResultSet resultNoDapilMaks = statement.executeQuery(commandNoDapil);
+            if(resultNoDapilMaks.next())
             {
-                Object []o = new Object[2];
-                o[0] = result.getString("No_Dapil");
-                o[1] = result.getString("Nama_Kabupaten");
-                noDapil.add((String) o[0]);
-                NamaKabupaten.add((String) o[1]);
-            }
+                int NoDapilMaksimum = Integer.parseInt(resultNoDapilMaks.getString(1));
             
-            if(!noDapil.isEmpty())
-            {
-                System.out.println("Masuk if noDapil not empty");
-                int NoDapilTemp = Integer.parseInt(noDapil.get(0));
-                Dapil DapilTemp = new Dapil(NoDapilTemp, NamaKabupaten.get(0));
-                for(int i = 1; i < noDapil.size(); i++)
+                /* Mengambil kabupaten tiap dapil secara urut */
+                String command = "Select * from Kabupaten where No_Dapil = ?";
+                for(int i = 0; i < NoDapilMaksimum; i++)
                 {
-                    if(isNoDapilExist(NoDapilTemp))
-                    if(NoDapilTemp != Integer.parseInt(noDapil.get(i)))
+                    PreparedStatement P = koneksi.prepareStatement(command);
+                    P.setString(1, "" + (i+1));
+                    ResultSet result = P.executeQuery();
+                    Dapil Temp = new Dapil(i+1);
+                    while(result.next())
                     {
-                        daerahPemilihan.add(DapilTemp);
-                        NoDapilTemp = Integer.parseInt(noDapil.get(i));
-                        DapilTemp = new Dapil(NoDapilTemp, NamaKabupaten.get(i));
+                        Temp.addKabupaten(result.getString("Nama_Kabupaten"));
                     }
-                    else
-                    {
-                        DapilTemp.addKabupaten(NamaKabupaten.get(i));
-                    }
+                    daerahPemilihan.add(Temp);
                 }
-                daerahPemilihan.add(DapilTemp);
             }
             
             
@@ -215,18 +202,5 @@ public class CalonTerpilih {
     public List<Caleg> getDaftarCaleg()
     {
         return daftarCaleg;
-    }
-    
-    private boolean isNomorDapilExist(int NoDapil)
-    {
-        boolean ketemu = false;
-        int i = 0;
-        while (!ketemu && i < daerahPemilihan.size())
-        {
-            if(daerahPemilihan.get(i).getNoDapil() == NoDapil)
-                ketemu = true;
-            i++;
-        }
-        return ketemu;
     }
 }

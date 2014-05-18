@@ -21,6 +21,12 @@ public class Dapil {
      * @param noDapil Nomor Dapil yang dimasukkan
      * @param kabupaten Kabupaten yang termasuk dalam dapil
      */
+    
+    public Dapil(int noDapil)
+    {
+        daftarKabupaten = new ArrayList<>();
+        NoDapil = noDapil;
+    }
     public Dapil(int noDapil, String kabupaten)
     {
         daftarKabupaten = new ArrayList<>();
