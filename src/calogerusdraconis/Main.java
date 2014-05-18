@@ -22,7 +22,6 @@ import java.util.Scanner;
 public class Main {
 
 	public static UserDragon draco;
-	
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -46,6 +45,7 @@ public class Main {
 	
 	/**
 	 * Main program in terminal
+	 * Author Willy
 	 */
 	public static void terminal() {
 		Scanner in = new Scanner(System.in);
@@ -157,6 +157,7 @@ public class Main {
 	
 	/**
 	 * Main program in GUI
+	 * Author Dariel
 	 */
 	public static void gui() {
 		/* Set the Nimbus look and feel */

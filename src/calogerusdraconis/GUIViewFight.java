@@ -42,8 +42,7 @@ public class GUIViewFight extends javax.swing.JFrame {
 		
 		enemyDragon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/enemy" + util.randomInt(1,9) + ".png")));
 		enemyDragon.setText(enemy.name);
-		// TODO: set user dragon's image
-		userDragon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/bladder- r.png")));
+		userDragon.setIcon(draco.getImage());
         userDragon.setText(draco.name);
 		
 		UserHealth.setText(Float.toString(draco.health));

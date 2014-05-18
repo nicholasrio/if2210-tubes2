@@ -30,7 +30,7 @@ import org.jdom2.output.XMLOutputter;
 
 /**
  *
- * @author Dariel Valdano
+ * @author Dariel Valdano, Cilvia
  */
 public class XmlController {
 	

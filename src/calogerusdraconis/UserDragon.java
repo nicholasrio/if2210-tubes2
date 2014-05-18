@@ -23,7 +23,7 @@ public class UserDragon extends Dragon {
     
     protected float maxStamina;
     
-    private Thread th;
+    private final Thread th;
 	
 	/** 
 	 * Constructor UserDragon
@@ -150,7 +150,7 @@ public class UserDragon extends Dragon {
 	 * Menambah parameter Money pada Dragon
 	 * @param val jumlah money yang akan ditambah
 	 */
-    private void tambahMoney(float val) {
+    public void tambahMoney(float val) {
         synchronized (this) {
             money += val;
         }
@@ -317,6 +317,32 @@ public class UserDragon extends Dragon {
     public void sebelumExit() {
         th.interrupt();
     }
+	
+	public javax.swing.ImageIcon getImage() {
+		String emotion = "neutral";
+		if (health/maxHealth < stamina/maxStamina && health/maxHealth < (100-hunger)/100 && health/maxHealth < (100-thirst)/100 && health/maxHealth < (100-bladder)/100) {
+			if (health/maxHealth < 0.6) {
+				emotion = "health-";
+			} // else neutral
+		} else if (stamina/maxStamina < health/maxHealth && stamina/maxStamina < (100-hunger)/100 && stamina/maxStamina < (100-thirst)/100 && stamina/maxStamina < (100-bladder)/100) {
+			if (stamina/maxStamina < 0.3) {
+				emotion = "stamina-";
+			} // else neutral
+		} else if ((100-hunger)/100 < stamina/maxStamina && (100-hunger)/100 < health/maxHealth && (100-hunger)/100 < (100-thirst)/100 && (100-hunger)/100 < (100-bladder)/100) {
+			if (hunger > 60) {
+				emotion = "hunger-";
+			} // else neutral
+		} else if ((100-thirst)/100 < stamina/maxStamina && (100-thirst)/100 < (100-hunger)/100 && (100-thirst)/100 < health/maxHealth && (100-thirst)/100 < (100-bladder)/100) {
+			if (thirst > 60) {
+				emotion = "thirst-";
+			} // else neutral
+		} else if ((100-bladder)/100 < stamina/maxStamina && (100-bladder)/100 < (100-hunger)/100 && (100-bladder)/100 < (100-thirst)/100 && (100-bladder)/100 < health/maxHealth) {
+			if (bladder > 60) {
+				emotion = "bladder-";
+			} // else neutral
+		}
+		return new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/" + emotion + " r.png"));
+	}
     
 	/**
 	 * Mengubah parameter-parameter Dragon seiring berjalannya waktu
