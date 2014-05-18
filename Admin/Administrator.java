@@ -59,8 +59,7 @@ public class Administrator {
      * @throws java.sql.SQLException 
      */
     public boolean isUserExist(int _NIM) throws SQLException{
-        SqlStatement s = new SqlStatement();
-        return s.IsAdminExist(_NIM);
+        return new SqlStatement().IsAdminExist(_NIM);
     }
     
     /**
@@ -71,8 +70,7 @@ public class Administrator {
      * @throws java.sql.SQLException
      */
     public boolean isPasswordMatch(String _password) throws SQLException{
-        SqlStatement s = new SqlStatement();
-        return s.isPassword(NIM, _password);
+        return new SqlStatement().isPassword(NIM, _password);
     }
     
     /**
@@ -81,15 +79,13 @@ public class Administrator {
      * @throws java.sql.SQLException
      */
     public void Register() throws SQLException{
-        SqlStatement s =new SqlStatement();
-        s.insert_admin(NIM, password, name);
+        new SqlStatement().insert_admin(NIM, password, name);
     }
     
     /* Method untuk menghapus record admin dalam database admin */
     public void Delete(int _NIM) throws SQLException{
         if(isUserExist(_NIM)){
-            SqlStatement s = new SqlStatement();
-            s.deleteAdmin(_NIM);
+            new SqlStatement().deleteAdmin(_NIM);
         }
     }
     

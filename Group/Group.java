@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.eclipse.persistence.internal.expressions.SQLStatement;
 
 /**
  *
@@ -74,35 +75,14 @@ public class Group {
         
     }
     
-    public void select_group_by(int _no_tubes, String _group_name) throws SQLException{
-        ResultSet rs = s.getStatement().executeQuery("select * from group_tubes where no_tubes = \"" + _no_tubes + "\" and group_name = \"" + _group_name + "\";");
-        
-        while(rs.next()){
-            //Retrieve by column name
-            this.setNo_tubes(rs.getInt("no_tubes"));
-            this.setGroup_name(rs.getString("group_name"));
-            List<String> aList = new ArrayList<>();
-            aList.add(rs.getString("anggota_1"));
-            aList.add(rs.getString("anggota_2"));
-            aList.add(rs.getString("anggota_3"));
-            
-            this.setMember(aList);
-        }
-        rs.close();
+    public List<String[]> GroupData() throws SQLException{
+        return new SqlStatement().select_group();
     }
     
-    public boolean cekDataGroup(int _no_tubes, String _group_name) throws SQLException{
-        ResultSet rs = s.getStatement().executeQuery("select * from group_tubes where no_tubes = \"" + _no_tubes + "\" and group_name = \"" + _group_name + "\";");
-        boolean ketemu = false;
-        
-        if(rs.first()){
-            ketemu = true;
-        }
-        rs.close();
-        
-        return ketemu;
+    public boolean cekDataGroup(int no_tubes, String group_name) throws SQLException{
+        return new SqlStatement().cekDataGroup(no_tubes, group_name);
     }
-    
+ 
     public List<String> getHistory(){
         return member;
     }

@@ -31,8 +31,7 @@ public class VideoController {
     public void DeleteVideo(int id) throws SQLException {
         vid.Delete(id);
     }
-    public List<String> SelectVideoData(int id) {
-        List<String> L = new ArrayList<>();
-        return L;
+    public List<String[]> SelectVideoData() throws SQLException {
+        return vid.SelectData();
     }
 }

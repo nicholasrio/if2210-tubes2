@@ -1,5 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
+
+/* * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package mysql;
@@ -42,15 +42,40 @@ public final class SqlStatement {
         statement.execute("INSERT INTO `group_tubes` (`no_tubes`, `group_name`, `anggota_1`, `anggota_2`, `anggota_3`) VALUES (\""+no_tubes+"\", \""+group_name+"\", \""+anggota_1+"\", \""+anggota_2+"\", \""+anggota_3+"\");");
     }
     
-    public void insert_video(String title, String link, int rating, int view, int no_tubes, String group_name)throws SQLException{
-        statement.execute("INSERT INTO `video` (`title`, `link`, `rating`, `view`, `no_tubes`, `group_nama`) VALUES (\""+title+"\", \""+link+"\", \""+rating+"\", \""+view+"\", \""+no_tubes+"\", \""+group_name+"\");");
+    public void insert_video(String title, String link, int view, int no_tubes, String group_name)throws SQLException{
+        statement.execute("INSERT INTO `video` (`title`, `link`, `view`, `no_tubes`, `group_nama`) VALUES (\""+title+"\", \""+link+"\", \""+view+"\", \""+no_tubes+"\", \""+group_name+"\");");
     }
-    public void update_video(int id, String title, String link, int rating, int view, int no_tubes, String group_name) throws SQLException {
-        statement.execute("UPDATE `video` SET (`title` = "+title+"\", `link` = "+link+"\", `rating` = "+rating+"\", `view` = "+view+"\", `no_tubes` = "+no_tubes+"\", `group_nama` = "+group_name+"\") WHERE id = "+id+"\";");
+    public void update_video(int id, String title, String link, int view, int no_tubes, String group_name) throws SQLException {
+        statement.execute("UPDATE `video` SET (`title` = "+title+"\", `link` = "+link+"\", `view` = "+view+"\", `no_tubes` = "+no_tubes+"\", `group_nama` = "+group_name+"\") WHERE id = "+id+"\";");
     }
     public void delete_video(int id) throws SQLException {
         statement.execute("DELETE * FROM video WHERE id = \"" + id + "\";");
     }
+    
+    public List<String[]> select_group() throws SQLException{
+        List<String[]> details = new ArrayList<>();
+        try (ResultSet rs = statement.executeQuery("select * from group_tubes")) {
+            while(rs.next()){
+                //Retrieve by column name
+                String[] data = {rs.getString("no_tubes"), rs.getString("group_name"), rs.getString("anggota_1"), rs.getString("anggota_2"), rs.getString("anggota_3")};                
+                details.add(data);
+            }
+        }
+        return details;
+    }
+    
+    public boolean cekDataGroup(int _no_tubes, String _group_name) throws SQLException{
+        ResultSet rs = statement.executeQuery("select * from group_tubes where no_tubes = \"" + _no_tubes + "\" and group_name = \"" + _group_name + "\";");
+        boolean ketemu = false;
+        
+        if(rs.first()){
+            ketemu = true;
+        }
+        rs.close();
+        
+        return ketemu;
+    }
+    
     public List<String[]> select_admin() throws SQLException{
         List<String[]> details = new ArrayList<>();
         try (ResultSet rs = statement.executeQuery("select * from administrator")) {
@@ -63,44 +88,30 @@ public final class SqlStatement {
         return details;
     }
     
-    public void select_group() throws SQLException{
-        try (ResultSet rs = statement.executeQuery("select * from group_tubes")) {
-            while(rs.next()){
-                //Retrieve by column name
-                int no_tubes  = rs.getInt("no_tubes");
-                String grup  = rs.getString("group_name");
-                String anggota_1  = rs.getString("anggota_1");
-                String anggota_2  = rs.getString("anggota_2");
-                String anggota_3  = rs.getString("anggota_3");
-                
-                //Display values
-                System.out.print("No Tubes: " + no_tubes + " ");
-                System.out.println("Nama Kelompok: " + grup);
-                System.out.println("Member :");
-                System.out.println("Nama 1: " + anggota_1);
-                System.out.println("Nama 2: " + anggota_2);
-                if(anggota_3!=null){
-                    System.out.println("Nama 3: " + anggota_3);
-                }
+    public List<String[]> select_video() throws SQLException{
+        List<String[]> details;
+        try (ResultSet rs = statement.executeQuery("select * from video;")) {
+            details = new ArrayList<>();
+            while(rs.next()) {
+                String[] data = {Integer.toString(rs.getInt("id")), rs.getString("title"), rs.getString("link"),
+                    Integer.toString(rs.getInt("view")),
+                    Integer.toString(rs.getInt("no_tubes")), rs.getString("group_nama")};
+                details.add(data);
             }
         }
+        return details;
     }
     
-    public List<String> select_video(int id) throws SQLException{
-        List<String> L = new ArrayList<>();
-        ResultSet rs = statement.executeQuery("select * from video WHERE id = \"" + id + "\";");
+    public boolean cekDataVideo(int id) throws SQLException{
+        boolean ketemu;
+        try (ResultSet rs = statement.executeQuery("select * from video WHERE id = \"" + id + "\";")) {
+            ketemu = false;
+            if(rs.first()){
+                ketemu = true;
+            }
+        }
         
-            //Retrieve by column name
-            L.add(Integer.toString(rs.getInt("id")));
-            L.add(rs.getString("title"));
-            L.add(rs.getString("link"));
-            L.add(Integer.toString(rs.getInt("rating")));
-            L.add(Integer.toString(rs.getInt("view")));
-            L.add(Integer.toString(rs.getInt("no_tubes")));
-            L.add(rs.getString("group_name"));
-
-        rs.close();
-        return L;
+        return ketemu;
     }
     
     public boolean IsAdminExist(int _NIM) throws SQLException{
