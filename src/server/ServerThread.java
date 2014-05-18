@@ -11,7 +11,7 @@ import Entity.TransObject;
 
 public class ServerThread extends Thread{
 
-	private Socket socket;
+        private Socket socket;
 	private int id;
 	private Credential credential;
 	private boolean isLoggedIn;
@@ -23,59 +23,55 @@ public class ServerThread extends Thread{
 	}
 	
 	public void run(){
-		ObjectInputStream ois = null;
-		PrintWriter pw = null;
-		try { 
+            ObjectInputStream ois = null;
+            PrintWriter pw = null;
+            try { 
+                while(true){
                     ois = new ObjectInputStream(socket.getInputStream());
                     pw = new PrintWriter(socket.getOutputStream(), true);
-                    while(true){
-                        //System.out.println("dummy1");
-                        Object obj = ois.readObject();
-                        //System.out.println("dummy12");
-                        if(obj instanceof TransObject){
-                                if(isLoggedIn)
-                                        pw.write("Print information received");
-                        }
-                        else if(obj instanceof Credential){
-                                System.out.println("Credential information received");
-                                credential = (Credential) obj;
-                                //if(checkCredential(credential)){
-                                //        pw.write("Login sucess");
-                               //        pw.flush();
-                                //        isLoggedIn = true;
-                                if(credential.getId().equalsIgnoreCase("admin") && credential.getPassword().equalsIgnoreCase("admin1")){
-                                    //System.out.println("dasdsadsa");
-                                    pw.write("Login sukses");
-                                    pw.flush();
-                                    isLoggedIn  =    true;
-                                }
-                                else{
-                                        pw.write("Wrong username or password");
-                                        pw.flush();
-                                }
-                                System.out.println("Message sent");
-                            socket.shutdownOutput();
-                            
-                        }
-                        //ois.close();
+                    //System.out.println("dummy1");
+                    Object obj = ois.readObject();
+                    //System.out.println("dummy12");
+                    if(obj instanceof TransObject){
+                        if(isLoggedIn)
+                            pw.write("Print information received");
                     }
-                   
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-                finally{
-			try {
-				if(ois!=null){
-					ois.close();
-					pw.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-		}
-                        
+                    else if(obj instanceof Credential){
+                        System.out.println("Credential information received");
+                        credential = (Credential) obj;
+                        //if(checkCredential(credential)){
+                        //        pw.write("Login sucess");
+                       //        pw.flush();
+                        //        isLoggedIn = true;
+                        if(credential.getId().equalsIgnoreCase("admin") && credential.getPassword().equalsIgnoreCase("admin1")){
+                            //System.out.println("dasdsadsa");
+                            pw.write("Login sukses");
+                            pw.flush();
+                            isLoggedIn  =    true;
+                        }
+                        else{
+                                pw.write("Wrong username or password");
+                                pw.flush();
+                        }
+                        System.out.println("Message sent");
+                        socket.shutdownOutput();
+                    }
+                    //ois.close();
+                }
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            finally{
+                try {
+                        if(ois!=null){
+                                ois.close();
+                                pw.close();
+                        }
+                } catch (IOException e) {
+                        e.printStackTrace();
+                }
+            }
 	}
 	
 	private boolean checkCredential(Credential c){
