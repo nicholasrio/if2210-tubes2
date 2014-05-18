@@ -52,6 +52,8 @@ public class VideoSwing extends javax.swing.JFrame {
         link = new javax.swing.JTextField();
         SaveButton = new javax.swing.JButton();
         EditButton = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,6 +91,8 @@ public class VideoSwing extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("NIM");
+
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +112,9 @@ public class VideoSwing extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -116,10 +122,11 @@ public class VideoSwing extends javax.swing.JFrame {
                         .addComponent(SaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(group_name, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(group_name)
                     .addComponent(no_tubes)
                     .addComponent(title)
-                    .addComponent(link))
+                    .addComponent(link)
+                    .addComponent(id, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                 .addGap(35, 35, 35)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -127,9 +134,16 @@ public class VideoSwing extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -169,6 +183,7 @@ public class VideoSwing extends javax.swing.JFrame {
 
             if(dialogResult == JOptionPane.YES_OPTION){
                 try {
+                    V.setId(Integer.parseInt(id.getText()));
                     V.setTitle(title.getText());
                     V.setNo_tubes(Integer.parseInt(no_tubes.getText()));
                     V.setGroup_name(group_name.getText());
@@ -189,7 +204,11 @@ public class VideoSwing extends javax.swing.JFrame {
                 } catch (NumberFormatException nf) {
                     JOptionPane.showMessageDialog(null, "Masukan data sesuai tipenya");
                     Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, nf);
-                }
+                } 
+//                catch (AttributeException a) {
+//                    JOptionPane.showMessageDialog(null, a.getMessage());
+//                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, a);
+//                }
             }
         }
     }//GEN-LAST:event_SaveButtonActionPerformed
@@ -242,6 +261,7 @@ public class VideoSwing extends javax.swing.JFrame {
         return !title.getText().equals("") && !group_name.getText().equals("") && !no_tubes.getText().equals("") && !link.getText().equals("");
     }
     public void clean(){
+        id.setText("");
         no_tubes.setText("");
         group_name.setText("");
         title.setText("");
@@ -252,11 +272,13 @@ public class VideoSwing extends javax.swing.JFrame {
     private javax.swing.JButton EditButton;
     private javax.swing.JButton SaveButton;
     private javax.swing.JTextField group_name;
+    private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField link;
     private javax.swing.JTextField no_tubes;
     private javax.swing.JTextField title;

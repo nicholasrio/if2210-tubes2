@@ -23,21 +23,11 @@ public class Video {
                 Logger.getLogger(Video.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-	public void Insert() throws SQLException, NullException {
-            if(title.equals("") || !(no_tubes>0 && no_tubes<4) || link.equals("") || group_name.equals("") || view<0) {
-                throw new NullException ("Tidak boleh ada data yang null");
-            }
-            else {
-                s.insert_video(title, link, view, no_tubes, group_name);
-            }
+	public void Insert() throws SQLException {
+            s.insert_video(title, link, view, no_tubes, group_name);
 	}
-	public void Update(int id) throws SQLException, NullException {
-            if(title.equals("") || !(no_tubes>0 && no_tubes<4) || link.equals("") || group_name.equals("") || view<0) {
-                throw new NullException ("Tidak boleh ada data yang null");
-            }
-            else {
-             s.update_video(id, title, link, view, no_tubes, group_name);
-            }
+	public void Update(int id) throws SQLException {
+            s.update_video(id, title, link, view, no_tubes, group_name);
         }
 	public void Delete(int id) throws SQLException {
             s.delete_video(id);
@@ -46,7 +36,7 @@ public class Video {
             return s.cekDataVideo(id);
         }
 	public List<String[]> SelectData() throws SQLException {
-                return s.select_video();
+            return s.select_video();
 	}
 	//public GetThumbnail() {
 	
