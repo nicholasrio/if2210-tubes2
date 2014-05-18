@@ -56,12 +56,12 @@ public class ServerManager {
 	
 	public void addLoggedUser(String username){
 		loggedInUsers.add(username);
-		System.out.println("login success");
+		System.out.println("User: " + username + " has logged in");
 	}
 	
 	public void removeLoggedUser(String username){
 		loggedInUsers.remove(username);
-		System.out.println("logout success");
+		System.out.println("User: " + username + " has logged out");
 	}
 	
 	public boolean isLoggedIn(String username){
