@@ -193,11 +193,17 @@ public class VideoSwing extends javax.swing.JFrame {
 
                     JOptionPane.showMessageDialog(null, "Data berhasil disimpan...");
                     clean();
-                } catch (AttributeException ex) {
-                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (AttributeException x) {
+                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, x);
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Ada Kesalahan...");
                     Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NullException n) {
+                    JOptionPane.showMessageDialog(null, n.getMessage());
+                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, n);
+                } catch (NumberFormatException nf) {
+                    JOptionPane.showMessageDialog(null, "Masukan data sesuai tipenya");
+                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, nf);
                 } 
 //                catch (AttributeException a) {
 //                    JOptionPane.showMessageDialog(null, a.getMessage());
@@ -242,13 +248,13 @@ public class VideoSwing extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
-        final int WIDTH = screenSize.width;
-        final int HEIGHT = screenSize.height;
+        final int Width = screenSize.width;
+        final int Height = screenSize.height;
         int lebar = (int) this.getSize().getWidth() / 2;
         int tinggi = (int) this.getSize().getHeight() / 2;
         // Setup the frame accordingly
         // This is assuming you are extending the JFrame //class
-        this.setLocation((WIDTH/2) - lebar, (HEIGHT/2) - tinggi);
+        this.setLocation((Width/2) - lebar, (Height/2) - tinggi);
     }//GEN-LAST:event_formWindowActivated
     
     public boolean cek(){
