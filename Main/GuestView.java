@@ -72,7 +72,7 @@ public class GuestView extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
-        jPanel3 = new YoutubeMediaPlayer("http://www.youtube.com/v/WIJm_eLXDP4&feature=youtube_gdata_player");
+        jPanel3 = new YoutubeMediaPlayer(viddetails.get(0)[2]);
         jButton4 = new javax.swing.JButton();
         b_rating = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -290,14 +290,13 @@ public class GuestView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jPanel3.setURL("www.facebook.com");
-    	if (videodata>0){
+        if (videodata>0){
             jButton2.setEnabled(true);
             videodata--;
             jLabel1.setText(viddetails.get(videodata)[1]);
             jLabel2.setText(viddetails.get(videodata)[5]);
+            jPanel3.setURL(viddetails.get(videodata)[2]);
             //jLabel4.setText(vidRating.get(videodata));
-            jLabel5.setText(viddetails.get(videodata)[2]);
             if (videodata==0){
                 jButton1.setEnabled(false);
             }
@@ -353,15 +352,13 @@ public class GuestView extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jPanel3.setURL("www.google.com");
-    	if (videodata<viddetails.size()-1){
+        if (videodata<viddetails.size()-1){
             jButton1.setEnabled(true);
             videodata++;
             jLabel1.setText(viddetails.get(videodata)[1]);
             jLabel2.setText(viddetails.get(videodata)[5]);
-            jLabel4.setText(vidRating.get(videodata));
-            jPanel3.setURL("www.google.com");
-            jLabel5.setText(viddetails.get(videodata)[2]);
+            //jLabel4.setText(vidRating.get(videodata));
+            jPanel3.setURL(viddetails.get(videodata)[2]);
             if (videodata==viddetails.size()-1){
                 jButton2.setEnabled(false);
             }
