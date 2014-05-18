@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 17, 2014 at 10:56 AM
--- Server version: 5.6.11
--- PHP Version: 5.5.1
+-- Host: localhost
+-- Generation Time: May 18, 2014 at 12:58 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -28,6 +28,7 @@ USE `bookbay`;
 -- Table structure for table `book`
 --
 
+DROP TABLE IF EXISTS `book`;
 CREATE TABLE IF NOT EXISTS `book` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
@@ -54,9 +55,23 @@ INSERT INTO `book` (`id`, `name`, `location`, `uploader_id`, `description`, `upl
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `collection`
+--
+
+DROP TABLE IF EXISTS `collection`;
+CREATE TABLE IF NOT EXISTS `collection` (
+  `book_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`book_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(100) NOT NULL,
@@ -72,47 +87,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
 (1, 'edmundophie', '12345'),
 (2, 'jacksparrow', 'qwert');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_book`
---
-
-CREATE TABLE IF NOT EXISTS `user_book` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `book_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `book_id` (`book_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
-
---
--- Dumping data for table `user_book`
---
-
-INSERT INTO `user_book` (`id`, `user_id`, `book_id`) VALUES
-(5, 1, 15),
-(6, 2, 16),
-(7, 2, 17);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `book`
---
-ALTER TABLE `book`
-  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`uploader_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_book`
---
-ALTER TABLE `user_book`
-  ADD CONSTRAINT `user_book_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_book_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
