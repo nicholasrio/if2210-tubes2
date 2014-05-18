@@ -6,17 +6,22 @@
 
 package cmd.user;
 
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author CakBin
  */
 public class GroupPageUser {
-    static int No_tubes;
-    static String Group_name;
+    static int id;
+    static String GroupName;
+    static int no_tubes;
     static boolean valid;
     static int option;
+    static int VidId;
     static Scanner input=new Scanner(System.in);
     
     static void SelectOption(int i) throws OptionException{
@@ -30,16 +35,26 @@ public class GroupPageUser {
         }
     }
     
+    
     static void print(){
-        System.out.println("Group Name: "+Group_name);
-        System.out.println("Project Number: "+No_tubes);
+        try {
+            System.out.println("Group Name: "+DataController.GC.GroupData().get(id)[2]);
+            System.out.println("Project Number: "+DataController.GC.GroupData().get(id)[1]);
+            System.out.println("Member 1: "+DataController.GC.GroupData().get(id)[3]);
+            System.out.println("Member 2: "+DataController.GC.GroupData().get(id)[4]);
+            System.out.println("Member 3: "+DataController.GC.GroupData().get(id)[5]);
+        } catch (SQLException ex) {
+            Logger.getLogger(GroupPageUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         System.out.println("");
         System.out.println("Menu:");
-        System.out.println("1. Show Detail");
+        System.out.println("1. Show Details");
         System.out.println("2. Show Video");
         System.out.println("0. Back");
     }
     static void input(){
+        valid=false;
         while(!valid){
             try{
                 SelectOption(2);
@@ -50,13 +65,20 @@ public class GroupPageUser {
         }
     }
     static void execute(){
-        if(option==1){DetailPage.action(No_tubes,Group_name);}
-        else if(option==2){VideoPageUser.action("ahya");}
-        else{MainMenuUser.action();}
+        if(option==1){DetailPage.action(no_tubes,GroupName);}
+        else if(option==2){VideoPageUser.action(VidId);}
+        else{GroupsUser.action(1,10);}
     }
-    static void action(int Tubes, String grup){
-        No_tubes=Tubes;
-        Group_name=grup;
+    static void action(int _id){
+        id=_id;
+        try {
+            no_tubes=Integer.valueOf(DataController.GC.GroupData().get(id)[1]);
+            GroupName=DataController.GC.GroupData().get(id)[0];
+            VidId=DataController.SearchVideoByGroup(GroupName, no_tubes);
+        } catch (SQLException | OptionException ex) {
+            Logger.getLogger(GroupPageUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         print();
         input();
         execute();

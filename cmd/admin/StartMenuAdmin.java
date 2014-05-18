@@ -33,6 +33,7 @@ public class StartMenuAdmin {
         System.out.println("0. Exit");
     }
     static void input(){
+        valid=false;
         while(!valid){
             try{
                 SelectOption(1);

@@ -7,16 +7,17 @@
 package cmd.admin;
 
 import Group.*;
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author CakBin
  */
 public class GroupPage {
-    static GroupController GC;
-    static int No_tubes;
-    static String Group_name;
+    static int id;
     static boolean valid;
     static int option;
     static Scanner input=new Scanner(System.in);
@@ -32,9 +33,18 @@ public class GroupPage {
         }
     }
     
+    
     static void print(){
-        System.out.println("Group Name: "+Group_name);
-        System.out.println("Project Number: "+No_tubes);
+        try {
+            System.out.println("Group Name: "+DataController.GC.GroupData().get(id)[1]);
+            System.out.println("Project Number: "+DataController.GC.GroupData().get(id)[0]);
+            System.out.println("Member 1: "+DataController.GC.GroupData().get(id)[2]);
+            System.out.println("Member 2: "+DataController.GC.GroupData().get(id)[3]);
+            System.out.println("Member 3: "+DataController.GC.GroupData().get(id)[4]);
+        } catch (SQLException ex) {
+            Logger.getLogger(GroupPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         System.out.println("");
         System.out.println("Menu:");
         System.out.println("1. Edit");
@@ -42,6 +52,7 @@ public class GroupPage {
         System.out.println("0. Back");
     }
     static void input(){
+        valid=false;
         while(!valid){
             try{
                 SelectOption(2);
@@ -54,11 +65,10 @@ public class GroupPage {
     static void execute(){
         if(option==1){GroupEditForm.action();}
         else if(option==2){GroupDeleteForm.action();}
-        else{Groups.action();}
+        else{Groups.action(1,10);}
     }
-    static void action(int Tubes, String grup){
-        No_tubes=Tubes;
-        Group_name=grup;
+    static void action(int _id){
+        id=_id;
         print();
         input();
         execute();

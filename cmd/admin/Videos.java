@@ -6,28 +6,29 @@
 
 package cmd.admin;
 
-import Video.*;
+import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author CakBin
  */
 public class Videos {
-    static VideoController VC;
     static int up;
     static int down;
-    static Video V[];
     static boolean valid;
     static int option;
     static int choice;
     static Scanner input=new Scanner(System.in);
     
-    static void SelectChoice(int i) throws OptionException{
-        System.out.println("Insert option: ");
+    static void SelectChoice() throws OptionException, SQLException{
+        System.out.println("Insert Video Number: ");
         choice= input.nextInt();
-        if (choice > i || choice <0){
-            throw new OptionException("Invalid Choice");
+        if (choice<1 || choice>DataController.VC.SelectVideoData().size()){
+            throw new OptionException("Invalid Number");
         }
         else{
             valid = true;
@@ -46,15 +47,24 @@ public class Videos {
     }
     
     static void print(){
-        System.out.println("Video output form "+up+" to "+down);
+        for(int i=(up-1);i<down;i++){
+            try {
+                System.out.println(Arrays.toString(DataController.VC.SelectVideoData().get(i)));
+            } catch (SQLException ex) {
+                Logger.getLogger(Videos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         System.out.println("");
-        System.out.println("1. Select Video");
+        System.out.println("1. Prev");
+        System.out.println("2. Next");
+        System.out.println("3. Select Video");
         System.out.println("0. Back");
     }
     static void input(){
+        valid=false;
         while(!valid){
             try{
-                SelectOption(1);
+                SelectOption(3);
             }
             catch(OptionException a){
                 System.out.println(a.getMessage());
@@ -63,20 +73,47 @@ public class Videos {
     }
     static void execute(){
         if(option==1){
-            valid=false;
-            try{
-                SelectChoice(10);
-            }
-            catch(OptionException a){
-                System.out.println(a.getMessage());
-            }
-            if(valid){
-                VideoPage.action("http://www.google.co.id/");
+            Videos.action(down+10,up+10);
+        }
+        else if(option==2){Videos.action(down-10,up-10);}
+        else if(option==3){
+            try {
+                SelectChoice();
+                VideoPage.action(choice-1);
+            } catch (OptionException ex) {
+                System.out.println(ex.getMessage());
+                Videos.action(up,down);
+            } catch (SQLException ex) {
+                Logger.getLogger(Videos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else{ManageVideoMenu.action();}
     }
-    static void action(){
+    static void action(int a, int b){
+        up=a;
+        down=b;
+        try {
+            if(down>DataController.VC.SelectVideoData().size()){
+                down=DataController.VC.SelectVideoData().size();
+                up=down-9;
+                if(up<1){
+                    up=1;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Videos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(up<1){
+            up=1;
+            down=up+10;
+            try {
+                if(down>DataController.VC.SelectVideoData().size()){
+                    down=DataController.VC.SelectVideoData().size();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Videos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         print();
         input();
         execute();

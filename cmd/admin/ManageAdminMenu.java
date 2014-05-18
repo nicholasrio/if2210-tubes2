@@ -34,6 +34,7 @@ public class ManageAdminMenu {
         System.out.println("0. Cancel");
     }
     static void input(){
+        valid=false;
         while(!valid){
             try{
                 SelectOption(3);
@@ -45,7 +46,7 @@ public class ManageAdminMenu {
     }
     static void execute(){
         if(option==1){AddAdminForm.action();}
-        else if(option==2){Admins.action();}
+        else if(option==2){Admins.action(1,10);}
         else if(option==3){AdminSearchForm.action();}
         else{MainMenuAdmin.action();}
     }

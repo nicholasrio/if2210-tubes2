@@ -34,6 +34,7 @@ public class ManageVideoMenu {
         System.out.println("0. Cancel");
     }
     static void input(){
+        valid=false;
         while(!valid){
             try{
                 SelectOption(3);
@@ -45,7 +46,7 @@ public class ManageVideoMenu {
     }
     static void execute(){
         if(option==1){AddVideoForm.action();}
-        else if(option==2){Videos.action();}
+        else if(option==2){Videos.action(1,10);}
         else if(option==3){VideoSearchForm.action();}
         else{MainMenuAdmin.action();}
     }

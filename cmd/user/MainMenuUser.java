@@ -36,6 +36,7 @@ public class MainMenuUser {
         System.out.println("0. Exit");
     }
     static void input(){
+        valid=false;
          while(!valid){
             try{
                 SelectOption(4);
@@ -46,9 +47,9 @@ public class MainMenuUser {
         }
     }
     static void execute(){
-        if(option==1){VideosUser.action();}
+        if(option==1){VideosUser.action(1,10);}
         else if(option==2){VideoSearchMenuUser.action();}
-        else if(option==3){GroupsUser.action();}
+        else if(option==3){GroupsUser.action(1,10);}
         else if(option==4){GroupSearchMenuUser.action();}
         else{exit=true;}
     }

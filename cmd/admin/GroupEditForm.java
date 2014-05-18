@@ -6,6 +6,7 @@
 
 package cmd.admin;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -17,7 +18,7 @@ public class GroupEditForm {
     static int No_Tubes;
     static String GroupName;
     static int Num;
-    static String Member[];
+    static List<String> Member;
     static Scanner input=new Scanner(System.in);
     
     static void input(){
@@ -27,14 +28,13 @@ public class GroupEditForm {
         GroupName = input.next();
         System.out.print("Number of Member: ");
         Num = input.nextInt();
-        Member = new String[Num];
         for(int i = 0; i<Num; i++){
-            System.out.print("Insert Member"+ (i+1));
-            Member[0] = input.next();
+        System.out.print("Insert Member"+ (i+1));
+        Member.add(input.next());
         }
     }
     static void execute(){
-        Groups.GC.UpdateGroup();
+        System.out.println("The feature to edit a Group data isn't implemented yet");
         
     }
     static void action(){

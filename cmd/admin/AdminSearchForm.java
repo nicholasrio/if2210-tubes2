@@ -6,7 +6,11 @@
 
 package cmd.admin;
 
+import Admin.AdminException;
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,12 +22,20 @@ public class AdminSearchForm {
     static boolean login;
     
     static void input(){
-        System.out.print("Insert NIM");
+        System.out.print("Insert NIM: ");
         NIM = input.next();
     }
     static void execute(){
-        //validate existence, if exist...
-        AdminData.action(NIM);
+        try {
+            DataController.AC.CallNIM(NIM);
+            AdminData.action(NIM);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminSearchForm.class.getName()).log(Level.SEVERE, null, ex);
+            ManageAdminMenu.action();
+        } catch (AdminException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
     }
     static void action(){
         input();

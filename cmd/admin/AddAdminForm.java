@@ -32,7 +32,7 @@ public class AddAdminForm {
     }
     static void execute(){
         try {
-            Admins.AC.AdminRegister(NIM, Name, Password);
+            DataController.AC.AdminRegister(NIM, Name, Password);
         } catch (SQLException ex) {
             Logger.getLogger(AddAdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }

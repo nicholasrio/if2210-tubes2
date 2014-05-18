@@ -6,7 +6,10 @@
 
 package cmd.admin;
 
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,15 +18,24 @@ import java.util.Scanner;
 public class VideoSearchForm {
     static Scanner input = new Scanner (System.in);
     static String VideoTitle;
+    static int id;
     static boolean login;
     
     static void input(){
-        System.out.print("Insert Group Name");
+        System.out.print("Insert Title: ");
         VideoTitle= input.next();
     }
     static void execute(){
-        //validate existence, if exist...
-        VideoPage.action(VideoTitle);
+        try {
+            id = DataController.SearchVideoByTitle(VideoTitle);
+            VideoPage.action(id);
+        } catch (OptionException ex) {
+            System.out.println(ex.getMessage());
+            ManageVideoMenu.action();
+        } catch (SQLException ex) {
+            Logger.getLogger(VideoSearchForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     static void action(){
         input();

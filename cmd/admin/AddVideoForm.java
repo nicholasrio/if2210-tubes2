@@ -6,6 +6,7 @@
 
 package cmd.admin;
 
+import Video.NullException;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -34,12 +35,7 @@ public class AddVideoForm {
         no_tubes = input.nextInt();
     }
     static void execute(){
-        try {
-            Videos.VC.InsertVideo();
-        } catch (SQLException ex) {
-            Logger.getLogger(AddGroupForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        System.out.println("The feature to add Video isn't not implemented yet");
     }
     static void action(){
         input();

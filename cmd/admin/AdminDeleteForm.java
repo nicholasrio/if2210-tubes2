@@ -17,21 +17,46 @@ import java.util.logging.Logger;
  */
 public class AdminDeleteForm {
     static boolean valid;
-    static String NIM;
+    static int option;
     static Scanner input=new Scanner(System.in);
     
+    static void SelectOption(int i) throws OptionException{
+        System.out.println("Insert option: ");
+        option= input.nextInt();
+        if (option > i || option <0){
+            throw new OptionException("Invalid Option");
+        }
+        else{
+            valid = true;
+        }
+    }
+    static void print(){
+        System.out.println("Are you sure you wanna erase  this person?");
+        System.out.println("0. Yes");
+        System.out.println("1. No");
+    }
+    
     static void input(){
-        System.out.print("Insert NIM: ");
-        NIM = input.next();
+        valid=false;
+        while(!valid){
+            try {
+                SelectOption(1);
+            } catch (OptionException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
     }
     static void execute(){
-        try {
-            Admins.AC.AdminDelete(NIM);
-        } catch (SQLException ex) {
-            Logger.getLogger(AddAdminForm.class.getName()).log(Level.SEVERE, null, ex);
+        if(option==0){
+            try {
+                DataController.AC.AdminDelete(Integer.toString(DataController.AC.getAdmin().GetNIM()));
+            } catch (SQLException ex) {
+                Logger.getLogger(AddAdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     static void action(){
+        print();
         input();
         execute();
         ManageAdminMenu.action();

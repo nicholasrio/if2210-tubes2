@@ -17,32 +17,47 @@ import java.util.logging.Logger;
  */
 public class VideoDeleteForm {
     static boolean valid;
-    static String title;
-    static int id;
-    static int no_tubes;
-    static String group_name;
-    static String link;
+    static int option;
     static Scanner input=new Scanner(System.in);
     
+    static void SelectOption(int i) throws OptionException{
+        System.out.println("Insert option: ");
+        option= input.nextInt();
+        if (option > i || option <0){
+            throw new OptionException("Invalid Option");
+        }
+        else{
+            valid = true;
+        }
+    }
+    
+    static void print(){
+        System.out.println("Are you sure you wanna erase this thing?");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
+    }
     static void input(){
-        System.out.print("Insert title: ");
-        title = input.next();
-        System.out.print("Insert Video URL: ");
-        link = input.next();
-        System.out.print("Insert Group Name: ");
-        group_name = input.next();
-        System.out.print("Insert Project Number: ");
-        no_tubes = input.nextInt();
+        valid=false;
+        while(!valid){
+            try{
+                SelectOption(1);
+            }
+            catch(OptionException a){
+                System.out.println(a.getMessage());
+            }
+        }
     }
     static void execute(){
-        try {
-            Videos.VC.DeleteVideo(id);
-        } catch (SQLException ex) {
-            Logger.getLogger(AddGroupForm.class.getName()).log(Level.SEVERE, null, ex);
+        if(option==1){
+            try {
+                DataController.VC.DeleteVideo(VideoPage.id);
+            } catch (SQLException ex) {
+                Logger.getLogger(AddGroupForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
     }
     static void action(){
+        print();
         input();
         execute();
         ManageVideoMenu.action();
