@@ -1,25 +1,25 @@
-package Entity;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package entity;
 
 import java.io.Serializable;
 
-public class TransObject implements Serializable{
+/**
+ *
+ * @author Gilang
+ */
+public class TransObject implements Serializable {
 
 	private static final long serialVersionUID = -4630977808690959143L;
-	
-	String NIM;
-	String name;
-	
-	public TransObject(String nim, String nama) {
-		NIM = nim;
-		name = nama;
-	}
-	
-	public String getNIM(){
-		return NIM;
-	}
-	
-	public String getName(){
-		return name;
+
+	private String fileName;
+	private String extension;
+
+	public TransObject(String fileName) {
+		this.fileName = fileName;
 	}
 
 }
