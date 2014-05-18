@@ -6,7 +6,6 @@
 
 package Video;
 
-import VideoException.*;
 
 /**
  *
