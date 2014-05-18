@@ -165,7 +165,6 @@ public class FormLoginAdmin extends javax.swing.JFrame{
         {
             usernameTextField.setText("");
             passwordTextField.setText("");
-            //close();
             this.dispose();
             FormAdmin fa = new FormAdmin();
             fa.setVisible(true);

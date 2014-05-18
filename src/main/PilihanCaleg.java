@@ -15,7 +15,7 @@ import java.sql.Statement;
 public class PilihanCaleg implements Pilihan{
     private String NIKCaleg;
     private String NIKPemilih;
-    public PilihanCaleg(String NIKPemilih, String NIKCaleg)
+    public PilihanCaleg(String NIKPemilih, String NamaCaleg)
     {
         this.NIKPemilih = NIKPemilih;
         this.NIKCaleg = NIKCaleg;

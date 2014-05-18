@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package main;
 
 import Tools.KoneksiDatabase;
@@ -44,10 +38,15 @@ public class Admin {
                 String []o = new String[2];
                 o[0] = result.getString("username");
                 o[1] = result.getString("password");
+                int SuperAdminInt;
+                if(SuperAdmin)
+                    SuperAdminInt = 1;
+                else
+                    SuperAdminInt = 0;
+                    
                 if(Username.compareToIgnoreCase(o[0]) == 0  && Hashing.StringToMD5(Password).compareTo(o[1]) == 0)
                 {
-                    SuperAdmin = result.getInt("Peran") == 1;
-                    valid = true;
+                    valid = result.getInt("Peran") == SuperAdminInt;
                 }
             }
             
