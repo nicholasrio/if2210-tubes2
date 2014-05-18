@@ -34,4 +34,22 @@ public class VideoController {
     public List<String[]> SelectVideoData() throws SQLException {
         return vid.SelectData();
     }
+    
+    /* method buat cmd (lagi) */
+    public void AddVideo(String title, String URL, String group_name, int no_tubes) throws AttributeException, SQLException, NullException{
+        vid.setTitle(title);
+        vid.setLink(URL);
+        vid.setGroup_name(group_name);
+        vid.setNo_tubes(no_tubes);
+        vid.Insert();
+        System.out.println("Video data has been added, don't forget to add the group too if it hasn't been registered");
+    }
+    public void EditDataVideo(int id, String title, String URL, String group_name, int no_tubes) throws AttributeException, SQLException, NullException{
+        vid.setTitle(title);
+        vid.setLink(URL);
+        vid.setGroup_name(group_name);
+        vid.setNo_tubes(no_tubes);
+        vid.Update(id);
+        System.out.println("Video data has been changed");
+    }
 }
