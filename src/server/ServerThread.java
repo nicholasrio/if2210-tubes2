@@ -9,6 +9,7 @@ import java.util.*;
 import entity.TransObject;
 import java.io.*;
 import java.net.URI;
+import com.data.*;
 
 public class ServerThread extends Thread {
 
@@ -98,10 +99,8 @@ public class ServerThread extends Thread {
 
 	private boolean checkCredential(Credential c) {
 		// to be implemented with DB
-		if (true) {
-			// method stub
-			return true;
-		}
-		return false;
+            UserDao Data = new UserDaoImpl();
+            User user = Data.Validate(c.getId(), c.getPassword());
+            return (user != null);
 	}
 }
