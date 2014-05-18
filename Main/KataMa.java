@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author Rikysamuel
@@ -189,6 +190,7 @@ public class KataMa extends javax.swing.JFrame {
         // Setup the frame accordingly
         // This is assuming you are extending the JFrame //class
         this.setLocation((WIDTH/2) - lebar, (HEIGHT/2) - tinggi);
+        this.setTitle("KaTaMa");
     }//GEN-LAST:event_formWindowActivated
 
     /**
