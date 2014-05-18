@@ -91,7 +91,8 @@ public class TerminalView implements View {
 		System.out.println("6. Train");
 		System.out.println("7. See Food Directory");
 		System.out.println("8. Go to Store");
-		System.out.println("9. Exit");
+		System.out.println("9. Save Game");
+		System.out.println("10. Exit");
 	}
 
 	@Override

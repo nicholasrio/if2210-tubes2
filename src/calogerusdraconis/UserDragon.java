@@ -13,46 +13,22 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
-// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-// #[regen=yes,id=DCE.DF71A32C-B40F-498E-E6D5-9F4513B43A22]
-// </editor-fold> 
 public class UserDragon extends Dragon {
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.9B6996D6-9D30-35C7-C2CD-E73DB7F0E8CF]
-    // </editor-fold> 
     private String password;
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.EBDC48DE-2E8B-B203-0F6D-4E51C55A8BCB]
-    // </editor-fold> 
     private float money;
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.3E0300E9-AAEC-E4C7-70D3-67516D1EAA8D]
-    // </editor-fold> 
     private float happiness;
-
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.E7EE7EE8-EEF2-6089-FC34-B81192D0AB59]
-    // </editor-fold> 
+	
     private ArrayList<Consumable> fdInventory;
-    
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.6E9F01F2-D50D-BD74-70EC-A8F0D4DFCCED]
-    // </editor-fold> 
+	
     protected float maxHealth;
     
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.8E483E98-B30E-A342-6A19-2C19F3CABBE6]
-    // </editor-fold> 
     protected float maxStamina;
     
     private Thread th;
 	
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.39F10D0D-020E-7824-2E18-D995AC6ED214]
-    // </editor-fold> 
 	/** 
 	 * Constructor UserDragon
 	 * @param name			Name of Dragon
@@ -450,6 +426,10 @@ public class UserDragon extends Dragon {
 		return withWho;
 	}
 	
+	/**
+	 * Mengambil nama dragon enemy secara random dari XML
+	 * @return nama dragon enemy
+	 */
 	private String getRandomName(){
 		String retval = "Enemy Dragon";
 		try {
@@ -470,6 +450,12 @@ public class UserDragon extends Dragon {
 		return retval;
 	}
 	
+	/**
+	 * Mengembalikan random integer pada range input
+	 * @param min  batas minimal hasil random
+	 * @param max  batas maksimal hasil random
+	 * @return	hasil random integer
+	 */
 	public static int randomInt(int min, int max) {
 		return new Random().nextInt((max - min) + 1) + min;
 	}

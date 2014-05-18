@@ -3,19 +3,14 @@
   <save>
     <userDragon>
       <name>Xanareth</name>
-      <password>anotherPass</password>
-      <money>500.0</money>
-      <happiness>80.0</happiness>
-      <inventory>
-        <item>potion</item>
-        <item>x-potion</item>
-        <item>first-aid</item>
-        <item>ether</item>
-      </inventory>
-      <health>0.0</health>
+      <password>anon</password>
+      <money>100.0</money>
+      <happiness>100.0</happiness>
+      <inventory />
+      <health>100.0</health>
       <maxHealth>100.0</maxHealth>
-      <stamina>0.0</stamina>
-      <maxStamina>120.0</maxStamina>
+      <stamina>100.0</stamina>
+      <maxStamina>100.0</maxStamina>
       <thirst>0.0</thirst>
       <bladder>0.0</bladder>
       <hunger>0.0</hunger>
@@ -44,6 +39,63 @@
       <hunger>20</hunger>
       <level>2</level>
       <experience>252</experience>
+    </userDragon>
+  </save>
+  <save>
+    <userDragon>
+      <name>user</name>
+      <password>pass</password>
+      <money>50.0</money>
+      <happiness>66.0</happiness>
+      <health>78.0</health>
+      <maxHealth>150.0</maxHealth>
+      <stamina>89.0</stamina>
+      <maxStamina>200.0</maxStamina>
+      <thirst>23.0</thirst>
+      <bladder>51.0</bladder>
+      <hunger>21.0</hunger>
+      <level>5.0</level>
+      <experience>123.0</experience>
+      <inventory>
+        <item>first-aid</item>
+        <item>potion</item>
+      </inventory>
+    </userDragon>
+  </save>
+  <save>
+    <userDragon>
+      <name>calogerus</name>
+      <password>muahaha</password>
+      <money>103.0</money>
+      <happiness>99.0</happiness>
+      <health>100.0</health>
+      <maxHealth>100.0</maxHealth>
+      <stamina>100.0</stamina>
+      <maxStamina>100.0</maxStamina>
+      <thirst>3.0</thirst>
+      <bladder>24.0</bladder>
+      <hunger>3.0</hunger>
+      <level>1.0</level>
+      <experience>0.0</experience>
+      <inventory />
+    </userDragon>
+  </save>
+  <save>
+    <userDragon>
+      <name>saya</name>
+      <password>kamu</password>
+      <money>100.0</money>
+      <happiness>100.0</happiness>
+      <health>100.0</health>
+      <maxHealth>100.0</maxHealth>
+      <stamina>100.0</stamina>
+      <maxStamina>100.0</maxStamina>
+      <thirst>0.0</thirst>
+      <bladder>0.0</bladder>
+      <hunger>0.0</hunger>
+      <level>1</level>
+      <experience>0</experience>
+      <inventory />
     </userDragon>
   </save>
 </calogerusSave>

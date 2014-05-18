@@ -17,6 +17,7 @@
 
 package calogerusdraconis;
 
+import java.util.ArrayList;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.After;
@@ -66,7 +67,7 @@ public class XmlControllerTest {
 		System.out.println("LoadDragon");
 		XmlController instance = new XmlController();
 		try {
-			UserDragon ud = instance.LoadDragon("Xanareth","anotherpasT");
+			UserDragon ud = instance.LoadDragon("Xanareth","anotherPass");
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}
@@ -80,14 +81,18 @@ public class XmlControllerTest {
 	@Test
 	public void testSaveDragon() {
 		System.out.println("SaveDragon");
-		UserDragon dragon = null;
+		UserDragon dragon = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
+		ArrayList<Consumable> arr = new ArrayList<>();
+		arr.add(new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0));
+		arr.add(new Consumable("potion","res/potion.png",250,0,0,400,0,0,0,0));
+		dragon.setFdInventory(arr);
 		XmlController instance = new XmlController();
 		try {
-			UserDragon ud = instance.LoadDragon("Xanareth","anotherpasT");
+			instance.SaveDragon(dragon);
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}
+		
 		// TODO review the generated test code and remove the default call to fail.
-		fail("The test case is a prototype.");
 	}
 }

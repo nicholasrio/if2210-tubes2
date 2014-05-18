@@ -17,13 +17,16 @@
 
 package calogerusdraconis;
 
+import java.awt.Dimension; 
+import static java.lang.Thread.sleep;
+import javax.swing.JScrollPane;
 
 /**
  *
  * @author Dariel Valdano
  */
 public class GUIView extends javax.swing.JFrame implements View {
-
+	
 	/**
 	 * Creates new form GuiVIew
 	 */
@@ -44,7 +47,7 @@ public class GUIView extends javax.swing.JFrame implements View {
         DragonImg = new javax.swing.JLabel();
         DragonName = new javax.swing.JLabel();
         DragonLevel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        DragonExp = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ProgHealth = new javax.swing.JProgressBar();
@@ -59,8 +62,12 @@ public class GUIView extends javax.swing.JFrame implements View {
         jLabel10 = new javax.swing.JLabel();
         ProgHappy = new javax.swing.JProgressBar();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        InventoryPane = new javax.swing.JScrollPane();
-        StorePane = new javax.swing.JScrollPane();
+        InventoryPane = new JScrollPane(InventoryPanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        InventoryPanel = new InventoryDisplay(null);
+        InventoryPanel.setPreferredSize(new Dimension(100,600));
+        StorePane = new JScrollPane(StorePanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        StorePanel = new StoreDisplay(Store.getInstance());
+        InventoryPanel.setPreferredSize(new Dimension(100,600));
         jPanel6 = new javax.swing.JPanel();
         ButtEntertain = new javax.swing.JButton();
         ButtTrain = new javax.swing.JButton();
@@ -95,8 +102,8 @@ public class GUIView extends javax.swing.JFrame implements View {
 
         DragonLevel.setText("Level 20");
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Exp 10000/15000");
+        DragonExp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        DragonExp.setText("Exp 10000/15000");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Stats"));
 
@@ -200,7 +207,55 @@ public class GUIView extends javax.swing.JFrame implements View {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        InventoryPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        InventoryPane.setMinimumSize(new java.awt.Dimension(0, 0));
+
+        InventoryPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        InventoryPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                InventoryPanelMouseClicked(evt);
+            }
+        });
+        InventoryPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                InventoryPanelMouseMoved(evt);
+            }
+        });
+
+        javax.swing.GroupLayout InventoryPanelLayout = new javax.swing.GroupLayout(InventoryPanel);
+        InventoryPanel.setLayout(InventoryPanelLayout);
+        InventoryPanelLayout.setHorizontalGroup(
+            InventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 497, Short.MAX_VALUE)
+        );
+        InventoryPanelLayout.setVerticalGroup(
+            InventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 383, Short.MAX_VALUE)
+        );
+
+        InventoryPane.setViewportView(InventoryPanel);
+
         jTabbedPane1.addTab("Inventory", InventoryPane);
+
+        StorePanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                StorePanelMouseMoved(evt);
+            }
+        });
+
+        javax.swing.GroupLayout StorePanelLayout = new javax.swing.GroupLayout(StorePanel);
+        StorePanel.setLayout(StorePanelLayout);
+        StorePanelLayout.setHorizontalGroup(
+            StorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 497, Short.MAX_VALUE)
+        );
+        StorePanelLayout.setVerticalGroup(
+            StorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 381, Short.MAX_VALUE)
+        );
+
+        StorePane.setViewportView(StorePanel);
+
         jTabbedPane1.addTab("Store", StorePane);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Actions"));
@@ -313,7 +368,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                                 .addComponent(TextMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(DragonLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(DragonExp, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -322,7 +377,7 @@ public class GUIView extends javax.swing.JFrame implements View {
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -340,14 +395,14 @@ public class GUIView extends javax.swing.JFrame implements View {
                                     .addComponent(DragonLevel)
                                     .addComponent(TextMoney))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(DragonExp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(DragonName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPane1)))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -410,6 +465,24 @@ public class GUIView extends javax.swing.JFrame implements View {
 		}
     }//GEN-LAST:event_ButtSaveMouseClicked
 
+    private void InventoryPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseMoved
+		if (evt.getX() > 64 || evt.getY() < 10) InventoryDisplay.pilihan = null; //tipe data Integer
+		else InventoryDisplay.pilihan = (evt.getY()-10)/64;
+    }//GEN-LAST:event_InventoryPanelMouseMoved
+
+    private void StorePanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StorePanelMouseMoved
+		if (evt.getX() > 64 || evt.getY() < 10) StoreDisplay.pilihan = null; //tipe data Integer
+		else StoreDisplay.pilihan = (evt.getY()-10)/64;
+    }//GEN-LAST:event_StorePanelMouseMoved
+
+    private void InventoryPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseClicked
+        // TODO add your handling code here:
+		if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+			System.out.println(evt.getX() + " " + evt.getY());
+		}
+		/*algoritma penentuan barang apa, lihat di atas. dia atas itu indexnya mulai dari 0*/
+    }//GEN-LAST:event_InventoryPanelMouseClicked
+
 	@Override
 	public void showMenu() {
 		//NOP. already shown.
@@ -417,11 +490,52 @@ public class GUIView extends javax.swing.JFrame implements View {
 	
 	@Override
     public void UpdateScreen (UserDragon drg) {
+		int health = (int) drg.getHealth();
+		int maxhealth = (int) drg.getMaxHealth();
+		int bladder = (int) drg.getBladder();
+		int stamina = (int) drg.getStamina();
+		int maxstamina = (int) drg.getMaxStamina();
+		int happiness = (int) drg.getHappiness();
+		int hunger = (int) drg.getHunger();
+		int thirst = (int) drg.getThirst();
+		int money = (int) drg.getMoney();
+		int level = (int) drg.getLevel();
+		
+		ProgHealth.setValue(health);
+		ProgHealth.setMaximum(maxhealth);
+		ProgHealth.setString(""+health+"/"+maxhealth);
+		
+		ProgStamina.setValue(stamina);
+		ProgStamina.setMaximum(maxstamina);
+		ProgStamina.setString(""+stamina+"/"+maxstamina);
+		
+		ProgHappy.setValue(happiness);
+		ProgHappy.setString(""+happiness+"/100");
+		
+		ProgHunger.setValue(hunger);
+		ProgHunger.setString(""+hunger+"/100");
+		
+		ProgThirst.setValue(thirst);
+		ProgThirst.setString(""+thirst+"/100");
+		
+		ProgBladder.setValue(bladder);
+		ProgBladder.setString(""+bladder+"/100");
+		
+		TextMoney.setText("Money: " + money);
+		DragonLevel.setText("Level: " + level);
+		
+		int next = 100 * (level+1) * (level+1) * (level+1);
+		DragonExp.setText("Exp: " + drg.getExperience() +"/"+next);
+		//TODO : progXP
+		//100*(lvl+1)^3
+		InventoryDisplay.change(drg,(InventoryDisplay) InventoryPanel);
+		InventoryPanel.repaint();
     }
 
 	
 	@Override
     public void UpdateScreen (Store str) {
+		StorePanel.repaint();
     }
 
 	
@@ -443,10 +557,12 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JButton ButtSleep;
     private javax.swing.JButton ButtToilet;
     private javax.swing.JButton ButtTrain;
+    private javax.swing.JLabel DragonExp;
     private javax.swing.JLabel DragonImg;
     private javax.swing.JLabel DragonLevel;
     private javax.swing.JLabel DragonName;
     private javax.swing.JScrollPane InventoryPane;
+    private javax.swing.JPanel InventoryPanel;
     private javax.swing.JProgressBar ProgBladder;
     private javax.swing.JProgressBar ProgHappy;
     private javax.swing.JProgressBar ProgHealth;
@@ -454,11 +570,11 @@ public class GUIView extends javax.swing.JFrame implements View {
     private javax.swing.JProgressBar ProgStamina;
     private javax.swing.JProgressBar ProgThirst;
     private javax.swing.JScrollPane StorePane;
+    private javax.swing.JPanel StorePanel;
     private javax.swing.JLabel TextMoney;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

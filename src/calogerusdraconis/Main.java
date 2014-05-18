@@ -135,7 +135,7 @@ public class Main {
 										System.out.println("Pilihan salah!");
 									} else if (pil8!=pilExit) {
 										try {
-											draco.addConsumable(Store.getInstance().buy(pil8));
+											draco.addConsumable(Store.getInstance().buy(pil8-1));
 											System.out.println("Anda berhasil membeli barang dengan nomor " + pil8);
 										} catch (Exception ex) {
 											System.out.println(ex.getMessage());
@@ -143,10 +143,13 @@ public class Main {
 									}
 								} while(pil8!=pilExit);
 							} break;
+					case 9 : {
+								XmlController.SaveDragon(draco);
+							} break;
 					default: break;
 				}
 				//System.out.println("menu " + menu);
-			} while (menu != 9);
+			} while (menu != 10);
 			draco.sebelumExit();
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
@@ -186,6 +189,15 @@ public class Main {
 		};
 		java.awt.EventQueue.invokeLater(thread);
 		
+		/*try {
+			sleep(5000);
+			mainGUI.UpdateScreen(draco);
+			Scanner in = new Scanner(System.in);
+			String a = in.next();
+		} catch (InterruptedException e) {
+			
+		}*/
+		view.UpdateScreen(Store.getInstance());
 		view.UpdateScreen(draco);
 		
 		Event e;
@@ -238,9 +250,9 @@ public class Main {
 
 	/**
 	 * Mengembalikan dragon baru di saat new game
-	 * @param name
-	 * @param password
-	 * @return 
+	 * @param name		nama untuk dragon baru
+	 * @param password	password untuk dragon baru
+	 * @return			dragon baru yang dibuat
 	 */
 	public static UserDragon newGame(String name, String password) {
 		return new UserDragon(name, 100, 100, 100, 100, 0, 0, 0, 1, 0, password, 100, 100);
@@ -248,9 +260,9 @@ public class Main {
 
 	/**
 	 * Mengembalikan dragon lama di saat load game
-	 * @param name
-	 * @param password
-	 * @return 
+	 * @param name		nama dari dragon lama
+	 * @param password	password dari dragon lama
+	 * @return			dragon lama yang ingin di-load
 	 * @throws java.lang.Exception 
 	 */
 	public static UserDragon loadGame(String name, String password) throws Exception {
