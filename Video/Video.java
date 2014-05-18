@@ -23,7 +23,7 @@ public class Video {
                 Logger.getLogger(Video.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-	public void Insert() throws SQLException {
+	public void Insert() throws SQLException, NullException {
             s.insert_video(title, link, view, no_tubes, group_name);
 	}
 	public void Update(int id) throws SQLException {
