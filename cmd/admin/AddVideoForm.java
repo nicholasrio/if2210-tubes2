@@ -6,6 +6,7 @@
 
 package cmd.admin;
 
+import Video.AttributeException;
 import Video.NullException;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -35,7 +36,11 @@ public class AddVideoForm {
         no_tubes = input.nextInt();
     }
     static void execute(){
-        System.out.println("The feature to add Video isn't not implemented yet");
+        try {
+            DataController.VC.AddVideo(title, link, group_name, no_tubes);
+        } catch (AttributeException | SQLException | NullException ex) {
+            Logger.getLogger(AddVideoForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     static void action(){
         input();

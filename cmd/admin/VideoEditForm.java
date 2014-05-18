@@ -6,6 +6,7 @@
 
 package cmd.admin;
 
+import Video.AttributeException;
 import Video.NullException;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -56,8 +57,8 @@ public class VideoEditForm {
     }
     static void execute(){
         try {
-            DataController.VC.UpdateVideo(VideoPage.id);
-        } catch (SQLException | NullException ex) {
+            DataController.VC.EditDataVideo(VideoPage.id, title, link, group_name, no_tubes);
+        } catch (SQLException | NullException | AttributeException ex) {
             Logger.getLogger(VideoEditForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         

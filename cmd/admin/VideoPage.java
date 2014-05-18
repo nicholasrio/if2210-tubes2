@@ -6,10 +6,14 @@
 
 package cmd.admin;
 
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import cmd.cmdVidPlayer;
+
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  *
@@ -32,6 +36,17 @@ public class VideoPage {
         else{
             valid = true;
         }
+    }
+    
+    static void PlayVideo(){
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                NativeInterface.open();
+                new cmdVidPlayer(URL).setVisible(true);
+            }
+        });
     }
     
     static void print(){
@@ -67,6 +82,7 @@ public class VideoPage {
         } catch (SQLException ex) {
             Logger.getLogger(VideoPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        PlayVideo();
         print();
         input();
         execute();

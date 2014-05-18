@@ -6,6 +6,9 @@
 
 package cmd.user;
 
+import VideoPlayer.YoutubeMediaPlayer;
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import cmd.cmdVidPlayer;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -36,7 +39,16 @@ public class VideoPageUser {
             valid = true;
         }
     }
-    
+    static void PlayVideo(){
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                NativeInterface.open();
+                new cmdVidPlayer(URL).setVisible(true);
+            }
+        });
+    }
     static void print(){
         System.out.println("Video: "+VideoTitle);
         System.out.println("Link: "+URL);
@@ -81,6 +93,7 @@ public class VideoPageUser {
         } catch (SQLException ex) {
             Logger.getLogger(VideoPageUser.class.getName()).log(Level.SEVERE, null, ex);
         }
+        PlayVideo();
         print();
         input();
         execute();

@@ -6,7 +6,6 @@
 
 package cmd.admin;
 
-import Group.*;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -46,16 +45,13 @@ public class GroupPage {
         }
         
         System.out.println("");
-        System.out.println("Menu:");
-        System.out.println("1. Edit");
-        System.out.println("2. Delete");
         System.out.println("0. Back");
     }
     static void input(){
         valid=false;
         while(!valid){
             try{
-                SelectOption(2);
+                SelectOption(0);
             }
             catch(OptionException a){
                 System.out.println(a.getMessage());
@@ -63,9 +59,7 @@ public class GroupPage {
         }
     }
     static void execute(){
-        if(option==1){GroupEditForm.action();}
-        else if(option==2){GroupDeleteForm.action();}
-        else{Groups.action(1,10);}
+        Groups.action(1,10);
     }
     static void action(int _id){
         id=_id;

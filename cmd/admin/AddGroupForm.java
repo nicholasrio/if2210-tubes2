@@ -41,8 +41,7 @@ public class AddGroupForm {
             DataController.GC.RegisterGroup(No_Tubes,GroupName,Member);
         } catch (SQLException ex) {
             Logger.getLogger(AddGroupForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        }        
     }
     static void action(){
         input();
