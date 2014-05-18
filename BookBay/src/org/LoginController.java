@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 
 public class LoginController {
+	public static User currUser = new User();
 	
 	public boolean Validate(String Username, String Password) throws SQLException {
 		DBConnection conn = new DBConnection();
@@ -12,6 +13,10 @@ public class LoginController {
 		{
 			if(Username.matches(rs.getString("username")) && Password.matches(rs.getString("password")))
 			{
+				currUser.name(Username);
+				currUser.password(Password);
+				currUser.id(rs.getString("id"));
+				Main.frame.dispose();
 				conn.closeConnection();
 				return true;
 			}

@@ -88,6 +88,8 @@ public class LoginPanel extends JPanel {
 					{
 						statusLabel.setText("You're now logged in!");
 						statusLabel.setForeground(Color.BLUE);
+						MainMenu mm = new MainMenu();
+						mm.setVisible(true);	
 					}
 					else
 					{

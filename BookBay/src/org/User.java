@@ -8,6 +8,10 @@ public class User {
 	private String password; // password of the user
 	private List<FileController> files; // files owned by the user
 	
+	public User() {
+		
+	}
+	
 	public User(String name, String ID, String password) {
 		this.name = name;
 		this.ID = ID;
