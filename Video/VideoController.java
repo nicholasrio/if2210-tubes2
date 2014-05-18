@@ -11,11 +11,12 @@ package Video;
  * @author asus
  */
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VideoController {
-    private final Video vid;
-    private final VideoView view;
+    private Video vid;
+    private VideoView view;
     
     public VideoController() {
         vid = new Video();
