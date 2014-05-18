@@ -21,15 +21,20 @@ import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 @SuppressWarnings("serial")
 public class YoutubeMediaPlayer extends JPanel 
 {   
+	JWebBrowser webBrowser;
 	public YoutubeMediaPlayer (String URL)
 	{
 	     super(new BorderLayout()); 
 		 JPanel webBrowserPanel = new JPanel(new BorderLayout());
 		 webBrowserPanel.setBorder(BorderFactory.createTitledBorder(""));
-		 final JWebBrowser webBrowser = new JWebBrowser();
+		 webBrowser = new JWebBrowser();
 		 webBrowser.navigate(URL);
 		 webBrowser.setBarsVisible(false);
 		 webBrowserPanel.add(webBrowser, BorderLayout.CENTER);
 		 add(webBrowserPanel, BorderLayout.CENTER);
+	}
+	public void setURL (String URL)
+	{
+		 webBrowser.navigate(URL);		
 	}
 }
