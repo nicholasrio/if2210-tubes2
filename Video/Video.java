@@ -36,7 +36,7 @@ public class Video {
             return s.cekDataVideo(id);
         }
 	public List<String[]> SelectData() throws SQLException {
-                return s.select_video();
+            return s.select_video();
 	}
 	//public GetThumbnail() {
 	
