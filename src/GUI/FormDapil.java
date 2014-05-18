@@ -7,10 +7,10 @@
 package GUI;
 import Tools.KoneksiDatabase;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import main.CalonTerpilih;
 import main.Dapil;
@@ -34,11 +34,14 @@ public class FormDapil extends javax.swing.JFrame {
         
         model.addColumn("No. Dapil");
         model.addColumn("Kota/Kabupaten");
-        //loadData();
+        loadDataFromList();
     }
     
+    /**
+     * Mengeload data Dapil dari database
+     */
     private void loadData(){
-     model.getDataVector().removeAllElements();
+        model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
         try
         {
@@ -50,7 +53,7 @@ public class FormDapil extends javax.swing.JFrame {
             
             while (result.next())
             {
-                Object [] o = new Object[5];
+                Object [] o = new Object[2];
                 o[0] = result.getString("No_Dapil");
                 o[1] = result.getString("Nama_Kabupaten");
                 
@@ -65,6 +68,27 @@ public class FormDapil extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Mengeload data dari list of Dapil yang ada di kelas CalonTerpilih
+     */
+    private void loadDataFromList()
+    {
+        List<Dapil> daftarDapil = calonterpilih.getDapil();
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        for(Dapil dapil : daftarDapil)
+        {
+            List <String> daftarKabupaten = dapil.getDaftarKabupaten();
+            for(String kabupaten : daftarKabupaten)
+            {
+                Object [] o = new Object[2];
+                o[0] = dapil.getNoDapil();
+                o[1] = kabupaten;
+                
+                model.addRow(o);
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -217,11 +241,12 @@ public class FormDapil extends javax.swing.JFrame {
             }
         }
         calonterpilih.AddDapil(Integer.parseInt(NoDapil.getText()), parts);
-        
+        loadDataFromList();
     }//GEN-LAST:event_TambahActionPerformed
 
     private void KembaliFormAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KembaliFormAdminActionPerformed
         // TODO add your handling code here:
+        calonterpilih.SaveToDatabase();
         this.dispose();
         FormAdmin FA = new FormAdmin();
         FA.setVisible(true);

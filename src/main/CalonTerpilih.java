@@ -9,10 +9,13 @@ package main;
 import Tools.KoneksiDatabase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,6 +29,7 @@ public class CalonTerpilih {
     {
         daerahPemilihan = new ArrayList<>();
         daftarCaleg = new ArrayList<>();
+        LoadDapilFromDatabaseToList();
     }
     public void AddCaleg(String NIK, String Nama, String Partai,String History, int _NoDapil, String lingkup){
         //Jangan lupa pengecekan udah ada Caleg apa belum
@@ -57,11 +61,11 @@ public class CalonTerpilih {
      * Menyimpan list dapil dan list caleg ke database. Isi list harus sudah unik dan belum ada di database.
      */
     public void SaveToDatabase(){
-        if(daftarCaleg.size() == 0)
+        if(daerahPemilihan.size() != 0 && daftarCaleg.size() == 0)
         {
             saveDapilToDatabase();
         }
-        else if(daerahPemilihan.size() == 0)
+        else if(daftarCaleg.size() != 0 && daerahPemilihan.size() == 0)
         {
             saveCalegToDatabase();
         }
@@ -82,26 +86,37 @@ public class CalonTerpilih {
         try
         {
             Statement statement = koneksi.createStatement();
-            String command1 = "Insert into Dapil values (?)";
+            String command1 = "Insert ignore into Dapil values (?)";
             String command2 = "Insert into Kabupaten values (?, ?)";
+            String commandCheckExist = "Select Nama_Kabupaten from Kabupaten "
+                    + "where Nama_Kabupaten = ?";
             PreparedStatement P1 = koneksi.prepareStatement(command1);
             PreparedStatement P2 = koneksi.prepareStatement(command2);
+            PreparedStatement PCheck = koneksi.prepareStatement(commandCheckExist);
             List<String> daftarKabupaten = new ArrayList<>();
             for(Dapil dapil : daerahPemilihan)
             {
                 P1.setString(1, Integer.toString(dapil.getNoDapil()));
+                P1.executeUpdate();
                 daftarKabupaten = dapil.getDaftarKabupaten();
+                int i = 0;
                 for(String kabupaten : daftarKabupaten)
                 {
-                    P1.setString(1, Integer.toString(dapil.getNoDapil()));
-                    P2.setString(2, kabupaten);
+                    PCheck.setString(1, kabupaten);
+                    ResultSet result = PCheck.executeQuery();
+                    if(!result.next())
+                    {
+                        P2.setString(1, Integer.toString(dapil.getNoDapil()));
+                        P2.setString(2, kabupaten);
+                        P2.executeUpdate();
+                    }
+                    
                 }
                 
-                P1.executeUpdate();
-                P2.executeUpdate();
             }
             P1.close();
             P2.close();
+            daerahPemilihan = new ArrayList<>();
         }
         catch (SQLException ex) {
             System.out.println("Error CalonTerpilih.java: " + ex.getMessage());
@@ -136,5 +151,82 @@ public class CalonTerpilih {
         }
     }
     
+    private void LoadDapilFromDatabaseToList()
+    {
+        System.out.println("LoadDapilFromDatabaseToList");
+        try {
+            Connection koneksi;
+            koneksi = KoneksiDatabase.getKoneksi();
+            
+            Statement statement = koneksi.createStatement();
+            String command = "Select * from Kabupaten";
+            ResultSet result = statement.executeQuery(command);
+            List <String> noDapil = new ArrayList<>();
+            List<String> NamaKabupaten = new ArrayList<>();
+            while(result.next())
+            {
+                Object []o = new Object[2];
+                o[0] = result.getString("No_Dapil");
+                o[1] = result.getString("Nama_Kabupaten");
+                noDapil.add((String) o[0]);
+                NamaKabupaten.add((String) o[1]);
+            }
+            
+            if(!noDapil.isEmpty())
+            {
+                System.out.println("Masuk if noDapil not empty");
+                int NoDapilTemp = Integer.parseInt(noDapil.get(0));
+                Dapil DapilTemp = new Dapil(NoDapilTemp, NamaKabupaten.get(0));
+                for(int i = 1; i < noDapil.size(); i++)
+                {
+                    if(isNoDapilExist(NoDapilTemp))
+                    if(NoDapilTemp != Integer.parseInt(noDapil.get(i)))
+                    {
+                        daerahPemilihan.add(DapilTemp);
+                        NoDapilTemp = Integer.parseInt(noDapil.get(i));
+                        DapilTemp = new Dapil(NoDapilTemp, NamaKabupaten.get(i));
+                    }
+                    else
+                    {
+                        DapilTemp.addKabupaten(NamaKabupaten.get(i));
+                    }
+                }
+                daerahPemilihan.add(DapilTemp);
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CalonTerpilih.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    /**
+     * Mendapatkan daftar dapil
+     * @return List <Dapil>
+     */
+    public List<Dapil> getDapil()
+    {
+        return daerahPemilihan;
+    }
     
+    /**
+     * Mendapatkan daftarCaleg
+     * @return List<Caleg>
+     */
+    public List<Caleg> getDaftarCaleg()
+    {
+        return daftarCaleg;
+    }
+    
+    private boolean isNomorDapilExist(int NoDapil)
+    {
+        boolean ketemu = false;
+        int i = 0;
+        while (!ketemu && i < daerahPemilihan.size())
+        {
+            if(daerahPemilihan.get(i).getNoDapil() == NoDapil)
+                ketemu = true;
+            i++;
+        }
+        return ketemu;
+    }
 }
