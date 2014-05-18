@@ -51,6 +51,7 @@ public class Client {
             try {
                 String NIM;
                 String password;
+                String tempSR;
                 System.out.println("Enter NIM: ");
                 NIM = reader.readLine();
                 System.out.println("Enter password: ");
@@ -60,8 +61,9 @@ public class Client {
                 sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 Credential obj = new Credential(NIM, password);
                 oos.writeObject(obj);
-                System.out.println("Dari server " + sockReader.readLine());
-                if(sockReader.readLine().contains("Login sukses")){
+                tempSR  =   sockReader.readLine();
+                System.out.println("Dari server " + tempSR);
+                if(tempSR.contains("Login sukses")){
                     LoggedIn    =    true;
                 }
                 oos.close();
@@ -71,20 +73,23 @@ public class Client {
 	}
 	
 	public void sendPrintInfo(){
+            //System.out.println(LoggedIn);
             if(LoggedIn){
 		try {
-			while(!(input = reader.readLine()).equals("exit")){
+			//while(!(input = reader.readLine()).equals("exit")){
 				
-			}
+			//}
 			while ((input = reader.readLine()) != null) {
-		    	socket = new Socket(hostName, portNumber);
-		    	ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-		    	TransObject obj = new TransObject("13512045", "Gilang Julian Suherik");
-		    	TransObject obj2 = new TransObject("13512000", "Siapa nih?");
-		    	oos.writeObject(obj);
-		    	oos.writeObject(obj2);
-		    	oos.close();
-		        //System.exit(0);
+		    	/*socket = new Socket(hostName, portNumber);
+                            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+                            TransObject obj = new TransObject("13512045", "Gilang Julian Suherik");
+                            TransObject obj2 = new TransObject("13512000", "Siapa nih?");
+                            oos.writeObject(obj);
+                            oos.writeObject(obj2);
+                            oos.close();
+                            //System.exit(0);
+                                */
+                            kirimFile();
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -102,22 +107,31 @@ public class Client {
                 login();
             }
 	}
+        public void kirimFile(){
+            //buat kalo mau pake file
+            String Path;
+            System.out.println("Masukkan path file yang akan diupload:");
+            try{
+                //Path    =  reader.readLine().replace("\\","\\\\");
+                //System.out.println(Path);
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                if(true){
+                        File f = new File("TSocket.pdf");
+                        BufferedInputStream inFile = new BufferedInputStream(new FileInputStream(f));
+                        byte[] buf = new byte[(int)f.length()];
+                        inFile.read(buf);
+                        socket.getOutputStream().write(buf);
+                }
+                //send message to server
+                System.out.println("Someone send a message: "+input);
+
+                //read message from server
+                System.out.println(in.readLine());
+            }catch(Exception e){
+                System.out.println("Terjadi kesalahan dalam pengiriman");
+            }
+        }
 }
 
 
-//buat kalo mau pake file
-
-//PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-//BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-/*if(true){
-	File f = new File("ClientFolder/send.pdf");
-	BufferedInputStream inFile = new BufferedInputStream(new FileInputStream(f));
-	byte[] buf = new byte[(int)f.length()];
-	inFile.read(buf);
-	socket.getOutputStream().write(buf);
-}*/
-//	send message to server
-//out.println("Someone send a message: "+input);
-
-//	read message from server
-//System.out.println(in.readLine());

@@ -14,15 +14,15 @@ public class ServerThread extends Thread{
 	private Socket socket;
 	private int id;
 	private Credential credential;
-	private boolean isLoggedIn;
+	private boolean isLoggedIn =  false;
 	private List<String> loggedinUser;
 	public ServerThread(Socket clientSocket, int id){
 		socket = clientSocket;
-                
 		this.id = id;
 	}
 	
 	public void run(){
+            
 		ObjectInputStream ois = null;
 		PrintWriter pw = null;
 		try { 
@@ -36,12 +36,7 @@ public class ServerThread extends Thread{
                         else if(obj instanceof Credential){
                                 System.out.println("Credential information received");
                                 credential = (Credential) obj;
-                                //if(checkCredential(credential)){
-                                //        pw.write("Login sucess");
-                               //        pw.flush();
-                                //        isLoggedIn = true;
-                                if(credential.getId().equalsIgnoreCase("admin") && credential.getPassword().equalsIgnoreCase("admin1")){
-                                    //System.out.println("dasdsadsa");
+                                if(checkCredential(credential)){
                                     pw.write("Login sukses");
                                     pw.flush();
                                     //loggedinUser.add(credential.getId());
@@ -51,8 +46,7 @@ public class ServerThread extends Thread{
                                         pw.write("Wrong username or password");
                                         pw.flush();
                                 }
-                                System.out.println("Message sent");
-                           
+                                System.out.println("Message sent");  
                         }
                         ois.close();
 		}
