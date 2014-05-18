@@ -6,6 +6,8 @@
 
 package gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rosi
@@ -31,7 +33,7 @@ public class User extends javax.swing.JFrame {
 
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buttonLogout = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -80,19 +82,19 @@ public class User extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(450, 30, 123, 15);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Logout");
-        jButton1.setBorder(null);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        buttonLogout.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        buttonLogout.setForeground(new java.awt.Color(255, 255, 255));
+        buttonLogout.setText("Logout");
+        buttonLogout.setBorder(null);
+        buttonLogout.setContentAreaFilled(false);
+        buttonLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                buttonLogoutMouseClicked(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(720, 30, 37, 15);
+        getContentPane().add(buttonLogout);
+        buttonLogout.setBounds(720, 30, 37, 15);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(99, 99, 194));
@@ -316,12 +318,14 @@ public class User extends javax.swing.JFrame {
         user.show();
     }//GEN-LAST:event_jButton5MouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void buttonLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLogoutMouseClicked
         // TODO add your handling code here:
         this.hide();
+		Main.client.logout();
+		JOptionPane.showMessageDialog(this, "You have been logged out");
         Login login = new Login();
         login.show();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_buttonLogoutMouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
@@ -373,7 +377,7 @@ public class User extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonLogout;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

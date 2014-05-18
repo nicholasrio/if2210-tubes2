@@ -28,12 +28,12 @@ public class Database {
 	public Database() {
 		host = "localhost";
 		user = "root";
-		pass = "underground";
-		db_name = "tubes_oop";
+		pass = "";
+		db_name = "printer_online";
 		String connectionURL = "jdbc:mysql://" + host + "/" + db_name;
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			connection = (Connection) DriverManager.getConnection(connectionURL, "root", "underground");
+			connection = (Connection) DriverManager.getConnection(connectionURL, user, pass);
 			statement = connection.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
