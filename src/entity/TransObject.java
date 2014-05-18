@@ -15,11 +15,25 @@ public class TransObject implements Serializable {
 
 	private static final long serialVersionUID = -4630977808690959143L;
 
+	private String senderNIM;
 	private String fileName;
 	private String extension;
 
-	public TransObject(String fileName) {
+	public TransObject(String senderNIM, String fileName) {
 		this.fileName = fileName;
+		this.senderNIM = senderNIM;
+	}
+
+	public String getSenderNIM() {
+		return senderNIM;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public String getExtension() {
+		return extension;
 	}
 
 }

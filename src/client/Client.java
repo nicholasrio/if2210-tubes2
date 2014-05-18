@@ -18,6 +18,8 @@ public class Client {
 	int portNumber = 5432;
 	Socket socket;
 	String input;
+	String NIM;
+	String password;
 	BufferedReader reader;
 	BufferedReader sockReader;
 	private boolean LoggedIn;
@@ -31,25 +33,28 @@ public class Client {
 		try {
 			do {
 				reader = new BufferedReader(new InputStreamReader(System.in));
-				System.out.println("1. login");
+				if(!LoggedIn)
+					System.out.println("1. login");
+				else
+					System.out.println("1. logout");
 				System.out.println("2. print");
 				System.out.println("3. exit");
 				input = reader.readLine();
-				if (input.contains("login")) {
+				if (input.equals("login") && !LoggedIn)
 					login();
-				} else if (input.equals("print")) {
+				else if (input.equals("print"))
 					sendPrintInfo();
-				}
+				else if(input.equals("logout") && LoggedIn)
+					logout();
 			} while (!input.equals("exit"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void login() {
+	private void login() {
 		try {
-			String NIM;
-			String password;
+			
 			String tempSR;
 			System.out.println("Enter NIM: ");
 			NIM = reader.readLine();
@@ -58,8 +63,10 @@ public class Client {
 			socket = new Socket(hostName, portNumber);
 			ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 			sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			Credential obj = new Credential(NIM, password);
+			Credential obj = new Credential(NIM, password, Credential.LOGIN);
 			oos.writeObject(obj);
+			
+			// login with DB to be implemented
 			tempSR = sockReader.readLine();
 			System.out.println("Dari server " + tempSR);
 			if (tempSR.contains("Login sukses")) {
@@ -71,26 +78,30 @@ public class Client {
 		}
 	}
 
-	public void sendPrintInfo() {
+	private void logout(){
+		ObjectOutputStream oos;
+		try{
+			socket = new Socket(hostName, portNumber);
+			oos = new ObjectOutputStream(socket.getOutputStream());
+			sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			Credential obj = new Credential(NIM, password, Credential.LOGOUT);
+			oos.writeObject(obj);
+			oos.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	private void sendPrintInfo() {
 		//System.out.println(LoggedIn);
 		if (LoggedIn) {
 			try {
-			//while(!(input = reader.readLine()).equals("exit")){
-
-			//}
-				//while ((input = reader.readLine()) != null) {
 				socket = new Socket(hostName, portNumber);
 				ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-				TransObject obj = new TransObject("receive.pdf");
-				//TransObject obj2 = new TransObject("13512000", "Siapa nih?");
+				TransObject obj = new TransObject(NIM,"receive.pdf");
 				oos.writeObject(obj);
-				//oos.writeObject(obj2);
-				kirimFile();
-
+				sendFile();
 				oos.close();
-                            //System.exit(0);
-
-				//}
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -108,7 +119,7 @@ public class Client {
 		}
 	}
 
-	public void kirimFile() {
+	private void sendFile() {
 		//buat kalo mau pake file
 		String Path;
 		System.out.println("Masukkan path file yang akan diupload:");
