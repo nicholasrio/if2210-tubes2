@@ -8,6 +8,8 @@ package Main;
 
 import Admin.AdministratorController;
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -46,6 +48,11 @@ public class KataMa extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("カターマ");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -171,6 +178,18 @@ public class KataMa extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        final int WIDTH = screenSize.width;
+        final int HEIGHT = screenSize.height;
+        int lebar = (int) this.getSize().getWidth() / 2;
+        int tinggi = (int) this.getSize().getHeight() / 2;
+        // Setup the frame accordingly
+        // This is assuming you are extending the JFrame //class
+        this.setLocation((WIDTH/2) - lebar, (HEIGHT/2) - tinggi);
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

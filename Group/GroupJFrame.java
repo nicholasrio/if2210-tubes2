@@ -4,6 +4,7 @@
  */
 package Group;
 
+import Main.MenuLoginAdmin;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -29,7 +30,6 @@ public class GroupJFrame extends javax.swing.JFrame {
         initComponents();
         this.g = new Group();
         aList = new ArrayList<>();
-        b_update.setVisible(false);
         temp_kel.setVisible(false);
         temp_tubes.setVisible(false);
     }
@@ -55,7 +55,7 @@ public class GroupJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         b_edit = new javax.swing.JButton();
-        b_update = new javax.swing.JButton();
+        b_back = new javax.swing.JButton();
         temp_tubes = new javax.swing.JLabel();
         temp_kel = new javax.swing.JLabel();
 
@@ -70,7 +70,7 @@ public class GroupJFrame extends javax.swing.JFrame {
 
         b_save.setText("Save");
         b_save.setToolTipText("Menyimpan data");
-        b_save.setName("");
+        b_save.setName(""); // NOI18N
         b_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_saveActionPerformed(evt);
@@ -78,7 +78,7 @@ public class GroupJFrame extends javax.swing.JFrame {
         });
 
         no_tubes.setToolTipText("");
-        no_tubes.setName("no_tubes");
+        no_tubes.setName("no_tubes"); // NOI18N
 
         jLabel1.setText("No Tubes");
 
@@ -97,10 +97,10 @@ public class GroupJFrame extends javax.swing.JFrame {
             }
         });
 
-        b_update.setText("Update");
-        b_update.addActionListener(new java.awt.event.ActionListener() {
+        b_back.setText("Back");
+        b_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_updateActionPerformed(evt);
+                b_backActionPerformed(evt);
             }
         });
 
@@ -116,15 +116,21 @@ public class GroupJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(group_name, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(no_tubes, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(anggota_1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(anggota_2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(115, 115, 115)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(group_name, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(anggota_1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(anggota_2, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(115, 115, 115))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(no_tubes, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(b_back)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(temp_kel)
                             .addComponent(temp_tubes)))
@@ -135,19 +141,18 @@ public class GroupJFrame extends javax.swing.JFrame {
                 .addComponent(b_save)
                 .addGap(33, 33, 33)
                 .addComponent(b_edit)
-                .addGap(27, 27, 27)
-                .addComponent(b_update)
-                .addGap(39, 158, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(no_tubes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(temp_tubes))
-                .addGap(18, 18, 18)
+                    .addComponent(temp_tubes)
+                    .addComponent(b_back))
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(group_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
@@ -167,8 +172,7 @@ public class GroupJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(b_save)
-                    .addComponent(b_edit)
-                    .addComponent(b_update))
+                    .addComponent(b_edit))
                 .addGap(40, 40, 40))
         );
 
@@ -248,9 +252,10 @@ public class GroupJFrame extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_b_editActionPerformed
 
-    private void b_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_updateActionPerformed
-        g.update(Integer.parseInt(temp_tubes.getText()), temp_kel.getText());
-    }//GEN-LAST:event_b_updateActionPerformed
+    private void b_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_backActionPerformed
+        new MenuLoginAdmin().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_b_backActionPerformed
 
     public void clean(){
         no_tubes.setText("");
@@ -271,54 +276,14 @@ public class GroupJFrame extends javax.swing.JFrame {
         }
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the
-         * default look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GroupJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GroupJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GroupJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GroupJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /*
-         * Create and display the form
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new GroupJFrame().setVisible(true);
-            }
-        });
-    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField anggota_1;
     private javax.swing.JTextField anggota_2;
     private javax.swing.JTextField anggota_3;
+    private javax.swing.JButton b_back;
     private javax.swing.JButton b_edit;
     private javax.swing.JButton b_save;
-    private javax.swing.JButton b_update;
     private javax.swing.JTextField group_name;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

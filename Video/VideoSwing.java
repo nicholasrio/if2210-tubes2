@@ -178,9 +178,12 @@ public class VideoSwing extends javax.swing.JFrame {
 
                     JOptionPane.showMessageDialog(null, "Data berhasil disimpan...");
                     clean();
+                } catch (AttributeException ex) {
+                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Ada Kesalahan...");
                     Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, ex);
+<<<<<<< HEAD
                 } catch (AttributeException a) {
                     JOptionPane.showMessageDialog(null, a.getMessage());
                     Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, a);
@@ -191,6 +194,13 @@ public class VideoSwing extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Masukan data sesuai tipenya");
                     Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, nf);
                 }
+=======
+                } 
+//                catch (AttributeException a) {
+//                    JOptionPane.showMessageDialog(null, a.getMessage());
+//                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, a);
+//                }
+>>>>>>> b17f19af4fe0d67eeebad01328867cc9f2b1b835
             }
         }
     }//GEN-LAST:event_SaveButtonActionPerformed
@@ -230,13 +240,22 @@ public class VideoSwing extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
+<<<<<<< HEAD
         final int Width = screenSize.width;
         final int Height = screenSize.height;
+=======
+        final int WIDTH = screenSize.width;
+        final int HEIGHT = screenSize.height;
+>>>>>>> b17f19af4fe0d67eeebad01328867cc9f2b1b835
         int lebar = (int) this.getSize().getWidth() / 2;
         int tinggi = (int) this.getSize().getHeight() / 2;
         // Setup the frame accordingly
         // This is assuming you are extending the JFrame //class
+<<<<<<< HEAD
         this.setLocation((Width/2) - lebar, (Height/2) - tinggi);
+=======
+        this.setLocation((WIDTH/2) - lebar, (HEIGHT/2) - tinggi);
+>>>>>>> b17f19af4fe0d67eeebad01328867cc9f2b1b835
     }//GEN-LAST:event_formWindowActivated
     
     public boolean cek(){
