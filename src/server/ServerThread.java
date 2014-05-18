@@ -51,7 +51,9 @@ public class ServerThread extends Thread {
 						output.write(buffer, 0, smblen);
 					} while (clientData.available() != 0);
 					output.close();
-					System.out.println("Pengiriman selesai");
+					System.out.println("User " + transObj.getSenderNIM() + " uploaded a file: " + file.getName());
+					pw.write("File successfully uploaded");
+					pw.flush();
 				}
 			} else if (obj instanceof Credential) {
 				System.out.println("Credential information received");
@@ -65,6 +67,8 @@ public class ServerThread extends Thread {
 					else if(credential.getType() == Credential.LOGOUT){
 						// todo when logout
 						ServerManager.getSingleton().removeLoggedUser(credential.getId());
+						pw.write("Logout sukses");
+						pw.flush();
 					}
 					else if(credential.getType() == Credential.PRINT){
 						//call to method print("serverFolder/" + credential.getId() + "/" + credential.getFile())

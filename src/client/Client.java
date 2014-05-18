@@ -14,56 +14,26 @@ import java.net.Socket;
 
 public class Client {
 
-	String hostName = "localhost";
-	int portNumber = 5432;
-	Socket socket;
-	String input;
-	String NIM;
-	String password;
-	BufferedReader reader;
-	BufferedReader sockReader;
-	private boolean LoggedIn;
+	protected String hostName;
+	protected int portNumber;
+	protected Socket socket;
+	protected String input;
+	protected String NIM;
+	protected String password;
+	protected BufferedReader reader;
+	protected BufferedReader sockReader;
+	protected boolean LoggedIn;
 
-	public static void main(String[] args) {
-		Client client = new Client();
-	}
-
-	public Client() {
+	public Client(String host, int port) {
 		LoggedIn = false;
-		try {
-			do {
-				reader = new BufferedReader(new InputStreamReader(System.in));
-				if(!LoggedIn)
-					System.out.println("1. login");
-				else
-					System.out.println("1. logout");
-				System.out.println("2. upload");
-				System.out.println("3. print");
-				System.out.println("4. exit");
-				input = reader.readLine();
-				if (input.equals("login") && !LoggedIn)
-					login();
-				else if (input.equals("upload"))
-					sendPrintInfo();
-				else if(input.equals("print"))
-					print();
-				else if(input.equals("logout") && LoggedIn)
-					logout();
-			} while (!input.equals("exit"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		hostName = host;
+		portNumber = port;
 	}
-
-	private void login() {
+		
+	public void login(String NIM, String password) {
 		try {
 			String tempSR;
 			ObjectOutputStream oos;
-			
-			System.out.println("Enter NIM: ");
-			NIM = reader.readLine();
-			System.out.println("Enter password: ");
-			password = reader.readLine();
 			
 			socket = new Socket(hostName, portNumber);
 			oos = new ObjectOutputStream(socket.getOutputStream());
@@ -73,7 +43,7 @@ public class Client {
 			
 			// login with DB to be implemented
 			tempSR = sockReader.readLine();
-			System.out.println("Dari server " + tempSR);
+			System.out.println("Message from server: " + tempSR);
 			if (tempSR.contains("Login sukses")) {
 				LoggedIn = true;
 			}
@@ -83,7 +53,7 @@ public class Client {
 		}
 	}
 
-	private void logout(){
+	public void logout(){
 		ObjectOutputStream oos;
 		BufferedReader in;
 		try{
@@ -94,23 +64,24 @@ public class Client {
 			
 			Credential obj = new Credential(NIM, password, Credential.LOGOUT);
 			oos.writeObject(obj);
-			System.out.println("Message from server: " + in.readLine());
+			String response = in.readLine();
+			System.out.println("Message from server: " + response);
 			oos.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	
-	private void print(){
+	public void printRequest(String fileName){
 		if (LoggedIn) {
 			try {
 				socket = new Socket(hostName, portNumber);
 				ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 				
 				// get and print out file name list
-				System.out.println("Input filename: ");
+				
 				Credential c = new Credential(NIM, password, Credential.PRINT);
-				c.setFile(reader.readLine());
+				c.setFile(fileName);
 				oos.writeObject(c);
 				oos.close();
 			} catch (Exception e) {
@@ -126,20 +97,18 @@ public class Client {
 			}
 		} else {
 			System.out.println("Silahkan login terlebih dahulu.");
-			login();
 		}
 	}
 	
-	private void sendPrintInfo() {
+	public void sendFile(String filePath) {
 		//System.out.println(LoggedIn);
 		if (LoggedIn) {
 			try {
 				socket = new Socket(hostName, portNumber);
 				ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-				System.out.println("Masukkan path file yang akan diupload: ");
-				TransObject obj = new TransObject(NIM,reader.readLine());
+				TransObject obj = new TransObject(NIM,filePath);
 				oos.writeObject(obj);
-				sendFile(obj);
+				upload(obj);
 				oos.close();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -154,16 +123,11 @@ public class Client {
 			}
 		} else {
 			System.out.println("Silahkan login terlebih dahulu.");
-			login();
-		}
-		
+		}	
 	}
-
-	private void sendFile(TransObject obj) {
-		//buat kalo mau pake file
+	
+	private void upload(TransObject obj) {
 		try {
-                //Path    =  reader.readLine().replace("\\","\\\\");
-			//System.out.println(Path);
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			if (true) {
@@ -173,13 +137,51 @@ public class Client {
 				inFile.read(buf);
 				socket.getOutputStream().write(buf);
 			}
+			String response = in.readLine();
 			//send message to server
 			out.println("Someone send a message: " + input);
 
 			//read message from server
-			System.out.println("Message from server: " + in.readLine());
+			System.out.println("Message from server: " + response);
 		} catch (Exception e) {
 			System.out.println("Terjadi kesalahan dalam pengiriman");
 		}
+	}
+	
+	//getter and setter
+	public String getHostName() {
+		return hostName;
+	}
+
+	public int getPortNumber() {
+		return portNumber;
+	}
+
+	public Socket getSocket() {
+		return socket;
+	}
+
+	public String getInput() {
+		return input;
+	}
+
+	public String getNIM() {
+		return NIM;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public BufferedReader getReader() {
+		return reader;
+	}
+
+	public BufferedReader getSockReader() {
+		return sockReader;
+	}
+
+	public boolean isLoggedIn() {
+		return LoggedIn;
 	}
 }
