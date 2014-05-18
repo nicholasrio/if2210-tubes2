@@ -19,6 +19,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+
 /**
  *
  * @author Rikysamuel
@@ -287,6 +289,7 @@ public class GuestView extends javax.swing.JFrame {
             jLabel1.setText(viddetails.get(videodata)[1]);
             jLabel2.setText(viddetails.get(videodata)[5]);
             jLabel4.setText(vidRating.get(videodata));
+            jPanel3 = new YoutubeMediaPlayer(viddetails.get(videodata)[2]);
             if (videodata==0){
                 jButton1.setEnabled(false);
             }
@@ -357,6 +360,7 @@ public class GuestView extends javax.swing.JFrame {
         if(JOptionPane.showConfirmDialog(this, "Are You Sure Want to Logout?", "Confirmation", 0)==0){
             new KataMa().setVisible(true);
             this.setVisible(false);
+            NativeInterface.close();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
