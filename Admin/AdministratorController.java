@@ -81,4 +81,14 @@ public class AdministratorController {
            view.printDelete(false, 0);
        }
    }
+   /* method tambahan buat cmd */
+    public void CallNIM(String _NIM) throws SQLException, AdminException{
+        if(!admin.isUserExist(Integer.valueOf(_NIM))){
+           throw new AdminException("No such member");
+        }
+        else{
+            admin.SetNIM(Integer.valueOf(_NIM));
+            admin.SetName(admin.AdminByNIM(_NIM).get(1));
+        }
+    }
 }

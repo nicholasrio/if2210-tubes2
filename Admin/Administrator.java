@@ -93,4 +93,9 @@ public class Administrator {
     public List<String[]> getAdmins() throws SQLException{
         return new SqlStatement().select_admin();
     }
+    
+    /* method tambahan buat cmd */
+    public List<String> AdminByNIM(String _NIM )throws SQLException{
+        return new SqlStatement().select_admin_specific(NIM);
+    }
 }
