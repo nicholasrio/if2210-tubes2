@@ -63,7 +63,7 @@ public class GuestView extends javax.swing.JFrame {
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
         jButton3 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel3 = new YoutubeMediaPlayer();
         jButton4 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -173,11 +173,9 @@ public class GuestView extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setPreferredSize(new java.awt.Dimension(675, 550));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 668, Short.MAX_VALUE)

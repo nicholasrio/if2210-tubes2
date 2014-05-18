@@ -21,10 +21,10 @@ public class VideoController {
         vid = new Video();
         view = new VideoView();
     }
-    public void InsertVideo() throws SQLException {
+    public void InsertVideo() throws SQLException, NullException {
         vid.Insert();
     }
-    public void UpdateVideo(int id) throws SQLException {
+    public void UpdateVideo(int id) throws SQLException, NullException {
         vid.Update(id);
     }
     public void DeleteVideo(int id) throws SQLException {
