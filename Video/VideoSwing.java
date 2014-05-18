@@ -7,6 +7,8 @@
 package Video;
 
 import Main.MenuLoginAdmin;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -55,6 +57,11 @@ public class VideoSwing extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setText("Title");
 
@@ -186,13 +193,16 @@ public class VideoSwing extends javax.swing.JFrame {
 
                     JOptionPane.showMessageDialog(null, "Data berhasil disimpan...");
                     clean();
+                } catch (AttributeException ex) {
+                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Ada Kesalahan...");
                     Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (AttributeException a) {
-                    JOptionPane.showMessageDialog(null, a.getMessage());
-                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, a);
-                }
+                } 
+//                catch (AttributeException a) {
+//                    JOptionPane.showMessageDialog(null, a.getMessage());
+//                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, a);
+//                }
             }
         }
     }//GEN-LAST:event_SaveButtonActionPerformed
@@ -228,6 +238,18 @@ public class VideoSwing extends javax.swing.JFrame {
         new MenuLoginAdmin().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        final int WIDTH = screenSize.width;
+        final int HEIGHT = screenSize.height;
+        int lebar = (int) this.getSize().getWidth() / 2;
+        int tinggi = (int) this.getSize().getHeight() / 2;
+        // Setup the frame accordingly
+        // This is assuming you are extending the JFrame //class
+        this.setLocation((WIDTH/2) - lebar, (HEIGHT/2) - tinggi);
+    }//GEN-LAST:event_formWindowActivated
     
     public boolean cek(){
         return !title.getText().equals("") && !group_name.getText().equals("") && !no_tubes.getText().equals("") && !link.getText().equals("");
