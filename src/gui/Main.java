@@ -6,6 +6,8 @@
 
 package gui;
 
+import Client.Client;
+
 /**
  *
  * @author Rosi
@@ -15,8 +17,11 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+	public static Client client;
+	
     public static void main(String[] args) {
         // TODO code application logic here
+		client = new Client("localhost", 5432);
         Login login = new Login();
         login.show();
     }

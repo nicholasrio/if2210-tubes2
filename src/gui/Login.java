@@ -6,6 +6,8 @@
 
 package gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rosi
@@ -31,8 +33,8 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        formNIM = new javax.swing.JTextField();
+        formPassword = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -67,48 +69,48 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jButton5);
         jButton5.setBounds(-10, 0, 340, 50);
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jTextField1.setText("NIM");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        formNIM.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        formNIM.setText("NIM");
+        formNIM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        formNIM.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                formNIMFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                formNIMFocusLost(evt);
             }
         });
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        formNIM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
+                formNIMMouseClicked(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        formNIM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                formNIMActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(336, 264, 151, 22);
+        getContentPane().add(formNIM);
+        formNIM.setBounds(336, 264, 151, 22);
 
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jPasswordField1.setText("Password");
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
-        jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        formPassword.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        formPassword.setText("Password");
+        formPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        formPassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jPasswordField1FocusGained(evt);
+                formPasswordFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jPasswordField1FocusLost(evt);
+                formPasswordFocusLost(evt);
             }
         });
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        formPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseClicked(evt);
+                formPasswordMouseClicked(evt);
             }
         });
-        getContentPane().add(jPasswordField1);
-        jPasswordField1.setBounds(336, 292, 151, 22);
+        getContentPane().add(formPassword);
+        formPassword.setBounds(336, 292, 151, 22);
 
         jButton1.setBackground(new java.awt.Color(138, 138, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -138,9 +140,9 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void formNIMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formNIMActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_formNIMActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -148,51 +150,57 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        this.hide();
-        User user = new User();
-        user.show();
+		Main.client.login(formNIM.getText(), formPassword.getText());
+		if(Main.client.isLoggedIn()){
+			this.hide();
+			User user = new User();
+			user.show();
+		}
+		else
+			JOptionPane.showMessageDialog(this, "Wrong username or password!");
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+    private void formNIMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formNIMMouseClicked
         // TODO add your handling code here:
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
-        jTextField1.setText("");
-    }//GEN-LAST:event_jTextField1MouseClicked
+        formNIM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
+        formNIM.setText("");
+    }//GEN-LAST:event_formNIMMouseClicked
 
-    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+    private void formPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formPasswordMouseClicked
         // TODO add your handling code here:
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
-    }//GEN-LAST:event_jPasswordField1MouseClicked
+        formPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
+    }//GEN-LAST:event_formPasswordMouseClicked
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+    private void formNIMFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formNIMFocusGained
         // TODO add your handling code here:
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
-        jTextField1.setText("");
-    }//GEN-LAST:event_jTextField1FocusGained
+        formNIM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
+        formNIM.setText("");
+    }//GEN-LAST:event_formNIMFocusGained
 
-    private void jPasswordField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusGained
+    private void formPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formPasswordFocusGained
         // TODO add your handling code here:
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
-        jPasswordField1.setText("");
-    }//GEN-LAST:event_jPasswordField1FocusGained
+        formPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
+        formPassword.setText("");
+    }//GEN-LAST:event_formPasswordFocusGained
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+    private void formNIMFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formNIMFocusLost
         // TODO add your handling code here:
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
-        if (jTextField1.getText().equals(""))
+        formNIM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        if (formNIM.getText().equals(""))
         {
-            jTextField1.setText("NIM");
+            formNIM.setText("NIM");
         }
-    }//GEN-LAST:event_jTextField1FocusLost
+    }//GEN-LAST:event_formNIMFocusLost
 
-    private void jPasswordField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusLost
+    private void formPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formPasswordFocusLost
         // TODO add your handling code here:
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
-        if (jPasswordField1.getText().equals(""))
+        formPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        if (formPassword.getText().equals(""))
         {
-            jPasswordField1.setText("Password");
+            formPassword.setText("Password");
         }
-    }//GEN-LAST:event_jPasswordField1FocusLost
+    }//GEN-LAST:event_formPasswordFocusLost
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -200,11 +208,11 @@ public class Login extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField formNIM;
+    private javax.swing.JPasswordField formPassword;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

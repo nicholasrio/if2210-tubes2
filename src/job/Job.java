@@ -6,6 +6,8 @@
 package job;
 
 import File.*;
+import file.MyFile;
+import java.io.File;
 import java.util.*;
 
 /**
@@ -15,7 +17,7 @@ import java.util.*;
 public class Job {
 
 	private String name;
-	private List<File> file;
+	private List<MyFile> file;
 	private static int maximum = 10;
 	private int nElmt;
 
@@ -24,7 +26,7 @@ public class Job {
 		nElmt = 0;
 	}
 
-	public void addFile(File file) {
+	public void addFile(MyFile file) {
 
 	}
 
