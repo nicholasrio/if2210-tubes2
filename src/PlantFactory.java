@@ -11,6 +11,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/** This class implements the factory design pattern to produce the plants */
 public class PlantFactory {
 
 	/** Container to save all kind of plants */

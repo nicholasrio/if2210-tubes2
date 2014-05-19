@@ -1,5 +1,5 @@
 /**
-g * @author William Stefan
+ * @author William Stefan
  */
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 
 import org.junit.experimental.max.MaxCore;
 
+/** This class is the class used to control the vehicle that will sell the saleable objects to the market */
 public class Vehicle implements Drawable {
 	/** The vehicle's speed */
 	private int speed;

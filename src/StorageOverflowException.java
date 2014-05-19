@@ -1,4 +1,8 @@
+/**
+ * @author Zaky
+ */
 
+/** This class is the class used to handle the exception when the storage can't carry anything anymore */
 public class StorageOverflowException extends Throwable {
 	
 	Storage storage;

@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/** This class is the class used to control the pest that will attack the plants */
 public class Pest extends SaleableObject implements Drawable {
 	/** The speed of the pest */
 	private double speed;

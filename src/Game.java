@@ -9,15 +9,14 @@ import java.util.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Game extends JPanel implements KeyListener, MouseListener,
-		MouseMotionListener {
+/** This class is used to create buttons and acts as the game initializer */
+public class Game extends JPanel implements KeyListener, MouseListener,	MouseMotionListener {
 
 	/** Constant */
 	static String TITLE = "The Plan(T)s";
 	static String beliApel = "Price: $x";
 	static String beliStrawberry= "Price: $y";
 	
-
 	/** For debugging */
 	private static int ID = 0;
 	int id;
@@ -158,11 +157,7 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 
 		/** Add components */
 		/** Reset button to reset the game back to the start */
-<<<<<<< HEAD
-		JButton resetButton = new JButton("Reset");
-=======
 		resetButton = new JButton("Reset");
->>>>>>> b0ab8a954e166f8dada1f0f879754aa59e554278
 		resetButton.setBounds(650, 250, 120, 30);
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
@@ -251,12 +246,6 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		});
 		waterButton.setToolTipText("Watering the plant");
 		this.add(waterButton);
-<<<<<<< HEAD
-		
-		/** A button to buy apple seed */
-		final JButton buyApple = new JButton("Buy apple seed");
-		buyApple.setBounds(120, 0, 120, 30);
-=======
 
 		/** A button that lets you fertilize your plants */
 		fertilizerButton = new JButton("Fertilize");
@@ -279,43 +268,11 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		/** A button to buy apple seed */
 		buyApple = new JButton("Apple");
 		buyApple.setBounds(200, 40, 100, 30);
->>>>>>> b0ab8a954e166f8dada1f0f879754aa59e554278
 		buyApple.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
-<<<<<<< HEAD
 
-			}
-		});
-		buyApple.setToolTipText("A button to buy apple seed");
-		this.add(buyApple);
-		
-		/** A button to buy strawberry seed */
-		final JButton buyStrawberry = new JButton("Buy strawberry seed");
-		buyStrawberry.setBounds(240, 0, 120, 30);
-		buyStrawberry.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-
-			}
-		});
-		buyStrawberry.setToolTipText("Buy strawberry seed");
-		this.add(buyStrawberry);
-		
-		/** A button to take you back to the main menu */
-		final JButton back = new JButton("Back");
-		back.setBounds(680, 0, 120, 30);
-		back.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				gameThread.interrupt();
-				ThePlants.changePanel(new MainMenu());			}
-		});
-		back.setToolTipText("A button to take you back to the main menu");
-		this.add(back);
-
-=======
 				if (playerState != PlayerState.BUYPLANT || plantID != 1) {
 					plantID = 1;
 					changePlayerState(PlayerState.BUYPLANT);
@@ -396,7 +353,6 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		});
 		refill.setToolTipText("A button to refill your water");
 		this.add(refill);
->>>>>>> b0ab8a954e166f8dada1f0f879754aa59e554278
 	}
 
 	/** Close the game */
@@ -512,22 +468,12 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		g.setFont(new Font("Dialog", Font.PLAIN, 14));
 		g.setColor(Color.WHITE);
 		g.drawString(TITLE, 200, 300);
-<<<<<<< HEAD
-		g.drawString(beliApel, 150, 50);
-		g.drawString(beliStrawberry, 250, 50);
-=======
-		g.drawString("Price: "
-				+ PlantFactory.getPrototype("Pohon Apel").getPrice(), 220, 90);
-		g.drawString("Price: "
-				+ PlantFactory.getPrototype("Pohon Strawberry").getPrice(),
-				320, 90);
-		g.drawString("Price: "
-				+ PlantFactory.getPrototype("Pohon Jeruk").getPrice(), 420, 90);
-		g.drawString("Price: "
-				+ PlantFactory.getPrototype("Pohon Durian").getPrice(), 520, 90);
+		g.drawString("Price: " + PlantFactory.getPrototype("Pohon Apel").getPrice(), 220, 90);
+		g.drawString("Price: " + PlantFactory.getPrototype("Pohon Strawberry").getPrice(), 320, 90);
+		g.drawString("Price: " + PlantFactory.getPrototype("Pohon Jeruk").getPrice(), 420, 90);
+		g.drawString("Price: " + PlantFactory.getPrototype("Pohon Durian").getPrice(), 520, 90);
 		g.drawString("Money: " + money, 200, 20);
 		g.drawString("Your water: " + water, 200, 35);
->>>>>>> b0ab8a954e166f8dada1f0f879754aa59e554278
 		if (state == GameState.GAMEOVER) {
 			g.setFont(new Font("Verdana", Font.BOLD, 30));
 			g.setColor(Color.RED);

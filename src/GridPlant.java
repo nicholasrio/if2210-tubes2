@@ -9,6 +9,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.*;
 
+/** This class is used to control the grid (matrix) used as the place to plant the plants */
 public class GridPlant implements Drawable {
 	/** The container for plants */
 	private ArrayList<ArrayList<Plant>> arrPlant;
