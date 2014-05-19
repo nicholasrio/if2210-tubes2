@@ -49,12 +49,12 @@ public class Video {
          * @throws SQLException
          * @throws NullException 
          */
-	public void Update(int id) throws SQLException, NullException {
+	public void Update(int _id) throws SQLException, NullException {
             if(title.equals("") || !(no_tubes>0 && no_tubes<4) || link.equals("") || group_name.equals("") || view<0) {
                 throw new NullException ("Tidak boleh ada data yang null");
             }
             else {
-             s.update_video(id, title, link, view, no_tubes, group_name);
+             s.update_video(_id, title, link, view, no_tubes, group_name);
             }
         }
         /**
@@ -81,6 +81,15 @@ public class Video {
          */
 	public List<String[]> SelectData() throws SQLException {
             return s.select_video();
+	}
+        
+        /**
+         * mengambil data berdasarkan id
+         * @return
+         * @throws SQLException 
+         */
+	public List<String[]> SelectDataById(int _id) throws SQLException {
+            return s.select_video_by_id(_id);
 	}
 	/**
          * mengambil link video berdasarkan no_tubes dan nama group
