@@ -2,11 +2,12 @@
  * A class which represent a room on building.
  * @author created by : Yanfa Adi Putra
  * @since 1.5
- * @version 1.0
+ * @version 1.1
  */
 package controller;
 
 import model.node.*;
+import model.room.*;
 import java.util.LinkedList;
 
 
@@ -18,9 +19,11 @@ public class MapController {
      * @since 1.0
      */
     public MapController(String fileName) {
-		nodes = new XMLProcessor.loadFromXml(fileName);
-		
-    }
+		try{
+			nodes = (LinkedList<Node> )XMLProcessor.loadFromXml(fileName);
+		}
+		catch(Exception e){}
+	}
     
     /**
      * Get the nearest room that fulfill some specified parameter.
@@ -41,6 +44,58 @@ public class MapController {
 					else{
 						if(getDistance(node, nodes.get(i)) < getDistance(node, nodes.get(nearestRR))){
 							nearestRR = i;
+						}
+					}
+				}
+			}
+		}
+		return nodes.get(nearestRR);
+    }
+    
+	/**
+     * Get the nearest canteen
+     * @param node is a node where the initial node is defined
+     * @since 1.0
+     */
+	public Node nearestCanteen(Node node){
+		Canteen canteen;
+		int nearestRR = -1;
+		for(int i = 0; i < nodes.size(); i++){
+			if(nodes.get(i) instanceof Canteen){
+				canteen = (Canteen)nodes.get(i);
+				if(nearestRR == -1){
+					nearestRR = i;
+				}
+				else{
+					if(getDistance(node, nodes.get(i)) < getDistance(node, nodes.get(nearestRR))){
+						nearestRR = i;
+					}
+				}
+			}
+		}
+		return nodes.get(nearestRR);
+    }
+    
+	/**
+     * Get the nearest rest room
+     * @param node is a node where the initial node is defined
+     * @since 1.0
+     */
+	public Node nearestRestRoom(Node node){
+		Building building;
+		int nearestRR = -1;
+		for(int i = 0; i < nodes.size(); i++){
+			if(nodes.get(i) instanceof Building){
+				building = (Building)nodes.get(i);
+				for(int j = 0; j < building.getListOfRooms().size(); j++){
+					if(building.getListOfRooms().get(j) instanceof Restroom){
+						if(nearestRR == -1){
+							nearestRR = i;
+						}
+						else{
+							if(getDistance(node, nodes.get(i)) < getDistance(node, nodes.get(nearestRR))){
+								nearestRR = i;
+							}
 						}
 					}
 				}

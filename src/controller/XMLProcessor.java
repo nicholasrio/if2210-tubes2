@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+package controller;
+
 import model.Point;
 import model.menu.*;
 import model.node.*;
