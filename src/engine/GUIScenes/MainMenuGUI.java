@@ -265,7 +265,6 @@ public class MainMenuGUI extends Scene
         else if (exitRect.contains(event.getPoint()))
         {
             if(menuHovered != 5)
-                SoundManager.playSound("fbutton");
             menuHovered = 5;
         }
         else
@@ -279,32 +278,27 @@ public class MainMenuGUI extends Scene
         if (newgameRect.contains(event.getPoint()))
         {
             menuPressed = 1;
-            SoundManager.playSound("button2");
         }
         else if (achievementRect.contains(event.getPoint()))
         {
             menuPressed = 2;
-            SoundManager.playSound("button2");
+            
         }
         else if(optionsRect.contains(event.getPoint()))
         {
             menuPressed = 3;
-            SoundManager.playSound("button2");
         }
         else if (aboutRect.contains(event.getPoint()))
         {
             menuPressed = 4;
-            SoundManager.playSound("button2");
         }
         else if (exitRect.contains(event.getPoint()))
         {
             menuPressed = 5;
-            SoundManager.playSound("button2");
         }
         else if (userMenu.contains(event.getPoint()))
         {
             menuPressed = 6;
-            SoundManager.playSound("button2");
         }
         else
         {
@@ -319,12 +313,24 @@ public class MainMenuGUI extends Scene
             try{
                 switch (menuPressed)
                 {
-                    case 1 : SceneManager.SwitchScene("LevelMenuGUI"); break;
-                    case 2 : SceneManager.SwitchScene("AchievementMenuGUI"); break;
-                    case 3 : SceneManager.SwitchScene("OptionsMenuGUI"); break;
-                    case 4 : SceneManager.SwitchScene("AboutMenuGUI"); break;
-                    case 5 : Game.gameRunning = false; break;
-                    case 6 : SceneManager.SwitchScene("UserMenuGUI"); break;
+                    case 1 : SoundManager.playSound("fall");
+                             SceneManager.SwitchScene("LevelMenuGUI"); 
+                             break;
+                    case 2 : SoundManager.playSound("fbutton");
+                             SceneManager.SwitchScene("AchievementMenuGUI"); 
+                             break;
+                    case 3 : SoundManager.playSound("fbutton");
+                             SceneManager.SwitchScene("OptionsMenuGUI"); 
+                             break;
+                    case 4 : SoundManager.playSound("fbutton");
+                             SceneManager.SwitchScene("AboutMenuGUI");
+                             break;
+                    case 5 : SoundManager.playSound("button2");
+                             Game.gameRunning = false; 
+                             break;
+                    case 6 : SoundManager.playSound("fbutton");
+                             SceneManager.SwitchScene("UserMenuGUI"); 
+                             break;
                 }
             }catch(SceneNotFoundException e){
                 e.printStackTrace();
