@@ -8,7 +8,6 @@ package GUI;
 
 import Tools.KoneksiDatabase;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 /**
@@ -69,9 +68,9 @@ public class FormSuperAdmin extends javax.swing.JFrame{
         jLabel5 = new javax.swing.JLabel();
         TambahButton = new javax.swing.JButton();
         usernameField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JPasswordField();
-        superadminField = new javax.swing.JTextField();
         hasilButton = new javax.swing.JButton();
+        passwordField = new javax.swing.JTextField();
+        superadminField = new javax.swing.JComboBox();
 
         jInternalFrame1.setVisible(true);
 
@@ -94,7 +93,7 @@ public class FormSuperAdmin extends javax.swing.JFrame{
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tekton Pro", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tekton Pro", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 102));
         jLabel2.setText("Super Admin");
 
@@ -132,19 +131,25 @@ public class FormSuperAdmin extends javax.swing.JFrame{
 
         hasilButton.setText("Lihat Hasil Perolehan Suara");
 
+        superadminField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        superadminField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                superadminFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(232, 232, 232)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(TambahButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,15 +160,16 @@ public class FormSuperAdmin extends javax.swing.JFrame{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                             .addComponent(passwordField)
-                            .addComponent(superadminField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(TambahButton)))
+                            .addComponent(superadminField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addComponent(hasilButton)
                 .addGap(49, 49, 49))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(159, 159, 159))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -176,11 +182,9 @@ public class FormSuperAdmin extends javax.swing.JFrame{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(jLabel2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
+                        .addGap(197, 197, 197)
                         .addComponent(jLabel1)
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -194,14 +198,18 @@ public class FormSuperAdmin extends javax.swing.JFrame{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(superadminField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47)
+                        .addGap(44, 44, 44)
                         .addComponent(TambahButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(hasilButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(113, 113, 113)
+                                .addComponent(hasilButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(197, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -221,9 +229,19 @@ public class FormSuperAdmin extends javax.swing.JFrame{
         // TODO add your handling code here:
         String username = usernameField.getText();
         String password = passwordField.getText();
-        String superadmin = superadminField.getText();
+        String isSuperadmin = (String)superadminField.getSelectedItem();
+        String superadmin;
         
-        String query = "insert into Admin (username, password, peran) values ("+quotate(username)+","+quotate(password)+","+quotate(superadmin)+")";
+        if (isSuperadmin.compareTo("Ya")!=0)
+        {
+            superadmin = "1";
+        }
+        else // isSuperadmin == "Tidak"
+        {
+            superadmin = "0";
+        }
+        
+        String query = "insert into Admin (username, password, superadmin) values ("+quotate(username)+","+quotate(password)+","+quotate(superadmin)+")";
         
         try {
             Connection a = KoneksiDatabase.getKoneksi();
@@ -239,6 +257,11 @@ public class FormSuperAdmin extends javax.swing.JFrame{
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameFieldActionPerformed
+
+    private void superadminFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_superadminFieldActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_superadminFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,8 +311,8 @@ public class FormSuperAdmin extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPasswordField passwordField;
-    private javax.swing.JTextField superadminField;
+    private javax.swing.JTextField passwordField;
+    private javax.swing.JComboBox superadminField;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 

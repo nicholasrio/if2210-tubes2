@@ -6,8 +6,8 @@
 
 package main;
 
-import Tools.KoneksiDatabase;
 import Tools.Hashing;
+import Tools.KoneksiDatabase;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,8 +24,8 @@ public class Pemilih {
     boolean statusMemilih[];
     public Pemilih(String nik, String password){
         NIK = nik;
-        Password = Tools.Hashing.StringToMD5(password);
-        NoDapil = 1;
+        Password = Hashing.StringToMD5(password);
+        getNoDapilFromDatabase();
         LoadStatusMemilihDariDatabase();
         statusMemilih[1] = true;
     }
@@ -96,9 +96,7 @@ public class Pemilih {
     }
     
     /**
-     * Mengambil database dari tabel PilihanPartai dengan NIK Pemilih, kemudian
-     * mereturn sudah memilih bagian apa aja dari Lingkup
-     * @return Array of boolean dimana 
+     * @return Array of boolean statusMemilih 
      */
     public boolean[] getStatusMemilih(){
         return statusMemilih;
@@ -112,6 +110,7 @@ public class Pemilih {
      * statusMemilih[0] = DPRD Provinsi
      * statusMemilih[0] = DPRD Kabupaten
      */
+    
     private void LoadStatusMemilihDariDatabase()
     {
         statusMemilih = new boolean[4];
@@ -145,5 +144,24 @@ public class Pemilih {
         } catch (SQLException ex) {
             Logger.getLogger(Pemilih.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void getNoDapilFromDatabase()
+    {
+        try {
+            Connection koneksi = KoneksiDatabase.getKoneksi();
+            Statement statement = koneksi.createStatement();
+            String command = "select Kabupaten.No_Dapil from Kabupaten "
+                    + "where Nama_Kabupaten =  "
+                    + "(select Penduduk.Kabupaten from Penduduk where NIK = '" + NIK + "')";
+            ResultSet result = statement.executeQuery(command);
+            if(result.next())
+            {
+                NoDapil = Integer.parseInt(NIK);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Pemilih.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null, ""+NoDapil);
     }
 }
