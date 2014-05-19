@@ -35,9 +35,9 @@ public class UserDragon extends Dragon {
 	 */
     private ArrayList<Consumable> fdInventory;
 	
-    protected float maxHealth;
+    private float maxHealth;
     
-    protected float maxStamina;
+    private float maxStamina;
     
     private final Thread th;
 	
@@ -220,6 +220,10 @@ public class UserDragon extends Dragon {
         return fdInventory;
     }
 	
+	/**
+	 * Setter inventory
+	 * @param fd Array dari Consumable
+	 */
 	public void setFdInventory(ArrayList<Consumable> fd) {
 		fdInventory = fd;
 	}

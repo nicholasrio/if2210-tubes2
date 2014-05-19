@@ -21,6 +21,9 @@ import java.util.Random;
 
 public class util {
 	
+	private util() {
+	}
+		
 	/**
 	 * Mengembalikan random integer pada range input
 	 * @param min  batas minimal hasil random

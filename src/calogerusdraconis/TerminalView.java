@@ -24,16 +24,18 @@ import java.util.ArrayList;
  * @author Willy
  */
 public class TerminalView implements View {
- 
+	/**
+	 * Constructor TerminalView
+	 */
     public TerminalView () {
         super();
     }
-
-	@Override
+	
 	/**
 	 * Print status Dragon ke layar
 	 */
-    public void UpdateScreen (UserDragon drg) {
+    @Override
+	public void UpdateScreen (UserDragon drg) {
 		System.out.println(drg.getName()+"'s Attribute: ");
 		System.out.println("Level: " + (int)drg.getLevel());
 		System.out.println("Experience: " + (int)drg.getExperience());
@@ -48,11 +50,11 @@ public class TerminalView implements View {
 		System.out.println("Money: " + (int)drg.getMoney());
 	}
 
-	@Override
 	/**
 	 * Print daftar consumable di store ke layar
 	 */
-    public void UpdateScreen (Store str) {
+    @Override
+	public void UpdateScreen (Store str) {
 		int i = 0;
 		if (str.getFdInventory() == null) return;
 		for (Consumable c : str.getFdInventory()) {
@@ -62,18 +64,18 @@ public class TerminalView implements View {
 		}
     }
 
-	@Override
 	/**
 	 * Print event saat dragon fight
 	 */
-    public void UpdateScreen (UserDragon drg, Dragon enemy) {
+    @Override
+	public void UpdateScreen (UserDragon drg, Dragon enemy) {
 		System.out.println("Dragon anda sedang melawan musuh");
     }
 
-	@Override
 	/**
 	 * Print event yang telah dilakukan Dragon
 	 */
+	@Override
     public void UpdateScreen (UserDragon drg, Event evnt) {
 		System.out.println(evnt.getMessage());
     }
@@ -95,10 +97,10 @@ public class TerminalView implements View {
 		System.out.println("10. Exit");
 	}
 
-	@Override
 	/**
 	 * Print daftar consumable yang dimiliki Dragon
 	 */
+	@Override
 	public void seeFoodDirectory(UserDragon drg) {
 		int i = 0;
 		ArrayList<Consumable> ac = drg.getFdInventory();

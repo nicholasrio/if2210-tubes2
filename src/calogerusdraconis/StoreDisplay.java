@@ -38,6 +38,9 @@ import javax.swing.JPanel;
 public class StoreDisplay extends JPanel {
 	private ImageIcon[] image;
 	private ArrayList<Consumable> ac;
+	/**
+	 * Pilihan Barang di Store yang di click
+	 */
 	public static Integer pilihan = null;
 	
 	/**
@@ -55,10 +58,10 @@ public class StoreDisplay extends JPanel {
 		}
 	}
 	
-	@Override
 	/**
 	 *  Menampilkan gambar dan status dari seluruh consumable dalam store
 	 */
+	@Override
     protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if (image!=null) {
