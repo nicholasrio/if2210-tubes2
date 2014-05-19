@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package main;
 
-/**
- *
- * @author akhfa
- */
+import Tools.KoneksiDatabase;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 public class Caleg {
     private final String NIK;
     private final String Nama;
@@ -18,9 +17,9 @@ public class Caleg {
     private final int NoDapil;
     private final String Lingkup;//DPR, DPD, DPRDProv, DPRDKab
     
-    public Caleg(String _NIK, String nama, String _Partai, String _History, int _NoDapil, String lingkup){
+    public Caleg(String _NIK, String _Partai, String _History, int _NoDapil, String lingkup){
         NIK = _NIK;
-        Nama = nama;
+        Nama = getNamaFromDatabase();
         NamaPartai = _Partai;
         History = _History;
         NoDapil = _NoDapil;
@@ -52,4 +51,21 @@ public class Caleg {
         return Nama;
     }
     
+    private String getNamaFromDatabase()
+    {
+        String NamaTemp = "";
+        try {
+            Connection koneksi = KoneksiDatabase.getKoneksi();
+            Statement statement = koneksi.createStatement();
+            String command = "select Nama from Penduduk where NIK = " + NIK;
+            ResultSet result = statement.executeQuery(command);
+            if(result.next())
+            {
+                NamaTemp = result.getString("Nama");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Caleg.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return NamaTemp;
+    }
 }

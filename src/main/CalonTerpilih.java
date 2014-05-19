@@ -31,9 +31,9 @@ public class CalonTerpilih {
         daftarCaleg = new ArrayList<>();
         LoadDapilFromDatabaseToList();
     }
-    public void AddCaleg(String NIK, String Nama, String Partai,String History, int _NoDapil, String lingkup){
+    public void AddCaleg(String NIK, String Partai,String History, int _NoDapil, String lingkup){
         //Jangan lupa pengecekan udah ada Caleg apa belum
-        Caleg caleg = new Caleg(NIK, Nama, Partai, History, _NoDapil, lingkup);
+        Caleg caleg = new Caleg(NIK, Partai, History, _NoDapil, lingkup);
         daftarCaleg.add(caleg);
     }
     
