@@ -1,10 +1,17 @@
 
 import java.util.Vector;
 
-
+/**
+ * Kelas Player; 10 atribut; 23 methods
+ * @author icha
+ */
 public class Player {
     private Character_Card Role;
     private String Status = new String("Undefined");
+
+    /**
+     * Vector untuk menampung semua kartu yang ada di tangan seorang Player
+     */
     public  Vector<Card> CardsOnHand = new Vector<Card>();
     private int Turn;
     private int Score;
@@ -13,10 +20,18 @@ public class Player {
     private boolean finishedTurn ;
     private boolean finishedDraw ;
     private int idxRemovedCard;
+
+    /**
+     * Konstruktor tanpa parameter untuk kelas Player
+     */
     public Player(){
         
     }
     
+    /**
+     * Konstruktor kelas Player dengan parameter String yang merupakan nama Player baru
+     * @param playerName
+     */
     public Player(String playerName){
     	Name = playerName;
         finishedTurn = false;
@@ -26,16 +41,26 @@ public class Player {
         idxRemovedCard = -1;
     }
     
+    /**
+     * Getter atribut Score
+     * @return Score
+     */
     public int getScore(){
     	return Score;
     }
     
-    
+    /**
+     * Method untuk mengatur atribut Status Player
+     * @param S
+     */
     public void setStatus(String S)
     {
         Status = S;
     }
     
+    /** 
+     * Method untuk menampilkan status seorang Player; menampilkan Role dan apakah Player tsb sudah menggunakan kartu atau men-Draw kartu
+     */
     public void showStatus(){
         System.out.println("Hai, "+Name);
         if(Role.getID()==1)
@@ -48,58 +73,114 @@ public class Player {
             System.out.println("Anda belum menggunakan satu kartu pun");
     }
     
-    
+   /**
+     * Method untuk mengatur atribut Turn seorang Player
+     * @param t
+     */
     public void setTurn(int t){
         Turn = t;
     }
     
+    /**
+     * getter atribut Turn
+     * @return Turn
+     */
     public int getTurn(){
         return Turn;
     }
     
+    /**
+     * getter atribut finishedTurn
+     * @return boolean
+     */
     public boolean getFinishedTurn(){
         return finishedTurn;
     }
         
+    /**
+     * setter atribut finishedTurn
+     * @param myBool
+     */
     public void setFinishedTurn(boolean myBool){
         finishedTurn = myBool;
     }
+
+    /**
+     * getter atribut finishedDraw
+     * @return boolean
+     */
     public boolean getFinishedDraw(){
         return finishedDraw;
     }
         
+    /**
+     * setter atribut finishedDraw
+     * @param myBool
+     */
     public void setFinishedDraw(boolean myBool){
         finishedDraw = myBool;
     }
     
+    /**
+     * setter atribut Score
+     * @param s
+     */
     public void setScore(int s){
         Score = s;
     }
     
+    /**
+     * setter atribut Date
+     * @param d
+     */
     public void setDate(String d){
     	RegisteredDate = d;        
     }
     
+    /**
+     * getter atribut Date
+     * @return string
+     */
     public String getDate(){
         return RegisteredDate.toString();        
     }
     
+    /**
+     * getter atribut Name
+     * @return name
+     */
     public String getPlayerName(){
     	return Name;
     }
     
+    /**
+     * getter jumlah kartu yang dimiliki seorang Player
+     * @return nCard
+     */
     public int getNCardonHand(){
         return CardsOnHand.size();
     }
     
+     /**
+     * setter untuk atribut Role
+     * @param id
+     */
     public void setRole(int id){
     	Role = new Character_Card(id);
     }
     
+    /**
+     * getter id Role
+     * @return idrole
+     */
     public int getRoleId(){
     	return Role.getID();
     }
     
+    /**
+     * Method yang menangani proses draw card yang dilakukan oleh Player
+     * @param c
+     */
     public void drawCard(Card c)
     {
         if(idxRemovedCard == -1)
@@ -109,19 +190,35 @@ public class Player {
         }
     }
     
+   /**
+     * Setter atribut idxRemovedCard
+     * @param Idx
+     */
     public void setIdxRemovedCard(int Idx){
         idxRemovedCard = Idx;
     }
     
+    /**
+     * method yang menangani proses discard card yang dilakukan oleh Player
+     * @param index
+     * @return int
+     */
     public Card disCard(int index){
         idxRemovedCard = index;
         return CardsOnHand.remove(index);
     }
     
+    /**
+     * getter atribut Status
+     * @return status
+     */
     public String getStatus(){
         return Status;
     }
     
+    /**
+     * Method untuk mencetak semua kartu yang dipegang oleh Player
+     */
     public void printCardsOnHand(){     // Mencetak semua kartu di tangan
         String lineu = "\u2594";
 	String linel = "\u258F";

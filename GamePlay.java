@@ -11,15 +11,29 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.Vector;
 
-
+/**
+ * Kelas yang menangani hal-hal berkaitan dengan modus permainan dan persiapannya
+ * @author nim_13512080
+ */
 public class GamePlay {
+
+    /**
+     * Vector yang menyimpan semua Player yang terdaftar untuk bermain
+     */
     public Vector<Player> ListOfPlayer = new Vector<Player>();
+
+    /**
+     * Vector yang menyimpan semua Player yang pernah bermain
+     */
     public Vector<Player> ListOfRegisteredPlayer = new Vector<Player>();
     private static Scanner scan = new Scanner(System.in);
     Deck aDeck = new Deck();
     Board board = new Board();
     Player currentPlayer = new Player();
     
+     /**
+     * Konstruktor default kelas GamePlay; melakukan pembacaan file external yang berisi daftar Player yang pernah bermain dan menyimpannya dalam ListOfRegisteredPlayer
+     */
     public GamePlay(){
         try{
             loadFromFile("Player.in");
@@ -36,6 +50,81 @@ public class GamePlay {
         }
     }
     
+    /**
+     * Method untuk memberikan gold kepada pemenang
+     * @param IdWinner
+     */
+    public void GivePrize(int IdWinner){
+        	// 1 = 16
+        	// 2 = 8
+        	// 3 = 4
+        	// per orang dapat dua kartu
+        	Vector<Integer> Prize = new Vector<Integer>();
+        	
+        	for(int i  = 0 ; i < 16 ; i ++)
+        		Prize.add(1);
+        	for(int i  = 0 ; i < 8 ; i ++)
+        		Prize.add(2);
+        	for(int i  = 0 ; i < 4 ; i ++)
+        		Prize.add(3);
+        	Collections.shuffle(Prize);
+        	int j = 0 ;
+        	for(int i = 0 ; i < ListOfPlayer.size();i++){
+        		if(ListOfPlayer.get(i).getRoleId()==IdWinner){
+        			ListOfPlayer.elementAt(i).setScore(Prize.elementAt(j));
+        			j++;
+        		}
+        	}
+        }
+        
+        // kondisi tambahan
+        // jika hasil 0, berarti belum ada yang menang
+        // kalau ada yang give up dan tinggal 2 pemain
+
+    /**
+     * Method untuk menentukan pemenanganya
+     * @return 2 untuk saboteur, 1 untuk goldminer, 0 jika belum ada pemenang 
+     */
+            public int whoIsTheWinner(){
+        	int NumberOfSabot = 0;
+        	int NumberOfGM = 0;
+        	if (currentPlayer.getTurn()==ListOfPlayer.size()-1 && currentPlayer.CardsOnHand.size()==0){
+        		return 2;
+        		// kartu habis, saboteur menang.
+        	}
+        	for(int i = 0 ; i < ListOfPlayer.size();i++){
+        		if(ListOfPlayer.get(i).getRoleId()==2){ // saboteur
+        			NumberOfSabot++;
+        		}
+        	}
+        	for(int i = 0 ; i < ListOfPlayer.size();i++){
+        		if(ListOfPlayer.get(i).getRoleId()==1){ // GM
+        			NumberOfGM++;
+        		}
+        	}
+        	if(ListOfPlayer.size() == 3 ){
+        		if(NumberOfSabot==3){
+        			return 2;
+        		}else if(NumberOfGM==3){
+        			return 1;
+        		}else{
+        			return 0;
+        		}
+        	}else if (ListOfPlayer.size() < 3){
+        		if(NumberOfSabot==NumberOfGM)
+        			return 2;
+        		else
+        			return 1;
+        	}else{
+        		return 0;
+        	}
+        }
+    
+    /**
+     * Method yang menangani pembacaan file external dan memasukkan isi file tersebut ke Vector ListOfRegisteredPlayer
+     * @param fileName
+     * @throws IOException
+     */
     public void loadFromFile (String fileName) throws IOException{
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String line = null;
@@ -48,6 +137,10 @@ public class GamePlay {
         }
     }
     
+    /**
+     * Menyalin isi Vector ListOfRegisteredPlayer ke file external
+     * @param myPlayer
+     */
     public void addPlayerToFile(Player myPlayer){
         FileWriter fileWritter;
         try {
@@ -61,6 +154,9 @@ public class GamePlay {
         }
     }
     
+    /**
+     * Method yang menangani registrasi pemain baru
+     */
     public void addPlayer() {
         System.out.print("Enter your name : ");
         String whiteSpace = scan.nextLine();
@@ -74,6 +170,11 @@ public class GamePlay {
             printMessage("Sorry your name already registered!");
     }
     
+    /**
+     * Method yang memeriksa apakah seorang Player pernah bermain (sudah terdaftar)
+     * @param Name
+     * @return boolean
+     */
     public boolean IsNotRegistered(String Name){
         for (int i = 0 ; i <ListOfRegisteredPlayer.size() ; i++)
             if(Name.compareTo(ListOfRegisteredPlayer.elementAt(i).getPlayerName()) == 0)
@@ -81,6 +182,11 @@ public class GamePlay {
         return true;
     }
 
+    /**
+     * Method yang memeriksa apakah seorang Player didaftarkan untuk bermain atau tidak
+     * @param Name
+     * @return boolean
+     */
     public boolean IsNotChoosen(String Name){
         for (int i = 0 ; i <ListOfPlayer.size() ; i++)
             if(Name.compareTo(ListOfPlayer.elementAt(i).getPlayerName()) == 0)
@@ -88,10 +194,17 @@ public class GamePlay {
         return true;
     }
     
+    /**
+     * Method untuk menggeser screen terminal tiap kali satu turn berakhir (memberi efek seperti clear screen)
+     */
     public void clearScreen(){
         for (int a = 0 ; a <2 ; a++)
             System.out.println();
     }
+
+     /**
+     * Method untuk menampilkan menu awal sebelum masuk ke modus permainan
+     */
     public void showMenuCMD(){
         clearScreen();
         System.out.println("==== Menu Utama ====");
@@ -104,11 +217,19 @@ public class GamePlay {
                 "\n6. Exit");
         System.out.print("Input your index menu : ");
     }
+
+    /**
+     * Method yang mengembalikan tampilan menu awal setelah opsi yang dipilih user selesai dieksekusi
+     */
     public void backToPrevMenu(){
         System.out.println("Enter to continue !");
         String whiteSpace = scan.nextLine();
         whiteSpace = scan.nextLine();
     }
+
+    /**
+     * Method untuk menampilkan semua Player yang pernah bermain / sudah terdaftar
+     */
     public void showRegisteredPlayer(){
         System.out.println("Number of registered player is "+ ListOfRegisteredPlayer.size() );
         for(int i = 0 ; i < ListOfRegisteredPlayer.size() ; i++){
@@ -118,6 +239,10 @@ public class GamePlay {
                     +"  ["+p.getScore()+"]   <"+p.getDate()+">");
         }
     }
+
+    /**
+     * Method untuk menentukan Role dan Turn setiap Player
+     */
     public void setRoleAndTurnForPlayer(){
         Vector<Integer> myIdCharacter = new Vector();
         int i;
@@ -134,6 +259,9 @@ public class GamePlay {
             ListOfPlayer.elementAt(i).setRole(myIdCharacter.elementAt(i));
     }
     
+    /**
+     * Method untuk memulai game
+     */
     public void play(){
         setRoleAndTurnForPlayer();
         //printRolePlayers();
@@ -146,7 +274,10 @@ public class GamePlay {
         gameLoop();
     }
         
-        public void showMenuGame(){
+    /**
+     * Method untuk menampilkan menu yang bisa dipilih Player yang mendapat giliran bermain
+     */
+    public void showMenuGame(){
             System.out.println("1. Draw card");
             System.out.println("2. Choose card");
             System.out.println("3. Tampilkan urutan dan status player");
@@ -156,19 +287,24 @@ public class GamePlay {
             
         }
         
-        public void setNextPlayer(){
-            if(currentPlayer.getTurn()==ListOfPlayer.size()-1){
-                currentPlayer = ListOfPlayer.get(0);
-            }else{
-               do{
-                currentPlayer = ListOfPlayer.get(currentPlayer.getTurn()+1);
-               }while(currentPlayer.getStatus().compareTo("Disable")==0);
-            }
+    /**
+     * Method untuk mengubah currentPlayer setiap kali seorang Player menyelesaikan gilirannya
+     */
+    public void setNextPlayer(){
+            do{
+                if(currentPlayer.getTurn()==ListOfPlayer.size()-1){
+                     currentPlayer = ListOfPlayer.get(0);
+                }else
+                    currentPlayer = ListOfPlayer.get(currentPlayer.getTurn()+1);
+            }while(currentPlayer.getStatus().compareTo("Disable")==0);
             currentPlayer.setFinishedTurn(false);
             currentPlayer.setFinishedDraw(false);
         }
         
-        public void gameLoop(){
+    /**
+     * Method yang mengatur putaran game hingga permainan selesai atau requirement untuk bermain (jumlah pemain) tidak terpenuhi lagi
+     */
+    public void gameLoop(){
             boolean finish=false;
             currentPlayer = ListOfPlayer.elementAt(0);
             
@@ -204,13 +340,21 @@ public class GamePlay {
             ListOfPlayer.clear();
         }
         
-        public void changeTurn(int idx)
+    /**
+     * Method untuk mengganti urutan bermain Player jika ada Player yang keluar dari permainan
+     * @param idx
+     */
+    public void changeTurn(int idx)
         {
             for (int i = idx+1 ; i < ListOfPlayer.size() ; i++){
                 ListOfPlayer.get(i).setTurn(i-1);
             }
         }        
-        public void processMenuChooseCard(){
+
+    /**
+     * Method yang menangani segala sesuatu yang dapat dilakukan Player dengan kartu yang dipilihnya (membuang kartu, put card on board, put card on player)
+     */
+    public void processMenuChooseCard(){
             if(!currentPlayer.getFinishedTurn()){
                 System.out.print("Masukkan indeks kartu : ");
                 int idx = scan.nextInt();
@@ -236,7 +380,10 @@ public class GamePlay {
                printMessage("Anda telah memakai kartu pada giliran ini");
         }
         
-        public void processMenuDrawCard(){
+    /**
+     * Method yang dijalankan jika Player ingin men-Draw kartu dari Deck
+     */
+    public void processMenuDrawCard(){
              if(currentPlayer.getFinishedTurn()){
                 Card c = aDeck.popCard();
                 try{
@@ -253,12 +400,19 @@ public class GamePlay {
                 printMessage("Anda belum menggunakan kartu, hahahah");
         }
         
-        public void printMessage(String msg){
+    /**
+     * Method untuk mencetak pesan ke layar
+     * @param msg
+     */
+    public void printMessage(String msg){
             System.out.println(msg);
             backToPrevMenu();
         }
         
-        public void ShowPlayers(){
+   /**
+     * Method untuk mencetak semua Player yang bermain beserta giliran dan statusnya (enable/disable)
+     */
+    public void ShowPlayers(){
             System.out.println("Urutan\tnama");
             for (Player p : ListOfPlayer){ 
                 System.out.println(p.getTurn() + "\t" + p.getPlayerName() + "   " +
@@ -267,7 +421,11 @@ public class GamePlay {
             backToPrevMenu();
         }
     
-        public void usingCard(Card crd){
+   /**
+     * Method yang menangani penggunaan pathcard dan action card
+     * @param crd
+     */
+    public void usingCard(Card crd){
             if (crd.getType()==1){
                 //pathcard
                 System.out.print("Apakah Anda mau memutar kartu? (y/n) ");
@@ -300,7 +458,11 @@ public class GamePlay {
             }
         }
         
-        public void usingViewMap(Card crd){
+    /**
+     * Method yang menangani penggunaan kartu viewMap; membuka goal card yang dipilih oleh Player
+     * @param crd
+     */
+    public void usingViewMap(Card crd){
             System.out.print("Masukkan pilihan goalcard: ");
             int urutan = scan.nextInt();
             if(urutan>=1 && urutan<=3){
@@ -313,7 +475,11 @@ public class GamePlay {
             }
         }
         
-        public void usingBreakTool(Card crd){
+    /**
+     * Method yang menangani penggunaan Break Card; mengubah status Player yang diberi Brak Card oleh current Player (dari enable ke disable)
+     * @param crd
+     */
+    public void usingBreakTool(Card crd){
             System.out.print("Masukkan urutan pemain: ");
             int urutan = scan.nextInt();
             Player victim = ListOfPlayer.get(urutan);
@@ -328,7 +494,11 @@ public class GamePlay {
             }
         }
         
-        public void usingRepairTool(Card crd){
+    /**
+     * Method yang menangani penggunaan Repair Card; mengubah status Player yang diberi Repair Card oleh current Player (dari disable ke enable)
+     * @param crd
+     */
+    public void usingRepairTool(Card crd){
             System.out.print("Masukkan urutan pemain: ");
             int urutan = scan.nextInt();
             Player victim = ListOfPlayer.get(urutan);
@@ -343,6 +513,9 @@ public class GamePlay {
             }
         }
         
+   /**
+     * Method untuk mencetak Role semua Player yang bermain
+     */
     public void printRolePlayers(){
         // just for debuging
         for(int i = 0 ; i < ListOfPlayer.size() ; i++)
@@ -350,6 +523,10 @@ public class GamePlay {
                     "   role : "+ListOfPlayer.elementAt(i).getRoleId());
     }
     
+    /**
+     * Method yang memanggil method lain sesuai dengan indeks menu yang dimasukkan Player
+     * @param indexMenu
+     */
     public void runMenu(int indexMenu){
         switch(indexMenu){
             case 1 : preparationPlay(); break;
@@ -363,6 +540,9 @@ public class GamePlay {
         }
     }
     
+        /**
+     * Method yang menangani modus preparasi; Registrasi Player baru; pemilihan Player mana saja yang akan bermain
+     */
     public void preparationPlay(){
         boolean readyToPlay = false;
         int menu = 0;
@@ -394,7 +574,9 @@ public class GamePlay {
         ListOfPlayer.clear();
     }
         
-    
+    /**
+     * Method yang menangani pemilihan Player yang akan bermain
+     */
     public void choosePlayer(){
         System.out.println("\nMasukkan indexs pemain yang akan bermain (minimal 3)!");
         showRegisteredPlayer();
@@ -407,6 +589,9 @@ public class GamePlay {
         }
     }
     
+    /**
+     * Method untuk mengurutkan Player berdasarkan score (descending)
+     */
     public void highScores(){
         for(int i = 0 ; i < ListOfRegisteredPlayer.size()-1 ; i++){
             Player p1 = ListOfRegisteredPlayer.elementAt(i);
@@ -438,16 +623,32 @@ public class GamePlay {
         backToPrevMenu();
     }
 
+    /**
+     * Method untuk menampilkan konten menu Help
+     */
     public void help(){
         printMessage("Jika anda kebingungan silahkan hubungi 089619177393 [Daniar]");
     }
+
+    /**
+     * Method untuk menampilkan konten menu About
+     */
     public void about(){
         printMessage("Game ini di kerjakan oleh : Daniar, Hayyu, Icha, Khaidzir, dan Ramandika");
     }
+
+    /**
+     * Method untuk menampilkan konten menu Setting
+     */
     public void setting(){
         
     }
     
+    /**
+     * Method untuk mulai menjalankan semua method pada kelas GamePlay
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void start() throws FileNotFoundException, IOException{
         //FileReader fr = new FileReader("player.in");
 //                loadFromExFile (fr);

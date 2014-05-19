@@ -4,46 +4,51 @@
  * and open the template in the editor.
  */
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Vector;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- *
+ * Kelas frame utama game
  * @author user
  */
 public class GameFrame extends JFrame {
     private static final int FRAME_WIDTH = 1280;
     private static final int FRAME_HEIGHT = 720;
-    public JPanel basePanel;
+
+    
+    private JPanel basePanel;
     private JPanel[] gamePanel;
-    private static final int numberOfPanel = 10;
+    private static final int numberOfPanel = 11;
     GridBagConstraints c = new GridBagConstraints();
     GamePlay gamePlay = new GamePlay();
+    private JLabel JLabel;
+
+    /**
+     *  Konstruktor GameFrame
+     */
     public GameFrame() {
         super("Saboteur");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -62,6 +67,7 @@ public class GameFrame extends JFrame {
         basePanel.add(gamePanel[7], "WIN");
         basePanel.add(gamePanel[8], "SHOW REGISTERED PLAYER");
         basePanel.add(gamePanel[9], "CHOOSE PLAYER");
+        basePanel.add(gamePanel[10], "SWAP TURN");
         
         add(basePanel);
         setVisible(true);
@@ -74,12 +80,12 @@ public class GameFrame extends JFrame {
         
         gamePanel[0] = new ImagePanel("img/entrance.png");
         for (int i=1; i<6; i++) {
-            gamePanel[i] = new JPanel();
+            gamePanel[i] = new ImagePanel("img/backgroundBoard.jpg");
         }
         gamePanel[6] = new GamePlayPanel();
         
         for (int i=7; i<numberOfPanel; i++) {
-            gamePanel[i] = new JPanel();
+            gamePanel[i] = new ImagePanel("img/backgroundBoard.jpg");
         }
         
 
@@ -90,9 +96,10 @@ public class GameFrame extends JFrame {
         InitPanel4();       //HELP
         InitPanel5();       //ABOUT
         InitPanel6();       //GAME PLAY
-        InitPanel7();       //WIN
+        //InitPanel7();       //WIN
         //InitPanel8();       //SHOW REGISTERED PLAYER
         //InitPanel9();       //CHOOSE PLAYER
+        
         
     }
     
@@ -100,21 +107,19 @@ public class GameFrame extends JFrame {
     private void InitPanel0() {     //MAIN MENU
         gamePanel[0].setLayout(new GridBagLayout());
         
-        /*ImagePanel g = new ImagePanel("C:/Users/user/Desktop/tesSaboteur.png");
-        //gamePanel[0].add(g, BorderLayout.CENTER);
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 5;
-        //c.gridheight = 2;
-        c.weighty = 0.05;
-        gamePanel[0].add(g,c);
-        c.fill = GridBagConstraints.HORIZONTAL;*/
-        
         /* Panel untuk tombol - tombol di menu utama */
         final JPanel baseMenu = new JPanel();
         baseMenu.setLayout(new CardLayout());
         /* tombol - tombol menu utama */
         final JButton[] menuButton = new JButton[6];
+       // ImageIcon iconMenu = new ImageIcon("img/center.png");
+       // menuButton[0] = new JButton(/*"START",*/iconMenu);
+       // menuButton[1] = new JButton(/*"HIGH SCORE",*/ iconMenu);
+    //    menuButton[2] = new JButton(/*"SETTINGS",*/ iconMenu);
+      //  menuButton[3] = new JButton(/*"HELP", */iconMenu);
+   //     menuButton[4] = new JButton(/*"ABOUT",*/ iconMenu);
+   //     menuButton[5] = new JButton(/*"EXIT",*/ iconMenu);
+        
         menuButton[0] = new JButton("START");
         menuButton[1] = new JButton("HIGH SCORE");
         menuButton[2] = new JButton("SETTINGS");
@@ -132,8 +137,17 @@ public class GameFrame extends JFrame {
         } catch(IOException e) {}*/
         for (int i=0; i<6; i++) {
             menuButton[i].setPreferredSize(new Dimension(FRAME_WIDTH/6, FRAME_HEIGHT/11));
+           // menuButton[i].setPreferredSize(new Dimension(iconMenu.getIconWidth(), iconMenu.getIconHeight()));
             baseMenu.add(menuButton[i]);
         }
+        
+        /*JLabel[] label = new JLabel[6];
+        label[0] = new JLabel("START");
+        menuButton[0].setLayout(new GridBagLayout());
+        menuButton[0].add(label[0], c);
+        Font font = new Font("Verdana" , Font.BOLD, 18);
+        label[0].setFont(font);    */   
+        
         /* Listener untuk tombol - tombol menu utama */
         ActionListener action = new ActionListener() {
             @Override
@@ -234,7 +248,8 @@ public class GameFrame extends JFrame {
         ResetConstraints();
         
         /* Label */
-        ImagePanel g = new ImagePanel("C:/Users/user/Desktop/tesPlay.png");
+        ImagePanel g = new ImagePanel("img/title/play.png");
+        g.setOpaque(false);
         c.gridx = 0;
         c.gridy = 0;
         //c.anchor = GridBagConstraints.NORTH;
@@ -245,8 +260,13 @@ public class GameFrame extends JFrame {
         //Panel
         final JPanel base = new JPanel(new CardLayout());
         JPanel buttonPanel = new JPanel(new GridLayout(5, 1, 0, FRAME_HEIGHT/20));
+        buttonPanel.setOpaque(false);
         JPanel addPlayerPanel = new JPanel(new GridBagLayout());
         //Atribut addPlayerPanel
+        //Label
+        JLabel pesan = new JLabel("Masukkan nama pemain");
+        pesan.setForeground(Color.WHITE);
+        //Text area
         final JTextArea ta = new JTextArea();
         final JButton addButton = new JButton("Add");
         //Button
@@ -272,6 +292,8 @@ public class GameFrame extends JFrame {
                 if (e.getSource() == buttonMenu) {
                     CardLayout cardLayout = (CardLayout) basePanel.getLayout();
                     gamePlay.ListOfPlayer.clear();
+                    for(int i = 0 ; i < gamePlay.ListOfPlayer.size() ; i ++)
+                        gamePlay.ListOfPlayer.get(i).CardsOnHand.clear();
                     cardLayout.show(basePanel, "MAIN MENU");
                 }
                 if (e.getSource() == addPlayerButton) {
@@ -297,18 +319,32 @@ public class GameFrame extends JFrame {
                     cardLayout.previous(base);
                 }
                 if (e.getSource() == playButton) {
-                    CardLayout cardLayout = (CardLayout) basePanel.getLayout();
-                    gamePlay.setRoleAndTurnForPlayer();
-                    gamePlay.aDeck.fillDeck();
-                    for(Player p : gamePlay.ListOfPlayer){
-                        for (int i=0;i<5;i++){
-                            p.drawCard(gamePlay.aDeck.popCard());
+                    if (gamePlay.ListOfPlayer.size() < 3) {
+                        Object[] options = {"OK"};
+                        int n = JOptionPane.showOptionDialog(
+                        gamePanel[1], "Jumlah pemain minimal 3 orang",
+                        "Warning",
+                        JOptionPane.ERROR_MESSAGE,
+                        JOptionPane.OK_OPTION,
+                        null,
+                        options,
+                        options[0]);
+                    } else {
+                        CardLayout cardLayout = (CardLayout) basePanel.getLayout();
+                        gamePlay.setRoleAndTurnForPlayer();
+                        gamePlay.aDeck.fillDeck();
+                        for(Player p : gamePlay.ListOfPlayer){
+                            for (int i=0;i<5;i++){
+                                p.drawCard(gamePlay.aDeck.popCard());
+                            }
                         }
+                        // semua berawal awal dari sini
+                        gamePlay.currentPlayer = gamePlay.ListOfPlayer.elementAt(0);
+                        ((GamePlayPanel)gamePanel[6]).setGamePlay(gamePlay);
+                        InitPanel10();
+                        cardLayout.show(basePanel, "SWAP TURN");
+                        //cardLayout.show(basePanel, "GAMEPLAY");
                     }
-                    // semua berawal awal dari sini
-                    gamePlay.currentPlayer = gamePlay.ListOfPlayer.elementAt(0);
-                    ((GamePlayPanel)gamePanel[6]).setGamePlay(gamePlay);
-                    cardLayout.show(basePanel, "GAMEPLAY");
                 }
                 if (e.getSource() == choosePlayerButton) {
                     InitPanel9();
@@ -323,20 +359,28 @@ public class GameFrame extends JFrame {
         buttonMenu.addActionListener(action);
         addButton.addActionListener(action);
         playButton.addActionListener(action);
+        
         //Ditambahkan
+        
         buttonPanel.add(playButton);
         buttonPanel.add(showPlayerButton);
         buttonPanel.add(addPlayerButton);
         buttonPanel.add(choosePlayerButton);
         buttonPanel.add(buttonMenu);        
         
+        //addPlayerPanel
         ResetConstraints();
+        addPlayerPanel.setOpaque(false);
         c.gridx = 0;
         c.gridy = 0;
-        addPlayerPanel.add(ta,c);
+        addPlayerPanel.add(pesan,c);
         c.gridy = 1;
+        addPlayerPanel.add(ta,c);
+        c.gridy = 2;
         addPlayerPanel.add(addButton,c);
         
+        //base
+        base.setOpaque(false);
         base.add(buttonPanel);
         base.add(addPlayerPanel);
         //Ditambahkan
@@ -349,7 +393,8 @@ public class GameFrame extends JFrame {
         gamePanel[2].setLayout(new GridBagLayout());
         ResetConstraints();
         
-        ImagePanel g = new ImagePanel("C:/Users/user/Desktop/tesScore.png");
+        ImagePanel g = new ImagePanel("img/title/highscores.png");
+        g.setOpaque(false);
         c.gridx = 0;
         c.gridy = 0;
         c.insets = new Insets(FRAME_HEIGHT/20, 0, 0, 0);
@@ -384,10 +429,14 @@ public class GameFrame extends JFrame {
                                         +"  ["+p.getScore()+"]   <"+p.getDate()+">\n");
                 }
         }
+        ta.setOpaque(false);
         ta.setText(myStr);
         ta.setEditable(false);
         ta.setPreferredSize(new Dimension(FRAME_WIDTH/2, (int)((double)FRAME_HEIGHT * 0.6)));
-        ta.setBackground(Color.blue);
+        //ta.setBackground(Color.blue);
+        Font font = new Font("Verdana", 1, 18);
+        ta.setFont(font);
+        ta.setForeground(Color.WHITE);
         c.gridy = 1;
         gamePanel[2].add(ta,c);
         
@@ -412,7 +461,8 @@ public class GameFrame extends JFrame {
         gamePanel[3].setLayout(new GridBagLayout());
         ResetConstraints();
         
-        ImagePanel g = new ImagePanel("C:/Users/user/Desktop/tesSettings.png");
+        ImagePanel g = new ImagePanel("img/title/settings.png");
+        g.setOpaque(false);
         c.gridx = 0;
         c.gridy = 0;
         c.insets = new Insets(FRAME_HEIGHT/20, 0, 0, 0);
@@ -439,7 +489,8 @@ public class GameFrame extends JFrame {
         gamePanel[4].setLayout(new GridBagLayout());
         ResetConstraints();
         
-        ImagePanel g = new ImagePanel("C:/Users/user/Desktop/tesHelp.png");
+        ImagePanel g = new ImagePanel("img/title/help.png");
+        g.setOpaque(false);
         c.gridx = 0;
         c.gridy = 0;
         c.insets = new Insets(FRAME_HEIGHT/20, 0, 0, 0);
@@ -503,38 +554,101 @@ public class GameFrame extends JFrame {
                 CardLayout cardLayout = (CardLayout) basePanel.getLayout();
                 cardLayout.show(basePanel, "GAMEPLAY");
               }else{
-                CardLayout cardLayout = (CardLayout) basePanel.getLayout();
-                cardLayout.show(basePanel, "WIN");
+                // 1 : goldminer
+                  //2 saboteur
+                  int IdWinner = gamePlay.whoIsTheWinner();
+                  if (IdWinner!= 0) {
+                    gamePlay.GivePrize(IdWinner);
+                    CardLayout cardLayout = (CardLayout) basePanel.getLayout();
+                    InitPanel7(IdWinner);
+                    cardLayout.show(basePanel, "WIN");
+                  }else if (!gamePlay.board.useIsExistBranch()){
+                      //jalan buntu
+                      // saboteur menang
+                      gamePlay.GivePrize(2);
+                      CardLayout cardLayout = (CardLayout) basePanel.getLayout();
+                      InitPanel7(IdWinner);
+                      cardLayout.show(basePanel, "WIN");
+                  }
               }
           }
        });
        
         ((GamePlayPanel)gamePanel[6]).finishTurnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(!gamePlay.board.isFinished() && gamePlay.ListOfPlayer.size() >= 3){
-                    if(gamePlay.currentPlayer.getFinishedDraw()){
-                        gamePlay.setNextPlayer();
-
-                        ((GamePlayPanel)gamePanel[6]).setGamePlay(gamePlay);
-                        CardLayout cardLayout = (CardLayout) basePanel.getLayout();
-                        cardLayout.show(basePanel, "GAMEPLAY");
-                    }
-                }else{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(!gamePlay.board.isFinished() && gamePlay.ListOfPlayer.size() >= 3){
+                if(gamePlay.currentPlayer.getFinishedDraw() || 
+                        (gamePlay.aDeck.NumberOfAvailableCard == 0 && gamePlay.currentPlayer.getFinishedTurn())){
+                    gamePlay.setNextPlayer();
+                    ((GamePlayPanel)gamePanel[6]).fieldPanel.updateClosedCard();
+                    ((GamePlayPanel)gamePanel[6]).setGamePlay(gamePlay);
+                    InitPanel10();
                     CardLayout cardLayout = (CardLayout) basePanel.getLayout();
-                    cardLayout.show(basePanel, "WIN");
+                    //cardLayout.show(basePanel, "GAMEPLAY");
+                    cardLayout.show(basePanel, "SWAP TURN");
+                } else {
+                    Object[] options = {"OK"};
+                    int n = JOptionPane.showOptionDialog(
+                    ((GamePlayPanel)gamePanel[6]).panelButton, "Belum bisa mengakhiri giliran!",
+                    "Warning",
+                    JOptionPane.ERROR_MESSAGE,
+                    JOptionPane.OK_OPTION,
+                    null,
+                    options,
+                    options[0]);
                 }
+            }else{
+                CardLayout cardLayout = (CardLayout) basePanel.getLayout();
+                // goldminer
+                cardLayout.show(basePanel, "WIN");
             }
+        }
         });
     }
-    private void InitPanel7() {     //WIN
-        //gamePanel[7].setLayout(new FlowLayout());
-        //gamePanel[7].add(gameButton[0]);
+    private void InitPanel7(int Id) {     //WIN
+        ResetConstraints();
+        gamePanel[7].setLayout(new GridBagLayout());
+        JTextArea pesan = new JTextArea();
+        String list = new String();
+        for(int i = 0 ;  i < gamePlay.ListOfPlayer.size(); i ++){
+            if(gamePlay.ListOfPlayer.get(i).getRoleId()==Id)
+                 list = gamePlay.ListOfPlayer.get(i).getPlayerName() + "\t" +
+                         gamePlay.ListOfPlayer.get(i).getScore()+"\n";
+        }
+        String Pesan = new String();
+        if(Id == 2){
+            // Sabot
+            Pesan = "Saboteur Win\n" + list;
+            
+        }else{
+            Pesan = "GoldMinner Win\n" + list;
+            
+        }
+        
+        pesan.setText(Pesan);
+        
+        JButton back = new JButton("MAIN MENU");
+        back.addActionListener(new ActionListener() {
+            @Override   
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cardLayout = (CardLayout)basePanel.getLayout();
+                gamePlay.ListOfPlayer.clear();
+                cardLayout.show(basePanel, "MAIN MENU");
+            }            
+        });
+        c.gridx = 0;
+        c.gridy = 0;
+        gamePanel[7].add(pesan,c);
+        c.gridy = 1;
+        gamePanel[7].add(back,c);
     }
     private void InitPanel8() {     //SHOW REGISTERED PLAYER
         ResetConstraints();
+        Font font = new Font("Verdana", 1, 12);
         gamePanel[8].setLayout(new GridBagLayout());
-        JTextArea playerList = new JTextArea(10,100);
+        JTextArea playerList = new JTextArea(25,60);
+        playerList.setOpaque(false);
         String myStr = new String();
         for(int i = 0 ; i < gamePlay.ListOfRegisteredPlayer.size() ; i++){
             Player p = new Player();
@@ -544,8 +658,10 @@ public class GameFrame extends JFrame {
         }
         playerList.setText(myStr);
         playerList.setEditable(false);
+        playerList.setFont(font);
         JScrollPane scroll = new JScrollPane (playerList, 
             JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setOpaque(false);
         c.gridx = 0;
         c.gridy = 0;
         c.anchor = GridBagConstraints.NORTH;
@@ -568,8 +684,9 @@ public class GameFrame extends JFrame {
     }
     private void InitPanel9() {     //CHOOSE PLAYER
         ResetConstraints();
-        /* Daftar Player */
         gamePanel[9].setLayout(new GridBagLayout());
+        Font font = new Font ("Verdana", 1, 12);
+        /* Daftar Player */
         JTextArea playerList = new JTextArea(40,20);
         String myStr = new String();
         for(int i = 0 ; i < gamePlay.ListOfRegisteredPlayer.size() ; i++){
@@ -579,13 +696,16 @@ public class GameFrame extends JFrame {
         }
         playerList.setText(myStr);
         playerList.setEditable(false);
+        playerList.setOpaque(false);
+        playerList.setFont(font);
+        playerList.setForeground(Color.WHITE);
         JScrollPane scroll = new JScrollPane(playerList, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                                            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         c.gridx = 0;
         c.gridy = 0;
         c.weightx = 0.5;
         c.anchor = GridBagConstraints.WEST;
-        gamePanel[9].add(scroll,c);
+        gamePanel[9].add(playerList,c);
         
         /* Input */
         JPanel pane = new JPanel(new GridBagLayout());
@@ -596,6 +716,9 @@ public class GameFrame extends JFrame {
         JButton remove = new JButton("Remove");
         JButton ok = new JButton("OK");
         
+        /* Label */
+        JLabel pesan = new JLabel("Masukkan indeks pemain");
+        pesan.setForeground(Color.WHITE);
         ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -605,13 +728,19 @@ public class GameFrame extends JFrame {
             }
         });
         
+        pane.setOpaque(false);
+        
         c.gridx = 0;
         c.gridy = 0;
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridwidth = 3;
-        pane.add(scroll1, c);
+        c.anchor = GridBagConstraints.CENTER;
+        pane.add(pesan,c);
         
         c.gridy = 1;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        pane.add(scroll1, c);
+        
+        c.gridy = 2;
         c.gridwidth = 1;
         c.weightx = 0.5;
         pane.add(add,c);
@@ -624,28 +753,38 @@ public class GameFrame extends JFrame {
         
         c.gridx = 1;
         c.gridy = 0;
-        c.weightx = 0.5;
+        //c.weightx = 0.5;
+        //c.weighty = 0.5;
         c.anchor = GridBagConstraints.NORTH;
         gamePanel[9].add(pane, c);
         
         /* Daftar player yang terpilih */
         final JTextArea playerChoosen = new JTextArea(40,20);
+      
+        
         playerChoosen.setEditable(false);
+        playerChoosen.setOpaque(false);
+        playerChoosen.setFont(font);
         JScrollPane scroll2 = new JScrollPane(playerChoosen, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                                              JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll2.setOpaque(false);
+        playerChoosen.setOpaque(false);
+        playerChoosen.setForeground(Color.WHITE);
         c.fill = GridBagConstraints.CENTER;
         c.anchor = GridBagConstraints.EAST;
         c.gridx = 2;
         c.gridy = 0;
-        gamePanel[9].add(scroll2, c);
+        gamePanel[9].add(playerChoosen, c);
         
-        add.addActionListener(new ActionListener() {
+        add.addActionListener(new ActionListener() { // choose
             @Override
             public void actionPerformed(ActionEvent e) {
-                String myLine = choosePlayer.getText().replace("\\s","").trim();
+                if(gamePlay.ListOfPlayer.size()==0)
+                    playerChoosen.setText("");
+                String myLine = choosePlayer.getText().replace("\\s","").replace(" ",",").trim();
                 if(!myLine.isEmpty()){
                     playerChoosen.removeAll();
-                    String parts[] = myLine.split(" ");
+                    String parts[] = myLine.split(",");
                     for (String i : parts){
                         if(Integer.parseInt(i) <= gamePlay.ListOfRegisteredPlayer.size()){
                            Player p = gamePlay.ListOfRegisteredPlayer.elementAt(Integer.parseInt(i)-1);
@@ -663,8 +802,9 @@ public class GameFrame extends JFrame {
                     }
                    playerChoosen.setText(myStr);
                    //playerChoosen.repaint();
+                }else{
+                    choosePlayer.setText("");
                 }
-                choosePlayer.setText("");
             }
         });
         
@@ -701,6 +841,27 @@ public class GameFrame extends JFrame {
             mySstr += ((i+1)+". "+p.getPlayerName()+"\n");
          }
          playerChoosen.setText(mySstr);
+    }
+    
+    private void InitPanel10() {    //SWAP TURN
+        System.out.println(gamePlay.ListOfPlayer.size()+"  "+gamePlay.currentPlayer.getTurn());
+        gamePanel[10].removeAll();
+        String name = gamePlay.currentPlayer.getPlayerName();
+        JLabel preparation = new JLabel();
+        preparation.setText(name);
+        preparation.setFont(new Font("VERDANA",1,18));
+        preparation.setForeground(Color.WHITE);
+        gamePanel[10].add(preparation, BorderLayout.CENTER);
+        
+        JButton ok = new JButton("NEXT");
+        ok.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cardLayout = (CardLayout)basePanel.getLayout();
+                cardLayout.show(basePanel, "GAMEPLAY");
+            }            
+        });
+        gamePanel[10].add(ok, BorderLayout.CENTER);
     }
     
     private void updateRegisteredPlayer() {
