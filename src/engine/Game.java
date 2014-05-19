@@ -31,7 +31,7 @@ public class Game
     private Game()
     {
         // Choice Mode
-        mode = 2;
+        //mode = 2;
         
         GameData.loadMap();
         GameData.loadPlayer("player.xml");
@@ -136,6 +136,11 @@ public class Game
     
     public static void main(String []args)
     {
+        if(args.length == 0) {
+            mode = 2;
+        } else {
+            mode = 1;
+        }
         Game CubeMazer = new Game();
     }
 }
