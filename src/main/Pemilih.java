@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -37,24 +39,43 @@ public class Pemilih {
             Statement statemet = koneksi.createStatement();
             String command = "SELECT * FROM Pemilih where NIKPemilih = '" + NIK + "'";
             ResultSet result = statemet.executeQuery(command);
-            while (result.next())
+            if (result.next())
             {
                 String []o = new String[2];
                 o[0] = result.getString("NIKPemilih");
                 o[1] = result.getString("Password");
-                /* Jika NIK dan Password cocok */
-                if(NIK.compareToIgnoreCase(o[0]) == 0  && Hashing.StringToMD5(Password).compareTo(o[1]) == 0)
+                /* Jika NIK dan Password cocok, cek di database pemilihan partai, sudah 4 kali memilih atau belum */
+                if(NIK.equals(o[0])  && Password.equals(o[1]))
                 {
-                    command = "SELECT * FROM PilihanCaleg where NIKPemilih = '" + NIK + "'";
+                    boolean sudahPilihDPR = false,
+                            sudahPilihDPD = false,
+                            sudahPilihDPRDProp = false, 
+                            sudahPilihDPRDKab = false;
+                    command = "SELECT Lingkup FROM PilihanPartai where NIKPemilih = '" + NIK + "'";
                     result = statemet.executeQuery(command);
-                    if(!result.next()) /* Jika belum memilih partai */
+                    while(result.next())
                     {
-                        command = "SELECT * FROM PilihanPartai where NIKPemilih = '" + NIK + "'";
-                        result = statemet.executeQuery(command);
-                        if(!result.next()) /* dan jika belum memilih caleg */
-                            valid = true;
+                        String s;
+                        s = result.getString(1);
+                        if(s.equals("DPR"))
+                        {
+                            sudahPilihDPR = true;
+                        }
+                        else if (s.equals("DPD"))
+                        {
+                            sudahPilihDPD = true;
+                        }
+                        else if(s.equals("DPRDKabupaten"))
+                        {
+                            sudahPilihDPRDKab = true;
+                        }
+                        else if(s.equals("DPRDProvinsi"))
+                        {
+                            sudahPilihDPRDProp = true;
+                        }
                     }
-                    
+                    if(!sudahPilihDPD || !sudahPilihDPR || !sudahPilihDPRDKab || !sudahPilihDPRDProp)
+                        valid = true;
                 }
             }
             
@@ -74,10 +95,17 @@ public class Pemilih {
     
     public boolean[] LoadStatusSudahMemilihAtauBelum(){
         boolean test[] = new boolean[4];
-        test[0] = false;
-        test[1] = false;
-        test[2] = false;
-        test[3] = false;
+        try {
+            Connection koneksi = KoneksiDatabase.getKoneksi();
+            Statement statement = koneksi.createStatement();
+            String Command = "Select * from PilihanCaleg";
+            test[0] = false;
+            test[1] = false;
+            test[2] = true;
+            test[3] = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Pemilih.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return test;
     }
     

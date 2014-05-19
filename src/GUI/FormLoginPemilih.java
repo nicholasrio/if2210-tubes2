@@ -20,6 +20,7 @@ public class FormLoginPemilih extends javax.swing.JFrame{
      */
     public FormLoginPemilih() {
         initComponents();
+        jPasswordFieldPassword.setText("");
     }
 
     /**
@@ -32,17 +33,17 @@ public class FormLoginPemilih extends javax.swing.JFrame{
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
-        textField1 = new java.awt.TextField();
-        textField2 = new java.awt.TextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        TombolLogin = new javax.swing.JButton();
+        textFieldNIK = new java.awt.TextField();
+        jLabelNIK = new javax.swing.JLabel();
+        jLabelPassword = new javax.swing.JLabel();
         canvas1 = new java.awt.Canvas();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jLabelLogin = new javax.swing.JLabel();
+        jLabelPemilih = new javax.swing.JLabel();
+        jLabelCenterBackground = new javax.swing.JLabel();
+        jLabelBackDown = new javax.swing.JLabel();
+        jPasswordFieldPassword = new javax.swing.JPasswordField();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -50,76 +51,77 @@ public class FormLoginPemilih extends javax.swing.JFrame{
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(java.awt.SystemColor.inactiveCaptionText);
-        jButton1.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 153, 102));
-        jButton1.setText("Log In");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        TombolLogin.setBackground(java.awt.SystemColor.inactiveCaptionText);
+        TombolLogin.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
+        TombolLogin.setForeground(new java.awt.Color(255, 153, 102));
+        TombolLogin.setText("Log In");
+        TombolLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                TombolLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 80, -1));
+        getContentPane().add(TombolLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 390, 80, -1));
 
-        textField1.setBackground(new java.awt.Color(255, 255, 204));
-        textField1.addActionListener(new java.awt.event.ActionListener() {
+        textFieldNIK.setBackground(new java.awt.Color(255, 255, 204));
+        textFieldNIK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
+                textFieldNIKActionPerformed(evt);
             }
         });
-        getContentPane().add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 200, -1));
-        textField1.getAccessibleContext().setAccessibleName("NIKinput");
+        getContentPane().add(textFieldNIK, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 200, -1));
+        textFieldNIK.getAccessibleContext().setAccessibleName("NIKinput");
 
-        textField2.setBackground(new java.awt.Color(255, 255, 204));
-        getContentPane().add(textField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 200, -1));
-        textField2.getAccessibleContext().setAccessibleName("Passwordinput");
+        jLabelNIK.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
+        jLabelNIK.setForeground(new java.awt.Color(255, 255, 204));
+        jLabelNIK.setText("NIK");
+        getContentPane().add(jLabelNIK, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, 20));
 
-        jLabel1.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 204));
-        jLabel1.setText("NIK");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, 20));
-
-        jLabel2.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 204));
-        jLabel2.setText("Password");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, -1, 20));
+        jLabelPassword.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
+        jLabelPassword.setForeground(new java.awt.Color(255, 255, 204));
+        jLabelPassword.setText("Password");
+        getContentPane().add(jLabelPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, -1, 20));
         getContentPane().add(canvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 702, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Belwe Bd BT", 0, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 204));
-        jLabel3.setText("Log In");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
+        jLabelLogin.setFont(new java.awt.Font("Belwe Bd BT", 0, 22)); // NOI18N
+        jLabelLogin.setForeground(new java.awt.Color(255, 255, 204));
+        jLabelLogin.setText("Log In");
+        getContentPane().add(jLabelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Belwe Bd BT", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 204));
-        jLabel4.setText("Pemilih");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+        jLabelPemilih.setFont(new java.awt.Font("Belwe Bd BT", 1, 36)); // NOI18N
+        jLabelPemilih.setForeground(new java.awt.Color(255, 255, 204));
+        jLabelPemilih.setText("Pemilih");
+        getContentPane().add(jLabelPemilih, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 140));
+        jLabelCenterBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabelCenterBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 140));
+
+        jLabelBackDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
+        getContentPane().add(jLabelBackDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 590, 110));
+
+        jPasswordFieldPassword.setBackground(new java.awt.Color(255, 255, 204));
+        jPasswordFieldPassword.setText("jPasswordField1");
+        getContentPane().add(jPasswordFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 200, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 590, 460));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/shutterstock_47142253.jpg"))); // NOI18N
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 590, 110));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+    private void textFieldNIKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNIKActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
+    }//GEN-LAST:event_textFieldNIKActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        formPemilih = new FormPemilih(textField1.getText(), textField2.getText());
-        if(/*formPemilih.GetPemilih().ValidateInput()*/textField1.getText().equals("a")){
-            formPemilih.setVisible(true);
+    private void TombolLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolLoginActionPerformed
+        formPemilih = new FormPemilih(textFieldNIK.getText(), jPasswordFieldPassword.getText());
+        if(formPemilih.GetPemilih().ValidateInput()/*textField1.getText().equals("a")*/){
             this.dispose();
+            formPemilih.setVisible(true);
+            
         }else{
             JOptionPane.showMessageDialog(null,"NIK atau Password salah atau anda sudah mencoblos");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_TombolLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,17 +159,17 @@ public class FormLoginPemilih extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton TombolLogin;
     private java.awt.Canvas canvas1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelBackDown;
+    private javax.swing.JLabel jLabelCenterBackground;
+    private javax.swing.JLabel jLabelLogin;
+    private javax.swing.JLabel jLabelNIK;
+    private javax.swing.JLabel jLabelPassword;
+    private javax.swing.JLabel jLabelPemilih;
+    private javax.swing.JPasswordField jPasswordFieldPassword;
     private javax.swing.JToggleButton jToggleButton1;
-    private java.awt.TextField textField1;
-    private java.awt.TextField textField2;
+    private java.awt.TextField textFieldNIK;
     // End of variables declaration//GEN-END:variables
 }
