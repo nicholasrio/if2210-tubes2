@@ -53,6 +53,7 @@ public class DOC extends MyFile {
 
 	public void print(javax.print.PrintService service) throws IOException, PrinterException {
 		toPDF();
-		printPDF("serverFolder/" + uploader + "/" + path + ".pdf", service);
+		PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
+		printPDF("serverFolder/" + uploader + "/" + path + ".pdf", printServices[4]);
 	}
 }
