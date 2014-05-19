@@ -12,7 +12,7 @@ import mysql.SqlStatement;
 
 
 /**
- *
+ * Kelas untuk Administrator. Yang menilai video-video STIMA.
  * @author Rikysamuel
  */
 public class Administrator {
@@ -20,32 +20,57 @@ public class Administrator {
     private String password;        //Password sebagai pasangan NIM. Untuk otentikasi
     private String name;            //Nama sebagai identitas pemilik akun admin
     
-    /* mengeset nilai dari NIM */
+    /**
+     * Default Constructor
+     */
+    public Administrator(){
+        
+    }
+    
+    /**
+     * mengeset nilai dari NIM 
+     * @param _NIM
+     */
     public void SetNIM(int _NIM){
         NIM = _NIM;
     }
     
-    /* mengembalikan nilai dari NIM */
+    /**
+     * mengembalikan nilai dari NIM 
+     * @return NIM
+     */
     public int GetNIM(){
         return NIM;
     }
     
-    /* mengeset nilai dari password */
+    /**
+     * mengeset nilai dari password 
+     * @param _password
+     */
     public void SetPassword(String _password){
         password = _password;
     }
     
-    /* mengembalikan nilai dari password */
+    /**
+     * mengembalikan nilai dari password 
+     * @return password
+     */
     public String GetPassword(){
         return password;
     }
     
-    /* mengeset nilai name */
+    /**
+     * mengeset nilai name 
+     * @param _name
+     */
     public void SetName(String _name){
         name = _name;
     }
     
-    /* Mengembalikan name */
+    /**
+     * Mengembalikan name 
+     * @return name
+     */
     public String GetName(){
         return name;
     }
@@ -55,7 +80,7 @@ public class Administrator {
      * database admin atau belum.
      * Mengembalikan true jika ada, false jika tidak ada.
      * @param _NIM
-     * @return 
+     * @return new SqlStatement().IsAdminExist(_NIM);
      * @throws java.sql.SQLException 
      */
     public boolean isUserExist(int _NIM) throws SQLException{      
@@ -66,7 +91,7 @@ public class Administrator {
      * untuk mengecek apakah password dari username tertentu valid/tidak.
      * Mengembalikan true jika sesuai. False jika tidak sesuai.
      * @param _password
-     * @return 
+     * @return new SqlStatement().isPassword(NIM, _password);
      * @throws java.sql.SQLException
      */
     public boolean isPasswordMatch(String _password) throws SQLException{
@@ -86,7 +111,11 @@ public class Administrator {
         assert isUserExist(NIM) == true : "Postcondition User " + NIM + " exist";
     }
     
-    /* Method untuk menghapus record admin dalam database admin */
+    /**
+     * Method untuk menghapus record admin dalam database admin 
+     * @param _NIM
+     * @throws java.sql.SQLException
+     */
     public void Delete(int _NIM) throws SQLException{
         if(isUserExist(_NIM)){
             new SqlStatement().deleteAdmin(_NIM);
@@ -94,14 +123,23 @@ public class Administrator {
         }
     }
     
-    /* Method untuk mendapatkan data admin */
+    /**
+     * Method untuk mendapatkan data admin 
+     * @return admins
+     * @throws java.sql.SQLException
+     */
     public List<String[]> getAdmins() throws SQLException{
         List<String[]> admins = new SqlStatement().select_admin();
         assert admins != null : "Postcondition getAdmins() != null"; 
         return admins;
     }
     
-    /* method tambahan buat cmd */
+    /**
+     * method tambahan buat cmd 
+     * @param _NIM
+     * @return 
+     * @throws java.sql.SQLException
+     */
     public List<String> AdminByNIM(String _NIM)throws SQLException{
         assert _NIM != null : "Precondition _NIM != null";
         List<String> admin = new SqlStatement().select_admin_specific(NIM);

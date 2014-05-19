@@ -14,14 +14,15 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Swing untuk register admin
  * @author Rikysamuel
  */
 public class AdministratorRegister extends javax.swing.JFrame {
     private final List<String[]> adminsdata;
     private final AdministratorController AC;
+    
     /**
-     * Creates new form NewJFrame
+     * Membuat new form dari NewJFrame
      * @throws java.sql.SQLException
      */
     public AdministratorRegister() throws SQLException {
@@ -155,7 +156,10 @@ public class AdministratorRegister extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
+/**
+ * Action Performed ketika tombol "Daftar" di klik
+ * @param evt 
+ */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (jTextField1.getText().equals("")){
             JOptionPane.showConfirmDialog(this, "NIM harus diisi!");
@@ -195,7 +199,10 @@ public class AdministratorRegister extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+/**
+ * Action Performed ketika tombol kembali di klik
+ * @param evt 
+ */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         new LoginMenuSuperAdmin().setVisible(true);
         this.setVisible(false);

@@ -10,26 +10,45 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- *
+ * MVC Controller dari Administrator
  * @author Rikysamuel
  */
 public class AdministratorController {
     private final Administrator admin;
     private final AdministratorView view;
     
+    /**
+     * Default Constructor untuk Administrator Controller
+     */
     public AdministratorController(){
         admin = new Administrator();
         view = new AdministratorView();
     }
     
+    /**
+     * mengembalikan admin
+     * @return admin
+     */
     public Administrator getAdmin(){
         return admin;
     }
     
+    /**
+     * mengembalikan admin data dalam bentuk list of array of string
+     * @return admins.getAdmins();
+     * @throws SQLException 
+     */
     public List<String[]> getAdminsData() throws SQLException{
         return admin.getAdmins();
     }
     
+    /**
+     * mengecek kecocokan NIM dan password admin
+     * @param _NIM
+     * @param password
+     * @return true/false
+     * @throws SQLException 
+     */
     public boolean checkLoginAdmin(String _NIM, String password) throws SQLException{
         if (_NIM!=null && !_NIM.equals("")){
             if (!admin.isUserExist(Integer.valueOf(_NIM))){
@@ -51,6 +70,13 @@ public class AdministratorController {
         return false;
     }
     
+    /**
+     * Method untuk register admin
+     * @param _NIM
+     * @param name
+     * @param password
+     * @throws SQLException 
+     */
     public void AdminRegister(String _NIM, String name, String password) throws SQLException{
         if ((name.equals("") || password.equals("")) || _NIM.equals("")){
             view.printRegister(false, name);
@@ -67,6 +93,11 @@ public class AdministratorController {
         }
     }
     
+    /**
+     * method untuk mendelete admin
+     * @param _NIM
+     * @throws SQLException 
+     */
    public void AdminDelete(String _NIM) throws SQLException{
        if (!_NIM.equals("")){
            if (admin.isUserExist(Integer.valueOf(_NIM))){
@@ -81,7 +112,13 @@ public class AdministratorController {
            view.printDelete(false, 0);
        }
    }
-   /* method tambahan buat cmd */
+   
+   /**
+    * method tambahan buat cmd untuk ambil data berdasarkan NIM
+     * @param _NIM
+     * @throws java.sql.SQLException
+     * @throws Admin.AdminException
+    */
     public void CallNIM(String _NIM) throws SQLException, AdminException{
         if(!admin.isUserExist(Integer.valueOf(_NIM))){
            throw new AdminException("No such member");
