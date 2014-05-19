@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 
+
 package org;
+
 
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
@@ -13,29 +15,31 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
-import java.sql.*;
-import java.util.*;
-import java.util.Date;
-import java.io.IOException;
+
 import java.sql.*;
 import java.util.*;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+import java.util.Date;
+
 import javax.swing.*;
-import javax.swing.table.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 // test
 
+
 public class MainMenu extends javax.swing.JFrame {
+
 
     /**
      * Creates new form MainMenu
      */
     public static JTable table;
     public MainMenu() throws SQLException {
-
         ArrayList<Object> columnNames = new ArrayList<>();
         ArrayList<Object> data = new ArrayList<>();
 
@@ -44,10 +48,8 @@ public class MainMenu extends javax.swing.JFrame {
         String url = "jdbc:mysql://localhost:3306/bookbay";
         String userid = "root";
         String password = "";
-
         String sql = "SELECT name, description, uploader_id FROM book INNER JOIN collection ON book.id = collection.book_id " +
         				"WHERE user_id=(SELECT id FROM user WHERE username='"+LoginController.currUser.getID()+"')";
-
 
         // Java SE 7 has try-with-resources
         // This will ensure that the sql objects are closed when the program 
@@ -59,12 +61,11 @@ public class MainMenu extends javax.swing.JFrame {
             ResultSetMetaData md = rs.getMetaData();
             int columns = md.getColumnCount();
 
+
             //  Get column names
             for (int i = 1; i <= columns; i++) {
                 columnNames.add( md.getColumnName(i) );
             }
-
-            //  Get row data
 
             while (rs.next()) {
                ArrayList row = new ArrayList(columns);
@@ -73,11 +74,14 @@ public class MainMenu extends javax.swing.JFrame {
                         row.add( rs.getObject(i) );
                     }
 
+
                     data.add( row );
+                //}
+            }
+
 
 
            }
-        }
         catch (SQLException e)
         {
             System.out.println( e.getMessage() );
@@ -90,6 +94,7 @@ public class MainMenu extends javax.swing.JFrame {
         Vector columnNamesVector = new Vector();
         Vector dataVector = new Vector();
 
+
         for (int i = 0; i < data.size(); i++)
         {
             ArrayList subArray = (ArrayList)data.get(i);
@@ -101,8 +106,10 @@ public class MainMenu extends javax.swing.JFrame {
             dataVector.add(subVector);
         }
 
+
         for (int i = 0; i < columnNames.size(); i++ )
             columnNamesVector.add(columnNames.get(i));
+
 
         //  Create table with database data    
         System.out.println(columnNamesVector);
@@ -115,11 +122,13 @@ public class MainMenu extends javax.swing.JFrame {
                 {
                     Object o = getValueAt(row, column);
 
+
                     if (o != null)
                     {
                         return o.getClass();
                     }
                 }
+
 
                 return Object.class;
             }
@@ -127,10 +136,12 @@ public class MainMenu extends javax.swing.JFrame {
         JScrollPane scrollPane = new JScrollPane( table );
         getContentPane().add( scrollPane );
 
+
         JPanel buttonPanel = new JPanel();
         getContentPane().add( buttonPanel, BorderLayout.SOUTH );
         initComponents();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -141,7 +152,6 @@ public class MainMenu extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() throws SQLException {
-
         MainMenu = new javax.swing.JTabbedPane();
         MyCollections = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -200,6 +210,7 @@ public class MainMenu extends javax.swing.JFrame {
         		}
         	}
         });
+
         Download = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
@@ -209,10 +220,13 @@ public class MainMenu extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         AddCollection = new javax.swing.JButton();
 
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel1.setText("User :");
+
 
         jTable1.setModel(table.getModel());
         jScrollPane1.setViewportView(jTable1);
@@ -227,6 +241,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+
         UserLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         UserLabel.setText(LoginController.currUser.name());
         UserLabel.addInputMethodListener(new java.awt.event.InputMethodListener() {
@@ -237,8 +252,23 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+
         javax.swing.GroupLayout MyCollectionsLayout = new javax.swing.GroupLayout(MyCollections);
         MyCollectionsLayout.setHorizontalGroup(
+            MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MyCollectionsLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Upload, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                    .addComponent(Download, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
+            .addGroup(MyCollectionsLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)));
         	MyCollectionsLayout.createParallelGroup(Alignment.LEADING)
         		.addGroup(MyCollectionsLayout.createSequentialGroup()
         			.addGroup(MyCollectionsLayout.createParallelGroup(Alignment.LEADING)
@@ -255,9 +285,26 @@ public class MainMenu extends javax.swing.JFrame {
         					.addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
         					.addPreferredGap(ComponentPlacement.RELATED)
         					.addComponent(UserLabel, GroupLayout.PREFERRED_SIZE, 253, GroupLayout.PREFERRED_SIZE)))
-        			.addContainerGap(71, Short.MAX_VALUE))
-        );
+        			.addContainerGap(71, Short.MAX_VALUE));
+
         MyCollectionsLayout.setVerticalGroup(
+            MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyCollectionsLayout.createSequentialGroup()
+                .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(UserLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(MyCollectionsLayout.createSequentialGroup()
+                        .addComponent(Upload, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Download,javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyCollectionsLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(432, 432, 432)))));
         	MyCollectionsLayout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(MyCollectionsLayout.createSequentialGroup()
         			.addContainerGap()
@@ -273,13 +320,13 @@ public class MainMenu extends javax.swing.JFrame {
         					.addGap(18)
         					.addComponent(Exit, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
         				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 315, GroupLayout.PREFERRED_SIZE))
-        			.addContainerGap(108, Short.MAX_VALUE))
-        );
+        			.addContainerGap(108, Short.MAX_VALUE));
 
         MyCollections.setLayout(MyCollectionsLayout);
-        MyCollections.setLayout(MyCollectionsLayout);
+
 
         MainMenu.addTab("My Collections", MyCollections);
+
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel2.setText("Browse!");
@@ -288,23 +335,32 @@ public class MainMenu extends javax.swing.JFrame {
         DBConnection conn = new DBConnection();
 		ResultSet rs = conn.executeQuery("SELECT * FROM book");
 		Vector row = new Vector();
-		while(rs.next())
+		Rows = new Vector();
+                while(rs.next())
 		{
 			Vector data = new Vector();
+                        Vector data2 = new Vector();
 			data.add(rs.getString("name"));
 			data.add(rs.getString("description"));
 			data.add(rs.getString("uploader_id"));
-			data.add(false);
+                        data2.add(rs.getString("name"));
+			data2.add(rs.getString("description"));
+			data2.add(rs.getString("uploader_id"));
+			data2.add(rs.getString("id"));
+                        data.add(false);
 			row.add(data);
+                        Rows.add(data2);
 		}
 		conn.closeConnection();
-		
+                
+
 		Vector columnNames = new Vector();
 		columnNames.add("Judul Buku");
 		columnNames.add("Deskripsi");
 		columnNames.add("Uploader ID");
 		columnNames.add("Cek");
-		
+
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             row,
             columnNames
@@ -312,6 +368,7 @@ public class MainMenu extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
+
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
@@ -321,7 +378,17 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
         jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
+
         AddCollection.setText("Add to Collections");
+        AddCollection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    AddCollectionActionPerformed(evt);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
 
         javax.swing.GroupLayout BrowseLayout = new javax.swing.GroupLayout(Browse);
         BrowseLayout.setHorizontalGroup(
@@ -351,7 +418,9 @@ public class MainMenu extends javax.swing.JFrame {
         );
         Browse.setLayout(BrowseLayout);
 
+
         MainMenu.addTab("Browse", Browse);
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -364,16 +433,38 @@ public class MainMenu extends javax.swing.JFrame {
             .addComponent(MainMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_ExitActionPerformed
 
+
     private void UserLabelInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_UserLabelInputMethodTextChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_UserLabelInputMethodTextChanged
+    
+    
+    private void AddCollectionActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {                                              
+        DBConnection con = new DBConnection();
+        String userID = LoginController.currUser.getID();
+        String Query = "INSERT INTO collection VALUES(?, (SELECT id FROM user WHERE username='"+userID+"'))";
+        for (int j = 0; j < jTable2.getModel().getRowCount();j++){
+            if("true".equals(jTable2.getModel().getValueAt(j, 3).toString())){
+               // con.executeQuery("INSERT INTO collection VALUES ()")
+                Vector<Object> record = (Vector<Object>)Rows.elementAt(j);
+                System.out.println(record.elementAt(3));
+                String bookID = record.elementAt(3).toString();
+                con.executeQuery(Query, bookID);
+            }
+            //System.out.println(jTable2.getModel().getValueAt(j, 3));
+        }
+        
+        System.out.println(jTable2.getModel().getRowCount());
+    }  
 
     /**
      * @param args the command line arguments
@@ -404,6 +495,7 @@ public class MainMenu extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -416,6 +508,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddCollection;
@@ -432,5 +525,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private Vector Rows;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,7 @@
 package org;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,6 +29,32 @@ public class DBConnection {
 		
 		return rs;
 	}
+
+	void executeQuery(String Query, String Val1, String Val2) throws SQLException
+	{
+		try {
+			conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+			PreparedStatement preparedStatement = conn.prepareStatement(Query);
+                        preparedStatement.setString(1, Val1);
+                        preparedStatement.setString(2, Val2);
+                        preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			System.err.println(e);
+		}
+		
+	}
+        
+        void executeQuery(String Query, String val) {
+            try {
+                conn = DriverManager.getConnection(DATABASE, USERNAME, PASSWORD);
+                PreparedStatement ps = conn.prepareStatement(Query);
+                ps.setString(1, val);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 	
 	void closeConnection() throws SQLException {
 		if(conn!=null)
