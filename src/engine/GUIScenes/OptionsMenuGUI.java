@@ -9,7 +9,6 @@ package engine.GUIScenes;
 import engine.*;
 import engine.Exception.SceneNotFoundException;
 import static engine.Game.gameFrame;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
@@ -21,7 +20,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.IOException;
-import sun.nio.cs.ext.GB18030;
 
 /**
  *

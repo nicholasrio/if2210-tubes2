@@ -16,12 +16,14 @@ import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -100,6 +102,7 @@ public class GameMenuGUI extends Scene
     public GameMenuGUI()
     {
         super("GameMenuGUI");
+        this.setCursor(gameFrame.getToolkit().createCustomCursor(new BufferedImage(3,3,BufferedImage.TYPE_INT_ARGB),new Point(0,0),"null"));
         
         nowlevelPlay = GameData.nowLevelPlayed;
         //nowlevelPlay = 0;
