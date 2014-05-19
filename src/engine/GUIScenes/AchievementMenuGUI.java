@@ -198,6 +198,7 @@ public class AchievementMenuGUI extends Scene
     {
         if (backRect.contains(event.getPoint()))
         {
+            SoundManager.playSound("button2");
             menuPressed = 1;
         }
         else
