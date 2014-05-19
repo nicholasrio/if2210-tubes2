@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -14,13 +15,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 
-public class MainMenu extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
+public class LevelMenu extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
 	/** Game Components */
 	private Image background;
 	private Thread gameThreadMM = null;
 	
 	/** CTOR */
-	public MainMenu() {
+	public LevelMenu() {
 		// 		/** Initialize game comonents*/
 		gameInit();
 
@@ -39,26 +40,70 @@ public class MainMenu extends JPanel implements KeyListener, MouseListener, Mous
 	public void gameInit() {
 		/** Set background */
 		background = (new ImageIcon("images/background_start.png")).getImage();
-		
+		int startx = 50;
+		int posy = 220;
 		/** Add components */
 		/** Play button to start the game */
-		JButton play = new JButton("Play");
-		play.setBounds(375, 375, 120, 30);
-		play.addActionListener(new ActionListener() {
+		JButton level1 = new JButton("Level 1");
+		level1.setBounds(startx, posy, 120, 120);
+		level1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				ThePlants.changePanel(new LevelMenu());
+				ThePlants.changePanel(new Game(new Level(1)));
 				gameThreadMM.interrupt();
 			}
 		});
-		play.setToolTipText("Start the game");
-		this.add(play);
+		level1.setToolTipText("Start the game");
+		this.add(level1);
 		
+		JButton level2 = new JButton("Level 2");
+		level2.setBounds(startx + (1*140), posy, 120, 120);
+		level2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				ThePlants.changePanel(new Game(new Level(2)));
+				gameThreadMM.interrupt();
+			}
+		});
+		level2.setToolTipText("Start the game");
+		this.add(level2);
+		
+		JButton level3 = new JButton("Level 3");
+		level3.setBounds(startx + (2*140), posy, 120, 120);
+		level3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				ThePlants.changePanel(new Game(new Level(3)));
+				gameThreadMM.interrupt();
+			}
+		});
+		level3.setToolTipText("Start the game");
+		this.add(level3);
+		
+		JButton level4 = new JButton("Level 4");
+		level4.setBounds(startx + (3*140), posy, 120, 120);
+		level4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				ThePlants.changePanel(new Game(new Level(4)));
+				gameThreadMM.interrupt();
+			}
+		});
+		level4.setToolTipText("Start the game");
+		this.add(level4);
+		
+		JButton level5 = new JButton("Level 5");
+		level5.setBounds(startx + (4*140), posy, 120, 120);
+		level5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				ThePlants.changePanel(new Game(new Level(5)));
+				gameThreadMM.interrupt();
+			}
+		});
+		level5.setToolTipText("Start the game");
+		this.add(level5);
 		/** Quit button to quit the game */
-		JButton quit= new JButton("Quit");
-		quit.setBounds(515, 375, 120, 30);
+		JButton quit= new JButton("Back");
+		quit.setBounds(330, 400, 120, 30);
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				System.exit(0);				
+				ThePlants.changePanel(new MainMenu());				
 			}
 		});
 		quit.setToolTipText("Start the game");
@@ -76,6 +121,8 @@ public class MainMenu extends JPanel implements KeyListener, MouseListener, Mous
 		/** Draw background */
 		super.paintComponent(g);
 		g.drawImage(background, 0, 0, ThePlants.PANEL_WIDTH, ThePlants.PANEL_HEIGHT, null);
+		g.setColor(new Color(255, 255, 255, 127));
+		g.fillRect(0, 0, ThePlants.PANEL_WIDTH, ThePlants.PANEL_HEIGHT);
 	}
 	
 	@Override

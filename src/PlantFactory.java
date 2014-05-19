@@ -60,7 +60,8 @@ public class PlantFactory {
 						fruit = new Fruit(eFruit.getAttribute("name"),
 								harvestPeriod, rottenTime,
 								fruitPrice, capacity,
-								eFruit.getAttribute("img"));
+								eFruit.getAttribute("img"),
+								eFruit.getAttribute("imgRotten"));
 					}
 
 					/** Create new plant */

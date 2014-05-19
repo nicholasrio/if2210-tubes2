@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 public class Fruit extends SaleableObject implements Drawable {
 	private int id;
 	private Image imgFruit;
-	private Image imgRotten; // TODO
+	private Image imgRotten;
 	private int sellprice;
 	private int rottenTime;
 	private int harvestPeriod;
@@ -34,13 +34,14 @@ public class Fruit extends SaleableObject implements Drawable {
 	}
 
 	Fruit(String name, int harvestPeriod, int rottenTime, int price,
-			int capacity, String imageSource) {
+			int capacity, String imageSource, String imageRottenSource) {
 		this.name = name;
 		this.harvestPeriod = harvestPeriod;
 		this.rottenTime = rottenTime;
 		this.price = price;
 		this.capacity = capacity;
 		setImage(imageSource);
+		setImageRotten(imageRottenSource);
 	}
 
 	public int getID() {
@@ -68,9 +69,17 @@ public class Fruit extends SaleableObject implements Drawable {
 	public void setImage(String path) {
 		imgFruit = (new ImageIcon(path)).getImage();
 	}
+	
+	public void setImageRotten(String path) {
+		imgRotten = (new ImageIcon(path)).getImage();
+	}
 
 	public Image getImage() {
 		return imgFruit;
+	}
+	
+	public Image getRottenImage() {
+		return imgRotten;
 	}
 
 	@Override

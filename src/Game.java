@@ -9,8 +9,7 @@ import java.util.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Game extends JPanel implements KeyListener, MouseListener,
-		MouseMotionListener {
+public class Game extends JPanel implements MouseListener, MouseMotionListener {
 
 	/** Constant */
 	static String TITLE = "The Plan(T)s";
@@ -24,13 +23,20 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 	private int waterCapacity;
 	private Fertilizer fertilizer;
 	private int money;
+	private int goalMoney;
 	private Player player;
 	private Vehicle vehicle;
 	private Pest pest;
+	private double pestCoolDown;
 	private int water;
+	private Level level;
+	private double timeLeft;
 
 	/** Game Components */
 	private Image background;
+	private Image clockImage;
+	private Image moneyImage;
+	private Image waterImage;
 	private JButton resetButton;
 	private JButton upgrade;
 	private JButton downgrade;
@@ -57,17 +63,20 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 	static enum PlayerState {
 		WATERING, FERTILIZING, BUYPLANT, NORMAL
 	}
+	String status;
 
 	/** Current states of the game */
-	private static GameState state;
+	private GameState state;
 	private PlayerState playerState;
 
 	private int plantID;
 
 	/** Constructor to initialize the UI components and game objects */
-	public Game() {
+	public Game(Level level) {
 		// TODO remove this part of code
 		id = ++ID;
+		
+		this.level = level;
 
 		/** Initialize game components */
 		gameInit();
@@ -77,7 +86,6 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 				ThePlants.PANEL_HEIGHT));
 
 		/** Add action listener */
-		this.addKeyListener(this);
 		this.addMouseListener(this);
 		this.addMouseMotionListener(this);
 
@@ -85,7 +93,7 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		gameStart();
 	}
 
-	/** Getter-Setter */
+	/* Getter-Setter */
 
 	/** Return the grid (space/tiles for playing) */
 	public GridPlant getLand() {
@@ -127,13 +135,10 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		this.player = player;
 	}
 
-	/** All game-related codes */
+	/* All game-related codes */
 
 	/** Initialize all game objects */
 	public void gameInit() {
-
-		money = 5000;
-		water = 10;
 
 		state = GameState.INITIALIZED;
 
@@ -148,24 +153,33 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		// TODO set fertilizer yang bener
 		fertilizer = new Fertilizer(1, 0);
 		vehicle = new Vehicle();
-		pest = new Pest();
+		pest = null;
+		pestCoolDown = 10;
 
 		/** Set background */
 		background = (new ImageIcon("images/background_game.png")).getImage();
-
+		
+		/** Load another images */
+		waterImage = (new ImageIcon("images/water.png")).getImage();
+		moneyImage = (new ImageIcon("images/money.png")).getImage();
+		clockImage = (new ImageIcon("images/clock.png")).getImage();
+		
 		/** Add components */
+		// Hapus!
 		/** Reset button to reset the game back to the start */
-		resetButton = new JButton("Reset");
-		resetButton.setBounds(650, 250, 120, 30);
+		resetButton = new JButton("Back");
+		resetButton.setBounds(650, 340, 120, 30);
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				showMessage("Hai! mau reset game?");
-				ThePlants.changePanel(new Game());
-				// Stop Current Thread
-				gameThread.interrupt();
+				int response = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin?", ThePlants.TITLE, JOptionPane.OK_OPTION);
+				if (response == JOptionPane.OK_OPTION) {
+					ThePlants.changePanel(new MainMenu());
+					// Stop Current Thread
+					gameThread.interrupt();
+				}
 			}
 		});
-		resetButton.setToolTipText("Reset the game");
+		resetButton.setToolTipText("Back to Main Menu");
 		this.add(resetButton);
 
 		/** Upgrade button for your vehicle */
@@ -179,14 +193,14 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 							vehicle.Upgrade();
 							money -= 400;
 						} else {
-							System.out.println("Your money is not enough");
+							showMessage("Your money is not enough");
 						}
 					} else if (vehicle.getID() == 2) {
 						if ((money - 500) > -0) {
 							vehicle.Upgrade();
 							money -= 500;
 						} else {
-							System.out.println("Your money is not enough");
+							showMessage("Your money is not enough");
 						}
 					}
 				} else {
@@ -197,24 +211,9 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		upgrade.setToolTipText("Upgrade your vehicle");
 		this.add(upgrade);
 
-		/** Downgrade button for your vehicle */
-		downgrade = new JButton("Downgrade");
-		downgrade.setBounds(650, 310, 120, 30);
-		downgrade.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				if (vehicle.getStatus() == 0) {
-					vehicle.Downgrade();
-				} else {
-					showMessage("Wait until our vehicle has arrived at the farm");
-				}
-			}
-		});
-		downgrade.setToolTipText("Downgrade your vehicle");
-		this.add(downgrade);
-
 		/** Make your vehicle go to the market and sell all the storages */
-		go = new JButton("Go");
-		go.setBounds(650, 340, 120, 30);
+		go = new JButton("Sell All");
+		go.setBounds(650, 310, 120, 30);
 		go.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				if (vehicle.getStatus() == 0) {
@@ -265,7 +264,7 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 
 		/** A button to buy apple seed */
 		buyApple = new JButton("Apple");
-		buyApple.setBounds(200, 40, 100, 30);
+		buyApple.setBounds(200, 70, 100, 30);
 		buyApple.addActionListener(new ActionListener() {
 
 			@Override
@@ -283,7 +282,7 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 
 		/** A button to buy strawberry seed */
 		buyStrawberry = new JButton("Strawberry");
-		buyStrawberry.setBounds(300, 40, 100, 30);
+		buyStrawberry.setBounds(300, 70, 100, 30);
 		buyStrawberry.addActionListener(new ActionListener() {
 
 			@Override
@@ -296,12 +295,12 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 				}
 			}
 		});
-		go.setToolTipText("Click on the grid to plant");
+		buyStrawberry.setToolTipText("Click on the grid to plant");
 		this.add(buyStrawberry);
 
 		/** A button to buy orange seed */
 		buyOrange = new JButton("Orange");
-		buyOrange.setBounds(400, 40, 100, 30);
+		buyOrange.setBounds(400, 70, 100, 30);
 		buyOrange.addActionListener(new ActionListener() {
 
 			@Override
@@ -314,12 +313,12 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 				}
 			}
 		});
-		go.setToolTipText("Click on the grid to plant");
+		buyOrange.setToolTipText("Click on the grid to plant");
 		this.add(buyOrange);
 
 		/** A button to buy Durian seed */
 		buyDurian = new JButton("Durian");
-		buyDurian.setBounds(500, 40, 100, 30);
+		buyDurian.setBounds(500, 70, 100, 30);
 		buyDurian.addActionListener(new ActionListener() {
 
 			@Override
@@ -332,24 +331,39 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 				}
 			}
 		});
-		go.setToolTipText("Click on the grid to plant");
+		buyDurian.setToolTipText("Click on the grid to plant");
 		this.add(buyDurian);
 
 		/** A button to refill your water */
 		refill = new JButton("Refill water");
-		refill.setBounds(650, 370, 120, 30);
+		refill.setBounds(650, 250, 120, 30);
 		refill.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				if (money >= 10) {
 					water = 10;
 					money -= 10;
 				} else {
-					System.out.println("Your money is not enough");
+					showMessage("Your money is not enough");
 				}
 			}
 		});
 		refill.setToolTipText("A button to refill your water");
 		this.add(refill);
+
+		// Set level here
+		money = level.getStartMoney();
+		goalMoney = level.getGoalMoney();
+		timeLeft = level.getLimitTime();
+		if (level.getUnlockedFruit() < 4) {
+			buyDurian.setEnabled(false);
+		}
+		if (level.getUnlockedFruit() < 3) {
+			buyOrange.setEnabled(false);
+		}
+		if (level.getUnlockedFruit() < 2) {
+			buyStrawberry.setEnabled(false);
+		}
+		water = 10;
 	}
 
 	/** Close the game */
@@ -357,6 +371,42 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 
 	}
 
+	/** Procedure called after the game ends */
+	public void gameOver() {
+		this.state = GameState.GAMEOVER;
+		showMessage("Game Over!");
+		if (money >= goalMoney) {
+			if (level.getId() < 5) {
+				int response = JOptionPane.showConfirmDialog(null, "Selamat! Anda mencapai target! Apakah Anda mau ke level selanjutnya?", ThePlants.TITLE, JOptionPane.YES_NO_OPTION);
+				if (response == JOptionPane.OK_OPTION) {
+					// Go to the next level
+					ThePlants.changePanel(new Game(new Level(level.getId() + 1)));
+				}
+				else {
+					// Go to main menu
+					ThePlants.changePanel(new MainMenu());
+				}
+				Thread.currentThread().interrupt();
+			}
+			else {
+				showMessage("Selamat! Anda menyelesaikan level terakhir!");
+				// Go to main menu
+				ThePlants.changePanel(new MainMenu());
+				Thread.currentThread().interrupt();
+			}
+		}
+		else {
+			int response = JOptionPane.showConfirmDialog(null, "Sayang sekali Anda kalah! Mau mengulangi?", ThePlants.TITLE, JOptionPane.YES_NO_OPTION);
+			if (response == JOptionPane.OK_OPTION) {
+				ThePlants.changePanel(new Game(level));
+			}
+			else {
+				ThePlants.changePanel(new MainMenu());
+			}
+			Thread.currentThread().interrupt();
+		}
+	}
+	
 	/** To start and restart your game */
 	public void gameStart() {
 		gameThread = new Thread() {
@@ -417,29 +467,81 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 
 	/** Update the state and position of all the game objects */
 	public void gameUpdate(double timeElapsed) {
-		// plant.update();
-		land.update(timeElapsed);
-		vehicle.update(timeElapsed);
-		// check if it has any money
-		if (vehicle.getMoney() > 0) {
-			this.money += vehicle.getMoney();
-			vehicle.setMoney(0);
+		// decrease time left
+		if (this.state == GameState.PLAYING) {
+			timeLeft -= timeElapsed;
+			if (timeLeft <= 0) {
+				timeLeft = 0;
+				gameOver();
+			}
+			// plant.update();
+			land.update(timeElapsed);
+			vehicle.update(timeElapsed);
+			// check if it has any money
+			if (vehicle.getMoney() > 0) {
+				this.money += vehicle.getMoney();
+				vehicle.setMoney(0);
+			}
+			// pest update
+			if (pest != null) {
+				pest.update(timeElapsed);
+				if (pest.getTarget() == null) {
+					// find a new target
+					ArrayList<Plant> allPlants = land.getAllPlants();
+					if (allPlants.size() > 0) {
+						int i = (new Random(System.nanoTime())).nextInt(allPlants.size());
+						pest.setTarget(allPlants.get(i));
+					}
+				}
+				else {
+					if (pest.isTargetReached()) {
+						// destroy plant
+						land.destroy(pest.getTarget());
+						pest.setTarget(null);
+					}
+				}
+				if (pest.isDead()) {
+					pest = null;
+					pestCoolDown = 10;
+				}
+			}
+			else {
+				pestCoolDown -= timeElapsed;
+				if (pestCoolDown <= 0) {
+					pest = new Pest();
+					pest.setBounds(new Rectangle(550, 300 + (new Random(System.nanoTime())).nextInt(150), 45, 45));
+				}
+			}
 		}
 	}
 
 	/** Change current state of player */
 	public void changePlayerState(PlayerState newState) {
-		// Normalize state
-		fertilizerButton.setText("Fertilize");
-		waterButton.setText("Water");
-		
-		// Set current state to the desired ones
 		playerState = newState;
-		if (newState == PlayerState.WATERING) {
-			waterButton.setText("Choose a plant");
-		}
-		else if (newState == PlayerState.FERTILIZING) {
-			fertilizerButton.setText("Choose a plant");
+	}
+	/** Get current status */
+	public String getStatus() {
+		switch (playerState) {
+		case NORMAL:
+			if (pest != null) {
+				return "Klik hama untuk membunuhnya";
+			}
+			else {
+				if (land.getAllPlants().isEmpty()) {
+					return "Klik tombol di bawah untuk membeli tanaman";
+				}
+				else {
+					return "Klik tanaman saat sudah \nberbuah untuk menjualnya";
+				}
+			}
+		case WATERING:
+			return "Klik salah satu tanaman \nuntuk menyiram";
+		case FERTILIZING:
+			return "Klik salah satu tanaman \nuntuk memberi pupuk";
+		case BUYPLANT:
+			return "Klik salah satu petak untuk \nmenanam";
+		default:
+			return "";
 		}
 	}
 
@@ -450,7 +552,7 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		super.paintComponent(g);
 		g.drawImage(background, 0, 0, ThePlants.PANEL_WIDTH,
 				ThePlants.PANEL_HEIGHT, null);
-
+		
 		/** Draw gridplant */
 		land.draw(g);
 
@@ -458,29 +560,41 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		vehicle.draw(g);
 
 		/** Draw pest */
-		// TODO draw pest
-		//pest.draw(g);
+		if (pest != null) {
+			pest.draw(g);
+		}
 
 		/** Game info */
 		g.setFont(new Font("Dialog", Font.PLAIN, 14));
 		g.setColor(Color.WHITE);
 		g.drawString(TITLE, 200, 300);
+		Font oldFont = g.getFont();
+		g.setFont(new Font("Dialog", Font.BOLD, 16));
+		g.drawString("Petunjuk", 460, 25);
+		g.setFont(oldFont);
+		g.drawString(getStatus(), 460, 45);
 		g.drawString("Price: "
-				+ PlantFactory.getPrototype("Pohon Apel").getPrice(), 220, 90);
+				+ PlantFactory.getPrototype("Pohon Apel").getPrice(), 220, 120);
 		g.drawString("Price: "
-				+ PlantFactory.getPrototype("Pohon Strawberry").getPrice(),
-				320, 90);
+				+ PlantFactory.getPrototype("Pohon Strawberry").getPrice(), 320, 120);
 		g.drawString("Price: "
-				+ PlantFactory.getPrototype("Pohon Jeruk").getPrice(), 420, 90);
+				+ PlantFactory.getPrototype("Pohon Jeruk").getPrice(), 420, 120);
 		g.drawString("Price: "
-				+ PlantFactory.getPrototype("Pohon Durian").getPrice(), 520, 90);
-		g.drawString("Money: " + money, 200, 20);
-		g.drawString("Your water: " + water, 200, 35);
-		if (state == GameState.GAMEOVER) {
-			g.setFont(new Font("Verdana", Font.BOLD, 30));
-			g.setColor(Color.RED);
-			g.drawString("GAME OVER!", 200, 300);
-		}
+				+ PlantFactory.getPrototype("Pohon Durian").getPrice(), 520, 120);
+
+		g.drawString("Goal: " + goalMoney, 200, 66);
+		g.setFont(new Font("Verdana", Font.BOLD, 30));
+
+		/** Draw time left */
+		g.drawImage(clockImage, 20, 20, 30, 30, null);
+		g.drawString(String.format("%02d:%02d", (int)Math.floor(timeLeft) / 60, (int)Math.floor(timeLeft) % 60), 60, 40);
+
+		/** Draw Money and water capacity */
+		g.drawImage(moneyImage, 200, 20, 45, 30, null);
+		g.drawString(String.valueOf(money), 250, 40);
+		
+		g.drawImage(waterImage, 350, 20, 20, 30, null);
+		g.drawString(String.valueOf(water), 380, 40);
 	}
 
 	/** Show message */
@@ -488,101 +602,116 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 		JOptionPane.showConfirmDialog(null, message, ThePlants.TITLE, JOptionPane.DEFAULT_OPTION);
 	}
 	
-	/** Code for Action Listener (Mouse and Key Listener) */
+	/* Code for Action Listener (Mouse Listener) */
 
 	@Override
 	public void mouseClicked(MouseEvent event) {
 		if (state == GameState.PLAYING) {
-			ArrayList<Plant> allPlant = land.getAllPlants();
-			// reverse the array, for convenience
-			Collections.reverse(allPlant);
+			// Klik kanan
+			if (event.getButton() == MouseEvent.BUTTON3) {
+				changePlayerState(PlayerState.NORMAL);
+			}
+			// Klik kiri
+			else if (event.getButton() == MouseEvent.BUTTON1) {
+				ArrayList<Plant> allPlant = land.getAllPlants();
+				// reverse the array, for convenience
+				Collections.reverse(allPlant);
 
-			// Choose action depending on the current player state
-			switch (playerState) {
-			case WATERING:
-				for (Plant p : allPlant) {
-					if (p.contains(event.getPoint())) {
-						if (water > 0) {
-							p.water();
-							water--;
-						} else {
-							showMessage("Air Anda habis! Silakan refill air Anda");
-						}
-						// break so that other plants behind it will not be clicked
-						break;
-					}
-				}
-				break;
-
-			case FERTILIZING:
-				for (Plant p : allPlant) {
-					if (p.contains(event.getPoint())) {
-						if (money >= fertilizer.getPrice()) {
-							p.fertilize(fertilizer.getAmount());
-							money -= fertilizer.getPrice();
-						} else {
-							showMessage("Anda tidak punya uang yang cukup");
-						}
-						break;
-					}
-				}
-				break;
-
-			case BUYPLANT:
-				if ((money - Plant.buySeed(plantID)) >= 0) {
-					String name = "";
-					switch (plantID) {
-					case 1:
-						name = "Pohon Apel";
-						break;
-					case 2:
-						name = "Pohon Strawberry";
-						break;
-					case 3:
-						name = "Pohon Jeruk";
-						break;
-					case 4:
-						name = "Pohon Durian";
-						break;
-					}
-					if (land.createPlantWithEvent(event, name)) {
-						money -= Plant.buySeed(plantID);
-						playerState = PlayerState.NORMAL;
-					}
-				}
-				// TODO Other ...
-				break;
-
-			case NORMAL:
-				// Take fruit
-				if (vehicle.getStatus() == 0) {
+				// Choose action depending on the current player state
+				switch (playerState) {
+				case WATERING:
 					for (Plant p : allPlant) {
 						if (p.contains(event.getPoint())) {
-							if (p.isFruitAvailable()) {
-								Fruit fruit = p.getFruit();
-								if (fruit.getCapacity() > 0) {
-									try {
-										vehicle.addItem(fruit);
-										p.removeFruit();
-									}
-									catch (StorageOverflowException e) {
-										showMessage("Storage tidak muat! Coba jual dulu barang-barang yang ada sekarang");
-									}
-								}
-								else {
-									p.removeFruit();
-								}
+							if (water > 0) {
+								p.water();
+								water--;
+							} else {
+								showMessage("Air Anda habis! Silakan refill air Anda");
 							}
 							// break so that other plants behind it will not be clicked
 							break;
 						}
 					}
+					break;
+
+				case FERTILIZING:
+					for (Plant p : allPlant) {
+						if (p.contains(event.getPoint())) {
+							if (money >= fertilizer.getPrice()) {
+								p.fertilize(fertilizer.getAmount());
+								money -= fertilizer.getPrice();
+							} else {
+								showMessage("Anda tidak punya uang yang cukup");
+							}
+							break;
+						}
+					}
+					break;
+
+				case BUYPLANT:
+					if ((money - Plant.buySeed(plantID)) >= 0) {
+						String name = "";
+						switch (plantID) {
+						case 1:
+							name = "Pohon Apel";
+							break;
+						case 2:
+							name = "Pohon Strawberry";
+							break;
+						case 3:
+							name = "Pohon Jeruk";
+							break;
+						case 4:
+							name = "Pohon Durian";
+							break;
+						}
+						if (land.createPlantWithEvent(event, name)) {
+							money -= Plant.buySeed(plantID);
+							playerState = PlayerState.NORMAL;
+						}
+					}
+					// TODO Other ...
+					break;
+
+				case NORMAL:
+					// Kill pest
+					if (pest != null) {
+						if (pest.contains(event.getPoint())) {
+							pest.hit();
+							break;
+						}
+					}
+					
+					// Take fruit
+					for (Plant p : allPlant) {
+						if (p.contains(event.getPoint())) {
+							if (p.isFruitAvailable()) {
+								if (vehicle.getStatus() == 0) {
+									Fruit fruit = p.getFruit();
+									if (fruit.getCapacity() > 0) {
+										try {
+											vehicle.addItem(fruit);
+											p.removeFruit();
+										}
+										catch (StorageOverflowException e) {
+											showMessage("Storage tidak muat! Coba jual dulu barang-barang yang ada sekarang");
+										}
+									}
+									else {
+										p.removeFruit();
+									}
+								}
+								else {
+									showMessage("Tunggu sampai kendaraan tiba kembali");
+								}
+								// break so that other plants behind it will not be clicked
+								break;
+							}
+						}
+					}
+					
+					break;
 				}
-				else {
-					showMessage("Tunggu sampai kendaraan tiba kembali");
-				}
-				
-				break;
 			}
 		}
 	}
@@ -607,24 +736,6 @@ public class Game extends JPanel implements KeyListener, MouseListener,
 
 	@Override
 	public void mouseReleased(MouseEvent event) {
-		// TODO insert something here or remove this method
-
-	}
-
-	@Override
-	public void keyPressed(KeyEvent event) {
-		// TODO insert something here or remove this method
-
-	}
-
-	@Override
-	public void keyReleased(KeyEvent event) {
-		// TODO insert something here or remove this method
-
-	}
-
-	@Override
-	public void keyTyped(KeyEvent event) {
 		// TODO insert something here or remove this method
 
 	}

@@ -55,7 +55,7 @@ public class ThePlants {
 			@Override
 			public void run() {
 				// TODO replace with new MainMenu()
-				ThePlants.changePanel(new Game());
+				ThePlants.changePanel(new MainMenu());
 			}
 		});
 	}

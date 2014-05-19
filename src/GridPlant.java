@@ -21,13 +21,6 @@ public class GridPlant implements Drawable {
 
 	/** Set the position of the grid */
 	private final static Rectangle[][] positions = new Rectangle[4][4];
-//	{
-//			{ new Rectangle(274, 250, 80, 80), new Rectangle(355, 250, 80, 80), new Rectangle(444, 250, 80, 80), new Rectangle(525, 250, 80, 80) },
-//			{ new Rectangle(268, 315, 82, 82), new Rectangle(352, 315, 82, 82), new Rectangle(449, 315, 82, 82), new Rectangle(538, 315, 82, 82) },
-//			{ new Rectangle(258, 375, 85, 85), new Rectangle(348, 375, 85, 85), new Rectangle(453, 375, 85, 85), new Rectangle(547, 375, 85, 85) },
-//			{ new Rectangle(248, 430, 90, 90), new Rectangle(344, 430, 90, 90), new Rectangle(457, 430, 90, 90), new Rectangle(556, 430, 90, 90) }
-//	};
-	
 	private final static Point UPPER_LEFT = new Point(63, 281);
 	private final static Point UPPER_RIGHT = new Point(376, 281);
 	private final static Point BOTTOM_LEFT = new Point(13, 512);
@@ -107,8 +100,13 @@ public class GridPlant implements Drawable {
 		for (int i = 0; i < NROW; i++) {
 			for (int j = 0; j < NCOL; j++) {
 				if (grid[i][j].contains(event.getPoint()) && arrPlant.get(i).get(j) == null) {
-					createPlant(i, j, name);
-					return true;
+					try {
+						createPlant(i, j, name);
+						return true;
+					}
+					catch (Exception e) {
+						return false;
+					}
 				}
 			}
 		}
@@ -176,6 +174,19 @@ public class GridPlant implements Drawable {
 		}
 	}
 
+	public void destroy(int i, int j) {
+		arrPlant.get(i).set(j, null);
+	}
+	public void destroy(Plant plant) {
+		for (int i = 0; i < NROW; i++) {
+			for (int j = 0; j < NCOL; j++) {
+				if (arrPlant.get(i).get(j) != null && arrPlant.get(i).get(j).equals(plant)) {
+					destroy(i,j);
+				}
+			}
+		}
+	}
+	
 	@Override
 	public void update(double timeElapsed) {
 		// TODO Auto-generated method stub
@@ -186,7 +197,7 @@ public class GridPlant implements Drawable {
 					arrPlant.get(i).get(j).update(timeElapsed);
 					// check if current plant dies
 					if (arrPlant.get(i).get(j).getStage() == null) {
-						arrPlant.get(i).set(j, null);
+						destroy(i, j);
 					}
 				}
 			}

@@ -107,14 +107,26 @@ public class Plant implements Drawable {
 
 	/** Buy the plant's seed */
 	public static int buySeed(int ID) {
-		if (ID == 1) {
-			return 50;
-		} else if (ID == 2) {
-			return 200;
-		} else if (ID == 3) {
-			return 500;
-		} else {
-			return 1000;
+		String name = "";
+		switch (ID) {
+		case 1:
+			name = "Pohon Apel";
+			break;
+		case 2:
+			name = "Pohon Strawberry";
+			break;
+		case 3:
+			name = "Pohon Jeruk";
+			break;
+		case 4:
+			name = "Pohon Durian";
+			break;
+		}
+		try {
+			return PlantFactory.getPrototype(name).getPrice();
+		}
+		catch (Exception e) {
+			return 0;
 		}
 	}
 
@@ -307,9 +319,14 @@ public class Plant implements Drawable {
 		
 		/** Draw the fruit */
 		if (isFruitAvailable()) {
-			// TODO draw different rotten fruit
-			g.drawImage(fruit.getImage(), bounds.x, bounds.y, bounds.width,
-					bounds.height, null);
+			if (fruitStatus == FruitStatus.ROTTING) {
+				g.drawImage(fruit.getImage(), bounds.x, bounds.y, bounds.width,
+						bounds.height, null);
+			}
+			else {
+				g.drawImage(fruit.getRottenImage(), bounds.x, bounds.y, bounds.width,
+						bounds.height, null);
+			}
 		}
 
 		/** Draw the water level */
