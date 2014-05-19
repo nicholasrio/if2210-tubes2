@@ -1,23 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package GUI;
-import Tools.KoneksiDatabase;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import main.CalonTerpilih;
 import main.Dapil;
-/**
- *
- * @author linda.sekawati
- */
 public class FormDapil extends javax.swing.JFrame {
 
     /**
@@ -35,37 +20,6 @@ public class FormDapil extends javax.swing.JFrame {
         model.addColumn("No. Dapil");
         model.addColumn("Kota/Kabupaten");
         loadDataFromList();
-    }
-    
-    /**
-     * Mengeload data Dapil dari database
-     */
-    private void loadData(){
-        model.getDataVector().removeAllElements();
-        model.fireTableDataChanged();
-        try
-        {
-            Connection koneksi = KoneksiDatabase.getKoneksi();
-            Statement statement = koneksi.createStatement();
-            
-            String command = "SELECT * FROM Kabupaten";
-            ResultSet result = statement.executeQuery(command);
-            
-            while (result.next())
-            {
-                Object [] o = new Object[2];
-                o[0] = result.getString("No_Dapil");
-                o[1] = result.getString("Nama_Kabupaten");
-                
-                model.addRow(o);
-            }
-            result.close();
-            statement.close();
-        }
-        catch (SQLException e)
-        {
-            System.out.println("Terjadi eror FormDapil.java: " + e.getMessage());
-        }
     }
     
     /**
