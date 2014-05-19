@@ -34,12 +34,12 @@ public class YoutubeDataRetriever {
 	}
 	/**
 	 * Method ini akan mengembalikan Id Youtube dari String URL yang diberikan
-     * @param URL
+         * @param URLInput
 	 * @return String
 	 */
-	public String GetAbsoluteId(String URL)
+	public String GetAbsoluteId(String URLInput)
 	{
-	    String txt=URL;
+	    String txt=URLInput;
 	    String re1="(http)";	// Word 1
 	    String re2="(:)";	// Any Single Character 1
 	    String re3="(\\/)";	// Any Single Character 2
@@ -66,30 +66,30 @@ public class YoutubeDataRetriever {
 	}
 	/**
 	 * Method ini akan mengembalikan jumlah view pada URL yang diberikan
-     * @param URL
+         * @param URLInput
 	 * @return int
      * @throws java.io.IOException
      * @throws com.google.gdata.util.ServiceException
 	 */
-	public long getView(String URL) throws IOException, ServiceException
+	public long getView(String URLInput) throws IOException, ServiceException
 	{
 		YouTubeQuery query = new YouTubeQuery(new URL("http://gdata.youtube.com/feeds/api/videos"));
-		query.setFullTextQuery(GetAbsoluteId(URL));
+		query.setFullTextQuery(GetAbsoluteId(URLInput));
 		VideoFeed videoFeed = service.query(query, VideoFeed.class);
 		List<VideoEntry>ListVideo =  videoFeed.getEntries();
 		return ListVideo.get(0).getStatistics().getViewCount();
 	}
 	/**
 	 * Method ini akan mengembalikan title dari URL video yang diberikan
-     * @param URL
+         * @param URLInput
 	 * @return String
      * @throws java.io.IOException
      * @throws com.google.gdata.util.ServiceException
 	 */
-	public String getTitle(String URL) throws IOException, ServiceException
+	public String getTitle(String URLInput) throws IOException, ServiceException
 	{
 		YouTubeQuery query = new YouTubeQuery(new URL("http://gdata.youtube.com/feeds/api/videos"));
-		query.setFullTextQuery(GetAbsoluteId(URL));
+		query.setFullTextQuery(GetAbsoluteId(URLInput));
 		VideoFeed videoFeed = service.query(query, VideoFeed.class);
 		List<VideoEntry>ListVideo =  videoFeed.getEntries();
 		return ListVideo.get(0).getTitle().getPlainText();

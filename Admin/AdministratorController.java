@@ -78,6 +78,7 @@ public class AdministratorController {
      * @param name
      * @param password
      * @throws SQLException 
+     * @throws Video.NullException 
      */
 
     public void AdminRegister(String _NIM, String name, String password) throws SQLException, NullException{

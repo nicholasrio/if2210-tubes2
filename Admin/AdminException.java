@@ -7,7 +7,7 @@
 package Admin;
 
 /**
- *
+ * Exception untuk Administrator
  * @author CakBin
  */
 public class AdminException extends Exception{

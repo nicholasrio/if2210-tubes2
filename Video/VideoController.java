@@ -7,7 +7,6 @@
 package Video;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -59,6 +58,10 @@ public class VideoController {
     }
     /**
      * mengambil link video dari no_tubes dan namakelompok
+     * @param no_tubes
+     * @param namakelompok
+     * @return 
+     * @throws java.sql.SQLException
     */
     public String LinkVideo(int no_tubes, String namakelompok) throws SQLException{
         String temp = vid.LinkVideo(no_tubes, namakelompok);
