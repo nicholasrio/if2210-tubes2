@@ -19,9 +19,11 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,6 +44,9 @@ public class GameMenuGUI extends Scene
     private Image backgroundTexture;
     private Image titleTexture;
     private Image coinTexture;
+    private Image notificationTexture;
+    private Image okTexture;
+    private Image okTexture1;
             
     private int nowlevelPlay;
     private int mazeSize;
@@ -73,7 +78,11 @@ public class GameMenuGUI extends Scene
     private boolean keyLeftPressed;
     private boolean keyEnterPressed;
     private boolean isFinish;
+    private boolean isFinishMoveStop;
     private boolean isLevelUnlocked;
+    private boolean okpressed;
+    private boolean exit;
+    private boolean okhovered;
     
     public static boolean hitHole;
     public static boolean playerCollide;
@@ -81,10 +90,12 @@ public class GameMenuGUI extends Scene
     
     private Rectangle [][]tileRect;
     private Rectangle playerRect;
+    private Rectangle okRect;
     
     private Font font;
     private File fontfile;
     private Player currentPlayer;
+    private int notificationHeight;
     
     public GameMenuGUI()
     {
@@ -135,6 +146,43 @@ public class GameMenuGUI extends Scene
                     break;
         }
         
+        addMouseListener(new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                updateMouseClicked(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                updateMouseRelease(e);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+        
+        addMouseMotionListener(new MouseMotionListener() {
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                updateMouseHover(e);
+            }
+        });
+                
         addKeyListener(new KeyListener() 
         {
             @Override
@@ -157,6 +205,28 @@ public class GameMenuGUI extends Scene
         });
     }
     
+    public void updateMouseHover(MouseEvent event)
+    {
+        okhovered = okRect.contains(event.getPoint());
+    }
+    
+    public void updateMouseRelease(MouseEvent event)
+    {
+        if(okRect.contains(event.getPoint()))
+        {
+            okpressed = true;
+        }
+    }
+    
+    public void updateMouseClicked(MouseEvent event)
+    {
+        if(okRect.contains(event.getPoint()) && okpressed)
+        {
+            okpressed = false;
+            exit = true;
+        }
+    }
+    
     public void LoadContent()
     {
         switch (nowlevelPlay)
@@ -171,6 +241,9 @@ public class GameMenuGUI extends Scene
                     backgroundTexture = ImageLoader.getImage("ice");
                     titleTexture = ImageLoader.getImage("title");
                     coinTexture = ImageLoader.getImage("coin");
+                    notificationTexture = ImageLoader.getImage("ice_notification");
+                    okTexture = ImageLoader.getImage("ice_ok");
+                    okTexture1 = ImageLoader.getImage("ice_ok1");
                     break;
         }
     }
@@ -186,9 +259,14 @@ public class GameMenuGUI extends Scene
         currentPlayer.initPlayerPosition(playedMap);
         currentPlayer.resetTempScore();
         isFinish = false;
+        isFinishMoveStop = false;
         isLevelUnlocked = false;
         playerPosX = startPlayerPosX;
         playerPosY = startPlayerPosY;
+        notificationHeight = 0;
+        okpressed = false;       
+        exit = false;
+        okRect = new Rectangle(0,0,0,0);
         
         for (int bar=0;bar<mazeSize;bar++)
         {
@@ -210,8 +288,11 @@ public class GameMenuGUI extends Scene
     {
         if(isFinish)
         {
+            if(isFinishMoveStop){
+                SoundManager.stopSound("chain");
+            }
             prevFloor = currentPlayer.getLocation().getLevel();
-            if(keyEnterPressed)
+            if(exit)
             {
                 try 
                 {
@@ -221,7 +302,9 @@ public class GameMenuGUI extends Scene
                     keyLeftPressed = false;
                     keyEnterPressed = false;
                     playerFaced = 4;
+                    SoundManager.stopSound("chain");
                     SceneManager.SwitchScene("LevelMenuGUI");
+                    exit = true;
                 } 
                 catch (SceneNotFoundException ex) 
                 {
@@ -371,7 +454,6 @@ public class GameMenuGUI extends Scene
             if(prevFloor != nowFloor)
             {
                 prevFloor = nowFloor;
-                System.out.println("TELEPORT!!");
                 int offset = 10;
                 playerPosX = initPosMapWidth + offset + (currentPlayer.getLocation().getCol() * pathTexture.getWidth(this));
                 playerPosY = initPosMapHeight + offset + (currentPlayer.getLocation().getRow() * pathTexture.getHeight(this));
@@ -381,13 +463,13 @@ public class GameMenuGUI extends Scene
             if(output == 1)
             {
                 isFinish = true;
+                SoundManager.playSound("chain");
                 if(GameData.nowLevelPlayed == currentPlayer.getLevelUnlocked() && GameData.nowLevelPlayed<GameData.getJumlahMap()){
                     currentPlayer.setLevelUnlocked(currentPlayer.getLevelUnlocked()+1);
                     isLevelUnlocked = true;
                 }
             }
             
-            System.out.println(nowFloor);
         }
     }
 
@@ -399,6 +481,12 @@ public class GameMenuGUI extends Scene
             Game.gameFrame.revalidate();
             Game.gameFrame.repaint();
         }
+    }
+    
+    private void drawFinish(Graphics g)
+    {
+        Graphics2D g2D = (Graphics2D) g;
+        g2D.drawImage(notificationTexture, this.getWidth()/2 - notificationTexture.getWidth(this)/2,-1 * (notificationTexture.getHeight(this)) + notificationHeight,this);
     }
     
     @Override
@@ -482,6 +570,38 @@ public class GameMenuGUI extends Scene
             g2D.setFont(font);
             this.setForeground(Color.GREEN);
             g2D.drawString(String.valueOf(currentPlayer.getTempScore()),(int)(this.getWidth()*0.9f), (int)(this.getHeight()*0.275f));
+            if(isFinish)
+            {
+                drawFinish(g);
+                if(notificationHeight < 450)
+                {
+                    notificationHeight += 5;
+                }
+                else
+                {
+                    isFinishMoveStop = true;
+                    font = font.deriveFont(Font.TRUETYPE_FONT, 15);
+                    g2D.setFont(font);
+                    g2D.drawString("Congratulations!",280, 280);
+                    font = font.deriveFont(Font.TRUETYPE_FONT, 20);
+                    g2D.setFont(font);
+                    this.setForeground(Color.BLACK);
+                    g2D.drawString("Score : " + currentPlayer.getTempScore(), 280, 300);
+                    font = font.deriveFont(Font.TRUETYPE_FONT, 10);
+                    g2D.setFont(font);
+                    g2D.drawString("You have unlocked \n the next level", 280, 310);
+                    float size = 0.15f;
+                    okRect = new Rectangle(350, 330, (int) (okTexture.getWidth(this)*size), (int) (okTexture.getHeight(this)*size));
+                    if(okhovered)
+                    {
+                        g2D.drawImage(okTexture, 350, 330, (int)(okTexture.getWidth(this) * size),(int)(okTexture.getHeight(this)*size),this);
+                    }
+                    else
+                    {
+                        g2D.drawImage(okTexture1, 350, 330, (int)(okTexture.getWidth(this) * size),(int)(okTexture.getHeight(this)*size),this);
+                    }
+                }
+            }
         }
     }
     
@@ -495,25 +615,24 @@ public class GameMenuGUI extends Scene
                 case KeyEvent.VK_UP: if (!(keyDownPressed || keyLeftPressed || keyRightPressed))
                                      {
                                         keyUpPressed = true;
-                                        if (playerFaced != 1)
+                                        if (playerFaced != 1) 
                                         {
                                             playerdisplayState = 0;
                                         }
                                         playerFaced = 1;
                                      }
-
                                      break;
 
-                case KeyEvent.VK_DOWN: if (!(keyUpPressed || keyLeftPressed || keyRightPressed))
-                                       {
-                                            keyDownPressed = true;
-                                            if (playerFaced != 2)
-                                            {
-                                                playerdisplayState = 0;
-                                            }
-                                            playerFaced = 2;
-                                       }
-                                       break;
+                case KeyEvent.VK_DOWN:  if (!(keyUpPressed || keyLeftPressed || keyRightPressed))
+                                        {
+                                             keyDownPressed = true;
+                                             if (playerFaced != 2)
+                                             {
+                                                 playerdisplayState = 0;
+                                             }
+                                             playerFaced = 2;
+                                        }
+                                        break;
 
                 case KeyEvent.VK_LEFT: if (!(keyUpPressed || keyDownPressed || keyRightPressed))
                                        {
@@ -523,7 +642,6 @@ public class GameMenuGUI extends Scene
                                                 playerdisplayState = 0;
                                             }
                                             playerFaced = 3;
-
                                        }
                                        break;
 
@@ -537,7 +655,6 @@ public class GameMenuGUI extends Scene
                                             playerFaced = 4;
                                         }
                                         break;
-
                 case KeyEvent.VK_ENTER: keyEnterPressed = true;
                                         break;
             }

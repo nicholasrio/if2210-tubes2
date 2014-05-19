@@ -26,6 +26,6 @@ public class HoleItem extends GameItem{
         canvas.setCanvasPixel(row+1, col+2, ')');
     }
     public void makeSound(){
-        SoundManager.playSound("fall");
+        SoundManager.playSound("glass");
     }
 }

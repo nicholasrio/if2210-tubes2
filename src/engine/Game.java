@@ -31,7 +31,7 @@ public class Game
     private Game()
     {
         // Choice Mode
-        mode = 2;
+        //mode = 2;
         
         GameData.loadMap();
         GameData.loadPlayer("player.xml");
@@ -91,6 +91,11 @@ public class Game
             SoundManager.addSound(new Sound("button","button.wav",Sound.SoundType.sfx));
             SoundManager.addSound(new Sound("fall","fall.wav",Sound.SoundType.sfx));
             SoundManager.addSound(new Sound("icebreak","icebreak.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("impact","impact.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("fbutton","futuristic_button.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("glass","glass_break.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("button2","button2.wav",Sound.SoundType.sfx));
+            SoundManager.addSound(new Sound("chain","chain.wav",Sound.SoundType.sfx));
             SoundManager.addSound(new Sound("mainBm","MainMenu.au",Sound.SoundType.bgm));
             SoundManager.addSound(new Sound("levelBm","LevelMenu.au",Sound.SoundType.bgm));
             SoundManager.addSound(new Sound("lv1bm","Level1.au",Sound.SoundType.bgm));
@@ -133,6 +138,11 @@ public class Game
     
     public static void main(String []args)
     {
+        if(args.length == 0) {
+            mode = 2;
+        } else {
+            mode = 1;
+        }
         Game CubeMazer = new Game();
     }
 }

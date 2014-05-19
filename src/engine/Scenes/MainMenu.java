@@ -104,7 +104,11 @@ public class MainMenu extends Scene
             System.out.print("Enter your choice (0 to cancel and return to main menu): ");
             Scanner Sc = new Scanner(System.in);
             int temp = Sc.nextInt();
-            if (temp != 0) GameData.deletePlayer(GameData.dataPlayer.get(temp-1).getNama());
+            if (temp != 0) {
+                if(GameData.dataPlayer.get(temp-1) != GameData.lastLogin) {
+                    GameData.deletePlayer(GameData.dataPlayer.get(temp-1).getNama());
+                }
+            }
             status = 0;
             createdel = 0;
         }
@@ -124,6 +128,24 @@ public class MainMenu extends Scene
        if (status == 5) 
        {
            Game.gameRunning = false;
+           PrinterString("=",1);
+           PrinterString("", 1);
+           PrinterString("",1);
+           if (height > 25) PrinterString("",1);
+           PrinterString("CUBE MAZER",1);
+           if (height > 25) PrinterString("",1);
+           PrinterString("",1);
+           PrinterString("",1);
+           PrinterString("=",1);
+           String[] temp = new String[7];
+           temp[0] = "CREATED BY: ";
+           temp[1] = "Kevin Tjong";
+           temp[2] = "Michael Alexander";
+           temp[3] = "Timothy Pratama";
+           temp[4] = "Tony Wijaya";
+           temp[5] = "Winson Waisakurnia";
+           temp[6] = "=";
+           PrinterStringVertical(temp);
        }
        else if (status == 1){
             try{

@@ -2,7 +2,7 @@
 <DatabasePlayer>
      <lastLogin>
           <nama>Eren Jaeger</nama>
-          <score>24</score>
+          <score>18</score>
           <levelUnlocked>1</levelUnlocked>
           <achievementUnlocked>1</achievementUnlocked>
      </lastLogin>
@@ -20,7 +20,7 @@
      </player>
      <player id="2">
           <nama>Eren Jaeger</nama>
-          <score>12</score>
+          <score>18</score>
           <levelUnlocked>1</levelUnlocked>
           <achievementUnlocked>1</achievementUnlocked>
      </player>
