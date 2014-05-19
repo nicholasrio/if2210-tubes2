@@ -16,12 +16,11 @@ public class Server {
 		ServerManager manager = ServerManager.getSingleton();
 		try { 
 		    ServerSocket serverSocket = new ServerSocket(portNumber);
-    	    while(true){
-    	    	Socket clientSocket = serverSocket.accept();
-    	    	ServerThread ss = manager.get(clientSocket);
-    	    	ss.start();
-				
-    	    }
+                    while(true){
+                        Socket clientSocket = serverSocket.accept();
+                        ServerThread ss = manager.get(clientSocket);
+                        ss.start();
+                    }
 		}
 		catch(Exception e){
 			e.printStackTrace();

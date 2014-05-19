@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import javax.print.PrintService;
+
 import org.apache.poi.xwpf.converter.pdf.PdfConverter;
 import org.apache.poi.xwpf.converter.pdf.PdfOptions;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -21,6 +21,7 @@ public class DOC extends MyFile {
     }
 
     public void setEkstensi(String _ekstensi) {
+        ekstensi   =    _ekstensi;
 
     }
 
@@ -42,7 +43,7 @@ public class DOC extends MyFile {
         }
     }
 
-    public void print(PrintService printer) {
-        //System.out.println("DOC");
+    public void print() {
+        System.out.println("DOC");
     }
 }

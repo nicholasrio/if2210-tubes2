@@ -1,10 +1,5 @@
 package file;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -12,7 +7,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import javax.print.PrintService;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 /**
  *
@@ -25,6 +25,7 @@ public class TXT extends MyFile {
     }
 
     public void setEkstensi(String _ekstensi) {
+        ekstensi   =    _ekstensi;
 
     }
 
@@ -110,7 +111,7 @@ public class TXT extends MyFile {
         }
     }
 
-    public void print(PrintService printer) {
-        //System.out.println("TXT");
+    public void print() {
+        System.out.println("TXT");
     }
 }
