@@ -82,6 +82,15 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_notifications.png"));
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/OK.png"));
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/OK1.png"));
+        
+        // Image Fire Maze
+        allImages.add(loadImage("Image/GameMenu/Fire_Maze/character.png"));
+        allImages.add(loadImage("Image/GameMenu/Fire_Maze/wall.jpg"));
+        allImages.add(loadImage("Image/GameMenu/Fire_Maze/hole.jpg"));
+        allImages.add(loadImage("Image/GameMenu/Fire_Maze/lava_floor.jpg"));
+        allImages.add(loadImage("Image/GameMenu/Fire_Maze/teleporter.jpg"));
+        allImages.add(loadImage("Image/GameMenu/Fire_Maze/coin.png"));
+        allImages.add(loadImage("Image/GameMenu/Fire_Maze/background.jpg"));
     }
     
     public static Image getImage(String imgName)
@@ -255,7 +264,34 @@ public class ImageLoader extends JPanel
         {
             return allImages.get(40);
         }
-                
+        else if("fire_char".equalsIgnoreCase((imgName)))
+        {
+            return allImages.get(41);
+        }
+        else if("fire_wall".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(42);
+        }
+        else if("fire_hole".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(43);
+        }
+        else if("fire_floor".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(44);
+        }
+        else if("fire_teleporter".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(45);
+        }
+        else if("fire_coin".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(46);
+        }  
+        else if("fire_back".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(47);
+        }
         return null;
     }
     

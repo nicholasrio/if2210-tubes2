@@ -139,6 +139,7 @@ public class OptionsMenuGUI extends Scene
     {
         if(backRectangle.contains(event.getPoint()))
         {
+            SoundManager.playSound("button2");
             backPressed = 1;
         }
         else

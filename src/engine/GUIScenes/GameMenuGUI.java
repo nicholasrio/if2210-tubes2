@@ -86,6 +86,7 @@ public class GameMenuGUI extends Scene
     
     public static boolean hitHole;
     public static boolean playerCollide;
+    public static boolean hitTeleport;
     
     private Rectangle [][]tileRect;
     private Rectangle playerRect;
@@ -115,6 +116,7 @@ public class GameMenuGUI extends Scene
         
         playerCollide = false;
         hitHole = false;
+        hitTeleport = false;
         
         playerSpeed = 6;
         switch(nowlevelPlay)
@@ -243,6 +245,13 @@ public class GameMenuGUI extends Scene
                     okTexture = ImageLoader.getImage("ice_ok");
                     okTexture1 = ImageLoader.getImage("ice_ok1");
                     break;
+            case 1: pathTexture = ImageLoader.getImage("fire_floor");
+                    wallTexture = ImageLoader.getImage("fire_wall");
+                    holeTexture = ImageLoader.getImage("fire_hole");
+                    goldTexture = ImageLoader.getImage("fire_coin");
+                    teleporterTexture = ImageLoader.getImage("fire_teleporter");
+                    titleTexture = ImageLoader.getImage("title");
+                    backgroundTexture = ImageLoader.getImage("fire_back");
         }
     }
     
@@ -313,7 +322,7 @@ public class GameMenuGUI extends Scene
         else // belum finish
         {
             int output = 0;
-            if (!hitHole)
+            if (!hitHole && !hitTeleport)
             {
                 if(keyUpPressed)
                 {
@@ -425,7 +434,7 @@ public class GameMenuGUI extends Scene
                     playerdisplayState %= nbCharSprite;
                 }
                 
-                if (!hitHole)
+                if (!hitHole && !hitTeleport)
                 {
                     nowFloor = currentPlayer.getLocation().getLevel();
                 }
@@ -438,7 +447,14 @@ public class GameMenuGUI extends Scene
                 }
                 else
                 {
-                    hitHole = false;
+                    if (hitHole)
+                    {
+                        hitHole = false;
+                    }
+                    else if (hitTeleport)
+                    {
+                        hitTeleport = false;
+                    }
                 }
             }
             
@@ -544,7 +560,7 @@ public class GameMenuGUI extends Scene
                 int height = holeTexture.getHeight(this);
                 g2D.drawImage(holeTexture,width*loc.getCol()+initPosMapWidth,height*loc.getRow()+initPosMapHeight,width,height,this);    
             }
-            
+                        
             switch (playerFaced)
             {
                 case 1: g2D.drawImage(playerUDTexture,playerPosX,playerPosY,playerPosX+39,playerPosY+71,(39*playerdisplayState),76,(39*(playerdisplayState+1)),152,this);
@@ -598,55 +614,57 @@ public class GameMenuGUI extends Scene
     
     public void keyboardUpdatePressed(KeyEvent e)
     {
-        int keyCode = e.getKeyCode();
-        switch (keyCode)
+        if (!hitHole)
         {
-            case KeyEvent.VK_UP: if (!(keyDownPressed || keyLeftPressed || keyRightPressed))
-                                 {
-                                    keyUpPressed = true;
-                                    if (playerFaced != 1)
-                                    {
-                                        playerdisplayState = 0;
-                                    }
-                                    playerFaced = 1;
-                                 }
-                                  break;
-
-            case KeyEvent.VK_DOWN: if (!(keyUpPressed || keyLeftPressed || keyRightPressed))
-                                   {
-                                        keyDownPressed = true;
-                                        if (playerFaced != 2)
+            int keyCode = e.getKeyCode();
+            switch (keyCode)
+            {
+                case KeyEvent.VK_UP: if (!(keyDownPressed || keyLeftPressed || keyRightPressed))
+                                     {
+                                        keyUpPressed = true;
+                                        if (playerFaced != 1) 
                                         {
                                             playerdisplayState = 0;
                                         }
-                                        playerFaced = 2;
-                                   }
-                                    break;
+                                        playerFaced = 1;
+                                     }
+                                     break;
 
-            case KeyEvent.VK_LEFT: if (!(keyUpPressed || keyDownPressed || keyRightPressed))
-                                   {
-                                        keyLeftPressed = true;
-                                        if (playerFaced != 3)
+                case KeyEvent.VK_DOWN:  if (!(keyUpPressed || keyLeftPressed || keyRightPressed))
                                         {
-                                            playerdisplayState = 0;
+                                             keyDownPressed = true;
+                                             if (playerFaced != 2)
+                                             {
+                                                 playerdisplayState = 0;
+                                             }
+                                             playerFaced = 2;
                                         }
-                                        playerFaced = 3;
-                                   }
-                                    break;
+                                        break;
 
-            case KeyEvent.VK_RIGHT: if (!(keyUpPressed || keyLeftPressed || keyDownPressed))
-                                    {
-                                        keyRightPressed = true;
-                                        if (playerFaced != 4)
+                case KeyEvent.VK_LEFT: if (!(keyUpPressed || keyDownPressed || keyRightPressed))
+                                       {
+                                            keyLeftPressed = true;
+                                            if (playerFaced != 3)
+                                            {
+                                                playerdisplayState = 0;
+                                            }
+                                            playerFaced = 3;
+                                       }
+                                       break;
+
+                case KeyEvent.VK_RIGHT: if (!(keyUpPressed || keyLeftPressed || keyDownPressed))
                                         {
-                                            playerdisplayState = 0;
+                                            keyRightPressed = true;
+                                            if (playerFaced != 4)
+                                            {
+                                                playerdisplayState = 0;
+                                            }
+                                            playerFaced = 4;
                                         }
-                                        playerFaced = 4;
-                                    }
-                                    break;
-                   
-            case KeyEvent.VK_ENTER: keyEnterPressed = true;
-                                    break;
+                                        break;
+                case KeyEvent.VK_ENTER: keyEnterPressed = true;
+                                        break;
+            }
         }
     }
     
@@ -659,36 +677,36 @@ public class GameMenuGUI extends Scene
                 if (keyUpPressed)
                 {
                     keyUpPressed = false;
-                    break;
                 }
+            break;
 
             case KeyEvent.VK_DOWN: 
                 if (keyDownPressed)
                 {
-                    keyDownPressed = false;
-                    break;
+                    keyDownPressed = false;    
                 }
+                break;
 
                 case KeyEvent.VK_RIGHT: 
                     if (keyRightPressed)
                     {
                         keyRightPressed = false;
-                         break;
                     }
+                break;
 
                 case KeyEvent.VK_LEFT: 
                     if (keyLeftPressed)
                     {
                         keyLeftPressed = false;
-                        break;
                     }
+                break;
                 
                 case KeyEvent.VK_ENTER:
                     if (keyEnterPressed)
                     {
                         keyEnterPressed = false;
-                        break;
                     }
+                break;
         }
     }
 }
