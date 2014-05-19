@@ -147,7 +147,6 @@ public class Main {
 							} break;
 					default: break;
 				}
-				//System.out.println("menu " + menu);
 			} while (menu != 10);
 			draco.sebelumExit();
 		} catch(Exception ex) {
@@ -161,10 +160,6 @@ public class Main {
 	 */
 	public static void gui() {
 		/* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-		 * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-		 */
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
@@ -175,7 +170,6 @@ public class Main {
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
 			java.util.logging.Logger.getLogger(GUIView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
-        //</editor-fold>
 		
 		GUIViewLogin GVL = new GUIViewLogin();
 		draco = GVL.getDragon();
@@ -185,14 +179,6 @@ public class Main {
 			@Override
 			public void run() {
 				view.setVisible(true);
-				/*while (true) {
-					try {
-						sleep(300);
-					} catch (InterruptedException ex) {
-						Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-					}
-					view.UpdateScreen(draco);
-				}*/
 			}
 		};
 		java.awt.EventQueue.invokeLater(thread);
@@ -212,15 +198,7 @@ public class Main {
             }
         };
         updater.start();
-		
-		/*try {
-			sleep(5000);
-			mainGUI.UpdateScreen(draco);
-			Scanner in = new Scanner(System.in);
-			String a = in.next();
-		} catch (InterruptedException e) {
-			
-		}*/
+	
 		view.UpdateScreen(Store.getInstance());
 		view.UpdateScreen(draco);
 		
@@ -248,7 +226,6 @@ public class Main {
 					break;
 				case 5:
 					Dragon enemy = draco.generateEnemy();
-					//view.UpdateScreen(draco, enemy); //not used due to the need of retval.
 					final GUIViewFight fightView = new GUIViewFight(draco, enemy);
 					Runnable fightThread = new Runnable() {
 						@Override
