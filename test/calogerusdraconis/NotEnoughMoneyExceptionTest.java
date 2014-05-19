@@ -40,13 +40,12 @@ public class NotEnoughMoneyExceptionTest {
     }
 
     @Test
-    public void testSomeMethod() {
+    public void testNotEnoughMoneyException() {
         try {
             throw new NotEnoughMoneyException();
         } catch (NotEnoughMoneyException e) {
             assertEquals("Uang tidak cukup", e.getMessage());
         }
-        // TODO review the generated test code and remove the default call to fail.
     }
     
 }
