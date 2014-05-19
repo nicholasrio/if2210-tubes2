@@ -41,7 +41,6 @@ public class PDF extends MyFile {
 	public void print(PrintService service) throws IOException, PrinterException {
 		// TODO code application logic here
 		PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
-            
 		printPDF("serverFolder/" + uploader + "/" + path, printServices[4]);
 	}
 }

@@ -148,7 +148,6 @@ public class Client {
 				inFile.read(buf);
 				socket.getOutputStream().write(buf);
 			}
-			
 			//read message from server
 			String response = in.readLine();
 			System.out.println("Message from server: " + response);
@@ -164,7 +163,6 @@ public class Client {
 			e.printStackTrace();
 		}
 	}
-	
 	public void sendResponse(String response){
 		try{
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);

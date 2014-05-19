@@ -1,17 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.data;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
+import java.util.LinkedList;
+import java.util.List;
 import onlineprinter.Encrypt;
 
 /**
  *
- * @author Luthfi Hamid M / 135120100
+ * @author Luthfi Hamid Masykuri / 135120100
  */
 public class User implements Serializable {
 
@@ -21,6 +18,7 @@ public class User implements Serializable {
 	private String email;
 	private int saldo;
 	private int status;
+	private UserLogDao Logs;
 
 	public User() {
 
@@ -33,6 +31,7 @@ public class User implements Serializable {
 		this.email = email;
 		this.saldo = saldo;
 		this.status = status;
+		Logs = new UserLogDaoImpl(this);
 	}
 
 	public User(ResultSet Data) {
@@ -43,6 +42,7 @@ public class User implements Serializable {
 			email = Data.getString("email");
 			saldo = Data.getInt("saldo");
 			status = Data.getInt("status");
+			Logs = new UserLogDaoImpl(this);
 		} catch (Exception e) {
 
 		}
@@ -70,6 +70,16 @@ public class User implements Serializable {
 
 	public int getStatus() {
 		return status;
+	}
+
+	public List<UserLog> getLog() {
+		return Logs.getAllLog();
+	}
+
+	public void TambahSaldo(int jumlah) {
+		saldo += jumlah;
+		UserLog Log = new UserLog(jumlah, saldo);
+		Logs.AddLog(Log);
 	}
 
 	public void setUsername(String username) {
