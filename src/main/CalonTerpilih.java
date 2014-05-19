@@ -181,7 +181,7 @@ public class CalonTerpilih {
                 }
             }
             
-            
+            //koneksi.close();
         } catch (SQLException ex) {
             Logger.getLogger(CalonTerpilih.class.getName()).log(Level.SEVERE, null, ex);
         }
