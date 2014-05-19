@@ -276,6 +276,7 @@ public class LevelMenuGUI extends Scene
     {        
         if (menuPressed ==1){
             if (unlocked){
+                SoundManager.playSound("fall");
                 SceneManager.SwitchScene("GameMenuGUI");     
             }
             else{

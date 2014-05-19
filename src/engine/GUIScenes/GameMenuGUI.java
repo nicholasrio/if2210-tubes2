@@ -102,8 +102,6 @@ public class GameMenuGUI extends Scene
     public GameMenuGUI()
     {
         super("GameMenuGUI");
-        this.setCursor(gameFrame.getToolkit().createCustomCursor(new BufferedImage(3,3,BufferedImage.TYPE_INT_ARGB),new Point(0,0),"null"));
-        
         nowlevelPlay = GameData.nowLevelPlayed;
         //nowlevelPlay = 0;
         nowFloor = 0;
