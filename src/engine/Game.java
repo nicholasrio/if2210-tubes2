@@ -60,10 +60,11 @@ public class Game
         gameFrame.setLocationRelativeTo(null);
         gameFrame.setResizable(true);
         gameFrame.setVisible(true);
-        
+            
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Image image = ImageLoader.getImage("cursor");
         Cursor c = toolkit.createCustomCursor(image, new Point(0,0),"cursor");
+        
         gameFrame.setCursor(c);
     }
     

@@ -423,6 +423,7 @@ public class UserMenuGUI extends Scene
             else {
                 if(status == 0) {
                 GameData.lastLogin = GameData.dataPlayer.get(menuPressed-1);
+                SoundManager.playSound("fbutton");
                 SceneManager.SwitchScene("MainMenuGUI");
                 }
                 else if(status == 1) {
