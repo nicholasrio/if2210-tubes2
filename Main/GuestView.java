@@ -10,6 +10,7 @@ package Main;
 import Group.Group;
 import Group.GroupJFrameEdit;
 import Video.VideoController;
+import Video.VideoSwingEdit;
 import VideoPlayer.YoutubeDataRetriever;
 import VideoPlayer.YoutubeMediaPlayer;
 import Xml.StaxWriter;
@@ -56,7 +57,7 @@ public class GuestView extends javax.swing.JFrame {
         jLabel1.setText(YDR.getTitle(viddetails.get(0)[2]));
         jLabel5.setText(String.valueOf(YDR.getView(viddetails.get(0)[2])));
         jLabel2.setText(viddetails.get(0)[5]);
-        jButton5.setVisible(false);
+        bUbahVid.setVisible(false);
         bUbah.setVisible(false);
     }
 
@@ -84,13 +85,13 @@ public class GuestView extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
-        jPanel3 = new YoutubeMediaPlayer(viddetails.get(0)[2]);
+        jPanel3 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         b_rating = new javax.swing.JButton();
         bUbah = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        bUbahVid = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -192,9 +193,11 @@ public class GuestView extends javax.swing.JFrame {
             }
         });
 
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setPreferredSize(new java.awt.Dimension(800, 600));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 811, Short.MAX_VALUE)
@@ -236,7 +239,12 @@ public class GuestView extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("View");
 
-        jButton5.setText("Ubah Data Video");
+        bUbahVid.setText("Ubah Data Video");
+        bUbahVid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bUbahVidActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,7 +287,7 @@ public class GuestView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton5)
+                        .addComponent(bUbahVid)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bUbah)
                         .addGap(18, 18, 18)
@@ -297,7 +305,7 @@ public class GuestView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton3)
                             .addComponent(bUbah)
-                            .addComponent(jButton5))
+                            .addComponent(bUbahVid))
                         .addGap(15, 15, 15)
                         .addComponent(jLabel1)
                         .addGap(38, 38, 38)
@@ -361,7 +369,7 @@ public class GuestView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public JButton RetUbahVideo(){
-        return jButton5;
+        return bUbahVid;
     }
     
     public JButton RetUbahGrup(){
@@ -511,6 +519,22 @@ public class GuestView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void bUbahVidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUbahVidActionPerformed
+        try {
+//            if(cek() && g.cekDataGroup(Integer.parseInt(viddetails.get(videodata)[4]), viddetails.get(videodata)[5])){
+                VideoSwingEdit vse = new VideoSwingEdit(Integer.parseInt(viddetails.get(videodata)[0]));
+//                JOptionPane.showMessageDialog(null, "Data ditemukan...");
+                vse.setVisible(true);
+                this.setVisible(false);
+//            }
+//            else{
+//                JOptionPane.showMessageDialog(rootPane, "Data tidak ditemukan", "Error", JOptionPane.ERROR_MESSAGE);
+//            }
+        } catch (Exception ex) {
+            Logger.getLogger(GroupJFrameEdit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_bUbahVidActionPerformed
+
     public boolean cek(){
         return !jLabel1.getText().equals("") && !jLabel2.getText().equals("");
     }
@@ -518,12 +542,12 @@ public class GuestView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bUbah;
+    private javax.swing.JButton bUbahVid;
     private javax.swing.JButton b_rating;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -532,7 +556,7 @@ public class GuestView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private YoutubeMediaPlayer jPanel3;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
