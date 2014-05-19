@@ -1,7 +1,6 @@
 package VideoPlayer;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -9,11 +8,14 @@ import java.util.regex.Pattern;
 
 import com.google.gdata.client.youtube.YouTubeQuery;
 import com.google.gdata.client.youtube.YouTubeService;
-import com.google.gdata.data.ILink;
 import com.google.gdata.data.youtube.VideoEntry;
 import com.google.gdata.data.youtube.VideoFeed;
 import com.google.gdata.util.ServiceException;
 
+/**
+ * Kelas tempat kumpulan method untuk retrieve data-data dari youtube
+ * @author Tegar Aji Pangestu
+ */
 public class YoutubeDataRetriever {
 	/**
 	 * @param 
@@ -21,9 +23,7 @@ public class YoutubeDataRetriever {
 	private final String clientID = "370897670752.apps.googleusercontent.com";
 	private YouTubeService service;
 	/**
-	 * Konstruktor untuk Youtube Data Retriever
-	 * @param _URL
-	 * @return 
+	 * Konstruktor untuk Youtube Data Retriever 
 	 */
 	public YoutubeDataRetriever()
 	{
@@ -34,7 +34,7 @@ public class YoutubeDataRetriever {
 	}
 	/**
 	 * Method ini akan mengembalikan Id Youtube dari String URL yang diberikan
-	 * @param _URL
+     * @param URL
 	 * @return String
 	 */
 	public String GetAbsoluteId(String URL)
@@ -66,9 +66,10 @@ public class YoutubeDataRetriever {
 	}
 	/**
 	 * Method ini akan mengembalikan jumlah view pada URL yang diberikan
-	 * @param _URL
+     * @param URL
 	 * @return int
-	 * @throws IOException, ServiceException
+     * @throws java.io.IOException
+     * @throws com.google.gdata.util.ServiceException
 	 */
 	public long getView(String URL) throws IOException, ServiceException
 	{
@@ -80,9 +81,10 @@ public class YoutubeDataRetriever {
 	}
 	/**
 	 * Method ini akan mengembalikan title dari URL video yang diberikan
-	 * @param _URL
+     * @param URL
 	 * @return String
-	 * @throws IOException, ServiceException
+     * @throws java.io.IOException
+     * @throws com.google.gdata.util.ServiceException
 	 */
 	public String getTitle(String URL) throws IOException, ServiceException
 	{

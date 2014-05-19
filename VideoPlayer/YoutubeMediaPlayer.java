@@ -6,7 +6,6 @@
 package VideoPlayer;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -24,9 +23,8 @@ public class YoutubeMediaPlayer extends JPanel
 	 */
 	JWebBrowser webBrowser;
 	/**
-	 * Konstruktor untuk Youtube Media Player, akan mengenerate native browser pada sebuah kelas yang diturunkan dari JPanel
-	 * @param _URL
-	 * @return 
+	 * Konstruktor untuk Youtube Media Player, akan mengenerate native browser pada sebuah kelas yang diturunkan dari JPanel 
+     * @param URL
 	 */
 	public YoutubeMediaPlayer (String URL)
 	{
@@ -41,8 +39,7 @@ public class YoutubeMediaPlayer extends JPanel
 	}
 	/**
 	 * Mengeset URL untuk mengganti URL video yang ada di JWebBrowser
-	 * @param _URL
-	 * @return void
+     * @param URL
 	 */
 	public void setURL (String URL)
 	{
