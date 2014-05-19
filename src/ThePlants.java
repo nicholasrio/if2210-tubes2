@@ -1,6 +1,6 @@
 /*
- * @author Zaky		
- */
+* @author Zaky		
+*/
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,7 +9,7 @@ import javax.swing.SwingUtilities;
 public class ThePlants {
 
 	/** Application title */
-	private static final String TITLE = "The Plan(t)s";
+	public static final String TITLE = "The Plan(t)s";
 
 	/** Put the constants for the application size */
 	public static final int PANEL_HEIGHT = 600;
@@ -54,7 +54,8 @@ public class ThePlants {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				ThePlants.changePanel(new MainMenu());
+				// TODO replace with new MainMenu()
+				ThePlants.changePanel(new Game());
 			}
 		});
 	}

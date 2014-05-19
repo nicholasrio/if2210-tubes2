@@ -3,9 +3,14 @@
  */
 
 public class SaleableObject {
-	protected String name; /** The name of the object */
-	protected int price; /** The price of the object */
-	protected int capacity; /** The capacity of the objects */
+	/** The name of the object */
+	protected String name;
+
+	/** The price of the object */
+	protected int price;
+
+	/** The capacity of the objects */
+	protected int capacity;
 
 	/** Return the object's name */
 	public String getName() {

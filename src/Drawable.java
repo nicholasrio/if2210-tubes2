@@ -1,8 +1,9 @@
-/*
+/**
  * @author Zaky		
  */
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public interface Drawable {
 	/** Draw object to g */
@@ -10,4 +11,7 @@ public interface Drawable {
 
 	/** Update object after timeElapsed seconds */
 	public void update(double timeElapsed);
+	
+	/** Get bounds of object */
+	public Rectangle getBounds();
 }
