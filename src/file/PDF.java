@@ -1,5 +1,8 @@
 package file;
 
+import java.awt.print.PrinterJob;
+import javax.print.PrintService;
+
 /**
  *
  * @author Mamat Rahmat / 135120007
@@ -18,8 +21,8 @@ public class PDF extends MyFile {
 
     }
 
-    public void print() {
-        System.out.println("PDF");
+    public void print(PrintService printer) {
+        
     }
 
 }
