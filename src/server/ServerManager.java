@@ -13,20 +13,21 @@ public class ServerManager {
 	private boolean[] available = {true, true, true, true, true, true, true, true, true, true};
 	private ServerThread[] threads;
 	private List<String> loggedInUsers;
-	
-        public Job myJob;
 
-	private ServerManager(){ 
+	public Job myJob;
+
+	private ServerManager() {
 		threads = new ServerThread[MAX_THREADS];
 		loggedInUsers = new ArrayList<String>();
 	}
-	
-	public static ServerManager getSingleton(){
-		if(instance == null)
+
+	public static ServerManager getSingleton() {
+		if (instance == null) {
 			instance = new ServerManager();
+		}
 		return instance;
 	}
-	
+
 	public ServerThread get(Socket socket) {
 		int i = 0;
 		while (!available[i]) {
@@ -53,27 +54,27 @@ public class ServerManager {
 	public void release(int id) {
 		availableThreads++;
 		available[id] = true;
-                try{
-                    threads[id].join();
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
+		try {
+			threads[id].join();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		threads[id] = null;
 	}
-	
-	public void addLoggedUser(String username){
+
+	public void addLoggedUser(String username) {
 		loggedInUsers.add(username);
 		System.out.println("User: " + username + " has logged in");
 	}
-	
-	public void removeLoggedUser(String username){
+
+	public void removeLoggedUser(String username) {
 		loggedInUsers.remove(username);
 		System.out.println("User: " + username + " has logged out");
 	}
-	
-	public boolean isLoggedIn(String username){
+
+	public boolean isLoggedIn(String username) {
 		return loggedInUsers.contains(username);
-		
+
 	}
 
 }

@@ -23,47 +23,46 @@ import static printer.PrinterController.printPDF;
  */
 public class DOC extends MyFile {
 
-    public boolean isPDF() {
-        return false;
-    }
+	public boolean isPDF() {
+		return false;
+	}
 
-    public void setEkstensi(String _ekstensi) {
-        ekstensi   =    _ekstensi;
+	public void setEkstensi(String _ekstensi) {
+		ekstensi = _ekstensi;
 
-    }
+	}
 
-    public void toPDF() {
-        try {
-            // 1) Load DOCX into XWPFDocument
-            InputStream is = new FileInputStream(new File("serverFolder/"+uploader+"/"+path));
-            XWPFDocument document = new XWPFDocument(is);
+	public void toPDF() {
+		try {
+			// 1) Load DOCX into XWPFDocument
+			InputStream is = new FileInputStream(new File("serverFolder/" + uploader + "/" + path));
+			XWPFDocument document = new XWPFDocument(is);
 
-            // 2) Prepare Pdf options
-            PdfOptions options = PdfOptions.create();
+			// 2) Prepare Pdf options
+			PdfOptions options = PdfOptions.create();
 
-            // 3) Convert XWPFDocument to Pdf
-            OutputStream out = new FileOutputStream(new File("serverFolder/"+uploader+"/"+path + ".pdf"));
-            PdfConverter.getInstance().convert(document, out, options);
+			// 3) Convert XWPFDocument to Pdf
+			OutputStream out = new FileOutputStream(new File("serverFolder/" + uploader + "/" + path + ".pdf"));
+			PdfConverter.getInstance().convert(document, out, options);
 
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-    }
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
 
-    public void print() throws IOException, PrinterException {
-        toPDF();
-        Scanner in = new Scanner(System.in);
-        PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
-        System.out.println("Number of print services: " + printServices.length);
-        int i = 0;
-        PrinterJob printJob = PrinterJob.getPrinterJob();
-        for (PrintService printer : printServices)
-        {
-            System.out.println(i+". Printer: " + printer.getName());
-            i++;
-        }
-        System.out.print("Choose printer : ");
-        int id = in.nextInt();
-        printPDF("serverFolder/"+uploader+"/"+path + ".pdf",printServices[id]);
-    }
+	public void print() throws IOException, PrinterException {
+		toPDF();
+		Scanner in = new Scanner(System.in);
+		PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
+		System.out.println("Number of print services: " + printServices.length);
+		int i = 0;
+		PrinterJob printJob = PrinterJob.getPrinterJob();
+		for (PrintService printer : printServices) {
+			System.out.println(i + ". Printer: " + printer.getName());
+			i++;
+		}
+		System.out.print("Choose printer : ");
+		int id = in.nextInt();
+		printPDF("serverFolder/" + uploader + "/" + path + ".pdf", printServices[id]);
+	}
 }
