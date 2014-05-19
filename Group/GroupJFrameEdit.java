@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Group;
 
 import Main.GuestView;
@@ -18,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author KURING
+ * @author Hendro Triokta Brianto - 13512081
  */
 public class GroupJFrameEdit extends javax.swing.JFrame {
 
@@ -76,12 +72,7 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         jLabel1.setText("No Tubes");
 
         no_tubes.setToolTipText("");
-        no_tubes.setName("no_tubes");
-        no_tubes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                no_tubesActionPerformed(evt);
-            }
-        });
+        no_tubes.setName("no_tubes"); // NOI18N
 
         jLabel2.setText("Nama Kelompok");
 
@@ -182,6 +173,11 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * untuk menyimpan data yang baru diubah
+     * @param evt 
+     */
     private void b_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_updateActionPerformed
         if(!cek()){
             JOptionPane.showMessageDialog(rootPane, "Nomor Tubes dan Nama Kelompok harus diisi..!", "KatalogV Error", JOptionPane.ERROR_MESSAGE);
@@ -213,10 +209,11 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_b_updateActionPerformed
 
-    private void no_tubesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_no_tubesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_no_tubesActionPerformed
-
+    /**
+     * 
+     * inisialisasi ketika form baru diaktifkan
+     * @param evt 
+     */
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
@@ -229,10 +226,19 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         this.setLocation((WIDTH/2) - lebar, (HEIGHT/2) - tinggi);
     }//GEN-LAST:event_formWindowActivated
  
+    /**
+     * 
+     * Kembali ke form sebelumnya
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.close();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * 
+     * pindah frame dan menutup frame ini
+     */
     public void close(){
         try {
             new GuestView().setVisible(true);
@@ -242,11 +248,20 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         this.setVisible(false);
     }
     
+    /**
+     * mengeset temp sebagai acuan update
+     * @param no_tubes
+     * @param group_name 
+     */
     public void setTemp(String no_tubes, String group_name){
         temp_tubes.setText(no_tubes);
         temp_kel.setText(group_name);
     }
     
+    /**
+     * 
+     * inisialisasi tambahan
+     */
     public void inisialisasi(){
         try {
             List<String[]> groupEdit= g.GroupDataEdit();
@@ -260,6 +275,10 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * 
+     * mengosongkan JTextFiels
+     */
     public void clean(){
         no_tubes.setText("");
         group_name.setText("");
@@ -270,6 +289,11 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         aList.clear();
     }
     
+    /**
+     * 
+     * mengecek kekosongan JTeksField
+     * @return 
+     */
     public boolean cek(){
         if(no_tubes.getText().equals("") || group_name.getText().equals("")){
             return false;

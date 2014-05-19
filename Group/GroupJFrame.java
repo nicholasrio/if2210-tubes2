@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Group;
 
 import Main.MenuLoginAdmin;
@@ -16,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author KURING
+ * @author Hendro Triokta Brianto - 13512081
  */
 public class GroupJFrame extends javax.swing.JFrame {
     
@@ -54,7 +50,6 @@ public class GroupJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        b_edit = new javax.swing.JButton();
         b_back = new javax.swing.JButton();
         temp_tubes = new javax.swing.JLabel();
         temp_kel = new javax.swing.JLabel();
@@ -89,13 +84,6 @@ public class GroupJFrame extends javax.swing.JFrame {
         jLabel4.setText("Anggota 2");
 
         jLabel5.setText("Anggota 3");
-
-        b_edit.setText("Edit");
-        b_edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_editActionPerformed(evt);
-            }
-        });
 
         b_back.setText("Back");
         b_back.addActionListener(new java.awt.event.ActionListener() {
@@ -139,8 +127,6 @@ public class GroupJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(135, 135, 135)
                 .addComponent(b_save)
-                .addGap(33, 33, 33)
-                .addComponent(b_edit)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -170,15 +156,17 @@ public class GroupJFrame extends javax.swing.JFrame {
                     .addComponent(anggota_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(b_save)
-                    .addComponent(b_edit))
+                .addComponent(b_save)
                 .addGap(40, 40, 40))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * menyimpan data baru
+     * @param evt 
+     */
     private void b_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_saveActionPerformed
 
         
@@ -211,6 +199,10 @@ public class GroupJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_b_saveActionPerformed
 
+    /**
+     * inisisalisasi form ketika baru active
+     * @param evt 
+     */
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
@@ -223,40 +215,15 @@ public class GroupJFrame extends javax.swing.JFrame {
         this.setLocation((WIDTH/2) - lebar, (HEIGHT/2) - tinggi);
     }//GEN-LAST:event_formWindowActivated
 
-    private void b_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_editActionPerformed
-    /*   
-        try {
-            if(cek() && g.cekDataGroup(Integer.parseInt(no_tubes.getText()), group_name.getText())){
-                GroupJFrameEdit gjf = new GroupJFrameEdit(no_tubes.getText(), group_name.getText());
-                b_save.setVisible(false);
-                b_update.setVisible(true);
-                //gjf.setTemp(no_tubes.getText(), group_name.getText());
-                gjf.setVisible(true);
-                this.setVisible(false);
-//
-//                g.select_group_by(Integer.parseInt(no_tubes.getText()), group_name.getText());
-//
-//                anggota_1.setText(g.getMember().get(0));
-//                anggota_2.setText(g.getMember().get(1));
-//                anggota_3.setText(g.getMember().get(2));
-
-                JOptionPane.showMessageDialog(null, "Data ditemukan...");
-            }
-            else{
-                JOptionPane.showMessageDialog(rootPane, "Data tidak ditemukan", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (SQLException ex) {
-            
-            Logger.getLogger(GroupJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
-    }//GEN-LAST:event_b_editActionPerformed
-
     private void b_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_backActionPerformed
         new MenuLoginAdmin().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_b_backActionPerformed
 
+    /**
+     * 
+     * Mengosongkan JTeksField
+     */
     public void clean(){
         no_tubes.setText("");
         group_name.setText("");
@@ -267,6 +234,11 @@ public class GroupJFrame extends javax.swing.JFrame {
         aList.clear();
     }
     
+    /**
+     * 
+     * mengecek kekosongan JTeksField
+     * @return 
+     */
     public boolean cek(){
         if(no_tubes.getText().equals("") || group_name.getText().equals("")){
             return false;
@@ -282,7 +254,6 @@ public class GroupJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField anggota_2;
     private javax.swing.JTextField anggota_3;
     private javax.swing.JButton b_back;
-    private javax.swing.JButton b_edit;
     private javax.swing.JButton b_save;
     private javax.swing.JTextField group_name;
     private javax.swing.JLabel jLabel1;

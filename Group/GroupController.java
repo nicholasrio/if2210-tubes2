@@ -38,25 +38,20 @@ public class GroupController {
         team.update(no_tubes, group_name);
     }
 
-    public void SelectAllGroup(){
-        
-    }
-
     /**
-     * 
-     * 
-     * @param no_tubes
+     * Mengambil  data berdasarkan nama kelompok
      * @param group_name
      * @return 
      */
-    public String GetAGroup(int no_tubes, String group_name){
-        return "abc";
-    }
-
     public List<String> GetXHistory(String group_name){
         return new ArrayList<>();
     }
     
+    /**
+     * 
+     * @return
+     * @throws SQLException 
+     */
     public List<String[]> GroupData() throws SQLException{
         return team.GroupData();
     }
