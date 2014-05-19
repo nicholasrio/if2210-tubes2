@@ -54,7 +54,7 @@ public class ThePlants {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				ThePlants.changePanel(new Game());
+				ThePlants.changePanel(new MainMenu());
 			}
 		});
 	}

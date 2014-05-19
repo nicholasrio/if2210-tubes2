@@ -15,6 +15,9 @@ MouseMotionListener {
 
 	/** Constant */
 	static String TITLE = "The Plan(T)s";
+	static String beliApel = "Price: $x";
+	static String beliStrawberry= "Price: $y";
+	
 
 	/** For debugging */
 	private static int ID = 0;
@@ -129,7 +132,7 @@ MouseMotionListener {
 		background = (new ImageIcon("images/background_game.png")).getImage();
 
 		/** Add components */
-		/** Reset button to reset the game back to the start*/
+		/** Reset button to reset the game back to the start */
 		JButton resetButton = new JButton("Reset");
 		resetButton.setBounds(650, 250, 120, 30);
 		resetButton.addActionListener(new ActionListener() {
@@ -209,6 +212,44 @@ MouseMotionListener {
 		});
 		go.setToolTipText("Menyiram tanaman");
 		this.add(waterButton);
+		
+		/** A button to buy apple seed */
+		final JButton buyApple = new JButton("Buy apple seed");
+		buyApple.setBounds(120, 0, 120, 30);
+		buyApple.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent event) {
+
+			}
+		});
+		buyApple.setToolTipText("A button to buy apple seed");
+		this.add(buyApple);
+		
+		/** A button to buy strawberry seed */
+		final JButton buyStrawberry = new JButton("Buy strawberry seed");
+		buyStrawberry.setBounds(240, 0, 120, 30);
+		buyStrawberry.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+
+			}
+		});
+		buyStrawberry.setToolTipText("Buy strawberry seed");
+		this.add(buyStrawberry);
+		
+		/** A button to take you back to the main menu */
+		final JButton back = new JButton("Back");
+		back.setBounds(680, 0, 120, 30);
+		back.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				gameThread.interrupt();
+				ThePlants.changePanel(new MainMenu());			}
+		});
+		back.setToolTipText("A button to take you back to the main menu");
+		this.add(back);
+
 	}
 
 	/** Close the game */
@@ -290,6 +331,8 @@ MouseMotionListener {
 		g.setFont(new Font("Dialog", Font.PLAIN, 14));
 		g.setColor(Color.WHITE);
 		g.drawString(TITLE, 200, 300);
+		g.drawString(beliApel, 150, 50);
+		g.drawString(beliStrawberry, 250, 50);
 		if (state == GameState.GAMEOVER) {
 			g.setFont(new Font("Verdana", Font.BOLD, 30));
 			g.setColor(Color.RED);
