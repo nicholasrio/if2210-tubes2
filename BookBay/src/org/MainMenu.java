@@ -451,7 +451,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void AddCollectionActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {                                              
         DBConnection con = new DBConnection();
         String userID = LoginController.currUser.getID();
-        String Query = "INSERT INTO collection VALUES(?, (SELECT id FROM user WHERE username='"+userID+"'))";
+        String Query = "INSERT INTO collection (book_id, user_id) VALUES(?, (SELECT id FROM user WHERE username='"+userID+"'))";
         for (int j = 0; j < jTable2.getModel().getRowCount();j++){
             if("true".equals(jTable2.getModel().getValueAt(j, 3).toString())){
                // con.executeQuery("INSERT INTO collection VALUES ()")
