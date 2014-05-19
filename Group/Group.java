@@ -63,8 +63,8 @@ public class Group {
         s.insert_group(no_tubes, group_name, member.get(0), member.get(1), member.get(2));
     }
     
-    public void update(int no_tubes, String group_name){
-        
+    public void update(int _no_tubes, String _group_name) throws SQLException{
+        s.update_group(no_tubes, group_name, member.get(0), member.get(1), member.get(2), _no_tubes, _group_name);
     }
     
     public void delete(int no_tubes, String group_name){
@@ -77,6 +77,11 @@ public class Group {
     
     public List<String[]> GroupData() throws SQLException{
         return new SqlStatement().select_group();
+    }
+    
+    
+    public List<String[]> GroupDataEdit() throws SQLException{
+        return new SqlStatement().select_group_by_group(no_tubes, group_name);
     }
     
     public boolean cekDataGroup(int no_tubes, String group_name) throws SQLException{

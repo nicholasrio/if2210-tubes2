@@ -4,6 +4,7 @@
  */
 package Group;
 
+import Main.GuestView;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -28,11 +29,15 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         initComponents();
         this.g = new Group();
         aList = new ArrayList<>();
+        //viddetails = new ArrayList<>();
+        g.setNo_tubes(Integer.parseInt(no_tubes));
+        g.setGroup_name(group_name);
         temp_kel.setVisible(false);
         temp_tubes.setVisible(false);
         setTemp(no_tubes, group_name);
         inisialisasi();
     }
+    
     
 
     /**
@@ -57,6 +62,7 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         temp_tubes = new javax.swing.JLabel();
         temp_kel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -94,6 +100,13 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
 
         temp_kel.setText("temp_kel");
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,9 +130,12 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
                             .addComponent(no_tubes, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(temp_tubes)
-                            .addComponent(temp_kel))))
-                .addGap(90, 90, 90))
+                            .addComponent(temp_kel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(temp_tubes)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1)))))
+                .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addGap(161, 161, 161)
                 .addComponent(b_update)
@@ -128,10 +144,12 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(temp_tubes)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(temp_tubes)
+                            .addComponent(jButton1))
                         .addGap(18, 18, 18)
                         .addComponent(temp_kel))
                     .addGroup(layout.createSequentialGroup()
@@ -156,14 +174,41 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addComponent(b_update)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void b_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_updateActionPerformed
-        g.update(Integer.parseInt(temp_tubes.getText()), temp_kel.getText());
+        if(!cek()){
+            JOptionPane.showMessageDialog(rootPane, "Nomor Tubes dan Nama Kelompok harus diisi..!", "KatalogV Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Apa anda yakin untuk menyimpan data ini?","Warning",dialogButton);
+
+            if(dialogResult == JOptionPane.YES_OPTION){
+                try {
+                    g.setNo_tubes(Integer.parseInt(no_tubes.getText()));
+                    g.setGroup_name(group_name.getText());
+                    aList.add(anggota_1.getText());
+                    aList.add(anggota_2.getText());
+                    aList.add(anggota_3.getText());
+
+                    g.setMember(aList);
+
+                    g.update(Integer.parseInt(temp_tubes.getText()), temp_kel.getText());
+
+                    JOptionPane.showMessageDialog(null, "Data berhasil disimpan...");
+                    clean();
+                    this.close();
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Ada Kesalahan...");
+                    Logger.getLogger(GroupJFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
     }//GEN-LAST:event_b_updateActionPerformed
 
     private void no_tubesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_no_tubesActionPerformed
@@ -181,24 +226,36 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
         // This is assuming you are extending the JFrame //class
         this.setLocation((WIDTH/2) - lebar, (HEIGHT/2) - tinggi);
     }//GEN-LAST:event_formWindowActivated
+ 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.close();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void close(){
+        try {
+            new GuestView().setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(GroupJFrameEdit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void setTemp(String no_tubes, String group_name){
         temp_tubes.setText(no_tubes);
         temp_kel.setText(group_name);
     }
     
     public void inisialisasi(){
-//        try {
-            //g.select_group_by(Integer.parseInt(temp_tubes.getText()), temp_kel.getText());
-            no_tubes.setText(temp_tubes.getText());
-            group_name.setText(temp_kel.getText());
-//            anggota_1.setText(g.getMember().get(0));
-//            anggota_2.setText(g.getMember().get(1));
-//            anggota_3.setText(g.getMember().get(2));
-//        } catch (SQLException ex) {
-//            
-//            Logger.getLogger(GroupJFrame.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            List<String[]> groupEdit= g.GroupDataEdit();
+            no_tubes.setText(groupEdit.get(0)[0]);
+            group_name.setText(groupEdit.get(0)[1]);
+            anggota_1.setText(groupEdit.get(0)[2]);
+            anggota_2.setText(groupEdit.get(0)[3]);
+            anggota_3.setText(groupEdit.get(0)[4]);
+        } catch (SQLException ex) {
+            Logger.getLogger(GroupJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void clean(){
@@ -226,6 +283,7 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
     private javax.swing.JTextField anggota_3;
     private javax.swing.JButton b_update;
     private javax.swing.JTextField group_name;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
