@@ -318,7 +318,10 @@ public class UserDragon extends Dragon {
         th.interrupt();
     }
 	
-	
+	/**
+	 * Menampilkan gambar dragon berdasarkan status 
+	 * @return 
+	 */
 	public javax.swing.ImageIcon getImage() {
 		String emotion = "neutral";
 		if (health/maxHealth < stamina/maxStamina && health/maxHealth < (100-hunger)/100 && health/maxHealth < (100-thirst)/100 && health/maxHealth < (100-bladder)/100) {
@@ -415,13 +418,13 @@ public class UserDragon extends Dragon {
 	 * @return Dragon Enemy hasil generate
 	 */
 	public Dragon generateEnemy() {
-        float ranHealth = util.gaussBasedOn(health);
-        float ranStamina = util.gaussBasedOn(stamina);
+        float ranHealth = util.gaussBasedOn(3*maxHealth/4);
+        float ranStamina = util.gaussBasedOn(3*maxStamina/4);
 		int ranExperience = (int) util.gaussBasedOn(experience);
 		int ranLevel = (int) util.gaussBasedOn(level);
-		float ranThirst = util.gaussBasedOn(thirst);
-		float ranBladder = util.gaussBasedOn(bladder);
-		float ranHunger = util.gaussBasedOn(hunger);
+		float ranThirst = util.gaussBasedOn(100/4);
+		float ranBladder = util.gaussBasedOn(100/4);
+		float ranHunger = util.gaussBasedOn(100/4);
         
 		Dragon withWho = new Dragon(getRandomName(), ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranExperience);
 		

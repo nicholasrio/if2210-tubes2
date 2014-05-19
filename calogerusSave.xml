@@ -104,4 +104,22 @@
       </inventory>
     </userDragon>
   </save>
+  <save>
+    <userDragon>
+      <name>tes</name>
+      <password>tes</password>
+      <money>109.0</money>
+      <happiness>99.0</happiness>
+      <health>100.0</health>
+      <maxHealth>100.0</maxHealth>
+      <stamina>100.0</stamina>
+      <maxStamina>100.0</maxStamina>
+      <thirst>3.0</thirst>
+      <bladder>16.0</bladder>
+      <hunger>1.0</hunger>
+      <level>1</level>
+      <experience>0</experience>
+      <inventory />
+    </userDragon>
+  </save>
 </calogerusSave>

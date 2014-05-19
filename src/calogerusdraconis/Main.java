@@ -262,6 +262,7 @@ public class Main {
 						e = draco.fight(enemy);
 						view.UpdateScreen(draco, e);
 					}
+					view.enableButts();
 					break;
 				case 6:
 					XmlController.SaveDragon(draco);

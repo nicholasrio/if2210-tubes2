@@ -600,7 +600,7 @@ public class GUIView extends javax.swing.JFrame implements View {
 		ButtTrain.setEnabled(false);
 	}
 	
-	private void enableButts() {
+	public void enableButts() {
 		ButtEntertain.setEnabled(true);
 		ButtFight.setEnabled(true);
 		ButtSave.setEnabled(true);
