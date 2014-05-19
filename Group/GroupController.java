@@ -59,5 +59,18 @@ public class GroupController {
             System.out.println("The group is registered already");
         }
     }
+    
+    public void EditGroup(int no_tubes, String group_name, List<String> Member, int former_no_tubes, String former_group_name) throws SQLException{
+        if(team.cekDataGroup(former_no_tubes, former_group_name)){
+            team.setNo_tubes(no_tubes);
+            team.setGroup_name(group_name);
+            team.setMember(Member);
+            team.update(former_no_tubes,former_group_name);
+            System.out.println("Group data has been changed");
+        }
+        else{
+            System.out.println("The group is registered already");
+        }
+    }
 
 }
