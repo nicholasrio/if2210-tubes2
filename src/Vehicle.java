@@ -8,8 +8,6 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
-import org.junit.experimental.max.MaxCore;
-
 /** This class is the class used to control the vehicle that will sell the saleable objects to the market */
 public class Vehicle implements Drawable {
 	/** The vehicle's speed */
@@ -37,7 +35,7 @@ public class Vehicle implements Drawable {
 	private Storage vehStorage;
 
 	/** The image container */
-	private static Image imgVeh;
+	private Image imgVeh;
 	
 	/** Money from selling objects */
 	private int money;
@@ -45,7 +43,7 @@ public class Vehicle implements Drawable {
 	/** CTOR */
 	public Vehicle() {
 		ImageIcon i = new ImageIcon("images/veh1.png");
-		Vehicle.imgVeh = i.getImage();
+		this.imgVeh = i.getImage();
 		this.setImage(1);
 		this.speed = 5;
 		this.id = 1;
@@ -105,7 +103,7 @@ public class Vehicle implements Drawable {
 
 	/** Return the vehicle's image */
 	public Image getImage() {
-		return Vehicle.imgVeh;
+		return this.imgVeh;
 	}
 
 	/** Set the image */
@@ -113,13 +111,13 @@ public class Vehicle implements Drawable {
 		ImageIcon i;
 		if (ID == 1) {
 			i = new ImageIcon("images/vehicle_level1.png");
-			Vehicle.imgVeh = i.getImage();
+			this.imgVeh = i.getImage();
 		} else if (ID == 2) {
 			i = new ImageIcon("images/vehicle_level2.png");
-			Vehicle.imgVeh = i.getImage();
+			this.imgVeh = i.getImage();
 		} else if (ID == 3) {
 			i = new ImageIcon("images/vehicle_level3.png");
-			Vehicle.imgVeh = i.getImage();
+			this.imgVeh = i.getImage();
 		}
 	}
 
@@ -166,9 +164,9 @@ public class Vehicle implements Drawable {
 	@Override
 	public void draw(Graphics g) {
 		if (arah == 0) {
-			g.drawImage(Vehicle.imgVeh, getBounds().x + getBounds().width, getBounds().y, -getBounds().width, getBounds().height, null);
+			g.drawImage(this.imgVeh, getBounds().x + getBounds().width, getBounds().y, -getBounds().width, getBounds().height, null);
 		} else {
-			g.drawImage(Vehicle.imgVeh, getBounds().x, getBounds().y, getBounds().width, getBounds().height, null);
+			g.drawImage(this.imgVeh, getBounds().x, getBounds().y, getBounds().width, getBounds().height, null);
 		}
 		// draw capacity
 		g.setColor(Color.GREEN);

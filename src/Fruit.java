@@ -12,21 +12,8 @@ public class Fruit extends SaleableObject implements Drawable {
 	private int id;
 	private Image imgFruit;
 	private Image imgRotten;
-	private int sellprice;
 	private int rottenTime;
 	private int harvestPeriod;
-
-	Fruit() {
-		// if (this.id == 1) {
-		// this.sellprice = 75;
-		// } else if (this.id == 2) {
-		// this.sellprice = 300;
-		// } else if (this.id == 3) {
-		// this.sellprice = 750;
-		// } else {
-		// this.sellprice = 1500;
-		// }
-	}
 
 	Fruit(String name) {
 		this.name = name;

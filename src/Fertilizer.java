@@ -15,7 +15,7 @@ public class Fertilizer
 	}
 
 	/** Method to fertilize plant */
-	public void Ferilize(int x, int y) {
+	public void Fertilize(int x, int y) {
 
 	}
 	

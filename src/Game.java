@@ -8,10 +8,12 @@ import java.util.*;
 
 import javax.swing.*;
 
-@SuppressWarnings("serial")
 /** This class is used to create buttons and acts as the game initializer */
 public class Game extends JPanel implements MouseListener, MouseMotionListener {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6944003655930383738L;
 	/** Constant */
 	static String TITLE = "The Plan(T)s";
 	static String beliApel = "Price: $x";
@@ -27,7 +29,6 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
 	private Fertilizer fertilizer;
 	private int money;
 	private int goalMoney;
-	private Player player;
 	private Vehicle vehicle;
 	private Pest pest;
 	private double pestCoolDown;
@@ -42,7 +43,6 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
 	private Image waterImage;
 	private JButton resetButton;
 	private JButton upgrade;
-	private JButton downgrade;
 	private JButton go;
 	private JButton waterButton;
 	private JButton fertilizerButton;
@@ -126,16 +126,6 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
 	/** Set the money */
 	public void setMoney(int money) {
 		this.money = money;
-	}
-
-	/** Return the player */
-	public Player getPlayer() {
-		return player;
-	}
-
-	/** Set the player */
-	public void setPlayer(Player player) {
-		this.player = player;
 	}
 
 	/* All game-related codes */
@@ -746,8 +736,7 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseDragged(MouseEvent event) {
-		// TODO insert something here or remove this method
-		TITLE = "Dragged";
+		
 	}
 
 	@Override

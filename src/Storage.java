@@ -60,19 +60,4 @@ public class Storage {
 			throw new StorageOverflowException(this);
 		}
 	}
-	
-//	/** Add plant to storage */
-//	public void addPlant(Plant P) {
-//		this.arrStorage.add(P);
-//	}
-//
-//	/** Add pest to storage */
-//	public void addPest(Pest P) {
-//		this.arrStorage.add(P);
-//	}
-//
-//	/** Add fruit to storage */
-//	public void addFruit(Fruit F) {
-//		this.arrStorage.add(F);
-//	}
 }

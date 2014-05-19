@@ -4,9 +4,6 @@
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.util.*;
 
 /** This class is used to control the grid (matrix) used as the place to plant the plants */

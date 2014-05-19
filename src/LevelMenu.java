@@ -4,34 +4,27 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-
-public class LevelMenu extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
+public class LevelMenu extends JPanel {
+	/**
+	 * Auto-generated serial version ID
+	 */
+	private static final long serialVersionUID = 7823230732972515452L;
 	/** Game Components */
 	private Image background;
 	private Thread gameThreadMM = null;
 	
 	/** CTOR */
 	public LevelMenu() {
-		// 		/** Initialize game comonents*/
+		// 		/** Initialize game components*/
 		gameInit();
 
 		this.setLayout(null);
 		this.setPreferredSize(new Dimension(ThePlants.PANEL_WIDTH,ThePlants.PANEL_HEIGHT));
-
-		/** Add action listener */
-		this.addKeyListener(this);
-		this.addMouseListener(this);
-		this.addMouseMotionListener(this);
 
 		/** Start the game*/
 		gameStart();
@@ -123,66 +116,6 @@ public class LevelMenu extends JPanel implements KeyListener, MouseListener, Mou
 		g.drawImage(background, 0, 0, ThePlants.PANEL_WIDTH, ThePlants.PANEL_HEIGHT, null);
 		g.setColor(new Color(255, 255, 255, 127));
 		g.fillRect(0, 0, ThePlants.PANEL_WIDTH, ThePlants.PANEL_HEIGHT);
-	}
-	
-	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

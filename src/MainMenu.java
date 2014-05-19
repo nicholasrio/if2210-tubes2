@@ -15,6 +15,10 @@ import javax.swing.JPanel;
 
 /** This class displays the main menu of the game */
 public class MainMenu extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
+	/**
+	 * Auto-generated serial version ID
+	 */
+	private static final long serialVersionUID = 1337426143693191132L;
 	/** Game Components */
 	private Image background;
 	private Thread gameThreadMM = null;
