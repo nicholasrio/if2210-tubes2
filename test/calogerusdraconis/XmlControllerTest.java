@@ -71,7 +71,6 @@ public class XmlControllerTest {
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}
-		// TODO review the generated test code and remove the default call to fail.
 		//assertEquals("Dragon Name : Xanareth\n", outContent.toString());
 	}
 
@@ -93,6 +92,5 @@ public class XmlControllerTest {
 			System.err.println(ex.getMessage());
 		}
 		
-		// TODO review the generated test code and remove the default call to fail.
 	}
 }

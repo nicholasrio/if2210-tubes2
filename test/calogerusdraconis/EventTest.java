@@ -49,8 +49,7 @@ public class EventTest {
 		String expResult = "lagi testing";
 		String result = instance.getMessage();
 		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
-	}
+			}
 
 	/**
 	 * Test of setMessage method, of class Event.
@@ -62,8 +61,7 @@ public class EventTest {
 		Event instance = new Event("test","lagi testing");
 		instance.setMessage(val);
 		assertEquals(val, instance.getMessage());
-		// TODO review the generated test code and remove the default call to fail.
-	}
+			}
 
 	/**
 	 * Test of getType method, of class Event.
@@ -75,7 +73,6 @@ public class EventTest {
 		String expResult = "test";
 		String result = instance.getType();
 		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -88,7 +85,6 @@ public class EventTest {
 		Event instance = new Event("test","lagi testing");
 		instance.setType(val);
 		assertEquals(val, instance.getType());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 	
 }
