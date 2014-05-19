@@ -4,26 +4,25 @@
  * and open the template in the editor.
  */
 
-package cmd.admin;
+package cmd.superadmin;
 
-import java.sql.SQLException;
+import Admin.Administrator;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author CakBin
  */
-public class GroupPage {
-    static int id;
+public class AdminData {
+    static String NIM;
     static boolean valid;
     static int option;
     static Scanner input=new Scanner(System.in);
+    static Administrator Admin=DataController.AC.getAdmin();
     
     static void SelectOption(int i) throws OptionException{
         System.out.println("Insert option: ");
-        option= input.nextInt();
+        option= Integer.valueOf(input.next());
         if (option > i || option <0){
             throw new OptionException("Invalid Option");
         }
@@ -32,20 +31,12 @@ public class GroupPage {
         }
     }
     
-    
     static void print(){
-        try {
-            System.out.println("Group Name: "+DataController.GC.GroupData().get(id)[1]);
-            System.out.println("Project Number: "+DataController.GC.GroupData().get(id)[0]);
-            System.out.println("Member 1: "+DataController.GC.GroupData().get(id)[2]);
-            System.out.println("Member 2: "+DataController.GC.GroupData().get(id)[3]);
-            System.out.println("Member 3: "+DataController.GC.GroupData().get(id)[4]);
-        } catch (SQLException ex) {
-            Logger.getLogger(GroupPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        System.out.println("NIM: "+Admin.GetNIM());
+        System.out.println("Name: "+Admin.GetName());
         System.out.println("");
-        System.out.println("1. Edit");
+        System.out.println("Menu:");
+        System.out.println("1. Delete");
         System.out.println("0. Back");
     }
     static void input(){
@@ -60,15 +51,11 @@ public class GroupPage {
         }
     }
     static void execute(){
-        if(option==1){
-            GroupEditForm.action();
-        }
-        else{
-            Groups.action(1,10);
-        }
+        if(option==1){AdminDeleteForm.action();}
+        else{Admins.action(1,10);}
     }
-    static void action(int _id){
-        id=_id;
+    static void action(String _NIM){
+        NIM=_NIM;
         print();
         input();
         execute();
