@@ -97,7 +97,7 @@ public class Game
             SoundManager.addSound(new Sound("lv2bm","Level2.au",Sound.SoundType.bgm));
             SoundManager.Initialize();
             try{
-                SceneManager.SwitchScene("GameMenuGUI");
+                SceneManager.SwitchScene("MainMenuGUI");
             }catch(SceneNotFoundException e){
                 e.printStackTrace();
             }

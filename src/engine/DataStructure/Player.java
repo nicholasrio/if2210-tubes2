@@ -258,6 +258,11 @@ public class Player
             }
             else if(itemHere.getName().equalsIgnoreCase("teleporter")) // teleporter
             {
+                if (Game.mode == 2)
+                {
+                    GameMenuGUI.hitTeleport = true;
+                    GameMenuGUI.waitingTime = 75;
+                }
                 TeleporterItem tele = (TeleporterItem) itemHere;
                 Location teleLocation = tele.getArrivalLocation();
                 position.setLocation(teleLocation.getLevel(), teleLocation.getRow(), teleLocation.getCol());
