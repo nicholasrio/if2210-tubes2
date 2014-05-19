@@ -1,11 +1,12 @@
 /*
- * @author Zaky		
- */
+* @author Zaky		
+*/
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/** This class acts as the main controller of the game */
 public class ThePlants {
 
 	/** Application title */

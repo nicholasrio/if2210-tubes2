@@ -9,11 +9,14 @@ import java.util.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
+/** This class is used to create buttons and acts as the game initializer */
 public class Game extends JPanel implements MouseListener, MouseMotionListener {
 
 	/** Constant */
 	static String TITLE = "The Plan(T)s";
-
+	static String beliApel = "Price: $x";
+	static String beliStrawberry= "Price: $y";
+	
 	/** For debugging */
 	private static int ID = 0;
 	int id;
@@ -269,6 +272,7 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
+
 				if (playerState != PlayerState.BUYPLANT || plantID != 1) {
 					plantID = 1;
 					changePlayerState(PlayerState.BUYPLANT);

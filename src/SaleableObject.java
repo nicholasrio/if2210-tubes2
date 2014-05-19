@@ -2,6 +2,7 @@
  * @author Eldwin
  */
 
+/** This class is the superclass for fruits and pest */
 public class SaleableObject {
 	/** The name of the object */
 	protected String name;

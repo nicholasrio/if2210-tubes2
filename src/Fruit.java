@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+/** This class is the class to control the fruits that is produced by the plants, it is a derived class from SaleableObject */
 public class Fruit extends SaleableObject implements Drawable {
 	private int id;
 	private Image imgFruit;

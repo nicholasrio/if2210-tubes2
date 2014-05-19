@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-
+/** This class displays the main menu of the game */
 public class MainMenu extends JPanel implements KeyListener, MouseListener, MouseMotionListener{
 	/** Game Components */
 	private Image background;

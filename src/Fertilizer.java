@@ -2,6 +2,7 @@
  * @author William Stefan
  */
 
+/** This class is the class to control the fertilizer used in the game */
 public class Fertilizer
 {
 	private int level, buyprice, amount, price;

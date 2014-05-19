@@ -4,6 +4,7 @@
 
 import java.util.ArrayList;
 
+/** This class is used to control the information about the player */
 public class Player {
 	/** The player's money */
 	private double Money;

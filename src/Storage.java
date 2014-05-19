@@ -3,6 +3,7 @@
  */
 import java.util.ArrayList;
 
+/** This class is used to control the storage that the vehicle will have to carry all the items that will be sold */
 public class Storage {
 	/** The capacity of the storage */
 	private int capacity;

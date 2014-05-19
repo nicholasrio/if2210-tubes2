@@ -6,6 +6,7 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.ImageIcon;
 
+/** This class is used to control the plants */
 public class Plant implements Drawable {
 	/** The counter of the plant's ID */
 	private static int ID = 0;
