@@ -140,7 +140,6 @@ public class Client {
 
 	public void upload(TransObject obj) {
 		try {
-			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			if (true) {
 				File f = new File(obj.getFileName());
@@ -149,14 +148,29 @@ public class Client {
 				inFile.read(buf);
 				socket.getOutputStream().write(buf);
 			}
-			String response = in.readLine();
-			//send message to server
-			out.println("Someone send a message: " + input);
-
+			
 			//read message from server
+			String response = in.readLine();
 			System.out.println("Message from server: " + response);
+			do{
+				response = in.readLine();
+				System.out.println(response);
+			}while(!response.contains("Choose"));
+			reader = new BufferedReader(new InputStreamReader(System.in));
+			input = reader.readLine();
+			
 		} catch (Exception e) {
 			System.out.println("Terjadi kesalahan dalam pengiriman");
+			e.printStackTrace();
+		}
+	}
+	
+	public void sendResponse(String response){
+		try{
+			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+			out.write(response);
+			out.flush();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
