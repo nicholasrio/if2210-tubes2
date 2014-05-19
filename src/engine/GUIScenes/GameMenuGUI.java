@@ -245,6 +245,13 @@ public class GameMenuGUI extends Scene
                     okTexture = ImageLoader.getImage("ice_ok");
                     okTexture1 = ImageLoader.getImage("ice_ok1");
                     break;
+            case 1: pathTexture = ImageLoader.getImage("fire_floor");
+                    wallTexture = ImageLoader.getImage("fire_wall");
+                    holeTexture = ImageLoader.getImage("fire_hole");
+                    goldTexture = ImageLoader.getImage("fire_coin");
+                    teleporterTexture = ImageLoader.getImage("fire_teleporter");
+                    titleTexture = ImageLoader.getImage("title");
+                    backgroundTexture = ImageLoader.getImage("fire_back");
         }
     }
     
