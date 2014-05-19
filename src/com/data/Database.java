@@ -10,10 +10,14 @@ package com.data;
  * @author Luthfi Hamid M / 135120100
  */
 import com.mysql.jdbc.Connection;
+import java.io.File;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.*;
 
 public class Database {
 
@@ -26,12 +30,19 @@ public class Database {
 	private String where = "";
 
 	public Database() {
-		host = "localhost";
-		user = "root";
-		pass = "";
-		db_name = "printer_online";
-		String connectionURL = "jdbc:mysql://" + host + "/" + db_name;
 		try {
+                        File file = new File("config.xml");
+                        DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();  
+                        Document doc = builder.parse(file);
+                        Element Host = (Element) doc.getElementsByTagName("host").item(0);
+                        Element User = (Element) doc.getElementsByTagName("user").item(0);
+                        Element Pass = (Element) doc.getElementsByTagName("pass").item(0);
+                        Element DbName = (Element) doc.getElementsByTagName("dbname").item(0);
+                        host = Host.getTextContent();
+                        user = User.getTextContent();
+                        pass = Pass.getTextContent();
+                        db_name = DbName.getTextContent();
+                        String connectionURL = "jdbc:mysql://" + host + "/" + db_name;
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			connection = (Connection) DriverManager.getConnection(connectionURL, user, pass);
 			statement = connection.createStatement();
@@ -126,4 +137,8 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+        public static void main(String[] args)
+        {
+            Database data = new Database();
+        }
 }

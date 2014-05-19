@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<onlineprinter>
+    <config>
+        <host>localhost</host>
+        <user>root</user>
+        <pass>underground</pass>
+        <dbname>tubes_oop</dbname>
+    </config>
+</onlineprinter>
