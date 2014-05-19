@@ -44,11 +44,6 @@ public class ServerThread extends Thread {
 					DataInputStream clientData = new DataInputStream(in); //used
 					
 					OutputStream output = new FileOutputStream("serverFolder/" + transObj.getSenderNIM() + "/" + file.getName());
-
-<<<<<<< HEAD
-
-                                //clientData.readLong();  
->>>>>>> eb1de257bb22af57d0ae943abe8db994f0a43b3b
 					byte[] buffer = new byte[BUF_SIZE];
 
 					int smblen;
