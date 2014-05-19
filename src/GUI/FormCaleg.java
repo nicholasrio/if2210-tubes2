@@ -33,12 +33,23 @@ public class FormCaleg extends javax.swing.JFrame {
         initComponents();
         Lingkup = lingkup;
         if(lingkup.equals("DPRDKabupaten")){
-            Lingkup="DPRD Kota/Kabupaten";
+            this.setTitle("DPRD Kota/Kabupaten");
+            Lingkup = lingkup;
         }
         else if(lingkup.equals("DPRDProvinsi")){
-            Lingkup="DPRD Provinsi";
+            Lingkup=lingkup;
+            this.setTitle("DPRD Provinsi");
         }
-        this.setTitle(Lingkup);
+        else if(lingkup.equals("DPR"))
+        {
+            Lingkup = lingkup;
+            this.setTitle(lingkup);
+        }
+        else if(lingkup.equals("DPD"))
+        {
+            Lingkup = lingkup;
+            this.setTitle(lingkup);
+        }
         model = new DefaultTableModel();
         TabelCaleg.setModel(model);
         calonterpilih = new CalonTerpilih();
