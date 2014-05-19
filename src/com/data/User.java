@@ -5,6 +5,7 @@
  */
 package com.data;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import onlineprinter.Encrypt;
 
@@ -12,7 +13,7 @@ import onlineprinter.Encrypt;
  *
  * @author Luthfi Hamid M / 135120100
  */
-public class User {
+public class User implements Serializable{
 
 	private String username;
 	private String password;

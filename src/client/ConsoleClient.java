@@ -59,6 +59,10 @@ public class ConsoleClient extends Client{
 			System.out.println("Enter password: ");
 			password = reader.readLine();
 			super.login(NIM, password);
+			System.out.println("Username: " + userData.getUsername());
+			System.out.println("Name: " + userData.getNama());
+			System.out.println("E-mail: " + userData.getEmail());
+			System.out.println("Saldo: " + userData.getSaldo());
 		}catch(Exception e){
 			e.printStackTrace();
 		}

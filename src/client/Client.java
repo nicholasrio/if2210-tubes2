@@ -1,5 +1,6 @@
 package Client;
 
+import com.data.User;
 import entity.Credential;
 import entity.TransObject;
 import java.io.BufferedInputStream;
@@ -8,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -22,6 +24,7 @@ public class Client {
 	protected String password;
 	protected BufferedReader reader;
 	protected BufferedReader sockReader;
+	protected User userData;
 	protected boolean LoggedIn;
 
 	public Client(String host, int port) {
@@ -48,6 +51,12 @@ public class Client {
 			System.out.println("Message from server: " + tempSR);
 			if (tempSR.contains("Login sukses")) {
 				LoggedIn = true;
+				ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+				Object newObj = ois.readObject();
+				if(newObj instanceof User){
+					userData = (User) newObj;
+				}
+				ois.close();
 			}
 			oos.close();
 		} catch (Exception e) {
@@ -176,6 +185,10 @@ public class Client {
 
 	public String getPassword() {
 		return password;
+	}
+	
+	public User getUserData(){
+		return userData;
 	}
 
 	public BufferedReader getReader() {

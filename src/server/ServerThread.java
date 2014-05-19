@@ -43,7 +43,6 @@ public class ServerThread extends Thread {
 
 					OutputStream output = new FileOutputStream("serverFolder/" + transObj.getSenderNIM() + "/" + file.getName());
 
-								//clientData.readLong();  
 					byte[] buffer = new byte[BUF_SIZE];
 
 					int smblen;
@@ -62,20 +61,24 @@ public class ServerThread extends Thread {
 				if (checkCredential(credential)) {
 					if(credential.getType() == Credential.LOGIN){
 						ServerManager.getSingleton().addLoggedUser(credential.getId());
-						pw.write("Login sukses");
+						pw.write("Login sukses\n");
 						pw.flush();
+						UserDao data = new UserDaoImpl();
+						User user = data.getByUsername(credential.getId());
+						ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+						oos.writeObject(user);
 					}
 					else if(credential.getType() == Credential.LOGOUT){
 						// todo when logout
 						ServerManager.getSingleton().removeLoggedUser(credential.getId());
-						pw.write("Logout sukses");
+						pw.write("Logout sukses\n");
 						pw.flush();
 					}
 					else if(credential.getType() == Credential.PRINT){
 						//call to method print("serverFolder/" + credential.getId() + "/" + credential.getFile())
 					}
 				} else {
-					pw.write("Wrong username or password");
+					pw.write("Wrong username or password\n");
 					pw.flush();
 				}
 			}

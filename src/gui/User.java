@@ -22,6 +22,9 @@ public class User extends javax.swing.JFrame {
     public User() {
         initComponents();
         this.setLocationRelativeTo(null);
+		com.data.User userData = Main.client.getUserData();
+		labelNama.setText(userData.getUsername() + " " + userData.getNama());
+		labelKuota.setText(String.valueOf(userData.getSaldo()));
     }
 
     /**
@@ -33,13 +36,13 @@ public class User extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel17 = new javax.swing.JLabel();
+        labelKuota = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        labelNama = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         buttonLogout = new javax.swing.JButton();
@@ -63,10 +66,10 @@ public class User extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel17.setText("Rp40.000,-");
-        getContentPane().add(jLabel17);
-        jLabel17.setBounds(170, 190, 54, 15);
+        labelKuota.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelKuota.setText("Rp40.000,-");
+        getContentPane().add(labelKuota);
+        labelKuota.setBounds(170, 190, 54, 15);
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 153, 51));
@@ -94,11 +97,11 @@ public class User extends javax.swing.JFrame {
         getContentPane().add(jLabel12);
         jLabel12.setBounds(70, 150, 100, 15);
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(99, 99, 194));
-        jLabel11.setText("13512666 Rosiana Rozi");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(70, 110, 290, 25);
+        labelNama.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        labelNama.setForeground(new java.awt.Color(99, 99, 194));
+        labelNama.setText("13512666 Rosiana Rozi");
+        getContentPane().add(labelNama);
+        labelNama.setBounds(70, 110, 290, 25);
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
@@ -232,10 +235,15 @@ public class User extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("ID");
             jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setHeaderValue("Tanggal");
             jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setHeaderValue("Waktu");
             jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setHeaderValue("Debet");
             jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("Kuota");
         }
 
         getContentPane().add(jScrollPane1);
@@ -386,13 +394,11 @@ public class User extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -401,5 +407,7 @@ public class User extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel labelKuota;
+    private javax.swing.JLabel labelNama;
     // End of variables declaration//GEN-END:variables
 }
