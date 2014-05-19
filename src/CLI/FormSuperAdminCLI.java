@@ -21,6 +21,9 @@ public class FormSuperAdminCLI {
         in = new Scanner(System.in);
         daftarAdmin = new DaftarAdmin();
     }
+    /**
+     * Tampilan awal form superadmin untuk memilih aksi berikutnya
+     */
     public void start(){
         System.out.println("===============================");
         System.out.println("===============================");
@@ -32,6 +35,9 @@ public class FormSuperAdminCLI {
         System.out.println("Silakan pilih (1/2) > ");
         addOrDelete();
     }
+    /**
+     * Pilihan menambah atau menghapus admin dari data
+     */
     public void addOrDelete(){
         int pil = in.nextInt();
         if(pil == 1){
@@ -40,6 +46,9 @@ public class FormSuperAdminCLI {
         else if(pil == 2)
             deleteAdmin();
     }
+     /**
+     * Menambah admin
+     */
     public void addAdmin(){
         System.out.println("Masukkan username dan password Admin yang akan ditambahkan :");
         System.out.print("Username > ");
@@ -49,6 +58,9 @@ public class FormSuperAdminCLI {
         Admin admin = new Admin(usernameAdmin, passwordAdmin, false);
         daftarAdmin.add(admin);
     }
+     /**
+     * Menghapus admin
+     */   
     public void deleteAdmin(){
         System.out.println("Masukkan username yang akan dihapus :");
         System.out.print("Username > ");
