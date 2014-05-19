@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+import Video.NullException;
+
 /**
  *
  * @author Rikysamuel
@@ -74,7 +76,12 @@ public class AdministratorRegister extends javax.swing.JFrame {
         jButton1.setText("Daftar!");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try {
+					jButton1ActionPerformed(evt);
+				} catch (NullException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -141,7 +148,7 @@ public class AdministratorRegister extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws NullException {//GEN-FIRST:event_jButton1ActionPerformed
         if (jTextField1.getText().equals("")){
             JOptionPane.showConfirmDialog(this, "NIM harus diisi!");
         } else{

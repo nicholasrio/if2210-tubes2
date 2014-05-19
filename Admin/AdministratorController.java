@@ -9,6 +9,8 @@ package Admin;
 import java.sql.SQLException;
 import java.util.List;
 
+import Video.NullException;
+
 /**
  *
  * @author Rikysamuel
@@ -51,7 +53,7 @@ public class AdministratorController {
         return false;
     }
     
-    public void AdminRegister(String _NIM, String name, String password) throws SQLException{
+    public void AdminRegister(String _NIM, String name, String password) throws SQLException, NullException{
         if ((name.equals("") || password.equals("")) || _NIM.equals("")){
             view.printRegister(false, name);
         } else {

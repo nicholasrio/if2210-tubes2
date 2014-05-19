@@ -4,6 +4,8 @@
  */
 package mysql;
 
+import Video.NullException;
+
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 import java.sql.ResultSet;
@@ -30,7 +32,7 @@ public final class SqlStatement {
         return statement;
     }
     
-    public void insert_admin(int nim, String password, String name)throws SQLException{
+    public void insert_admin(int nim, String password, String name)throws SQLException, NullException {
         statement.execute("INSERT INTO `administrator` (`nim`, `password`, `name`) VALUES (\""+nim+"\", \""+password+"\", \""+name+"\");");
     }
     
