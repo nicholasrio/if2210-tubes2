@@ -15,6 +15,8 @@ public class FileController implements IFileController {
 	private FileExt model;
 	private IFileView view;
 	
+	private String prevName;
+	
 	public FileController(FileExt model, IFileView view) {
 		registerModel(model);
 		registerView(view);
@@ -25,6 +27,9 @@ public class FileController implements IFileController {
 	@Override
 	public void registerModel(FileExt model) {
 		this.model = model;
+		
+		if(model != null)
+			this.prevName = model.getNamedName();
 	}
 	
 	@Override
@@ -104,6 +109,14 @@ public class FileController implements IFileController {
 		model = null;
 	}
 	
+	public static String getSyncURL() {
+		return syncURL;
+	}
+	
+	public static void setSyncURL(String newURL) {
+		syncURL = newURL;
+	}
+	
 	public static String getUploadURL() {
 		return uploadURL;
 	}
@@ -166,9 +179,11 @@ public class FileController implements IFileController {
 	@Override
 	public void sync() throws IOException {
 		assert(model != null);
+		assert(prevName != null);
 		
 		ServerPOST sp = new ServerPOST(syncURL, charset, false);
 		
+		sp.addFormField("Prev-Name", prevName);
 		sp.addFormField("File-Name", model.getNamedName());
 		sp.addFormField("File-Category", model.getCategory());
 		sp.addFormField("File-Desc", model.getDesc());
