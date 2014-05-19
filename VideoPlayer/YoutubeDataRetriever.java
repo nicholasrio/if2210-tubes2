@@ -15,12 +15,16 @@ import com.google.gdata.data.youtube.VideoFeed;
 import com.google.gdata.util.ServiceException;
 
 public class YoutubeDataRetriever {
-
 	/**
-	 * @param args
+	 * @param 
 	 */
 	private final String clientID = "370897670752.apps.googleusercontent.com";
 	private YouTubeService service;
+	/**
+	 * Konstruktor untuk Youtube Data Retriever
+	 * @param _URL
+	 * @return 
+	 */
 	public YoutubeDataRetriever()
 	{
 		System.setProperty("http.proxyHost", "http://cache.itb.ac.id");
@@ -28,6 +32,11 @@ public class YoutubeDataRetriever {
 		service = new YouTubeService(clientID);
 		service.setConnectTimeout(5000); // millis	
 	}
+	/**
+	 * Method ini akan mengembalikan Id Youtube dari String URL yang diberikan
+	 * @param _URL
+	 * @return String
+	 */
 	public String GetAbsoluteId(String URL)
 	{
 	    String txt=URL;
@@ -55,6 +64,12 @@ public class YoutubeDataRetriever {
 	    	return new String();
 	    }
 	}
+	/**
+	 * Method ini akan mengembalikan jumlah view pada URL yang diberikan
+	 * @param _URL
+	 * @return long
+	 * @throws IOException, ServiceException
+	 */
 	public long getView(String URL) throws IOException, ServiceException
 	{
 		YouTubeQuery query = new YouTubeQuery(new URL("http://gdata.youtube.com/feeds/api/videos"));
@@ -63,6 +78,12 @@ public class YoutubeDataRetriever {
 		List<VideoEntry>ListVideo =  videoFeed.getEntries();
 		return ListVideo.get(0).getStatistics().getViewCount()+ListVideo.get(0).getStatistics().getFavoriteCount();
 	}
+	/**
+	 * Method ini akan mengembalikan title dari URL video yang diberikan
+	 * @param _URL
+	 * @return String
+	 * @throws IOException, ServiceException
+	 */
 	public String getTitle(String URL) throws IOException, ServiceException
 	{
 		YouTubeQuery query = new YouTubeQuery(new URL("http://gdata.youtube.com/feeds/api/videos"));
