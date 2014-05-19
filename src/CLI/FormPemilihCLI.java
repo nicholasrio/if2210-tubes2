@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import main.Caleg;
 import main.DaftarPilihan;
+import main.PilihanPartai;
 
 /**
  *
@@ -35,14 +36,23 @@ public class FormPemilihCLI {
      * @param daftarPartai 
      */
     public void kertasSuaraBerdPartai(ArrayList<String> daftarPartai){
+        System.out.print("Apabila Anda tidak ingin memilih, tekan 0 dan enter.\ndaftar Partai yang dapat dipilih : ");
         for (int i = 0; i < daftarPartai.size(); i++){
             System.out.println(i+1 + ". " + daftarPartai.get(i));
+        }
+        System.out.print("Silakan tekan pilihan Anda (1 - " + daftarPartai.size() + " > ");
+        Scanner in = new Scanner(System.in);
+        int pilihan = in.nextInt();
+        if (pilihan >= 0 && pilihan <= daftarPartai.size()){
+            String NIK = "12345";
+            PilihanPartai pil = new PilihanPartai(NIK,"0",daftarPartai.get(pilihan - 1));
         }
     }
     /**
      * Menampilkan pilihan daftar caleg DPR
      */
     public void kertasSuaraDPR(){//ArrayList<Caleg> daftarCalegDPR){
+        System.out.print("Caleg dari partai " + "adalah :");
         int i = 0;
         ArrayList<String> daftarPartai = daftarPilihan.GetDaftarPartai();
         while (i < daftarPartai.size()){
@@ -59,6 +69,7 @@ public class FormPemilihCLI {
      * Menampilkan pilihan daftar caleg DPRD Provinsi
      */
     public void kertasSuaraDPRDProv(){//ArrayList<Caleg> daftarCalegDPRDPROV){
+        System.out.print("Caleg dari partai " + "adalah :");
         int i = 0;
         ArrayList<String> daftarPartai = daftarPilihan.GetDaftarPartai();
         while (i < daftarPartai.size()){
@@ -75,6 +86,7 @@ public class FormPemilihCLI {
      * Menampilkan pilihan daftar caleg DPRD Kota/Kabupaten
      */
     public void kertasSuaraDPRDKab(){//ArrayList<Caleg> daftarCalegDPRDKab){
+        System.out.print("Caleg dari partai " + "adalah :");
         int i = 0;
         ArrayList<String> daftarPartai = daftarPilihan.GetDaftarPartai();
         while (i < daftarPartai.size()){
@@ -91,6 +103,7 @@ public class FormPemilihCLI {
      * Menampilkan pilihan daftar caleg DPD
      */
     public void kertasSuaraDPD(){//ArrayList<Caleg> daftarCalegDPD){
+        System.out.print("Caleg dari partai " + "adalah :");
         int i = 0;
         ArrayList<String> daftarPartai = daftarPilihan.GetDaftarPartai();
         while (i < daftarPartai.size()){
@@ -123,7 +136,7 @@ public class FormPemilihCLI {
     /**
      * Memasukan pilihan
      */
-    public void input(){
+    public void input(ArrayList<Caleg> daftarCaleg){
         Scanner in = new Scanner(System.in);
         int pilihan = in.nextInt();
     }
