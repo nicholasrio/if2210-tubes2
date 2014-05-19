@@ -98,6 +98,18 @@ public final class SqlStatement {
         return details;
     }
     
+    public String SearchVideo(int no_tubes, String nama_kelompok) throws SQLException{
+        String temp = null;
+        String query = "SELECT `link` FROM `video` WHERE no_tubes=\"" + no_tubes + "\" AND group_nama= \"" + nama_kelompok + "\";";
+        System.out.println(query);
+        try(ResultSet rs = statement.executeQuery(query)){
+            if (rs.next()){
+                temp = rs.getString("link");
+            }
+        }
+        return temp;
+    }
+    
     public boolean cekDataVideo(int id) throws SQLException{
         boolean ketemu;
         try (ResultSet rs = statement.executeQuery("select * from video WHERE id = \"" + id + "\";")) {

@@ -34,4 +34,11 @@ public class VideoController {
     public List<String[]> SelectVideoData() throws SQLException {
         return vid.SelectData();
     }
+    
+    public String LinkVideo(int no_tubes, String namakelompok) throws SQLException{
+        String temp = vid.LinkVideo(no_tubes, namakelompok);
+        System.out.println(temp);
+        return temp;
+    }
+    
 }

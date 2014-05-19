@@ -38,9 +38,10 @@ public class Video {
 	public List<String[]> SelectData() throws SQLException {
             return s.select_video();
 	}
-	//public GetThumbnail() {
 	
-	//}
+        public String LinkVideo (int no_tubes, String groupname) throws SQLException{
+            return s.SearchVideo(no_tubes, groupname);
+        }
 	
 	// getter dan setter
 	public String getTitle() {
