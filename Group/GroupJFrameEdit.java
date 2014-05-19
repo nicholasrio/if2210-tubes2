@@ -26,6 +26,8 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
     private List<String> aList;
     /**
      * Creates new form GroupJFrameEdit
+     * @param no_tubes
+     * @param group_name
      */
     public GroupJFrameEdit(String no_tubes, String group_name) {
         initComponents();

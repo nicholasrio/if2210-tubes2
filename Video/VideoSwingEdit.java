@@ -10,8 +10,10 @@ import Group.GroupJFrame;
 import Group.GroupJFrameEdit;
 import Main.GuestView;
 import Main.MenuLoginAdmin;
+import com.google.gdata.util.ServiceException;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -240,6 +242,8 @@ public class VideoSwingEdit extends javax.swing.JFrame {
             this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(GroupJFrameEdit.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException | ServiceException ex) {
+            Logger.getLogger(VideoSwingEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public void inisialisasi(){
