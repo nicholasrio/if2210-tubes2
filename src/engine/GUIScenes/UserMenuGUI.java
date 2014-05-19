@@ -30,7 +30,6 @@ public class UserMenuGUI extends Scene
     private Image titleTexture;
     private Image backTexture;
     private Image AchString;
-    private KeyListener n;
     
     private Rectangle backRect;
     private ArrayList<Rectangle> userRect;
