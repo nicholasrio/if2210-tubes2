@@ -38,6 +38,8 @@ public class UserMenuGUI extends Scene
     private Rectangle enterRect;
     private Rectangle cancelRect;
     
+    private String userName;
+    
     private float transparentPercentage;
     private int menuHovered;
     private int menuPressed;
@@ -107,6 +109,7 @@ public class UserMenuGUI extends Scene
         });
         
         userRect = new ArrayList<>(GameData.getJumlahPlayer());
+        userName = "";
         try {
             File fontfile = new File("Font/batmanforeveralternate.ttf");
             userMenuFont = Font.createFont(Font.TRUETYPE_FONT, fontfile);
@@ -141,6 +144,8 @@ public class UserMenuGUI extends Scene
         }
         newRect = new Rectangle((int)(Game.ResolutionWidth*0.0275f), (int)(Game.ResolutionHeight*0.2f)+70,210,50);
         delRect = new Rectangle((int)(Game.ResolutionWidth*0.0275f), (int)(Game.ResolutionHeight*0.2f)+170,210,50);
+        enterRect = new Rectangle((int)(Game.ResolutionWidth*0.33f)+50,(int)(Game.ResolutionHeight*0.2f)+300,135,50);
+        cancelRect = new Rectangle((int)(Game.ResolutionWidth*0.33f)+260,(int)(Game.ResolutionHeight*0.2f)+300,135,50);
     }
     
     @Override
@@ -210,8 +215,17 @@ public class UserMenuGUI extends Scene
             {
             g2D.setFont(userMenuFont);
             g2D.drawString("=====CREATE NEW USER=====", (int)(Game.ResolutionWidth*0.33f),(int)(Game.ResolutionHeight*0.2f)+25);
-            
-            status = 0;
+            g2D.drawString("TYPE USERNAME", (int)(Game.ResolutionWidth*0.33f)+100,(int)(Game.ResolutionHeight*0.2f)+60);
+            g2D.drawString(userName,(int)(Game.ResolutionWidth*0.33f)+100,(int)(Game.ResolutionHeight*0.2f)+160);
+            for (int i = 0; i <= userName.length()+1;i++) {
+            g2D.drawString("_", (int)(Game.ResolutionWidth*0.33f)+100-1+15*i,(int)(Game.ResolutionHeight*0.2f)+170);
+            }
+            g2D.setColor(Color.red);
+            g2D.draw3DRect((int)(Game.ResolutionWidth*0.33f)+50,(int)(Game.ResolutionHeight*0.2f)+300,135,50, true);
+            g2D.drawString("CANCEL", (int)(Game.ResolutionWidth*0.33f)+65,(int)(Game.ResolutionHeight*0.2f)+332);
+            g2D.setColor(Color.blue);
+            g2D.draw3DRect((int)(Game.ResolutionWidth*0.33f)+260,(int)(Game.ResolutionHeight*0.2f)+300,135,50, true);
+            g2D.drawString("ENTER", (int)(Game.ResolutionWidth*0.33f)+280,(int)(Game.ResolutionHeight*0.2f)+332);
             }
             else if (status == 2)
             {
@@ -256,6 +270,14 @@ public class UserMenuGUI extends Scene
                 menuPressed = 777;
                 status = 2;
             }
+            else if (enterRect.contains(event.getPoint()) && status == 1) 
+            {
+                menuPressed = 444;
+            }
+            else if (cancelRect.contains(event.getPoint()) && status == 1) 
+            {
+                menuPressed = 999;
+            }
             else
             {
                 for (int i = 0;i<GameData.getJumlahPlayer();i++) {
@@ -295,7 +317,7 @@ public class UserMenuGUI extends Scene
                 SceneManager.SwitchScene("MainMenuGUI");
                 }
                 else if(status == 1) {
-                    
+                    status = 0;
                 }
                 else if(status == 2) {
                     if(GameData.dataPlayer.get(menuPressed-1) != GameData.lastLogin) {
