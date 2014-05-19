@@ -1,0 +1,11 @@
+{
+  "/Users/ferysurya/Downloads/a/BookBay/src": {
+    "location": "/Users/ferysurya/Downloads/a/BookBay/src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027/Users/ferysurya/Downloads/a/BookBay/src\u0027. Skipped."
+  },
+  "/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/rt.jar": {
+    "location": "/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home/jre/lib/rt.jar",
+    "status": "UNRESOLVED"
+  }
+}
