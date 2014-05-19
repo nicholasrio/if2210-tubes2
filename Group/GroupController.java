@@ -37,15 +37,6 @@ public class GroupController {
     public void UpdateGroup(int no_tubes, String group_name) throws SQLException{
         team.update(no_tubes, group_name);
     }
-
-    /**
-     * Mengambil  data berdasarkan nama kelompok
-     * @param group_name
-     * @return 
-     */
-    public List<String> GetXHistory(String group_name){
-        return new ArrayList<>();
-    }
     
     /**
      * 
