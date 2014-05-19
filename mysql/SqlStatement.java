@@ -117,6 +117,19 @@ public final class SqlStatement {
         }
         return details;
     }
+    public List<String[]> select_video_by_id(int _id) throws SQLException{
+        List<String[]> details;
+        try (ResultSet rs = statement.executeQuery("select * from video where id = \"" + _id + "\";")) {
+            details = new ArrayList<>();
+            while(rs.next()) {
+                String[] data = {Integer.toString(rs.getInt("id")), rs.getString("title"), rs.getString("link"),
+                    Integer.toString(rs.getInt("view")),
+                    Integer.toString(rs.getInt("no_tubes")), rs.getString("group_nama")};
+                details.add(data);
+            }
+        }
+        return details;
+    }
     
     public boolean cekDataVideo(int id) throws SQLException{
         boolean ketemu;
