@@ -1,5 +1,7 @@
 package file;
 
+import javax.print.PrintService;
+
 /**
  *
  * @author Mamat Rahmat / 135120007
@@ -17,6 +19,6 @@ public abstract class MyFile {
 
     public abstract void toPDF();
 
-    public abstract void print();
+    public abstract void print(PrintService printer);
 
 }
