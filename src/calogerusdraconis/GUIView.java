@@ -407,7 +407,11 @@ public class GUIView extends javax.swing.JFrame implements View {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+	
+	/**
+	 * Saat meng-klik button entertain
+	 * @param evt MouseEvent
+	 */
     private void ButtEntertainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtEntertainMouseClicked
         synchronized(SelectionNotifier) {
 			selection = 1;
@@ -416,7 +420,11 @@ public class GUIView extends javax.swing.JFrame implements View {
 			disableButts();
 		}
     }//GEN-LAST:event_ButtEntertainMouseClicked
-
+	
+	/**
+	 * Saat meng-klik button train
+	 * @param evt MouseEvent
+	 */
     private void ButtTrainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtTrainMouseClicked
         synchronized(SelectionNotifier) {
 			selection = 2;
@@ -425,7 +433,11 @@ public class GUIView extends javax.swing.JFrame implements View {
 			disableButts();
 		}
     }//GEN-LAST:event_ButtTrainMouseClicked
-
+	
+	/**
+	 * Saat meng-klik button sleep
+	 * @param evt MouseEvent
+	 */
     private void ButtSleepMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSleepMouseClicked
         synchronized(SelectionNotifier) {
 			selection = 3;
@@ -434,7 +446,11 @@ public class GUIView extends javax.swing.JFrame implements View {
 			disableButts();
 		}
     }//GEN-LAST:event_ButtSleepMouseClicked
-
+	
+	/**
+	 * Saat meng-klik button Go to Toilet
+	 * @param evt MouseEvent
+	 */
     private void ButtToiletMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtToiletMouseClicked
         synchronized(SelectionNotifier) {
 			selection = 4;
@@ -443,7 +459,11 @@ public class GUIView extends javax.swing.JFrame implements View {
 			disableButts();
 		}
     }//GEN-LAST:event_ButtToiletMouseClicked
-
+	
+	/**
+	 * Saat meng-klik button Fight
+	 * @param evt MouseEvent
+	 */
     private void ButtFightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtFightMouseClicked
         synchronized(SelectionNotifier) {
 			selection = 5;
@@ -452,7 +472,11 @@ public class GUIView extends javax.swing.JFrame implements View {
 			disableButts();
 		}
     }//GEN-LAST:event_ButtFightMouseClicked
-
+	
+	/**
+	 * Saat meng-klik button Save and Quit
+	 * @param evt MouseEvent
+	 */
     private void ButtSaveQuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSaveQuitMouseClicked
         synchronized(SelectionNotifier) {
 			selection = -1;
@@ -460,7 +484,11 @@ public class GUIView extends javax.swing.JFrame implements View {
 			SelectionNotifier.notifyAll();
 		}
     }//GEN-LAST:event_ButtSaveQuitMouseClicked
-
+	
+	/**
+	 * Saat meng-klik button Save
+	 * @param evt MouseEvent
+	 */
     private void ButtSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtSaveMouseClicked
         synchronized(SelectionNotifier) {
 			selection = 6;
@@ -468,18 +496,30 @@ public class GUIView extends javax.swing.JFrame implements View {
 			SelectionNotifier.notifyAll();
 		}
     }//GEN-LAST:event_ButtSaveMouseClicked
-
+	
+	/**
+	 * Saat kursor hover ke inventory panel
+	 * @param evt MouseEvent
+	 */
     private void InventoryPanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseMoved
 		if (evt.getX() > 64 || evt.getY() < 10) InventoryDisplay.pilihan = null; //tipe data Integer
 		else if (evt.getY() > draco.getFdInventory().size()*64+10) InventoryDisplay.pilihan = null;
 		else InventoryDisplay.pilihan = (evt.getY()-10)/64;
     }//GEN-LAST:event_InventoryPanelMouseMoved
-
+	
+	/**
+	 * Saat kursor hover ke store panel
+	 * @param evt MouseEvent
+	 */
     private void StorePanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StorePanelMouseMoved
 		if (evt.getX() > 64 || evt.getY() < 10) StoreDisplay.pilihan = null; //tipe data Integer
 		else StoreDisplay.pilihan = (evt.getY()-10)/64;
     }//GEN-LAST:event_StorePanelMouseMoved
-
+	
+	/**
+	 * Saat meng-klik item dalam inventory panel
+	 * @param evt MouseEvent
+	 */
     private void InventoryPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventoryPanelMouseClicked
 		if (evt.getClickCount()==2 && !evt.isConsumed()) {
 			int pilihan = (evt.getY()-10)/64;
@@ -498,7 +538,11 @@ public class GUIView extends javax.swing.JFrame implements View {
 		}
 		UpdateScreen(draco);
     }//GEN-LAST:event_InventoryPanelMouseClicked
-
+	
+	/**
+	 * Saat meng-klik item dalam store panel
+	 * @param evt MouseEvent
+	 */
     private void StorePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StorePanelMouseClicked
 		if (evt.getClickCount() == 2 && !evt.isConsumed()) {
 			int pilihan = (evt.getY()-10)/64;
@@ -515,12 +559,19 @@ public class GUIView extends javax.swing.JFrame implements View {
 			}
 		}
     }//GEN-LAST:event_StorePanelMouseClicked
-
+	
+	/**
+	 * Menampilkan daftar menu
+	 */
 	@Override
 	public void showMenu() {
 		//NOP. already shown.
 	}
 	
+	/**
+	 * Meng-update tampilan status dragon
+	 * @param drg dragon yang ditampilkan statusnya
+	 */
 	@Override
     public void UpdateScreen (UserDragon drg) {
 		
@@ -573,26 +624,40 @@ public class GUIView extends javax.swing.JFrame implements View {
 		InventoryPanel.repaint();
     }
 
-	
+	/**
+	 * Meng-update tampilan store
+	 * @param str Store yang ditampilkan
+	 */
 	@Override
     public void UpdateScreen (Store str) {
 		this.str = str;
 		StorePanel.repaint();
     }
 
-	
+	/**
+	 * Meng-update tampilan fight
+	 * @param drg dragon user
+	 * @param enemy dragon enemy
+	 */
 	@Override
     public void UpdateScreen (UserDragon drg, Dragon enemy) {
 		//NOP. already shown.
     }
 
-	
+	/**
+	 * Menampilkan hasil aktivitas dragon
+	 * @param drg	dragon user
+	 * @param evnt  event yang telah dilakukan user
+	 */
 	@Override
     public void UpdateScreen (UserDragon drg, Event evnt) {
 		enableButts();
 		JOptionPane.showMessageDialog(null, evnt.getMessage());
     }
 	
+	/**
+	 * Menonaktifkan button di saat tidak bisa digunakan
+	 */
 	private void disableButts() {
 		ButtEntertain.setEnabled(false);
 		ButtFight.setEnabled(false);
@@ -603,6 +668,9 @@ public class GUIView extends javax.swing.JFrame implements View {
 		ButtTrain.setEnabled(false);
 	}
 	
+	/**
+	 * Mengaktifkan button di saat bisa digunakan
+	 */
 	public void enableButts() {
 		ButtEntertain.setEnabled(true);
 		ButtFight.setEnabled(true);
@@ -613,6 +681,10 @@ public class GUIView extends javax.swing.JFrame implements View {
 		ButtTrain.setEnabled(true);
 	}
 	
+	/**
+	 * Menunggu user untuk memilih suatu aktivitas untuk dragon
+	 * @return integer yang merepresentasikan pilihan aktivitas
+	 */
 	public int waitForSelection(){
 		try {
 			synchronized(SelectionNotifier) {
@@ -627,10 +699,13 @@ public class GUIView extends javax.swing.JFrame implements View {
 		return selection;
 	}
 	
+	/**
+	 * Melihat isi food directory
+	 * @param drg dragon yang dilihat isi food directory nya
+	 */
 	@Override
 	public void seeFoodDirectory(UserDragon drg) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
+		}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtEntertain;
