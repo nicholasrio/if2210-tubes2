@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<levels>
+    <level id="1" unlockedFruit="1" startMoney="150" goalMoney="600" limitTime="300">
+    </level>
+    
+    <level id="2" unlockedFruit="2" startMoney="200" goalMoney="800" limitTime="360">
+    </level>
+    
+    <level id="3" unlockedFruit="3" startMoney="300" goalMoney="1000" limitTime="360">
+    </level>
+    
+    <level id="4" unlockedFruit="4" startMoney="400" goalMoney="1400" limitTime="420">
+    </level>
+    
+    <level id="5" unlockedFruit="4" startMoney="500" goalMoney="1600" limitTime="480">
+    </level>
+    
+</levels>
