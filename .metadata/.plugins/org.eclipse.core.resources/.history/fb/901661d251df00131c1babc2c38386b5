@@ -229,7 +229,7 @@ public class MainMenu extends javax.swing.JFrame {
 		{
 			Vector data = new Vector();
 			data.add(rs.getString("name"));
-			data.add(rs.getString("description"));
+			data.add(rs.getString("deskripsi"));
 			data.add(rs.getString("uploader_id"));
 			data.add(false);
 			row.add(data);

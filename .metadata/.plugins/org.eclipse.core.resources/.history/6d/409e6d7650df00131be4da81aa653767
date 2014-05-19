@@ -10,13 +10,9 @@ package org;
  *
  * @author muhammad
  */
-import javax.swing.JFileChooser;
 import javax.swing.JTable;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 
@@ -160,7 +156,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         Upload.setText("Upload");
         Download.setText("Download");
-        
         Exit.setText("Exit");
         Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,7 +216,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel2.setText("Browse!");
 
-        //Tampilan explorer
+        // Tampilkan explorer
         DBConnection conn = new DBConnection();
 		ResultSet rs = conn.executeQuery("SELECT * FROM book");
 		Vector row = new Vector();
@@ -230,19 +225,15 @@ public class MainMenu extends javax.swing.JFrame {
 			Vector data = new Vector();
 			data.add(rs.getString("name"));
 			data.add(rs.getString("description"));
-			data.add(rs.getString("uploader_id"));
 			data.add(false);
-			row.add(data);
 		}
 		conn.closeConnection();
 		
 		Vector columnNames = new Vector();
 		columnNames.add("Judul Buku");
 		columnNames.add("Deskripsi");
-		columnNames.add("Uploader ID");
-		columnNames.add("Cek");
-		
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        
+		jTable2.setModel(new javax.swing.table.DefaultTableModel(
             row,
             columnNames
         ) {

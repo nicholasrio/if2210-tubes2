@@ -229,7 +229,7 @@ public class MainMenu extends javax.swing.JFrame {
 		{
 			Vector data = new Vector();
 			data.add(rs.getString("name"));
-			data.add(rs.getString("description"));
+			data.add(rs.getString("deskripsi"));
 			data.add(rs.getString("uploader_id"));
 			data.add(false);
 			row.add(data);
@@ -340,12 +340,7 @@ public class MainMenu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-					new MainMenu().setVisible(true);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+                new MainMenu().setVisible(true);
             }
         });
     }
