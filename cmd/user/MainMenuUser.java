@@ -9,7 +9,7 @@ package cmd.user;
 import java.util.Scanner;
 
 /**
- *
+ * Menu utama untuk program utama user
  * @author CakBin
  */
 public class MainMenuUser {

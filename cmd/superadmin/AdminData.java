@@ -10,7 +10,7 @@ import Admin.Administrator;
 import java.util.Scanner;
 
 /**
- *
+ * Menampilkan data admin tertentu
  * @author CakBin
  */
 public class AdminData {

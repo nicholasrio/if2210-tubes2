@@ -9,7 +9,7 @@ package cmd.admin;
 import java.util.Scanner;
 
 /**
- *
+ * Formulir untuk menghapus data kelompok (belum diimplementasikan)
  * @author CakBin
  */
 public class GroupDeleteForm {

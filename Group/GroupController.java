@@ -1,7 +1,6 @@
 package Group;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +9,7 @@ import java.util.List;
  */
 public class GroupController {
     
-    private Group team;
+    private final Group team;
     
     /**
      * construktor
@@ -44,25 +43,11 @@ public class GroupController {
         return team.GroupDataEdit();
     }
     
-    public void SelectAllGroup(){
-        
-    }
-
     /**
      * 
-     * 
-     * @param no_tubes
-     * @param group_name
-     * @return 
+     * @return
+     * @throws SQLException 
      */
-    public String GetAGroup(int no_tubes, String group_name){
-        return "abc";
-    }
-
-    public List<String> GetXHistory(String group_name){
-        return new ArrayList<>();
-    }
-    
     public List<String[]> GroupData() throws SQLException{
         return team.GroupData();
     }

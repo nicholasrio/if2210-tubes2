@@ -7,7 +7,7 @@
 package cmd.superadmin;
 
 /**
- *
+ * Exception untuk masukan pilihan dalam program utama
  * @author CakBin
  */
 public class OptionException extends Exception{

@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Formulir untuk menghapus data video
  * @author CakBin
  */
 public class VideoDeleteForm {

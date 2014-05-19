@@ -15,8 +15,8 @@ import java.awt.Toolkit;
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 
 /**
- *
- * @author Rikysamuel
+ * Web Browser untuk program utama konsol
+ * @author CakBin
  */
 public class cmdVidPlayer extends javax.swing.JFrame {
     private final String URL;
@@ -29,6 +29,7 @@ public class cmdVidPlayer extends javax.swing.JFrame {
         URL=Link;
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

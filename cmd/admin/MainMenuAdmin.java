@@ -9,7 +9,7 @@ package cmd.admin;
 import java.util.Scanner;
 
 /**
- *
+ * Menu utama untuk program utama admin
  * @author CakBin
  */
 public class MainMenuAdmin {

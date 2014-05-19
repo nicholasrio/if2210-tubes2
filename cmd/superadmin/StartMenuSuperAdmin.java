@@ -9,7 +9,7 @@ package cmd.superadmin;
 import java.util.Scanner;
 
 /**
- *
+ * Menu awal program utama super admin
  * @author CakBin
  */
 public class StartMenuSuperAdmin {

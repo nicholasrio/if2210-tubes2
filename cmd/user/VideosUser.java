@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Menampilkan daftar data video
  * @author CakBin
  */
 public class VideosUser {

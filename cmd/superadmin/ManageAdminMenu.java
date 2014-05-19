@@ -9,7 +9,7 @@ package cmd.superadmin;
 import java.util.Scanner;
 
 /**
- *
+ * Menu utama untuk super admin dalam mengatur data admin
  * @author CakBin
  */
 public class ManageAdminMenu {

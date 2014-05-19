@@ -12,7 +12,7 @@ import Video.VideoController;
 import java.sql.SQLException;
 
 /**
- *
+ * Kumpulan Controller dan method global untuk program utama user
  * @author CakBin
  */
 public class DataController {

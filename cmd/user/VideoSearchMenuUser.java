@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * formulir untuk mncari data video tertentu
  * @author CakBin
  */
 public class VideoSearchMenuUser {

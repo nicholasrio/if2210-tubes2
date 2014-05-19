@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Formulir untuk menambah data Video
  * @author CakBin
  */
 public class AddVideoForm {
@@ -42,6 +42,9 @@ public class AddVideoForm {
             Logger.getLogger(AddVideoForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    /**
+     * Untuk Eksekusi AddGroupForm dari tempat lain
+     */
     static void action(){
         input();
         execute();

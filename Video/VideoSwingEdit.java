@@ -80,12 +80,6 @@ public class VideoSwingEdit extends javax.swing.JFrame {
 
         jLabel4.setText("Link");
 
-        title.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                titleActionPerformed(evt);
-            }
-        });
-
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,14 +160,19 @@ public class VideoSwingEdit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void titleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_titleActionPerformed
-
+    /**
+     * menutup frame ini
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         close();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * 
+     * inisialisasi ketika form mulai diaktifkan
+     * @param evt 
+     */
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
@@ -186,6 +185,10 @@ public class VideoSwingEdit extends javax.swing.JFrame {
         this.setLocation((Width/2) - lebar, (Height/2) - tinggi);
     }//GEN-LAST:event_formWindowActivated
 
+    /**
+     * menyimpan data yang sudah dirubah
+     * @param evt 
+     */
     private void bUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUpdateActionPerformed
         if(!cek()){
             JOptionPane.showMessageDialog(rootPane, "Kolom yang kosong harus diisi..!", "KatalogV Error", JOptionPane.ERROR_MESSAGE);
@@ -226,9 +229,17 @@ public class VideoSwingEdit extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bUpdateActionPerformed
     
+    /**
+     * mengecek kekosongan JTeksField
+     * @return 
+     */
     public boolean cek(){
         return !title.getText().equals("") && !group_name.getText().equals("") && !no_tubes.getText().equals("") && !link.getText().equals("");
     }
+    
+    /**
+     * membersihkan JTeksField
+     */
     public void clean(){
         no_tubes.setText("");
         group_name.setText("");
@@ -236,6 +247,9 @@ public class VideoSwingEdit extends javax.swing.JFrame {
         link.setText("");
     }
     
+    /**
+     * menutup frame ini
+     */
     public void close(){
         try {
             GuestView GV = new GuestView();
@@ -249,6 +263,10 @@ public class VideoSwingEdit extends javax.swing.JFrame {
             Logger.getLogger(VideoSwingEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /**
+     * inisialisasi tambahan
+     */
     public void inisialisasi(){
         try {
             List<String[]> groupEdit= V.SelectDataById(Integer.parseInt(id_bayangan.getText()));

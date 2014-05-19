@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Formulir untuk mengedit data kelompok
  * @author CakBin
  */
 public class GroupEditForm {

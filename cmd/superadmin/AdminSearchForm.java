@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Formulir untuk mencari data admin tertentu
  * @author CakBin
  */
 public class AdminSearchForm {
