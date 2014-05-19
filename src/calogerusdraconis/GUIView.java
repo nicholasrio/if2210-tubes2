@@ -36,6 +36,9 @@ public class GUIView extends javax.swing.JFrame implements View {
 	private UserDragon draco;
 	private Store str;
 	
+	/**
+	 * Constructor GuiView, melakukan inisialisasi komponen GUI
+	 */
 	public GUIView() {
 		initComponents();
 	}
