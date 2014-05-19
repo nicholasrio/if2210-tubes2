@@ -53,21 +53,25 @@ public class VideoDeleteForm {
         if(option==0){
             try {
                 DataController.VC.DeleteVideo(VidID);
+                ManageVideoMenu.action();
             } catch (SQLException ex) {
                 Logger.getLogger(AddGroupForm.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }else{
+            VideoPage.action(id);
         }
     }
     static void action(){
         id=VideoPage.id;
         try {
             VidID=Integer.valueOf(DataController.VC.SelectVideoData().get(id)[0]);
+            print();
+            input();
+            execute();
+            
         } catch (SQLException ex) {
             Logger.getLogger(VideoDeleteForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        print();
-        input();
-        execute();
-        ManageVideoMenu.action();
+        
     }
 }

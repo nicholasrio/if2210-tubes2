@@ -27,7 +27,12 @@ public class cmdVidPlayer extends javax.swing.JFrame {
      */
     public cmdVidPlayer(String Link){
         URL=Link;
+        NativeInterface.open();
         initComponents();
+    }
+    
+    public void Exit(){
+        this.dispose();
     }
     
 

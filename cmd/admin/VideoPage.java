@@ -26,6 +26,7 @@ public class VideoPage {
     static boolean valid;
     static int option;
     static Scanner input=new Scanner(System.in);
+    static cmdVidPlayer cmd;
     
     static void SelectOption(int i) throws OptionException{
         System.out.println("Masukkan Pilihan menu: ");
@@ -44,7 +45,8 @@ public class VideoPage {
             @Override
             public void run() {
                 NativeInterface.open();
-                new cmdVidPlayer(URL).setVisible(true);
+                cmd = new cmdVidPlayer(URL);
+                cmd.setVisible(true);
             }
         });
     }
@@ -70,6 +72,7 @@ public class VideoPage {
         }
     }
     static void execute(){
+        cmd.Exit();
         if(option==1){VideoEditForm.action();}
         else if(option==2){VideoDeleteForm.action();}
         else{Videos.action(1,10);}
@@ -79,12 +82,13 @@ public class VideoPage {
         try {
             VideoTitle=DataController.VC.SelectVideoData().get(id)[1];
             URL=DataController.VC.SelectVideoData().get(id)[2];
+            PlayVideo();
+            print();
+            input();
+            execute();
         } catch (SQLException ex) {
             Logger.getLogger(VideoPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        PlayVideo();
-        print();
-        input();
-        execute();
+        
     }
 }
