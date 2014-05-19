@@ -129,7 +129,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         MainMenu = new javax.swing.JTabbedPane();
-        MyCollections = new javax.swing.JPanel();
+        MyBook = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -160,7 +160,7 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         UserLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        UserLabel.setText(LoginController.currUser.name());
+        UserLabel.setText("Admin");
         UserLabel.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
@@ -169,42 +169,42 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout MyCollectionsLayout = new javax.swing.GroupLayout(MyCollections);
-        MyCollections.setLayout(MyCollectionsLayout);
-        MyCollectionsLayout.setHorizontalGroup(
-            MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MyCollectionsLayout.createSequentialGroup()
+        javax.swing.GroupLayout MyBookLayout = new javax.swing.GroupLayout(MyBook);
+        MyBook.setLayout(MyBookLayout);
+        MyBookLayout.setHorizontalGroup(
+            MyBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MyBookLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(MyBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Upload, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
                 .addContainerGap(71, Short.MAX_VALUE))
-            .addGroup(MyCollectionsLayout.createSequentialGroup()
+            .addGroup(MyBookLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        MyCollectionsLayout.setVerticalGroup(
-            MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyCollectionsLayout.createSequentialGroup()
-                .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        MyBookLayout.setVerticalGroup(
+            MyBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyBookLayout.createSequentialGroup()
+                .addGroup(MyBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(UserLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(MyCollectionsLayout.createSequentialGroup()
+                .addGroup(MyBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(MyBookLayout.createSequentialGroup()
                         .addComponent(Upload, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyCollectionsLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyBookLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(432, 432, 432))))
         );
 
-        MainMenu.addTab("My Collections", MyCollections);
+        MainMenu.addTab("My Book", MyBook);
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel2.setText("Browse!");
@@ -324,7 +324,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel Browse;
     private javax.swing.JButton Exit;
     private javax.swing.JTabbedPane MainMenu;
-    private javax.swing.JPanel MyCollections;
+    private javax.swing.JPanel MyBook;
     private javax.swing.JButton Upload;
     private javax.swing.JLabel UserLabel;
     private javax.swing.JLabel jLabel1;

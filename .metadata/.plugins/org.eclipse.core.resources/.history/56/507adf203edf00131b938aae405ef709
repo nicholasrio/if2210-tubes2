@@ -160,7 +160,7 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         UserLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        UserLabel.setText(LoginController.currUser.name());
+        UserLabel.setText("Admin");
         UserLabel.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
