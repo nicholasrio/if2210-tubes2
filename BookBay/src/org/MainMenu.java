@@ -21,7 +21,9 @@ import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-//howwww
+
+// test merged
+
 public class MainMenu extends javax.swing.JFrame {
 
     /**
