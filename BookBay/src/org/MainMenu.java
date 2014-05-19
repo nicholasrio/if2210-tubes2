@@ -31,7 +31,7 @@ public class MainMenu extends javax.swing.JFrame {
         String url = "jdbc:mysql://localhost:3306/bookbay";
         String userid = "root";
         String password = "";
-        String sql = "SELECT name, description, uploader_id FROM book";
+        String sql = "SELECT name, description, uploader_id FROM book natural join collection where book_id=id and user_id="+LoginController.currUser.getID();
 
         // Java SE 7 has try-with-resources
         // This will ensure that the sql objects are closed when the program 
@@ -52,8 +52,8 @@ public class MainMenu extends javax.swing.JFrame {
             //  Get row data
             while (rs.next())
             {
-                if(rs.getString("uploader_id").matches(LoginController.currUser.getID()))
-                {
+                //if(rs.getString("uploader_id").matches(LoginController.currUser.getID()))
+                //{
                     ArrayList row = new ArrayList(columns);
 
                     for (int i = 1; i <= columns; i++)
@@ -62,7 +62,7 @@ public class MainMenu extends javax.swing.JFrame {
                     }
 
                     data.add( row );
-                }
+                //}
             }
         }
         catch (SQLException e)
@@ -134,6 +134,7 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Upload = new javax.swing.JButton();
+        Download = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
         Browse = new javax.swing.JPanel();
@@ -151,7 +152,7 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         Upload.setText("Upload");
-
+        Download.setText("Download");
         Exit.setText("Exit");
         Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +179,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Upload, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                    .addComponent(Upload, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                    .addComponent(Download, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                 .addContainerGap(71, Short.MAX_VALUE))
             .addGroup(MyCollectionsLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,6 +198,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(MyCollectionsLayout.createSequentialGroup()
                         .addComponent(Upload, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Download,javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -326,6 +330,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane MainMenu;
     private javax.swing.JPanel MyCollections;
     private javax.swing.JButton Upload;
+    private javax.swing.JButton Download;
     private javax.swing.JLabel UserLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
