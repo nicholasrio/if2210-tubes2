@@ -20,6 +20,9 @@ public class FormAdminCLI {
         in = new Scanner(System.in);
         daftarAdmin = new DaftarAdmin();
     }
+     /**
+     * Tampilan awal untuk admin melakukan aktifitasnya seperti pada pilihan
+     */
     public void start(){
         System.out.println("=========================");
         System.out.println("=========================");
@@ -31,7 +34,9 @@ public class FormAdminCLI {
         System.out.println("Silakan pilih (1/2) > ");
         input();
     }
-    
+    /**
+     * Pilihan untuk menambah dapil atau caleg
+     */
     public void input(){
         int pilihan = in.nextInt();
         if(pilihan == 1){
@@ -41,9 +46,15 @@ public class FormAdminCLI {
             inputCaleg();
         }
     }
+     /**
+     * Memasukan dapil
+     */
     public void inputDapil(){
         String dapil = in.nextLine();
     }
+     /**
+     * memasukan NIK
+     */
     public void inputCaleg(){
         String NIK = in.nextLine();
     }
