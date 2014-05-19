@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Tony
+ * @author Tjong
  */
 public class LevelMenuGUI extends Scene
 {
