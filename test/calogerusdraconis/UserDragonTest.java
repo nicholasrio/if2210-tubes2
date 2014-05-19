@@ -50,7 +50,6 @@ public class UserDragonTest {
 		float expResult = 150;
 		float result = instance.getMaxHealth();
 		assertEquals(expResult, result, 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -63,7 +62,6 @@ public class UserDragonTest {
 		float expResult = 200;
 		float result = instance.getMaxStamina();
 		assertEquals(expResult, result, 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -78,7 +76,6 @@ public class UserDragonTest {
 		expResult.add(new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0));
 		ArrayList<Consumable> result = instance.getFdInventory();
 		assertEquals(expResult.get(0).getName(), result.get(0).getName());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -92,7 +89,6 @@ public class UserDragonTest {
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		instance.setFdInventory(fd);
 		assertEquals(fd.get(0).getName(), instance.getFdInventory().get(0).getName());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -105,7 +101,6 @@ public class UserDragonTest {
 		float expResult = 66;
 		float result = instance.getHappiness();
 		assertEquals(expResult, result, 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -118,7 +113,6 @@ public class UserDragonTest {
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		instance.setHappiness(val);
 		assertEquals(val, instance.getHappiness(), 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -131,7 +125,6 @@ public class UserDragonTest {
 		float expResult = 50;
 		float result = instance.getMoney();
 		assertEquals(expResult, result, 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -144,7 +137,6 @@ public class UserDragonTest {
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		instance.setMoney(val);
 		assertEquals(val, instance.getMoney(), 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -157,7 +149,6 @@ public class UserDragonTest {
 		String expResult = "pass";
 		String result = instance.getPassword();
 		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -170,7 +161,6 @@ public class UserDragonTest {
 		UserDragon instance = new UserDragon("user",78,150,89,200,23,51,21,5,123,"pass",50,66);
 		instance.setPassword(val);
 		assertEquals(val, instance.getPassword());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -200,7 +190,6 @@ public class UserDragonTest {
 		assertEquals(expMaxStamina, instance.getMaxStamina(), 0.0);
 		assertEquals(expMaxHealth, instance.getMaxHealth(), 0.0);
 		assertEquals(expHappiness, instance.getHappiness(), 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -223,7 +212,6 @@ public class UserDragonTest {
 		assertEquals(what.getName(), instance.getFdInventory().get(0).getName());
 		assertEquals(expResult.getMessage(), result.getMessage());
 		assertEquals(expResult.getType(), result.getType());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -245,7 +233,6 @@ public class UserDragonTest {
 		assertEquals(expMaxStamina, instance.getMaxStamina(), 0.0);
 		assertEquals(expResult.getMessage(), result.getMessage());
 		assertEquals(expResult.getType(), result.getType());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -270,7 +257,6 @@ public class UserDragonTest {
 		assert(result.getBladder() <= (float)Math.ceil(1.2*instance.getBladder()));
 		assert(result.getThirst() >= (float)Math.ceil(0.8*instance.getThirst()));
 		assert(result.getThirst() <= (float)Math.ceil(1.2*instance.getThirst()));
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -295,7 +281,6 @@ public class UserDragonTest {
 		assertEquals(expStamina, instance.getStamina(), 0.0);
 		assertEquals(expResult.getMessage(), result.getMessage());
 		assertEquals(expResult.getType(), result.getType());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -316,7 +301,6 @@ public class UserDragonTest {
 		assertEquals(expStamina, instance.getStamina(), 0.0);
 		assertEquals(expResult.getMessage(), result.getMessage());
 		assertEquals(expResult.getType(), result.getType());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 	
 	/**
@@ -337,7 +321,6 @@ public class UserDragonTest {
 		assertEquals(expStamina, instance.getStamina(), 0.0);
 		assertEquals(expResult.getMessage(), result.getMessage());
 		assertEquals(expResult.getType(), result.getType());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 	
 	/**
@@ -353,7 +336,6 @@ public class UserDragonTest {
 		assertEquals(expResult.getMessage(), result.getMessage());
 		assertEquals(expResult.getType(), result.getType());
 		assertEquals(expHappiness, instance.getHappiness(), 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -371,7 +353,6 @@ public class UserDragonTest {
 		assertEquals(expResult.getType(), result.getType());
 		assertEquals(expStamina, instance.getStamina(), 0.0);
 		assertEquals(expHealth, instance.getHealth(), 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -387,7 +368,6 @@ public class UserDragonTest {
 		assertEquals(expBladder, instance.getBladder(), 0.0);
 		assertEquals(expResult.getMessage(), result.getMessage());
 		assertEquals(expResult.getType(), result.getType());
-		// TODO review the generated test code and remove the default call to fail.
 	} 
 	
 }

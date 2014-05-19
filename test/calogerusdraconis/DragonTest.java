@@ -49,7 +49,6 @@ public class DragonTest {
 		float expResult = 51;
 		float result = instance.getBladder();
 		assertEquals(expResult, result, 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -62,7 +61,6 @@ public class DragonTest {
 		int expResult = 123;
 		int result = instance.getExperience();
 		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -75,7 +73,6 @@ public class DragonTest {
 		float expResult = 78;
 		float result = instance.getHealth();
 		assertEquals(expResult, result, 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -88,7 +85,6 @@ public class DragonTest {
 		float expResult = 21;
 		float result = instance.getHunger();
 		assertEquals(expResult, result, 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -101,7 +97,6 @@ public class DragonTest {
 		int expResult = 5;
 		int result = instance.getLevel();
 		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -114,7 +109,6 @@ public class DragonTest {
 		Dragon instance = new Dragon("enemy",78,89,23,51,21,5,123);
 		instance.setLevel(val);
 		assertEquals(val, instance.getLevel());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -127,7 +121,6 @@ public class DragonTest {
 		String expResult = "enemy";
 		String result = instance.getName();
 		assertEquals(expResult, result);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -140,7 +133,6 @@ public class DragonTest {
 		Dragon instance = new Dragon("enemy",78,89,23,51,21,5,123);
 		instance.setName(val);
 		assertEquals(val, instance.getName());
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -153,7 +145,6 @@ public class DragonTest {
 		float expResult = 89;
 		float result = instance.getStamina();
 		assertEquals(expResult, result, 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**
@@ -166,7 +157,6 @@ public class DragonTest {
 		float expResult = 23;
 		float result = instance.getThirst();
 		assertEquals(expResult, result, 0.0);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 	
 }
