@@ -61,6 +61,14 @@ public class SoundManager {
         }
     }
     
+    public static void stopAllBGMSound(){
+        for(Sound s : sounds){
+            if (s.type == Sound.SoundType.bgm){
+                s.stop();
+            }
+        }
+    }
+    
     public static void setSFXVolume(float value){
         if (value<0f) value = 0f;
         if (value>100f) value = 100f;

@@ -135,7 +135,7 @@ public class MainMenuGUI extends Scene
         this.LoadContent();
         
         /*Background music*/
-        SoundManager.stopAllSound();
+        SoundManager.stopAllBGMSound();
         SoundManager.loopSound("mainBm");
         
         /* Rectangle */
