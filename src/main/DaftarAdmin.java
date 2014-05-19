@@ -20,7 +20,10 @@ public class DaftarAdmin {
     {
         daftaradmin = new ArrayList<>();
     }
-    
+     /**
+     * Menambahkan ke database yaitu
+     * Username dari admin, password dari admin dan peran sebagai admin atau superadmin
+     */
     public void saveToDatabase()
     {
         Connection koneksi;
@@ -43,6 +46,10 @@ public class DaftarAdmin {
             System.out.println("Error DaftarAdmin.java" + ex.getMessage());
         }
     }
+    /**
+     * Menambah Admin ke daftar admin
+     * @param admin 
+     */
     public void add(Admin admin){
         saveToDatabase();
         Admin adminTemp;
