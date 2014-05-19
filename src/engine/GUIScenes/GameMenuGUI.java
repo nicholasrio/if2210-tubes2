@@ -356,7 +356,7 @@ public class GameMenuGUI extends Scene
                         }
                     }
 
-                    if (playerRect.getMaxY() >= ((6*75)+initPosMapHeight))
+                    if (playerRect.getMaxY() >= ((mazeSize*pathTexture.getWidth(this))+initPosMapHeight))
                             playerCollide = true;
 
                     if (!playerCollide)
@@ -410,7 +410,7 @@ public class GameMenuGUI extends Scene
                         }
                     }
 
-                    if (playerRect.getMaxX() >= ((6*75)+initPosMapWidth))
+                    if (playerRect.getMaxX() >= ((mazeSize*pathTexture.getWidth(this))+initPosMapWidth))
                             playerCollide = true;
 
                     if (!playerCollide)
@@ -567,7 +567,7 @@ public class GameMenuGUI extends Scene
             }
             g2D.drawImage(coinTexture, (int)(getWidth()*0.80f), (int) (getHeight()*0.2f), (int) (coinTexture.getWidth(this)*0.55f),(int) (coinTexture.getHeight(this) * 0.55f), this);
             g2D.drawImage(titleTexture, (int) (getWidth()*0.24f), (int) (getHeight()*0.03f), (int) (titleTexture.getWidth(this) * 0.80f), (int) (titleTexture.getHeight(this) * 0.80f), this);
-            g2D.setFont(font);
+            g2D.setFont(font    );
             this.setForeground(Color.GREEN);
             g2D.drawString(String.valueOf(currentPlayer.getTempScore()),(int)(this.getWidth()*0.9f), (int)(this.getHeight()*0.275f));
             if(isFinish)
@@ -607,7 +607,7 @@ public class GameMenuGUI extends Scene
     
     public void keyboardUpdatePressed(KeyEvent e)
     {
-        if (!hitHole)
+        if (!hitHole && !hitTeleport)
         {
             int keyCode = e.getKeyCode();
             switch (keyCode)
