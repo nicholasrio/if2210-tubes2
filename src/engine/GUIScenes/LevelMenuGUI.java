@@ -27,9 +27,11 @@ public class LevelMenuGUI extends Scene
 {
     // attributes
     private final int NLevel = 2;
-    private int level;
     private int menuPressed;
     private boolean unlocked;
+    public static int nowLevel;
+    
+    /* Textures */
     private static Image bgTexture;
     private static Image groupnameTexture;
     private static Image levelTexture;
@@ -51,9 +53,9 @@ public class LevelMenuGUI extends Scene
     public LevelMenuGUI()
     {
         super("LevelMenuGUI");
-        menuPressed=-1;
+        menuPressed = -1;
               
-        level=1;
+        nowLevel=1;
         addMouseListener(new MouseListener() {
 
             @Override
@@ -95,7 +97,7 @@ public class LevelMenuGUI extends Scene
     {
         // load Image here
         // using ImageLoader.getImage
-        switch (level)
+        switch (nowLevel)
         {
             case 1: bgTexture = ImageLoader.getImage("frozen_cube");
                     groupnameTexture = ImageLoader.getImage("cube_mazer_ice");
@@ -146,27 +148,27 @@ public class LevelMenuGUI extends Scene
     public void Update()
     {
         if (menuPressed==3){
-            if (level<NLevel)   {
-                level++;
+            if (nowLevel<NLevel)   {
+                nowLevel++;
                 this.LoadContent();
             }   
             menuPressed=-1;
         }
         else if (menuPressed==4){
-            if (level>1)   {
-                level--;        
+            if (nowLevel>1)   {
+                nowLevel--;        
                 this.LoadContent();
             }
             menuPressed=-1;
         }        
-        if (level==1){
+        if (nowLevel==1){
             arrowSound="fall";
             unlocked=true;
         }
-        else if (level==2){
+        else if (nowLevel==2){
             
             arrowSound="fall";
-            if (level<=GameData.lastLogin.getLevelUnlocked()+1){            
+            if (nowLevel<=GameData.lastLogin.getLevelUnlocked()+1){            
                 LorULTexture=ImageLoader.getImage("unlocked_fire");                        
                 unlocked=true;
             }
@@ -197,7 +199,7 @@ public class LevelMenuGUI extends Scene
         if (Game.mode == 2)
         {
             Graphics2D g2D = (Graphics2D) g;     
-            if (level==1){
+            if (nowLevel==1){
                 g2D.drawImage(bgTexture, 0, 0,getWidth(),getHeight(), this);
                 g2D.drawImage(groupnameTexture, (int) (getWidth()*0.23f), (int) (getHeight()*0.05f),
                         (int) (groupnameTexture.getWidth(this)*0.7f),(int) (groupnameTexture.getHeight(this)*0.7f), this);                                  
@@ -212,7 +214,7 @@ public class LevelMenuGUI extends Scene
                 g2D.drawImage(BackTexture, (int) (getWidth()*0.76f), (int) (getHeight()*0.85f), 
                         (int) (BackTexture.getWidth(this)*0.7f),(int) (BackTexture.getHeight(this)*0.7f), this);                
             }
-            else if (level==2){
+            else if (nowLevel==2){
                 g2D.drawImage(bgTexture, 0, 0,getWidth(),getHeight(), this);
                 g2D.drawImage(groupnameTexture, (int) (getWidth()*0.23f), (int) (getHeight()*0.05f),
                         (int) (groupnameTexture.getWidth(this)*0.7f),(int) (groupnameTexture.getHeight(this)*0.7f), this);                                  
@@ -222,7 +224,7 @@ public class LevelMenuGUI extends Scene
                         (int) (titleLvlTexture.getWidth(this)*0.7f),(int) (titleLvlTexture.getHeight(this)*0.7f), this);
                 g2D.drawImage(Arrow2Texture, -20, (int) (getHeight()*0.35f), 
                         (int) (Arrow2Texture.getWidth(this)*0.5f),(int) (Arrow2Texture.getHeight(this)*0.5f), this);
-                if (level<=GameData.lastLogin.getLevelUnlocked()){                            
+                if (nowLevel<=GameData.lastLogin.getLevelUnlocked()){                            
                     g2D.drawImage(LorULTexture, (int) (getWidth()*0.35f), (int) (getHeight()*0.65f), 
                         (int) (LorULTexture.getWidth(this)*0.73f),(int) (LorULTexture.getHeight(this)*0.7f), this);                                
                 }
@@ -248,7 +250,7 @@ public class LevelMenuGUI extends Scene
         }
         else if (rightArrowRect.contains(event.getPoint()))
         {
-            if (level < NLevel)
+            if (nowLevel < NLevel)
             {
                 menuPressed = 3;
                 SoundManager.playSound(arrowSound);
@@ -256,7 +258,7 @@ public class LevelMenuGUI extends Scene
         }
         else if (leftArrowRect.contains(event.getPoint()))
         {
-            if (level>1)
+            if (nowLevel>1)
             {
                 menuPressed = 4;
                 SoundManager.playSound(arrowSound);

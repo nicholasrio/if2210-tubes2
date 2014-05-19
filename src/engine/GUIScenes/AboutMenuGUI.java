@@ -216,6 +216,7 @@ public class AboutMenuGUI extends Scene
     {
         if (backRect.contains(event.getPoint()))
         {
+            SoundManager.playSound("button");
             menuHovered = 1;
         }
         else
@@ -228,7 +229,6 @@ public class AboutMenuGUI extends Scene
     {
         if (backRect.contains(event.getPoint()))
         {
-            SoundManager.playSound("button2");
             menuPressed = 1;
         }
         else
@@ -241,6 +241,7 @@ public class AboutMenuGUI extends Scene
     {
         if (menuPressed == 1)
         {
+            SoundManager.playSound("button2");
             try{
                 SceneManager.SwitchScene("MainMenuGUI");
             }catch(SceneNotFoundException e){

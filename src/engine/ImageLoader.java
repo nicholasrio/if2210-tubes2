@@ -64,7 +64,7 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/LevelMenu/Back Button.png"));
         
         // Image achievement
-        allImages.add(loadImage("Image/AchievementBack.png"));
+        allImages.add(loadImage("Image/Other/AchievementBack.png"));
         
         // Image GameMenu
         allImages.add(loadImage("Image/GameMenu/Ice_Maze/ice_path.png"));
@@ -91,6 +91,8 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/GameMenu/Fire_Maze/teleporter.jpg"));
         allImages.add(loadImage("Image/GameMenu/Fire_Maze/coin.png"));
         allImages.add(loadImage("Image/GameMenu/Fire_Maze/background.jpg"));
+        allImages.add(loadImage("Image/Other/Choice_Border.png"));
+        allImages.add(loadImage("Image/Other/Choice_Border_Hover.png"));
     }
     
     public static Image getImage(String imgName)
@@ -291,6 +293,14 @@ public class ImageLoader extends JPanel
         else if("fire_back".equalsIgnoreCase(imgName))
         {
             return allImages.get(47);
+        }
+        else if ("border".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(48);
+        }
+        else if ("border_hover".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(49);
         }
         return null;
     }

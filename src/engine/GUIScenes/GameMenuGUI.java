@@ -310,6 +310,7 @@ public class GameMenuGUI extends Scene
                     keyEnterPressed = false;
                     playerFaced = 4;
                     SoundManager.stopSound("chain");
+                    LevelMenuGUI.nowLevel++;
                     SceneManager.SwitchScene("LevelMenuGUI");
                     exit = true;
                 } 

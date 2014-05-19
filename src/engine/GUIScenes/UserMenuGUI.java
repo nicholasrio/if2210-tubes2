@@ -26,10 +26,13 @@ import java.util.ArrayList;
 public class UserMenuGUI extends Scene
 {
    // attributes
+    /* Textures */
     private Image bgTexture;
     private Image titleTexture;
     private Image backTexture;
     private Image AchString;
+    private Image borderTexture;
+    private Image borderhoverTexture;
     
     private Rectangle backRect;
     private ArrayList<Rectangle> userRect;
@@ -40,6 +43,7 @@ public class UserMenuGUI extends Scene
     
     private String userName;
     
+    private boolean []userHover;
     private float transparentPercentage;
     private int menuHovered;
     private int menuPressed;
@@ -52,7 +56,6 @@ public class UserMenuGUI extends Scene
     public UserMenuGUI()
     {
         super("UserMenuGUI");
-        
         
         transparentPercentage = 0f;
         menuHovered = -1;
@@ -145,6 +148,8 @@ public class UserMenuGUI extends Scene
         titleTexture = ImageLoader.getImage("title");
         backTexture = ImageLoader.getImage("back");
         AchString = ImageLoader.getImage("AchievementBack");
+        borderTexture = ImageLoader.getImage("border");
+        borderhoverTexture = ImageLoader.getImage("border_hover");
     }
     
     @Override
@@ -160,6 +165,11 @@ public class UserMenuGUI extends Scene
         /* userRect initialization */
         for (int i = 0; i < GameData.getJumlahPlayer();i++) {
             userRect.add(new Rectangle((int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+i*35+40),450,30));
+        }
+        userHover = new boolean[userRect.size()];
+        for (int i= 0;i<userRect.size();i++)
+        {
+            userHover[i] = false;
         }
         newRect = new Rectangle((int)(Game.ResolutionWidth*0.0275f), (int)(Game.ResolutionHeight*0.2f)+70,210,50);
         delRect = new Rectangle((int)(Game.ResolutionWidth*0.0275f), (int)(Game.ResolutionHeight*0.2f)+170,210,50);
@@ -216,7 +226,11 @@ public class UserMenuGUI extends Scene
             g2D.drawImage(AchString,(int)(Game.ResolutionWidth*0.0275f),(int)(Game.ResolutionHeight*0.2f),(int)(AchString.getWidth(this)*0.7f),(int)(AchString.getHeight(this)*0.75f),this);
             userMenuFont = userMenuFont.deriveFont(24, 24f);
             g2D.setFont(userMenuFont);
+            
+            g2D.drawImage(borderTexture,(int)(Game.ResolutionWidth*0.028f),(int)(Game.ResolutionHeight*0.319f),210,50,this); 
             g2D.drawString("CREATE USER", Game.ResolutionWidth*0.0275f+3, Game.ResolutionHeight*0.2f+100);
+            
+            g2D.drawImage(borderTexture,(int)(Game.ResolutionWidth*0.028f),(int)(Game.ResolutionHeight*0.485f),210,50,this);
             g2D.drawString("DELETE USER", Game.ResolutionWidth*0.0275f+3, Game.ResolutionHeight*0.2f+200);
             
             /* content */
@@ -224,10 +238,12 @@ public class UserMenuGUI extends Scene
             {
                 g2D.setFont(userMenuFont);
                 g2D.drawString("=====   CHANGE USER   =====", (int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+25));
-                for (int i = 0; i < GameData.getJumlahPlayer();i++) {
-                    g2D.draw(userRect.get(i));
-                }
+                
                 for(int i = 0; i < GameData.getJumlahPlayer();i++) {
+                    if (userHover[i])
+                        g2D.drawImage(borderhoverTexture,(int)(Game.ResolutionWidth*0.329f),(int)((Game.ResolutionHeight*0.2f)+i*35)+30,450,50,this);
+                    else
+                        g2D.drawImage(borderTexture,(int)(Game.ResolutionWidth*0.329f),(int)((Game.ResolutionHeight*0.2f)+i*35)+30,450,50,this);
                     g2D.drawString(GameData.dataPlayer.get(i).getNama(), (int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+i*35)+60);
                 }
             } 
@@ -253,12 +269,10 @@ public class UserMenuGUI extends Scene
             {
                 g2D.setFont(userMenuFont);
                 g2D.drawString("=====   DELETE USER   =====", (int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+25));
-                for (int i = 0; i < GameData.getJumlahPlayer();i++) {
-                    g2D.draw(userRect.get(i));
-                }
-                for(int i = 0; i < GameData.getJumlahPlayer();i++) {
-                    g2D.drawString(GameData.dataPlayer.get(i).getNama(), (int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+i*35)+60);
-                }
+               for(int i = 0; i < GameData.getJumlahPlayer();i++) {
+                   g2D.drawImage(borderTexture,(int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+i*35)+60,this); 
+                   g2D.drawString(GameData.dataPlayer.get(i).getNama(), (int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+i*35)+60);
+               }
             }
         }
     }
@@ -267,11 +281,25 @@ public class UserMenuGUI extends Scene
     {
         if (backRect.contains(event.getPoint()))
         {
+            SoundManager.playSound("button");
             menuHovered = 1;
         }
         else
         {
             menuHovered = -1;
+        }
+        
+        for (int i = 0 ; i<userRect.size();i++)
+        {
+            if (userRect.get(i).contains(event.getPoint()))
+            {
+                userHover[i] = true;
+                break;
+            }
+            else
+            {
+                userHover[i] = false;
+            }
         }
     }
     
@@ -323,14 +351,17 @@ public class UserMenuGUI extends Scene
         try{
         if (menuPressed == 0)
         {
+            SoundManager.playSound("button2");
             SceneManager.SwitchScene("MainMenuGUI");
         } 
         else if (menuPressed != -1) 
         {
             if (menuPressed == 555) {
+               SoundManager.playSound("fbutton");
                 /* menu create user */
             }
             else if (menuPressed == 777) {
+                SoundManager.playSound("fbutton");
                 /* menu delete user */
             } 
             else {
@@ -340,11 +371,16 @@ public class UserMenuGUI extends Scene
                 }
                 else if(status == 1) {
                     if (menuPressed == 444) {
+                        SoundManager.playSound("fbutton");
                         status = 0;
                         GameData.addPlayer(userName);
+                        userHover = new boolean[userHover.length+1];
+                        for (boolean b : userHover)
+                            b = false;
                         userName = "";
                         userRect.add(new Rectangle((int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+(GameData.getJumlahPlayer()-1)*35+40),450,30));
                     } else if (menuPressed == 999) {
+                        SoundManager.playSound("fbutton");
                         userName = "";
                         status = 0;
                     }
@@ -364,6 +400,7 @@ public class UserMenuGUI extends Scene
     
     void prosesInput(KeyEvent e) {
         if (status == 1) {
+            SoundManager.playSound("button2");
             if (e.getKeyCode() == 8 && userName.length() != 0) {
                 userName = userName.substring(0, userName.length()-1);
             } else if  ((e.getKeyCode() >= 48 && e.getKeyCode() <= 57) ||(e.getKeyCode() >= 65 && e.getKeyCode() <= 90)){

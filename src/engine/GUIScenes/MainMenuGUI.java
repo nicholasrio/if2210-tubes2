@@ -313,13 +313,10 @@ public class MainMenuGUI extends Scene
             try{
                 switch (menuPressed)
                 {
-                    case 1 : //SoundManager.playSound("button2");
-                             
-                             SoundManager.playSound("fbutton");
+                    case 1 : SoundManager.playSound("fall");
                              SceneManager.SwitchScene("LevelMenuGUI"); 
                              break;
                     case 2 : SoundManager.playSound("fbutton");
-                             //SoundManager.playSound("button2");
                              SceneManager.SwitchScene("AchievementMenuGUI"); 
                              break;
                     case 3 : SoundManager.playSound("fbutton");
@@ -328,7 +325,7 @@ public class MainMenuGUI extends Scene
                     case 4 : SoundManager.playSound("fbutton");
                              SceneManager.SwitchScene("AboutMenuGUI");
                              break;
-                    case 5 : SoundManager.playSound("fbutton");
+                    case 5 : SoundManager.playSound("button2");
                              Game.gameRunning = false; 
                              break;
                     case 6 : SoundManager.playSound("fbutton");
