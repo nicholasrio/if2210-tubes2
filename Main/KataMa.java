@@ -8,9 +8,13 @@ package Main;
 
 import Admin.AdministratorController;
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import com.google.gdata.util.ServiceException;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -166,13 +170,13 @@ public class KataMa extends javax.swing.JFrame {
 //GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
-        	NativeInterface.open();
+        NativeInterface.open();
+        try {
             new GuestView().setVisible(true);
-            setVisible(false);
+        } catch (SQLException | IOException | ServiceException ex) {
+            Logger.getLogger(KataMa.class.getName()).log(Level.SEVERE, null, ex);
         }
-        catch(SQLException e){
-        }
+        setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
