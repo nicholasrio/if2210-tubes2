@@ -19,9 +19,9 @@ package calogerusdraconis;
 
 import java.util.Random;
 
-public class util {
+public class Util {
 	
-	private util() {
+	private Util() {
 	}
 		
 	/**

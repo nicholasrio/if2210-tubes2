@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
 public class utilTest {
 	
 	/**
-	 * Test of randomInt method, of class util.
+	 * Test of randomInt method, of class Util.
 	 */
 	@Test
 	public void testRandomInt() {
@@ -36,20 +36,20 @@ public class utilTest {
 		for (int min = 0; min <= 1000; ++min) {
 			for (int max = min; max <= 1000; ++max) { 
 				int expResult = 0;
-				int result = util.randomInt(min, max);
+				int result = Util.randomInt(min, max);
 				assert(min <= result && max >= result);
 			}
 		}
 	}
 
 	/**
-	 * Test of gaussBasedOn method, of class util.
+	 * Test of gaussBasedOn method, of class Util.
 	 */
 	@Test
 	public void testGaussBasedOn() {
 		System.out.println("gaussBasedOn");
 		for (double value = 0; value <= 1000; ++value) {
-			float result = util.gaussBasedOn(value);
+			float result = Util.gaussBasedOn(value);
 			if (Math.abs((float)Math.ceil(value*0.8)-result) < 0.00000000001) continue;
 			if (Math.abs((float)Math.ceil(value*1.2)-result) < 0.00000000001) continue;
 			assert(Math.ceil(value*0.8) <= result && Math.ceil(value*1.2) >= result);
