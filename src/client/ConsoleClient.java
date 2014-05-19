@@ -28,6 +28,7 @@ public class ConsoleClient extends Client{
 	private void run(){
 		try {
 			do {
+                                
 				reader = new BufferedReader(new InputStreamReader(System.in));
 				if(!LoggedIn)
 					System.out.println("1. login");

@@ -78,13 +78,14 @@ public class UserDaoImpl extends Database implements UserDao {
 	@Override
 	public void UpdateUser(String username, User user) {
 		super.Where("username = ", username);
-		String col[] = {"username", "password", "nama", "email", "saldo"};
-		String val[] = new String[5];
+		String col[] = {"username", "password", "nama", "email", "saldo","status"};
+		String val[] = new String[6];
 		val[0] = user.getUsername();
 		val[1] = user.getPassword();
 		val[2] = user.getNama();
 		val[3] = user.getEmail();
 		val[4] = "" + user.getSaldo();
+		val[5] = "" + user.getStatus();
 		super.Update(Table, col, val);
 	}
 
@@ -96,13 +97,14 @@ public class UserDaoImpl extends Database implements UserDao {
 
 	@Override
 	public void AddUser(User user) {
-		String col[] = {"username", "password", "nama", "email", "saldo"};
+		String col[] = {"username", "password", "nama", "email", "saldo","status"};
 		String val[] = new String[5];
 		val[0] = user.getUsername();
 		val[1] = user.getPassword();
 		val[2] = user.getNama();
 		val[3] = user.getEmail();
 		val[4] = "" + user.getSaldo();
+		val[5] = "" + user.getStatus();
 		int hasil = super.Insert(Table, col, val);
 	}
 

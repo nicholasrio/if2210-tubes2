@@ -3,6 +3,7 @@ package Server;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import job.Job;
 
 public class ServerManager {
 
@@ -13,6 +14,7 @@ public class ServerManager {
 	private ServerThread[] threads;
 	private List<String> loggedInUsers;
 	
+        public Job myJob;
 
 	private ServerManager(){ 
 		threads = new ServerThread[MAX_THREADS];
@@ -51,11 +53,12 @@ public class ServerManager {
 	public void release(int id) {
 		availableThreads++;
 		available[id] = true;
-		try{
-			threads[id].join();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+                try{
+                    threads[id].join();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+		threads[id] = null;
 	}
 	
 	public void addLoggedUser(String username){

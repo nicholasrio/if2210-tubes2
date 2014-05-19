@@ -20,17 +20,19 @@ public class User implements Serializable{
 	private String nama;
 	private String email;
 	private int saldo;
+	private int status;
 
 	public User() {
 
 	}
 
-	public User(String username, String password, String nama, String email, int saldo) {
+	public User(String username, String password, String nama, String email, int saldo,int status) {
 		this.username = username;
 		this.password = Encrypt.MD5(password);
 		this.nama = nama;
 		this.email = email;
 		this.saldo = saldo;
+		this.status = status;
 	}
 
 	public User(ResultSet Data) {
@@ -40,6 +42,7 @@ public class User implements Serializable{
 			nama = Data.getString("nama");
 			email = Data.getString("email");
 			saldo = Data.getInt("saldo");
+			status = Data.getInt("status");
 		} catch (Exception e) {
 
 		}
@@ -64,6 +67,11 @@ public class User implements Serializable{
 	public int getSaldo() {
 		return saldo;
 	}
+	
+	public int getStatus()
+	{
+		return status;
+	}
 
 	public void setUsername(String username) {
 		this.username = username;
@@ -84,6 +92,10 @@ public class User implements Serializable{
 	public void setSaldo(int saldo) {
 		this.saldo = saldo;
 	}
+	public void setStatus(int status)
+	{
+		this.status = status;
+	}
 
 	public void print() {
 		System.out.println(username);
@@ -91,5 +103,6 @@ public class User implements Serializable{
 		System.out.println(nama);
 		System.out.println(email);
 		System.out.println(saldo);
+		System.out.println(status);
 	}
 }

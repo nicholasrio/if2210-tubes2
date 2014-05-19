@@ -10,6 +10,8 @@ import entity.TransObject;
 import java.io.*;
 import java.net.URI;
 import com.data.*;
+import file.*;
+import job.*;
 
 public class ServerThread extends Thread {
 
@@ -17,7 +19,7 @@ public class ServerThread extends Thread {
 	private int id;
 	private Credential credential;
 	public static final int BUF_SIZE = 2048;
-
+        public Job myJob;
 	public ServerThread(Socket clientSocket, int id) {
 		socket = clientSocket;
 		this.id = id;
@@ -37,23 +39,52 @@ public class ServerThread extends Thread {
 					File file = new File("serverFolder/" + transObj.getSenderNIM());
 					file.mkdirs();
 					file = new File(transObj.getFileName());
-
+					
 					InputStream in = socket.getInputStream(); //used  
 					DataInputStream clientData = new DataInputStream(in); //used
-
+					
 					OutputStream output = new FileOutputStream("serverFolder/" + transObj.getSenderNIM() + "/" + file.getName());
 
+<<<<<<< HEAD
+=======
+                                //clientData.readLong();  
+>>>>>>> eb1de257bb22af57d0ae943abe8db994f0a43b3b
 					byte[] buffer = new byte[BUF_SIZE];
 
 					int smblen;
 					do {
-						smblen = clientData.read(buffer);
+						smblen = in.read(buffer);
 						output.write(buffer, 0, smblen);
 					} while (clientData.available() != 0);
+					output.close();
 					System.out.println("User " + transObj.getSenderNIM() + " uploaded a file: " + file.getName());
 					pw.write("File successfully uploaded");
 					pw.flush();
-					output.close();
+                                        
+                                        /* belum dalam method */
+                                        FileFactory myFactory   =    new FileFactory();
+                                        MyFile  myFile;
+                                        if(file.getName().contains(".txt")){
+                                                myFile  =   myFactory.getFile("TXT");
+                                                myFile.setEkstensi("TXT");
+                                        }else if(file.getName().contains(".pdf")){
+                                                myFile  =   myFactory.getFile("PDF");
+                                                myFile.setEkstensi("PDF");
+                                        }else{
+                                                myFile  =   myFactory.getFile("DOC");
+                                                myFile.setEkstensi("DOC");
+                                        }
+                                        myFile.nama =   file.getName();
+                                        myFile.uploader =    transObj.getSenderNIM();
+                                        myFile.path =   file.getName();
+                                        
+                                        myFile.print();
+                                        
+                                        /* Menambahkan ke dalam Job
+                                        myJob =    new Job(myFile.uploader);
+                                        myJob.addFile(myFile);
+                                        myJob.print();
+                                                 */
 				}
 			} else if (obj instanceof Credential) {
 				System.out.println("Credential information received");
@@ -76,12 +107,17 @@ public class ServerThread extends Thread {
 					}
 					else if(credential.getType() == Credential.PRINT){
 						//call to method print("serverFolder/" + credential.getId() + "/" + credential.getFile())
+                                            //myJob.print();
 					}
 				} else {
 					pw.write("Wrong username or password\n");
 					pw.flush();
 				}
+				System.out.println("Message sent");
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			try {
 				if (ois != null) {
 					ois.close();
@@ -91,9 +127,8 @@ public class ServerThread extends Thread {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
+
+		}
 
 	}
 
@@ -103,4 +138,6 @@ public class ServerThread extends Thread {
             User user = Data.Validate(c.getId(), c.getPassword());
             return (user != null);
 	}
+        
+        
 }
