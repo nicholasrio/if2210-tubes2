@@ -13,6 +13,12 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.util.Scanner;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
+import static printer.PrinterController.printPDF;
 
 /**
  *
@@ -36,9 +42,9 @@ public class TXT extends MyFile {
         BufferedReader br = null;
 
         try {
-            File file = new File(path);
+            File file = new File("serverFolder/"+uploader+"/"+path);
             Document pdfDoc = new Document();
-            String output_file = path + ".pdf";
+            String output_file = "serverFolder/"+uploader+"/"+path + ".pdf";
             PdfWriter writer = PdfWriter.getInstance(pdfDoc, new FileOutputStream(output_file));
             pdfDoc.open();
             pdfDoc.setMarginMirroring(true);
@@ -111,7 +117,20 @@ public class TXT extends MyFile {
         }
     }
 
-    public void print() {
-        System.out.println("TXT");
+    public void print() throws IOException, PrinterException {
+        toPDF();
+        Scanner in = new Scanner(System.in);
+        PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
+        System.out.println("Number of print services: " + printServices.length);
+        int i = 0;
+        PrinterJob printJob = PrinterJob.getPrinterJob();
+        for (PrintService printer : printServices)
+        {
+            System.out.println(i+". Printer: " + printer.getName());
+            i++;
+        }
+        System.out.print("Choose printer : ");
+        int id = in.nextInt();
+        printPDF("serverFolder/"+uploader+"/"+path+".pdf",printServices[id]);
     }
 }

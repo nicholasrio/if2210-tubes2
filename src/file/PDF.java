@@ -52,7 +52,7 @@ public class PDF extends MyFile {
         }
         System.out.print("Choose printer : ");
         int id = in.nextInt();
-        printPDF("D:\\indexfile.pdf",printServices[id]);
+        System.out.println(path);
+        printPDF("serverFolder/"+uploader+"/"+path,printServices[id]);
     }
-
 }

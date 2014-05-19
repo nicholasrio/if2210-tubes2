@@ -31,6 +31,8 @@ public class Client {
 	}
 		
 	public void login(String NIM, String password) {
+            this.NIM = NIM;
+            this.password = password;
 		try {
 			String tempSR;
 			ObjectOutputStream oos;
@@ -56,6 +58,7 @@ public class Client {
 	public void logout(){
 		ObjectOutputStream oos;
 		BufferedReader in;
+                LoggedIn = false;
 		try{
 			socket = new Socket(hostName, portNumber);
 			oos = new ObjectOutputStream(socket.getOutputStream());
@@ -107,7 +110,7 @@ public class Client {
 				socket = new Socket(hostName, portNumber);
 				ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 				TransObject obj = new TransObject(NIM,filePath);
-                                
+                                System.out.println(NIM);
 				oos.writeObject(obj);
 				upload(obj);
 				oos.close();
@@ -127,7 +130,7 @@ public class Client {
 		}	
 	}
 	
-	private void upload(TransObject obj) {
+	public void upload(TransObject obj) {
 		try {
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -146,6 +149,7 @@ public class Client {
 			System.out.println("Message from server: " + response);
 		} catch (Exception e) {
 			System.out.println("Terjadi kesalahan dalam pengiriman");
+                        e.printStackTrace();
 		}
 	}
 	
