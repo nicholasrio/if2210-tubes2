@@ -1,29 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * A class which represent a room on building.
+ * @author created by : Yanfa Adi Putra
+ * @since 1.5
+ * @version 1.0
  */
-
 package controller;
 
 import model.node.*;
-
-
 import java.util.LinkedList;
 
-/**
- *
- * @author Yanfa
- */
+
 public class MapController {
     private LinkedList<Node> nodes;
-    
-    public MapController() {
-		nodes = new XMLProcessor().loadFromXml("input.txt");
+	
+    /**
+     * Constructs and initializes a map controller with data from a file
+     * @since 1.0
+     */
+    public MapController(String fileName) {
+		nodes = new XMLProcessor.loadFromXml(fileName);
 		
     }
     
-    // Fungsi untuk mencari ruangan dengan nama roomName yang terdekat dari node
+    /**
+     * Get the nearest room that fulfill some specified parameter.
+     * @param node is a node where the initial node is
+	 * @param roomName is a string that define the room name that want to be searched
+     * @since 1.0
+     */
 	public Node nearestRoom(Node node, String roomName){
 		Building building;
 		int nearestRR = -1;
@@ -45,8 +49,13 @@ public class MapController {
 		return nodes.get(nearestRR);
     }
     
-	// Fungsi untuk mengukur jarak terdekat dari Node B1 ke Node B2
-    private double getDistance(Node B1, Node B2){
+	/**
+     * Get the distance of path between two node.
+     * @param B1 is define initial node
+	 * @param B2 is define the target node
+     * @since 1.0
+     */
+	private double getDistance(Node B1, Node B2){
 		LinkedList<Double> jarak = new LinkedList<>(); // jarak dari masing-masing node dari node B1
 		LinkedList<Integer> nextNode = new LinkedList<>(); // list penampung titik yang belum dikunjungi
 		double temp; // temporary variable
@@ -76,8 +85,13 @@ public class MapController {
 		}
 		return jarak.get(B2.getID());
     }
-
-	// Fungsi untuk mencari node-node terdekat yang harus dilewati jika dari Node B1 ke Node B2 
+	
+	/**
+     * Get the direction in this case is path of node between two node.
+     * @param B1 is define initial node
+	 * @param B2 is define the target node
+     * @since 1.0
+     */
 	public LinkedList<Integer> getDirection(Node B1, Node B2){
 		LinkedList<LinkedList<Integer>> path = new LinkedList<>();
 		LinkedList<Double> jarak = new LinkedList<>(); // jarak dari masing-masing node dari node B1
@@ -119,7 +133,12 @@ public class MapController {
 		}
 		return path.get(B2.getID());
 	}
-
+	
+	/**
+     * Add another node to the map
+     * @param node is define the node that want to be added
+	 * @since 1.0
+     */
 	public void addNode(Node node){
 		nodes.add(node);
 	}
