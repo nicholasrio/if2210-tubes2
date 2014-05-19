@@ -21,6 +21,9 @@ public class FormLoginPemilihCLI {
     public FormLoginPemilihCLI(){
         formPemilihCLI = new FormPemilihCLI();
     }
+    /**
+     * Tampilan awal untuk pemilih melakukan login
+     */
     public void start(){
         int t=2014;
         System.out.println("=============================================");
@@ -46,6 +49,12 @@ public class FormLoginPemilihCLI {
             System.out.println("NIK ataupun password salah. Ulangi lagi!");
         
     }
+     /**
+     * Mengecek apakah seorang pemilih sudah terdaftar
+     * @param NIK
+     * @param password
+     * @return boolean
+     */
     public boolean isTerdaftar(String NIK, String password){
         boolean valid = false;
         Pemilih pemilih = new Pemilih(NIK,password);
