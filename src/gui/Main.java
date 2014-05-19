@@ -7,6 +7,11 @@ package gui;
 
 import Client.Client;
 import gui.Login;
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  *
@@ -21,9 +26,20 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO code application logic here
-		client = new Client("localhost", 5432);
+            try
+            {
+                File file = new File("config.xml");
+		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		Document doc = builder.parse(file);
+                Element Server = (Element) doc.getElementsByTagName("server_addr").item(0);
+		client = new Client(Server.getTextContent(), 5432);
 		Login login = new Login();
 		login.show();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
 	}
 
 }

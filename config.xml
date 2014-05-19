@@ -7,10 +7,13 @@ and open the template in the editor.
 
 
 <onlineprinter>
-    <config>
+    <config_server>
         <host>localhost</host>
         <user>root</user>
         <pass>underground</pass>
         <dbname>tubes_oop</dbname>
-    </config>
+    </config_client>
+    <config_client>
+        <server_addr>localhost</server_addr>
+    </config_client>
 </onlineprinter>
