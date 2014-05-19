@@ -6,9 +6,12 @@
 
 package GUI;
 
+import Tools.PasswordErrorException;
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Admin;
 
 /**
@@ -161,18 +164,17 @@ public class FormLoginAdmin extends javax.swing.JFrame{
         
         Admin admin1 = new Admin(username,password,false);
 
-        if (admin1.ValidateInput())
-        {
-            usernameTextField.setText("");
-            passwordTextField.setText("");
-            this.dispose();
-            FormAdmin fa = new FormAdmin();
-            fa.setVisible(true);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Password yang Anda masukkan salah.", "Password Salah",JOptionPane.ERROR_MESSAGE);
-            usernameTextField.setText("");
+        try {
+            if (admin1.ValidateInput())
+            {
+                usernameTextField.setText("");
+                passwordTextField.setText("");
+                this.dispose();
+                FormAdmin fa = new FormAdmin();
+                fa.setVisible(true);
+            }
+        } catch (PasswordErrorException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
             passwordTextField.setText("");
         }
         
@@ -187,18 +189,17 @@ public class FormLoginAdmin extends javax.swing.JFrame{
         
         Admin admin1 = new Admin (username,password,true);
 
-        if (admin1.ValidateInput())
-        {
-            usernameTextField.setText("");
-            passwordTextField.setText("");
-            close();
-            FormSuperAdmin fs = new FormSuperAdmin();
-            fs.setVisible(true);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Password yang Anda masukkan salah.", "Password Salah",JOptionPane.ERROR_MESSAGE);
-            usernameTextField.setText("");
+        try {
+            if (admin1.ValidateInput())
+            {
+                usernameTextField.setText("");
+                passwordTextField.setText("");
+                close();
+                FormSuperAdmin fs = new FormSuperAdmin();
+                fs.setVisible(true);
+            }
+        } catch (PasswordErrorException ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage());
             passwordTextField.setText("");
         }
     }//GEN-LAST:event_LoginSuperadminButtonActionPerformed

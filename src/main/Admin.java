@@ -2,6 +2,7 @@ package main;
 
 import Tools.KoneksiDatabase;
 import Tools.Hashing;
+import Tools.PasswordErrorException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ public class Admin {
      * Memvalidasi input dari form login admin
      * @return True jika username dan input cocok, False kalau tidak
      */
-    public boolean ValidateInput(){
+    public boolean ValidateInput() throws PasswordErrorException{
         Connection koneksi = KoneksiDatabase.getKoneksi();
         boolean valid = false;
         try {
@@ -53,7 +54,12 @@ public class Admin {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return valid;
+        if(!valid)
+        {
+            throw new PasswordErrorException();
+        }
+        else
+            return valid;
     }
     
     public boolean IsSuperAdmin(){

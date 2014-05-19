@@ -8,6 +8,7 @@ package main;
 
 import Tools.Hashing;
 import Tools.KoneksiDatabase;
+import Tools.PasswordErrorException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,8 +34,9 @@ public class Pemilih {
     /**
      * Mengecek apakah NIK dan Password Penduduk valid, termasuk apakah sudah mencoblos atau belum.
      * @return Return true jika NIK dan Password valid, serta belum mencoblos.
+     * @throws Tools.PasswordErrorException
      */
-    public boolean ValidateInput(){
+    public boolean ValidateInput() throws PasswordErrorException{
         Connection koneksi = KoneksiDatabase.getKoneksi();
         boolean valid = false;
         try {
@@ -84,7 +86,10 @@ public class Pemilih {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return valid;
+        if(!valid)
+            throw new PasswordErrorException();
+        else
+            return valid;
     }
     
     public int GetDapil(){

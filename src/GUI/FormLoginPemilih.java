@@ -6,6 +6,7 @@
 
 package GUI;
 
+import Tools.PasswordErrorException;
 import javax.swing.JOptionPane;
 
 /**
@@ -114,12 +115,14 @@ public class FormLoginPemilih extends javax.swing.JFrame{
 
     private void TombolLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolLoginActionPerformed
         formPemilih = new FormPemilih(textFieldNIK.getText(), jPasswordFieldPassword.getText());
-        if(formPemilih.GetPemilih().ValidateInput()/*textField1.getText().equals("a")*/){
-            this.dispose();
-            formPemilih.setVisible(true);
-            
-        }else{
-            JOptionPane.showMessageDialog(null,"NIK atau Password salah atau anda sudah mencoblos");
+        try{
+            if(formPemilih.GetPemilih().ValidateInput()){
+                this.dispose();
+                formPemilih.setVisible(true);
+
+            }
+        }catch(PasswordErrorException er){
+            JOptionPane.showMessageDialog(null, er.getMessage());
         }
     }//GEN-LAST:event_TombolLoginActionPerformed
 
