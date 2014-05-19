@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * kelas controller video
+ * kelas video
  * @author asus
  */
 public class Video {
