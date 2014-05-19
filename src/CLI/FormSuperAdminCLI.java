@@ -15,7 +15,7 @@ import main.DaftarAdmin;
  * @author user
  */
 public class FormSuperAdminCLI {
-    private final Scanner in;
+    private final Scanner in; // selalu dibutuhkan
     private DaftarAdmin daftarAdmin;
     public FormSuperAdminCLI(){
         in = new Scanner(System.in);
@@ -46,7 +46,8 @@ public class FormSuperAdminCLI {
         String usernameAdmin = in.next();
         System.out.print("\nPassword > ");
         String passwordAdmin = in.next();
-        Admin admin = new Admin(usernameAdmin, passwordAdmin, true);
+        Admin admin = new Admin(usernameAdmin, passwordAdmin, false);
+        daftarAdmin.add(admin);
     }
     public void deleteAdmin(){
         System.out.println("Masukkan username yang akan dihapus :");
