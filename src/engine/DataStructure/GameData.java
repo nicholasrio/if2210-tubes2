@@ -245,9 +245,7 @@ public class GameData {
             playerNode = playerList.item(0);
             element = (Element) playerNode;
             lastLogin.setNama(element.getElementsByTagName("nama").item(0).getTextContent());
-            lastLogin.setScore(Integer.parseInt(element.getElementsByTagName("score").item(0).getTextContent()));
-            lastLogin.setAchievementUnlocked(Integer.parseInt(element.getElementsByTagName("achievementUnlocked").item(0).getTextContent()));
-            lastLogin.setLevelUnlocked(Integer.parseInt(element.getElementsByTagName("levelUnlocked").item(0).getTextContent()));
+            lastLogin = GameData.dataPlayer.get(GameData.getIndexPlayer(lastLogin.getNama()));
 
         } 
         catch (ParserConfigurationException | SAXException | IOException ex) 
