@@ -15,13 +15,14 @@ public class FileExt extends File {
 	private FileCategory cat; // file category
 	private String description;
 	
-	public FileExt(String location, String filename, User uploader, Date uploadTime, String desc) {
+	public FileExt(String location, String filename, User uploader, Date uploadTime, String desc, String cat) throws Exception {
 		super(location); // physical location of the file
 		this.namedName = filename;
 		this.uploader = uploader;
 		this.downloadCount = 0;
 		this.uploadTime = uploadTime;
 		this.description = desc;
+		this.cat = FileCategory.getCategory(cat);
 	}
 	
 	public User getUploader() {

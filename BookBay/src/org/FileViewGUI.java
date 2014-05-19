@@ -48,35 +48,18 @@ public class FileViewGUI extends JFrame implements IFileView {
 	private JLabel lblFileicon;
 	private JButton btnDelete;
 	private JButton btnExit;
-	private JButton btnUpload;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FileViewGUI frame = new FileViewGUI(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public FileViewGUI(FileExt model) {
 		listener = new FileController(model, this);
+		initialize();
+	}
+	
+	public FileViewGUI(FileExt model, IFileController controller) {
+		listener = controller;
+		listener.registerModel(model);
 		initialize();
 	}
 	
@@ -133,36 +116,8 @@ public class FileViewGUI extends JFrame implements IFileView {
 		});
 		contentPane.add(btnDownload, "6, 2");
 		
-		btnUpload = new JButton("Upload");
-		btnUpload.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JFileChooser fc = new JFileChooser();
-				
-				int retval = fc.showOpenDialog(contentPane);
-				
-				if(retval == JFileChooser.APPROVE_OPTION) {
-					try {
-						// TODO: tombol ini hanya mensimulasikan bahwa upload berhasil.
-						// ini masih berupa stub.
-						File temp = fc.getSelectedFile();
-						
-						FileExt file = new FileExt(temp.getAbsolutePath(), temp.getName(),
-										new User("Edmund Ophie", "edmundophie", "12345"), new Date(), "Upload stub");
-						file.setCategory(FileCategory.TextBook);
-						
-						listener.registerModel(file);
-						listener.upload();
-						
-						updateModel();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-				}
-			}
-		});
-		contentPane.add(btnUpload, "6, 4");
-		
 		btnRename = new JButton("Rename");
+		btnRename.setEnabled(false);
 		btnRename.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(!listener.isModelEmpty()) {
@@ -189,6 +144,7 @@ public class FileViewGUI extends JFrame implements IFileView {
 		contentPane.add(lblFileicon, "2, 6, 1, 5");
 		
 		btnDelete = new JButton("Delete");
+		btnDelete.setEnabled(false);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				assert(!listener.isModelEmpty());

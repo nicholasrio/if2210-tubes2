@@ -172,7 +172,7 @@ public class FileController implements IFileController {
 
 	@Override
 	public void updateView() {
-		if(!isModelEmpty())
+		if(!isModelEmpty() && view != null)
 			view.updateModel();
 	}
 

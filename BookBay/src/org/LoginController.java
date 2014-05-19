@@ -13,9 +13,9 @@ public class LoginController {
 		{
 			if(Username.matches(rs.getString("username")) && Password.matches(rs.getString("password")))
 			{
-				currUser.name(Username);
+				currUser.name(rs.getString("realname"));
 				currUser.password(Password);
-				currUser.id(rs.getString("id"));
+				currUser.id(Username);
 				Main.frame.dispose();
 				conn.closeConnection();
 				return true;
