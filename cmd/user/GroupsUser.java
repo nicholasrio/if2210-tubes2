@@ -7,6 +7,7 @@
 package cmd.user;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,12 +30,12 @@ public class GroupsUser {
         System.out.println("Insert Group Name: ");
         GroupName= input.next();
         System.out.println("Insert Project Number: ");
-        no_tubes=input.nextInt();
+        no_tubes=Integer.valueOf(input.next());
     }
     
     static void SelectOption(int i) throws OptionException{
         System.out.println("Insert option: ");
-        option= input.nextInt();
+        option= Integer.valueOf(input.next());
         if (option > i || option <0){
             throw new OptionException("Invalid Option");
         }
@@ -44,20 +45,17 @@ public class GroupsUser {
     }
     
     static void print(){
-        for(int i=up;i<=down;i++){
+        for(int i=up-1;i<down;i++){
             try {
-                System.out.println(DataController.GC.GroupData().get(i)[1]+DataController.GC.GroupData().get(i)[2]);
-                for(int j=3;j<=(DataController.GC.GroupData().size());j++){
-                    System.out.println("Member"+ (j-2) +" :" +DataController.GC.GroupData().get(i)[j]);
-                }
+                System.out.println(Arrays.toString(DataController.GC.GroupData().get(i)));
             } catch (SQLException ex) {
                 Logger.getLogger(GroupsUser.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         System.out.println("");
-        System.out.println("1. Prev");
-        System.out.println("2. Next");
-        System.out.println("3. Select Admin");
+        System.out.println("1. Next");
+        System.out.println("2. Prev");
+        System.out.println("3. Select Grup");
         System.out.println("0. Back");
     }
     static void input(){
@@ -73,9 +71,9 @@ public class GroupsUser {
     }
     static void execute(){
         if(option==1){
-            GroupsUser.action(down+10,up+10);
+            GroupsUser.action(up+10,down+10);
         }
-        else if(option==2){GroupsUser.action(down-10,up-10);}
+        else if(option==2){GroupsUser.action(up-10,down-10);}
         else if(option==3){
             SelectChoice();
             try {
@@ -107,7 +105,7 @@ public class GroupsUser {
         }
         if(up<1){
             up=1;
-            down=up+10;
+            down=up-9;
             try {
                 if(down>DataController.GC.GroupData().size()){
                     down=DataController.GC.GroupData().size();

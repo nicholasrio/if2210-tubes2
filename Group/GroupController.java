@@ -16,6 +16,11 @@ public class GroupController {
     
     private Group team;
     
+    /* tambahan konstruktor, buat cmd (LOL) */
+    public GroupController(){
+        team = new Group();
+    }
+    
     public void InsertGroup() throws SQLException{
 	team.save();
     }

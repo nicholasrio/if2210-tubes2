@@ -7,6 +7,7 @@
 package cmd.user;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ public class DetailPage {
     static String title;
     static int no_tubes;
     static String group_name;
-    static List<String> Member;
+    static List<String> Member = new ArrayList<>();
     static String link;
     static int rating;
     static int view;
@@ -32,7 +33,7 @@ public class DetailPage {
     
     static void SelectOption(int i) throws OptionException{
         System.out.println("Insert option: ");
-        option= input.nextInt();
+        option= Integer.valueOf(input.next());
         if (option > i || option <0){
             throw new OptionException("Invalid Option");
         }
@@ -44,9 +45,16 @@ public class DetailPage {
     static void print(){
         System.out.println("Video: "+title);
         System.out.println("Link: "+link);
-        System.out.println("Group Name: "+group_name);
         System.out.println("Project Number: "+no_tubes);
-        System.out.println("Members: "+Member);
+        System.out.println("Group Name: "+group_name);
+        try {
+            System.out.println("   Member 1: "+DataController.GC.GroupData().get(GroupID)[2]);
+            System.out.println("   Member 2: "+DataController.GC.GroupData().get(GroupID)[3]);
+            System.out.println("   Member 3: "+DataController.GC.GroupData().get(GroupID)[4]);
+        } catch (SQLException ex) {
+            Logger.getLogger(DetailPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         System.out.println("Rating: "+rating);
         System.out.println("View: "+view);
         System.out.println("");

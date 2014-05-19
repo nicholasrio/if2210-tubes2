@@ -26,7 +26,7 @@ public class GroupSearchMenuUser {
         System.out.print("Insert Group Name: ");
         Group_Name= input.next();
         System.out.print("Insert Project Number: ");
-        no_tubes = input.nextInt();
+        no_tubes = Integer.valueOf(input.next());
     }
     static void execute(){
         try {
