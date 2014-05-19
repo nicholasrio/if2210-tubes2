@@ -29,11 +29,11 @@ public class MainMenuUser {
         }
     }
     static void print(){
-        System.out.println("1. View Videos");
-        System.out.println("2. Search Videos");
-        System.out.println("3. View Groups");
-        System.out.println("4. Search Groups");
-        System.out.println("0. Exit");
+        System.out.println("1. Tampilkan daftar Video");
+        System.out.println("2. Cari Video");
+        System.out.println("3. Tampilkan daftar kelompok");
+        System.out.println("4. Cari Kelompok");
+        System.out.println("0. Keluar");
     }
     static void input(){
         valid=false;

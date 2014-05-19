@@ -18,13 +18,15 @@ import java.util.logging.Logger;
 public class VideoDeleteForm {
     static boolean valid;
     static int option;
+    static int id;
+    static int VidID;
     static Scanner input=new Scanner(System.in);
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
+        System.out.println("Masukkan pilihan Menu: ");
         option= Integer.valueOf(input.next());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Pilihan tak valid");
         }
         else{
             valid = true;
@@ -32,9 +34,9 @@ public class VideoDeleteForm {
     }
     
     static void print(){
-        System.out.println("Are you sure you wanna erase this thing?");
-        System.out.println("1. Yes");
-        System.out.println("2. No");
+        System.out.println("Apa anda yakin akan menghapus video ini?");
+        System.out.println("0. Ya");
+        System.out.println("1. Tidak");
     }
     static void input(){
         valid=false;
@@ -48,15 +50,21 @@ public class VideoDeleteForm {
         }
     }
     static void execute(){
-        if(option==1){
+        if(option==0){
             try {
-                DataController.VC.DeleteVideo(VideoPage.id);
+                DataController.VC.DeleteVideo(VidID);
             } catch (SQLException ex) {
                 Logger.getLogger(AddGroupForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
     static void action(){
+        id=VideoPage.id;
+        try {
+            VidID=Integer.valueOf(DataController.VC.SelectVideoData().get(id)[0]);
+        } catch (SQLException ex) {
+            Logger.getLogger(VideoDeleteForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         print();
         input();
         execute();

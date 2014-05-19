@@ -10,10 +10,6 @@ import Admin.AdministratorController;
 import Group.GroupController;
 import Video.VideoController;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,7 +26,7 @@ public class DataController {
             i++;
         }
         if(i>=VC.SelectVideoData().size()){
-            throw new OptionException("The Video doesn't exist");
+            throw new OptionException("Video tak ditemukan");
         }
         else{
             return i;
@@ -43,7 +39,7 @@ public class DataController {
             i++;
         }
         if(i>=VC.SelectVideoData().size()){
-            throw new OptionException("The Video doesn't exist");
+            throw new OptionException("Video tak ditemukan");
         }
         else{
             return i;
@@ -56,7 +52,7 @@ public class DataController {
             i++;
         }
         if(i>=GC.GroupData().size()){
-            throw new OptionException("The Group doesn't exist");
+            throw new OptionException("Kelompok tak ditemukan");
         }
         else{
             return i;

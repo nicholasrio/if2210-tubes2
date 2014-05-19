@@ -21,25 +21,20 @@ public class VideosUser {
     static int down;
     static boolean valid;
     static int option;
-    static int choice;
+    static String choice;
     static Scanner input=new Scanner(System.in);
+    static int id;
     
-    static void SelectChoice() throws OptionException, SQLException{
-        System.out.println("Insert Video Number: ");
-        choice= Integer.valueOf(input.next());
-        if (choice<1 || choice>DataController.VC.SelectVideoData().size()){
-            throw new OptionException("Invalid Number");
-        }
-        else{
-            valid = true;
-        }
+    static void SelectChoice(){
+        System.out.print("Masukkan judul: ");
+        choice= input.nextLine();
     }
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
-        option= Integer.valueOf(input.next());
+        System.out.println("Masukkan pilihan: ");
+        option= Integer.valueOf(input.nextLine());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Pilihan tak valid");
         }
         else{
             valid = true;
@@ -55,10 +50,10 @@ public class VideosUser {
             }
         }
         System.out.println("");
-        System.out.println("1. Next");
-        System.out.println("2. Prev");
-        System.out.println("3. Select Video");
-        System.out.println("0. Back");
+        System.out.println("1. Berikutnya");
+        System.out.println("2. Sebelumnya");
+        System.out.println("3. Pilih Video");
+        System.out.println("0. Kembali");
     }
     static void input(){
         valid=false;
@@ -79,7 +74,8 @@ public class VideosUser {
         else if(option==3){
             try {
                 SelectChoice();
-                VideoPageUser.action(choice-1);
+                id = DataController.SearchVideoByTitle(choice);
+                VideoPageUser.action(id);
             } catch (OptionException ex) {
                 System.out.println(ex.getMessage());
                 VideosUser.action(up,down);

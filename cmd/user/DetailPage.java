@@ -32,10 +32,10 @@ public class DetailPage {
     static Scanner input=new Scanner(System.in);
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
+        System.out.println("Masukkan pilihan menu: ");
         option= Integer.valueOf(input.next());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Pilihan tak valid");
         }
         else{
             valid = true;
@@ -45,12 +45,12 @@ public class DetailPage {
     static void print(){
         System.out.println("Video: "+title);
         System.out.println("Link: "+link);
-        System.out.println("Project Number: "+no_tubes);
-        System.out.println("Group Name: "+group_name);
+        System.out.println("No Tugas Besar: "+no_tubes);
+        System.out.println("Nama Kelompok: "+group_name);
         try {
-            System.out.println("   Member 1: "+DataController.GC.GroupData().get(GroupID)[2]);
-            System.out.println("   Member 2: "+DataController.GC.GroupData().get(GroupID)[3]);
-            System.out.println("   Member 3: "+DataController.GC.GroupData().get(GroupID)[4]);
+            System.out.println("   Anggota 1: "+DataController.GC.GroupData().get(GroupID)[2]);
+            System.out.println("   Anggota 2: "+DataController.GC.GroupData().get(GroupID)[3]);
+            System.out.println("   Anggota 3: "+DataController.GC.GroupData().get(GroupID)[4]);
         } catch (SQLException ex) {
             Logger.getLogger(DetailPage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,8 +59,8 @@ public class DetailPage {
         System.out.println("View: "+view);
         System.out.println("");
         System.out.println("Menu:");
-        System.out.println("0. Show Group");
-        System.out.println("1. Show Video");
+        System.out.println("0. Tampilkan Kelompok");
+        System.out.println("1. Tampilkan Video");
     }
     static void input(){
         valid=false;
@@ -87,16 +87,17 @@ public class DetailPage {
         try {
             GroupID=DataController.SearchGroup(group_name, no_tubes);
             view=Integer.valueOf(DataController.VC.SelectVideoData().get(VideoID)[3]);
+            //add data according to title
+            print();
+            input();
+            execute();
         } catch (SQLException ex) {
             Logger.getLogger(DetailPage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (OptionException ex) {
             System.out.println(ex.getMessage());
             VideoPageUser.action(VideoID);
         }
-        //add data according to title
-        print();
-        input();
-        execute();
+        
     }
     static void action(int _no_tubes, String _GroupName){
         group_name=_GroupName;
@@ -107,15 +108,16 @@ public class DetailPage {
             title=DataController.VC.SelectVideoData().get(VideoID)[1];
             link=DataController.VC.SelectVideoData().get(VideoID)[2];
             view=Integer.valueOf(DataController.VC.SelectVideoData().get(VideoID)[3]);
+            //add data according to Group data
+            print();
+            input();
+            execute();
         } catch (SQLException ex) {
             Logger.getLogger(DetailPage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (OptionException ex) {
             System.out.println(ex.getMessage());
             GroupPageUser.action(GroupID);
         }
-        //add data according to Group data
-        print();
-        input();
-        execute();
+        
     }
 }

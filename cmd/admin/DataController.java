@@ -29,7 +29,7 @@ public class DataController {
             return i;
         }
         else{
-            throw new OptionException("The Video doesn't exist");
+            throw new OptionException("Video tidak ditemukan");
         }
     }
     
@@ -39,7 +39,7 @@ public class DataController {
             i++;
         }
         if(i>=GC.GroupData().size()){
-            throw new OptionException("The Group doesn't exist");
+            throw new OptionException("Kelompok tidak ditemukan");
         }
         else{
             return i;

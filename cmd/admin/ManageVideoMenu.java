@@ -28,10 +28,10 @@ public class ManageVideoMenu {
         }
     }
     static void print(){
-        System.out.println("1. Add Video");
-        System.out.println("2. View Videos");
-        System.out.println("3. Search Video");
-        System.out.println("0. Cancel");
+        System.out.println("1. Tambah Video");
+        System.out.println("2. Tampilkan Daftar Video");
+        System.out.println("3. Cari Video");
+        System.out.println("0. Batal");
     }
     static void input(){
         valid=false;

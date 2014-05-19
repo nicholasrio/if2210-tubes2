@@ -21,25 +21,20 @@ public class Videos {
     static int down;
     static boolean valid;
     static int option;
-    static int choice;
+    static String choice;
     static Scanner input=new Scanner(System.in);
+    static int id;
     
-    static void SelectChoice() throws OptionException, SQLException{
-        System.out.println("Insert Video Number: ");
-        choice= Integer.valueOf(input.next());
-        if (choice<1 || choice>DataController.VC.SelectVideoData().size()){
-            throw new OptionException("Invalid Number");
-        }
-        else{
-            valid = true;
-        }
+    static void SelectChoice(){
+        System.out.print("Masukkan Judul: ");
+        choice= input.nextLine();
     }
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
-        option= Integer.valueOf(input.next());
+        System.out.println("Masukkan pilihan menu: ");
+        option= Integer.valueOf(input.nextLine());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Pilihan tidak valid");
         }
         else{
             valid = true;
@@ -55,9 +50,9 @@ public class Videos {
             }
         }
         System.out.println("");
-        System.out.println("1. Next");
-        System.out.println("2. Prev");
-        System.out.println("3. Select Video");
+        System.out.println("1. Berikutnya");
+        System.out.println("2. Sebelumnya");
+        System.out.println("3. Pilih Video");
         System.out.println("0. Back");
     }
     static void input(){
@@ -79,7 +74,8 @@ public class Videos {
         else if(option==3){
             try {
                 SelectChoice();
-                VideoPage.action(choice-1);
+                id = DataController.SearchVideoByTitle(choice);
+                VideoPage.action(id);
             } catch (OptionException ex) {
                 System.out.println(ex.getMessage());
                 Videos.action(up,down);

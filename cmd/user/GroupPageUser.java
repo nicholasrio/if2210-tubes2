@@ -25,10 +25,10 @@ public class GroupPageUser {
     static Scanner input=new Scanner(System.in);
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
+        System.out.println("Masukkan pilihan menu: ");
         option= Integer.valueOf(input.next());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Pilihan tak valid");
         }
         else{
             valid = true;
@@ -38,20 +38,20 @@ public class GroupPageUser {
     
     static void print(){
         try {
-            System.out.println("Group Name: "+DataController.GC.GroupData().get(id)[1]);
+            System.out.println("Nama Kelompok: "+DataController.GC.GroupData().get(id)[1]);
             System.out.println("Project Number: "+DataController.GC.GroupData().get(id)[0]);
-            System.out.println("Member 1: "+DataController.GC.GroupData().get(id)[2]);
-            System.out.println("Member 2: "+DataController.GC.GroupData().get(id)[3]);
-            System.out.println("Member 3: "+DataController.GC.GroupData().get(id)[4]);
+            System.out.println("Anggota 1: "+DataController.GC.GroupData().get(id)[2]);
+            System.out.println("Anggota 2: "+DataController.GC.GroupData().get(id)[3]);
+            System.out.println("Anggota 3: "+DataController.GC.GroupData().get(id)[4]);
         } catch (SQLException ex) {
             Logger.getLogger(GroupPageUser.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         System.out.println("");
         System.out.println("Menu:");
-        System.out.println("1. Show Details");
-        System.out.println("2. Show Video");
-        System.out.println("0. Back");
+        System.out.println("1. Tampilkan Detil");
+        System.out.println("2. Tampilkan Video");
+        System.out.println("0. Kembali");
     }
     static void input(){
         valid=false;

@@ -22,9 +22,9 @@ public class LoginMenu {
     static boolean login;
     
     static void input(){
-        System.out.print("Insert NIM: ");
+        System.out.print("NIM: ");
         NIM = input.next();
-        System.out.print("Insert Password: ");
+        System.out.print("Password: ");
         Pass = input.next();
     }
     static void execute(){

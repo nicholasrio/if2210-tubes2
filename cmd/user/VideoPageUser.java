@@ -30,10 +30,10 @@ public class VideoPageUser {
     static Scanner input=new Scanner(System.in);
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
+        System.out.println("Masukkan pilihan menu: ");
         option= Integer.valueOf(input.next());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Pilihan tak valid");
         }
         else{
             valid = true;
@@ -54,9 +54,9 @@ public class VideoPageUser {
         System.out.println("Link: "+URL);
         System.out.println("");
         System.out.println("Menu:");
-        System.out.println("1. Show Details");
-        System.out.println("2. Show Group");
-        System.out.println("0. Back");
+        System.out.println("1. Tampilkan Detil");
+        System.out.println("2. Tampilkan Kelompok");
+        System.out.println("0. Kembali");
     }
     static void input(){
         valid=false;

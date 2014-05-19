@@ -28,16 +28,15 @@ public class MainMenuAdmin {
         }
     }
     static void print(){
-        System.out.println("1. Manage Videos");
-        System.out.println("2. Manage Groups");
-        System.out.println("3. Manage Admins");
-        System.out.println("0. Logout");
+        System.out.println("1. Atur Video");
+        System.out.println("2. Atur Kelompok");
+        System.out.println("0. Batal");
     }
     static void input(){
         valid=false;
          while(!valid){
             try{
-                SelectOption(3);
+                SelectOption(2);
             }
             catch(OptionException a){
                 System.out.println(a.getMessage());
@@ -47,7 +46,6 @@ public class MainMenuAdmin {
     static void execute(){
         if(option==1){ManageVideoMenu.action();}
         else if(option==2){ManageGroupMenu.action();}
-        else if(option==3){ManageAdminMenu.action();}
         else{LoginMenu.login=false;}
     }
     static void action(){

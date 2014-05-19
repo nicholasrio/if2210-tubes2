@@ -28,10 +28,10 @@ public class VideoPage {
     static Scanner input=new Scanner(System.in);
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
+        System.out.println("Masukkan Pilihan menu: ");
         option= Integer.valueOf(input.next());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Masukan tak valid");
         }
         else{
             valid = true;
@@ -51,12 +51,12 @@ public class VideoPage {
     
     static void print(){
         System.out.println("Video: "+VideoTitle);
-        System.out.println("Link: "+URL);
+        System.out.println("Tautan: "+URL);
         System.out.println("");
         System.out.println("Menu:");
-        System.out.println("1. Edit");
-        System.out.println("2. Delete");
-        System.out.println("0. Back");
+        System.out.println("1. Ubah");
+        System.out.println("2. Hapus");
+        System.out.println("0. Kembali");
     }
     static void input(){
         valid=false;

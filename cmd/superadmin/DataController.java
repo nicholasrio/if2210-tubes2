@@ -7,9 +7,6 @@
 package cmd.superadmin;
 
 import Admin.AdministratorController;
-import Group.GroupController;
-import Video.VideoController;
-import java.sql.SQLException;
 
 /**
  *
@@ -17,32 +14,5 @@ import java.sql.SQLException;
  */
 public class DataController {
     static AdministratorController AC= new AdministratorController();
-    static VideoController VC= new VideoController();
-    static GroupController GC= new GroupController();
     
-    static int SearchVideoByTitle(String _Title) throws OptionException, SQLException{
-        int i=0;
-        while(i<VC.SelectVideoData().size() && (!VC.SelectVideoData().get(i)[1].equals(_Title)) ){
-            i++;
-        }
-        if(i<VC.SelectVideoData().size()){
-            return i;
-        }
-        else{
-            throw new OptionException("The Video doesn't exist");
-        }
-    }
-    
-    static int SearchGroup(String _group_name, int _no_tubes) throws SQLException, OptionException{
-        int i=0;
-        while(i<GC.GroupData().size() && !(GC.GroupData().get(i)[1].equals(_group_name)&& GC.GroupData().get(i)[0].equals(Integer.toString(_no_tubes)))){
-            i++;
-        }
-        if(i>=GC.GroupData().size()){
-            throw new OptionException("The Group doesn't exist");
-        }
-        else{
-            return i;
-        }
-    }
 }

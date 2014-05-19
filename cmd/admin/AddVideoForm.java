@@ -26,14 +26,14 @@ public class AddVideoForm {
     static Scanner input=new Scanner(System.in);
     
     static void input(){
-        System.out.print("Insert title: ");
-        title = input.next();
-        System.out.print("Insert Video URL: ");
-        link = input.next();
-        System.out.print("Insert Group Name: ");
-        group_name = input.next();
-        System.out.print("Insert Project Number: ");
-        no_tubes = input.nextInt();
+        System.out.print("Masukkan Judul: ");
+        title = input.nextLine();
+        System.out.print("URL Video: ");
+        link = input.nextLine();
+        System.out.print("Nama kelompok: ");
+        group_name = input.nextLine();
+        System.out.print("No. Tugas Besar: ");
+        no_tubes = Integer.valueOf(input.nextLine());
     }
     static void execute(){
         try {

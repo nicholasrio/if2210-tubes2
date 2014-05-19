@@ -19,6 +19,8 @@ import java.util.logging.Logger;
  */
 public class VideoEditForm {
     static boolean valid;
+    static int id;
+    static int VidID;
     static String title;
     static int no_tubes;
     static String group_name;
@@ -26,16 +28,16 @@ public class VideoEditForm {
     static Scanner input=new Scanner(System.in);
     
     static void input(){
-        System.out.print("Insert new title: ");
-        title = input.next();
+        System.out.print("Masukkan Judul baru: ");
+        title = input.nextLine();
         
-        System.out.print("Insert new Video URL: ");
-        link = input.next();
+        System.out.print("URL video baru: ");
+        link = input.nextLine();
         
-        System.out.print("Insert new Group Name: ");
-        group_name = input.next();
+        System.out.print("Nama Kelompok baru: ");
+        group_name = input.nextLine();
         
-        System.out.print("Insert new Project Number: ");
+        System.out.print("No Tugas Besar baru: ");
         no_tubes = input.nextInt();
         
         try{
@@ -57,15 +59,21 @@ public class VideoEditForm {
     }
     static void execute(){
         try {
-            DataController.VC.EditDataVideo(VideoPage.id, title, link, group_name, no_tubes);
+            DataController.VC.EditDataVideo(VidID, title, link, group_name, no_tubes);
         } catch (SQLException | NullException | AttributeException ex) {
             Logger.getLogger(VideoEditForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
     static void action(){
+        id=VideoPage.id;
+        try {
+            VidID=Integer.valueOf(DataController.VC.SelectVideoData().get(id)[0]);
+        } catch (SQLException ex) {
+            Logger.getLogger(VideoEditForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         input();
         execute();
-        VideoPage.action(VideoPage.id);
+        VideoPage.action(id);
     }
 }

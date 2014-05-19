@@ -22,9 +22,9 @@ public class LoginMenu {
     static boolean login;
     
     static void input(){
-        System.out.print("Insert NIM: ");
+        System.out.print("NIM: ");
         NIM = input.next();
-        System.out.print("Insert Password: ");
+        System.out.print("Password: ");
         Pass = input.next();
     }
     static void execute(){
@@ -33,7 +33,7 @@ public class LoginMenu {
             if(!DataController.AC.checkLoginAdmin(NIM,Pass)){
             } else {
                 login=true;
-                System.out.println("You are logged in as Super Admin");
+                System.out.println("Anda telah masuk sebagai Super Admin");
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginMenu.class.getName()).log(Level.SEVERE, null, ex);

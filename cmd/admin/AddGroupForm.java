@@ -27,15 +27,15 @@ public class AddGroupForm {
     static Scanner input=new Scanner(System.in);
     
     static void input(){
-        System.out.print("Insert Project Number: ");
-        No_Tubes = input.nextInt();
-        System.out.print("Insert Group Name: ");
-        GroupName = input.next();
-        System.out.print("Number of Member: ");
-        Num = input.nextInt();
+        System.out.print("Masukkan nomor Tugas Besar: ");
+        No_Tubes = Integer.valueOf(input.nextLine());
+        System.out.print("Nama Kelompok: ");
+        GroupName = input.nextLine();
+        System.out.print("Jumlah Anggota: ");
+        Num = Integer.valueOf(input.nextLine());
         for(int i = 0; i<Num; i++){
-            System.out.print("Insert Member "+ (i+1)+" : ");
-            Name=input.next();
+            System.out.print("Masukkan Anggota "+ (i+1)+" : ");
+            Name=input.nextLine();
             Member.add(Name);
         }
     }

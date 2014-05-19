@@ -22,7 +22,7 @@ public class AdminSearchForm {
     static boolean login;
     
     static void input(){
-        System.out.print("Insert NIM: ");
+        System.out.print("Masukkan NIM: ");
         NIM = input.next();
     }
     static void execute(){
