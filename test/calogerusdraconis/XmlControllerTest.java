@@ -29,36 +29,9 @@ import org.junit.Test;
 
 /**
  *
- * @author dalva
+ * @author Dariel Valdano
  */
 public class XmlControllerTest {
-	
-	//private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	//private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-	
-	public XmlControllerTest() {
-	}
-	
-	@BeforeClass
-	public static void setUpClass() {
-	}
-	
-	@AfterClass
-	public static void tearDownClass() {
-	}
-	
-	@Before
-	public void setUp() {
-		//System.setOut(new PrintStream(outContent));
-		//System.setErr(new PrintStream(errContent));
-	}
-	
-	@After
-	public void tearDown() {
-		//System.setOut(null);
-		//System.setErr(null);
-	}
-
 	/**
 	 * Test of LoadDragon method, of class XmlController.
 	 */
@@ -68,10 +41,10 @@ public class XmlControllerTest {
 		XmlController instance = new XmlController();
 		try {
 			UserDragon ud = instance.LoadDragon("Xanareth","anotherPass");
+			assertEquals("Xanareth",ud.getName());
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}
-		//assertEquals("Dragon Name : Xanareth\n", outContent.toString());
 	}
 
 	/**

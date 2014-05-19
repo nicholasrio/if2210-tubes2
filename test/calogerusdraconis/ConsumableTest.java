@@ -24,7 +24,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author ASUS
+ * @author Rita Sarah
  */
 public class ConsumableTest {
     

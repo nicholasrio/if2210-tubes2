@@ -25,7 +25,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Anggi
+ * @author Cilvia Sianora Putri
  */
 public class UserDragonTest {
 	

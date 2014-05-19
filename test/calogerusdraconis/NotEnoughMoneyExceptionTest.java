@@ -24,7 +24,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author ASUS
+ * @author Cilvia Sianora Putri
  */
 public class NotEnoughMoneyExceptionTest {
     
