@@ -558,4 +558,8 @@ public class Playlist {
     public void cleanFromError(){
         playlist.removeAll(this.getSongByDuration(0));
     }
+
+    public void delSong(int no) {
+        playlist.remove(no);
+    }
 }

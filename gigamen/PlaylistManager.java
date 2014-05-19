@@ -79,5 +79,19 @@ public class PlaylistManager {
         }
         return pm;
     }
+    
+    public String toString(){
+        if(!collection.isEmpty()){
+        String s="List Playlist : ";
+        for(int i=0;i<collection.size();i++){
+            s=s+"\n"+i+". "+collection.get(i).getPlaylistTitle();
+        }
+        
+        return s;
+        }
+        else{
+            return new String("String Kosong");
+        }
+    }
 
 }
