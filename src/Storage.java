@@ -3,36 +3,75 @@
  */
 import java.util.ArrayList;
 
-public class Storage{
+public class Storage {
+	/** The capacity of the storage */
 	private int capacity;
+	private int maxCapacity;
+
+	/** The array container */
 	ArrayList<SaleableObject> arrStorage;
-	
-	public Storage(){
+
+	/** CTOR */
+	public Storage() {
 		this.capacity = 6;
+		this.maxCapacity = 6;
 		arrStorage = new ArrayList<SaleableObject>(capacity);
 	}
-	
-	public Storage(int x){
+
+	/** Set the capacity */
+	public void setCapacity(int x) {
 		capacity = x;
 	}
 	
-	public void SetCapacity(int x){
-		capacity = x;
+	/** Get the capacity */
+	public int getCapacity() {
+		return this.capacity;
 	}
 	
-	public int GetCapacity(){
-		return capacity;
+	/** Get the maximum capacity */
+	public int maxCapacity() {
+		return this.maxCapacity;
 	}
 	
-	public void addPlant(Plant P) {
-		this.arrStorage.add(P);
+	/** Empty the storage */
+	public void empty() {
+		arrStorage.clear();
+		capacity = maxCapacity;
 	}
 	
-	public void addPest(Pest P) {
-		this.arrStorage.add(P);
+	/** Sell all objects in storage */
+	public int sellAll() {
+		int value = 0;
+		for (SaleableObject o : arrStorage) {
+			value += o.getPrice();
+		}
+		this.empty();
+		return value;
+	}
+
+	/** Add object to storage */
+	public void add(SaleableObject object) throws StorageOverflowException {
+		if (capacity >= object.getCapacity()) {
+			capacity -= object.getCapacity();
+			arrStorage.add(object);
+		}
+		else {
+			throw new StorageOverflowException(this);
+		}
 	}
 	
-	public void addFruit(Fruit F) {
-		this.arrStorage.add(F);
-	}
+//	/** Add plant to storage */
+//	public void addPlant(Plant P) {
+//		this.arrStorage.add(P);
+//	}
+//
+//	/** Add pest to storage */
+//	public void addPest(Pest P) {
+//		this.arrStorage.add(P);
+//	}
+//
+//	/** Add fruit to storage */
+//	public void addFruit(Fruit F) {
+//		this.arrStorage.add(F);
+//	}
 }

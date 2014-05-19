@@ -1,9 +1,11 @@
+/**
+ * @author Zaky		
+ */
+
 import java.io.File;
 import java.util.ArrayList;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -11,29 +13,26 @@ import org.w3c.dom.NodeList;
 
 public class PlantFactory {
 
-	// Container to save all kind of plants
+	/** Container to save all kind of plants */
 	private static ArrayList<Plant> plantPrototype = null;
 
-	// Path to data file
+	/** Path to data file */
 	private static final String DATA_PATH = "data/plants.xml";
 
-	// Load Plant data from XML
+	/** Load the plant's data fo=rom XML */
 	public static void loadData() {
 		plantPrototype = new ArrayList<Plant>();
 		try {
-			// Load xml file
+			/** Load the XML file */
 			File xmlFile = new File(DATA_PATH);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(xmlFile);
 
-			// optional, but recommended
-			// read this -
-			// http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
 			doc.getDocumentElement().normalize();
 
-			// Iterate through all plants, add them one by one
+			/** Iterate through all plants, adding them one nby one */
 			NodeList plants = doc.getElementsByTagName("plant");
 			for (int i = 0; i < plants.getLength(); i++) {
 				Node node = plants.item(i);
@@ -41,7 +40,7 @@ public class PlantFactory {
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
 					Element e = (Element) node;
 
-					// Get attributes of current Plant
+					/** Get the attributes of the current plant */
 					String name = e.getAttribute("name");
 					double maxWaterLevel = Double.parseDouble(e
 							.getAttribute("maxWaterLevel"));
@@ -49,21 +48,32 @@ public class PlantFactory {
 							.getAttribute("maxFertilizerLevel"));
 					int price = Integer.parseInt(e.getAttribute("price"));
 
-					// Create new Plants
+					/** Get the attributes of the current plant's fruit, if any */
+					Fruit fruit = null;
+					NodeList fruitNodes = e.getElementsByTagName("fruit");
+					if (fruitNodes.getLength() >= 1) {
+						Element eFruit = (Element) fruitNodes.item(0);
+						int harvestPeriod = Integer.parseInt(eFruit.getAttribute("harvestPeriod"));
+						int rottenTime = Integer.parseInt(eFruit.getAttribute("rottenTime"));
+						int fruitPrice = Integer.parseInt(eFruit.getAttribute("price"));
+						int capacity = Integer.parseInt(eFruit.getAttribute("capacity"));
+						fruit = new Fruit(eFruit.getAttribute("name"),
+								harvestPeriod, rottenTime,
+								fruitPrice, capacity,
+								eFruit.getAttribute("img"));
+					}
+
+					/** Create new plant */
 					Plant plant = new Plant(name, maxWaterLevel,
-							maxFertilizerLevel, price);
+							maxFertilizerLevel, price, fruit);
 					plantPrototype.add(plant);
 
-					System.out.println("Plant name = " + name
-							+ ", maxWaterLevel = " + maxWaterLevel
-							+ ", maxFertilizerLevel = " + maxFertilizerLevel);
-
-					// Get stages of current Plant
+					/** Set the stage of the current plant */
 					NodeList stages = e.getElementsByTagName("stage");
 					for (int j = 0; j < stages.getLength(); j++) {
 						Element stage = (Element) stages.item(j);
 
-						// Get attributes of current Stage
+						/** Get the attributes of the current plant */
 						String stageName = stage.getAttribute("name");
 						double lifeTime = Double.parseDouble(stage
 								.getAttribute("lifeTime"));
@@ -72,25 +82,39 @@ public class PlantFactory {
 						double fertilizerDropLevel = Double.parseDouble(stage
 								.getAttribute("fertilizerDropLevel"));
 						String imageSource = stage.getAttribute("img");
+						boolean isFruiting = false;
+						if (stage.hasAttribute("fruiting")) {
+							isFruiting = true;
+						}
 
-						System.out.println("\tStage " + stageName + ", img = "
-								+ imageSource);
 						plant.addStage(stageName, lifeTime, waterDropLevel,
-								fertilizerDropLevel, imageSource);
+								fertilizerDropLevel, imageSource, isFruiting);
 					}
 
 					// TODO handle fruit
 				}
 			}
 		} catch (Exception e) {
-			// TODO handle exception
+			System.out.println("plants.xml failed to load");
+			e.printStackTrace();
 		}
 	}
 
+	/** Get a new instance of Plant with specific name */
 	public static Plant getInstance(String name) {
 		for (Plant p : plantPrototype) {
 			if (p.getName().equalsIgnoreCase(name)) {
 				return p.clone();
+			}
+		}
+		return null;
+	}
+
+	/** Get the prototype of Plant with specific name */
+	public static Plant getPrototype(String name) {
+		for (Plant p : plantPrototype) {
+			if (p.getName().equalsIgnoreCase(name)) {
+				return p;
 			}
 		}
 		return null;

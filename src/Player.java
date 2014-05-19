@@ -1,41 +1,57 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * @author Nisa		
  */
+
 import java.util.ArrayList;
-/**
- *
- * @author user
- */
+
 public class Player {
-    private double Money;
-    private String ID;
-    private ArrayList<Plant> ULPlant;
-    private ArrayList<Vehicle> ULVehicle;
-    private ArrayList<Fertilizer> ULFertilizer;
-    
-    public Player(){
-        Money=100;
-        ID="Player";
-        ULPlant=new ArrayList<Plant>();
-        ULVehicle=new ArrayList<Vehicle>();
-        ULFertilizer=new ArrayList<Fertilizer>();
-    }
-    public void ChangeID(String nama){
-        ID=nama;
-    }
-    public void beli(Plant P){
-        // TODO resolve this
-    	// Money=Money-P.hargabibit();
-    }
-    public void addOb(Plant OB){
-       ULPlant.add(OB);
-    }
-    public void addOb(Vehicle OB){
-       ULVehicle.add(OB);
-    }
-    public void addOb(Fertilizer OB){
-       ULFertilizer.add(OB);
-    }
+	/** The player's money */
+	private double Money;
+	
+		/** The player's name */
+	private String ID;
+	
+	/** The plants that the player has */
+	private ArrayList<Plant> ULPlant;
+	
+	/** The vehicles that the player has */
+	private ArrayList<Vehicle> ULVehicle;
+	
+	/** The fertilizer that the player has */
+	private ArrayList<Fertilizer> ULFertilizer;
+
+	/** CTOR */
+	public Player() {
+		Money = 100;
+		ID = "Player";
+		ULPlant = new ArrayList<Plant>();
+		ULVehicle = new ArrayList<Vehicle>();
+		ULFertilizer = new ArrayList<Fertilizer>();
+	}
+
+	/** Change the player's name */
+	public void ChangeID(String nama) {
+		ID = nama;
+	}
+
+	/** Purchase plant's seed */
+	public void beli(Plant P) {
+		// TODO resolve this
+		// Money=Money-P.hargabibit();
+	}
+
+	/** Add the plant to the array */
+	public void addPlant(Plant OB) {
+		ULPlant.add(OB);
+	}
+
+	/** Add the vehicle to the array */
+	public void addVehicle(Vehicle OB) {
+		ULVehicle.add(OB);
+	}
+
+	/** Add the fertilizer to the array */
+	public void addFertilizer(Fertilizer OB) {
+		ULFertilizer.add(OB);
+	}
 }
