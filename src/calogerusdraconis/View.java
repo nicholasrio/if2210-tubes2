@@ -47,8 +47,17 @@ public interface View {
 	 */
     public void UpdateScreen (UserDragon drg, Dragon enemy);
 
+	/**
+	 * Menampilkan event yang didapatkan dragon
+	 * @param drg dragon user
+	 * @param evnt event yang didapatkan
+	 */
     public void UpdateScreen (UserDragon drg, Event evnt);
 	
+	/**
+	 * Menampikan food directory yang dimiliki Dragon
+	 * @param drg Dragon user
+	 */
 	public void seeFoodDirectory (UserDragon drg);
 }
 
