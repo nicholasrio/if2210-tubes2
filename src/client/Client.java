@@ -32,20 +32,20 @@ public class Client {
 		hostName = host;
 		portNumber = port;
 	}
-		
+
 	public void login(String NIM, String password) {
-            this.NIM = NIM;
-            this.password = password;
+		this.NIM = NIM;
+		this.password = password;
 		try {
 			String tempSR;
 			ObjectOutputStream oos;
-			
+
 			socket = new Socket(hostName, portNumber);
 			oos = new ObjectOutputStream(socket.getOutputStream());
 			sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			Credential obj = new Credential(NIM, password, Credential.LOGIN);
 			oos.writeObject(obj);
-			
+
 			// login with DB to be implemented
 			tempSR = sockReader.readLine();
 			System.out.println("Message from server: " + tempSR);
@@ -53,7 +53,7 @@ public class Client {
 				LoggedIn = true;
 				ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 				Object newObj = ois.readObject();
-				if(newObj instanceof User){
+				if (newObj instanceof User) {
 					userData = (User) newObj;
 				}
 				ois.close();
@@ -64,34 +64,33 @@ public class Client {
 		}
 	}
 
-	public void logout(){
+	public void logout() {
 		ObjectOutputStream oos;
 		BufferedReader in;
-                LoggedIn = false;
-		try{
+		LoggedIn = false;
+		try {
 			socket = new Socket(hostName, portNumber);
 			oos = new ObjectOutputStream(socket.getOutputStream());
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			sockReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			
+
 			Credential obj = new Credential(NIM, password, Credential.LOGOUT);
 			oos.writeObject(obj);
 			String response = in.readLine();
 			System.out.println("Message from server: " + response);
 			oos.close();
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public void printRequest(String fileName){
+
+	public void printRequest(String fileName) {
 		if (LoggedIn) {
 			try {
 				socket = new Socket(hostName, portNumber);
 				ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-				
+
 				// get and print out file name list
-				
 				Credential c = new Credential(NIM, password, Credential.PRINT);
 				c.setFile(fileName);
 				oos.writeObject(c);
@@ -111,15 +110,15 @@ public class Client {
 			System.out.println("Silahkan login terlebih dahulu.");
 		}
 	}
-	
+
 	public void sendFile(String filePath) {
 		//System.out.println(LoggedIn);
 		if (LoggedIn) {
 			try {
 				socket = new Socket(hostName, portNumber);
 				ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-				TransObject obj = new TransObject(NIM,filePath);
-                                System.out.println(NIM);
+				TransObject obj = new TransObject(NIM, filePath);
+				System.out.println(NIM);
 				oos.writeObject(obj);
 				upload(obj);
 				oos.close();
@@ -136,12 +135,11 @@ public class Client {
 			}
 		} else {
 			System.out.println("Silahkan login terlebih dahulu.");
-		}	
+		}
 	}
-	
+
 	public void upload(TransObject obj) {
 		try {
-			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			if (true) {
 				File f = new File(obj.getFileName());
@@ -150,18 +148,33 @@ public class Client {
 				inFile.read(buf);
 				socket.getOutputStream().write(buf);
 			}
-			String response = in.readLine();
-			//send message to server
-			out.println("Someone send a message: " + input);
-
+			
 			//read message from server
+			String response = in.readLine();
 			System.out.println("Message from server: " + response);
+			do{
+				response = in.readLine();
+				System.out.println(response);
+			}while(!response.contains("Choose"));
+			reader = new BufferedReader(new InputStreamReader(System.in));
+			input = reader.readLine();
+			
 		} catch (Exception e) {
 			System.out.println("Terjadi kesalahan dalam pengiriman");
-                        e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	
+	public void sendResponse(String response){
+		try{
+			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+			out.write(response);
+			out.flush();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
 	//getter and setter
 	public String getHostName() {
 		return hostName;
@@ -186,8 +199,8 @@ public class Client {
 	public String getPassword() {
 		return password;
 	}
-	
-	public User getUserData(){
+
+	public User getUserData() {
 		return userData;
 	}
 

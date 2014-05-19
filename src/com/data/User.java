@@ -13,7 +13,7 @@ import onlineprinter.Encrypt;
  *
  * @author Luthfi Hamid M / 135120100
  */
-public class User implements Serializable{
+public class User implements Serializable {
 
 	private String username;
 	private String password;
@@ -26,7 +26,7 @@ public class User implements Serializable{
 
 	}
 
-	public User(String username, String password, String nama, String email, int saldo,int status) {
+	public User(String username, String password, String nama, String email, int saldo, int status) {
 		this.username = username;
 		this.password = Encrypt.MD5(password);
 		this.nama = nama;
@@ -67,9 +67,8 @@ public class User implements Serializable{
 	public int getSaldo() {
 		return saldo;
 	}
-	
-	public int getStatus()
-	{
+
+	public int getStatus() {
 		return status;
 	}
 
@@ -92,8 +91,8 @@ public class User implements Serializable{
 	public void setSaldo(int saldo) {
 		this.saldo = saldo;
 	}
-	public void setStatus(int status)
-	{
+
+	public void setStatus(int status) {
 		this.status = status;
 	}
 

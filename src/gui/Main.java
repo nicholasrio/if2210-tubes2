@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gui;
 
 import Client.Client;
@@ -15,17 +14,16 @@ import gui.Login;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
-	
+	/**
+	 * @param args the command line arguments
+	 */
 	public static Client client;
-	
-    public static void main(String[] args) {
-        // TODO code application logic here
+
+	public static void main(String[] args) {
+		// TODO code application logic here
 		client = new Client("localhost", 5432);
-        Login login = new Login();
-        login.show();
-    }
-    
+		Login login = new Login();
+		login.show();
+	}
+
 }

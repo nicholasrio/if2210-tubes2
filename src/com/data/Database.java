@@ -109,12 +109,9 @@ public class Database {
 			String set = "";
 			if (Col.length == Val.length) {
 				for (int i = 0; i < Col.length; i++) {
-					if (i < Col.length - 1)
-					{
+					if (i < Col.length - 1) {
 						set += Col[i] + "='" + Val[i] + "',";
-					}
-					else
-					{
+					} else {
 						set += Col[i] + "='" + Val[i] + "'";
 					}
 				}
