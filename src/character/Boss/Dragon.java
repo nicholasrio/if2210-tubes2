@@ -71,10 +71,10 @@ public class Dragon extends Boss{
      * method initialize status
      */
     public void initStatus(){
-        _maxHealth = 3000;
-        _currentHealth = 3000;
-        _maxMana = 3000;
-        _currentMana = 3000;
+        _maxHealth = 30000;
+        _currentHealth = 30000;
+        _maxMana = 30000;
+        _currentMana = 30000;
         _str = 50;
         _agi = 50;
         _int = 50;

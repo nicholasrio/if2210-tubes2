@@ -37,6 +37,7 @@ public class FireBall extends Skill {
         animation.setFrames(sprites);
         activeTime = 400;
         active = false;
+        damage = 100;
         //set transformer base on direction
     }
     

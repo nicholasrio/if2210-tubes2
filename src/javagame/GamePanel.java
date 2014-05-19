@@ -109,6 +109,8 @@ public class GamePanel extends JPanel implements Drawable,Updateable{
     @Override
     public void draw(GameTime gameTime, Graphics g)
     {
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, 800, 600);
         sceneManager.draw(this.gameTime, g);
     }
 

@@ -38,6 +38,7 @@ public class Celoblast extends Skill{
         animation.setFrames(sprites);
         activeTime = (1740);
         active = false;
+        this.damage = 500;
         //set transformer base on direction
     }
     
