@@ -8,15 +8,21 @@ package Video;
 
 import java.sql.SQLException;
 /**
- *
+ * Kelas view video
  * @author asus
  */
 public class VideoView {
-    
+    /** 
+     * Default konstraktor
+     */
     public VideoView(){
         
     }
-    
+    /** 
+     * mencetak details
+     * @param details
+     * @throws SQLException 
+     */
     public void printVideoDetails(String details) throws SQLException{
         System.out.println(details);
     }

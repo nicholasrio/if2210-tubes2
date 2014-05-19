@@ -7,10 +7,14 @@
 package Video;
 
 /**
- *
+ * Exception null
  * @author asus
  */
 public class NullException extends Exception { 
+    /**
+     * Konstraktor berparameter 
+     * @param message 
+     */
     public NullException(String message){  
         super(message);    
      } 
