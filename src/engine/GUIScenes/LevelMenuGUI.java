@@ -124,7 +124,7 @@ public class LevelMenuGUI extends Scene
         unlocked=true;
         
         /*Background music*/
-        SoundManager.stopAllSound();
+        SoundManager.stopAllBGMSound();
         SoundManager.playSound("levelBm");
         
         /* Rectangle */
