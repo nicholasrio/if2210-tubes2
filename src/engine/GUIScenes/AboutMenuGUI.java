@@ -25,7 +25,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Tony
+ * @author Michael
  */
 public class AboutMenuGUI extends Scene
 {

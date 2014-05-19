@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Tony
+ * @author Tjong
  */
 public class LevelMenuGUI extends Scene
 {
@@ -209,7 +209,7 @@ public class LevelMenuGUI extends Scene
                         (int) (LorULTexture.getWidth(this)*0.7f),(int) (LorULTexture.getHeight(this)*0.7f), this);            
                 g2D.drawImage(ArrowTexture, (int) (getWidth()*0.78f), (int) (getHeight()*0.35f), 
                         (int) (ArrowTexture.getWidth(this)*0.5f),(int) (ArrowTexture.getHeight(this)*0.5f), this);
-                g2D.drawImage(BackTexture, (int) (getWidth()*0.73f), (int) (getHeight()*0.85f), 
+                g2D.drawImage(BackTexture, (int) (getWidth()*0.76f), (int) (getHeight()*0.85f), 
                         (int) (BackTexture.getWidth(this)*0.7f),(int) (BackTexture.getHeight(this)*0.7f), this);                
             }
             else if (level==2){
