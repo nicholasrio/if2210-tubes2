@@ -30,6 +30,7 @@ public class UserMenuGUI extends Scene
     private Image titleTexture;
     private Image backTexture;
     private Image AchString;
+    private KeyListener n;
     
     private Rectangle backRect;
     private ArrayList<Rectangle> userRect;
@@ -37,6 +38,8 @@ public class UserMenuGUI extends Scene
     private Rectangle delRect;
     private Rectangle enterRect;
     private Rectangle cancelRect;
+    
+    private String userName;
     
     private float transparentPercentage;
     private int menuHovered;
@@ -106,7 +109,8 @@ public class UserMenuGUI extends Scene
             {}
         });
         
-        userRect = new ArrayList<>(GameData.getJumlahPlayer());
+        userRect = new ArrayList<>();
+        userName = "";
         try {
             File fontfile = new File("Font/batmanforeveralternate.ttf");
             userMenuFont = Font.createFont(Font.TRUETYPE_FONT, fontfile);
@@ -115,6 +119,27 @@ public class UserMenuGUI extends Scene
             userMenuFont = new Font("Arial",18,18);
             System.err.println(ex);
         } 
+        
+        addKeyListener(new KeyListener() 
+        {
+            @Override
+            public void keyTyped(KeyEvent e) 
+            {
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) 
+            {
+                 
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) 
+            {
+                prosesInput(e);
+            }
+        });
     }
     
     public void LoadContent()
@@ -141,6 +166,9 @@ public class UserMenuGUI extends Scene
         }
         newRect = new Rectangle((int)(Game.ResolutionWidth*0.0275f), (int)(Game.ResolutionHeight*0.2f)+70,210,50);
         delRect = new Rectangle((int)(Game.ResolutionWidth*0.0275f), (int)(Game.ResolutionHeight*0.2f)+170,210,50);
+        enterRect = new Rectangle((int)(Game.ResolutionWidth*0.33f)+260,(int)(Game.ResolutionHeight*0.2f)+300,135,50);
+        cancelRect = new Rectangle((int)(Game.ResolutionWidth*0.33f)+50,(int)(Game.ResolutionHeight*0.2f)+300,135,50);
+        this.requestFocusInWindow();
     }
     
     @Override
@@ -208,11 +236,22 @@ public class UserMenuGUI extends Scene
             } 
             else if (status == 1) 
             {
+
             g2D.setFont(userMenuFont);
             g2D.drawString("=====CREATE NEW USER=====", (int)(Game.ResolutionWidth*0.33f),(int)(Game.ResolutionHeight*0.2f)+25);
-            
-            status = 0;
+            g2D.drawString("TYPE USERNAME", (int)(Game.ResolutionWidth*0.33f)+100,(int)(Game.ResolutionHeight*0.2f)+60);
+            g2D.drawString(userName,(int)(Game.ResolutionWidth*0.33f)+100,(int)(Game.ResolutionHeight*0.2f)+160);
+            for (int i = 0; i <= userName.length()+1;i++) {
+            g2D.drawString("_", (int)(Game.ResolutionWidth*0.33f)+100-1+15*i,(int)(Game.ResolutionHeight*0.2f)+170);
             }
+            g2D.setColor(Color.red);
+            g2D.draw3DRect((int)(Game.ResolutionWidth*0.33f)+50,(int)(Game.ResolutionHeight*0.2f)+300,135,50, true);
+            g2D.drawString("CANCEL", (int)(Game.ResolutionWidth*0.33f)+65,(int)(Game.ResolutionHeight*0.2f)+332);
+            g2D.setColor(Color.blue);
+            g2D.draw3DRect((int)(Game.ResolutionWidth*0.33f)+260,(int)(Game.ResolutionHeight*0.2f)+300,135,50, true);
+            g2D.drawString("ENTER", (int)(Game.ResolutionWidth*0.33f)+280,(int)(Game.ResolutionHeight*0.2f)+332);
+            
+            }        
             else if (status == 2)
             {
                 g2D.setFont(userMenuFont);
@@ -256,6 +295,14 @@ public class UserMenuGUI extends Scene
                 menuPressed = 777;
                 status = 2;
             }
+            else if (enterRect.contains(event.getPoint()) && status == 1) 
+            {
+                menuPressed = 444;
+            }
+            else if (cancelRect.contains(event.getPoint()) && status == 1) 
+            {
+                menuPressed = 999;
+            }
             else
             {
                 for (int i = 0;i<GameData.getJumlahPlayer();i++) {
@@ -280,22 +327,30 @@ public class UserMenuGUI extends Scene
         if (menuPressed == 0)
         {
             SceneManager.SwitchScene("MainMenuGUI");
-        } else if (menuPressed != -1) 
+        } 
+        else if (menuPressed != -1) 
         {
             if (menuPressed == 555) {
                 /* menu create user */
-                System.out.println("ADD USER");
             }
             else if (menuPressed == 777) {
                 /* menu delete user */
-                System.out.println("DELETE USER");
-            } else {
+            } 
+            else {
                 if(status == 0) {
                 GameData.lastLogin = GameData.dataPlayer.get(menuPressed-1);
                 SceneManager.SwitchScene("MainMenuGUI");
                 }
                 else if(status == 1) {
-                    
+                    if (menuPressed == 444) {
+                        status = 0;
+                        GameData.addPlayer(userName);
+                        userName = "";
+                        userRect.add(new Rectangle((int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+(GameData.getJumlahPlayer()-1)*35+40),450,30));
+                    } else if (menuPressed == 999) {
+                        userName = "";
+                        status = 0;
+                    }
                 }
                 else if(status == 2) {
                     if(GameData.dataPlayer.get(menuPressed-1) != GameData.lastLogin) {
@@ -309,5 +364,17 @@ public class UserMenuGUI extends Scene
                 e.printStackTrace();
                 }
     }
-
+    
+    void prosesInput(KeyEvent e) {
+        if (status == 1) {
+            if (e.getKeyCode() == 8 && userName.length() != 0) {
+                userName = userName.substring(0, userName.length()-1);
+            } else if  ((e.getKeyCode() >= 48 && e.getKeyCode() <= 57) ||(e.getKeyCode() >= 65 && e.getKeyCode() <= 90)){
+                userName += KeyEvent.getKeyText(e.getKeyCode());
+            } else if (e.getKeyCode() == 32) {
+                userName += " ";
+            }
+        }
+    }
+    
 }
