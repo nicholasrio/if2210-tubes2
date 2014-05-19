@@ -162,7 +162,7 @@ public class FormDaftarCaleg extends javax.swing.JFrame{
                     break;
                 }
             }
-            PilihanPartai pilihanPartai = new PilihanPartai(NIK, NamaPartaiPilihan);
+            PilihanPartai pilihanPartai = new PilihanPartai(NIK, NamaPartaiPilihan,Lingkup);
             pilihanPartai.addToDatabase();
         }else{
             if(isPilihanCaleg()){
@@ -177,9 +177,9 @@ public class FormDaftarCaleg extends javax.swing.JFrame{
                         }
                     }
                 }
-                PilihanPartai pilihanPartai = new PilihanPartai(NIK, NamaPartaiPilihan);
+                PilihanPartai pilihanPartai = new PilihanPartai(NIK, NamaPartaiPilihan,Lingkup);
                 pilihanPartai.addToDatabase();
-                PilihanCaleg pilihanCaleg = new PilihanCaleg(NIK, NamaCalegPilihan);
+                PilihanCaleg pilihanCaleg = new PilihanCaleg(NIK, NamaCalegPilihan, Lingkup);
                 pilihanCaleg.addToDatabase();
             }
         }

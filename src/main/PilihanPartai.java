@@ -15,11 +15,13 @@ import java.sql.Statement;
 public class PilihanPartai implements Pilihan{
     String NIKPemilih;
     String NamaPartai;
+    String Lingkup;
     
-    public PilihanPartai(String nikPemilih, String namaPartai)
+    public PilihanPartai(String nikPemilih, String namaPartai, String lingkup)
     {
         NIKPemilih = nikPemilih;
         NamaPartai = namaPartai;
+        Lingkup = lingkup;
     }
     @Override
     public void addToDatabase()
@@ -27,10 +29,11 @@ public class PilihanPartai implements Pilihan{
         try {
             Connection koneksi = KoneksiDatabase.getKoneksi();
             Statement statement = koneksi.createStatement();
-            String command = "insert into PilihanPartai values ( ?, ?)";
+            String command = "insert into PilihanPartai values ( "+ NIKPemilih +", "+ NamaPartai +", "+ Lingkup +")";
             try (PreparedStatement p = koneksi.prepareStatement(command)) {
                 p.setString(1, NIKPemilih);
                 p.setString(2, NamaPartai);
+                p.setString(3, Lingkup);
                 p.executeUpdate();
             }
             koneksi.close();

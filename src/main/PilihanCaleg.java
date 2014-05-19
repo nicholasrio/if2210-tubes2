@@ -15,10 +15,12 @@ import java.sql.Statement;
 public class PilihanCaleg implements Pilihan{
     private String NIKCaleg;
     private String NIKPemilih;
-    public PilihanCaleg(String NIKPemilih, String NamaCaleg)
+    private String Lingkup;
+    public PilihanCaleg(String NIKPemilih, String NamaCaleg, String Lingkup)
     {
         this.NIKPemilih = NIKPemilih;
         this.NIKCaleg = NIKCaleg;
+        this.Lingkup = Lingkup;
     }
     @Override
     public void addToDatabase()
@@ -26,10 +28,11 @@ public class PilihanCaleg implements Pilihan{
         try {
             Connection koneksi = KoneksiDatabase.getKoneksi();
             Statement statement = koneksi.createStatement();
-            String command = "insert into PilihanCaleg values ( ?, ?)";
+            String command = "insert into PilihanCaleg values (?, ?, ?)";
             try (PreparedStatement p = koneksi.prepareStatement(command)) {
                 p.setString(1, NIKPemilih);
                 p.setString(2, NIKCaleg);
+                p.setString(3, Lingkup);
                 p.executeUpdate();
             }
             koneksi.close();
@@ -46,5 +49,9 @@ public class PilihanCaleg implements Pilihan{
     public String getNIKCaleg()
     {
         return NIKCaleg;
+    }
+    public String getLingkup()
+    {
+        return Lingkup;
     }
 }

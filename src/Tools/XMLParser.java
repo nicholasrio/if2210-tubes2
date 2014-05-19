@@ -35,14 +35,15 @@ public class XMLParser {
         List<PilihanCaleg> daftarPilihan = new ArrayList<>();
         Connection koneksi = KoneksiDatabase.getKoneksi();
         Statement statement = koneksi.createStatement();
-        String command = "Select distinct PilihanCaleg.NIKPemilih, PilihanCaleg.NIKCaleg "
+        String command = "Select distinct PilihanCaleg.NIKPemilih, PilihanCaleg.NIKCaleg, PilihanCaleg.Lingkup"
                 + "from PilihanCaleg, Caleg "
                 + "where PilihanCaleg.NIKCaleg = Caleg.NIKCaleg and Caleg.NoDapil = " + Dapil;
         
         ResultSet result = statement.executeQuery(command);
         while (result.next())
         {
-            daftarPilihan.add(new PilihanCaleg(result.getString("NIKPemilih"), result.getString("NIKCaleg")));
+            daftarPilihan.add(new PilihanCaleg(result.getString("NIKPemilih"), result.getString("NIKCaleg"),
+            result.getString("Lingkup")));
         }
         result.close();
         statement.close();
@@ -67,6 +68,10 @@ public class XMLParser {
             Element Caleg = doc.createElement("NIKCaleg");
             Caleg.appendChild(doc.createTextNode(pilihan.getNIKCaleg()));
             dapil.appendChild(Caleg);
+            
+            Element Lingkup = doc.createElement("Lingkup");
+            Caleg.appendChild(doc.createTextNode(pilihan.getLingkup()));
+            dapil.appendChild(Lingkup);
         }
         
         TransformerFactory tranFactory = TransformerFactory.newInstance();
