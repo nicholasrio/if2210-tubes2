@@ -61,21 +61,33 @@ public class Admin {
         else
             return valid;
     }
-    
+     /**
+     * Mengecek apakah seseorang adalah superadmin
+     * @return  true jika benar, false jika salah
+     */
     public boolean IsSuperAdmin(){
         return SuperAdmin;
     }
-    
+     /**
+     * 
+     * @return username seorang admin 
+     */
     public String getUsername()
     {
         return Username;
     }
-    
+     /**
+     * 
+     * @return password seorang admin 
+     */
     public String getPassword()
     {
         return Password;
     }
-    
+    /**
+     * Mengecek apakah seseorang adalah superadmin dengan menggunakan 0 atau 1
+     * @return 1 jika benar, 0 jika salah
+     */
     public int getPeran()
     {
         if(SuperAdmin)
