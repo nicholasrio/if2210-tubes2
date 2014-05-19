@@ -26,7 +26,7 @@ public class DataController {
     
     static int SearchVideoByGroup(String _group_name, int _no_tubes) throws OptionException, SQLException{
         int i=0;
-        while(i<VC.SelectVideoData().size() && !(VC.SelectVideoData().get(i)[6].equals(_group_name)&& VC.SelectVideoData().get(i)[5].equals(Integer.toString(_no_tubes)))){
+        while(i<VC.SelectVideoData().size() && !(VC.SelectVideoData().get(i)[5].equals(_group_name)&& VC.SelectVideoData().get(i)[4].equals(Integer.toString(_no_tubes)))){
             i++;
         }
         if(i>=VC.SelectVideoData().size()){

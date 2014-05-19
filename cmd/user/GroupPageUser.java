@@ -26,7 +26,7 @@ public class GroupPageUser {
     
     static void SelectOption(int i) throws OptionException{
         System.out.println("Insert option: ");
-        option= input.nextInt();
+        option= Integer.valueOf(input.next());
         if (option > i || option <0){
             throw new OptionException("Invalid Option");
         }
@@ -38,11 +38,11 @@ public class GroupPageUser {
     
     static void print(){
         try {
-            System.out.println("Group Name: "+DataController.GC.GroupData().get(id)[2]);
-            System.out.println("Project Number: "+DataController.GC.GroupData().get(id)[1]);
-            System.out.println("Member 1: "+DataController.GC.GroupData().get(id)[3]);
-            System.out.println("Member 2: "+DataController.GC.GroupData().get(id)[4]);
-            System.out.println("Member 3: "+DataController.GC.GroupData().get(id)[5]);
+            System.out.println("Group Name: "+DataController.GC.GroupData().get(id)[1]);
+            System.out.println("Project Number: "+DataController.GC.GroupData().get(id)[0]);
+            System.out.println("Member 1: "+DataController.GC.GroupData().get(id)[2]);
+            System.out.println("Member 2: "+DataController.GC.GroupData().get(id)[3]);
+            System.out.println("Member 3: "+DataController.GC.GroupData().get(id)[4]);
         } catch (SQLException ex) {
             Logger.getLogger(GroupPageUser.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,8 +72,8 @@ public class GroupPageUser {
     static void action(int _id){
         id=_id;
         try {
-            no_tubes=Integer.valueOf(DataController.GC.GroupData().get(id)[1]);
-            GroupName=DataController.GC.GroupData().get(id)[0];
+            no_tubes=Integer.valueOf(DataController.GC.GroupData().get(id)[0]);
+            GroupName=DataController.GC.GroupData().get(id)[1];
             VidId=DataController.SearchVideoByGroup(GroupName, no_tubes);
         } catch (SQLException | OptionException ex) {
             Logger.getLogger(GroupPageUser.class.getName()).log(Level.SEVERE, null, ex);

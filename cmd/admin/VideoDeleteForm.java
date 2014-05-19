@@ -22,7 +22,7 @@ public class VideoDeleteForm {
     
     static void SelectOption(int i) throws OptionException{
         System.out.println("Insert option: ");
-        option= input.nextInt();
+        option= Integer.valueOf(input.next());
         if (option > i || option <0){
             throw new OptionException("Invalid Option");
         }

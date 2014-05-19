@@ -7,6 +7,7 @@
 package cmd.admin;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -21,7 +22,8 @@ public class AddGroupForm {
     static int No_Tubes;
     static String GroupName;
     static int Num;
-    static List<String>Member;
+    static List<String>Member = new ArrayList<>();
+    static String Name;
     static Scanner input=new Scanner(System.in);
     
     static void input(){
@@ -32,8 +34,9 @@ public class AddGroupForm {
         System.out.print("Number of Member: ");
         Num = input.nextInt();
         for(int i = 0; i<Num; i++){
-            System.out.print("Insert Member"+ (i+1));
-            Member.add(input.next());
+            System.out.print("Insert Member "+ (i+1)+" : ");
+            Name=input.next();
+            Member.add(Name);
         }
     }
     static void execute(){
