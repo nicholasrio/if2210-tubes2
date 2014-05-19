@@ -39,7 +39,7 @@ public class PilihanPartai implements Pilihan{
                 p.setString(3, Lingkup);
                 p.executeUpdate();
             }
-            koneksi.close();
+            //koneksi.close();
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

@@ -87,7 +87,7 @@ public class DaftarPilihan {
                 DaftarCalegDPRDKabupaten.add(new Caleg(NIK, NamaPartai, TrackRecord, NoDapil,"DPRDKabupaten"));
             }
             
-            koneksi.close();
+            //koneksi.close();
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
