@@ -104,7 +104,11 @@ public class MainMenu extends Scene
             System.out.print("Enter your choice (0 to cancel and return to main menu): ");
             Scanner Sc = new Scanner(System.in);
             int temp = Sc.nextInt();
-            if (temp != 0) GameData.deletePlayer(GameData.dataPlayer.get(temp-1).getNama());
+            if (temp != 0) {
+                if(GameData.dataPlayer.get(temp-1) != GameData.lastLogin) {
+                    GameData.deletePlayer(GameData.dataPlayer.get(temp-1).getNama());
+                }
+            }
             status = 0;
             createdel = 0;
         }
