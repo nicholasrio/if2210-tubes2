@@ -238,15 +238,14 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         javax.swing.GroupLayout MyCollectionsLayout = new javax.swing.GroupLayout(MyCollections);
-
         MyCollectionsLayout.setHorizontalGroup(
         	MyCollectionsLayout.createParallelGroup(Alignment.LEADING)
         		.addGroup(MyCollectionsLayout.createSequentialGroup()
         			.addGroup(MyCollectionsLayout.createParallelGroup(Alignment.LEADING)
         				.addGroup(MyCollectionsLayout.createSequentialGroup()
-        					.addGap(8)
+        					.addGap(20)
         					.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 351, GroupLayout.PREFERRED_SIZE)
-        					.addPreferredGap(ComponentPlacement.UNRELATED)
+        					.addPreferredGap(ComponentPlacement.RELATED)
         					.addGroup(MyCollectionsLayout.createParallelGroup(Alignment.LEADING, false)
         						.addComponent(Exit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         						.addComponent(Upload, GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
@@ -265,7 +264,7 @@ public class MainMenu extends javax.swing.JFrame {
         			.addGroup(MyCollectionsLayout.createParallelGroup(Alignment.TRAILING, false)
         				.addComponent(UserLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         				.addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        			.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
         			.addGroup(MyCollectionsLayout.createParallelGroup(Alignment.LEADING)
         				.addGroup(MyCollectionsLayout.createSequentialGroup()
         					.addComponent(Upload, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
@@ -274,45 +273,10 @@ public class MainMenu extends javax.swing.JFrame {
         					.addGap(18)
         					.addComponent(Exit, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
         				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 315, GroupLayout.PREFERRED_SIZE))
-        			.addContainerGap(102, Short.MAX_VALUE)));
+        			.addContainerGap(108, Short.MAX_VALUE))
+        );
 
         MyCollections.setLayout(MyCollectionsLayout);
-        MyCollectionsLayout.setHorizontalGroup(
-            MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MyCollectionsLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Upload, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                    .addComponent(Download, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
-                .addContainerGap(71, Short.MAX_VALUE))
-            .addGroup(MyCollectionsLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(UserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        MyCollectionsLayout.setVerticalGroup(
-            MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyCollectionsLayout.createSequentialGroup()
-                .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(UserLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(MyCollectionsLayout.createSequentialGroup()
-                        .addComponent(Upload, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Download,javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyCollectionsLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(432, 432, 432))))
-
-        );
         MyCollections.setLayout(MyCollectionsLayout);
 
         MainMenu.addTab("My Collections", MyCollections);
