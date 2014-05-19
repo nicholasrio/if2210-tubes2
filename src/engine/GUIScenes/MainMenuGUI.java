@@ -279,26 +279,32 @@ public class MainMenuGUI extends Scene
         if (newgameRect.contains(event.getPoint()))
         {
             menuPressed = 1;
+            SoundManager.playSound("button2");
         }
         else if (achievementRect.contains(event.getPoint()))
         {
             menuPressed = 2;
+            SoundManager.playSound("button2");
         }
         else if(optionsRect.contains(event.getPoint()))
         {
             menuPressed = 3;
+            SoundManager.playSound("button2");
         }
         else if (aboutRect.contains(event.getPoint()))
         {
             menuPressed = 4;
+            SoundManager.playSound("button2");
         }
         else if (exitRect.contains(event.getPoint()))
         {
             menuPressed = 5;
+            SoundManager.playSound("button2");
         }
         else if (userMenu.contains(event.getPoint()))
         {
             menuPressed = 6;
+            SoundManager.playSound("button2");
         }
         else
         {
