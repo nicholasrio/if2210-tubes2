@@ -11,5 +11,9 @@ package map;
  * @author Calvin
  */
 public interface Copyable<T> {
+    /**
+     * copy the object
+     * @return new object
+     */
     T copy();
 }

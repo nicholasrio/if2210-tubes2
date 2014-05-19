@@ -15,7 +15,10 @@ import javax.swing.JFrame;
  */
 public class Game{
 
-   public void start(){
+    /**
+     * start the game
+     */
+    public void start(){
         JFrame frame = new JFrame("TheRiseOfYuu");
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.setLayout(new BorderLayout());

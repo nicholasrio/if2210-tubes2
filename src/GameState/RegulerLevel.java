@@ -230,6 +230,10 @@ public class RegulerLevel extends Level{
         koordinatKosong.remove(randomInt);
     }
     
+    /**
+     * response if key pressed
+     * @param k the pressed key.
+     */
     public void keyPressed(int k){
         super.keyPressed(k);
         hero.keyPressed(k);

@@ -26,14 +26,21 @@ public class Animation {
     
     //flag menadakan animasi sudah pernah dimainkan
     private boolean playedOnce;
-    
-    //Konstruktor
-    public void Animation() {
+
+    /**
+     * Constructor
+     */
+        public void Animation() {
 	playedOnce = false;
     }
     
     //Pindah Frame
-    public void setFrames(BufferedImage[] frames) {
+
+    /**
+     * reset the frames
+     * @param frames list of bufferedImage
+     */
+        public void setFrames(BufferedImage[] frames) {
 	this.frames = frames;
 	currentFrame = 0;
 	startTime = System.nanoTime();
@@ -41,11 +48,24 @@ public class Animation {
     }
     
     //Atur waktu transisi antar frame
-    public void setDelay(long d) { delay = d; }
+
+    /**
+     * set frame delay
+     * @param d delay time
+     */
+        public void setDelay(long d) { delay = d; }
     
     //pindah frame
+
+    /**
+     * change frame based on index
+     * @param i the selected index frame
+     */
     public void setFrame(int i) { currentFrame = i; }
 	
+    /**
+     * update the animations
+     */
     public void update() {
 		
 	if(delay == -1) return;
@@ -62,7 +82,21 @@ public class Animation {
 		
     }
     
+    /**
+     * get current index frame
+     * @return the index of active frame
+     */
     public int getFrame() { return currentFrame; }
+
+    /**
+     * get current image frame
+     * @return buffered image.
+     */
     public BufferedImage getImage() { return frames[currentFrame]; }
+
+    /**
+     * check if the frame has played
+     * @return boolean.
+     */
     public boolean hasPlayedOnce() { return playedOnce; }
 }

@@ -58,6 +58,10 @@ public class PlayGameState extends GameState{
         currentLevel.update();
     }
     
+    /**
+     * response if key pressed
+     * @param k the pressed key.
+     */
     public void keyPressed(int k){
         currentLevel.keyPressed(k);
     }

@@ -21,6 +21,9 @@ import javax.swing.JPanel;
  */
 public class MapViewer {
     
+    /**
+     * create and show the gui
+     */
     public static void createAndShowGUI() {
         System.out.println("Created GUI on EDT? "+
                 SwingUtilities.isEventDispatchThread());

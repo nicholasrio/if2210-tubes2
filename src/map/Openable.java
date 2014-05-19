@@ -7,11 +7,21 @@
 package map;
 
 /**
- *
+ * interface of tile (is tile openable or not
  * @author Calvin
  */
 public interface Openable {
+    /**
+     * open the tile
+     */
     void open();
+    /**
+     * close the tile
+     */
     void close();
+    /**
+     * check if the tile is open
+     * @return boolean.
+     */
     boolean isOpen();
 }

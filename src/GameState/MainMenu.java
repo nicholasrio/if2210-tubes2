@@ -98,6 +98,10 @@ public class MainMenu extends GameState{
         }
     }
     
+    /**
+     * response if key pressed
+     * @param k the pressed key.
+     */
     public void keyPressed(int k){
         keyCode = k;
 

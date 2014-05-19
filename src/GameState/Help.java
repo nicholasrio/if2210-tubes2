@@ -52,6 +52,10 @@ public class Help extends GameState{
         //do nothing
     }
     
+    /**
+     * response if key pressed
+     * @param k the pressed key.
+     */
     public void keyPressed(int k){
         if (keyCode == 27){
             gsm.switchScene("MainMenu");

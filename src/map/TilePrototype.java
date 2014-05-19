@@ -13,6 +13,12 @@ import java.util.*;
  */
 public class TilePrototype {
     private static HashMap<Integer, Tile> TileMap = new HashMap<Integer, Tile>(); 
+
+    /**
+     * get current tile.
+     * @param id tile id
+     * @return clone of tile.
+     */
     public static Tile getTile(int id) {
         Tile cachedShape = TileMap.get(id);
         return cachedShape.copy(); 
@@ -21,7 +27,11 @@ public class TilePrototype {
     // for each shape run database query and create shape 
     // shapeMap.put(shapeKey, shape); 
     // for example, we are adding three shapes 
-    public static void loadCache() { 
+ 
+    /**
+     * load the tile cache.
+     */
+        public static void loadCache() { 
         Tile Temp = new tileChest();
         TileMap.put(Temp.getId(),Temp); 
         Temp = new tileCorridor();

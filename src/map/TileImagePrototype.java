@@ -25,10 +25,23 @@ import javax.imageio.ImageIO;
 public class TileImagePrototype {
     
     static HashMap<Integer, Image> ImageMap = new HashMap<Integer, Image> ();
+
+    /**
+     * constant for tile height
+     */
     public static int tileHeight = 32;
+
+    /**
+     * constant for tile width
+     */
     public static int tileWidth = 32;
     static boolean hasLoadImage = false;
     
+    /**
+     * get image of tile.
+     * @param id the image id
+     * @return image of tile.
+     */
     public static Image getTileImage(int id) {
         if (!hasLoadImage) {
             try {
@@ -44,7 +57,12 @@ public class TileImagePrototype {
     // for each shape run database query and create shape 
     // shapeMap.put(shapeKey, shape); 
     // for example, we are adding three shapes 
-    public static void loadCache() throws IOException {
+
+    /**
+     * load tile image cache. use prototype design pattern.
+     * @throws IOException
+     */
+        public static void loadCache() throws IOException {
         TileImagePrototype P = new TileImagePrototype();
         Image Temp = Toolkit.getDefaultToolkit().getImage(P.getClass().getResource("resource/floor_concrete.png"));
         ImageMap.put(Tile.tileDirtFloor,Temp); 

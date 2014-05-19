@@ -74,6 +74,10 @@ public class GameStateManager implements Drawable, Updateable{
         if(activeScene!=null) activeScene.update(gameTime);
     }
     
+    /**
+     * response if key released
+     * @param k the released key
+     */
     public void keyReleased(int k){
         activeScene.keyReleased(k);
     }
@@ -82,6 +86,10 @@ public class GameStateManager implements Drawable, Updateable{
         activeScene.keyTyped(k);
     }
     
+    /**
+     * response if key pressed
+     * @param k the pressed key.
+     */
     public void keyPressed(int k){
         activeScene.keyPressed(k);
     }

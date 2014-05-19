@@ -62,6 +62,7 @@ public class ItemCache {
             Document doc = dBuilder.parse(file);
             doc.getDocumentElement().normalize();
             NodeList itemNodes = doc.getElementsByTagName("item");
+            if (itemNodes.getLength() == 0) throw new XMLFormatException();
             for (int i=0; i<itemNodes.getLength(); i++) {
                 Node itemNode = itemNodes.item(i);
                 NodeList attributeNodes = itemNode.getChildNodes();
@@ -98,8 +99,10 @@ public class ItemCache {
                 }
                 itemCache.put(item.getName(), item);
             }
-        } catch (ParserConfigurationException | SAXException | IOException ex) {
+        } catch (ParserConfigurationException | SAXException | IOException ex ) {
             Logger.getLogger(ItemCache.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (XMLFormatException ex){
+            System.out.println(ex.getMessage());
         }
     }
     

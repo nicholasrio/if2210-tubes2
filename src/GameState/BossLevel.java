@@ -21,6 +21,11 @@ public class BossLevel extends Level{
     
     private Boss boss;
     
+    /**
+     * constructor
+     * @param k level
+     * @param hero hero object
+     */
     public BossLevel(int k,Hero hero){
         offsetX = 0;
         offsetY = 0;
@@ -28,6 +33,9 @@ public class BossLevel extends Level{
         this.hero = hero;
     }
     
+    /**
+     * intialize the level
+     */
     public void init(){
         boss = new Dragon();
         initMap();
@@ -37,6 +45,9 @@ public class BossLevel extends Level{
         statusBar.init();
     }
     
+    /**
+     * initialize the hero
+     */
     public void initHero(){
         hero.loadImage(CharacterCache.getImage("Yuu"));
         hero.loadAttackFrame(CharacterCache.getAttack("Yuu"));
@@ -45,17 +56,26 @@ public class BossLevel extends Level{
         hero.setPosition(12*32,13*32);
     }
     
+    /**
+     * initialize the boss
+     */
     public void initBoss(){
         boss.setMap(map);
         boss.init();
         boss.setPosition(11*32,2*32);
     }
     
+    /**
+     * initialize the map
+     */
     public void initMap(){
         map = new Map();
         map.createBossDungeon(26,16);
     }
     
+    /**
+     * update the game state
+     */
     public void update(){
         boss.checkHitting(hero);
         boss.checkSkillRange(hero);
@@ -73,6 +93,10 @@ public class BossLevel extends Level{
         }
     }
     
+    /**
+     * draw the game state
+     * @param g graphics device
+     */
     public void draw(Graphics g){
         ViewerGUI.view(g,map,(int)offsetX,(int)offsetY,(int)800,(int)500);
         boss.draw((Graphics2D)g,offsetX,offsetY);
@@ -80,10 +104,18 @@ public class BossLevel extends Level{
         statusBar.draw((Graphics2D)g);
     }
     
+    /**
+     * response if key pressed
+     * @param k the pressed key
+     */
     public void keyPressed(int k){
         hero.keyPressed(k);
     }
     
+    /**
+     * response if key released
+     * @param k the released key.
+     */
     public void keyReleased(int k){
         hero.keyReleased(k);
     }

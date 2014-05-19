@@ -32,10 +32,18 @@ public class KeyListen extends KeyAdapter {
         System.out.println("Key released = "+keyChar+" || code = " + keyCode);
     }
     
+    /**
+     * get key code
+     * @return int key code
+     */
     public int getKeyCode(){
         return keyCode;
     }
     
+    /**
+     * get key char
+     * @return char key char.
+     */
     public int getKeyChar(){
         return keyChar;
     }

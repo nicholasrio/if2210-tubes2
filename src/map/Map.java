@@ -19,8 +19,16 @@ public class Map{
 	private int ymax = 25; //25 rows
  
 	//size of the map
-	public int xsize = 0;
-	public int ysize = 0;
+
+    /**
+     * width
+     */
+    	public int xsize = 0;
+
+    /**
+     * height
+     */
+    public int ysize = 0;
  
 	//number of "objects" to generate on the map
 	private int objects = 0;
@@ -58,15 +66,34 @@ public class Map{
 	}
  
 	//returns the type of a tile
-	public Tile getCell(int x, int y){
+
+    /**
+     * get current cell
+     * @param x x-pos
+     * @param y y-pos
+     * @return tile
+     */
+    	public Tile getCell(int x, int y){
 		return dungeon_map[x + xsize * y];
 	}
 
-        public boolean isVisible(int x,int y){
+    /**
+     * check if tile is openend
+     * @param x the x-pos
+     * @param y the y-pos
+     * @return boolean
+     */
+    public boolean isVisible(int x,int y){
             return visible[x][y];
         }
         
-        public void setVisible(int x,int y,boolean v){
+    /**
+     * set the current tile to visible
+     * @param x the x-pos
+     * @param y the y-pos
+     * @param v new value
+     */
+    public void setVisible(int x,int y,boolean v){
             visible[x][y] = v;
         }
         
@@ -162,7 +189,16 @@ public class Map{
 		//woot, we're still here! let's tell the other guys we're done!!
 		return true;
 	}
- 
+        
+        /**
+         * generate room
+         * @param x x-pos start
+         * @param y y-pos start
+         * @param xlength width
+         * @param ylength heigth
+         * @param direction create direction
+         * @return boolean
+         */
 	private boolean makeRoom(int x, int y, int xlength, int ylength, int direction){
 		//define the dimensions of the room, it should be at least 4x4 tiles (2x2 for walking on, the rest is walls)
 		int xlen = getRand(4, xlength);
@@ -272,7 +308,11 @@ public class Map{
 	} 
  
 	//used to print the map on the screen
-	public void showDungeon(){
+
+    /**
+     * show the dungeon
+     */
+    	public void showDungeon(){
 		for (int y = 0; y < ysize; y++){
 			for (int x = 0; x < xsize; x++){
 				//System.out.print(getCell(x, y));
@@ -311,7 +351,15 @@ public class Map{
 	}
         
 	//and here's the one generating the whole map
-	public Map createDungeon(int inx, int iny, int inobj){
+
+    /**
+     * create a random dungeon
+     * @param inx the x-pos
+     * @param iny the y-pos
+     * @param inobj the number object to be created in inside
+     * @return boolean result.
+     */
+    	public Map createDungeon(int inx, int iny, int inobj){
             System.out.println("Masuk");
                 TilePrototype.loadCache();
                 
@@ -518,7 +566,11 @@ public class Map{
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
-	public static void main(String[] args){
+    /**
+     * driver
+     * @param args
+     */
+    public static void main(String[] args){
 		//initial stuff used in making the map
 		int x = 80; int y = 25; int dungeon_objects = 40;
  
@@ -538,7 +590,12 @@ public class Map{
 			generator.showDungeon();
 	}
         
-        public void createBossDungeon(int inx,int iny){
+    /**
+     *
+     * @param inx
+     * @param iny
+     */
+    public void createBossDungeon(int inx,int iny){
             TilePrototype.loadCache();
                 
             //Set visibilitas

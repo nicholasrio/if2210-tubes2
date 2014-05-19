@@ -20,6 +20,12 @@ import javax.swing.JPanel;
  * @author Calvin
  */
 public class ViewerGUI {
+
+    /**
+     * view to GUI without visibility
+     * @param g graphic device
+     * @param M the map to be printed.
+     */
     public static void view(Graphics g,Map M){
         try {
             TileImagePrototype.loadCache();
@@ -46,6 +52,11 @@ public class ViewerGUI {
         }
     }
     
+    /**
+     * view the map to GUI with visibility
+     * @param g graphic device
+     * @param M map to be printed.
+     */
     public static void viewWithoutVisiblity(Graphics g,Map M){
         try {
             TileImagePrototype.loadCache();
@@ -69,7 +80,17 @@ public class ViewerGUI {
     
     // menampilkan map mulai dengan posisi Left Top (x,y) 
     // dengan lebar dan tinggi yang bersesuaian
-    public static void view(Graphics g,Map M, int x1, int y1
+
+    /**
+     * show map from left top (x,y) with specific width and height.
+     * @param g graphic device
+     * @param M map to be printed
+     * @param x1 x-pos
+     * @param y1 y-pos
+     * @param width width
+     * @param height height
+     */
+        public static void view(Graphics g,Map M, int x1, int y1
                             ,int width, int height){
         assert(x1+width+1 <= M.xsize);
         assert(y1+height+1 <= M.ysize);

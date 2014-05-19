@@ -18,7 +18,13 @@ import java.util.logging.Logger;
  */
 public class ViewerConsole {
     // Melihat map tanpa memperhitungkan visibilitas
-    public static void viewWithoutVisiblity(PrintStream out,Map M){
+
+    /**
+     * view to console without visibility
+     * @param out output stream
+     * @param M the map to be printed.
+     */
+        public static void viewWithoutVisiblity(PrintStream out,Map M){
         for (int y = 0; y < M.ysize; y++){
             for (int x = 0; x < M.xsize; x++){
                 //System.out.print(getCell(x, y));
@@ -57,7 +63,13 @@ public class ViewerConsole {
     }
     
     //melihat map
-    public static void view(PrintStream out,Map M){
+
+    /**
+     * view the map with visibility
+     * @param out output stream
+     * @param M map to be printed.
+     */
+        public static void view(PrintStream out,Map M){
         for (int y = 0; y < M.ysize; y++){
             for (int x = 0; x < M.xsize; x++){
                 if (!M.isVisible(x, y)) {out.print("X"); continue;}
@@ -97,7 +109,17 @@ public class ViewerConsole {
     
     // menampilkan map mulai dengan posisi Left Top (x,y) 
     // dengan lebar dan tinggi yang bersesuaian
-    public static void view(PrintStream out,Map M, int x1, int y1
+
+    /**
+     * show map from left top (x,y) with specific width and height.
+     * @param out output stream
+     * @param M map to be printed
+     * @param x1 x-pos
+     * @param y1 y-pos
+     * @param width width
+     * @param height height
+     */
+        public static void view(PrintStream out,Map M, int x1, int y1
                             ,int width, int height){
         assert(x1+width+1 <= M.xsize);
         assert(y1+height+1 <= M.ysize);

@@ -4,14 +4,15 @@
  * and open the template in the editor.
  */
 
-package javagame;
-
-import java.awt.Graphics;
+package character;
 
 /**
- * interface of drawable object.
- * @author Luqman
+ *
+ * @author yafithekid
  */
-public interface Drawable {
-    public void draw(GameTime gameTime, Graphics g);
+public class XMLFormatException extends Exception{
+    @Override
+    public String getMessage(){
+        return "XML format error";
+    }
 }

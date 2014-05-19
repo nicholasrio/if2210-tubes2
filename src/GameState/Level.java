@@ -29,6 +29,10 @@ public abstract class Level {
     public abstract void update();
     public abstract void init();
     
+    /**
+     * response if key pressed
+     * @param k the pressed key.
+     */
     public void keyPressed(int k){
         if (k == KeyEvent.VK_U){
             for (int i=-1;i<=1;i++){
