@@ -28,7 +28,8 @@ public class FormAdminCLI {
         System.out.println("Apa yang ingin Anda lakukan?\n");
         System.out.println("1. Menambahkan Daerah Pemilihan\n");
         System.out.println("2. Menambahkan Calon Legislatif\n");
-        System.out.println("Silakan pilih (1/2) > ");
+        System.out.print("Silakan pilih (1/2) > ");
+        input();
     }
     
     public void input(){

@@ -30,6 +30,7 @@ public class FormSuperAdminCLI {
         System.out.println("1. Menambahkan Admin");
         System.out.println("2. Menghapus Admin");
         System.out.println("Silakan pilih (1/2) > ");
+        addOrDelete();
     }
     public void addOrDelete(){
         int pil = in.nextInt();
