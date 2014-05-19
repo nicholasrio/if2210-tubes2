@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 18, 2014 at 12:58 PM
+-- Host: 127.0.0.1
+-- Generation Time: May 19, 2014 at 02:16 PM
 -- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- PHP Version: 5.5.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `bookbay`
 --
-CREATE DATABASE IF NOT EXISTS `bookbay` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `bookbay`;
 
 -- --------------------------------------------------------
 
@@ -28,7 +26,6 @@ USE `bookbay`;
 -- Table structure for table `book`
 --
 
-DROP TABLE IF EXISTS `book`;
 CREATE TABLE IF NOT EXISTS `book` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
@@ -58,12 +55,20 @@ INSERT INTO `book` (`id`, `name`, `location`, `uploader_id`, `description`, `upl
 -- Table structure for table `collection`
 --
 
-DROP TABLE IF EXISTS `collection`;
 CREATE TABLE IF NOT EXISTS `collection` (
   `book_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`book_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `collection`
+--
+
+INSERT INTO `collection` (`book_id`, `user_id`) VALUES
+(15, 1),
+(16, 1),
+(17, 1);
 
 -- --------------------------------------------------------
 
@@ -71,14 +76,13 @@ CREATE TABLE IF NOT EXISTS `collection` (
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `user`
@@ -86,7 +90,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
 (1, 'edmundophie', '12345'),
-(2, 'jacksparrow', 'qwert');
+(2, 'jacksparrow', 'qwert'),
+(3, 'stanleysantoso', '123');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
