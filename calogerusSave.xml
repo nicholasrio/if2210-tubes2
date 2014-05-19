@@ -4,16 +4,16 @@
     <userDragon>
       <name>Xanareth</name>
       <password>anon</password>
-      <money>9746.0</money>
+      <money>9751.0</money>
       <happiness>96.0</happiness>
       <inventory />
       <health>100.0</health>
       <maxHealth>100.0</maxHealth>
       <stamina>100.0</stamina>
       <maxStamina>100.0</maxStamina>
-      <thirst>10.0</thirst>
-      <bladder>8.0</bladder>
-      <hunger>10.0</hunger>
+      <thirst>11.0</thirst>
+      <bladder>20.0</bladder>
+      <hunger>11.0</hunger>
       <level>1</level>
       <experience>40</experience>
     </userDragon>

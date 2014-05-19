@@ -35,17 +35,17 @@ public class TerminalView implements View {
 	 */
     public void UpdateScreen (UserDragon drg) {
 		System.out.println(drg.getName()+"'s Attribute: ");
-		System.out.println("Level: " + drg.getLevel());
-		System.out.println("Experience: " + drg.getExperience());
-		System.out.println("Happiness: " + drg.getHappiness());
-		System.out.println("Bladder: " + drg.getBladder());
-		System.out.println("Thirst: " + drg.getThirst());
-		System.out.println("Hunger: " + drg.getHunger());
-		System.out.println("Health: " + drg.getHealth());
-		System.out.println("Max Health: " + drg.getMaxHealth());
-		System.out.println("Stamina: " + drg.getStamina());
-		System.out.println("MaxStamina: " + drg.getMaxStamina());
-		System.out.println("Money: " + drg.getMoney());
+		System.out.println("Level: " + (int)drg.getLevel());
+		System.out.println("Experience: " + (int)drg.getExperience());
+		System.out.println("Happiness: " + (int)drg.getHappiness());
+		System.out.println("Bladder: " + (int)drg.getBladder());
+		System.out.println("Thirst: " + (int)drg.getThirst());
+		System.out.println("Hunger: " + (int)drg.getHunger());
+		System.out.println("Health: " + (int)drg.getHealth());
+		System.out.println("Max Health: " + (int)drg.getMaxHealth());
+		System.out.println("Stamina: " + (int)drg.getStamina());
+		System.out.println("MaxStamina: " + (int)drg.getMaxStamina());
+		System.out.println("Money: " + (int)drg.getMoney());
 	}
 
 	@Override

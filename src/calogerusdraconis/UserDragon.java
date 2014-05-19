@@ -58,12 +58,10 @@ public class UserDragon extends Dragon {
             public void run() {
                 try {
                     while(true) {
-						//System.out.println("jalan ");
                         sleep(5000);
                         modifyAttribute();
                     }
                 } catch (InterruptedException ex) {
-                    System.out.println("interrupted");
                 }
             }
         };
@@ -502,7 +500,6 @@ public class UserDragon extends Dragon {
     public Event entertain () {
 		try {
 			for (int i = 0; i<10; i++) {
-				System.out.print(happiness+" ");
 				sleep(1000);
 				tambahHappiness(4);
 			}
@@ -520,7 +517,6 @@ public class UserDragon extends Dragon {
 		try {
 			while (stamina < maxStamina || health < maxHealth) {
 				sleep(1000);
-				System.out.println(stamina + " " + health);
 				if (stamina < maxStamina) tambahStamina(5);
 				if (health < maxHealth) tambahHealth(2*level);
 			}
@@ -537,7 +533,6 @@ public class UserDragon extends Dragon {
     public Event toToilet () {
 		try {
 			while (bladder > 0) {
-				System.out.print(bladder + " ");
 				sleep(1000);
 				tambahBladder(-10);
 			}
