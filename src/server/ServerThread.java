@@ -42,7 +42,7 @@ public class ServerThread extends Thread {
 				TransObject transObj = (TransObject) obj;
 				if (ServerManager.getSingleton().isLoggedIn(transObj.getSenderNIM())) {
 					writeFile(transObj);
-					tryprint(transObj);
+					tryprint(constructFile(transObj));
 				}
 			} else if (obj instanceof Credential) {
 				System.out.println("Credential information received");
@@ -112,24 +112,8 @@ public class ServerThread extends Thread {
 		}
 	}
 	
-	private void tryprint(TransObject transObj){
-		MyFile myFile;
-		FileFactory myFactory = new FileFactory();
-		if (file.getName().contains(".txt")) {
-			myFile = myFactory.getFile("TXT");
-			myFile.setEkstensi("TXT");
-		} else if (file.getName().contains(".pdf")) {
-			myFile = myFactory.getFile("PDF");
-			myFile.setEkstensi("PDF");
-		} else {
-			myFile = myFactory.getFile("DOC");
-			myFile.setEkstensi("DOC");
-		}
-		myFile.nama = file.getName();
-		myFile.uploader = transObj.getSenderNIM();
-		myFile.path = file.getName();
-		myFile.toPDF();
-
+	private void tryprint(MyFile myFile){
+		
 		PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
 		System.out.println("Number of print services: " + printServices.length);
 		int i = 1;
@@ -150,6 +134,26 @@ public class ServerThread extends Thread {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	private MyFile constructFile(TransObject transObj){
+		MyFile myFile;
+		FileFactory myFactory = new FileFactory();
+		if (file.getName().contains(".txt")) {
+			myFile = myFactory.getFile("TXT");
+			myFile.setEkstensi("TXT");
+		} else if (file.getName().contains(".pdf")) {
+			myFile = myFactory.getFile("PDF");
+			myFile.setEkstensi("PDF");
+		} else {
+			myFile = myFactory.getFile("DOC");
+			myFile.setEkstensi("DOC");
+		}
+		myFile.nama = file.getName();
+		myFile.uploader = transObj.getSenderNIM();
+		myFile.path = file.getName();
+		myFile.toPDF();
+		return myFile;
 	}
 	
 	private void processLogin(){
