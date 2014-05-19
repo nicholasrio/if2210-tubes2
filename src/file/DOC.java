@@ -50,7 +50,7 @@ public class DOC extends MyFile {
 		}
 	}
 
-	public void print() throws IOException, PrinterException {
+	public void print(javax.print.PrintService service) throws IOException, PrinterException {
 		toPDF();
 		Scanner in = new Scanner(System.in);
 		PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);

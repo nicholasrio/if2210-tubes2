@@ -87,4 +87,13 @@ public class ConsoleClient extends Client {
 			e.printStackTrace();
 		}
 	}
+	
+	private void sendResponse(){
+		try{
+			String response = reader.readLine();
+			super.sendResponse(response);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 }

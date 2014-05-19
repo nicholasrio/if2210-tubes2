@@ -11,6 +11,9 @@ import java.io.*;
 import java.net.URI;
 import com.data.*;
 import file.*;
+import java.awt.print.PrinterJob;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
 import job.*;
 
 public class ServerThread extends Thread {
@@ -55,7 +58,7 @@ public class ServerThread extends Thread {
 					} while (clientData.available() != 0);
 					output.close();
 					System.out.println("User " + transObj.getSenderNIM() + " uploaded a file: " + file.getName());
-					pw.write("File successfully uploaded");
+					pw.write("File successfully uploaded\n");
 					pw.flush();
 
 					/* belum dalam method */
@@ -75,13 +78,25 @@ public class ServerThread extends Thread {
 					myFile.uploader = transObj.getSenderNIM();
 					myFile.path = file.getName();
 
-					myFile.print();
+					PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
+					System.out.println("Number of print services: " + printServices.length);
+					int i = 1;
+					PrinterJob printJob = PrinterJob.getPrinterJob();
+					for (PrintService printer : printServices) {
+						pw.write(i + ". Printer: " + printer.getName() + "\n");
+						i++;
+					}
+					pw.write("Choose printer : \n");
+					pw.flush();
+					BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+					String number = br.readLine();
+					int id = Integer.parseInt(number);
+					id--;
+					System.out.println("selected printer: " + id);
+		
+					myFile.print(printServices[id]);
 
-					/* Menambahkan ke dalam Job
-					 myJob =    new Job(myFile.uploader);
-					 myJob.addFile(myFile);
-					 myJob.print();
-					 */
+
 				}
 			} else if (obj instanceof Credential) {
 				System.out.println("Credential information received");
