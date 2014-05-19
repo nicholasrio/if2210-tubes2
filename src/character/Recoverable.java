@@ -1,5 +1,9 @@
 package character;
 
+/**
+ * method recoverable
+ * @author yafithekid
+ */
 public interface Recoverable {
     /**
      * add current health. truncated if > maxHealth

@@ -47,7 +47,11 @@ public class RegulerLevel extends Level{
 
     File file;
     
-    //konstruktor
+    /**
+     * constructor
+     * @param k is int
+     * @param hero is Hero
+     */
     public RegulerLevel(int k,Hero hero){
         this.hero=hero;
         indexLevel = 1;
@@ -55,6 +59,9 @@ public class RegulerLevel extends Level{
         offsetY=0;
     }
     
+    /**
+     * method initialize the game
+     */
     public void init(){
         statusBar = new StatusBar();
         statusBar.init();
@@ -64,6 +71,9 @@ public class RegulerLevel extends Level{
         initHero();
     }
     
+    /**
+     * method for load the map
+     */
     public void loadMap(){
         
         //loadMap dari file xml
@@ -100,7 +110,9 @@ public class RegulerLevel extends Level{
         
     }
     
-    //berfungsi untuk membaca monster yang terdapat pada level ini serta me load gambar monster-monster itu
+    /**
+     * method for load the monster
+     */
     public void loadMonsters(){
         try {
             monsters = new ArrayList<Monster>();
@@ -128,7 +140,9 @@ public class RegulerLevel extends Level{
         }
     }
     
-    //melakukan update
+    /**
+     * method for updating the game
+     */
     public void update(){
         
         if (hero.isDead()){
@@ -167,7 +181,10 @@ public class RegulerLevel extends Level{
         }
     }
     
-    //Gambar Kondisi RegulerLevel ini ke layar
+    /**
+     * method for drawing to game
+     * @param g is Graphics
+     */
     public void draw(Graphics g) {
         
         //cek posisi kamera
@@ -191,7 +208,9 @@ public class RegulerLevel extends Level{
         statusBar.draw((Graphics2D) g);
     }
     
-    //Inisialisasi MOnster
+    /**
+     * method for initialize the monster
+     */
     public void initMonster(){
         //Ambil data monster pada level ini dari file eksternal
         loadMonsters();
@@ -216,6 +235,9 @@ public class RegulerLevel extends Level{
         }
     }
     
+    /**
+     * method for initialize the hero
+     */
     public void initHero(){
         hero.loadImage(CharacterCache.getImage("Yuu"));
         hero.loadAttackFrame(CharacterCache.getAttack("Yuu"));
@@ -239,6 +261,10 @@ public class RegulerLevel extends Level{
         hero.keyPressed(k);
     }
     
+    /**
+     * method for read the release key
+     * @param k is integer
+     */
     public void keyReleased(int k){
         hero.keyReleased(k);
     }

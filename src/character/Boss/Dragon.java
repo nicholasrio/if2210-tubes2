@@ -41,7 +41,9 @@ public class Dragon extends Boss{
     private final int attackDelay = 5; //waktu antar attack
     private final int attackDuration = 1; //waktu attack;
     
-    
+    /**
+     * class dragon
+     */
     public Dragon(){
             
             //initialize movement
@@ -56,17 +58,23 @@ public class Dragon extends Boss{
             
     }
     
+    /**
+     * method intialize
+     */
     public void init(){
         initStatus();
         initSkill();
         initAnimation();
     }
     
+    /**
+     * method initialize status
+     */
     public void initStatus(){
-        _maxHealth = 3000;
-        _currentHealth = 3000;
-        _maxMana = 3000;
-        _currentMana = 3000;
+        _maxHealth = 30000;
+        _currentHealth = 30000;
+        _maxMana = 30000;
+        _currentMana = 30000;
         _str = 50;
         _agi = 50;
         _int = 50;
@@ -76,12 +84,18 @@ public class Dragon extends Boss{
         skillLast[1] = (long)(System.nanoTime());
     }
     
+    /**
+     * method initialize skill
+     */
     public void initSkill(){
         skills = new ArrayList<Skill>();
         skills.add(new Celoblast());
         skills.add(new FireBall());
     }
     
+    /**
+     * method intialzie animition
+     */
     public void initAnimation(){
         //initialize animation
         BufferedImage tmp;
@@ -109,6 +123,10 @@ public class Dragon extends Boss{
         chargeAnimation.setDelay(10);
     }
     
+    /**
+     * method load charge frame
+     * @param image 
+     */
     public void loadChargeFrame(BufferedImage image){
         chargeSprite = image;
         chargeFrame = new BufferedImage[nChargeFrame];
@@ -120,8 +138,15 @@ public class Dragon extends Boss{
         
     }
     
+    /**
+     * method pushed backand flinching
+     */
     public void pushedBackandFlinching(){}
     
+    /**
+     * method check skill range
+     * @param enemy 
+     */
     public void checkSkillRange(character.Character enemy){
         if ((bossState==BossState.CHASING) || (bossState==BossState.ATTACK)){
             for (int i=0;i<skills.size();i++){
@@ -143,6 +168,10 @@ public class Dragon extends Boss{
         }
     }
     
+    /**
+     * method check attack range
+     * @param enemy 
+     */
     public void checkAttackRange(character.Character enemy){
         if ((bossState == BossState.CHASING)){
             if ((System.nanoTime()-attackLast)/1000000000>attackDelay){
@@ -164,6 +193,10 @@ public class Dragon extends Boss{
         }
     }
     
+    /**
+     * method check hitting
+     * @param enemy 
+     */
     public void checkHitting(character.Character enemy){
         //cek ATTACK biasa
         if (bossState == BossState.ATTACK){
@@ -185,6 +218,9 @@ public class Dragon extends Boss{
         }
     }
     
+    /**
+     * method chase
+     */
     public void chase(){
         int xtmp = (int)(x - chaseX) + 32;
         int ytmp = (int)(y - chaseY) + 32;
@@ -213,6 +249,9 @@ public class Dragon extends Boss{
         }
     }
     
+    /**
+     * method set move up
+     */
     public void setMoveUp(){
         movingUp = true;
         movingDown = false;
@@ -224,6 +263,9 @@ public class Dragon extends Boss{
         }
     }
     
+    /**
+     * method set move right
+     */
     public void setMoveRight(){
         movingUp = false;
         movingDown = false;
@@ -234,6 +276,9 @@ public class Dragon extends Boss{
         }
     }
     
+    /**
+     * method set move down
+     */
     public void setMoveDown(){
         movingUp = false;
         movingDown = true;
@@ -245,6 +290,9 @@ public class Dragon extends Boss{
         }
     }
     
+    /**
+     * method set move left
+     */
     public void setMoveLeft(){
         movingUp = false;
         movingDown = false;
@@ -256,6 +304,9 @@ public class Dragon extends Boss{
         }
     }
     
+    /**
+     * method update
+     */
     public void update(){
         switch (bossState){
             case CHASING :
@@ -302,6 +353,12 @@ public class Dragon extends Boss{
         animation.update();
     }
     
+    /**
+     * method draw
+     * @param g
+     * @param offsetX
+     * @param offsetY 
+     */
     public void draw(Graphics2D g, int offsetX , int offsetY){
         g.drawImage(animation.getImage(),(int)x-offsetX,(int)y-offsetY,null);
         
@@ -357,6 +414,10 @@ public class Dragon extends Boss{
         fight.hitted(this.getAttackPoint());
     }
     
+    /**
+     * method if get hitted
+     * @param damage 
+     */
     public void hitted(int damage){
         doAbsorbDamage(damage);
     }

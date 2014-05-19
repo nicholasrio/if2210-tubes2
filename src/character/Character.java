@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+/**
+ * class abstract character extends MapEntity implements Cloneable, Recoverable
+ * @author yafithekid
+ */
 public abstract class Character extends MapEntity implements Cloneable,Recoverable{
 /**
  * the base class for character
@@ -24,6 +28,9 @@ public abstract class Character extends MapEntity implements Cloneable,Recoverab
      */
     protected int _int;
 
+    /**
+     * the map
+     */
     protected Map map;
     /**
      * the character current health
@@ -43,22 +50,81 @@ public abstract class Character extends MapEntity implements Cloneable,Recoverab
     protected int _maxMana;
      
     //movement attribute
+    /**
+     * the character move down
+     */
     protected boolean movingDown;
+    /**
+     * the character move up
+     */
     protected boolean movingUp;
+    /**
+     * the character move left
+     */
     protected boolean movingLeft;
+    /**
+     * the character move right
+     */
     protected boolean movingRight;
+    /**
+     * the character move speed
+     */
     protected int moveSpeed;
-    protected enum direction {DOWN,LEFT,RIGHT,UP};
+    /**
+     * enum for direction
+     */
+    protected enum direction {
+        /**
+         * enum Down
+         */
+        DOWN,
+        /**
+         * enum Left
+         */
+        LEFT,
+        /**
+         * enum Right
+         */
+        RIGHT,
+        /**
+         * enum Up
+         */
+        UP};
+    /**
+     * facedirection for character
+     */
     protected direction faceDirection;
+    /**
+     * sprites for character
+     */
     protected ArrayList<BufferedImage[]> sprites;
     private final int toleransiWidth = 6; //nilai toleransi collision
+    /**
+     * attack sprite for character
+     */
     protected BufferedImage attackSprite;
+    /**
+     * attack frame for character
+     */
     protected BufferedImage[] attackFrame;
+    /**
+     * attack animation for character
+     */
     protected Animation attackAnimation; 
+    /**
+     * attack range for character
+     */
     protected int attackRange;
     
+    /**
+     * method for initialize the character
+     */
     public abstract void init();
     
+    /**
+     * method for set the map
+     * @param map is Map
+     */
     public void setMap(Map map){
         this.map = map;
     }
@@ -104,8 +170,16 @@ public abstract class Character extends MapEntity implements Cloneable,Recoverab
      */
     public int getMaxMana(){ return _maxMana;} 
 
+    /**
+     * method for get attack range from character
+     * @return 
+     */
     public int getAttackRange() { return attackRange; }
     
+    /**
+     * method for get attack path from character
+     * @return 
+     */
     public String getAttackPath(){ return attackPath;}
     
     /**
@@ -134,13 +208,27 @@ public abstract class Character extends MapEntity implements Cloneable,Recoverab
      */
     public void setMaxMana(int x){ this._maxMana = x; }
     
+    /**
+     * setter for move speed
+     * @param x is integer
+     */
     public void setMoveSpeed(int x){ this.moveSpeed = x; }
     
+    /**
+     * setter for attack range
+     * @param x int
+     */
     public void setAttackRange(int x){ this.attackRange = x; }
     
+    /**
+     * setter for attack path
+     * @param s string
+     */
     public void setAttackPath(String s){ this.attackPath = s; }
     
-    //Cek apakah karakter menabrak dinding
+    /**
+     * method for check tile collision
+     */
     public void checkTileCollision(){
         boolean walkable=true;
         int tileWidth = TileImagePrototype.tileWidth;
@@ -294,7 +382,10 @@ public abstract class Character extends MapEntity implements Cloneable,Recoverab
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
-    
+    /**
+     * method for load image
+     * @param image BufferedImage
+     */
     public void loadImage(BufferedImage image) {
         
         System.out.println("Lol");
@@ -316,7 +407,10 @@ public abstract class Character extends MapEntity implements Cloneable,Recoverab
         }
         
     }
-    
+    /**
+     * method for load attack frame
+     * @param attackImage is buffered image
+     */
     public void loadAttackFrame(BufferedImage attackImage){
         attackSprite = attackImage;
         attackFrame = new BufferedImage[5];
@@ -327,7 +421,10 @@ public abstract class Character extends MapEntity implements Cloneable,Recoverab
         }
     }
     
-    //mengembalikan faceDirection dalam bentuk Integer
+    /**
+     * method get direction int
+     * @return 
+     */
     public int getDirectionInt(){
         int direct = 0;
         if (faceDirection == direction.UP){

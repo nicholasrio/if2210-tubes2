@@ -6,18 +6,46 @@ import java.awt.event.KeyEvent;
 import java.awt.image.*;
 import map.*;
 
+/**
+ * class Hero extends Character implements Useitem,Upgradeable,Recoverable,Fightable
+ * @author yafithekid
+ */
 public class Hero extends Character implements Useitem,Upgradeable,Recoverable,Fightable {
+    /**
+     * money for hero
+     */
     protected int _money;
     private ArrayList<Item> _items;
     private ArrayList<Skill> skills;
     private boolean flinching;
     private long flinchingStart;
+    /**
+     * enum hero state
+     */
     public enum HeroState{
-        IDLE,MOVE,ATTACK,SKILL
+        /**
+         * state hero
+         */
+        IDLE,
+        /**
+         * state move
+         */
+        MOVE,
+        /**
+         * state attack
+         */
+        ATTACK,
+        /**
+         * state skill
+         */
+        SKILL
     };
     private int activeSkill;
     HeroState heroState;
     
+    /**
+     * constructor
+     */
     public Hero(){
             _money = 0;
             _items = new ArrayList<Item>();
@@ -32,6 +60,9 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
             
     }
     
+    /**
+     * initialize hero
+     */
     public void init(){
         
         _currentHealth = _maxHealth;
@@ -147,7 +178,9 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
     public void addMaxMana(int x){ this._maxMana += x; }
 
     
-    
+    /**
+     * method for print status
+     */
     public void printStatus(){
         System.out.println("Status: "+this.getStr()+" "+this.getAgi()+" "+this.getInt());
         System.out.println("Current Health: "+this.getCurrentHealth()+" "+this.getCurrentMana()+" "+this.toString());
@@ -206,6 +239,10 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
     }
     
     //cek apakah hero melukai enemy
+    /**
+     * checking if a hero hitting the enemy
+     * @param enemy 
+     */
     public void checkHitting(Character enemy){
         
         /*Cek apakah hero melakukan attack. jika iya cek apakah attack tersebut mengenai enemy(monster)*/
@@ -235,6 +272,9 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
     }
     
     //update
+    /**
+     * update the game
+     */
     public void update(){
         
         if (heroState == HeroState.SKILL){
@@ -289,6 +329,10 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
     }
     
     //Input Handling
+    /**
+     * method for checking if key pressed
+     * @param k 
+     */
     public void keyPressed(int k){
         //Reaction to KeyPressed
         if (heroState == HeroState.IDLE){
@@ -411,7 +455,10 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
                 }
         }
     }
-    
+    /**
+     * method for activate the skill
+     * @param n 
+     */
     public void activateSkill(int n){
         activeSkill = n;
         skills.get(n).start((int)x,(int) y, getDirectionInt());
@@ -419,6 +466,12 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
     }
     
     //gambar hero
+    /**
+     * method draw
+     * @param g
+     * @param offsetX
+     * @param offsetY 
+     */
     public void draw(Graphics2D g,int offsetX,int offsetY){
         if ((flinching) && ((System.nanoTime()-flinchingStart)/100000000)%2 != 0){
         }else{
@@ -443,7 +496,10 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
             g.rotate(Math.toRadians(-getDirectionInt()*90),(int)x-offsetX+(width/2),(int)y-offsetY+(height/2));
         }
     }
-    
+    /**
+     * method for checking if key released
+     * @param k 
+     */
     public void keyReleased(int k){
         switch (heroState){
             case IDLE :
@@ -477,7 +533,9 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
                 break;
         }
     }
-    
+    /**
+     * method for flinchinging if got attacked
+     */
     public void pushedBackandFlinching(){
         if (movingUp){
             y-=10;
@@ -520,7 +578,10 @@ public class Hero extends Character implements Useitem,Upgradeable,Recoverable,F
         flinching = true;
         flinchingStart = System.nanoTime();
     }
-    
+    /**
+     * method if got damage
+     * @param damage 
+     */
     public void hitted(int damage){
         if (!flinching){
             flinching = true;

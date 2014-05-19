@@ -17,21 +17,36 @@ import static org.junit.Assert.*;
  */
 public class FightableTest {
     
+    /**
+     * constructor
+     */
     public FightableTest() {
     }
     
+    /**
+     * method set up class
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     * method tear down class
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     * method set up
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     * method tear down
+     */
     @After
     public void tearDown() {
     }
@@ -140,72 +155,79 @@ public class FightableTest {
     
     
     /**
-     * Test of doAttack method, of class Fightable.
+     * class fightableimpl implements fightable
      */
-    @Test
-    public void testDoAttack() {
-        System.out.println("doAttack");
-        Hero hero = new Hero();
-        hero.setStrAgiInt(10, 1,10);
-        hero.setMaxHealthMana(1000,1000);
-        hero.setCurrentHealthMana(1000,1000);
-        
-        Monster monster = new Monster();
-        monster.setStrAgiInt(5,1,5);
-        monster.setMaxHealthMana(1000, 1000);
-        monster.setCurrentHealthMana(1000,1000);
-        int lastHP;
-        
-        //attack against monster
-        lastHP = monster.getCurrentHealth();
-        hero.doAttack(monster);
-        assertEquals(monster.getCurrentHealth(),lastHP - monster.getNetDamage(hero.getAttackPoint()));
-        
-        //attack against hero
-        lastHP = hero.getCurrentHealth();
-        monster.doAttack(hero);
-        assertEquals(hero.getCurrentHealth(),lastHP - hero.getNetDamage(monster.getAttackPoint()));
-        
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
     public class FightableImpl implements Fightable {
 
+        /**
+         * method get attack point
+         * @return 
+         */
         public int getAttackPoint() {
             return 0;
         }
 
+        /**
+         * method get defense point
+         * @return 
+         */
         public int getDefensePoint() {
             return 0;
         }
 
+        /**
+         * method is dead
+         * @return 
+         */
         public boolean isDead() {
             return false;
         }
 
+        /**
+         * method is alive
+         * @return 
+         */
         public boolean isAlive() {
             return false;
         }
         
+        /**
+         * method get net damage
+         * @param damage
+         * @return 
+         */
         public int getNetDamage(int damage){
             return 0;
         }
+        /**
+         * method do damage calculation
+         * @param damage 
+         */
         public void doDamageCalculation(int damage) {
         }
 
+        /**
+         * method do attack
+         * @param fight 
+         */
         public void doAttack(Fightable fight) {
         }
 
+        /**
+         * method do absorb damage
+         * @param damage 
+         */
         public void doAbsorbDamage(int damage) {
         }
-        
-        public void pushedBackandFlinching(){
-            
+
+        @Override
+        public void hitted(int damage) {
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
-        
-        public void hitted(int damage){
-            
+
+        @Override
+        public void pushedBackandFlinching() {
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
     }
 }

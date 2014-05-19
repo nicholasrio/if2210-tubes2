@@ -15,6 +15,10 @@ import java.awt.Rectangle;
 
 import map.Map;
 
+/**
+ * class Monster extends Character implements Recoverable,Fightable
+ * @author yafithekid
+ */
 public class Monster extends Character implements Recoverable,Fightable{
     
         
@@ -43,6 +47,9 @@ public class Monster extends Character implements Recoverable,Fightable{
     private MonsterState monsterState;
     private ChasingState chasingState; 
 
+    /**
+     * method for initialize
+     */
     public void init(){
         
         //inisialisasi gerakan
@@ -71,6 +78,13 @@ public class Monster extends Character implements Recoverable,Fightable{
         
     }
     
+    /**
+     * method for set pattern
+     * @param up
+     * @param right
+     * @param down
+     * @param left 
+     */
     public void setPattern(int up,int right,int down,int left){
         pattern = new int[4];
         pattern[0]=up*32;
@@ -89,10 +103,18 @@ public class Monster extends Character implements Recoverable,Fightable{
         return this.getAgi();
     }
 
+    /**
+     * method get vision range
+     * @return 
+     */
     public int getVisionRange() {
         return this.visionRange;
     }
     
+    /**
+     * method set vision range
+     * @param vR 
+     */
     public void setVisionRange(int vR) {
         this.visionRange = vR;
     }
@@ -132,7 +154,9 @@ public class Monster extends Character implements Recoverable,Fightable{
     public void doAttack(Fightable fight) {
         fight.hitted(this.getAttackPoint());
     }
-    
+    /**
+     * method update
+     */
     public void update(){
         
         if (flinching){
@@ -282,6 +306,10 @@ public class Monster extends Character implements Recoverable,Fightable{
     
     /*Mengecek apakah hero berada dalam jangakuan serang Monster
         jika iya lakukan serangan */
+    /**
+     * method check attacking
+     * @param enemy 
+     */
     public void checkAttacking(Character enemy){
         
         Rectangle R1 = new Rectangle(
@@ -301,6 +329,10 @@ public class Monster extends Character implements Recoverable,Fightable{
     
     /*Mengecek apakah Monster melukai  enemy(hero)
         jika iya lakukan doAttacking untuk mengurangi Health Hero*/
+    /**
+     * method check hitting
+     * @param enemy 
+     */
     public void checkHitting(Character enemy){
         int aWidth = animation.getImage().getWidth();
         int aHeight = animation.getImage().getHeight();
@@ -321,6 +353,10 @@ public class Monster extends Character implements Recoverable,Fightable{
     
     /*cek apakah enemy(hero) ada dalam jarak pandang Monster.
         Jika iya lakukan pengejaran*/
+    /**
+     * method check vision range
+     * @param enemy 
+     */
     public void checkVisionRange(Character enemy){
         
         Rectangle r1 = new Rectangle((int)x-visionRange,
@@ -354,6 +390,12 @@ public class Monster extends Character implements Recoverable,Fightable{
         }
     }
     
+    /**
+     * method draw
+     * @param g
+     * @param offsetX
+     * @param offsetY 
+     */
     public void draw(Graphics2D g,int offsetX,int offsetY){
         
         
@@ -377,6 +419,9 @@ public class Monster extends Character implements Recoverable,Fightable{
         }
     }
     
+    /**
+     * method pushed backand flinching
+     */
     public void pushedBackandFlinching(){
         if (movingUp){
             y+=10;
@@ -419,6 +464,10 @@ public class Monster extends Character implements Recoverable,Fightable{
         flinchingStart = System.nanoTime();
     }
     
+    /**
+     * method hitted
+     * @param damage 
+     */
     public void hitted(int damage){
         if (!flinching){
             doAbsorbDamage(damage);

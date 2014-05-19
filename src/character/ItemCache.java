@@ -21,8 +21,18 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+/**
+ * class item cache
+ * @author yafithekid
+ */
 public class ItemCache {
+    /**
+     * generic name itemCache
+     */
     public static HashMap<String,Item> itemCache = new HashMap<>();
+    /**
+     * generic name imageCache
+     */
     public static HashMap<String,BufferedImage> imageCache = new HashMap<>();
     private ItemCache() { }
     

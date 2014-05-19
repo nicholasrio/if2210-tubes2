@@ -20,6 +20,11 @@ import java.util.logging.Logger;
  * @author Calvin
  */
 public class ViewerConsole {
+    /**
+     * method for view
+     * @param out is PrintStream
+     * @param MA  is MapAdapter
+     */
     public static void view(PrintStream out,MapAdapter MA){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
@@ -42,6 +47,11 @@ public class ViewerConsole {
         out.print(content.toString());    
     }
     
+    /**
+     * method for viewing without visibility
+     * @param out is PrintStream
+     * @param MA is MapAdapter
+     */
     public static void viewWithoutVisiblity(PrintStream out,MapAdapter MA){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
@@ -62,8 +72,15 @@ public class ViewerConsole {
         out.print(content.toString());
     }
     
-    // menampilkan map mulai dengan posisi Left Top (x,y) 
-    // dengan lebar dan tinggi yang bersesuaian
+    /**
+     * method for view
+     * @param out is PrintStream
+     * @param MA is MapAdapter
+     * @param x1 is integer
+     * @param y1 is integer
+     * @param width is integer
+     * @param height is integer
+     */
     public static void view(PrintStream out,MapAdapter MA, int x1, int y1
                             ,int width, int height){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

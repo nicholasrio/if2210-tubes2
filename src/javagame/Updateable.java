@@ -13,7 +13,8 @@ package javagame;
 public interface Updateable {
 
     /**
-     *
+     * method update
+     * @param gameTime 
      */
     public void update(GameTime gameTime);
 }

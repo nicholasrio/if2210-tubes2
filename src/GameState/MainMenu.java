@@ -38,6 +38,10 @@ public class MainMenu extends GameState{
     
     private boolean isStateChange = false;
   
+    /**
+     * constructor MainMenu
+     * @param gsm is gamestatemanager
+     */
     public MainMenu(GameStateManager gsm)
     {
         super(gsm);
@@ -81,6 +85,11 @@ public class MainMenu extends GameState{
         
     }
 
+    /**
+     * method for drawing to form
+     * @param gameTime is GameTime
+     * @param g is Graphics
+     */
     @Override
     public void draw(GameTime gameTime, Graphics g) {
         //System.out.println("draw");
@@ -98,10 +107,6 @@ public class MainMenu extends GameState{
         }
     }
     
-    /**
-     * response if key pressed
-     * @param k the pressed key.
-     */
     public void keyPressed(int k){
         keyCode = k;
 

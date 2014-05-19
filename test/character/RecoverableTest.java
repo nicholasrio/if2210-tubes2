@@ -17,21 +17,36 @@ import static org.junit.Assert.*;
  */
 public class RecoverableTest {
     
+    /**
+     * constructor
+     */
     public RecoverableTest() {
     }
     
+    /**
+     * method set up class
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     * method tear down class
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     * method set up
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     * method tear down
+     */
     @After
     public void tearDown() {
     }
@@ -84,6 +99,9 @@ public class RecoverableTest {
         //fail("The test case is a prototype.");
     }
 
+    /**
+     * class RecoverableImpl implements Recoverable
+     */
     public class RecoverableImpl implements Recoverable {
 
         public void addCurrentHealth(int value) {

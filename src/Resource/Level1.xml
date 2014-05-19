@@ -3,11 +3,11 @@
 	<monster-info>
 		<monster>
 			<name>Skeleton</name>
-			<total>4</total>
+			<total>10</total>
 		</monster>
 		<monster>
 			<name>Ghost</name>
-			<total>3</total>
+			<total>10</total>
 		</monster>
 	</monster-info>
 	<map-info>

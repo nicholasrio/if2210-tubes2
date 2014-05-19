@@ -64,6 +64,11 @@ public class GameStateManager implements Drawable, Updateable{
         }
     }
 
+    /**
+     * draw the game state
+     * @param gameTime game time
+     * @param g graphics device
+     */
     @Override
     public void draw(GameTime gameTime, Graphics g) {
         if(activeScene!=null) activeScene.draw(gameTime, g);
@@ -82,6 +87,10 @@ public class GameStateManager implements Drawable, Updateable{
         activeScene.keyReleased(k);
     }
     
+    /**
+     * response if key typed
+     * @param k the typed key
+     */
     public void keyTyped(int k){
         activeScene.keyTyped(k);
     }

@@ -18,6 +18,10 @@ import javax.imageio.ImageIO;
 public class ImageLoader {
     private BufferedImage image;
 
+    /**
+     * constructor
+     * @param url 
+     */
     public ImageLoader(String url){
        try {                
             image = ImageIO.read(new File(url));
@@ -26,14 +30,26 @@ public class ImageLoader {
        }
     }
     
+    /**
+     * method get image
+     * @return 
+     */
     public BufferedImage getImage(){
         return image;
     }
     
+    /**
+     * method set buffered image
+     * @param img 
+     */
     public void setBufferedImage(BufferedImage img){
         image = img;
     }
     
+    /**
+     * method set image
+     * @param url 
+     */
     public void setImage(String url){
         try {                
             image = ImageIO.read(new File(url));

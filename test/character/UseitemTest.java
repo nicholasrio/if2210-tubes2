@@ -17,21 +17,36 @@ import static org.junit.Assert.*;
  */
 public class UseitemTest {
     
+    /**
+     * method use item test
+     */
     public UseitemTest() {
     }
     
+    /**
+     * method set up class
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     * method tear down class
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     * method set up
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     * method tear down
+     */
     @After
     public void tearDown() {
     }
@@ -165,6 +180,9 @@ public class UseitemTest {
         fail("The test case is a prototype.");
     }
 
+    /**
+     * class use item impl implements use item
+     */
     public class UseitemImpl implements Useitem {
 
         public void addItem(Item item) {

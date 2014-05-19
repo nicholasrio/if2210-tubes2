@@ -21,6 +21,10 @@ public class Help extends GameState{
     private int keyCode;
     private BufferedImage Text;
     
+    /**
+     * constructor
+     * @param gsm
+     */
     public Help(GameStateManager gsm){
         super(gsm);
         name = "Help";
@@ -42,6 +46,11 @@ public class Help extends GameState{
         
     }
     
+    /**
+     * draw the game state
+     * @param gameTime game time
+     * @param g graphics device
+     */
     @Override
     public void draw(GameTime gameTime, Graphics g){
         g.drawImage(Text, 100, 100, null);

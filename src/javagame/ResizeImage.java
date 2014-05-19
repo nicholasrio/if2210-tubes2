@@ -15,6 +15,14 @@ import java.io.IOException;
  * @author General User
  */
 public class ResizeImage {
+    /**
+     * constructor
+     * @param originalImage
+     * @param width
+     * @param height
+     * @return
+     * @throws IOException 
+     */
     public BufferedImage resizeImage(BufferedImage originalImage, int width, int height) throws IOException {  
         BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);  
         Graphics2D g = resizedImage.createGraphics();  

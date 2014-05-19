@@ -18,6 +18,11 @@ import map.TileImagePrototype;
  * @author Calvin
  */
 public class ViewerGUI {
+    /**
+     * method for view
+     * @param g is Graphics
+     * @param MA is MapAdapter
+     */
     public static void view(Graphics g,MapAdapter MA){
         map.ViewerGUI.view(g,MA.getMap());
         //!!Gambar Orang Disini
@@ -31,6 +36,11 @@ public class ViewerGUI {
         }
     }
     
+    /**
+     * method for view without visibility
+     * @param g is Graphics
+     * @param MA is MapAdapter
+     */
     public static void viewWithoutVisiblity(Graphics g,MapAdapter MA){
         map.ViewerGUI.viewWithoutVisiblity(g,MA.getMap());
         //!!Gambar Orang Disini
@@ -42,8 +52,15 @@ public class ViewerGUI {
         }
     }
     
-    // menampilkan map mulai dengan posisi Left Top (x,y) 
-    // dengan lebar dan tinggi yang bersesuaian
+    /**
+     * method for view
+     * @param g is Graphics
+     * @param MA is MapAdapter
+     * @param x1 is integer
+     * @param y1 is integer
+     * @param width is integer
+     * @param height is integer
+     */
     public static void view(Graphics g,MapAdapter MA, int x1, int y1
                             ,int width, int height){
         map.ViewerGUI.view(g,MA.getMap(),x1,y1,width,height);

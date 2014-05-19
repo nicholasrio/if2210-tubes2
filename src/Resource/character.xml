@@ -3,7 +3,7 @@
     <character class="hero">
         <id>1</id>
         <name>Yuu</name>
-        <str>10</str>
+        <str>50</str>
         <agi>3</agi>
         <int>30</int>
         <maxHealth>600</maxHealth>

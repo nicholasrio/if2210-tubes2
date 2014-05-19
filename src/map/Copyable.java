@@ -7,13 +7,14 @@
 package map;
 
 /**
- *
- * @author Calvin
+ * 
+ * @author yafithekid
+ * @param <T> 
  */
 public interface Copyable<T> {
     /**
-     * copy the object
-     * @return new object
+     * variable copy
+     * @return 
      */
     T copy();
 }
