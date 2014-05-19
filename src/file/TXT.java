@@ -118,7 +118,7 @@ public class TXT extends MyFile {
 	}
 
 	public void print(javax.print.PrintService service) throws IOException, PrinterException {
-		toPDF();
+		//toPDF();
 
 		printPDF("serverFolder/" + uploader + "/" + path + ".pdf", service);
 	}
