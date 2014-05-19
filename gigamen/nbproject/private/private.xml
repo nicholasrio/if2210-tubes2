@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/Gigamen/src/gigamen/ReadMusicFile.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/Gigamen/src/gigamen/Crawler.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/Gigamen/src/gigamen/Console.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/Gigamen/src/gigamen/Song.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/Gigamen/src/gigamen/PlaylistManager.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/Gigamen/src/gigamen/Playlist.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/Gigamen/src/gigamen/GigaMusicPlayer.java</file>
+            <file>file:/D:/Kuliah/IF/java/Giga%20Music%20Player/Github/if2210-tubes2/gigamen/Playlist.java</file>
+            <file>file:/D:/Kuliah/IF/java/Giga%20Music%20Player/Github/if2210-tubes2/gigamen/Console.java</file>
+            <file>file:/D:/Kuliah/IF/java/Giga%20Music%20Player/Github/if2210-tubes2/gigamen/PlaylistManager.java</file>
+            <file>file:/D:/Kuliah/IF/java/Giga%20Music%20Player/Github/if2210-tubes2/gigamen/ReadMusicFile.java</file>
+            <file>file:/D:/Kuliah/IF/java/Giga%20Music%20Player/Github/if2210-tubes2/gigamen/Song.java</file>
+            <file>file:/D:/Kuliah/IF/java/Giga%20Music%20Player/Github/if2210-tubes2/gigamen/GigaMusicPlayer.java</file>
+            <file>file:/D:/Kuliah/IF/java/Giga%20Music%20Player/Github/if2210-tubes2/gigamen/Crawler.java</file>
+            <file>file:/D:/Kuliah/IF/java/Giga%20Music%20Player/Github/if2210-tubes2/gigamen/test/SongPlaylisyPMExportTest.java</file>
         </group>
     </open-files>
 </project-private>

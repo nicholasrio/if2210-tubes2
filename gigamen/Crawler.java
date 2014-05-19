@@ -41,8 +41,7 @@ public class Crawler {
 	}
 	
 	public boolean IsMusicFile (String pathName){ // cek apakah file berekstensi musik atau bukan
-		return (pathName.contains(".mp3") || pathName.contains(".wma") || pathName.contains(".wav")
-				|| pathName.contains(".ra") || pathName.contains(".ram") || pathName.contains(".rm"));
+		return (pathName.contains(".mp3"));
 	}
 	public void ReadDirectory(){ // Lakukan pembacaan dari direktori input ke array of PathName
 		// Konstruktor kelas path untuk penelusuran direktori

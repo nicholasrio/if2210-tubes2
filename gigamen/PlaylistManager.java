@@ -93,5 +93,18 @@ public class PlaylistManager {
             return new String("String Kosong");
         }
     }
-
+    /*
+    @Override
+    public String toString() throws EmptyCollectionException{
+        if (collection.isEmpty()) {
+            throw new EmptyCollectionException();
+        }
+        else {
+            String s="List Playlist : ";
+            for(int i=0;i<collection.size();i++){
+                s=s+"\n"+i+". "+collection.get(i).getPlaylistTitle();
+            }
+            return s;
+        }
+    }*/
 }
