@@ -25,7 +25,7 @@ public class FormPemilih extends javax.swing.JFrame {
      */
     public FormPemilih(String NIK, String Password) {
         dataPemilih = new main.Pemilih(NIK, Password);
-        boolean[] isSudahPilih = dataPemilih.LoadStatusSudahMemilihAtauBelum();
+        boolean[] isSudahPilih = dataPemilih.getStatusMemilih();
         isSudahPilihDPR = isSudahPilih[0];
         isSudahPilihDPD = isSudahPilih[1];
         isSudahPilihDPRDP = isSudahPilih[2];
