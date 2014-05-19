@@ -13,6 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+import Video.NullException;
+
 /**
  * Swing untuk register admin
  * @author Rikysamuel
@@ -77,7 +79,11 @@ public class AdministratorRegister extends javax.swing.JFrame {
         jButton1.setText("Daftar!");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                try{
+                    jButton1ActionPerformed(evt);
+                } catch(NullException e){
+
+                }
             }
         });
 
@@ -156,11 +162,12 @@ public class AdministratorRegister extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
 /**
  * Action Performed ketika tombol "Daftar" di klik
  * @param evt 
  */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws NullException {//GEN-FIRST:event_jButton1ActionPerformed
         if (jTextField1.getText().equals("")){
             JOptionPane.showConfirmDialog(this, "NIM harus diisi!");
         } else{

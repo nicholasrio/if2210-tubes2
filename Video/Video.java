@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * kelas controller video
+ * @author asus
+ */
 public class Video {
 	
 	private String title;
@@ -23,7 +27,11 @@ public class Video {
                 Logger.getLogger(Video.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        /* insert nilai attribute ke database */
+        /**
+         * insert nilai attribute ke database 
+         * @throws NullException
+         * @throws SQLException 
+         */
 	public void Insert() throws NullException, SQLException {
             if(title.equals("") || !(no_tubes>0 && no_tubes<4) || link.equals("") || group_name.equals("") || view<0) {
                 throw new NullException ("Tidak boleh ada data yang null");
@@ -32,7 +40,12 @@ public class Video {
                 s.insert_video(title, link, view, no_tubes, group_name);
             }
 	}
-	/* update database dengan nilai attribute berdasarkan id*/
+	/**
+         * update database dengan nilai attribute berdasarkan id
+         * @param id
+         * @throws SQLException
+         * @throws NullException 
+         */
 	public void Update(int id) throws SQLException, NullException {
             if(title.equals("") || !(no_tubes>0 && no_tubes<4) || link.equals("") || group_name.equals("") || view<0) {
                 throw new NullException ("Tidak boleh ada data yang null");
@@ -41,19 +54,38 @@ public class Video {
              s.update_video(id, title, link, view, no_tubes, group_name);
             }
         }
-        /* delete data video berdasarkan id */
+        /**
+         * delete data video berdasarkan id
+         * @param id
+         * @throws SQLException 
+         */ 
 	public void Delete(int id) throws SQLException {
             s.delete_video(id);
 	}
-	/* cek data video di database */
+	/**
+         * cek data video di database
+         * @param id
+         * @return
+         * @throws SQLException 
+         */ 
         public boolean cekData(int id) throws SQLException{
             return s.cekDataVideo(id);
         }
-        /* mengambil semua data video didatabase */
+        /**
+         * mengambil semua data video didatabase
+         * @return
+         * @throws SQLException 
+         */
 	public List<String[]> SelectData() throws SQLException {
             return s.select_video();
 	}
-	/* mengambil link video berdasarkan no_tubes dan nama group */
+	/**
+         * mengambil link video berdasarkan no_tubes dan nama group
+         * @param no_tubes
+         * @param groupname
+         * @return
+         * @throws SQLException 
+         */
         public String LinkVideo (int no_tubes, String groupname) throws SQLException{
             return s.SearchVideo(no_tubes, groupname);
         }

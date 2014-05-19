@@ -60,10 +60,14 @@ public class Group {
     }
     
     public void save() throws SQLException{
+        assert group_name != null : "Precondition group_name != null";
+        assert member != null : "Precondition member != null";
         s.insert_group(no_tubes, group_name, member.get(0), member.get(1), member.get(2));
+        assert cekDataGroup(no_tubes, group_name) == true : "Postcondition group exist"; 
     }
     
     public void update(int _no_tubes, String _group_name) throws SQLException{
+        assert group_name != null : "Precondition group_name != null";
         s.update_group(no_tubes, group_name, member.get(0), member.get(1), member.get(2), _no_tubes, _group_name);
     }
     
@@ -85,10 +89,12 @@ public class Group {
     }
     
     public boolean cekDataGroup(int no_tubes, String group_name) throws SQLException{
+        assert group_name != null : "Precondition group_name != null";
         return new SqlStatement().cekDataGroup(no_tubes, group_name);
     }
  
     public List<String> getHistory(){
+        assert member != null : "Precondition member != null";
         return member;
     }
     

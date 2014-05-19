@@ -8,6 +8,8 @@ package Admin;
 
 import java.sql.SQLException;
 import java.util.List;
+
+import Video.NullException;
 import mysql.SqlStatement;
 
 
@@ -103,8 +105,9 @@ public class Administrator {
      * Panggil dulu setter NIM dan password sebelum memanggil method ini
      * Digunakan untuk mendaftarkan admin pada database admin
      * @throws java.sql.SQLException
+     * @throws NullException 
      */
-    public void Register() throws SQLException{
+    public void Register() throws SQLException, NullException {
         assert password != null : "Precondition password != null";
         assert name != null : "Precondition name != null";
         new SqlStatement().insert_admin(NIM, password, name);

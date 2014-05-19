@@ -78,7 +78,12 @@ public class VideoSwing extends javax.swing.JFrame {
         SaveButton.setText("Save");
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveButtonActionPerformed(evt);
+                try {
+					SaveButtonActionPerformed(evt);
+				} catch (NullException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -159,7 +164,7 @@ public class VideoSwing extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_titleActionPerformed
 
-    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
+    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) throws NullException {//GEN-FIRST:event_SaveButtonActionPerformed
         if(!cek()){
             JOptionPane.showMessageDialog(rootPane, "Kolom yang kosong harus diisi..!", "KatalogV Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -173,7 +178,6 @@ public class VideoSwing extends javax.swing.JFrame {
                     V.setNo_tubes(Integer.parseInt(no_tubes.getText()));
                     V.setGroup_name(group_name.getText());
                     V.setLink(link.getText());
-
                     V.Insert();
 
                     JOptionPane.showMessageDialog(null, "Data berhasil disimpan...");
@@ -183,9 +187,6 @@ public class VideoSwing extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Ada Kesalahan...");
                     Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (NullException n) {
-                    JOptionPane.showMessageDialog(null, n.getMessage());
-                    Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, n);
                 } catch (NumberFormatException nf) {
                     JOptionPane.showMessageDialog(null, "Masukan data sesuai tipenya");
                     Logger.getLogger(VideoSwing.class.getName()).log(Level.SEVERE, null, nf);

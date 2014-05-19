@@ -9,6 +9,8 @@ package Admin;
 import java.sql.SQLException;
 import java.util.List;
 
+import Video.NullException;
+
 /**
  * MVC Controller dari Administrator
  * @author Rikysamuel
@@ -77,7 +79,8 @@ public class AdministratorController {
      * @param password
      * @throws SQLException 
      */
-    public void AdminRegister(String _NIM, String name, String password) throws SQLException{
+
+    public void AdminRegister(String _NIM, String name, String password) throws SQLException, NullException{
         if ((name.equals("") || password.equals("")) || _NIM.equals("")){
             view.printRegister(false, name);
         } else {
