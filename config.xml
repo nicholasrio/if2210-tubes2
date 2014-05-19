@@ -10,7 +10,7 @@ and open the template in the editor.
     <config>
         <host>localhost</host>
         <user>root</user>
-        <pass>underground</pass>
-        <dbname>tubes_oop</dbname>
+        <pass></pass>
+        <dbname>printer_online</dbname>
     </config>
 </onlineprinter>
