@@ -61,6 +61,11 @@ public class FormCaleg extends javax.swing.JFrame {
         model.addColumn("Partai");
         model.addColumn("No.Dapil");
         model.addColumn("History");
+        
+        Nama.setEnabled(false);
+        Partai.setEnabled(false);
+        NoDapil.setEnabled(false);
+        History.setEnabled(false);
         loadData();
     }
     private void loadData()
@@ -69,19 +74,18 @@ public class FormCaleg extends javax.swing.JFrame {
         try
         {
             Connection koneksi = KoneksiDatabase.getKoneksi();
-            Statement statement = koneksi.createStatement();
-            
-            String commandGetCaleg = "select * from Caleg where Lingkup = " + Lingkup;
-            ResultSet resultCaleg = statement.executeQuery(commandGetCaleg);
+            String commandGetCaleg = "select * from Caleg where Lingkup = ?";
+            PreparedStatement P = koneksi.prepareStatement(commandGetCaleg);
+            P.setString(1, Lingkup);
+            ResultSet resultCaleg = P.executeQuery();
             while(resultCaleg.next())
             {
                 Object [] o = new Object[6];
                 o[0] = resultCaleg.getString("NIKCaleg");
-                o[1] = resultCaleg.getString("Nama");
-                o[2] = resultCaleg.getString("NamaPartai");
+                o[1] = resultCaleg.getString("NamaPartai");
                 o[3] = resultCaleg.getString("TrackRecord");
-                o[4] = resultCaleg.getString("NoDapil");
-                o[5] = resultCaleg.getString("Lingkup");
+                o[2] = resultCaleg.getString("NoDapil");
+                //o[5] = resultCaleg.getString("Lingkup");
                 
                 model.addRow(o);
 
