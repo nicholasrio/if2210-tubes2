@@ -25,8 +25,8 @@ public class GroupSearchForm {
     static void input(){
         System.out.print("Insert Group Name: ");
         Group_Name= input.next();
-        System.out.print("Insert Password: ");
-        no_tubes = input.nextInt();
+        System.out.print("Insert Project Number: ");
+        no_tubes = Integer.valueOf(input.next());
     }
     static void execute(){
         try {
