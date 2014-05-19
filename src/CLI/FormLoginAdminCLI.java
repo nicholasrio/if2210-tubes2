@@ -23,6 +23,9 @@ public class FormLoginAdminCLI {
         formAdminCLI = new FormAdminCLI();
         formSuperAdminCLI = new FormSuperAdminCLI();
     }
+    /**
+     * Tampilan awal seorang admin/superadmin untuk login
+     */
     public void start(){
         System.out.println("=============================================");
         System.out.println("=============================================");
@@ -54,6 +57,11 @@ public class FormLoginAdminCLI {
                 System.out.println("Ulangi lagi!");
         }
     }
+      /**
+     * Untuk melakukan login
+     * @param username
+     * @param password 
+     */
     public void login(String username, String password){
         Scanner input = new Scanner(System.in);
         System.out.print("Username > ");
@@ -61,6 +69,10 @@ public class FormLoginAdminCLI {
         System.out.print("\nPassword > ");
         password = input.next();
     }
+     /**
+     * mengecek apakah seseoran termasuk admin
+     * @return boolean 
+     */
     public boolean isAdmin(){
         String username = new String();
         String password = new String();
@@ -75,6 +87,10 @@ public class FormLoginAdminCLI {
         }
         return valid;
     }
+     /**
+     * Mengecek apakah seseorang termasuk superadmin
+     * @return boolean
+     */
     public boolean isSuperAdmin(){
         String username = new String();
         String password = new String();
