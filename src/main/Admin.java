@@ -17,7 +17,7 @@ public class Admin {
     public Admin(String user, String pass, boolean superAdmin)
     {
         Username = user;
-        Password = pass;
+        Password = Tools.Hashing.StringToMD5(pass);
         SuperAdmin = superAdmin;
     }
     
@@ -44,7 +44,7 @@ public class Admin {
                 else
                     SuperAdminInt = 0;
                     
-                if(Username.compareToIgnoreCase(o[0]) == 0  && Hashing.StringToMD5(Password).compareTo(o[1]) == 0)
+                if(Username.compareToIgnoreCase(o[0]) == 0  && Password.equals(o[1]))
                 {
                     valid = result.getInt("Peran") == SuperAdminInt;
                 }
