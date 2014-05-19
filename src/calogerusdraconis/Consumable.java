@@ -158,10 +158,11 @@ public final class Consumable {
 		return happiness;
 	}
 	
-	@Override
 	/**
-	 * Print status consumable
+	 * Mendapatkan status consumable
+	 * @return Status Consumable dalam String
 	 */
+	@Override
 	public String toString() {
 		return("Nama : " + getName() + '\n' +
 			   "Harga : " + getCost() + '\n' + 

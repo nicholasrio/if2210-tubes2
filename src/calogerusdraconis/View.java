@@ -23,16 +23,41 @@ package calogerusdraconis;
  */
 public interface View {
 	
+	/**
+	 * Menampilkan menu
+	 */
 	public void showMenu();
 	
+	/**
+	 * Menampilkan Attribut Dragon ke Screen
+	 * @param drg Dragon yang ingin ditampilkan
+	 */
     public void UpdateScreen (UserDragon drg);
 
+	/**
+	 * Menampilkan Store ke Scren
+	 * @param str Store yang ingin ditampilkan
+	 */
     public void UpdateScreen (Store str);
 
+	/**
+	 * Menampilkan pertarungan dragon dan enemy ke screen
+	 * @param drg dragon user
+	 * @param enemy dragon enemy
+	 */
     public void UpdateScreen (UserDragon drg, Dragon enemy);
 
+	/**
+	 * Menampilkan event yang didapatkan dragon
+	 * @param drg dragon user
+	 * @param evnt event yang didapatkan
+	 */
     public void UpdateScreen (UserDragon drg, Event evnt);
 	
+	/**
+	 * Menampikan food directory yang dimiliki Dragon
+	 * @param drg Dragon user
+	 */
 	public void seeFoodDirectory (UserDragon drg);
 }
 

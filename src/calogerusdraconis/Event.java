@@ -28,6 +28,9 @@ public class Event {
 
     private String message;
 
+	/**
+	 * Constructor Event
+	 */
     public Event () {
     }
 	

@@ -40,7 +40,7 @@ public class GUIViewFight extends javax.swing.JFrame {
 		enemy = _enemy;
 		initComponents();
 		
-		enemyDragon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/enemy" + util.randomInt(1,9) + ".png")));
+		enemyDragon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/enemy" + Util.randomInt(1,9) + ".png")));
 		enemyDragon.setText(enemy.name);
 		userDragon.setIcon(draco.getImage());
         userDragon.setText(draco.name);
@@ -75,6 +75,12 @@ public class GUIViewFight extends javax.swing.JFrame {
 		
 	}
 	
+	/**
+	 * Menghitung perbandingan status dragon user dan enemy
+	 * @param a nilai atribut dari dragon user
+	 * @param b nilai atribut dari dragon enemy
+	 * @return posisi dari perbandingan status dragon user dan enemy
+	 */
 	private static int calcSlideVal(float a, float b) {
 		float x = a+1;
 		float y = b+1;
@@ -349,7 +355,10 @@ public class GUIViewFight extends javax.swing.JFrame {
 		java.awt.EventQueue.invokeLater(thread);
 	}
 
-	
+	/**
+	 * Menunggu user untuk melakukan suatu pilihan untuk dragon
+	 * @return integer yang merepresentasikan pilihan aktivitas
+	 */
 	public boolean waitForSelection(){
 		try {
 			synchronized(SelectionNotifier) {

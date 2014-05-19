@@ -19,8 +19,11 @@ package calogerusdraconis;
 
 import java.util.Random;
 
-public class util {
+public class Util {
 	
+	private Util() {
+	}
+		
 	/**
 	 * Mengembalikan random integer pada range input
 	 * @param min  batas minimal hasil random

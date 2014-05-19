@@ -22,21 +22,45 @@ package calogerusdraconis;
  * @author WILLY
  */
 public class Dragon {
-
+	
+	/**
+	 * Nama Dragon
+	 */
     protected String name;
 
+	/**
+	 * Health Dragon
+	 */
     protected float health;
 
+	/**
+	 * Stamina Dragon
+	 */
     protected float stamina;
 
+	/**
+	 * Thirst Dragon
+	 */
     protected float thirst;
 
+	/**
+	 * Bladder Dragon
+	 */
     protected float bladder;
 
+	/**
+	 * Hunger Dragon
+	 */
     protected float hunger;
 
+	/**
+	 * View Dragon
+	 */
     protected int level;
 
+	/**
+	 * Experience Dragon
+	 */
     protected int experience;
 
 	/**
