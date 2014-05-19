@@ -19,6 +19,10 @@ package calogerusdraconis;
 
 import java.util.ArrayList; 
 
+/**
+ *
+ * @author WILLY, Cilvia Sianora Putri
+ */
 public class Store {
 
     private ArrayList<Consumable> fdInventory;

@@ -17,7 +17,10 @@
 
 package calogerusdraconis;
 
-
+/**
+ *
+ * @author WILLY
+ */
 public final class Consumable {
 
     private String name;

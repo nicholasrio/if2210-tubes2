@@ -17,6 +17,11 @@
 
 package calogerusdraconis;
 
+
+/**
+ *
+ * @author WILLY
+ */
 public class Event {
 
     private String type;

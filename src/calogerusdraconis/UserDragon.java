@@ -9,6 +9,10 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
+/**
+ *
+ * @author WILLY, Cilvia Sianora Putri, Dariel Valdano
+ */
 public class UserDragon extends Dragon {
 
     private String password;
@@ -218,9 +222,6 @@ public class UserDragon extends Dragon {
         return happiness;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.6DDA13A0-CBDF-5386-53C4-B3572DA123D1]
-    // </editor-fold> 
 	/**
 	 * Setter Happiness
 	 * @param val new happiness point of Dragon
@@ -229,9 +230,6 @@ public class UserDragon extends Dragon {
         this.happiness = val;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.FF2F5803-9362-8956-4285-607F8311B732]
-    // </editor-fold> 
 	/**
 	 * Getter Money
 	 * @return money of Dragon
@@ -240,9 +238,6 @@ public class UserDragon extends Dragon {
         return money;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.94B86C97-726A-A571-226A-DE3EC1EF1BB5]
-    // </editor-fold> 
 	/**
 	 * Setter Money
 	 * @param val new money of Dragon
@@ -251,9 +246,6 @@ public class UserDragon extends Dragon {
         this.money = val;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.9C65A126-D740-7A30-3143-471B8151D021]
-    // </editor-fold> 
 	/**
 	 * Getter Password
 	 * @return password of Dragon
@@ -262,9 +254,6 @@ public class UserDragon extends Dragon {
         return password;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,regenBody=yes,id=DCE.B85B65E8-3F7D-5A51-03F9-BE56ECA9662D]
-    // </editor-fold> 
 	/**
 	 * Setter Password
 	 * @param val new password of Dragon
@@ -273,9 +262,6 @@ public class UserDragon extends Dragon {
         this.password = val;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.2FA42178-E36A-15BE-3646-94D71EAC0289]
-    // </editor-fold> 
 	/**
 	 * Memberi Consumable yang sudah dibeli ke Dragon
 	 * @param fd Consumable yang akan diberikan ke Dragon
@@ -295,9 +281,6 @@ public class UserDragon extends Dragon {
 		return new Event("Proses Selesai","useCosumable Selesai");
     }
 	
-	// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.0929F36F-FC07-E055-0FD8-118CC54E9595]
-    // </editor-fold> 
 	/**
 	 * Membeli Consumable dari store
 	 * @param what Consumable yang akan dibeli
@@ -456,9 +439,6 @@ public class UserDragon extends Dragon {
 		return retval;
 	}
 	
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.CAFBB28D-46E4-68A5-0A2A-82623BC039D0]
-    // </editor-fold> 
 	/**
 	 * Bertarung dengan Dragon lain
 	 * @param withWho Dragon lain yang akan bertarung
@@ -496,9 +476,6 @@ public class UserDragon extends Dragon {
         return e;
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.0194129F-5D6C-13CE-0AE4-A5601DADA176]
-    // </editor-fold> 
 	/**
 	 * Mengajak Dragon berlatih
 	 * @return Event train selesai
@@ -518,9 +495,6 @@ public class UserDragon extends Dragon {
         return new Event("Proses Selesai","The dragon is now Trained");
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.847AFD4C-3B2A-B5F6-9C2C-571586FEBF0A]
-    // </editor-fold> 
 	/**
 	 * Mengajak Dragon bermain
 	 * @return Event entertain selesai
@@ -538,9 +512,6 @@ public class UserDragon extends Dragon {
 		return new Event("Proses Selesai","The dragon is now more entertained");
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.20C42E67-996F-166D-45F1-95DC8D50E616]
-    // </editor-fold> 
 	/**
 	 * Menyuruh Dragon tidur
 	 * @return Event rest selesai
@@ -559,9 +530,6 @@ public class UserDragon extends Dragon {
 		return new Event("Proses Selesai","The dragon feels well-rested");
     }
 
-    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
-    // #[regen=yes,id=DCE.8A6C5225-21DB-47E8-1287-18C4BEE4D3B1]
-    // </editor-fold> 
 	/**
 	 * Menyuruh Dragon pergi ke toilet
 	 * @return Event toilet selesai 

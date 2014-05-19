@@ -19,6 +19,10 @@ package calogerusdraconis;
 import static java.lang.Thread.sleep;
 import java.util.Scanner;
 
+/**
+ *
+ * @author WILLY, Dariel Valdano
+ */
 public class Main {
 
 	public static UserDragon draco;

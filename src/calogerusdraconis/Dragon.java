@@ -17,6 +17,10 @@
 
 package calogerusdraconis;
 
+/**
+ *
+ * @author WILLY
+ */
 public class Dragon {
 
     protected String name;

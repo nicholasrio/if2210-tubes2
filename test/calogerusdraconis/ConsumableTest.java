@@ -27,18 +27,6 @@ import static org.junit.Assert.*;
  * @author Rita Sarah
  */
 public class ConsumableTest {
-    
-    public ConsumableTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
     /**
      * Test of getImg method, of class Consumable.
      */
