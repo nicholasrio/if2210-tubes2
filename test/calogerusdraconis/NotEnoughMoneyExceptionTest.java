@@ -40,7 +40,7 @@ public class NotEnoughMoneyExceptionTest {
     }
 
     @Test
-    public void testSomeMethod() {
+    public void testNotEnoughMoneyException() {
         try {
             throw new NotEnoughMoneyException();
         } catch (NotEnoughMoneyException e) {
