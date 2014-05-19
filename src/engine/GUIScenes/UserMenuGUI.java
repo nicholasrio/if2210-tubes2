@@ -43,7 +43,6 @@ public class UserMenuGUI extends Scene
     private float transparentPercentage;
     private int menuHovered;
     private int menuPressed;
-    private int menuReleased;
     private float deltapos;
     
     private Font userMenuFont;
@@ -58,7 +57,6 @@ public class UserMenuGUI extends Scene
         transparentPercentage = 0f;
         menuHovered = -1;
         menuPressed = -1;
-        menuReleased = -1;
         
         deltapos = 0f;
         
