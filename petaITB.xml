@@ -4,11 +4,12 @@
 	</Nodes>
 	<Buildings>
 		<Building id="1">
-			<xPosition>10.0</xPosition>
-			<yPosition>10.0</yPosition>
+			<xPosition>31.0</xPosition>
+			<yPosition>52.0</yPosition>
 			<Name>Aula Barat</Name>
 			<Neighbours>
 				<Neighbour id="2"/>
+				<Neighbour id="3"/>
 			</Neighbours>
 			<Rooms>
 				<Room location="3" name="7602"/>
