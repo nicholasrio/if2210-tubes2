@@ -12,6 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import main.Caleg;
 import main.CalonTerpilih;
@@ -57,7 +60,7 @@ public class FormCaleg extends javax.swing.JFrame {
         
         
         model.addColumn("NIK");
-        model.addColumn("Nama");
+        //model.addColumn("Nama");
         model.addColumn("Partai");
         model.addColumn("No.Dapil");
         model.addColumn("History");
@@ -83,14 +86,14 @@ public class FormCaleg extends javax.swing.JFrame {
                 Object [] o = new Object[6];
                 o[0] = resultCaleg.getString("NIKCaleg");
                 o[1] = resultCaleg.getString("NamaPartai");
-                o[3] = resultCaleg.getString("TrackRecord");
                 o[2] = resultCaleg.getString("NoDapil");
+                o[3] = resultCaleg.getString("TrackRecord");
                 //o[5] = resultCaleg.getString("Lingkup");
                 
                 model.addRow(o);
 
             }
-            koneksi.close();
+            //koneksi.close();
         }
         catch (SQLException ex) {
             System.out.println("Error CalonTerpilih.java" + ex.getMessage());
@@ -118,6 +121,7 @@ public class FormCaleg extends javax.swing.JFrame {
         KembaliFormAdmin = new javax.swing.JButton();
         NIK = new javax.swing.JTextField();
         Nama = new javax.swing.JTextField();
+        jButtonCekNama = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         Partai = new javax.swing.JTextField();
         Tambah = new javax.swing.JButton();
@@ -173,6 +177,14 @@ public class FormCaleg extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 152, -1));
+
+        jButtonCekNama.setText("Cek Nama");
+        jButtonCekNama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCekNamaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonCekNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Belwe Bd BT", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 204));
@@ -310,18 +322,19 @@ public class FormCaleg extends javax.swing.JFrame {
             String sql = "INSERT INTO YukCoblos VALUES (?, ?, ?, ?, ?)";
             PreparedStatement p = c.prepareStatement(sql);
             calonterpilih = new CalonTerpilih();
-            int nodapilInt = Integer.parseInt(nodapil);
-            calonterpilih.AddCaleg(nik, partai, history, nodapilInt, lingkup);
+            int nodapilInt = Integer.parseInt(NoDapil.getText());
+            calonterpilih.AddCaleg(NIK.getText(), Partai.getText(), History.getText(), nodapilInt, lingkup);
             
-            p.setString(1, nik);
-            p.setString(2, nama);
-            p.setString(3, partai);
-            p.setString(4, nodapil);
-            p.setString(5, history);
+            p.setString(1, NIK.getText());
+            p.setString(2, Partai.getText());
+            p.setString(3, History.getText());
+            p.setString(4, NoDapil.getText());
+            p.setString(5, lingkup);
 //            p.setString(5, pilihcaleg);
             
             p.executeUpdate();
-            p.close();
+            //p.close();
+            //c.close();
         }
         catch(SQLException e)
         {
@@ -343,16 +356,16 @@ public class FormCaleg extends javax.swing.JFrame {
         String nik = (String) model.getValueAt(i, 0);
         NIK.setText(nik);
         
-        String nama = (String) model.getValueAt(i, 1);
-        NIK.setText(nama);
+        //String nama = (String) model.getValueAt(i, 1);
+        //NIK.setText(nama);
         
-        String partai = (String) model.getValueAt(i, 2);
+        String partai = (String) model.getValueAt(i, 1);
         Partai.setText(partai);
         
-        String nodapil = (String) model.getValueAt(i, 3);
+        String nodapil = (String) model.getValueAt(i, 2);
         NoDapil.setText(nodapil);
         
-        String history = (String) model.getValueAt(i, 4);
+        String history = (String) model.getValueAt(i, 3);
         History.setText(history);
         
     }//GEN-LAST:event_TabelCalegMouseClicked
@@ -360,6 +373,35 @@ public class FormCaleg extends javax.swing.JFrame {
     private void NamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NamaActionPerformed
+
+    private void jButtonCekNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCekNamaActionPerformed
+        try {
+            // TODO add your handling code here:
+            Connection koneksi = KoneksiDatabase.getKoneksi();
+            String command = "select Nama from Penduduk where NIK = ?";
+            PreparedStatement P = koneksi.prepareStatement(command);
+            
+            P.setString(1, NIK.getText());
+            ResultSet result = P.executeQuery();
+            if(result.next())
+            {
+                System.out.println("MasukIF");
+                Nama.setEnabled(true);
+                Partai.setEnabled(true);
+                NoDapil.setEnabled(true);
+                History.setEnabled(true);
+                Nama.setText(result.getString("Nama"));
+                //koneksi.close();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "NIK tidak ada di database");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FormCaleg.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonCekNamaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea History;
@@ -372,6 +414,7 @@ public class FormCaleg extends javax.swing.JFrame {
     private javax.swing.JButton Tambah;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
+    private javax.swing.JButton jButtonCekNama;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JColorChooser jColorChooser2;
     private javax.swing.JColorChooser jColorChooser3;
