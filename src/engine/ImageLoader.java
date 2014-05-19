@@ -95,6 +95,7 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/Other/Choice_Border_Hover.png"));
         allImages.add(loadImage("Image/Other/cursor.png"));
         allImages.add(loadImage("Image/Other/User_Border.png"));
+        allImages.add(loadImage("Image/MainMenu/exit_hover.png"));
     }
     
     public static Image getImage(String imgName)
@@ -311,6 +312,10 @@ public class ImageLoader extends JPanel
         else if ("user_border".equalsIgnoreCase(imgName))
         {
             return allImages.get(51);
+        }
+        else if ("exit_hover".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(52);
         }
         return null;
     }

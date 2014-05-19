@@ -36,6 +36,7 @@ public class MainMenuGUI extends Scene
     private Image optionsTexture;
     private Image aboutTexture;
     private Image exitTexture;
+    private Image exitHoverTexture;
     private Image userBg;
     
     /* Rectangles */
@@ -123,6 +124,7 @@ public class MainMenuGUI extends Scene
         optionsTexture = ImageLoader.getImage("options");
         aboutTexture = ImageLoader.getImage("about");
         exitTexture = ImageLoader.getImage("exit");
+        exitHoverTexture = ImageLoader.getImage("exit_hover");
         userBg = ImageLoader.getImage("AchievementBack");
     }
     
@@ -227,8 +229,11 @@ public class MainMenuGUI extends Scene
             g2D.drawImage(achievementTexture,(int)(getWidth()*(-0.11f)+deltapos[2]),(int)(getHeight()*0.45f),achievementTexture.getWidth(this),achievementTexture.getHeight(this),this);
             g2D.drawImage(optionsTexture,(int)(getWidth()*(-0.13f)+deltapos[3]),(int)(getHeight()*0.63f),optionsTexture.getWidth(this),optionsTexture.getHeight(this),this);
             g2D.drawImage(aboutTexture,(int)(getWidth()*(-0.15f)+deltapos[4]),(int)(getHeight()*0.80f),aboutTexture.getWidth(this),aboutTexture.getHeight(this),this);       
-        
-            g2D.drawImage(exitTexture,(int)(getWidth()*(0.78f)),(int)(getHeight()*0.76f),exitTexture.getWidth(this),exitTexture.getHeight(this),this);      
+            
+            if (menuHovered == 5)
+                g2D.drawImage(exitHoverTexture,(int)(getWidth()*(0.78f)),(int)(getHeight()*0.76f),exitTexture.getWidth(this),exitTexture.getHeight(this),this);      
+            else
+                g2D.drawImage(exitTexture,(int)(getWidth()*(0.78f)),(int)(getHeight()*0.76f),exitTexture.getWidth(this),exitTexture.getHeight(this),this);      
        
             g2D.setFont(playernameFont);
             g2D.drawString("WELCOME: "+GameData.lastLogin.getNama(), 5, (int)(Game.ResolutionHeight*0.175f)+30);
@@ -325,7 +330,7 @@ public class MainMenuGUI extends Scene
                     case 4 : SoundManager.playSound("fbutton");
                              SceneManager.SwitchScene("AboutMenuGUI");
                              break;
-                    case 5 : SoundManager.playSound("button2");
+                    case 5 : SoundManager.playSound("fbutton");
                              Game.gameRunning = false; 
                              break;
                     case 6 : SoundManager.playSound("fbutton");

@@ -253,7 +253,7 @@ public class LevelMenuGUI extends Scene
             if (nowLevel < NLevel)
             {
                 menuPressed = 3;
-                SoundManager.playSound(arrowSound);
+                SoundManager.playSound("button");
             }
         }
         else if (leftArrowRect.contains(event.getPoint()))
@@ -261,13 +261,13 @@ public class LevelMenuGUI extends Scene
             if (nowLevel>1)
             {
                 menuPressed = 4;
-                SoundManager.playSound(arrowSound);
+                SoundManager.playSound("button");
             }
         }
         else if (backRect.contains(event.getPoint()))
         {
             menuPressed = 2;
-            SoundManager.playSound(arrowSound);
+            SoundManager.playSound("button2");
             System.out.println("Back Button");
         }
     }
