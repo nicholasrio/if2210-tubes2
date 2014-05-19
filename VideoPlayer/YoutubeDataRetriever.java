@@ -67,7 +67,7 @@ public class YoutubeDataRetriever {
 	/**
 	 * Method ini akan mengembalikan jumlah view pada URL yang diberikan
 	 * @param _URL
-	 * @return long
+	 * @return int
 	 * @throws IOException, ServiceException
 	 */
 	public long getView(String URL) throws IOException, ServiceException
@@ -76,7 +76,7 @@ public class YoutubeDataRetriever {
 		query.setFullTextQuery(GetAbsoluteId(URL));
 		VideoFeed videoFeed = service.query(query, VideoFeed.class);
 		List<VideoEntry>ListVideo =  videoFeed.getEntries();
-		return ListVideo.get(0).getStatistics().getViewCount()+ListVideo.get(0).getStatistics().getFavoriteCount();
+		return ListVideo.get(0).getStatistics().getViewCount();
 	}
 	/**
 	 * Method ini akan mengembalikan title dari URL video yang diberikan
