@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import main.Caleg;
 import main.DaftarPilihan;
+import main.Pemilih;
+import main.PilihanCaleg;
 import main.PilihanPartai;
 
 /**
@@ -24,19 +26,20 @@ public class FormPemilihCLI {
     }/**
      * Tapilan awal form pemilih
      */
-    public void start(){
+    public void start(Pemilih p){
+        daftarPilihan.GetDaftarPartai();
         System.out.println("==================================================================");
         System.out.println("==================================================================");
         System.out.println("=                          Form Pemilih                          =");
         System.out.println("==================================================================\n\n\n");
-        kertasSuaraBerdPartai(daftarPilihan.GetDaftarPartai());
+        kertasSuaraBerdPartai(daftarPilihan.GetDaftarPartai(),p);
     }
     /**
      * Menampilkan daftar partai
      * @param daftarPartai 
      */
-    public void kertasSuaraBerdPartai(ArrayList<String> daftarPartai){
-        System.out.print("Apabila Anda tidak ingin memilih, tekan 0 dan enter.\ndaftar Partai yang dapat dipilih : ");
+    public void kertasSuaraBerdPartai(ArrayList<String> daftarPartai, Pemilih p){
+        System.out.print("Apabila Anda tidak ingin memilih, tekan 0 dan enter.\nDaftar Partai yang dapat dipilih : ");
         for (int i = 0; i < daftarPartai.size(); i++){
             System.out.println(i+1 + ". " + daftarPartai.get(i));
         }
@@ -45,7 +48,7 @@ public class FormPemilihCLI {
         int pilihan = in.nextInt();
         if (pilihan >= 0 && pilihan <= daftarPartai.size()){
             String NIK = "12345";
-            PilihanPartai pil = new PilihanPartai(NIK,"0",daftarPartai.get(pilihan - 1));
+            PilihanPartai pil = new PilihanPartai(p.GetNIK(),daftarPartai.get(pilihan - 1),"lingkup");
         }
     }
     /**
@@ -123,7 +126,7 @@ public class FormPemilihCLI {
      * @return boolean
      */
     public boolean isExist(int pilihan, ArrayList<Caleg> daftarCaleg){
-        return pilihan > 0 && pilihan <= daftarCaleg.size() || pilihan == -1;
+        return pilihan >= 0 && pilihan <= daftarCaleg.size();
     }
     /**
      * Menampilkan nomor dapil berdasarkan caleg
@@ -136,8 +139,15 @@ public class FormPemilihCLI {
     /**
      * Memasukan pilihan
      */
-    public void input(ArrayList<Caleg> daftarCaleg){
+    public void input(ArrayList<Caleg> daftarCaleg, Pemilih p){
+        System.out.print("Silakan pilih (1 - " + daftarCaleg.size() + ") > ");
         Scanner in = new Scanner(System.in);
         int pilihan = in.nextInt();
+        if (isExist(pilihan,daftarCaleg)){
+            PilihanCaleg pil = new PilihanCaleg(p.GetNIK(),daftarCaleg.get(pilihan).GetNama(),"lingkup");
+        }
+        else {
+            System.out.print("Tidak ada pilihan.");
+        }
     }
 }
