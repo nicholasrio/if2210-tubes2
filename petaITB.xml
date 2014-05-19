@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<PetaITB>
+	<Nodes>
+	</Nodes>
+	<Buildings>
+		<Building id="1">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Aula Barat</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="2">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Aula Timur</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="3">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Basic Science A</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="4">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Basic Science B</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="5">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>CC Barat</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="6">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>CC Timur</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="7">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Direktorat SP</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="8">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Fisika</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="9">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Menwa</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="10">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek III</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="11">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Teknik Industri</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="12">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek Metalurgi Pengecoran</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="13">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek II</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="14">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Botanical Garden</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="15">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Lab Telekomunikasi Radio dan Gelombang Mikro</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="16">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Gedung Riset dan Inovasi</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="17">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Sunken Court</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="18">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Perpustakaan Pusat</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="19">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek X</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="20">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek XI</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="21">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Oktagon</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="22">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>TVST</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="24">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Lab Fisika Dasar</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="25">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Gedung Kerjasama PLN ITB</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="26">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek I</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="27">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek V</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="28">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek VI</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="29">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek VII</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="30">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek VIII</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="31">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Pool Kendaraan</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="32">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek IV</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="33">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Gedung Kimia</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="34">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Gedung Kimia Organik</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="35">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>GKU Timur</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="36">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Magister Teknik Geodesi</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="37">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek IX C</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="38">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek IX A</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="39">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Lapanan Segitiga</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="40">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Labtek IX B</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="41">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Galeri Soemardja</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="42">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>ATM Center</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="43">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Teknik Sipil</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="44">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Lab Adiwijogo</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="45">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>Lapangan Basket</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+		<Building id="46">
+			<xPosition>10.0</xPosition>
+			<yPosition>10.0</yPosition>
+			<Name>GKU Barat</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Rooms>
+				<Room location="3" name="7602"/>
+			</Rooms>
+		</Building>
+	</Buildings>
+	<Canteens>
+		<Canteen id="100">
+			<xPosition>30.0</xPosition>
+			<yPosition>40.0</yPosition>
+			<Name>Kantin Barat Laut</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Menus>
+				<Food name="Kupat Tahu" price="6000"/>
+				<Beverage name="Es Kelapa" price="5000"/>
+			</Menus>
+		</Canteen>
+		<Canteen id="101">
+			<xPosition>30.0</xPosition>
+			<yPosition>40.0</yPosition>
+			<Name>Kantin Bengkok</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Menus>
+				<Food name="Kupat Tahu" price="6000"/>
+				<Beverage name="Es Kelapa" price="5000"/>
+			</Menus>
+		</Canteen>
+		<Canteen id="102">
+			<xPosition>30.0</xPosition>
+			<yPosition>40.0</yPosition>
+			<Name>Kantin Borju</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Menus>
+				<Food name="Kupat Tahu" price="6000"/>
+				<Beverage name="Es Kelapa" price="5000"/>
+			</Menus>
+		</Canteen>
+		<Canteen id="103">
+			<xPosition>30.0</xPosition>
+			<yPosition>40.0</yPosition>
+			<Name>Kantin Barrack</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Menus>
+				<Food name="Kupat Tahu" price="6000"/>
+				<Beverage name="Es Kelapa" price="5000"/>
+			</Menus>
+		</Canteen>
+		<Canteen id="104">
+			<xPosition>30.0</xPosition>
+			<yPosition>40.0</yPosition>
+			<Name>Kantin GKU Barat</Name>
+			<Neighbours>
+				<Neighbour id="2"/>
+			</Neighbours>
+			<Menus>
+				<Food name="Kupat Tahu" price="6000"/>
+				<Beverage name="Es Kelapa" price="5000"/>
+			</Menus>
+		</Canteen>
+	</Canteens>
+</PetaITB>

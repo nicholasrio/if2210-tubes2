@@ -8,8 +8,8 @@ import java.util.LinkedList;
  * A class which represent a building with list of all the room it has and its
  * position on x and y in global position (GPS value).
  * @author created by : Yusuf Rahmatullah
- * @author modified by : Riva Syafri Rachmatullah and Yusuf Rahmatullah
- * @version 1.3
+ * @author modified by : Riva Syafri Rachmatullah and Yusuf Rahmatullah and Yanfa Adi Putra
+ * @version 1.4
  * @since 1.0
  */
 public class Building extends Node {
