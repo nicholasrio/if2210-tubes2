@@ -24,6 +24,9 @@ public class PilihanPartai implements Pilihan{
         Lingkup = lingkup;
     }
     @Override
+    /**
+     * Menambah ke database sebuah data berupa NIK Pemilih, Nama Partai yang dipilih dan Kingkup 
+     */
     public void addToDatabase()
     {
         try {
