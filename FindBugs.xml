@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="2.0.3" sequence="1" timestamp="1400517084889" analysisTimestamp="1400517082638" release="">
+  <Project projectName="ThePlants">
+    <Jar>E:\Dropbox\ITB\IF\IF2210 - Pemrograman Berorientasi Objek\Tugas Besar 2 - workspace\if2210-tubes2\bin</Jar>
+    <AuxClasspathEntry>E:\Dropbox\ITB\IF\IF2210 - Pemrograman Berorientasi Objek\Tugas Besar 2 - workspace\if2210-tubes2\bin</AuxClasspathEntry>
+    <SrcDir>E:\Dropbox\ITB\IF\IF2210 - Pemrograman Berorientasi Objek\Tugas Besar 2 - workspace\if2210-tubes2\src</SrcDir>
+    <Cloud id="edu.umd.cs.findbugs.cloud.doNothingCloud" online="false"></Cloud>
+  </Project>
+  <BugInstance type="NM_METHOD_NAMING_CONVENTION" priority="2" abbrev="Nm" category="BAD_PRACTICE" first="1">
+    <Class classname="Fertilizer">
+      <SourceLine classname="Fertilizer" sourcefile="Fertilizer.java" sourcepath="Fertilizer.java"/>
+    </Class>
+    <Method classname="Fertilizer" name="Ferilize" signature="(II)V" isStatic="false">
+      <SourceLine classname="Fertilizer" start="19" end="19" startBytecode="0" endBytecode="62" sourcefile="Fertilizer.java" sourcepath="Fertilizer.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Fertilizer">
+      <SourceLine classname="Fertilizer" sourcefile="Fertilizer.java" sourcepath="Fertilizer.java"/>
+    </Class>
+    <Field classname="Fertilizer" name="buyprice" signature="I" isStatic="false">
+      <SourceLine classname="Fertilizer" sourcefile="Fertilizer.java" sourcepath="Fertilizer.java"/>
+    </Field>
+    <SourceLine classname="Fertilizer" start="13" end="13" startBytecode="12" endBytecode="12" sourcefile="Fertilizer.java" sourcepath="Fertilizer.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Fertilizer">
+      <SourceLine classname="Fertilizer" sourcefile="Fertilizer.java" sourcepath="Fertilizer.java"/>
+    </Class>
+    <Field classname="Fertilizer" name="level" signature="I" isStatic="false">
+      <SourceLine classname="Fertilizer" sourcefile="Fertilizer.java" sourcepath="Fertilizer.java"/>
+    </Field>
+    <SourceLine classname="Fertilizer" start="12" end="12" startBytecode="6" endBytecode="6" sourcefile="Fertilizer.java" sourcepath="Fertilizer.java"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" first="1">
+    <Class classname="Fruit">
+      <SourceLine classname="Fruit" sourcefile="Fruit.java" sourcepath="Fruit.java"/>
+    </Class>
+    <Field classname="Fruit" name="sellprice" signature="I" isStatic="false">
+      <SourceLine classname="Fruit" start="9" end="9" startBytecode="0" endBytecode="0" sourcefile="Fruit.java" sourcepath="Fruit.java"/>
+    </Field>
+  </BugInstance>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" abbrev="DLS" category="STYLE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Method classname="Game" name="getchar" signature="()V" isStatic="false">
+      <SourceLine classname="Game" start="337" end="339" startBytecode="0" endBytecode="6" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Method>
+    <LocalVariable name="enter" register="1" pc="16" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="Game" start="338" end="338" startBytecode="15" endBytecode="15" sourcefile="Game.java" sourcepath="Game.java"/>
+    <SourceLine classname="Game" start="338" end="338" startBytecode="15" endBytecode="15" sourcefile="Game.java" sourcepath="Game.java"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="enter"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.BASE_VALUE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" abbrev="Dm" category="I18N" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Method classname="Game" name="&lt;clinit&gt;" signature="()V" isStatic="true">
+      <SourceLine classname="Game" start="10" end="34" startBytecode="0" endBytecode="49" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Method>
+    <Method classname="java.util.Scanner" name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.util.Scanner"/>
+    </Method>
+    <SourceLine classname="Game" start="10" end="10" startBytecode="7" endBytecode="7" sourcefile="Game.java" sourcepath="Game.java"/>
+    <SourceLine classname="Game" start="10" end="10" startBytecode="7" endBytecode="7" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="2" abbrev="ST" category="STYLE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Method classname="Game" name="gameInit" signature="()V" isStatic="false">
+      <SourceLine classname="Game" start="96" end="109" startBytecode="0" endBytecode="193" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Method>
+    <Field classname="Game" name="state" signature="LGame$GameState;" isStatic="true">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Field>
+    <SourceLine classname="Game" start="100" end="100" startBytecode="25" endBytecode="25" sourcefile="Game.java" sourcepath="Game.java"/>
+    <SourceLine classname="Game" start="100" end="100" startBytecode="25" endBytecode="25" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Field classname="Game" name="fertilizer" signature="LFertilizer;" isStatic="false">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Field>
+    <SourceLine classname="Game" start="108" end="108" startBytecode="104" endBytecode="104" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Field classname="Game" name="pest" signature="LPest;" isStatic="false">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Field>
+    <SourceLine classname="Game" start="107" end="107" startBytecode="90" endBytecode="90" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Field classname="Game" name="playerState" signature="LGame$PlayerState;" isStatic="false">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Field>
+    <SourceLine classname="Game" start="102" end="102" startBytecode="32" endBytecode="32" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Field classname="Game" name="plantID" signature="I" isStatic="false">
+      <SourceLine classname="Game" start="38" end="38" startBytecode="0" endBytecode="0" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Field>
+  </BugInstance>
+  <BugInstance type="VA_FORMAT_STRING_USES_NEWLINE" priority="2" abbrev="FS" category="BAD_PRACTICE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Method classname="Game" name="gameLoop" signature="()V" isStatic="false">
+      <SourceLine classname="Game" start="114" end="326" startBytecode="0" endBytecode="2916" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Method>
+    <Method classname="java.io.PrintStream" name="printf" signature="(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.PrintStream"/>
+    </Method>
+    <String value="1. %-10s %-6s %-5s\n" role="STRING_FORMAT_STRING"/>
+    <SourceLine classname="Game" start="145" end="145" startBytecode="258" endBytecode="258" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="VA_FORMAT_STRING_USES_NEWLINE" priority="2" abbrev="FS" category="BAD_PRACTICE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Method classname="Game" name="gameLoop" signature="()V" isStatic="false">
+      <SourceLine classname="Game" start="114" end="326" startBytecode="0" endBytecode="2916" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Method>
+    <Method classname="java.io.PrintStream" name="printf" signature="(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.PrintStream"/>
+    </Method>
+    <String value="2. %-10s %-6s %-5s\n" role="STRING_FORMAT_STRING"/>
+    <SourceLine classname="Game" start="147" end="147" startBytecode="297" endBytecode="297" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="VA_FORMAT_STRING_USES_NEWLINE" priority="2" abbrev="FS" category="BAD_PRACTICE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Method classname="Game" name="gameLoop" signature="()V" isStatic="false">
+      <SourceLine classname="Game" start="114" end="326" startBytecode="0" endBytecode="2916" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Method>
+    <Method classname="java.io.PrintStream" name="printf" signature="(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.PrintStream"/>
+    </Method>
+    <String value="2. %-10s %-6s %-5s\n" role="STRING_FORMAT_STRING"/>
+    <SourceLine classname="Game" start="150" end="150" startBytecode="339" endBytecode="339" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="VA_FORMAT_STRING_USES_NEWLINE" priority="2" abbrev="FS" category="BAD_PRACTICE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Method classname="Game" name="gameLoop" signature="()V" isStatic="false">
+      <SourceLine classname="Game" start="114" end="326" startBytecode="0" endBytecode="2916" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Method>
+    <Method classname="java.io.PrintStream" name="printf" signature="(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.PrintStream"/>
+    </Method>
+    <String value="2. %-10s %-6s %-5s\n" role="STRING_FORMAT_STRING"/>
+    <SourceLine classname="Game" start="154" end="154" startBytecode="409" endBytecode="409" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="VA_FORMAT_STRING_USES_NEWLINE" priority="2" abbrev="FS" category="BAD_PRACTICE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Method classname="Game" name="gameLoop" signature="()V" isStatic="false">
+      <SourceLine classname="Game" start="114" end="326" startBytecode="0" endBytecode="2916" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Method>
+    <Method classname="java.io.PrintStream" name="printf" signature="(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.PrintStream"/>
+    </Method>
+    <String value="3. %-10s %-6s %-5s\n" role="STRING_FORMAT_STRING"/>
+    <SourceLine classname="Game" start="151" end="151" startBytecode="367" endBytecode="367" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="VA_FORMAT_STRING_USES_NEWLINE" priority="2" abbrev="FS" category="BAD_PRACTICE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Method classname="Game" name="gameLoop" signature="()V" isStatic="false">
+      <SourceLine classname="Game" start="114" end="326" startBytecode="0" endBytecode="2916" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Method>
+    <Method classname="java.io.PrintStream" name="printf" signature="(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.PrintStream"/>
+    </Method>
+    <String value="3. %-10s %-6s %-5s\n" role="STRING_FORMAT_STRING"/>
+    <SourceLine classname="Game" start="155" end="155" startBytecode="437" endBytecode="437" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="VA_FORMAT_STRING_USES_NEWLINE" priority="2" abbrev="FS" category="BAD_PRACTICE" first="1">
+    <Class classname="Game">
+      <SourceLine classname="Game" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Class>
+    <Method classname="Game" name="gameLoop" signature="()V" isStatic="false">
+      <SourceLine classname="Game" start="114" end="326" startBytecode="0" endBytecode="2916" sourcefile="Game.java" sourcepath="Game.java"/>
+    </Method>
+    <Method classname="java.io.PrintStream" name="printf" signature="(Ljava/lang/String;[Ljava/lang/Object;)Ljava/io/PrintStream;" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.PrintStream"/>
+    </Method>
+    <String value="4. %-10s %-6s %-5s\n" role="STRING_FORMAT_STRING"/>
+    <SourceLine classname="Game" start="156" end="156" startBytecode="465" endBytecode="465" sourcefile="Game.java" sourcepath="Game.java"/>
+  </BugInstance>
+  <BugInstance type="SS_SHOULD_BE_STATIC" priority="2" abbrev="SS" category="PERFORMANCE" first="1">
+    <Class classname="GridPlant">
+      <SourceLine classname="GridPlant" sourcefile="GridPlant.java" sourcepath="GridPlant.java"/>
+    </Class>
+    <Field classname="GridPlant" name="NCOL" signature="I" isStatic="false">
+      <SourceLine classname="GridPlant" sourcefile="GridPlant.java" sourcepath="GridPlant.java"/>
+    </Field>
+    <SourceLine classname="GridPlant" start="16" end="16" startBytecode="11" endBytecode="11" sourcefile="GridPlant.java" sourcepath="GridPlant.java"/>
+  </BugInstance>
+  <BugInstance type="SS_SHOULD_BE_STATIC" priority="2" abbrev="SS" category="PERFORMANCE" first="1">
+    <Class classname="GridPlant">
+      <SourceLine classname="GridPlant" sourcefile="GridPlant.java" sourcepath="GridPlant.java"/>
+    </Class>
+    <Field classname="GridPlant" name="NROW" signature="I" isStatic="false">
+      <SourceLine classname="GridPlant" sourcefile="GridPlant.java" sourcepath="GridPlant.java"/>
+    </Field>
+    <SourceLine classname="GridPlant" start="13" end="13" startBytecode="6" endBytecode="6" sourcefile="GridPlant.java" sourcepath="GridPlant.java"/>
+  </BugInstance>
+  <BugInstance type="DM_NEXTINT_VIA_NEXTDOUBLE" priority="2" abbrev="Dm" category="PERFORMANCE" first="1">
+    <Class classname="Pest">
+      <SourceLine classname="Pest" sourcefile="Pest.java" sourcepath="Pest.java"/>
+    </Class>
+    <Method classname="Pest" name="&lt;init&gt;" signature="()V" isStatic="false">
+      <SourceLine classname="Pest" start="25" end="47" startBytecode="0" endBytecode="251" sourcefile="Pest.java" sourcepath="Pest.java"/>
+    </Method>
+    <SourceLine classname="Pest" start="26" end="26" startBytecode="13" endBytecode="13" sourcefile="Pest.java" sourcepath="Pest.java"/>
+    <SourceLine classname="Pest" start="26" end="26" startBytecode="13" endBytecode="13" sourcefile="Pest.java" sourcepath="Pest.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Pest">
+      <SourceLine classname="Pest" sourcefile="Pest.java" sourcepath="Pest.java"/>
+    </Class>
+    <Field classname="Pest" name="hp" signature="D" isStatic="false">
+      <SourceLine classname="Pest" sourcefile="Pest.java" sourcepath="Pest.java"/>
+    </Field>
+    <SourceLine classname="Pest" start="32" end="32" startBytecode="54" endBytecode="54" sourcefile="Pest.java" sourcepath="Pest.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Pest">
+      <SourceLine classname="Pest" sourcefile="Pest.java" sourcepath="Pest.java"/>
+    </Class>
+    <Field classname="Pest" name="speed" signature="D" isStatic="false">
+      <SourceLine classname="Pest" sourcefile="Pest.java" sourcepath="Pest.java"/>
+    </Field>
+    <SourceLine classname="Pest" start="30" end="30" startBytecode="40" endBytecode="40" sourcefile="Pest.java" sourcepath="Pest.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Pest">
+      <SourceLine classname="Pest" sourcefile="Pest.java" sourcepath="Pest.java"/>
+    </Class>
+    <Field classname="Pest" name="strength" signature="D" isStatic="false">
+      <SourceLine classname="Pest" sourcefile="Pest.java" sourcepath="Pest.java"/>
+    </Field>
+    <SourceLine classname="Pest" start="31" end="31" startBytecode="47" endBytecode="47" sourcefile="Pest.java" sourcepath="Pest.java"/>
+  </BugInstance>
+  <BugInstance type="CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE" priority="1" abbrev="CN" category="BAD_PRACTICE" first="1">
+    <Class classname="Plant">
+      <SourceLine classname="Plant" sourcefile="Plant.java" sourcepath="Plant.java"/>
+    </Class>
+    <Method classname="Plant" name="clone" signature="()LPlant;" isStatic="false">
+      <SourceLine classname="Plant" start="321" end="326" startBytecode="0" endBytecode="168" sourcefile="Plant.java" sourcepath="Plant.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD" priority="2" abbrev="ST" category="STYLE" first="1">
+    <Class classname="Plant">
+      <SourceLine classname="Plant" sourcefile="Plant.java" sourcepath="Plant.java"/>
+    </Class>
+    <Method classname="Plant" name="&lt;init&gt;" signature="(Ljava/lang/String;DDILFruit;)V" isStatic="false">
+      <SourceLine classname="Plant" start="48" end="65" startBytecode="0" endBytecode="228" sourcefile="Plant.java" sourcepath="Plant.java"/>
+    </Method>
+    <Field classname="Plant" name="ID" signature="I" isStatic="true">
+      <SourceLine classname="Plant" sourcefile="Plant.java" sourcepath="Plant.java"/>
+    </Field>
+    <SourceLine classname="Plant" start="50" end="50" startBytecode="11" endBytecode="11" sourcefile="Plant.java" sourcepath="Plant.java"/>
+    <SourceLine classname="Plant" start="50" end="50" startBytecode="11" endBytecode="11" sourcefile="Plant.java" sourcepath="Plant.java"/>
+  </BugInstance>
+  <BugInstance type="UUF_UNUSED_FIELD" priority="2" abbrev="UuF" category="PERFORMANCE" first="1">
+    <Class classname="Plant">
+      <SourceLine classname="Plant" sourcefile="Plant.java" sourcepath="Plant.java"/>
+    </Class>
+    <Field classname="Plant" name="buyprice" signature="I" isStatic="false">
+      <SourceLine classname="Plant" start="31" end="31" startBytecode="0" endBytecode="0" sourcefile="Plant.java" sourcepath="Plant.java"/>
+    </Field>
+  </BugInstance>
+  <BugInstance type="SIC_INNER_SHOULD_BE_STATIC" priority="2" abbrev="SIC" category="PERFORMANCE" first="1">
+    <Class classname="Plant$Stage">
+      <SourceLine classname="Plant$Stage" start="122" end="172" sourcefile="Plant.java" sourcepath="Plant.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="REC_CATCH_EXCEPTION" priority="2" abbrev="REC" category="STYLE" first="1">
+    <Class classname="PlantFactory">
+      <SourceLine classname="PlantFactory" sourcefile="PlantFactory.java" sourcepath="PlantFactory.java"/>
+    </Class>
+    <Method classname="PlantFactory" name="loadData" signature="()V" isStatic="true">
+      <SourceLine classname="PlantFactory" start="24" end="101" startBytecode="0" endBytecode="1291" sourcefile="PlantFactory.java" sourcepath="PlantFactory.java"/>
+    </Method>
+    <SourceLine classname="PlantFactory" start="97" end="97" startBytecode="464" endBytecode="464" sourcefile="PlantFactory.java" sourcepath="PlantFactory.java"/>
+    <SourceLine classname="PlantFactory" start="97" end="97" startBytecode="464" endBytecode="464" sourcefile="PlantFactory.java" sourcepath="PlantFactory.java"/>
+  </BugInstance>
+  <BugInstance type="NM_METHOD_NAMING_CONVENTION" priority="2" abbrev="Nm" category="BAD_PRACTICE" first="1">
+    <Class classname="Player">
+      <SourceLine classname="Player" sourcefile="Player.java" sourcepath="Player.java"/>
+    </Class>
+    <Method classname="Player" name="ChangeID" signature="(Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="Player" start="35" end="36" startBytecode="0" endBytecode="61" sourcefile="Player.java" sourcepath="Player.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Player">
+      <SourceLine classname="Player" sourcefile="Player.java" sourcepath="Player.java"/>
+    </Class>
+    <Field classname="Player" name="ID" signature="Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="Player" sourcefile="Player.java" sourcepath="Player.java"/>
+    </Field>
+    <SourceLine classname="Player" start="27" end="27" startBytecode="14" endBytecode="14" sourcefile="Player.java" sourcepath="Player.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Player">
+      <SourceLine classname="Player" sourcefile="Player.java" sourcepath="Player.java"/>
+    </Class>
+    <Field classname="Player" name="Money" signature="D" isStatic="false">
+      <SourceLine classname="Player" sourcefile="Player.java" sourcepath="Player.java"/>
+    </Field>
+    <SourceLine classname="Player" start="26" end="26" startBytecode="8" endBytecode="8" sourcefile="Player.java" sourcepath="Player.java"/>
+  </BugInstance>
+  <BugInstance type="NM_CLASS_NOT_EXCEPTION" priority="2" abbrev="Nm" category="BAD_PRACTICE" first="1">
+    <Class classname="StorageOverflowException">
+      <SourceLine classname="StorageOverflowException" start="14" end="20" sourcefile="StorageOverflowException.java" sourcepath="StorageOverflowException.java"/>
+    </Class>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" abbrev="Dm" category="I18N" first="1">
+    <Class classname="ThePlants">
+      <SourceLine classname="ThePlants" sourcefile="ThePlants.java" sourcepath="ThePlants.java"/>
+    </Class>
+    <Method classname="ThePlants" name="main" signature="([Ljava/lang/String;)V" isStatic="true">
+      <SourceLine classname="ThePlants" start="15" end="61" startBytecode="0" endBytecode="578" sourcefile="ThePlants.java" sourcepath="ThePlants.java"/>
+    </Method>
+    <Method classname="java.util.Scanner" name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.util.Scanner"/>
+    </Method>
+    <SourceLine classname="ThePlants" start="15" end="15" startBytecode="7" endBytecode="7" sourcefile="ThePlants.java" sourcepath="ThePlants.java"/>
+    <SourceLine classname="ThePlants" start="15" end="15" startBytecode="7" endBytecode="7" sourcefile="ThePlants.java" sourcepath="ThePlants.java"/>
+  </BugInstance>
+  <BugInstance type="DMI_USING_REMOVEALL_TO_CLEAR_COLLECTION" priority="2" abbrev="DMI" category="BAD_PRACTICE" first="1">
+    <Class classname="Vehicle">
+      <SourceLine classname="Vehicle" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Class>
+    <Method classname="Vehicle" name="emptyAll" signature="()V" isStatic="false">
+      <SourceLine classname="Vehicle" start="92" end="93" startBytecode="0" endBytecode="8" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Method>
+    <Method classname="java.util.ArrayList" name="removeAll" signature="(Ljava/util/Collection;)Z" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.util.ArrayList"/>
+    </Method>
+    <Field classname="Storage" name="arrStorage" signature="Ljava/util/ArrayList;" sourceSignature="Ljava/util/ArrayList&lt;LSaleableObject;&gt;;" isStatic="false" role="FIELD_INVOKED_ON">
+      <SourceLine classname="Storage" sourcefile="Storage.java" sourcepath="Storage.java"/>
+    </Field>
+    <SourceLine classname="Vehicle" start="92" end="92" startBytecode="14" endBytecode="14" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    <SourceLine classname="Vehicle" start="92" end="92" startBytecode="14" endBytecode="14" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+  </BugInstance>
+  <BugInstance type="NM_METHOD_NAMING_CONVENTION" priority="2" abbrev="Nm" category="BAD_PRACTICE" first="1">
+    <Class classname="Vehicle">
+      <SourceLine classname="Vehicle" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Class>
+    <Method classname="Vehicle" name="Upgrade" signature="()V" isStatic="false">
+      <SourceLine classname="Vehicle" start="51" end="59" startBytecode="0" endBytecode="117" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Vehicle">
+      <SourceLine classname="Vehicle" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Class>
+    <Field classname="Vehicle" name="arah" signature="I" isStatic="false">
+      <SourceLine classname="Vehicle" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Field>
+    <SourceLine classname="Vehicle" start="44" end="44" startBytecode="47" endBytecode="47" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Vehicle">
+      <SourceLine classname="Vehicle" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Class>
+    <Field classname="Vehicle" name="capacity" signature="I" isStatic="false">
+      <SourceLine classname="Vehicle" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Field>
+    <SourceLine classname="Vehicle" start="39" end="39" startBytecode="18" endBytecode="18" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Vehicle">
+      <SourceLine classname="Vehicle" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Class>
+    <Field classname="Vehicle" name="finalx" signature="I" isStatic="false">
+      <SourceLine classname="Vehicle" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Field>
+    <SourceLine classname="Vehicle" start="42" end="42" startBytecode="37" endBytecode="37" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+  </BugInstance>
+  <BugInstance type="URF_UNREAD_FIELD" priority="2" abbrev="UrF" category="PERFORMANCE" first="1">
+    <Class classname="Vehicle">
+      <SourceLine classname="Vehicle" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Class>
+    <Field classname="Vehicle" name="x" signature="I" isStatic="false">
+      <SourceLine classname="Vehicle" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+    </Field>
+    <SourceLine classname="Vehicle" start="45" end="45" startBytecode="55" endBytecode="55" sourcefile="Vehicle.java" sourcepath="Vehicle.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Mon, 19 May 2014 23:29:35 +0700" total_classes="19" referenced_classes="71" total_bugs="40" total_size="934" num_packages="1" vm_version="23.3-b01" cpu_seconds="4.57" clock_seconds="32.49" peak_mbytes="208.09" alloc_mbytes="742.44" gc_seconds="0.12" priority_2="37" priority_1="3">
+    <PackageStats package="" total_bugs="40" total_types="19" total_size="934" priority_2="37" priority_1="3">
+      <ClassStats class="Drawable" sourceFile="Drawable.java" interface="true" size="3" bugs="0"/>
+      <ClassStats class="Fertilizer" sourceFile="Fertilizer.java" interface="false" size="10" bugs="3" priority_2="3"/>
+      <ClassStats class="Fruit" sourceFile="Fruit.java" interface="false" size="38" bugs="1" priority_2="1"/>
+      <ClassStats class="Game" sourceFile="Game.java" interface="false" size="255" bugs="14" priority_2="13" priority_1="1"/>
+      <ClassStats class="Game$GameState" sourceFile="Game.java" interface="false" size="14" bugs="0"/>
+      <ClassStats class="Game$PlayerState" sourceFile="Game.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="GridPlant" sourceFile="GridPlant.java" interface="false" size="78" bugs="2" priority_2="2"/>
+      <ClassStats class="Level" sourceFile="Level.java" interface="false" size="39" bugs="0"/>
+      <ClassStats class="Pest" sourceFile="Pest.java" interface="false" size="32" bugs="4" priority_2="4"/>
+      <ClassStats class="Plant" sourceFile="Plant.java" interface="false" size="140" bugs="3" priority_2="2" priority_1="1"/>
+      <ClassStats class="Plant$FruitStatus" sourceFile="Plant.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="Plant$Stage" sourceFile="Plant.java" interface="false" size="36" bugs="1" priority_2="1"/>
+      <ClassStats class="PlantFactory" sourceFile="PlantFactory.java" interface="false" size="72" bugs="1" priority_2="1"/>
+      <ClassStats class="Player" sourceFile="Player.java" interface="false" size="28" bugs="3" priority_2="3"/>
+      <ClassStats class="SaleableObject" sourceFile="SaleableObject.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="Storage" sourceFile="Storage.java" interface="false" size="34" bugs="0"/>
+      <ClassStats class="StorageOverflowException" sourceFile="StorageOverflowException.java" interface="false" size="9" bugs="1" priority_2="1"/>
+      <ClassStats class="ThePlants" sourceFile="ThePlants.java" interface="false" size="47" bugs="1" priority_1="1"/>
+      <ClassStats class="Vehicle" sourceFile="Vehicle.java" interface="false" size="62" bugs="6" priority_2="6"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.StreamResourceTracker" totalMilliseconds="270" invocations="116" avgMicrosecondsPerInvocation="2330" maxMicrosecondsPerInvocation="21258" standardDeviationMircosecondsPerInvocation="2938"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="266" invocations="495" avgMicrosecondsPerInvocation="538" maxMicrosecondsPerInvocation="13270" standardDeviationMircosecondsPerInvocation="2023"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindUnsatisfiedObligation" totalMilliseconds="265" invocations="19" avgMicrosecondsPerInvocation="13978" maxMicrosecondsPerInvocation="265349" standardDeviationMircosecondsPerInvocation="59248"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FormatStringChecker" totalMilliseconds="263" invocations="19" avgMicrosecondsPerInvocation="13877" maxMicrosecondsPerInvocation="260682" standardDeviationMircosecondsPerInvocation="58172"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="129" invocations="493" avgMicrosecondsPerInvocation="263" maxMicrosecondsPerInvocation="19804" standardDeviationMircosecondsPerInvocation="955"/>
+      <ClassProfile name="de.tobject.findbugs.builder.FindBugs2Eclipse" totalMilliseconds="117" invocations="2" avgMicrosecondsPerInvocation="58695" maxMicrosecondsPerInvocation="98198" standardDeviationMircosecondsPerInvocation="39503"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="79" invocations="136" avgMicrosecondsPerInvocation="585" maxMicrosecondsPerInvocation="18791" standardDeviationMircosecondsPerInvocation="2360"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="71" invocations="126" avgMicrosecondsPerInvocation="569" maxMicrosecondsPerInvocation="37576" standardDeviationMircosecondsPerInvocation="3384"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="54" invocations="127" avgMicrosecondsPerInvocation="428" maxMicrosecondsPerInvocation="22218" standardDeviationMircosecondsPerInvocation="2046"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="44" invocations="128" avgMicrosecondsPerInvocation="344" maxMicrosecondsPerInvocation="9219" standardDeviationMircosecondsPerInvocation="1228"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="42" invocations="71" avgMicrosecondsPerInvocation="600" maxMicrosecondsPerInvocation="6190" standardDeviationMircosecondsPerInvocation="1110"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="39" invocations="126" avgMicrosecondsPerInvocation="315" maxMicrosecondsPerInvocation="11877" standardDeviationMircosecondsPerInvocation="1158"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="39" invocations="271" avgMicrosecondsPerInvocation="146" maxMicrosecondsPerInvocation="2030" standardDeviationMircosecondsPerInvocation="249"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History>
+    <AppVersion sequence="0" timestamp="1400517084888" release="" codeSize="0" numClasses="0"/>
+  </History>
+</BugCollection>

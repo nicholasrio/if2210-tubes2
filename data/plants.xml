@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plants>
+    <plant name="Pohon Apel" maxWaterLevel="100" maxFertilizerLevel="100" price="50" >
+        <stage name="1" lifeTime="2" img="images/apel_level1.png" waterDropLevel="10" fertilizerDropLevel="1" />
+        <stage name="2" lifeTime="3" img="images/apel_level2.png" waterDropLevel="8" fertilizerDropLevel="1" />
+        <stage name="3" lifeTime="6" img="images/apel_level3.png" waterDropLevel="6" fertilizerDropLevel="1" />
+        <stage name="4" lifeTime="999" img="images/apel_level4.png" waterDropLevel="5" fertilizerDropLevel="1" fruiting="true" />
+        <fruit name="Apel" harvestPeriod="4" rottenTime="8" price="10" capacity="2" img="images/apel_level5.png" />
+    </plant>
+	
+    <plant name="Pohon Jeruk" maxWaterLevel="100" maxFertilizerLevel="100" price="500" >
+        <stage name="1" lifeTime="2" img="images/jeruk_level1.png" waterDropLevel="10" fertilizerDropLevel="1" />
+        <stage name="2" lifeTime="3" img="images/jeruk_level2.png" waterDropLevel="8" fertilizerDropLevel="1" />
+        <stage name="3" lifeTime="6" img="images/jeruk_level3.png" waterDropLevel="6" fertilizerDropLevel="1" />
+        <stage name="4" lifeTime="9" img="images/jeruk_level4.png" waterDropLevel="5" fertilizerDropLevel="1" fruiting="true" />
+        <fruit name="Jeruk" harvestPeriod="4" rottenTime="8" price="100" capacity="2" img="images/jeruk_level5.png" />
+    </plant>
+	
+    <plant name="Pohon Durian" maxWaterLevel="100" maxFertilizerLevel="100" price="1000" >
+        <stage name="1" lifeTime="2" img="images/durian_level1.png" waterDropLevel="10" fertilizerDropLevel="1" />
+        <stage name="2" lifeTime="3" img="images/durian_level2.png" waterDropLevel="8" fertilizerDropLevel="1" />
+        <stage name="3" lifeTime="6" img="images/durian_level3.png" waterDropLevel="6" fertilizerDropLevel="1" />
+        <stage name="4" lifeTime="9" img="images/durian_level4.png" waterDropLevel="5" fertilizerDropLevel="1" fruiting="true" />
+        
+        <fruit name="Durian" harvestPeriod="4" rottenTime="8" price="200" capacity="5" img="images/durian_level5.png" />
+    </plant>
+	
+    <plant name="Pohon Strawberry" maxWaterLevel="100" maxFertilizerLevel="100" price="100" >
+        <stage name="1" lifeTime="2" img="images/strawberry_level1.png" waterDropLevel="10" fertilizerDropLevel="1" />
+        <stage name="2" lifeTime="3" img="images/strawberry_level2.png" waterDropLevel="8" fertilizerDropLevel="1" />
+        <stage name="3" lifeTime="6" img="images/strawberry_level3.png" waterDropLevel="6" fertilizerDropLevel="1" />
+        <stage name="4" lifeTime="9" img="images/strawberry_level4.png" waterDropLevel="5" fertilizerDropLevel="1" fruiting="true"  />
+        
+        <fruit name="Strawberry" harvestPeriod="4" rottenTime="8" price="30" capacity="1" img="images/strawberry_level5.png" />
+    </plant>
+	
+</plants>
