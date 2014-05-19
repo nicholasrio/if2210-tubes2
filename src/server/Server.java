@@ -20,6 +20,7 @@ public class Server {
     	    	Socket clientSocket = serverSocket.accept();
     	    	ServerThread ss = manager.get(clientSocket);
     	    	ss.start();
+				
     	    }
 		}
 		catch(Exception e){

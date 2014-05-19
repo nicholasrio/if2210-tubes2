@@ -6,6 +6,8 @@
 
 package gui;
 
+import gui.Login;
+
 /**
  *
  * @author Rosi

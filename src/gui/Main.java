@@ -7,6 +7,7 @@
 package gui;
 
 import Client.Client;
+import gui.Login;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+	
 	public static Client client;
 	
     public static void main(String[] args) {

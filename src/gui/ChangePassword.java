@@ -6,6 +6,8 @@
 
 package gui;
 
+import gui.Login;
+
 /**
  *
  * @author Rosi
@@ -179,7 +181,7 @@ public class ChangePassword extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(138, 138, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Login");
+        jButton1.setText("OK");
         jButton1.setAlignmentX(0.5F);
         jButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

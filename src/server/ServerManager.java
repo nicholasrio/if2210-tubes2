@@ -1,7 +1,7 @@
 package Server;
 
 import java.net.Socket;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServerManager {
@@ -16,7 +16,7 @@ public class ServerManager {
 
 	private ServerManager(){ 
 		threads = new ServerThread[MAX_THREADS];
-		loggedInUsers = new LinkedList<>();
+		loggedInUsers = new ArrayList<String>();
 	}
 	
 	public static ServerManager getSingleton(){
@@ -51,7 +51,11 @@ public class ServerManager {
 	public void release(int id) {
 		availableThreads++;
 		available[id] = true;
-		threads[id] = null;
+		try{
+			threads[id].join();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public void addLoggedUser(String username){

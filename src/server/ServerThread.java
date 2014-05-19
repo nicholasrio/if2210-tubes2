@@ -37,24 +37,24 @@ public class ServerThread extends Thread {
 					File file = new File("serverFolder/" + transObj.getSenderNIM());
 					file.mkdirs();
 					file = new File(transObj.getFileName());
-					
+
 					InputStream in = socket.getInputStream(); //used  
 					DataInputStream clientData = new DataInputStream(in); //used
-					
+
 					OutputStream output = new FileOutputStream("serverFolder/" + transObj.getSenderNIM() + "/" + file.getName());
 
-                                //clientData.readLong();  
+								//clientData.readLong();  
 					byte[] buffer = new byte[BUF_SIZE];
 
 					int smblen;
 					do {
-						smblen = in.read(buffer);
+						smblen = clientData.read(buffer);
 						output.write(buffer, 0, smblen);
 					} while (clientData.available() != 0);
-					output.close();
 					System.out.println("User " + transObj.getSenderNIM() + " uploaded a file: " + file.getName());
 					pw.write("File successfully uploaded");
 					pw.flush();
+					output.close();
 				}
 			} else if (obj instanceof Credential) {
 				System.out.println("Credential information received");
@@ -78,11 +78,7 @@ public class ServerThread extends Thread {
 					pw.write("Wrong username or password");
 					pw.flush();
 				}
-				System.out.println("Message sent");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
 			try {
 				if (ois != null) {
 					ois.close();
@@ -92,8 +88,9 @@ public class ServerThread extends Thread {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
-		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 
 	}
 

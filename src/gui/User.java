@@ -7,6 +7,8 @@
 package gui;
 
 import javax.swing.JOptionPane;
+import gui.Login;
+import gui.Upload;
 
 /**
  *
@@ -31,17 +33,22 @@ public class User extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel17 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         buttonLogout = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -51,9 +58,47 @@ public class User extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ITB Printing Service");
+        setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         getContentPane().setLayout(null);
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel17.setText("Rp40.000,-");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(170, 190, 54, 15);
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 153, 51));
+        jLabel16.setText("Aktif");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(170, 170, 80, 15);
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel15.setText("Mahasiswa TA");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(170, 150, 100, 15);
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel14.setText("Kuota                    :");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(70, 190, 100, 15);
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel13.setText("Status akun          :");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(70, 170, 100, 15);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel12.setText("Status pengguna :");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(70, 150, 100, 15);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(99, 99, 194));
+        jLabel11.setText("13512666 Rosiana Rozi");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(70, 110, 290, 25);
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
@@ -96,12 +141,6 @@ public class User extends javax.swing.JFrame {
         getContentPane().add(buttonLogout);
         buttonLogout.setBounds(720, 30, 37, 15);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(99, 99, 194));
-        jLabel2.setText("Kuota cetak tersisa : Rp40.000,-");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(47, 141, 290, 25);
-
         jButton4.setBackground(new java.awt.Color(138, 138, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,7 +160,7 @@ public class User extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(330, 500, 119, 23);
+        jButton4.setBounds(340, 500, 119, 23);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,7 +184,7 @@ public class User extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel3.setText("Log terbaru");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(390, 180, 70, 15);
+        jLabel3.setBounds(360, 150, 70, 15);
 
         jScrollPane1.setBackground(new java.awt.Color(138, 138, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(139, 139, 255)));
@@ -200,12 +239,12 @@ public class User extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(390, 200, 358, 182);
+        jScrollPane1.setBounds(360, 170, 358, 182);
 
         jButton3.setBackground(new java.awt.Color(138, 138, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Cek status cetak");
+        jButton3.setText("Cek status file");
         jButton3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setPreferredSize(new java.awt.Dimension(120, 17));
@@ -220,36 +259,17 @@ public class User extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(218, 200, 120, 22);
-
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jTextField1.setText("Masukkan Print ID");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
-            }
-        });
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
-            }
-        });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(47, 201, 165, 22);
+        jButton3.setBounds(480, 370, 120, 22);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("Status     :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(47, 255, 60, 15);
+        jLabel4.setBounds(360, 430, 60, 15);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel5.setText("Print ID   :");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(47, 234, 60, 15);
+        jLabel5.setBounds(360, 410, 60, 15);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         getContentPane().add(jLabel6);
@@ -258,12 +278,13 @@ public class User extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel8.setText("P04055");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(106, 234, 36, 15);
+        jLabel8.setBounds(420, 410, 36, 15);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 153, 51));
         jLabel9.setText("Terkirim, sudah dicetak");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(105, 255, 130, 15);
+        jLabel9.setBounds(420, 430, 130, 15);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/bg2.png"))); // NOI18N
         getContentPane().add(jLabel10);
@@ -284,25 +305,6 @@ public class User extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3MouseClicked
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
-        // TODO add your handling code here:
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
-    }//GEN-LAST:event_jTextField1FocusGained
-
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
-        // TODO add your handling code here:
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
-        if (jTextField1.getText().equals(""))
-        {
-            jTextField1.setText("Enter Print ID");
-        }
-    }//GEN-LAST:event_jTextField1FocusLost
-
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-        // TODO add your handling code here:
-        jTextField1.setText("");
-    }//GEN-LAST:event_jTextField1MouseClicked
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -314,15 +316,15 @@ public class User extends javax.swing.JFrame {
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
         this.hide();
-        User user = new User();
-        user.show();
+		//.client.logout();
+		JOptionPane.showMessageDialog(this, "You have been logged out");
+        //Login login = new gui.Login();
+        //login.show();
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void buttonLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLogoutMouseClicked
         // TODO add your handling code here:
         this.hide();
-		Main.client.logout();
-		JOptionPane.showMessageDialog(this, "You have been logged out");
         Login login = new Login();
         login.show();
     }//GEN-LAST:event_buttonLogoutMouseClicked
@@ -384,7 +386,13 @@ public class User extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -393,6 +401,5 @@ public class User extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,9 @@
 
 package gui;
 
+import gui.Login;
+import gui.PrintSuccess;
+
 /**
  *
  * @author Rosi
@@ -29,6 +32,8 @@ public class Print extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -57,10 +62,20 @@ public class Print extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel15.setText("P12666");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(170, 120, 120, 15);
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        jLabel14.setText("Print ID                        :");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(50, 120, 120, 15);
+
         jButton4.setBackground(new java.awt.Color(138, 138, 255));
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Download");
+        jButton4.setText("Download file");
         jButton4.setAlignmentX(0.5F);
         jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jButton4.setBorderPainted(false);
@@ -69,17 +84,17 @@ public class Print extends javax.swing.JFrame {
         jButton4.setOpaque(true);
         jButton4.setPreferredSize(new java.awt.Dimension(50, 25));
         getContentPane().add(jButton4);
-        jButton4.setBounds(120, 260, 80, 25);
+        jButton4.setBounds(110, 260, 90, 25);
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel13.setText("1, 4-17");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(170, 220, 120, 15);
+        jLabel13.setBounds(170, 200, 120, 15);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel12.setText("Halaman BW              :");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(50, 220, 120, 15);
+        jLabel12.setBounds(50, 200, 120, 15);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel11.setText("13512666 Rosiana Rozi");
@@ -99,12 +114,12 @@ public class Print extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel5.setText("Rp4.000,-");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(170, 190, 120, 15);
+        jLabel5.setBounds(170, 220, 120, 15);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel4.setText("Kebutuhan kuota      :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(50, 190, 120, 15);
+        jLabel4.setBounds(50, 220, 120, 15);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         jLabel3.setText("Waktu                         :");
@@ -112,7 +127,7 @@ public class Print extends javax.swing.JFrame {
         jLabel3.setBounds(50, 173, 120, 15);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel2.setText("Tanggal                      :");
+        jLabel2.setText("Tanggal                       :");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(50, 155, 120, 15);
 
@@ -176,7 +191,7 @@ public class Print extends javax.swing.JFrame {
         jButton5.setBounds(-10, 0, 340, 50);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jLabel1.setText("Pengirim                     :");
+        jLabel1.setText("Pengirim                      :");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(50, 137, 120, 15);
 
@@ -191,6 +206,11 @@ public class Print extends javax.swing.JFrame {
         jButton2.setLabel("Print");
         jButton2.setOpaque(true);
         jButton2.setPreferredSize(new java.awt.Dimension(50, 25));
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton2);
         jButton2.setBounds(330, 520, 50, 25);
 
@@ -257,6 +277,12 @@ public class Print extends javax.swing.JFrame {
         cpassmin.show();
     }//GEN-LAST:event_jButton6MouseClicked
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        PrintSuccess printsuccess = new PrintSuccess();
+        printsuccess.show();
+    }//GEN-LAST:event_jButton2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -304,6 +330,8 @@ public class Print extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

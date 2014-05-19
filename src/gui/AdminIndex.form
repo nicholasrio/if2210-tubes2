@@ -283,7 +283,7 @@
                   <Data value="P12247"/>
                   <Data value="P12398"/>
                 </Column>
-                <Column editable="false" title="Date" type="java.lang.String">
+                <Column editable="false" title="Tanggal" type="java.lang.String">
                   <Data value="2014/01/01"/>
                   <Data value="2014/02/02"/>
                   <Data value="2014/03/03"/>
@@ -305,7 +305,7 @@
                   <Data value="2014/09/09"/>
                   <Data value="2014/10/10"/>
                 </Column>
-                <Column editable="false" title="Time" type="java.lang.String">
+                <Column editable="false" title="Waktu" type="java.lang.String">
                   <Data value="01:00:00"/>
                   <Data value="02:00:00"/>
                   <Data value="03:00:00"/>
@@ -349,7 +349,7 @@
                   <Data value="13512666"/>
                   <Data value="13512398"/>
                 </Column>
-                <Column editable="false" title="Printed" type="java.lang.Boolean">
+                <Column editable="false" title="Dicetak" type="java.lang.Boolean">
                   <Data value="null"/>
                   <Data value="null"/>
                   <Data value="null"/>
@@ -371,7 +371,7 @@
                   <Data value="true"/>
                   <Data value="true"/>
                 </Column>
-                <Column editable="true" title="Taken" type="java.lang.Boolean">
+                <Column editable="true" title="Diambil" type="java.lang.Boolean">
                   <Data value="null"/>
                   <Data value="null"/>
                   <Data value="null"/>

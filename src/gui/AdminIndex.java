@@ -6,6 +6,8 @@
 
 package gui;
 
+import gui.Login;
+
 /**
  *
  * @author Rosi
@@ -188,7 +190,7 @@ public class AdminIndex extends javax.swing.JFrame {
                 {"P12398", "2014/10/10", "10:00:00", "13512398",  new Boolean(true),  new Boolean(true)}
             },
             new String [] {
-                "ID", "Date", "Time", "NIM", "Printed", "Taken"
+                "ID", "Tanggal", "Waktu", "NIM", "Dicetak", "Diambil"
             }
         ) {
             Class[] types = new Class [] {

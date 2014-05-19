@@ -6,6 +6,9 @@
 
 package gui;
 
+import java.awt.Dialog;
+import java.io.File;
+
 /**
  *
  * @author Rosi
@@ -15,9 +18,14 @@ public class Upload extends javax.swing.JFrame {
     /**
      * Creates new form Upload
      */
+	
+	public static File file;
+	public static String path = "";
+	
     public Upload() {
         initComponents();
         this.setLocationRelativeTo(null);
+		formPath.setText(path);
     }
 
     /**
@@ -36,7 +44,7 @@ public class Upload extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        formPath = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -50,9 +58,9 @@ public class Upload extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        buttonPrint = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        buttonBrowse = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,17 +148,17 @@ public class Upload extends javax.swing.JFrame {
         getContentPane().add(jButton5);
         jButton5.setBounds(-10, 0, 340, 50);
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
-        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+        formPath.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        formPath.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextField1FocusGained(evt);
+                formPathFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextField1FocusLost(evt);
+                formPathFocusLost(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(50, 90, 233, 22);
+        getContentPane().add(formPath);
+        formPath.setBounds(50, 90, 233, 22);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         jLabel1.setText("Cetak halaman");
@@ -239,19 +247,24 @@ public class Upload extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(70, 388, 300, 15);
 
-        jButton2.setBackground(new java.awt.Color(138, 138, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setAlignmentX(0.5F);
-        jButton2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setLabel("Print");
-        jButton2.setOpaque(true);
-        jButton2.setPreferredSize(new java.awt.Dimension(50, 25));
-        getContentPane().add(jButton2);
-        jButton2.setBounds(330, 520, 50, 25);
+        buttonPrint.setBackground(new java.awt.Color(138, 138, 255));
+        buttonPrint.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        buttonPrint.setForeground(new java.awt.Color(255, 255, 255));
+        buttonPrint.setAlignmentX(0.5F);
+        buttonPrint.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        buttonPrint.setBorderPainted(false);
+        buttonPrint.setContentAreaFilled(false);
+        buttonPrint.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonPrint.setLabel("Print");
+        buttonPrint.setOpaque(true);
+        buttonPrint.setPreferredSize(new java.awt.Dimension(50, 25));
+        buttonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPrintActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buttonPrint);
+        buttonPrint.setBounds(330, 520, 50, 25);
 
         jButton3.setBackground(new java.awt.Color(138, 138, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
@@ -276,24 +289,24 @@ public class Upload extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(400, 520, 50, 25);
 
-        jButton4.setBackground(new java.awt.Color(138, 138, 255));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Pilih file...");
-        jButton4.setAlignmentX(0.5F);
-        jButton4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setOpaque(true);
-        jButton4.setPreferredSize(new java.awt.Dimension(50, 25));
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        buttonBrowse.setBackground(new java.awt.Color(138, 138, 255));
+        buttonBrowse.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        buttonBrowse.setForeground(new java.awt.Color(255, 255, 255));
+        buttonBrowse.setText("Pilih file...");
+        buttonBrowse.setAlignmentX(0.5F);
+        buttonBrowse.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        buttonBrowse.setBorderPainted(false);
+        buttonBrowse.setContentAreaFilled(false);
+        buttonBrowse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonBrowse.setOpaque(true);
+        buttonBrowse.setPreferredSize(new java.awt.Dimension(50, 25));
+        buttonBrowse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+                buttonBrowseMouseClicked(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(290, 90, 62, 22);
+        getContentPane().add(buttonBrowse);
+        buttonBrowse.setBounds(290, 90, 62, 22);
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/bg2.png"))); // NOI18N
         getContentPane().add(jLabel9);
@@ -306,15 +319,15 @@ public class Upload extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+    private void formPathFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formPathFocusGained
         // TODO add your handling code here:
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
-    }//GEN-LAST:event_jTextField1FocusGained
+        formPath.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
+    }//GEN-LAST:event_formPathFocusGained
 
-    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+    private void formPathFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formPathFocusLost
         // TODO add your handling code here:
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
-    }//GEN-LAST:event_jTextField1FocusLost
+        formPath.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+    }//GEN-LAST:event_formPathFocusLost
 
     private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
         // TODO add your handling code here:
@@ -358,11 +371,13 @@ public class Upload extends javax.swing.JFrame {
         user.show();
     }//GEN-LAST:event_jButton3MouseClicked
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    private void buttonBrowseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonBrowseMouseClicked
         // TODO add your handling code here:
-        FileDialog filedialog = new FileDialog();
+        FileDialog filedialog = new FileDialog(this,true);
+		filedialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         filedialog.show();
-    }//GEN-LAST:event_jButton4MouseClicked
+		formPath.setText(path);
+    }//GEN-LAST:event_buttonBrowseMouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
@@ -375,6 +390,15 @@ public class Upload extends javax.swing.JFrame {
         // TODO add your handling code here:
         jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255),3));
     }//GEN-LAST:event_jComboBox1FocusGained
+
+    private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
+        // TODO add your handling code here:
+		String path;
+		path = formPath.getText();
+		System.out.println(path);
+		Main.client.sendFile(path);
+		System.out.println("DONE");
+    }//GEN-LAST:event_buttonPrintActionPerformed
 
     /**
      * @param args the command line arguments
@@ -412,10 +436,11 @@ public class Upload extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonBrowse;
+    private javax.swing.JButton buttonPrint;
+    private javax.swing.JTextField formPath;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jComboBox1;
@@ -434,7 +459,6 @@ public class Upload extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
