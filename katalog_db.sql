@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 15, 2014 at 05:44 PM
+-- Generation Time: May 19, 2014 at 03:12 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `administrator` (
 --
 
 INSERT INTO `administrator` (`nim`, `password`, `name`) VALUES
-(21, '49f0bad299687c62334182178bfd75d8', 'aswd');
+(13512081, 'admin', 'Hendro');
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ INSERT INTO `group_tubes` (`no_tubes`, `group_name`, `anggota_1`, `anggota_2`, `
 (1, 'Rinaldio M', 'Andre Susanto', 'Tony', 'Reinaldo Michael Hasian'),
 (1, 'Sekre Men', 'Riva Syafri Rachmatullah', 'Yusuf Rahmatullah', 'Lutfi Hamid Masykuri'),
 (1, 'Selow', 'Kevin Yudi Utama', 'Winson Waisakurnia', 'Melvin Fonda'),
-(1, 'Sembah', 'Try Ajitiono', 'Luqman Faizlani Kusnadi', 'Hayyu'' Luthfi Hanifah'),
+(1, 'Sembah', 'Aink', 'Luqman Faizlani Kusnadi', 'Hayyu'' Luthfi Hanifah'),
 (1, 'teemager', 'Riady Sastra Kusuma', 'Teofebano Kristo', 'Andrey Simaputera'),
 (1, 'Tilil 1', 'Ardi Wicaksono', 'Kanya Paramita', 'Adhika Sigit Ramanto'),
 (1, 'Tilil 2', 'Ahmad', 'Windy Amelia', 'Bagaskara Pramudita'),
@@ -144,15 +144,19 @@ CREATE TABLE IF NOT EXISTS `video` (
   `view` int(20) DEFAULT NULL,
   `no_tubes` int(10) NOT NULL,
   `group_nama` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  PRIMARY KEY (`id`),
+  KEY `fk_no_tubes` (`no_tubes`),
+  KEY `fK_grup_nama` (`group_nama`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `video`
 --
 
 INSERT INTO `video` (`id`, `title`, `link`, `rating`, `view`, `no_tubes`, `group_nama`) VALUES
-(1, 'a', 'a', 1, 1, 2, 'e');
+(1, 'Tu', 'http://www.youtube.com/v/aLSOdCF1St8&feature=youtube_gdata_player', NULL, 0, 1, 'Tilil 3'),
+(2, 'sembah', 'http://www.youtube.com/v/WIJm_eLXDP4&feature=youtube_gdata_player', NULL, NULL, 1, 'Sembah'),
+(3, 'Poenya Asus', 'http://www.youtube.com/v/yovoI8GWwz0&feature=youtube_gdata_player', NULL, NULL, 2, 'Tanpa Nama');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
