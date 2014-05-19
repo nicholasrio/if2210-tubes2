@@ -403,12 +403,12 @@ public class UserDragon extends Dragon {
         }
 		
 		//tambah attribute
-        tambahHealth(Util.randomInt(3,7));
-        tambahStamina(Util.randomInt(5,10)/10);
-        tambahMoney(Util.randomInt(1,5));
-        tambahHappiness(-Util.randomInt(5,10)/10);
-        tambahThirst(Util.randomInt(5,20)/10);
-        tambahHunger(Util.randomInt(5,20)/10);
+        tambahHealth(util.randomInt(3,7));
+        tambahStamina(util.randomInt(5,10)/10);
+        tambahMoney(util.randomInt(1,5));
+        tambahHappiness(-util.randomInt(5,10)/10);
+        tambahThirst(util.randomInt(5,20)/10);
+        tambahHunger(util.randomInt(5,20)/10);
     }
 	
 	/**
@@ -416,13 +416,13 @@ public class UserDragon extends Dragon {
 	 * @return Dragon Enemy hasil generate
 	 */
 	public Dragon generateEnemy() {
-        float ranHealth = Util.gaussBasedOn(3*maxHealth/4);
-        float ranStamina = Util.gaussBasedOn(3*maxStamina/4);
-		int ranExperience = (int) Util.gaussBasedOn(experience);
-		int ranLevel = (int) Util.gaussBasedOn(level);
-		float ranThirst = Util.gaussBasedOn(100/4);
-		float ranBladder = Util.gaussBasedOn(100/4);
-		float ranHunger = Util.gaussBasedOn(100/4);
+        float ranHealth = util.gaussBasedOn(3*maxHealth/4);
+        float ranStamina = util.gaussBasedOn(3*maxStamina/4);
+		int ranExperience = (int) util.gaussBasedOn(experience);
+		int ranLevel = (int) util.gaussBasedOn(level);
+		float ranThirst = util.gaussBasedOn(100/4);
+		float ranBladder = util.gaussBasedOn(100/4);
+		float ranHunger = util.gaussBasedOn(100/4);
         
 		Dragon withWho = new Dragon(getRandomName(), ranHealth, ranStamina, ranThirst, ranBladder, ranHunger, ranLevel, ranExperience);
 		
@@ -445,7 +445,7 @@ public class UserDragon extends Dragon {
 			int len = Integer.parseInt(rootNode.getChildren("length").get(0).getText());
 			
 			//get list of root/save nodes
-			retval = rootNode.getChildren("name").get(Util.randomInt(0,len-1)).getText();
+			retval = rootNode.getChildren("name").get(util.randomInt(0,len-1)).getText();
 			
 		} catch (IOException | JDOMException io) {
 			io.printStackTrace();
