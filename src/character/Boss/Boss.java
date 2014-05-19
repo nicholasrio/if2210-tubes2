@@ -23,6 +23,9 @@ public abstract class Boss extends character.Character implements Fightable{
     
     public abstract void update();
     
+    public void setSkillRange(int[] _skillRange){ skillRange = _skillRange; }
+    public void setAttackRange(int _attackRange) { attackRange = _attackRange; }
+    public void setSkillDelay(int[] _skillDelay) { skillDelay = _skillDelay; }
     public abstract void checkHitting(character.Character enemy);
     public abstract void checkSkillRange(character.Character enemy);
     public abstract void checkAttackRange(character.Character enemy);

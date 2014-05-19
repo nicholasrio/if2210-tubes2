@@ -92,7 +92,7 @@ public class Animation {
      * get current image frame
      * @return buffered image.
      */
-    public BufferedImage getImage() { return frames[currentFrame]; }
+    public BufferedImage getImage() { System.out.println("currentFrame") ;return frames[currentFrame]; }
 
     /**
      * check if the frame has played

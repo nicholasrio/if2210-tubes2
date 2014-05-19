@@ -199,5 +199,13 @@ public class FightableTest {
 
         public void doAbsorbDamage(int damage) {
         }
+        
+        public void pushedBackandFlinching(){
+            
+        }
+        
+        public void hitted(int damage){
+            
+        }
     }
 }

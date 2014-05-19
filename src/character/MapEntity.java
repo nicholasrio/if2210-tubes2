@@ -23,10 +23,12 @@ public abstract class MapEntity {
     protected Animation animation;      
     protected BufferedImage spriteSheet;
     
+    public void setWidth(int _width) { width = _width; }
+    public void setHeight(int _height) { height = _height; }
     public double getPositionX(){ return x;}
     public double getPositionY(){ return y;}
-    public double getWidth(){ return width;}
-    public double getHeight(){ return height;}
+    public int getWidth(){ return width;}
+    public int getHeight(){ return height;}
       
     public void setPosition(int x,int y){
         this.x=x;

@@ -23,7 +23,7 @@ import java.io.File;
  */
 public class Dragon extends Boss{
     
-    private enum BossState{
+    public enum BossState{
         CHASING, ATTACK, CHARGE, SKILL
     }
     
@@ -359,5 +359,12 @@ public class Dragon extends Boss{
     
     public void hitted(int damage){
         doAbsorbDamage(damage);
+    }
+    
+    /*
+        getter untuk boss state
+    */
+    public BossState getBossState(){
+        return bossState;
     }
 }
