@@ -23,6 +23,9 @@ public class PilihanCaleg implements Pilihan{
         this.Lingkup = Lingkup;
     }
     @Override
+    /**
+     * Memasukan data berupa NIK Pemilih dan NIK Caleg yang dipilih ke database
+     */
     public void addToDatabase()
     {
         try {
@@ -41,15 +44,26 @@ public class PilihanCaleg implements Pilihan{
             System.out.println(ex.getMessage());
         }
     }
-    
+     /**
+     *  
+     * @return NIK pemilih 
+     */
     public String getNIKPemilih()
     {
         return NIKPemilih;
     }
+     /**
+     * 
+     * @return NIK Caleg
+     */
     public String getNIKCaleg()
     {
         return NIKCaleg;
     }
+    /**
+     * 
+     * @return Lingkup caleg
+     */
     public String getLingkup()
     {
         return Lingkup;
