@@ -318,6 +318,7 @@ public class UserDragon extends Dragon {
         th.interrupt();
     }
 	
+	
 	public javax.swing.ImageIcon getImage() {
 		String emotion = "neutral";
 		if (health/maxHealth < stamina/maxStamina && health/maxHealth < (100-hunger)/100 && health/maxHealth < (100-thirst)/100 && health/maxHealth < (100-bladder)/100) {

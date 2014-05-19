@@ -54,8 +54,8 @@
       <thirst>23.0</thirst>
       <bladder>51.0</bladder>
       <hunger>21.0</hunger>
-      <level>5.0</level>
-      <experience>123.0</experience>
+      <level>5</level>
+      <experience>123</experience>
       <inventory>
         <item>first-aid</item>
         <item>potion</item>
@@ -66,36 +66,42 @@
     <userDragon>
       <name>calogerus</name>
       <password>muahaha</password>
-      <money>103.0</money>
-      <happiness>99.0</happiness>
-      <health>100.0</health>
+      <money>47219.0</money>
+      <happiness>0.0</happiness>
+      <health>24.0</health>
       <maxHealth>100.0</maxHealth>
-      <stamina>100.0</stamina>
+      <stamina>53.0</stamina>
       <maxStamina>100.0</maxStamina>
-      <thirst>3.0</thirst>
-      <bladder>24.0</bladder>
-      <hunger>3.0</hunger>
-      <level>1.0</level>
-      <experience>0.0</experience>
-      <inventory />
+      <thirst>100.0</thirst>
+      <bladder>12.0</bladder>
+      <hunger>48.0</hunger>
+      <level>1</level>
+      <experience>100</experience>
+      <inventory>
+        <item>ether</item>
+        <item>pill</item>
+      </inventory>
     </userDragon>
   </save>
   <save>
     <userDragon>
       <name>saya</name>
       <password>kamu</password>
-      <money>100.0</money>
-      <happiness>100.0</happiness>
-      <health>100.0</health>
+      <money>3118.8687</money>
+      <happiness>0.0</happiness>
+      <health>35.0</health>
       <maxHealth>100.0</maxHealth>
-      <stamina>100.0</stamina>
+      <stamina>64.0</stamina>
       <maxStamina>100.0</maxStamina>
-      <thirst>0.0</thirst>
-      <bladder>0.0</bladder>
-      <hunger>0.0</hunger>
+      <thirst>100.0</thirst>
+      <bladder>14.0</bladder>
+      <hunger>38.0</hunger>
       <level>1</level>
-      <experience>0</experience>
-      <inventory />
+      <experience>680</experience>
+      <inventory>
+        <item>ether</item>
+        <item>pill</item>
+      </inventory>
     </userDragon>
   </save>
 </calogerusSave>
