@@ -4,16 +4,16 @@
     <userDragon>
       <name>Xanareth</name>
       <password>anon</password>
-      <money>10590.943</money>
-      <happiness>99.0</happiness>
+      <money>10608.943</money>
+      <happiness>98.0</happiness>
       <inventory />
-      <health>79.0</health>
+      <health>130.0</health>
       <maxHealth>130.0</maxHealth>
-      <stamina>20.0</stamina>
+      <stamina>110.0</stamina>
       <maxStamina>110.0</maxStamina>
-      <thirst>21.0</thirst>
-      <bladder>25.200003</bladder>
-      <hunger>25.0</hunger>
+      <thirst>28.0</thirst>
+      <bladder>47.59999</bladder>
+      <hunger>30.0</hunger>
       <level>2</level>
       <experience>980</experience>
     </userDragon>
@@ -86,22 +86,19 @@
   <save>
     <userDragon>
       <name>saya</name>
-      <password>kamu</password>
-      <money>3454.8687</money>
-      <happiness>0.0</happiness>
-      <health>4.0</health>
+      <password>kaka</password>
+      <money>100.0</money>
+      <happiness>100.0</happiness>
+      <health>100.0</health>
       <maxHealth>100.0</maxHealth>
-      <stamina>82.0</stamina>
+      <stamina>100.0</stamina>
       <maxStamina>100.0</maxStamina>
-      <thirst>100.0</thirst>
-      <bladder>100.0</bladder>
-      <hunger>100.0</hunger>
+      <thirst>0.0</thirst>
+      <bladder>0.0</bladder>
+      <hunger>0.0</hunger>
       <level>1</level>
-      <experience>680</experience>
-      <inventory>
-        <item>ether</item>
-        <item>pill</item>
-      </inventory>
+      <experience>0</experience>
+      <inventory />
     </userDragon>
   </save>
   <save>
