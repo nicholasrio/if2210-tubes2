@@ -69,11 +69,12 @@ public class VideoEditForm {
         id=VideoPage.id;
         try {
             VidID=Integer.valueOf(DataController.VC.SelectVideoData().get(id)[0]);
+            input();
+            execute();
+            VideoPage.action(id);
         } catch (SQLException ex) {
             Logger.getLogger(VideoEditForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        input();
-        execute();
-        VideoPage.action(id);
+        
     }
 }

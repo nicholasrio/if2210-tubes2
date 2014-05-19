@@ -34,6 +34,7 @@ public class VideoPageUser {
     static String Rated;
     static List<String> Rate = new ArrayList<>();
     static Scanner input=new Scanner(System.in);
+    static cmdVidPlayer cmd;
     
     /**
      * Untuk inisialisasi data rating
@@ -108,9 +109,9 @@ public class VideoPageUser {
             @Override
             public void run() {
                 NativeInterface.open();
-                new cmdVidPlayer(URL).setVisible(true);
+                cmd = new cmdVidPlayer(URL);
+                cmd.setVisible(true);
             }
-            
         });
     }
     
@@ -150,18 +151,19 @@ public class VideoPageUser {
      * Menjalankan menu berdasarkan masukan
      */
     static void execute(){
+        cmd.Exit();
         if(option==1){
-            DetailPage.action(VideoTitle);
-            
+            DetailPage.action(VideoTitle);            
         }
         else if(option==2){
             try {
                 GroupID=DataController.SearchGroup(GroupName, no_tubes);
+                GroupPageUser.action(GroupID);
             } catch (SQLException ex) {
             } catch (OptionException ex) {
                 VideoPageUser.action(id);
             }
-            GroupPageUser.action(GroupID);
+            
         }
         else if(option==3){
             RateIt();
