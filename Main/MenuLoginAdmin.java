@@ -146,7 +146,6 @@ public class MenuLoginAdmin extends javax.swing.JFrame {
             NativeInterface.open();
             GuestView GV = new GuestView();
             GV.setVisible(true);
-            GV.RetButton3().setVisible(true);
             this.setVisible(false);
         } catch (SQLException e){
             

@@ -11,7 +11,6 @@ import Group.Group;
 import Group.GroupJFrameEdit;
 import Video.VideoController;
 import VideoPlayer.YoutubeMediaPlayer;
-import Xml.StaxParser;
 import Xml.StaxWriter;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -72,7 +71,7 @@ public class GuestView extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         jRadioButton5 = new javax.swing.JRadioButton();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel3 = new YoutubeMediaPlayer(viddetails.get(0)[2]);
         jButton4 = new javax.swing.JButton();
         b_rating = new javax.swing.JButton();
         bUbah = new javax.swing.JButton();
@@ -177,11 +176,9 @@ public class GuestView extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setPreferredSize(new java.awt.Dimension(675, 550));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 667, Short.MAX_VALUE)
@@ -302,10 +299,9 @@ public class GuestView extends javax.swing.JFrame {
             videodata--;
             jLabel1.setText(viddetails.get(videodata)[1]);
             jLabel2.setText(viddetails.get(videodata)[5]);
-            //jPanel3.setURL(viddetails.get(videodata)[2]);
+            jPanel3.setURL(viddetails.get(videodata)[2]);
 //            if(vidRating.get(videodata)!=null)
 //                jLabel4.setText(vidRating.get(videodata));
-            jPanel3 = new YoutubeMediaPlayer(viddetails.get(videodata)[2]);
             if (videodata==0){
                 jButton1.setEnabled(false);
             }
@@ -367,7 +363,7 @@ public class GuestView extends javax.swing.JFrame {
             jLabel2.setText(viddetails.get(videodata)[5]);
 //            if(vidRating.get(videodata)!=null)
 //                jLabel4.setText(vidRating.get(videodata));
-            //jPanel3.setURL(viddetails.get(videodata)[2]);
+            jPanel3.setURL(viddetails.get(videodata)[2]);
             if (videodata==viddetails.size()-1){
                 jButton2.setEnabled(false);
             }
@@ -450,7 +446,7 @@ public class GuestView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private YoutubeMediaPlayer jPanel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;

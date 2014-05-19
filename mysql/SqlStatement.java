@@ -153,6 +153,17 @@ public final class SqlStatement {
         System.out.println(query);
         statement.execute(query);
     }
+    public String SearchVideo(int no_tubes, String nama_kelompok) throws SQLException{
+        String temp = null;
+        String query = "SELECT `link` FROM `video` WHERE no_tubes=\"" + no_tubes + "\" AND group_nama= \"" + nama_kelompok + "\";";
+        System.out.println(query);
+        try(ResultSet rs = statement.executeQuery(query)){
+            if (rs.next()){
+                temp = rs.getString("link");
+            }
+        }
+        return temp;
+    }
     
      public List<String> select_admin_specific(int _NIM) throws SQLException{
         List<String> details = new ArrayList<>();
