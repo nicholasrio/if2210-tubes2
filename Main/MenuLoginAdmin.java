@@ -10,8 +10,10 @@ import Group.Group;
 import Group.GroupJFrame;
 import Video.VideoSwing;
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import com.google.gdata.util.ServiceException;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,7 +75,7 @@ public class MenuLoginAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Edit Kelompok");
+        jButton4.setText("Edit Kelompok/Video");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -144,8 +146,15 @@ public class MenuLoginAdmin extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             NativeInterface.open();
-            GuestView GV = new GuestView();
-            GV.setVisible(true);
+            GuestView GV;
+            try {
+                GV = new GuestView();
+                GV.setVisible(true);
+                GV.RetUbahGrup().setVisible(true);
+                GV.RetUbahVideo().setVisible(true);
+            } catch (IOException | ServiceException ex) {
+                Logger.getLogger(MenuLoginAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.setVisible(false);
         } catch (SQLException e){
             

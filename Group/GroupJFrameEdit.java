@@ -5,8 +5,10 @@
 package Group;
 
 import Main.GuestView;
+import com.google.gdata.util.ServiceException;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -234,10 +236,10 @@ public class GroupJFrameEdit extends javax.swing.JFrame {
     public void close(){
         try {
             new GuestView().setVisible(true);
-            this.setVisible(false);
-        } catch (SQLException ex) {
+        } catch (SQLException | IOException | ServiceException ex) {
             Logger.getLogger(GroupJFrameEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.setVisible(false);
     }
     
     public void setTemp(String no_tubes, String group_name){
