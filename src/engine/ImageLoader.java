@@ -93,6 +93,8 @@ public class ImageLoader extends JPanel
         allImages.add(loadImage("Image/GameMenu/Fire_Maze/background.jpg"));
         allImages.add(loadImage("Image/Other/Choice_Border.png"));
         allImages.add(loadImage("Image/Other/Choice_Border_Hover.png"));
+        allImages.add(loadImage("Image/Other/cursor.png"));
+        allImages.add(loadImage("Image/Other/User_Border.png"));
     }
     
     public static Image getImage(String imgName)
@@ -301,6 +303,14 @@ public class ImageLoader extends JPanel
         else if ("border_hover".equalsIgnoreCase(imgName))
         {
             return allImages.get(49);
+        }
+        else if ("cursor".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(50);
+        }
+        else if ("user_border".equalsIgnoreCase(imgName))
+        {
+            return allImages.get(51);
         }
         return null;
     }

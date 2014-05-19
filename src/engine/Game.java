@@ -7,12 +7,15 @@
 package engine;
 
 import engine.DataStructure.GameData;
-import engine.Scenes.*;
-import engine.GUIScenes.*;
 import engine.Exception.SceneNotFoundException;
-
+import engine.GUIScenes.*;
+import engine.Scenes.*;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
@@ -57,6 +60,11 @@ public class Game
         gameFrame.setLocationRelativeTo(null);
         gameFrame.setResizable(true);
         gameFrame.setVisible(true);
+        
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image image = ImageLoader.getImage("cursor");
+        Cursor c = toolkit.createCustomCursor(image, new Point(0,0),"cursor");
+        gameFrame.setCursor(c);
     }
     
     /**
