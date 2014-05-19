@@ -24,9 +24,17 @@ import java.util.Scanner;
  * @author WILLY, Dariel Valdano
  */
 public class Main {
-
+	/**
+	 * Dragon yang dicontrol
+	 */
 	public static UserDragon draco;
-
+	private Main() {
+		
+	}
+	/**
+	 * Menu utama
+	 * @param args commandline
+	 */
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		if (args.length == 0) {

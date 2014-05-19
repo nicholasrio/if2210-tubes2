@@ -35,7 +35,13 @@ import javax.swing.JPanel;
  */
 public class InventoryDisplay extends JPanel {
 	private ImageIcon[] image;
+	/**
+	 * Pilihan Inventory ketika click Inventory Panel
+	 */
 	public static Integer pilihan = null;
+	/**
+	 * Dragon yang di print Inventory-nya
+	 */
 	public static UserDragon drgon = null;
 	
 	/**
@@ -77,10 +83,10 @@ public class InventoryDisplay extends JPanel {
 		} else id.image = null;
 	}
 	
-	@Override
 	/**
 	 * Menampilkan gambar dan status dari seluruh consumable dalam inventory dragon
 	 */
+	@Override
     protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if (image!=null) {
