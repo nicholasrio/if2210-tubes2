@@ -11,7 +11,7 @@
 package console;
 
 import model.Player;
-import controller.MainMenuConsole;
+import controller.MainMenuController;
 import java.io.FileNotFoundException;
 import java.util.*;
 import exception.*;
@@ -22,13 +22,13 @@ import java.util.logging.Logger;
 public class TowerDefense {  
 
     public static void main(String[] args) {
-        MainMenuConsole mainMenuConsole = MainMenuConsole.getInstance();
+        MainMenuController mainMenu = MainMenuController.getInstance();
         boolean cannotPlay = false;
         /**
          * Load player data from file
          */
         try {
-            mainMenuConsole.loadPlayer();
+            mainMenu.loadPlayer();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
             cannotPlay = true;
@@ -49,7 +49,7 @@ public class TowerDefense {
                 switch (pilihanMenu) {
                     case 1: {
                         try {
-                            mainMenuConsole.login(str);
+                            mainMenu.login(str);
                         } catch (NameNotExistException ex) {
                             System.out.println(ex);
                         }
@@ -57,7 +57,7 @@ public class TowerDefense {
                     }
                     case 2: {
                         try {
-                            mainMenuConsole.newPlayer(str);
+                            mainMenu.newPlayer(str);
                         } catch (Exception ex) {
                             System.out.println(ex);
                         }
@@ -65,7 +65,7 @@ public class TowerDefense {
                     }
                     case 4: {
                         try {
-                            mainMenuConsole.deletePlayer(str);
+                            mainMenu.deletePlayer(str);
                         } catch (NameNotExistException ex) {
                             System.out.println(ex);
                         }
@@ -75,13 +75,13 @@ public class TowerDefense {
             } else if (pilihanMenu == 3 || pilihanMenu == 5 || pilihanMenu == 6) {
                 switch (pilihanMenu) {
                     case 3: {
-                        GameConsoleUI.showHighScore(mainMenuConsole.getHighScore());
+                        GameConsoleUI.showHighScore(mainMenu.getHighScore());
                         break;
                     }
                     case 5: {
-                        if (mainMenuConsole.logged()) {
+                        if (mainMenu.logged()) {
                             try {
-                                mainMenuConsole.playGameConsole(true);
+                                mainMenu.playGameConsole(true);
                             } catch (IOException ex) {
                                 Logger.getLogger(TowerDefense.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -89,12 +89,12 @@ public class TowerDefense {
                         break;
                     }
                     case 6: {
-                        if (mainMenuConsole.logged()) {
+                        if (mainMenu.logged()) {
                             /**
                              * load game
                              */
                             try {
-                                mainMenuConsole.playGameConsole(false);
+                                mainMenu.playGameConsole(false);
                             } catch (FileNotFoundException ex) {
                                 System.out.println("Cannot load game");
                                 cannotPlay = true;
@@ -111,7 +111,7 @@ public class TowerDefense {
             }
         }
         try {
-            mainMenuConsole.closePlayer();
+            mainMenu.closePlayer();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }

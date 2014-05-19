@@ -96,7 +96,7 @@ public class MapGUI {
                 System.exit(0);
             }
         });
-        pictureCanvas.setBackground(Color.red);
+        pictureCanvas.setBackground(Color.black);
 
         mainFrame.setResizable(false);
         mainFrame.setVisible(true);

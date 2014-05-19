@@ -10,7 +10,7 @@
  */
 
 package gui;
-import controller.MainMenuConsole;
+import controller.MainMenuController;
 import exception.NameNotExistException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,9 +22,9 @@ public class TowerDefense {
     public static String inputMenu;
 
     public static void main(String[] args) throws IOException {
-        MainMenuConsole mainMenuConsole = MainMenuConsole.getInstance();
+        MainMenuController mainMenu = MainMenuController.getInstance();
         try {
-            mainMenuConsole.loadPlayer();
+            mainMenu.loadPlayer();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
             return;
@@ -37,25 +37,25 @@ public class TowerDefense {
             display.showMenu();
             while (pilihanMenu == 0) {
             };
-            if (pilihanMenu <= 2 && (!mainMenuConsole.logged())) {
+            if (pilihanMenu <= 2 && (!mainMenu.logged())) {
                 pilihanMenu = 5;
             }
             switch (pilihanMenu) {
                 case 1: {
                     display.hide();
-                    mainMenuConsole.playGameGUI(true);
+                    mainMenu.playGameGUI(true);
                     display.show();
                     break;
                 }
                 case 2: {
                     display.hide();
-                    mainMenuConsole.playGameGUI(false);
+                    mainMenu.playGameGUI(false);
                     display.show();
                     break;
                 }
                 case 3: {
                     pilihanMenu = 0;
-                    display.showHighScore(mainMenuConsole.getHighScore());
+                    display.showHighScore(mainMenu.getHighScore());
                     while (pilihanMenu == 0) {
                     };
                     pilihanMenu = 0;
@@ -76,7 +76,7 @@ public class TowerDefense {
                     boolean not_exist = true;
                     display.showLogin("Input Username");
                     try {
-                        mainMenuConsole.login(inputMenu);
+                        mainMenu.login(inputMenu);
                         not_exist = false;
                     } catch (NameNotExistException ex) {
                         display.showWarning(ex.toString());
@@ -85,7 +85,7 @@ public class TowerDefense {
                         if (display.showChoice("Create New User") == JOptionPane.YES_OPTION) {
                             display.showLogin("Input New Username");
                             try {
-                                mainMenuConsole.newPlayer(inputMenu);
+                                mainMenu.newPlayer(inputMenu);
                                 not_exist = false;
                             } catch (Exception ex) {
                                 display.showWarning(ex.toString());
@@ -96,7 +96,7 @@ public class TowerDefense {
                 }
                 case 6: {
                     try {
-                        mainMenuConsole.deletePlayer(inputMenu);
+                        mainMenu.deletePlayer(inputMenu);
                         inputMenu = null;
                     } catch (NameNotExistException ex) {
                         System.out.println(ex);
@@ -106,7 +106,7 @@ public class TowerDefense {
             }
         }
         try {
-            mainMenuConsole.closePlayer();
+            mainMenu.closePlayer();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }

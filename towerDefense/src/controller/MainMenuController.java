@@ -20,16 +20,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 
-public class MainMenuConsole {
+public class MainMenuController {
 
     private List<Player> players = new ArrayList<Player>();
     private Player loginPlayer;
-    private static MainMenuConsole instance = new MainMenuConsole();
+    private static MainMenuController instance = new MainMenuController();
 
     /**
      * Default Constructor
      */
-    private MainMenuConsole() {
+    private MainMenuController() {
     }
 
     /**
@@ -178,7 +178,7 @@ public class MainMenuConsole {
      *
      * @return
      */
-    public static MainMenuConsole getInstance() {
+    public static MainMenuController getInstance() {
         return instance;
     }
     

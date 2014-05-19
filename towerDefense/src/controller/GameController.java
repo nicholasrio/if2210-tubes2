@@ -508,7 +508,7 @@ public class GameController {
                     /**
                      * game level started
                      */
-                    while (countSeenMonster() > 0 && getLives() > 0) {
+                    while (countSeenMonster() > 0 && getLives() > 0 && currentLevel<=maximumLevel) {
                         showGame(false);
                         allTowersAttack();
                         moveAllMonster();
@@ -600,7 +600,7 @@ public class GameController {
                      * game level started
                      */
 
-                    while (countSeenMonster() > 0 && getLives() > 0) {
+                    while (countSeenMonster() > 0 && getLives() > 0 && currentLevel<=maximumLevel) {
                         //showGame(false);
                         allTowersAttack();
                         moveAllMonster();
