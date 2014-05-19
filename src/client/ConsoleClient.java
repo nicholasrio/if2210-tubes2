@@ -7,7 +7,12 @@ package client;
 
 import Client.Client;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  *
@@ -20,8 +25,19 @@ public class ConsoleClient extends Client {
 	}
 	
 	public static void main(String[] args) {
-		ConsoleClient client = new ConsoleClient("localhost", 5432);
+            try
+            {
+                File file = new File("config.xml");
+		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		Document doc = builder.parse(file);
+                Element Server = (Element) doc.getElementsByTagName("server_addr").item(0);
+		ConsoleClient client = new ConsoleClient(Server.getTextContent(), 5432);
 		client.run();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
 	}
 	
 	private void run() {
