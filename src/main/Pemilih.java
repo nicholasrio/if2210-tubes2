@@ -170,7 +170,7 @@ public class Pemilih {
             ResultSet result = statement.executeQuery(command);
             if(result.next())
             {
-                NoDapil = Integer.parseInt(NIK);
+                NoDapil = Integer.parseInt(result.getString("No_Dapil"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Pemilih.class.getName()).log(Level.SEVERE, null, ex);

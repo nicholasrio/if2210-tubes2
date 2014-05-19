@@ -8,8 +8,6 @@ package CLI;
 
 import Tools.PasswordErrorException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import main.Pemilih;
 
 /**
@@ -42,8 +40,9 @@ public class FormLoginPemilihCLI {
         String password;
         password = input.next();
         if(isTerdaftar(NIK,password)){
+            Pemilih p = new Pemilih(NIK,password);
             System.out.println("Anda berhasil login!");
-            formPemilihCLI.start();
+            formPemilihCLI.start(p);
         }
         else 
             System.out.println("NIK ataupun password salah. Ulangi lagi!");

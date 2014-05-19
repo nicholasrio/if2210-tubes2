@@ -37,10 +37,10 @@ public class DaftarPilihan {
             // Mengambil data Caleg 1 dari database lalu memasukkan ke array list DaftarCalegDPR
             String commandEkstrakCalegDPR = "select Caleg.*, Penduduk.Nama "
                     + "from Caleg, Penduduk "
-                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPR\'";
+                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPR\' and NoDapil = " + Dapil + "";
             ResultSet CalegDPR = statement.executeQuery(commandEkstrakCalegDPR);
             while(CalegDPR.next()){
-                String NIK = CalegDPR.getString("NIK");
+                String NIK = CalegDPR.getString("NIKCaleg");
                 String NamaPartai = CalegDPR.getString("NamaPartai");
                 String TrackRecord = CalegDPR.getString("TrackRecord");
                 int NoDapil = CalegDPR.getInt("NoDapil");
@@ -50,10 +50,10 @@ public class DaftarPilihan {
             // Mengambil data Caleg 2 dari database lalu memasukkan ke array list DaftarCalegDPD
             String commandEkstrakCalegDPD = "select Caleg.*, Penduduk.Nama "
                     + "from Caleg, Penduduk "
-                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPD\'";
+                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPD\' and NoDapil = " + Dapil + "";
             ResultSet CalegDPD = statement.executeQuery(commandEkstrakCalegDPD);
             while(CalegDPD.next()){
-                String NIK = CalegDPD.getString("NIK");
+                String NIK = CalegDPD.getString("NIKCaleg");
                 String NamaPartai = CalegDPD.getString("NamaPartai");
                 String TrackRecord = CalegDPD.getString("TrackRecord");
                 int NoDapil = CalegDPD.getInt("NoDapil");
@@ -63,10 +63,10 @@ public class DaftarPilihan {
             // Mengambil data Caleg 3 dari database lalu memasukkan ke array list DaftarCalegDPRDProvinsi
             String commandEkstrakCalegDPRDProvinsi = "select Caleg.*, Penduduk.Nama "
                     + "from Caleg, Penduduk "
-                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPRDProvinsi\'";
+                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPRDProvinsi\' and NoDapil = " + Dapil + "";
             ResultSet CalegDPRDProvinsi = statement.executeQuery(commandEkstrakCalegDPRDProvinsi);
             while(CalegDPRDProvinsi.next()){
-                String NIK = CalegDPRDProvinsi.getString("NIK");
+                String NIK = CalegDPRDProvinsi.getString("NIKCaleg");
                 String NamaPartai = CalegDPRDProvinsi.getString("NamaPartai");
                 String TrackRecord = CalegDPRDProvinsi.getString("TrackRecord");
                 int NoDapil = CalegDPRDProvinsi.getInt("NoDapil");
@@ -76,10 +76,10 @@ public class DaftarPilihan {
             // Mengambil data Caleg 4 dari database lalu memasukkan ke array list DaftarCalegDPRDKabupaten
             String commandEkstrakCalegDPRDKabupaten = "select Caleg.*, Penduduk.Nama "
                     + "from Caleg, Penduduk "
-                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPRDKabupaten\'";
+                    + "where Caleg.NIKCaleg = Penduduk.NIK and Lingkup = \'DPRDKabupaten\' and NoDapil = " + Dapil + "";
             ResultSet CalegDPRDKabupaten = statement.executeQuery(commandEkstrakCalegDPRDKabupaten);
             while(CalegDPRDKabupaten.next()){
-                String NIK = CalegDPRDKabupaten.getString("NIK");
+                String NIK = CalegDPRDKabupaten.getString("NIKCaleg");
                 String NamaPartai = CalegDPRDKabupaten.getString("NamaPartai");
                 String TrackRecord = CalegDPRDKabupaten.getString("TrackRecord");
                 int NoDapil = CalegDPRDKabupaten.getInt("NoDapil");
@@ -87,7 +87,7 @@ public class DaftarPilihan {
                 DaftarCalegDPRDKabupaten.add(new Caleg(NIK, NamaPartai, TrackRecord, NoDapil,"DPRDKabupaten"));
             }
             
-            koneksi.close();
+            //koneksi.close();
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

@@ -19,8 +19,10 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.print("1 jika admin, 2 jika pemilih (1/2) > ");
         Scanner in = new Scanner (System.in);
         int pil = in.nextInt();
+        assert (pil == 1 || pil == 2);
         if(pil == 1){
             FormLoginAdminCLI formLogin = new FormLoginAdminCLI();
             formLogin.start();
@@ -28,9 +30,6 @@ public class Main {
         else if (pil == 2){
             FormLoginPemilihCLI formLoginPemilih = new FormLoginPemilihCLI();
             formLoginPemilih.start();
-        }
-        else {
-            System.out.print("Tidak ada pilihan");
         }
     }
 }
