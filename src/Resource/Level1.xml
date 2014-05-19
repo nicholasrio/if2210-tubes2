@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<configuration>
+	<monster-info>
+		<monster>
+			<name>Skeleton</name>
+			<total>10</total>
+		</monster>
+		<monster>
+			<name>Ghost</name>
+			<total>10</total>
+		</monster>
+	</monster-info>
+	<map-info>
+		<width>80</width>
+		<height>100</height>
+	</map-info>
+</configuration>
