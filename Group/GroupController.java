@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Group;
 
 import java.sql.SQLException;
@@ -10,29 +6,49 @@ import java.util.List;
 
 /**
  *
- * @author KURING
+ * @author Hendro Triokta Brianto - 13512081
  */
 public class GroupController {
     
     private Group team;
     
-    /* tambahan konstruktor, buat cmd (LOL) */
+    /**
+     * construktor
+     */
     public GroupController(){
         team = new Group();
     }
     
+    /**
+     * memasukan data ke dalam database
+     * @throws SQLException 
+     */
     public void InsertGroup() throws SQLException{
 	team.save();
     }
 
-    public void UpdateGroup(){
-
+    /**
+     * 
+     * mengubah data yang ada pada database
+     * @param no_tubes
+     * @param group_name
+     * @throws SQLException 
+     */
+    public void UpdateGroup(int no_tubes, String group_name) throws SQLException{
+        team.update(no_tubes, group_name);
     }
 
     public void SelectAllGroup(){
         
     }
 
+    /**
+     * 
+     * 
+     * @param no_tubes
+     * @param group_name
+     * @return 
+     */
     public String GetAGroup(int no_tubes, String group_name){
         return "abc";
     }
