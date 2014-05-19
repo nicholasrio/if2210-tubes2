@@ -238,7 +238,10 @@ public class VideoSwingEdit extends javax.swing.JFrame {
     
     public void close(){
         try {
-            new GuestView().setVisible(true);
+            GuestView GV = new GuestView();
+            GV.setVisible(true);
+            GV.RetUbahGrup().setVisible(true);
+            GV.RetUbahVideo().setVisible(true);
             this.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(GroupJFrameEdit.class.getName()).log(Level.SEVERE, null, ex);

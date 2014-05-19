@@ -38,6 +38,12 @@ public class GroupController {
         team.update(no_tubes, group_name);
     }
 
+    public List<String[]> SelectSpecific(int no_tubes, String namakelompok) throws SQLException{
+        team.setNo_tubes(no_tubes);
+        team.setGroup_name(namakelompok);
+        return team.GroupDataEdit();
+    }
+    
     public void SelectAllGroup(){
         
     }
