@@ -307,7 +307,7 @@ public class FormCaleg extends javax.swing.JFrame {
             PreparedStatement p = c.prepareStatement(sql);
             calonterpilih = new CalonTerpilih();
             int nodapilInt = Integer.parseInt(nodapil);
-            calonterpilih.AddCaleg(nik, nama, partai, history, nodapilInt, lingkup);
+            calonterpilih.AddCaleg(nik, partai, history, nodapilInt, lingkup);
             
             p.setString(1, nik);
             p.setString(2, nama);
