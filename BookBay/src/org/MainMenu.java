@@ -6,30 +6,20 @@
 
 package org;
 
-<<<<<<< HEAD
-=======
-/**
- *
- * @author muhammad
- */
 import javax.swing.JFileChooser;
->>>>>>> 318d02e0f43ed564de008422325f0858766c6376
 import javax.swing.JTable;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-<<<<<<< HEAD
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
-=======
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
->>>>>>> 318d02e0f43ed564de008422325f0858766c6376
 
 import javax.swing.*;
 import javax.swing.table.*;
@@ -45,25 +35,19 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public static JTable table;
     public MainMenu() throws SQLException {
-<<<<<<< HEAD
+
         ArrayList<Object> columnNames = new ArrayList<>();
         ArrayList<Object> data = new ArrayList<>();
-=======
-        ArrayList columnNames = new ArrayList();
-        ArrayList data = new ArrayList();
->>>>>>> 318d02e0f43ed564de008422325f0858766c6376
 
         //  Connect to an MySQL Database, run query, get result set
         // BERANTAKAN~~~~~~~~~~~~~
         String url = "jdbc:mysql://localhost:3306/bookbay";
         String userid = "root";
         String password = "";
-<<<<<<< HEAD
+
         String sql = "SELECT name, description, uploader_id FROM book INNER JOIN collection ON book.id = collection.book_id " +
         				"WHERE user_id=(SELECT id FROM user WHERE username='"+LoginController.currUser.getID()+"')";
-=======
-        String sql = "SELECT name, description, uploader_id FROM book natural join collection where book_id=id and user_id="+LoginController.currUser.getID();
->>>>>>> 318d02e0f43ed564de008422325f0858766c6376
+
 
         // Java SE 7 has try-with-resources
         // This will ensure that the sql objects are closed when the program 
@@ -81,29 +65,18 @@ public class MainMenu extends javax.swing.JFrame {
             }
 
             //  Get row data
-<<<<<<< HEAD
+
             while (rs.next()) {
                ArrayList row = new ArrayList(columns);
                for (int i = 1; i <= columns; i++) {
-=======
-            while (rs.next())
-            {
-                //if(rs.getString("uploader_id").matches(LoginController.currUser.getID()))
-                //{
-                    ArrayList row = new ArrayList(columns);
 
-                    for (int i = 1; i <= columns; i++)
-                    {
->>>>>>> 318d02e0f43ed564de008422325f0858766c6376
                         row.add( rs.getObject(i) );
                     }
 
                     data.add( row );
-<<<<<<< HEAD
-=======
-                //}
->>>>>>> 318d02e0f43ed564de008422325f0858766c6376
-            }
+
+
+           }
         }
         catch (SQLException e)
         {
@@ -175,7 +148,7 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Upload = new javax.swing.JButton();
-<<<<<<< HEAD
+
         Upload.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		JFileChooser fc = new JFileChooser();
@@ -227,8 +200,6 @@ public class MainMenu extends javax.swing.JFrame {
         		}
         	}
         });
-=======
->>>>>>> 318d02e0f43ed564de008422325f0858766c6376
         Download = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
         UserLabel = new javax.swing.JLabel();
@@ -267,7 +238,7 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         javax.swing.GroupLayout MyCollectionsLayout = new javax.swing.GroupLayout(MyCollections);
-<<<<<<< HEAD
+
         MyCollectionsLayout.setHorizontalGroup(
         	MyCollectionsLayout.createParallelGroup(Alignment.LEADING)
         		.addGroup(MyCollectionsLayout.createSequentialGroup()
@@ -303,8 +274,8 @@ public class MainMenu extends javax.swing.JFrame {
         					.addGap(18)
         					.addComponent(Exit, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
         				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 315, GroupLayout.PREFERRED_SIZE))
-        			.addContainerGap(102, Short.MAX_VALUE))
-=======
+        			.addContainerGap(102, Short.MAX_VALUE)));
+
         MyCollections.setLayout(MyCollectionsLayout);
         MyCollectionsLayout.setHorizontalGroup(
             MyCollectionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,7 +311,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyCollectionsLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(432, 432, 432))))
->>>>>>> 318d02e0f43ed564de008422325f0858766c6376
+
         );
         MyCollections.setLayout(MyCollectionsLayout);
 
