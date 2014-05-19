@@ -6,7 +6,14 @@
 
 package cmd.admin;
 
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import cmd.cmdVidPlayer;
+
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -15,6 +22,7 @@ import java.util.Scanner;
 public class VideoPage {
     static String VideoTitle;
     static String URL;
+    static int id;
     static boolean valid;
     static int option;
     static Scanner input=new Scanner(System.in);
@@ -30,6 +38,17 @@ public class VideoPage {
         }
     }
     
+    static void PlayVideo(){
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                NativeInterface.open();
+                new cmdVidPlayer(URL).setVisible(true);
+            }
+        });
+    }
+    
     static void print(){
         System.out.println("Video: "+VideoTitle);
         System.out.println("Link: "+URL);
@@ -40,6 +59,7 @@ public class VideoPage {
         System.out.println("0. Back");
     }
     static void input(){
+        valid=false;
         while(!valid){
             try{
                 SelectOption(2);
@@ -52,10 +72,17 @@ public class VideoPage {
     static void execute(){
         if(option==1){VideoEditForm.action();}
         else if(option==2){VideoDeleteForm.action();}
-        else{Groups.action();}
+        else{Videos.action(1,10);}
     }
-    static void action(String title){
-        VideoTitle=title;
+    static void action(int _id){
+        id=_id;
+        try {
+            VideoTitle=DataController.VC.SelectVideoData().get(id)[1];
+            URL=DataController.VC.SelectVideoData().get(id)[2];
+        } catch (SQLException ex) {
+            Logger.getLogger(VideoPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        PlayVideo();
         print();
         input();
         execute();

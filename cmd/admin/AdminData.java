@@ -6,6 +6,7 @@
 
 package cmd.admin;
 
+import Admin.Administrator;
 import java.util.Scanner;
 
 /**
@@ -17,6 +18,7 @@ public class AdminData {
     static boolean valid;
     static int option;
     static Scanner input=new Scanner(System.in);
+    static Administrator Admin=DataController.AC.getAdmin();
     
     static void SelectOption(int i) throws OptionException{
         System.out.println("Insert option: ");
@@ -30,17 +32,18 @@ public class AdminData {
     }
     
     static void print(){
-        System.out.println("Admin data with NIM"+NIM);
+        System.out.println("NIM: "+Admin.GetNIM());
+        System.out.println("Name: "+Admin.GetName());
         System.out.println("");
         System.out.println("Menu:");
-        System.out.println("1. Edit");
-        System.out.println("2. Delete");
+        System.out.println("1. Delete");
         System.out.println("0. Back");
     }
     static void input(){
+        valid=false;
         while(!valid){
             try{
-                SelectOption(2);
+                SelectOption(1);
             }
             catch(OptionException a){
                 System.out.println(a.getMessage());
@@ -48,9 +51,8 @@ public class AdminData {
         }
     }
     static void execute(){
-        if(option==1){AdminEditForm.action();}
-        else if(option==2){AdminDeleteForm.action();}
-        else{Admins.action();}
+        if(option==1){AdminDeleteForm.action();}
+        else{Admins.action(1,10);}
     }
     static void action(String _NIM){
         NIM=_NIM;

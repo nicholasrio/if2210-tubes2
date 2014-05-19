@@ -34,6 +34,7 @@ public class MainMenuAdmin {
         System.out.println("0. Logout");
     }
     static void input(){
+        valid=false;
          while(!valid){
             try{
                 SelectOption(3);

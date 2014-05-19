@@ -34,7 +34,7 @@ public class GroupDeleteForm {
         }
     }
     static void execute(){
-        Groups.GC.UpdateGroup();
+        System.out.println("The feature to delete a Group data isn't implemented yet");
         
     }
     static void action(){

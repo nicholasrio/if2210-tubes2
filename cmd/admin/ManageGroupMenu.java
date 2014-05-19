@@ -34,6 +34,7 @@ public class ManageGroupMenu {
         System.out.println("0. Cancel");
     }
     static void input(){
+        valid=false;
         while(!valid){
             try{
                 SelectOption(3);
@@ -45,7 +46,7 @@ public class ManageGroupMenu {
     }
     static void execute(){
         if(option==1){AddGroupForm.action();}
-        else if(option==2){Groups.action();}
+        else if(option==2){Groups.action(1,10);}
         else if(option==3){GroupSearchForm.action();}
         else{MainMenuAdmin.action();}
     }

@@ -39,6 +39,20 @@ public class GroupController {
     public List<String[]> GroupData() throws SQLException{
         return team.GroupData();
     }
-
+    
+    
+    /* Lagi, tambahan method buat cmd */
+    public void RegisterGroup(int no_tubes, String group_name, List<String> Member) throws SQLException{
+        if(!team.cekDataGroup(no_tubes, group_name)){
+            team.setNo_tubes(no_tubes);
+            team.setGroup_name(group_name);
+            team.setMember(Member);
+            team.save();
+            System.out.println("Registration complete");
+        }
+        else{
+            System.out.println("The group is registered already");
+        }
+    }
 
 }

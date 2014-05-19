@@ -6,12 +6,30 @@
 
 package cmd.admin;
 
+import java.sql.SQLException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author CakBin
  */
 public class AdminEditForm {
-    static void input(){}
-    static void execute(){}
-    static void action(){}
+    static boolean valid;
+    static String NIM;
+    static Scanner input=new Scanner(System.in);
+    
+    static void input(){
+        System.out.print("Insert NIM: ");
+        NIM = input.next();
+    }
+    static void execute(){
+        System.out.println("The feature to edit Admins' Data isn't implemented yet");
+    }
+    static void action(){
+        input();
+        execute();
+        ManageAdminMenu.action();
+    }
 }

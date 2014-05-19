@@ -6,6 +6,8 @@
 
 package cmd.admin;
 
+import Video.AttributeException;
+import Video.NullException;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -35,11 +37,10 @@ public class AddVideoForm {
     }
     static void execute(){
         try {
-            Videos.VC.InsertVideo();
-        } catch (SQLException ex) {
-            Logger.getLogger(AddGroupForm.class.getName()).log(Level.SEVERE, null, ex);
+            DataController.VC.AddVideo(title, link, group_name, no_tubes);
+        } catch (AttributeException | SQLException | NullException ex) {
+            Logger.getLogger(AddVideoForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     static void action(){
         input();

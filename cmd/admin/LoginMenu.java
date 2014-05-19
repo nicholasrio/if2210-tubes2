@@ -22,15 +22,16 @@ public class LoginMenu {
     static boolean login;
     
     static void input(){
-        System.out.print("Insert NIM");
+        System.out.print("Insert NIM: ");
         NIM = input.next();
-        System.out.print("Insert Password");
+        System.out.print("Insert Password: ");
         Pass = input.next();
     }
     static void execute(){
         login=false;
         try {
-            if(Admins.AC.checkLoginAdmin(NIM,Pass)){
+            if(!DataController.AC.checkLoginAdmin(NIM,Pass)){
+            } else {
                 login=true;
             }
         } catch (SQLException ex) {
@@ -40,6 +41,6 @@ public class LoginMenu {
     static void action(){
         input();
         execute();
-        while(login=true){MainMenuAdmin.action();}
+        while(login){MainMenuAdmin.action();}
     }
 }

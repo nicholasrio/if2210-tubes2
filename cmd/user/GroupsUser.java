@@ -6,33 +6,30 @@
 
 package cmd.user;
 
-import Group.Group;
-import Group.GroupController;
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author CakBin
  */
 public class GroupsUser {
-    static GroupController GC;
     static int up;
     static int down;
-    static Group G[];
     static boolean valid;
     static int option;
-    static int choice;
+    static String GroupName;
+    static int no_tubes;
+    static int id;
     static Scanner input=new Scanner(System.in);
     
-    static void SelectChoice(int i) throws OptionException{
-        System.out.println("Insert option: ");
-        choice= input.nextInt();
-        if (choice > i || choice <0){
-            throw new OptionException("Invalid Choice");
-        }
-        else{
-            valid = true;
-        }
+    static void SelectChoice(){
+        System.out.println("Insert Group Name: ");
+        GroupName= input.next();
+        System.out.println("Insert Project Number: ");
+        no_tubes=input.nextInt();
     }
     
     static void SelectOption(int i) throws OptionException{
@@ -47,15 +44,27 @@ public class GroupsUser {
     }
     
     static void print(){
-        System.out.println("Group output form "+up+" to "+down);
+        for(int i=up;i<=down;i++){
+            try {
+                System.out.println(DataController.GC.GroupData().get(i)[1]+DataController.GC.GroupData().get(i)[2]);
+                for(int j=3;j<=(DataController.GC.GroupData().size());j++){
+                    System.out.println("Member"+ (j-2) +" :" +DataController.GC.GroupData().get(i)[j]);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(GroupsUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         System.out.println("");
-        System.out.println("1. Select Group");
+        System.out.println("1. Prev");
+        System.out.println("2. Next");
+        System.out.println("3. Select Admin");
         System.out.println("0. Back");
     }
     static void input(){
+        valid=false;
         while(!valid){
             try{
-                SelectOption(1);
+                SelectOption(3);
             }
             catch(OptionException a){
                 System.out.println(a.getMessage());
@@ -64,20 +73,49 @@ public class GroupsUser {
     }
     static void execute(){
         if(option==1){
-            valid=false;
-            try{
-                SelectChoice(10);
+            GroupsUser.action(down+10,up+10);
+        }
+        else if(option==2){GroupsUser.action(down-10,up-10);}
+        else if(option==3){
+            SelectChoice();
+            try {
+            id = DataController.SearchGroup(GroupName,no_tubes);
+            GroupPageUser.action(id);
+             } catch (OptionException ex) {
+            System.out.println(ex.getMessage());
+            GroupsUser.action(up,down);
+            } catch (SQLException ex) {
+            Logger.getLogger(GroupsUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-            catch(OptionException a){
-                System.out.println(a.getMessage());
-            }
-            if(valid){
-                GroupPageUser.action(3,"19234");
-            }
+            
         }
         else{MainMenuUser.action();}
     }
-    static void action(){
+    static void action(int a, int b){
+        up=a;
+        down=b;
+        try {
+            if(down>DataController.GC.GroupData().size()){
+                down=DataController.GC.GroupData().size();
+                up=down-9;
+                if(up<1){
+                    up=1;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GroupsUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(up<1){
+            up=1;
+            down=up+10;
+            try {
+                if(down>DataController.GC.GroupData().size()){
+                    down=DataController.GC.GroupData().size();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(GroupsUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         print();
         input();
         execute();
