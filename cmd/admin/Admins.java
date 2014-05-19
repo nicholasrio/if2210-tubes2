@@ -32,7 +32,7 @@ public class Admins {
     
     static void SelectOption(int i) throws OptionException{
         System.out.println("Insert option: ");
-        option= input.nextInt();
+        option= Integer.valueOf(input.next());
         if (option > i || option <0){
             throw new OptionException("Invalid Option");
         }
@@ -50,8 +50,8 @@ public class Admins {
             }
         }
         System.out.println("");
-        System.out.println("1. Prev");
-        System.out.println("2. Next");
+        System.out.println("1. Next");
+        System.out.println("2. Prev");
         System.out.println("3. Select Admin");
         System.out.println("0. Back");
     }
@@ -68,9 +68,9 @@ public class Admins {
     }
     static void execute(){
         if(option==1){
-            Admins.action(down+10,up+10);
+            Admins.action(up+10,down+10);
         }
-        else if(option==2){Admins.action(down-10,up-10);}
+        else if(option==2){Admins.action(up-10,down-10);}
         else if(option==3){
             SelectChoice();
             try {
@@ -101,7 +101,7 @@ public class Admins {
         }
         if(up<1){
             up=1;
-            down=up+10;
+            down=up+9;
             try {
                 if(down>DataController.AC.getAdminsData().size()){
                     down=DataController.AC.getAdminsData().size();

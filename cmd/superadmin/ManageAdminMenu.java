@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package cmd.admin;
+package cmd.superadmin;
 
 import java.util.Scanner;
 
@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author CakBin
  */
-public class ManageGroupMenu {
+public class ManageAdminMenu {
     static boolean valid;
     static int option;
     static Scanner input=new Scanner(System.in);
@@ -28,10 +28,10 @@ public class ManageGroupMenu {
         }
     }
     static void print(){
-        System.out.println("1. Add Group");
-        System.out.println("2. View Groups");
-        System.out.println("3. Search Group");
-        System.out.println("0. Cancel");
+        System.out.println("1. Register Admin");
+        System.out.println("2. View Admins");
+        System.out.println("3. Search Admins");
+        System.out.println("0. Logout");
     }
     static void input(){
         valid=false;
@@ -45,10 +45,10 @@ public class ManageGroupMenu {
         }
     }
     static void execute(){
-        if(option==1){AddGroupForm.action();}
-        else if(option==2){Groups.action(1,10);}
-        else if(option==3){GroupSearchForm.action();}
-        else{MainMenuAdmin.action();}
+        if(option==1){AddAdminForm.action();}
+        else if(option==2){Admins.action(1,10);}
+        else if(option==3){AdminSearchForm.action();}
+        else{LoginMenu.login=false;}
     }
     static void action(){
         print();

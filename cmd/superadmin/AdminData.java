@@ -4,18 +4,21 @@
  * and open the template in the editor.
  */
 
-package cmd.admin;
+package cmd.superadmin;
 
+import Admin.Administrator;
 import java.util.Scanner;
 
 /**
  *
  * @author CakBin
  */
-public class ManageGroupMenu {
+public class AdminData {
+    static String NIM;
     static boolean valid;
     static int option;
     static Scanner input=new Scanner(System.in);
+    static Administrator Admin=DataController.AC.getAdmin();
     
     static void SelectOption(int i) throws OptionException{
         System.out.println("Insert option: ");
@@ -27,17 +30,20 @@ public class ManageGroupMenu {
             valid = true;
         }
     }
+    
     static void print(){
-        System.out.println("1. Add Group");
-        System.out.println("2. View Groups");
-        System.out.println("3. Search Group");
-        System.out.println("0. Cancel");
+        System.out.println("NIM: "+Admin.GetNIM());
+        System.out.println("Name: "+Admin.GetName());
+        System.out.println("");
+        System.out.println("Menu:");
+        System.out.println("1. Delete");
+        System.out.println("0. Back");
     }
     static void input(){
         valid=false;
         while(!valid){
             try{
-                SelectOption(3);
+                SelectOption(1);
             }
             catch(OptionException a){
                 System.out.println(a.getMessage());
@@ -45,12 +51,11 @@ public class ManageGroupMenu {
         }
     }
     static void execute(){
-        if(option==1){AddGroupForm.action();}
-        else if(option==2){Groups.action(1,10);}
-        else if(option==3){GroupSearchForm.action();}
-        else{MainMenuAdmin.action();}
+        if(option==1){AdminDeleteForm.action();}
+        else{Admins.action(1,10);}
     }
-    static void action(){
+    static void action(String _NIM){
+        NIM=_NIM;
         print();
         input();
         execute();

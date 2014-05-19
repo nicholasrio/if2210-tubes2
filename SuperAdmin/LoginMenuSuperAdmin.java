@@ -4,14 +4,10 @@
  * and open the template in the editor.
  */
 
-package Main;
+package SuperAdmin;
 
-import Group.Group;
-import Group.GroupJFrame;
-import Video.VideoSwing;
-import chrriis.dj.nativeswing.swtimpl.NativeInterface;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import Admin.AdministratorController;
+import Admin.AdministratorRegister;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,12 +17,13 @@ import javax.swing.JOptionPane;
  *
  * @author Rikysamuel
  */
-public class MenuLoginAdmin extends javax.swing.JFrame {
-
+public class LoginMenuSuperAdmin extends javax.swing.JFrame {
+    private AdministratorController AC;
     /**
-     * Creates new form MenuLoginAdmin
+     * Creates new form NewJFrame
      */
-    public MenuLoginAdmin() {
+    public LoginMenuSuperAdmin() {
+        AC = new AdministratorController();
         initComponents();
     }
 
@@ -45,35 +42,29 @@ public class MenuLoginAdmin extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(732, 413));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-        });
 
-        jButton1.setText("Tambah Video");
+        jButton1.setText("Register Admin");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Buat Kelompok");
+        jButton2.setText("Lihat Admin");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Kembali");
+        jButton3.setText("Hapus Admin");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Edit Kelompok");
+        jButton4.setText("Keluar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -85,73 +76,67 @@ public class MenuLoginAdmin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(269, 269, 269)
+                .addGap(127, 127, 127)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton3))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(429, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addGap(94, 94, 94)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new VideoSwing().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(JOptionPane.showConfirmDialog(this, "Yakin mau keluar?", "Konfirmasi", 0)==0){
-            new KataMa().setVisible(true);
-            this.setVisible(false);
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension screenSize = tk.getScreenSize();
-        final int WIDTH = screenSize.width;
-        final int HEIGHT = screenSize.height;
-        int lebar = (int) this.getSize().getWidth() / 2;
-        int tinggi = (int) this.getSize().getHeight() / 2;
-        // Setup the frame accordingly
-        // This is assuming you are extending the JFrame //class
-        this.setLocation((WIDTH/2) - lebar, (HEIGHT/2) - tinggi);
-    }//GEN-LAST:event_formWindowActivated
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new GroupJFrame().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
-            NativeInterface.open();
-            GuestView GV = new GuestView();
-            GV.setVisible(true);
+            new AdministratorRegister().setVisible(true);
             this.setVisible(false);
         } catch (SQLException e){
             
         }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new DaftarAdmin().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "Anda Yakin Mau Keluar", "Confirmation", 0)==0){
+            new MenuSuperAdmin().setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            String NIM = JOptionPane.showInputDialog(this, "Masukan NIM");
+            if (AC.getAdmin().isUserExist(Integer.valueOf(NIM))){
+                if (JOptionPane.showConfirmDialog(this, "Hapus Admin?")==0){
+                    AC.AdminDelete(NIM);
+                }
+            } else{
+                JOptionPane.showMessageDialog(this, "NIM Admin tidak ditemukan");
+            }
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

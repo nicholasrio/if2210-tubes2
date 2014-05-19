@@ -45,13 +45,14 @@ public class GroupPage {
         }
         
         System.out.println("");
+        System.out.println("1. Edit");
         System.out.println("0. Back");
     }
     static void input(){
         valid=false;
         while(!valid){
             try{
-                SelectOption(0);
+                SelectOption(1);
             }
             catch(OptionException a){
                 System.out.println(a.getMessage());
@@ -59,7 +60,12 @@ public class GroupPage {
         }
     }
     static void execute(){
-        Groups.action(1,10);
+        if(option==1){
+            GroupEditForm.action();
+        }
+        else{
+            Groups.action(1,10);
+        }
     }
     static void action(int _id){
         id=_id;

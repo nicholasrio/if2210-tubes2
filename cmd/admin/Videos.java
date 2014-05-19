@@ -26,7 +26,7 @@ public class Videos {
     
     static void SelectChoice() throws OptionException, SQLException{
         System.out.println("Insert Video Number: ");
-        choice= input.nextInt();
+        choice= Integer.valueOf(input.next());
         if (choice<1 || choice>DataController.VC.SelectVideoData().size()){
             throw new OptionException("Invalid Number");
         }
@@ -37,7 +37,7 @@ public class Videos {
     
     static void SelectOption(int i) throws OptionException{
         System.out.println("Insert option: ");
-        option= input.nextInt();
+        option= Integer.valueOf(input.next());
         if (option > i || option <0){
             throw new OptionException("Invalid Option");
         }
@@ -55,8 +55,8 @@ public class Videos {
             }
         }
         System.out.println("");
-        System.out.println("1. Prev");
-        System.out.println("2. Next");
+        System.out.println("1. Next");
+        System.out.println("2. Prev");
         System.out.println("3. Select Video");
         System.out.println("0. Back");
     }
@@ -73,9 +73,9 @@ public class Videos {
     }
     static void execute(){
         if(option==1){
-            Videos.action(down+10,up+10);
+            Videos.action(up+10,down+10);
         }
-        else if(option==2){Videos.action(down-10,up-10);}
+        else if(option==2){Videos.action(up-10,down-10);}
         else if(option==3){
             try {
                 SelectChoice();
@@ -105,7 +105,7 @@ public class Videos {
         }
         if(up<1){
             up=1;
-            down=up+10;
+            down=up+9;
             try {
                 if(down>DataController.VC.SelectVideoData().size()){
                     down=DataController.VC.SelectVideoData().size();

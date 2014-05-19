@@ -6,8 +6,12 @@
 
 package cmd.admin;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,29 +19,48 @@ import java.util.Scanner;
  */
 public class GroupEditForm {
     static boolean valid;
+    static int id;
     static int No_Tubes;
+    static int new_no_tubes;
     static String GroupName;
+    static String new_group_name;
     static int Num;
-    static List<String> Member;
+    static List<String> Member = new ArrayList<>();
     static Scanner input=new Scanner(System.in);
     
     static void input(){
-        System.out.print("Insert Project Number: ");
-        No_Tubes = input.nextInt();
-        System.out.print("Insert Group Name: ");
-        GroupName = input.next();
+        System.out.print("Insert new Project Number: ");
+        new_no_tubes = input.nextInt();
+        if(new_no_tubes==0){
+            new_no_tubes=No_Tubes;
+        }
+        System.out.print("Insert new Group Name: ");
+        new_group_name = input.next();
+        if(new_group_name.equals("")){
+            new_group_name=GroupName;
+        }
         System.out.print("Number of Member: ");
         Num = input.nextInt();
         for(int i = 0; i<Num; i++){
-        System.out.print("Insert Member"+ (i+1));
+        System.out.print("Insert Member"+ (i+1) + " : ");
         Member.add(input.next());
         }
     }
     static void execute(){
-        System.out.println("The feature to edit a Group data isn't implemented yet");
-        
+        try {
+            DataController.GC.EditGroup(new_no_tubes, new_group_name, Member, No_Tubes, GroupName);
+        } catch (SQLException ex) {
+            Logger.getLogger(GroupEditForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     static void action(){
+        id=GroupPage.id;
+        try {
+            GroupName=DataController.GC.GroupData().get(id)[1];
+            No_Tubes=Integer.valueOf(DataController.GC.GroupData().get(id)[0]);
+        } catch (SQLException ex) {
+            Logger.getLogger(GroupEditForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         input();
         execute();
         ManageGroupMenu.action();

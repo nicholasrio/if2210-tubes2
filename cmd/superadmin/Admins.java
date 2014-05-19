@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package cmd.user;
+package cmd.superadmin;
 
+import Admin.AdminException;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -16,21 +17,17 @@ import java.util.logging.Logger;
  *
  * @author CakBin
  */
-public class GroupsUser {
+public class Admins {
     static int up;
     static int down;
     static boolean valid;
     static int option;
-    static String GroupName;
-    static int no_tubes;
-    static int id;
+    static String choice;
     static Scanner input=new Scanner(System.in);
     
     static void SelectChoice(){
-        System.out.println("Insert Group Name: ");
-        GroupName= input.next();
-        System.out.println("Insert Project Number: ");
-        no_tubes=Integer.valueOf(input.next());
+        System.out.println("Insert NIM: ");
+        choice= input.next();
     }
     
     static void SelectOption(int i) throws OptionException{
@@ -47,22 +44,22 @@ public class GroupsUser {
     static void print(){
         for(int i=up-1;i<down;i++){
             try {
-                System.out.println(Arrays.toString(DataController.GC.GroupData().get(i)));
+                System.out.println(Arrays.toString(DataController.AC.getAdminsData().get(i)));
             } catch (SQLException ex) {
-                Logger.getLogger(GroupsUser.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Admins.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         System.out.println("");
         System.out.println("1. Next");
         System.out.println("2. Prev");
-        System.out.println("3. Select Grup");
+        System.out.println("3. Select Admin");
         System.out.println("0. Back");
     }
     static void input(){
         valid=false;
         while(!valid){
             try{
-                SelectOption(3);
+                SelectOption(4);
             }
             catch(OptionException a){
                 System.out.println(a.getMessage());
@@ -71,47 +68,46 @@ public class GroupsUser {
     }
     static void execute(){
         if(option==1){
-            GroupsUser.action(up+10,down+10);
+            Admins.action(up+10,down+10);
         }
-        else if(option==2){GroupsUser.action(up-10,down-10);}
+        else if(option==2){Admins.action(up-10,down-10);}
         else if(option==3){
             SelectChoice();
             try {
-            id = DataController.SearchGroup(GroupName,no_tubes);
-            GroupPageUser.action(id);
-             } catch (OptionException ex) {
-            System.out.println(ex.getMessage());
-            GroupsUser.action(up,down);
-            } catch (SQLException ex) {
-            Logger.getLogger(GroupsUser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+                    DataController.AC.CallNIM(choice);
+                    AdminData.action(choice);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AdminSearchForm.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (AdminException ex) {
+                    System.out.println(ex.getMessage());
+                    Admins.action(up, down);
+                }
         }
-        else{MainMenuUser.action();}
+        else{ManageAdminMenu.action();}
     }
     static void action(int a, int b){
         up=a;
         down=b;
         try {
-            if(down>DataController.GC.GroupData().size()){
-                down=DataController.GC.GroupData().size();
+            if(down>DataController.AC.getAdminsData().size()){
+                down=DataController.AC.getAdminsData().size();
                 up=down-9;
                 if(up<1){
                     up=1;
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(GroupsUser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Admins.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(up<1){
             up=1;
-            down=up-9;
+            down=up+9;
             try {
-                if(down>DataController.GC.GroupData().size()){
-                    down=DataController.GC.GroupData().size();
+                if(down>DataController.AC.getAdminsData().size()){
+                    down=DataController.AC.getAdminsData().size();
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(GroupsUser.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Admins.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         print();

@@ -40,12 +40,18 @@ public final class SqlStatement {
         statement.execute("INSERT INTO `group_tubes` (`no_tubes`, `group_name`, `anggota_1`, `anggota_2`, `anggota_3`) VALUES (\""+no_tubes+"\", \""+group_name+"\", \""+anggota_1+"\", \""+anggota_2+"\", \""+anggota_3+"\");");
     }
     
+    public void update_group(int no_tubes, String group_name, String anggota_1, String anggota_2, String anggota_3, int temp_no, String temp_nama) throws SQLException {
+        statement.execute("UPDATE `group_tubes` SET `no_tubes` = \""+no_tubes+"\", `group_name` = \""+group_name+"\", `anggota_1` = \""+anggota_1+"\", `anggota_2` = \""+anggota_2+"\", `anggota_3` = \""+anggota_3+"\" WHERE no_tubes = \""+temp_no+"\" AND group_name = \""+temp_nama+"\";");
+    }
+    
     public void insert_video(String title, String link, int view, int no_tubes, String group_name)throws SQLException{
         statement.execute("INSERT INTO `video` (`title`, `link`, `view`, `no_tubes`, `group_nama`) VALUES (\""+title+"\", \""+link+"\", \""+view+"\", \""+no_tubes+"\", \""+group_name+"\");");
     }
+    
     public void update_video(int id, String title, String link, int view, int no_tubes, String group_name) throws SQLException {
-        statement.execute("UPDATE `video` SET (`title` = "+title+"\", `link` = "+link+"\", `view` = "+view+"\", `no_tubes` = "+no_tubes+"\", `group_nama` = "+group_name+"\") WHERE id = "+id+"\";");
+        statement.execute("UPDATE `video` SET `title` = \""+title+"\", `link` = \""+link+"\", `view` = \""+view+"\", `no_tubes` = \""+no_tubes+"\", `group_nama` = \""+group_name+"\" WHERE id = \""+id+"\";");
     }
+    
     public void delete_video(int id) throws SQLException {
         statement.execute("DELETE * FROM video WHERE id = \"" + id + "\";");
     }
@@ -53,6 +59,18 @@ public final class SqlStatement {
     public List<String[]> select_group() throws SQLException{
         List<String[]> details = new ArrayList<>();
         try (ResultSet rs = statement.executeQuery("select * from group_tubes")) {
+            while(rs.next()){
+                //Retrieve by column name
+                String[] data = {rs.getString("no_tubes"), rs.getString("group_name"), rs.getString("anggota_1"), rs.getString("anggota_2"), rs.getString("anggota_3")};                
+                details.add(data);
+            }
+        }
+        return details;
+    }
+    
+    public List<String[]> select_group_by_group(int no_tubes, String group_name) throws SQLException{
+        List<String[]> details = new ArrayList<>();
+        try (ResultSet rs = statement.executeQuery("select * from group_tubes WHERE no_tubes = \"" + no_tubes + "\" and group_name = \"" + group_name + "\"")) {
             while(rs.next()){
                 //Retrieve by column name
                 String[] data = {rs.getString("no_tubes"), rs.getString("group_name"), rs.getString("anggota_1"), rs.getString("anggota_2"), rs.getString("anggota_3")};                
@@ -100,18 +118,6 @@ public final class SqlStatement {
         return details;
     }
     
-    public String SearchVideo(int no_tubes, String nama_kelompok) throws SQLException{
-        String temp = null;
-        String query = "SELECT `link` FROM `video` WHERE no_tubes=\"" + no_tubes + "\" AND group_nama= \"" + nama_kelompok + "\";";
-        System.out.println(query);
-        try(ResultSet rs = statement.executeQuery(query)){
-            if (rs.next()){
-                temp = rs.getString("link");
-            }
-        }
-        return temp;
-    }
-    
     public boolean cekDataVideo(int id) throws SQLException{
         boolean ketemu;
         try (ResultSet rs = statement.executeQuery("select * from video WHERE id = \"" + id + "\";")) {
@@ -148,6 +154,17 @@ public final class SqlStatement {
         String query = "DELETE FROM `administrator` WHERE nim=\'" + _NIM + "\';";
         System.out.println(query);
         statement.execute(query);
+    }
+    public String SearchVideo(int no_tubes, String nama_kelompok) throws SQLException{
+        String temp = null;
+        String query = "SELECT `link` FROM `video` WHERE no_tubes=\"" + no_tubes + "\" AND group_nama= \"" + nama_kelompok + "\";";
+        System.out.println(query);
+        try(ResultSet rs = statement.executeQuery(query)){
+            if (rs.next()){
+                temp = rs.getString("link");
+            }
+        }
+        return temp;
     }
     
      public List<String> select_admin_specific(int _NIM) throws SQLException{

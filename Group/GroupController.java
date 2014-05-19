@@ -16,6 +16,11 @@ public class GroupController {
     
     private Group team;
     
+    /* tambahan konstruktor, buat cmd (LOL) */
+    public GroupController(){
+        team = new Group();
+    }
+    
     public void InsertGroup() throws SQLException{
 	team.save();
     }
@@ -49,6 +54,19 @@ public class GroupController {
             team.setMember(Member);
             team.save();
             System.out.println("Registration complete");
+        }
+        else{
+            System.out.println("The group is registered already");
+        }
+    }
+    
+    public void EditGroup(int no_tubes, String group_name, List<String> Member, int former_no_tubes, String former_group_name) throws SQLException{
+        if(team.cekDataGroup(former_no_tubes, former_group_name)){
+            team.setNo_tubes(no_tubes);
+            team.setGroup_name(group_name);
+            team.setMember(Member);
+            team.update(former_no_tubes,former_group_name);
+            System.out.println("Group data has been changed");
         }
         else{
             System.out.println("The group is registered already");

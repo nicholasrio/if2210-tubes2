@@ -4,15 +4,18 @@
  * and open the template in the editor.
  */
 
-package cmd.admin;
+package cmd.superadmin;
 
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author CakBin
  */
-public class ManageGroupMenu {
+public class AdminDeleteForm {
     static boolean valid;
     static int option;
     static Scanner input=new Scanner(System.in);
@@ -28,31 +31,34 @@ public class ManageGroupMenu {
         }
     }
     static void print(){
-        System.out.println("1. Add Group");
-        System.out.println("2. View Groups");
-        System.out.println("3. Search Group");
-        System.out.println("0. Cancel");
+        System.out.println("Are you sure you wanna erase  this person?");
+        System.out.println("0. Yes");
+        System.out.println("1. No");
     }
+    
     static void input(){
         valid=false;
         while(!valid){
-            try{
-                SelectOption(3);
-            }
-            catch(OptionException a){
-                System.out.println(a.getMessage());
+            try {
+                SelectOption(1);
+            } catch (OptionException ex) {
+                System.out.println(ex.getMessage());
             }
         }
     }
     static void execute(){
-        if(option==1){AddGroupForm.action();}
-        else if(option==2){Groups.action(1,10);}
-        else if(option==3){GroupSearchForm.action();}
-        else{MainMenuAdmin.action();}
+        if(option==0){
+            try {
+                DataController.AC.AdminDelete(Integer.toString(DataController.AC.getAdmin().GetNIM()));
+            } catch (SQLException ex) {
+                Logger.getLogger(AddAdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     static void action(){
         print();
         input();
         execute();
+        ManageAdminMenu.action();
     }
 }

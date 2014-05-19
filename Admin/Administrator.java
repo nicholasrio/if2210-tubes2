@@ -60,7 +60,7 @@ public class Administrator {
      * @return 
      * @throws java.sql.SQLException 
      */
-    public boolean isUserExist(int _NIM) throws SQLException{
+    public boolean isUserExist(int _NIM) throws SQLException{      
         return new SqlStatement().IsAdminExist(_NIM);
     }
     
@@ -72,6 +72,7 @@ public class Administrator {
      * @throws java.sql.SQLException
      */
     public boolean isPasswordMatch(String _password) throws SQLException{
+        assert _password != null : "Precondition _password != null";
         return new SqlStatement().isPassword(NIM, _password);
     }
     
@@ -82,23 +83,32 @@ public class Administrator {
      * @throws NullException 
      */
     public void Register() throws SQLException, NullException {
+        assert password != null : "Precondition password != null";
+        assert name != null : "Precondition name != null";
         new SqlStatement().insert_admin(NIM, password, name);
+        assert isUserExist(NIM) == true : "Postcondition User " + NIM + " exist";
     }
     
     /* Method untuk menghapus record admin dalam database admin */
     public void Delete(int _NIM) throws SQLException{
         if(isUserExist(_NIM)){
             new SqlStatement().deleteAdmin(_NIM);
+            assert isUserExist(_NIM) == false : "Postcondition user " + _NIM + " doesn't exist";
         }
     }
     
     /* Method untuk mendapatkan data admin */
     public List<String[]> getAdmins() throws SQLException{
-        return new SqlStatement().select_admin();
+        List<String[]> admins = new SqlStatement().select_admin();
+        assert admins != null : "Postcondition getAdmins() != null"; 
+        return admins;
     }
     
     /* method tambahan buat cmd */
-    public List<String> AdminByNIM(String _NIM )throws SQLException{
-        return new SqlStatement().select_admin_specific(NIM);
+    public List<String> AdminByNIM(String _NIM)throws SQLException{
+        assert _NIM != null : "Precondition _NIM != null";
+        List<String> admin = new SqlStatement().select_admin_specific(NIM);
+        assert admin != null : "Postcondition AdminByNIM() != null";
+        return admin;
     }
 }
