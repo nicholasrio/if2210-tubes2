@@ -45,7 +45,7 @@ public class DaftarPilihan {
                 String TrackRecord = CalegDPR.getString("TrackRecord");
                 int NoDapil = CalegDPR.getInt("NoDapil");
                 String nama = CalegDPR.getString("Nama");
-                DaftarCalegDPR.add(new Caleg(NIK, nama, NamaPartai, TrackRecord, NoDapil,"DPR"));
+                DaftarCalegDPR.add(new Caleg(NIK, NamaPartai, TrackRecord, NoDapil,"DPR"));
             }
             // Mengambil data Caleg 2 dari database lalu memasukkan ke array list DaftarCalegDPD
             String commandEkstrakCalegDPD = "select Caleg.*, Penduduk.Nama "
@@ -58,7 +58,7 @@ public class DaftarPilihan {
                 String TrackRecord = CalegDPD.getString("TrackRecord");
                 int NoDapil = CalegDPD.getInt("NoDapil");
                 String nama = CalegDPD.getString("Nama");
-                DaftarCalegDPD.add(new Caleg(NIK, nama, NamaPartai, TrackRecord, NoDapil,"DPD"));
+                DaftarCalegDPD.add(new Caleg(NIK, NamaPartai, TrackRecord, NoDapil,"DPD"));
             }
             // Mengambil data Caleg 3 dari database lalu memasukkan ke array list DaftarCalegDPRDProvinsi
             String commandEkstrakCalegDPRDProvinsi = "select Caleg.*, Penduduk.Nama "
@@ -71,7 +71,7 @@ public class DaftarPilihan {
                 String TrackRecord = CalegDPRDProvinsi.getString("TrackRecord");
                 int NoDapil = CalegDPRDProvinsi.getInt("NoDapil");
                 String nama = CalegDPRDProvinsi.getString("Nama");
-                DaftarCalegDPRDProvinsi.add(new Caleg(NIK, nama, NamaPartai, TrackRecord, NoDapil,"DPRDProvinsi"));
+                DaftarCalegDPRDProvinsi.add(new Caleg(NIK, NamaPartai, TrackRecord, NoDapil,"DPRDProvinsi"));
             }
             // Mengambil data Caleg 4 dari database lalu memasukkan ke array list DaftarCalegDPRDKabupaten
             String commandEkstrakCalegDPRDKabupaten = "select Caleg.*, Penduduk.Nama "
@@ -84,7 +84,7 @@ public class DaftarPilihan {
                 String TrackRecord = CalegDPRDKabupaten.getString("TrackRecord");
                 int NoDapil = CalegDPRDKabupaten.getInt("NoDapil");
                 String nama = CalegDPRDKabupaten.getString("Nama");
-                DaftarCalegDPRDKabupaten.add(new Caleg(NIK, nama, NamaPartai, TrackRecord, NoDapil,"DPRDKabupaten"));
+                DaftarCalegDPRDKabupaten.add(new Caleg(NIK, NamaPartai, TrackRecord, NoDapil,"DPRDKabupaten"));
             }
             
             koneksi.close();
