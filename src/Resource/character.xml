@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<characterlist>
+    <character class="hero">
+        <id>1</id>
+        <name>Yuu</name>
+        <str>10</str>
+        <agi>3</agi>
+        <int>30</int>
+        <maxHealth>600</maxHealth>
+        <maxMana>400</maxMana>
+        <visionRange>128</visionRange>
+        <moveSpeed>2</moveSpeed>
+        <attackRange>1</attackRange>
+        <imagePath>Resource/Hero/hero.png</imagePath>
+        <attackPath>Resource/Attack/slash2.png</attackPath>
+    </character>
+    <character class="monster">
+        <id>2</id>
+        <name>Skeleton</name>
+        <str>50</str>
+        <agi>5</agi>
+        <int>10</int>
+        <maxHealth>300</maxHealth>
+        <maxMana>0</maxMana>
+        <visionRange>128</visionRange>
+        <moveSpeed>1</moveSpeed>
+        <attackRange>1</attackRange>
+        <imagePath>Resource/Monster/skeleton.png</imagePath>
+        <attackPath>Resource/Attack/slash1.png</attackPath>
+    </character>
+    <character class="monster">
+        <id>3</id>
+        <name>Alien</name>
+        <str>10</str>
+        <agi>5</agi>
+        <int>10</int>
+        <maxHealth>300</maxHealth>
+        <maxMana>0</maxMana>
+        <visionRange>128</visionRange>
+        <moveSpeed>1</moveSpeed>
+        <attackRange>1</attackRange>
+        <imagePath>Resource/Monster/alien.png</imagePath>
+        <attackPath>Resource/Attack/slash1.png</attackPath>
+    </character>
+    <character class="monster">
+        <id>4</id>
+        <name>Demon King</name>
+        <str>10</str>
+        <agi>5</agi>
+        <int>10</int>
+        <maxHealth>300</maxHealth>
+        <maxMana>0</maxMana>
+        <visionRange>128</visionRange>
+        <moveSpeed>1</moveSpeed>
+        <attackRange>1</attackRange>
+        <imagePath>Resource/Monster/demon_king.png</imagePath>
+        <attackPath>Resource/Attack/slash1.png</attackPath>
+    </character>
+    <character class="monster">
+        <id>5</id>
+        <name>Ghost</name>
+        <str>10</str>
+        <agi>5</agi>
+        <int>10</int>
+        <maxHealth>300</maxHealth>
+        <maxMana>0</maxMana>
+        <visionRange>128</visionRange>
+        <moveSpeed>1</moveSpeed>
+        <attackRange>1</attackRange>
+        <imagePath>Resource/Monster/ghost.png</imagePath>
+        <attackPath>Resource/Attack/slash1.png</attackPath>
+    </character>
+    <character class="monster">
+        <id>6</id>
+        <name>Leviathan</name>
+        <str>10</str>
+        <agi>5</agi>
+        <int>10</int>
+        <maxHealth>300</maxHealth>
+        <maxMana>0</maxMana>
+        <visionRange>128</visionRange>
+        <moveSpeed>1</moveSpeed>
+        <attackRange>1</attackRange>
+        <imagePath>Resource/Monster/leviathan.png</imagePath>
+        <attackPath>Resource/Attack/slash1.png</attackPath>
+    </character>
+    <character class="monster">
+        <id>7</id>
+        <name>Night Demon</name>
+        <str>10</str>
+        <agi>5</agi>
+        <int>10</int>
+        <maxHealth>300</maxHealth>
+        <maxMana>0</maxMana>
+        <visionRange>128</visionRange>
+        <moveSpeed>1</moveSpeed>
+        <attackRange>1</attackRange>
+        <imagePath>Resource/Monster/night_demon.png</imagePath>
+        <attackPath>Resource/Attack/slash1.png</attackPath>
+    </character>
+    <character class="monster">
+        <id>8</id>
+        <name>Reaper</name>
+        <str>10</str>
+        <agi>5</agi>
+        <int>10</int>
+        <maxHealth>300</maxHealth>
+        <maxMana>0</maxMana>
+        <visionRange>128</visionRange>
+        <moveSpeed>1</moveSpeed>
+        <attackRange>1</attackRange>
+        <imagePath>Resource/Monster/reaper.png</imagePath>
+        <attackPath>Resource/Attack/slash1.png</attackPath>
+    </character>
+</characterlist>

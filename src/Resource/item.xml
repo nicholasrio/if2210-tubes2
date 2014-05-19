@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<itemlist>
+    <item> 
+        <id>1</id>
+        <name>Potion of Health</name>
+        <cost>500</cost>
+        <strEff>0</strEff> 
+        <agiEff>0</agiEff>
+        <intEff>0</intEff>
+        <currentHealthEff>500</currentHealthEff>
+        <currentManaEff>0</currentManaEff>
+        <maxHealthEff>0</maxHealthEff>
+        <maxManaEff>0</maxManaEff>
+        <attackRange>16</attackRange>
+        <description>tes</description>
+        <imagePath>Resource/Item/1.png</imagePath>
+    </item>
+    <item> 
+        <id>2</id>
+        <name>Potion of Mana</name>
+        <cost>500</cost>
+        <strEff>0</strEff> 
+        <agiEff>0</agiEff>
+        <intEff>0</intEff>
+        <currentHealthEff>0</currentHealthEff>
+        <currentManaEff>500</currentManaEff>
+        <maxHealthEff>0</maxHealthEff>
+        <maxManaEff>0</maxManaEff>
+        <attackRange>16</attackRange>
+        <description>tes</description>
+        <imagePath>Resource/Item/2.png</imagePath>
+    </item>
+        <item> 
+        <id>3</id>
+        <name>Potion of Rejuvenation</name>
+        <cost>1000</cost>
+        <strEff>0</strEff> 
+        <agiEff>0</agiEff>
+        <intEff>0</intEff>
+        <currentHealthEff>500</currentHealthEff>
+        <currentManaEff>500</currentManaEff>
+        <maxHealthEff>0</maxHealthEff>
+        <maxManaEff>0</maxManaEff>
+        <attackRange>16</attackRange>
+        <description>tes</description>
+        <imagePath>Resource/Item/2.png</imagePath>
+    </item>
+    <item> 
+        <id>4</id>
+        <name>Tome of Strength</name>
+        <cost>500</cost>
+        <strEff>1</strEff> 
+        <agiEff>0</agiEff>
+        <intEff>0</intEff>
+        <currentHealthEff>0</currentHealthEff>
+        <currentManaEff>0</currentManaEff>
+        <maxHealthEff>0</maxHealthEff>
+        <maxManaEff>0</maxManaEff>
+        <attackRange>16</attackRange>
+        <description>tes</description>
+        <imagePath>Resource/Item/4.png</imagePath>
+    </item>
+    <item> 
+        <id>5</id>
+        <name>Tome of Agility</name>
+        <cost>500</cost>
+        <strEff>0</strEff> 
+        <agiEff>1</agiEff>
+        <intEff>0</intEff>
+        <currentHealthEff>0</currentHealthEff>
+        <currentManaEff>0</currentManaEff>
+        <maxHealthEff>0</maxHealthEff>
+        <maxManaEff>0</maxManaEff>
+        <attackRange>16</attackRange>
+        <description>tes</description>
+        <imagePath>Resource/Item/5.png</imagePath>
+    </item>
+    <item> 
+        <id>6</id>
+        <name>Tome of Intelligence</name>
+        <cost>500</cost>
+        <strEff>0</strEff> 
+        <agiEff>0</agiEff>
+        <intEff>1</intEff>
+        <currentHealthEff>0</currentHealthEff>
+        <currentManaEff>0</currentManaEff>
+        <maxHealthEff>0</maxHealthEff>
+        <maxManaEff>0</maxManaEff>
+        <attackRange>16</attackRange>
+        <description>tes</description>
+        <imagePath>Resource/Item/6.png</imagePath>
+    </item>
+</itemlist>
