@@ -7,7 +7,7 @@
 package cmd.admin;
 
 /**
- *
+ * Jalankan program utama untuk admin
  * @author CakBin
  */
 public class MainAdmin {

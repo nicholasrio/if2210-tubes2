@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 
 /**
- *
+ * Menampilkan data video tertentu
  * @author CakBin
  */
 public class VideoPage {

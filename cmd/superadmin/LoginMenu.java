@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Formulir untuk masuk sebagai super admin
  * @author CakBin
  */
 public class LoginMenu {

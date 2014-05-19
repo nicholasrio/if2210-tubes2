@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Formulir data login, untuk admin masuk.
  * @author CakBin
  */
 public class LoginMenu {

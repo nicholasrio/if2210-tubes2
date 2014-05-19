@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Formulir untuk mengubah data video
  * @author CakBin
  */
 public class VideoEditForm {

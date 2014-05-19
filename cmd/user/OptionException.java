@@ -7,7 +7,7 @@
 package cmd.user;
 
 /**
- *
+ * Exception untuk masukan pilihan dalam program utama user
  * @author CakBin
  */
 public class OptionException extends Exception{

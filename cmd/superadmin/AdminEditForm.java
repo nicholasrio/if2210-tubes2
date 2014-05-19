@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * formulir untuk mengubah data admin (belum diimplementasikan)
  * @author CakBin
  */
 public class AdminEditForm {

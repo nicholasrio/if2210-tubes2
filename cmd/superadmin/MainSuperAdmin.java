@@ -7,7 +7,7 @@
 package cmd.superadmin;
 
 /**
- *
+ * Program utama untuk super admin
  * @author CakBin
  */
 public class MainSuperAdmin {

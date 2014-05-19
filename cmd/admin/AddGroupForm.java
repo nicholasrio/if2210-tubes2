@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Formulir untuk menambah data kelompok
  * @author CakBin
  */
 public class AddGroupForm {
@@ -46,6 +46,10 @@ public class AddGroupForm {
             Logger.getLogger(AddGroupForm.class.getName()).log(Level.SEVERE, null, ex);
         }        
     }
+    
+    /**
+     * Untuk Eksekusi AddGroupForm dari tempat lain
+     */
     static void action(){
         input();
         execute();

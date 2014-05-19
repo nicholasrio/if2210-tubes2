@@ -9,7 +9,7 @@ package cmd.superadmin;
 import Admin.AdministratorController;
 
 /**
- *
+ * Kumpulan Controller dan method global untuk program utama super admin
  * @author CakBin
  */
 public class DataController {

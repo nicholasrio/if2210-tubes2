@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Menampilkan daftar data admin
  * @author CakBin
  */
 public class Admins {

@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Untuk menunjukkan data kelompok tertentu
  * @author CakBin
  */
 public class GroupPage {

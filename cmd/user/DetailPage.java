@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Menampilkan detil untuk kelompok/video yang dipilih
  * @author CakBin
  */
 public class DetailPage {

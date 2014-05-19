@@ -7,7 +7,7 @@
 package cmd.admin;
 
 /**
- *
+ * Exception untuk masukan pilihan
  * @author CakBin
  */
 public class OptionException extends Exception{

@@ -7,7 +7,7 @@
 package cmd.user;
 
 /**
- *
+ * Program utama user
  * @author CakBin
  */
 public class UserMain {

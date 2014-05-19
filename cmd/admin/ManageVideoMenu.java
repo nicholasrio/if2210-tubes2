@@ -9,7 +9,7 @@ package cmd.admin;
 import java.util.Scanner;
 
 /**
- *
+ * Pilihan untuk mengurus data video
  * @author CakBin
  */
 public class ManageVideoMenu {

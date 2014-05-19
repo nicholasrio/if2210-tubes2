@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Menampilkan daftar data kelompok
  * @author CakBin
  */
 public class Groups {

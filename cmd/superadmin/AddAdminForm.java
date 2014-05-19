@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Formulir untuk menambah data admin
  * @author CakBin
  */
 public class AddAdminForm {
