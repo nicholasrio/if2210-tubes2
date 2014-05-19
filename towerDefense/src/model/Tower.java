@@ -195,14 +195,13 @@ public class Tower {
      */
     public void upgradeTower() {
         //increase attack, attackSpeed and Cost by rate (static final variable)
-        currentLevel++;
         if (currentLevel < levelMax) {
+            currentLevel++;
             upgradeCost = upgradeCost + currentLevel;
             if (range < maxRange) {
                 ++range;
             }
             attack = attack + (currentLevel * attackIncreaseRate);
-            currentLevel++;
             if (coolDown > 1) {
                 coolDown--;
                 coolDownCount = coolDown;
