@@ -78,6 +78,7 @@ public class GameMenuGUI extends Scene
     private boolean keyLeftPressed;
     private boolean keyEnterPressed;
     private boolean isFinish;
+    private boolean isFinishMoveStop;
     private boolean isLevelUnlocked;
     private boolean okpressed;
     private boolean exit;
@@ -256,6 +257,7 @@ public class GameMenuGUI extends Scene
         currentPlayer.initPlayerPosition(playedMap);
         currentPlayer.resetTempScore();
         isFinish = false;
+        isFinishMoveStop = false;
         isLevelUnlocked = false;
         playerPosX = startPlayerPosX;
         playerPosY = startPlayerPosY;
@@ -284,6 +286,9 @@ public class GameMenuGUI extends Scene
     {
         if(isFinish)
         {
+            if(isFinishMoveStop){
+                SoundManager.stopSound("chain");
+            }
             prevFloor = currentPlayer.getLocation().getLevel();
             if(exit)
             {
@@ -295,6 +300,7 @@ public class GameMenuGUI extends Scene
                     keyLeftPressed = false;
                     keyEnterPressed = false;
                     playerFaced = 4;
+                    SoundManager.stopSound("chain");
                     SceneManager.SwitchScene("LevelMenuGUI");
                     exit = true;
                 } 
@@ -448,6 +454,7 @@ public class GameMenuGUI extends Scene
             if(output == 1)
             {
                 isFinish = true;
+                SoundManager.playSound("chain");
                 if(GameData.nowLevelPlayed == currentPlayer.getLevelUnlocked() && GameData.nowLevelPlayed<GameData.getJumlahMap()){
                     currentPlayer.setLevelUnlocked(currentPlayer.getLevelUnlocked()+1);
                     isLevelUnlocked = true;
@@ -563,6 +570,7 @@ public class GameMenuGUI extends Scene
                 }
                 else
                 {
+                    isFinishMoveStop = true;
                     font = font.deriveFont(Font.TRUETYPE_FONT, 15);
                     g2D.setFont(font);
                     g2D.drawString("Congratulations!",280, 280);
