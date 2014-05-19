@@ -304,8 +304,8 @@ public class UserDragon extends Dragon {
 	 * @return Event beli Consumable selesai
 	 * @throws Exception Uang tidak cukup
 	 */
-    public Event addConsumable (Consumable what) throws Exception {
-        if (money < what.getCost()) throw new Exception ("Uang tidak cukup");
+    public Event addConsumable (Consumable what) throws NotEnoughMoneyException {
+        if (money < what.getCost()) throw new NotEnoughMoneyException ();
 		money -= what.getCost();
 		fdInventory.add(what);
 		return new Event("Proses Selesai","addConsumable Selesai");
@@ -345,7 +345,9 @@ public class UserDragon extends Dragon {
 				emotion = "bladder-";
 			} // else neutral
 		}
-		return new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/" + emotion + " r.png"));
+		String imge = "/calogerusdraconis/res/" + "health-" + " r.png";
+		//return new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/neutral r.png"));
+		return new javax.swing.ImageIcon(getClass().getResource(imge));
 	}
     
 	/**

@@ -136,7 +136,7 @@ public class Main {
 										try {
 											draco.addConsumable(Store.getInstance().buy(pil8-1));
 											System.out.println("Anda berhasil membeli barang dengan nomor " + pil8);
-										} catch (Exception ex) {
+										} catch (NotEnoughMoneyException ex) {
 											System.out.println(ex.getMessage());
 										}
 									}
