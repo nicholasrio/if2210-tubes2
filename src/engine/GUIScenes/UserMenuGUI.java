@@ -44,6 +44,9 @@ public class UserMenuGUI extends Scene
     private String userName;
     
     private boolean []userHover;
+    private boolean cancelHover;
+    private boolean enterHover;
+    
     private float transparentPercentage;
     private int menuHovered;
     private int menuPressed;
@@ -60,6 +63,8 @@ public class UserMenuGUI extends Scene
         transparentPercentage = 0f;
         menuHovered = -1;
         menuPressed = -1;
+        cancelHover = false;
+        enterHover = false;
         
         deltapos = 0f;
         
@@ -254,6 +259,19 @@ public class UserMenuGUI extends Scene
             g2D.drawString("=====CREATE NEW USER=====", (int)(Game.ResolutionWidth*0.33f),(int)(Game.ResolutionHeight*0.2f)+25);
             g2D.drawString("TYPE USERNAME", (int)(Game.ResolutionWidth*0.33f)+100,(int)(Game.ResolutionHeight*0.2f)+60);
             g2D.drawString(userName,(int)(Game.ResolutionWidth*0.33f)+100,(int)(Game.ResolutionHeight*0.2f)+160);
+            
+            if (cancelHover)
+            {
+                g2D.setPaint(Color.white);
+                g2D.fill(cancelRect);
+            }
+            else if (enterHover)
+            {
+                g2D.setPaint(Color.white);
+                g2D.fill(enterRect);
+            }
+            
+            g2D.setPaint(Color.BLACK);
             for (int i = 0; i <= userName.length()+1;i++) {
             g2D.drawString("_", (int)(Game.ResolutionWidth*0.33f)+100-1+15*i,(int)(Game.ResolutionHeight*0.2f)+170);
             }
@@ -270,7 +288,10 @@ public class UserMenuGUI extends Scene
                 g2D.setFont(userMenuFont);
                 g2D.drawString("=====   DELETE USER   =====", (int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+25));
                for(int i = 0; i < GameData.getJumlahPlayer();i++) {
-                   g2D.drawImage(borderTexture,(int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+i*35)+60,this); 
+                   if (userHover[i])
+                        g2D.drawImage(borderhoverTexture,(int)(Game.ResolutionWidth*0.329f),(int)((Game.ResolutionHeight*0.2f)+i*35)+30,450,50,this);
+                    else
+                        g2D.drawImage(borderTexture,(int)(Game.ResolutionWidth*0.329f),(int)((Game.ResolutionHeight*0.2f)+i*35)+30,450,50,this);
                    g2D.drawString(GameData.dataPlayer.get(i).getNama(), (int)(Game.ResolutionWidth*0.33f),(int)((Game.ResolutionHeight*0.2f)+i*35)+60);
                }
             }
@@ -300,6 +321,12 @@ public class UserMenuGUI extends Scene
             {
                 userHover[i] = false;
             }
+        }
+        
+        if (status == 1)
+        {
+            cancelHover = (cancelRect.contains(event.getPoint()));
+            enterHover = (enterRect.contains(event.getPoint()));
         }
     }
     
