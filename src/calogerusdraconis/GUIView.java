@@ -558,8 +558,11 @@ public class GUIView extends javax.swing.JFrame implements View {
 		ProgBladder.setString(""+bladder+"/100");
 		
 		DragonName.setText(drg.getName());
-		DragonImg.setIcon(drg.getImage());
-		
+		try {
+			DragonImg.setIcon(drg.getImage());
+		} catch (Exception ex) {
+			
+		}
 		TextMoney.setText("Money: " + money);
 		DragonLevel.setText("Level: " + level);
 		
