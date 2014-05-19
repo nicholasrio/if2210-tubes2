@@ -355,20 +355,20 @@ public class UserDragon extends Dragon {
     private void modifyAttribute() {
         if (hunger > 75){ // lapar banget
             tambahHappiness(-5);
-            tambahHealth (-10 * level);
+            tambahHealth (-2.4f);
 			tambahHunger (2);
 			tambahThirst (2);
         } else if (hunger > 50){
             tambahHappiness(-3);
-            tambahHealth (-5 * level);
+            tambahHealth (-1.2f);
         }
 
         if (thirst > 75){ // haus banget
             tambahHappiness(-5);
-            tambahHealth(-10 * level);
+            tambahHealth(-2.4f);
         } else if (thirst > 50){
             tambahHappiness(-3);
-            tambahHealth (-5 * level);
+            tambahHealth (-1.2f);
         }
 
 		if (hunger < 20){ // kalau baru makan
@@ -393,20 +393,20 @@ public class UserDragon extends Dragon {
 		
         if (bladder > 75){ // kebelet banget
             tambahHappiness(-5);
-            tambahHealth(-10 * level);
+            tambahHealth(-2.4f);
         } else if (bladder > 50){
             tambahHappiness(-3);
-            tambahHealth (-5 * level);
+            tambahHealth (-1.2f);
         }
 
         if (happiness < 50){ // galau banget
-            tambahHealth(-10 * level);
+            tambahHealth(-2.4f);
         } else if (happiness < 25){
-            tambahHealth(-5 * level);
+            tambahHealth(-1.2f);
         }
 		
 		//tambah attribute
-        tambahHealth(util.randomInt(5,10) * level);
+        tambahHealth(util.randomInt(3,7));
         tambahStamina(util.randomInt(5,10)/10);
         tambahMoney(util.randomInt(1,5));
         tambahHappiness(-util.randomInt(5,10)/10);
