@@ -35,6 +35,8 @@ public class UserMenuGUI extends Scene
     private ArrayList<Rectangle> userRect;
     private Rectangle newRect;
     private Rectangle delRect;
+    private Rectangle enterRect;
+    private Rectangle cancelRect;
     
     private float transparentPercentage;
     private int menuHovered;
@@ -296,8 +298,10 @@ public class UserMenuGUI extends Scene
                     
                 }
                 else if(status == 2) {
-                GameData.deletePlayer(GameData.dataPlayer.get(menuPressed-1).getNama());
-                status = 0;
+                    if(GameData.dataPlayer.get(menuPressed-1) != GameData.lastLogin) {
+                        GameData.deletePlayer(GameData.dataPlayer.get(menuPressed-1).getNama());
+                    }
+                    status = 0;
                 }
             }
         }

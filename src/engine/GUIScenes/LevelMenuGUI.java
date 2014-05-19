@@ -124,7 +124,7 @@ public class LevelMenuGUI extends Scene
         unlocked=true;
         
         /*Background music*/
-        SoundManager.stopAllSound();
+        SoundManager.stopAllBGMSound();
         SoundManager.playSound("levelBm");
         
         /* Rectangle */
@@ -267,6 +267,7 @@ public class LevelMenuGUI extends Scene
         else if (backRect.contains(event.getPoint()))
         {
             menuPressed = 2;
+            SoundManager.playSound(arrowSound);
             System.out.println("Back Button");
         }
     }
