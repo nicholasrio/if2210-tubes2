@@ -15,7 +15,7 @@ import java.sql.Statement;
 import java.util.*;
 
 public class DaftarAdmin {
-    List <Admin> daftaradmin;
+    private List <Admin> daftaradmin;
     public DaftarAdmin()
     {
         daftaradmin = new ArrayList<>();
@@ -42,5 +42,27 @@ public class DaftarAdmin {
         catch (SQLException ex) {
             System.out.println("Error DaftarAdmin.java" + ex.getMessage());
         }
+    }
+    public void add(Admin admin){
+        saveToDatabase();
+        Admin adminTemp;
+        String stringTemp;
+        int i = 0;
+        boolean stop = false;
+        while (!stop && i < daftaradmin.size()){
+            adminTemp = daftaradmin.get(i);
+            stringTemp = adminTemp.getUsername();
+            if(stringTemp.equals(admin.getUsername()))
+                stop = true;
+            i++;
+        }
+        if (!stop)
+            daftaradmin.add(admin);
+        else 
+            System.out.println("Username sudah terdaftar pada sistem. Silakan coba lagi dengan username baru.");
+    }
+    public Admin get(int index){
+        saveToDatabase();
+        return daftaradmin.get(index);
     }
 }

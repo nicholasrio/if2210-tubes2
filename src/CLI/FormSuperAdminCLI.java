@@ -15,7 +15,7 @@ import main.DaftarAdmin;
  * @author user
  */
 public class FormSuperAdminCLI {
-    private final Scanner in;
+    private final Scanner in; // selalu dibutuhkan
     private DaftarAdmin daftarAdmin;
     public FormSuperAdminCLI(){
         in = new Scanner(System.in);
@@ -30,6 +30,7 @@ public class FormSuperAdminCLI {
         System.out.println("1. Menambahkan Admin");
         System.out.println("2. Menghapus Admin");
         System.out.println("Silakan pilih (1/2) > ");
+        addOrDelete();
     }
     public void addOrDelete(){
         int pil = in.nextInt();
@@ -45,7 +46,8 @@ public class FormSuperAdminCLI {
         String usernameAdmin = in.next();
         System.out.print("\nPassword > ");
         String passwordAdmin = in.next();
-        Admin admin = new Admin(usernameAdmin, passwordAdmin, true);
+        Admin admin = new Admin(usernameAdmin, passwordAdmin, false);
+        daftarAdmin.add(admin);
     }
     public void deleteAdmin(){
         System.out.println("Masukkan username yang akan dihapus :");
