@@ -58,22 +58,22 @@ public class MapController {
      * @since 1.0
      */
 	public Node nearestCanteen(Node node){
-		Canteen canteen;
-		int nearestRR = -1;
-		for(int i = 0; i < nodes.size(); i++){
-			if(nodes.get(i) instanceof Canteen){
-				canteen = (Canteen)nodes.get(i);
-				if(nearestRR == -1){
-					nearestRR = i;
-				}
-				else{
-					if(getDistance(node, nodes.get(i)) < getDistance(node, nodes.get(nearestRR))){
-						nearestRR = i;
-					}
-				}
-			}
-		}
-		return nodes.get(nearestRR);
+            Canteen canteen;
+            int nearestRR = -1;
+            for(int i = 0; i < nodes.size(); i++){
+                    if(nodes.get(i) instanceof Canteen){
+                            canteen = (Canteen)nodes.get(i);
+                            if(nearestRR == -1){
+                                    nearestRR = i;
+                            }
+                            else{
+                                    if(getDistance(node, nodes.get(i)) < getDistance(node, nodes.get(nearestRR))){
+                                            nearestRR = i;
+                                    }
+                            }
+                    }
+            }
+            return nodes.get(nearestRR);
     }
     
 	/**
