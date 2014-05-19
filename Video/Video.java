@@ -20,6 +20,9 @@ public class Video {
 	private int view;
 	SqlStatement s;
         
+        /**
+         * Default konstraktor
+         */
         public Video() {
             try {
                 s = new SqlStatement();
@@ -90,16 +93,32 @@ public class Video {
             return s.SearchVideo(no_tubes, groupname);
         }
 	
-	// getter dan setter
+	/**
+         * Getter title
+         * @return 
+         */
 	public String getTitle() {
 		return title;
 	}
+        /**
+         * Setter title
+         * @param title 
+         */
 	public void setTitle(String title) {
 		this.title = title;
 	}
+        /** 
+         * Getter no_tubes
+         * @return 
+         */
 	public int getNo_tubes() {
 		return no_tubes;
 	}
+        /** Setter no_tubes
+         * 
+         * @param no_tubes
+         * @throws AttributeException 
+         */
 	public void setNo_tubes(int no_tubes) throws AttributeException{
             if(no_tubes == 1 || no_tubes ==2 || no_tubes ==3) {
 		this.no_tubes = no_tubes;
@@ -108,27 +127,59 @@ public class Video {
                 throw new AttributeException("No Tubes salah! masukkan angka 1, 2 atau 3..");
             }
 	}
+        /** Getter group_name
+         * 
+         * @return 
+         */
 	public String getGroup_name() {
 		return group_name;
 	}
+        /** Setter group_name
+         * 
+         * @param group_name 
+         */
 	public void setGroup_name(String group_name) {
 		this.group_name = group_name;
 	}
+        /** Getter id
+         * 
+         * @return 
+         */
 	public int getId() {
 		return id;
 	}
+        /** Setter id
+         * 
+         * @param id 
+         */
 	public void setId(int id) {
 		this.id = id;
 	}
+        /**
+         * Getter link
+         * @return 
+         */
 	public String getLink() {
 		return link;
 	}
+        /** Setter link
+         * 
+         * @param link 
+         */
 	public void setLink(String link) {
 		this.link = link;
 	}
+        /**
+         * Getter view
+         * @return 
+         */
 	public int getView() {
 		return view;
 	}
+        /** Setter view
+         * 
+         * @param view 
+         */
 	public void setView(int view) {
 		this.view = view;
 	}

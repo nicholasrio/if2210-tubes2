@@ -8,10 +8,14 @@ package Video;
 
 
 /**
- *
+ * exception buat attribute
  * @author asus
  */
-public class AttributeException extends Exception{   
+public class AttributeException extends Exception{ 
+    /**
+     * Konstraktor berparameter
+     * @param message 
+     */
     public AttributeException(String message){  
         super(message);
         

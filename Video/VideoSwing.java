@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Kelas swing video
  * @author asus
  */
 public class VideoSwing extends javax.swing.JFrame {
@@ -27,7 +27,9 @@ public class VideoSwing extends javax.swing.JFrame {
     
     Video V;
     private List<String> L;
-    
+    /**
+     * Default konstraktor
+     */
     public VideoSwing() {
         initComponents();
         V = new Video();

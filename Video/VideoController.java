@@ -17,7 +17,9 @@ import java.util.List;
 public class VideoController {
     private Video vid;
     private VideoView view;
-    
+    /**
+     * Default konstraktor
+     */
     public VideoController() {
         vid = new Video();
         view = new VideoView();
