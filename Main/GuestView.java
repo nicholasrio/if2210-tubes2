@@ -17,14 +17,12 @@ import VideoPlayer.YoutubeMediaPlayer;
 import Xml.StaxWriter;
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import com.google.gdata.util.ServiceException;
-import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,7 +30,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Kelas untuk menampilkan YoutubeMediaPlayer
  * @author Rikysamuel
  */
 public class GuestView extends javax.swing.JFrame {
@@ -571,15 +569,9 @@ public class GuestView extends javax.swing.JFrame {
 
     private void bUbahVidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUbahVidActionPerformed
         try {
-//            if(cek() && g.cekDataGroup(Integer.parseInt(viddetails.get(videodata)[4]), viddetails.get(videodata)[5])){
                 VideoSwingEdit vse = new VideoSwingEdit(Integer.parseInt(viddetails.get(videodata)[0]));
-//                JOptionPane.showMessageDialog(null, "Data ditemukan...");
                 vse.setVisible(true);
                 this.setVisible(false);
-//            }
-//            else{
-//                JOptionPane.showMessageDialog(rootPane, "Data tidak ditemukan", "Error", JOptionPane.ERROR_MESSAGE);
-//            }
         } catch (Exception ex) {
             Logger.getLogger(GroupJFrameEdit.class.getName()).log(Level.SEVERE, null, ex);
         }

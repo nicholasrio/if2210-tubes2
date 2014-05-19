@@ -10,15 +10,13 @@ import javax.swing.JOptionPane;
 import Admin.AdministratorController;
 import java.awt.HeadlessException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
+ * menu login superadmin, pakai database admin untuk sementara
  * @author Rikysamuel
  */
 public class MenuSuperAdmin extends javax.swing.JFrame {
-    private AdministratorController AC;
+    private final AdministratorController AC;
     /**
      * Creates new form MenuSuperAdmin
      */
@@ -145,19 +143,14 @@ public class MenuSuperAdmin extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuSuperAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuSuperAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuSuperAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuSuperAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new MenuSuperAdmin().setVisible(true);
             }

@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 //import org.eclipse.persistence.internal.expressions.SQLStatement;
 
 /**
- *
+ * Kelas untuk mengutus urusan grup
  * @author Hendro Triokta Brianto - 13512081
  */
 public class Group {
@@ -21,7 +21,7 @@ public class Group {
     
     
     /**
-     * Constructor
+     * Default Constructor
      */
     public Group(){
         try {
@@ -32,7 +32,7 @@ public class Group {
     }
     
     /**
-     *
+     * getter untuk no tubes
      * @return no_tubes
      */
     public int getNo_tubes() {
@@ -40,7 +40,7 @@ public class Group {
     }
 
     /**
-     * 
+     * setter untuk no_tubes
      * @param no_tubes
      */
     public void setNo_tubes(int no_tubes) {
@@ -48,7 +48,7 @@ public class Group {
     }
 
     /**
-     * 
+     * getter untuk mendapatkan nama grup
      * @return group_name
      */
     public String getGroup_name() {
@@ -56,7 +56,7 @@ public class Group {
     }
 
     /**
-     * 
+     * setter untuk nama grup
      * @param group_name 
      */
     public void setGroup_name(String group_name) {
@@ -64,23 +64,23 @@ public class Group {
     }
 
     /**
-     * 
-     * @return member (yang berupa List<String>)
+     * getter untuk nama member
+     * @return member
      */
     public List<String> getMember() {
         return member;
     }
 
     /**
-     * 
-     * @param member (yang berupa List<String>)
+     * setter untuk member
+     * @param member
      */
     public void setMember(List<String> member) {
         this.member = member;
     }
     
     /**
-     * 
+     * method untuk tambah member
      * @param anggota 
      */
     public void addMember(String anggota){
@@ -121,10 +121,6 @@ public class Group {
         
     }
     
-    public void SelectAllData(){
-        
-    }
-    
     /**
      * 
      * mengambalikan data ke dalam List
@@ -159,7 +155,7 @@ public class Group {
     }
  
     /**
-     * 
+     * mendapatkan seluruh member dari suatu grup
      * @return 
      */
     public List<String> getHistory(){

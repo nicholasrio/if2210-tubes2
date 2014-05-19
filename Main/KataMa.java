@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
+ * Kelas menu Login/Guest
  * @author Rikysamuel
  */
 public class KataMa extends javax.swing.JFrame {

@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Tampilan untuk memilih menu superadmin
  * @author Rikysamuel
  */
 public class LoginMenuSuperAdmin extends javax.swing.JFrame {

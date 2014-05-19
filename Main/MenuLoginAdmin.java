@@ -6,7 +6,6 @@
 
 package Main;
 
-import Group.Group;
 import Group.GroupJFrame;
 import Video.VideoSwing;
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
@@ -20,7 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Kelas menampilkan menu login admin
  * @author Rikysamuel
  */
 public class MenuLoginAdmin extends javax.swing.JFrame {

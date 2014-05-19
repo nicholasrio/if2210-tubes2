@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Tampilan untuk melihat data admin
  * @author Rikysamuel
  */
 public class DaftarAdmin extends javax.swing.JFrame {

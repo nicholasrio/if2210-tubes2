@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Swing update data grup
  * @author Hendro Triokta Brianto - 13512081
  */
 public class GroupJFrameEdit extends javax.swing.JFrame {

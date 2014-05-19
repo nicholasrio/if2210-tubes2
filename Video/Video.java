@@ -45,7 +45,7 @@ public class Video {
 	}
 	/**
          * update database dengan nilai attribute berdasarkan id
-         * @param id
+     * @param _id
          * @throws SQLException
          * @throws NullException 
          */

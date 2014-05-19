@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- *
+ * MVC untuk Group
  * @author Hendro Triokta Brianto - 13512081
  */
 public class GroupController {
@@ -37,6 +37,13 @@ public class GroupController {
         team.update(no_tubes, group_name);
     }
 
+    /**
+     * Select berdasarkan no tubes dan nama kelompok
+     * @param no_tubes
+     * @param namakelompok
+     * @return
+     * @throws SQLException 
+     */
     public List<String[]> SelectSpecific(int no_tubes, String namakelompok) throws SQLException{
         team.setNo_tubes(no_tubes);
         team.setGroup_name(namakelompok);
@@ -53,7 +60,13 @@ public class GroupController {
     }
     
     
-    /* Lagi, tambahan method buat cmd */
+    /**
+     * Lagi, tambahan method buat cmd 
+     * @param no_tubes
+     * @param group_name
+     * @param Member
+     * @throws java.sql.SQLException
+     */
     public void RegisterGroup(int no_tubes, String group_name, List<String> Member) throws SQLException{
         if(!team.cekDataGroup(no_tubes, group_name)){
             team.setNo_tubes(no_tubes);
@@ -66,7 +79,16 @@ public class GroupController {
             System.out.println("The group is registered already");
         }
     }
-    
+
+    /**
+     * Method untuk edit grup
+     * @param no_tubes
+     * @param group_name
+     * @param Member
+     * @param former_no_tubes
+     * @param former_group_name
+     * @throws SQLException 
+     */
     public void EditGroup(int no_tubes, String group_name, List<String> Member, int former_no_tubes, String former_group_name) throws SQLException{
         if(team.cekDataGroup(former_no_tubes, former_group_name)){
             team.setNo_tubes(no_tubes);

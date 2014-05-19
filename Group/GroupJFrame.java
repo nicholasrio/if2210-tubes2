@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Swing Insert data untuk grup
  * @author Hendro Triokta Brianto - 13512081
  */
 public class GroupJFrame extends javax.swing.JFrame {
