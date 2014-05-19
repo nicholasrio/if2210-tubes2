@@ -39,6 +39,11 @@ public class StoreDisplay extends JPanel {
 	private ImageIcon[] image;
 	private ArrayList<Consumable> ac;
 	public static Integer pilihan = null;
+	
+	/**
+	 * Constructor StoreDisplay
+	 * @param st Store yang ingin di-display
+	 */
 	public StoreDisplay(Store st) {
 		ac = st.getFdInventory();
 		
@@ -51,6 +56,9 @@ public class StoreDisplay extends JPanel {
 	}
 	
 	@Override
+	/**
+	 *  Menampilkan gambar dan status dari seluruh consumable dalam store
+	 */
     protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if (image!=null) {

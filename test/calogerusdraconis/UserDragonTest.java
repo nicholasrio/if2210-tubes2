@@ -338,7 +338,6 @@ public class UserDragonTest {
 		assertEquals(expResult.getType(), result.getType());
 		assert(instance.getHappiness() <= 100);
 		assert(instance.getHappiness() > initHappiness);
-		// TODO review the generated test code and remove the default call to fail.
 	}
 
 	/**

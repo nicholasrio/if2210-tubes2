@@ -22,6 +22,9 @@ package calogerusdraconis;
  * @author WILLY
  */
 public class NotEnoughMoneyException extends Exception {
+	/**
+	 * Constructor NotEnoughMoneyException
+	 */
 	public NotEnoughMoneyException() {
 		super("Uang tidak cukup");
 	}

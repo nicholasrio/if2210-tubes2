@@ -87,15 +87,15 @@
     <userDragon>
       <name>saya</name>
       <password>kamu</password>
-      <money>3118.8687</money>
+      <money>3454.8687</money>
       <happiness>0.0</happiness>
-      <health>35.0</health>
+      <health>4.0</health>
       <maxHealth>100.0</maxHealth>
-      <stamina>64.0</stamina>
+      <stamina>82.0</stamina>
       <maxStamina>100.0</maxStamina>
       <thirst>100.0</thirst>
-      <bladder>14.0</bladder>
-      <hunger>38.0</hunger>
+      <bladder>100.0</bladder>
+      <hunger>100.0</hunger>
       <level>1</level>
       <experience>680</experience>
       <inventory>

@@ -37,6 +37,11 @@ public class InventoryDisplay extends JPanel {
 	private ImageIcon[] image;
 	public static Integer pilihan = null;
 	public static UserDragon drgon = null;
+	
+	/**
+	 * Constructor InventoryDisplay
+	 * @param drg dragon yang ingin ditampilkan isi inventory nya.
+	 */
 	public InventoryDisplay(UserDragon drg) {
 		if (drg == null) {
 			setPreferredSize(new Dimension(100,1000));
@@ -53,6 +58,11 @@ public class InventoryDisplay extends JPanel {
 		}
 	}
 	
+	/**
+	 * Mengubah tampilan inventory jika terjadi perubahan terhadap inventory 
+	 * @param ud dragon yang inventory-nya ditampilkan
+	 * @param id display inventory sebelumnya
+	 */
 	public static void change (UserDragon ud, InventoryDisplay id) {
 		drgon = ud;
 		if (drgon == null) return;
@@ -68,6 +78,9 @@ public class InventoryDisplay extends JPanel {
 	}
 	
 	@Override
+	/**
+	 * Menampilkan gambar dan status dari seluruh consumable dalam inventory dragon
+	 */
     protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if (image!=null) {
