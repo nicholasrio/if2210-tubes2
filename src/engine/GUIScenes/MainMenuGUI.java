@@ -246,31 +246,42 @@ public class MainMenuGUI extends Scene
         if (newgameRect.contains(event.getPoint()))
         {
             if(menuHovered != 1)
+            {
                 SoundManager.playSound("button");
-            menuHovered = 1;
+                menuHovered = 1;
+            }
         }
         else if (achievementRect.contains(event.getPoint()))
         {
             if(menuHovered != 2)
+            {
                 SoundManager.playSound("button");
-            menuHovered = 2;
+                menuHovered = 2;
+            }
         }
         else if(optionsRect.contains(event.getPoint()))
         {
             if(menuHovered != 3)
+            {
                 SoundManager.playSound("button");
-            menuHovered = 3;
+                menuHovered = 3;
+            }
         }
         else if (aboutRect.contains(event.getPoint()))
         {
             if(menuHovered != 4)
+            {
                 SoundManager.playSound("button");
-            menuHovered = 4;
+                menuHovered = 4;
+            }
         }
         else if (exitRect.contains(event.getPoint()))
         {
             if(menuHovered != 5)
-            menuHovered = 5;
+            {
+                SoundManager.playSound("button");
+                menuHovered = 5;
+            }
         }
         else
         {
