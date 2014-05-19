@@ -106,6 +106,7 @@ public class DaftarPilihan {
         UniqueDaftarPartai.addAll(DaftarPartai);
         DaftarPartai.clear();
         DaftarPartai.addAll(UniqueDaftarPartai);
+        assert (DaftarPartai.size() <= 10):("Jumlah partai melebihi kapasitas");
         return DaftarPartai;
     }
     
@@ -120,6 +121,7 @@ public class DaftarPilihan {
                 DaftarCaleg.add(DaftarCalegDPR.get(i));
             }
         }
+        assert (DaftarCaleg.size() <= 8):("Jumlah caleg melebihi kapasitas");
         return DaftarCaleg;
     }
     
@@ -134,6 +136,7 @@ public class DaftarPilihan {
                 DaftarCaleg.add(DaftarCalegDPD.get(i));
             }
         }
+        assert (DaftarCaleg.size() <= 8):("Jumlah caleg melebihi kapasitas");
         return DaftarCaleg;
     }
     
@@ -148,6 +151,7 @@ public class DaftarPilihan {
                 DaftarCaleg.add(DaftarCalegDPRDProvinsi.get(i));
             }
         }
+        assert (DaftarCaleg.size() <= 8):("Jumlah caleg melebihi kapasitas");
         return DaftarCaleg;
     }
     
@@ -162,6 +166,7 @@ public class DaftarPilihan {
                 DaftarCaleg.add(DaftarCalegDPRDKabupaten.get(i));
             }
         }
+        assert (DaftarCaleg.size() <= 8):("Jumlah caleg melebihi kapasitas");
         return DaftarCaleg;
     }
     
