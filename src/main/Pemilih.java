@@ -91,11 +91,17 @@ public class Pemilih {
         else
             return valid;
     }
-    
+    /**
+     * 
+     * @return Nomor Dapil  
+     */
     public int GetDapil(){
         return NoDapil;
     }
-    
+     /**
+     * 
+     * @return NIK 
+     */
     public String GetNIK(){
         return NIK;
     }
@@ -150,7 +156,9 @@ public class Pemilih {
             Logger.getLogger(Pemilih.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /**
+     * Menampilkan daftar nomor dapil
+     */
     private void getNoDapilFromDatabase()
     {
         try {
