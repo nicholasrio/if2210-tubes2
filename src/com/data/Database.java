@@ -31,18 +31,18 @@ public class Database {
 
 	public Database() {
 		try {
-                        File file = new File("config.xml");
-                        DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();  
-                        Document doc = builder.parse(file);
-                        Element Host = (Element) doc.getElementsByTagName("host").item(0);
-                        Element User = (Element) doc.getElementsByTagName("user").item(0);
-                        Element Pass = (Element) doc.getElementsByTagName("pass").item(0);
-                        Element DbName = (Element) doc.getElementsByTagName("dbname").item(0);
-                        host = Host.getTextContent();
-                        user = User.getTextContent();
-                        pass = Pass.getTextContent();
-                        db_name = DbName.getTextContent();
-                        String connectionURL = "jdbc:mysql://" + host + "/" + db_name;
+			File file = new File("config.xml");
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document doc = builder.parse(file);
+			Element Host = (Element) doc.getElementsByTagName("host").item(0);
+			Element User = (Element) doc.getElementsByTagName("user").item(0);
+			Element Pass = (Element) doc.getElementsByTagName("pass").item(0);
+			Element DbName = (Element) doc.getElementsByTagName("dbname").item(0);
+			host = Host.getTextContent();
+			user = User.getTextContent();
+			pass = Pass.getTextContent();
+			db_name = DbName.getTextContent();
+			String connectionURL = "jdbc:mysql://" + host + "/" + db_name;
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			connection = (Connection) DriverManager.getConnection(connectionURL, user, pass);
 			statement = connection.createStatement();
@@ -137,8 +137,8 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
-        public static void main(String[] args)
-        {
-            Database data = new Database();
-        }
+
+	public static void main(String[] args) {
+		Database data = new Database();
+	}
 }

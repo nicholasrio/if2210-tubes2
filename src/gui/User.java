@@ -24,11 +24,12 @@ public class User extends javax.swing.JFrame {
 		com.data.User userData = Main.client.getUserData();
 		labelNama.setText(userData.getUsername() + " " + userData.getNama());
 		labelKuota.setText(String.valueOf(userData.getSaldo()));
-		if(userData.getStatus() == 1)
+		if (userData.getStatus() == 1) {
 			labelStatus.setText("Mahasiswa TA");
-		else if(userData.getStatus() == 0)
+		} else if (userData.getStatus() == 0) {
 			labelStatus.setText("Mahasiswa non-TA");
-			
+		}
+
 	}
 
 	/**
@@ -361,7 +362,7 @@ public class User extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void buttonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogoutActionPerformed
-        Main.client.logout();
+		Main.client.logout();
     }//GEN-LAST:event_buttonLogoutActionPerformed
 
 	/**

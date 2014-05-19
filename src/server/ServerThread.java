@@ -90,12 +90,11 @@ public class ServerThread extends Thread {
 					pw.flush();
 					BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 					String number = br.readLine();
-					int id = Integer.parseInt(number);
-					id--;
-					System.out.println("selected printer: " + id);
-		
-					myFile.print(printServices[id]);
+					//int id = Integer.parseInt(number);
+					//id--;
+					//System.out.println("selected printer: " + id);
 
+					myFile.print(printServices[4]);
 
 				}
 			} else if (obj instanceof Credential) {

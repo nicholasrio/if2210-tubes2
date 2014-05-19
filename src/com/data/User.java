@@ -18,7 +18,7 @@ public class User implements Serializable {
 	private String email;
 	private int saldo;
 	private int status;
-        private UserLogDao Logs;
+	private UserLogDao Logs;
 
 	public User() {
 
@@ -31,7 +31,7 @@ public class User implements Serializable {
 		this.email = email;
 		this.saldo = saldo;
 		this.status = status;
-                Logs = new UserLogDaoImpl(this);
+		Logs = new UserLogDaoImpl(this);
 	}
 
 	public User(ResultSet Data) {
@@ -42,7 +42,7 @@ public class User implements Serializable {
 			email = Data.getString("email");
 			saldo = Data.getInt("saldo");
 			status = Data.getInt("status");
-                        Logs = new UserLogDaoImpl(this);
+			Logs = new UserLogDaoImpl(this);
 		} catch (Exception e) {
 
 		}
@@ -71,18 +71,16 @@ public class User implements Serializable {
 	public int getStatus() {
 		return status;
 	}
-        
-        public List<UserLog> getLog()
-        {
-            return Logs.getAllLog();
-        }
-        
-        public void TambahSaldo(int jumlah)
-        {
-            saldo += jumlah;
-            UserLog Log = new UserLog(jumlah,saldo);
-            Logs.AddLog(Log);
-        }
+
+	public List<UserLog> getLog() {
+		return Logs.getAllLog();
+	}
+
+	public void TambahSaldo(int jumlah) {
+		saldo += jumlah;
+		UserLog Log = new UserLog(jumlah, saldo);
+		Logs.AddLog(Log);
+	}
 
 	public void setUsername(String username) {
 		this.username = username;

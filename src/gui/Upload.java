@@ -404,7 +404,7 @@ public class Upload extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPrintActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Main.client.logout();
+		Main.client.logout();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 	/**

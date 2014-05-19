@@ -14,20 +14,20 @@ import java.io.InputStreamReader;
  * @author Gilang
  */
 public class ConsoleClient extends Client {
-
+	
 	public ConsoleClient(String host, int port) {
 		super(host, port);
 	}
-
+	
 	public static void main(String[] args) {
 		ConsoleClient client = new ConsoleClient("localhost", 5432);
 		client.run();
 	}
-
+	
 	private void run() {
 		try {
 			do {
-
+				
 				reader = new BufferedReader(new InputStreamReader(System.in));
 				if (!LoggedIn) {
 					System.out.println("1. login");
@@ -52,7 +52,7 @@ public class ConsoleClient extends Client {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private void login() {
 		try {
 			System.out.println("Enter NIM: ");
@@ -68,7 +68,7 @@ public class ConsoleClient extends Client {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private void printRequest() {
 		System.out.println("Input filename: ");
 		try {
@@ -77,7 +77,7 @@ public class ConsoleClient extends Client {
 			e.printStackTrace();
 		}
 	}
-
+	
 	private void sendFile() {
 		System.out.println("Masukkan path file yang akan diupload: ");
 		try {
@@ -88,11 +88,11 @@ public class ConsoleClient extends Client {
 		}
 	}
 	
-	private void sendResponse(){
-		try{
+	private void sendResponse() {
+		try {
 			String response = reader.readLine();
 			super.sendResponse(response);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

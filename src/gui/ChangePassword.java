@@ -324,7 +324,7 @@ public class ChangePassword extends javax.swing.JFrame {
     }//GEN-LAST:event_formOldPassActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Main.client.logout();
+		Main.client.logout();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

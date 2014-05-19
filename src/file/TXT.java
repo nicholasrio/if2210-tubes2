@@ -119,17 +119,7 @@ public class TXT extends MyFile {
 
 	public void print(javax.print.PrintService service) throws IOException, PrinterException {
 		toPDF();
-		Scanner in = new Scanner(System.in);
-		PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
-		System.out.println("Number of print services: " + printServices.length);
-		int i = 0;
-		PrinterJob printJob = PrinterJob.getPrinterJob();
-		for (PrintService printer : printServices) {
-			System.out.println(i + ". Printer: " + printer.getName());
-			i++;
-		}
-		System.out.print("Choose printer : ");
-		int id = in.nextInt();
-		printPDF("serverFolder/" + uploader + "/" + path + ".pdf", printServices[id]);
+
+		printPDF("serverFolder/" + uploader + "/" + path + ".pdf", service);
 	}
 }

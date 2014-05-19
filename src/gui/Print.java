@@ -288,7 +288,7 @@ public class Print extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Main.client.logout();
+		Main.client.logout();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 	/**
