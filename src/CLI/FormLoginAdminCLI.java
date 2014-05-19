@@ -6,7 +6,10 @@
 
 package CLI;
 
+import Tools.PasswordErrorException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Admin;
 
 /**
@@ -35,14 +38,18 @@ public class FormLoginAdminCLI {
         Scanner input = new Scanner(System.in);
         int pilihan = input.nextInt();
         if (pilihan == 1){
-            if (isAdmin())
+            if (isAdmin()){
                 System.out.println("Anda berhasil login!");
+                formAdminCLI.start();
+            }
             else
                 System.out.println("Ulangi lagi!");
         }
         else if (pilihan == 2){
-            if (isSuperAdmin())
+            if (isSuperAdmin()){
                 System.out.println("Anda berhasil login!");
+                formSuperAdminCLI.start();
+            }
             else
                 System.out.println("Ulangi lagi!");
         }
@@ -59,15 +66,27 @@ public class FormLoginAdminCLI {
         String password = new String();
         login(username, password);
         boolean benar = false;
+        boolean valid = false;
         Admin admin = new Admin(username, password, benar);
-        return admin.ValidateInput();
+        try {
+            valid = admin.ValidateInput();
+        } catch (PasswordErrorException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return valid;
     }
     public boolean isSuperAdmin(){
         String username = new String();
         String password = new String();
         login(username, password);
         boolean benar = true;
+        boolean valid = false;
         Admin admin = new Admin(username, password, benar);
-        return admin.ValidateInput();
+        try {
+            valid = admin.ValidateInput();
+        } catch (PasswordErrorException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return valid;
     }
 }

@@ -6,7 +6,10 @@
 
 package CLI;
 
+import Tools.PasswordErrorException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import main.Pemilih;
 
 /**
@@ -26,24 +29,31 @@ public class FormLoginPemilihCLI {
         System.out.println("=============================================");
         System.out.println("=============================================");
         System.out.println("\n");
-        System.out.println("Selamat datang di Software Pemilu "+t+"\n");
-        System.out.println("Silakan login terlebih dahulu\n");
-        System.out.println("NIK > ");
+        System.out.println("Selamat datang di Software Pemilu "+t);
+        System.out.println("Silakan login terlebih dahulu");
+        System.out.print("NIK > ");
         Scanner input = new Scanner(System.in);
-        String NIK = new String();
+        String NIK;
         NIK = input.next();
-        System.out.println("\nPassword > ");
-        String password = new String();
+        System.out.print("\nPassword > ");
+        String password;
         password = input.next();
-        if(isTerdaftar(NIK,password))
+        if(isTerdaftar(NIK,password)){
             System.out.println("Anda berhasil login!");
-        else{
-            System.out.println("NIK ataupun password salah. Ulangi lagi!");
+            formPemilihCLI.start();
         }
+        else 
+            System.out.println("NIK ataupun password salah. Ulangi lagi!");
+        
     }
     public boolean isTerdaftar(String NIK, String password){
         boolean valid = false;
         Pemilih pemilih = new Pemilih(NIK,password);
-        return pemilih.ValidateInput();
+        try {
+            valid = pemilih.ValidateInput();
+        } catch (PasswordErrorException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return valid;
     }
 }
