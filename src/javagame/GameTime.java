@@ -15,6 +15,11 @@ import javax.swing.Timer;
  */
 public class GameTime extends Timer {
     private long initialTime;
+    /**
+     * constructor
+     * @param i
+     * @param al 
+     */
     public GameTime(int i, ActionListener al) {
         super(i, al);
         initialTime = 0;

@@ -28,26 +28,41 @@ public class ViewerGUITest {
     Map M;
     MapAdapter MA;
     
+    /**
+     * method set up class
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     * method tear down class
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     * method set up
+     */
     @Before
     public void setUp() {
         M =new Map();
         M.createDungeon(20, 20, 20);
         MA = new MapAdapter(M);
-        MA.addChar(new character.Character(), 3, 3);
+        MA.addChar(new character.Hero(), 3, 3);
     }
     
+    /**
+     * method tear down
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     * method test view
+     */
     @Test
     public void testView() {
         SwingUtilities.invokeLater(new Runnable() {
@@ -76,6 +91,9 @@ public class ViewerGUITest {
         }
     }
     
+    /**
+     * method test view area
+     */
     @Test
     public void testViewArea() {
         SwingUtilities.invokeLater(new Runnable() {
@@ -104,6 +122,9 @@ public class ViewerGUITest {
         }
     }
     
+    /**
+     * method test view without visibility
+     */
     @Test
     public void testViewWithoutVisiblity() {
         SwingUtilities.invokeLater(new Runnable() {

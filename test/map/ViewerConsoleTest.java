@@ -20,25 +20,42 @@ import static org.junit.Assert.*;
  */
 public class ViewerConsoleTest {
     
+    /**
+     * constructor
+     */
     public ViewerConsoleTest() {
     }
     
+    /**
+     * method set up class
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     * method tear down class
+     */
     @AfterClass
     public static void tearDownClass() {
     }
-    
+    /**
+     * method set up
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     * method tear down
+     */
     @After
     public void tearDown() {
     }
 
+    /**
+     * method test view withou visiblity
+     */
     @Test
     public void testViewWithoutVisiblity() {
         System.out.println("viewWithoutVisiblity");
@@ -58,6 +75,9 @@ public class ViewerConsoleTest {
         ViewerConsole.view(System.out, M);
     }
     
+    /**
+     * method test view area
+     */
     @Test
     public void testViewArea() {
         System.out.println("viewArea");

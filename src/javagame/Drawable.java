@@ -13,5 +13,10 @@ import java.awt.Graphics;
  * @author Luqman
  */
 public interface Drawable {
+    /**
+     * method draw
+     * @param gameTime
+     * @param g 
+     */
     public void draw(GameTime gameTime, Graphics g);
 }

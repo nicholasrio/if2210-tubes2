@@ -10,11 +10,17 @@ import javagame.Drawable;
 import javagame.Updateable;
 
 /**
- *
+ * the
  * @author Luqman
  */
 public abstract class GameState implements Drawable, Updateable {
+    /**
+     * the name of game state
+     */
     protected String name;
+    /**
+     * the game state manager.
+     */
     protected GameStateManager gsm;
     
     /**

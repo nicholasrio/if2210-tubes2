@@ -1,5 +1,9 @@
 package character;
 
+/**
+ * interface useitem
+ * @author yafithekid
+ */
 public interface Useitem{
     /**
      * add the item to character
@@ -32,7 +36,6 @@ public interface Useitem{
     /**
      * apply the item effect to the character. Will not remove the item from character.
      * @param item the used item.
-     * @return boolean if successfully use item
      */
     public void applyEffect(Item item);
     /**

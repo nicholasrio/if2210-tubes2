@@ -6,17 +6,18 @@
 
 package MapAndCharacter;
 
+import character.Character;
+import character.Hero;
 import java.io.PrintStream;
+import java.util.LinkedList;
 import java.util.List;
 import map.Map;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import character.Character;
-import java.util.LinkedList;
 /**
  *
  * @author Calvin
@@ -25,25 +26,40 @@ public class ViewerConsoleTest {
     Map M;
     MapAdapter MA;
     
+    /**
+     * constructor
+     */
     public ViewerConsoleTest() {
     }
     
+    /**
+     * method set up class
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     * method tear down class
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     * method set up
+     */
     @Before
     public void setUp() {
         M =new Map();
         M.createDungeon(80, 25, 40);
         MA = new MapAdapter(M);
-        MA.addChar(new Character(), 3, 3);
+        MA.addChar(new Hero(), 3, 3);
     }
     
+    /**
+     * method tear down
+     */
     @After
     public void tearDown() {
     }

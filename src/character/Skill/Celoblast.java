@@ -22,6 +22,9 @@ public class Celoblast extends Skill{
     
     private AffineTransform transformer = new AffineTransform();
     
+    /**
+     * method celoblast
+     */
     public Celoblast(){
         BufferedImage image=null;
         totalFrame = 29 ;
@@ -38,6 +41,12 @@ public class Celoblast extends Skill{
         //set transformer base on direction
     }
     
+    /**
+     * method start
+     * @param _x
+     * @param _y
+     * @param direction 
+     */
     public void start(int _x,int _y,int direction){
         this.direction = direction;
         mana = 40;
@@ -49,6 +58,9 @@ public class Celoblast extends Skill{
         calculatePosition(_x,_y,direction);
     }
 
+    /**
+     * method update
+     */
     public void update(){
         animation.update();
         if ((System.nanoTime()-startTime)/1000000 > activeTime){
@@ -56,7 +68,12 @@ public class Celoblast extends Skill{
         }
     }
     
-    
+    /**
+     * method draw
+     * @param g
+     * @param offsetX
+     * @param offsetY 
+     */
     public void draw(Graphics2D g,int offsetX,int offsetY){
         System.out.println(direction);
         int xtmp = (int)xImage - 20 + 16;
@@ -66,6 +83,11 @@ public class Celoblast extends Skill{
         g.rotate(Math.toRadians(-direction*90),(int)xImage-offsetX+(16),(int)yImage-offsetY+(16));
     }
     
+    /**
+     * method check hitting
+     * @param enemy
+     * @return 
+     */
     public boolean checkHitting(character.Character enemy){
         return isObjectCollision(enemy);
     }

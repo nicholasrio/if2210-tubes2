@@ -37,6 +37,9 @@ public class CharacterCache {
      */
     public static HashMap<String,BufferedImage> image = new HashMap<>();
     
+    /**
+     * attack cache for character cache
+     */
     public static HashMap<String,BufferedImage> attackCache = new HashMap<>();
     
     private CharacterCache() { }
@@ -133,6 +136,11 @@ public class CharacterCache {
         }
     }
     
+    /**
+     * method for get image
+     * @param characterName
+     * @return 
+     */
     public static BufferedImage getImage(String characterName){
         if (imageCache.containsKey(characterName)){
             return imageCache.get(characterName);
@@ -140,7 +148,11 @@ public class CharacterCache {
             return null;
         }
     }
-    
+    /**
+     * method for get attack
+     * @param characterName
+     * @return 
+     */
     public static BufferedImage getAttack(String characterName){
         if (attackCache.containsKey(characterName)){
             return attackCache.get(characterName);

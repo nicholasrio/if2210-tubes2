@@ -23,6 +23,10 @@ public class PlayGameState extends GameState{
     private ArrayList<Monster> monsters;
     private Hero hero;
     
+    /**
+     * Method for playing game state
+     * @param gsm is GameStateManager
+     */
     public PlayGameState(GameStateManager gsm){
         super(gsm);
         this.name="PlayGameState";
@@ -40,16 +44,28 @@ public class PlayGameState extends GameState{
         
     }
     
+    /**
+     * method for switching the level
+     * @param n is integer for level
+     */
     public void switchLevel(int n){
         currentLevel = new BossLevel(2,hero);
         currentLevel.init();
         currentLevel.setPlayGameState(this);
     }
     
+    /**
+     * method for initilize the game
+     */
     public void initialize(){
         
     }
     
+    /**
+     * method for drawing the game
+     * @param gameTime is GameTime
+     * @param g is Graphics
+     */
     public void draw(GameTime gameTime,Graphics g){
         currentLevel.draw(g);
     }

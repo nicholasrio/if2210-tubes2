@@ -1,5 +1,9 @@
 package character;
 
+/**
+ * method upgradeable
+ * @author yafithekid
+ */
 public interface Upgradeable{
     /**
      * add the character strength. have no limit.

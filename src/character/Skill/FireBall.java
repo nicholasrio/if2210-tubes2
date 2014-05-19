@@ -21,6 +21,9 @@ public class FireBall extends Skill {
 
     private AffineTransform transformer = new AffineTransform();
     
+    /**
+     * constructor
+     */
     public FireBall(){
         BufferedImage image=null;
         try{
@@ -37,6 +40,12 @@ public class FireBall extends Skill {
         //set transformer base on direction
     }
     
+    /**
+     * method for start
+     * @param x
+     * @param y
+     * @param direction 
+     */
     public void start(int x,int y,int direction){
         mana = 5;
         active = true;
@@ -48,6 +57,9 @@ public class FireBall extends Skill {
         calculatePosition(x,y,direction);
     }
 
+    /**
+     * method update
+     */
     public void update(){
         animation.update();
         if (direction == 1){
@@ -71,6 +83,12 @@ public class FireBall extends Skill {
         }
     }
     
+    /**
+     * method draw
+     * @param g
+     * @param offsetX
+     * @param offsetY 
+     */
     public void draw(Graphics2D g,int offsetX,int offsetY){
         int xtmp = (int)xImage - + 16;
         int ytmp = (int)yImage - heightImage/2 + 16;
@@ -79,6 +97,11 @@ public class FireBall extends Skill {
         g.rotate(Math.toRadians(-direction*90),(int)xImage-offsetX+(16),(int)yImage-offsetY+(16));
     }
     
+    /**
+     * method check hitting
+     * @param enemy
+     * @return 
+     */
     public boolean checkHitting(Character enemy){
         return isObjectCollision(enemy);
     }

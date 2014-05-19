@@ -47,8 +47,15 @@ public interface Fightable {
      */
     public void doAttack(Fightable fight);
     
+    /**
+     * method for damage taken
+     * @param damage 
+     */
     public void hitted(int damage);
     
+    /**
+     * method for flinching if got attacked
+     */
     public void pushedBackandFlinching();
     
 }

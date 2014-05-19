@@ -21,8 +21,17 @@ import java.awt.RenderingHints;
  */
 public class GamePanel extends JPanel implements Drawable,Updateable{
     
+    /**
+     * game time
+     */
     protected GameTime gameTime;
+    /**
+     * scene manager
+     */
     protected GameStateManager sceneManager;
+    /**
+     * integer max fps
+     */
     protected int maxFPS;
     private Thread thread;
     
@@ -53,11 +62,18 @@ public class GamePanel extends JPanel implements Drawable,Updateable{
         
     }
     
+    /**
+     * constructor
+     */
+    
     public GamePanel()
     {
         this.initialize();
     }
     
+    /**
+     * method for initialize
+     */
     public void initialize()
     {
         setDoubleBuffered(true);
@@ -75,12 +91,21 @@ public class GamePanel extends JPanel implements Drawable,Updateable{
 	gameTime.start();
     }
     
+    /**
+     * method update
+     * @param gameTime 
+     */
     @Override
     public void update(GameTime gameTime)
     {
         sceneManager.update(this.gameTime);
     }
 
+    /**
+     * method for draw
+     * @param gameTime
+     * @param g 
+     */
     @Override
     public void draw(GameTime gameTime, Graphics g)
     {

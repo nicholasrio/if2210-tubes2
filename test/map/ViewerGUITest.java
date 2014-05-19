@@ -25,27 +25,42 @@ import static org.junit.Assert.*;
  */
 public class ViewerGUITest {
     
+    /**
+     * constructor
+     */
     public ViewerGUITest() {
     }
     
+    /**
+     * method set up class
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     * method tear down class
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     * method set up
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     * method tear down
+     */
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of view method, of class ViewerGUI.
+     * method test view
      */
     @Test
     public void testView() {
@@ -75,7 +90,10 @@ public class ViewerGUITest {
             Logger.getLogger(ViewerGUITest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    /**
+     * method test view area
+     */
     @Test
     public void testViewArea() {
         SwingUtilities.invokeLater(new Runnable() {
@@ -105,6 +123,9 @@ public class ViewerGUITest {
         }
     }
     
+    /**
+     * method test view without visiblity
+     */
     @Test
     public void testViewWithoutVisiblity() {
         SwingUtilities.invokeLater(new Runnable() {

@@ -23,12 +23,30 @@ public class StatusBar {
     private int HP;
     private int Mana;
     
+    /**
+     * method for get hp
+     * @return 
+     */
     public int getHP() { return HP; }
+    /**
+     * method for get mana
+     * @return 
+     */
     public int getMana() { return Mana; }
-    
+    /**
+     * method for set HP
+     * @param _hp 
+     */
     public void setHP(int _hp) { this.HP = _hp; }
+    /**
+     * method for set mana
+     * @param _Mana 
+     */
     public void setMana(int _Mana) { this.Mana = _Mana; }
     
+    /**
+     * method for initialize the game
+     */
     public void init() {
         try {
             statusBarImage = ImageIO.read(getClass().getResourceAsStream("/Resource/StatusBar/StatusBar.png"));
@@ -38,6 +56,10 @@ public class StatusBar {
         }
     }
     
+    /**
+     * method for draw
+     * @param g is Graphics2D
+     */
     public void draw (Graphics2D g){
         g.drawImage(statusBarImage,10,10,null); 
         g.setFont(new Font("ComicSanMS", Font.BOLD, 12)); 
@@ -45,6 +67,11 @@ public class StatusBar {
         g.drawString(Integer.toString(Mana), 60, 43);
     }
     
+    /**
+     * method for update the game
+     * @param _HP is int hit point
+     * @param _Mana is int mana point 
+     */
     public void update(int _HP,int _Mana){
         HP = _HP;
         Mana = _Mana;
