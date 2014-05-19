@@ -345,9 +345,8 @@ public class UserDragon extends Dragon {
 				emotion = "bladder-";
 			} // else neutral
 		}
-		String imge = "/calogerusdraconis/res/" + "health-" + " r.png";
-		//return new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/neutral r.png"));
-		return new javax.swing.ImageIcon(getClass().getResource(imge));
+
+		return new javax.swing.ImageIcon(getClass().getResource("/calogerusdraconis/res/" + emotion + " r.png"));
 	}
     
 	/**
