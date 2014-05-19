@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package com.data;
 
@@ -10,7 +5,7 @@ import java.util.List;
 
 /**
  *
- * @author upix
+ * @author Luthfi Hamid Masykuri / 13512100
  */
 public interface UserLogDao {
     

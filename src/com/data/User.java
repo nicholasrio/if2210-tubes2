@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.data;
 
 import java.io.Serializable;
@@ -13,7 +8,7 @@ import onlineprinter.Encrypt;
 
 /**
  *
- * @author Luthfi Hamid M / 135120100
+ * @author Luthfi Hamid Masykuri / 135120100
  */
 public class User implements Serializable {
 
