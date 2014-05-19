@@ -15,12 +15,24 @@ import org.jdom2.input.SAXBuilder;
  */
 public class UserDragon extends Dragon {
 
+	/**
+	 * Password Dragon
+	 */
     private String password;
 
+	/**
+	 * Money Dragon
+	 */
     private float money;
 
+	/**
+	 * Happiness Dragon
+	 */
     private float happiness;
 	
+	/**
+	 * FoodInventory Dragon
+	 */
     private ArrayList<Consumable> fdInventory;
 	
     protected float maxHealth;

@@ -272,7 +272,6 @@ public class Main {
 	 * @throws java.lang.Exception 
 	 */
 	public static UserDragon loadGame(String name, String password) throws Exception {
-		XmlController instance = new XmlController();
 		UserDragon ud = XmlController.LoadDragon(name, password);
 		return ud;
 	}

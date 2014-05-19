@@ -38,9 +38,8 @@ public class XmlControllerTest {
 	@Test
 	public void testLoadDragon() {
 		System.out.println("LoadDragon");
-		XmlController instance = new XmlController();
 		try {
-			UserDragon ud = instance.LoadDragon("Xanareth","anotherPass");
+			UserDragon ud = XmlController.LoadDragon("Xanareth","anotherPass");
 			assertEquals("Xanareth",ud.getName());
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
@@ -58,9 +57,8 @@ public class XmlControllerTest {
 		arr.add(new Consumable("first-aid","res/first-aid.png",200,0,0,300,0,0,0,0));
 		arr.add(new Consumable("potion","res/potion.png",250,0,0,400,0,0,0,0));
 		dragon.setFdInventory(arr);
-		XmlController instance = new XmlController();
 		try {
-			instance.SaveDragon(dragon);
+			XmlController.SaveDragon(dragon);
 		} catch(Exception ex) {
 			System.err.println(ex.getMessage());
 		}

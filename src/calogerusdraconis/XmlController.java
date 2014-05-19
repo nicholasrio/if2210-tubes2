@@ -33,6 +33,12 @@ import org.jdom2.output.XMLOutputter;
  * @author Dariel Valdano, Cilvia
  */
 public class XmlController {
+	/**
+	 * Constructor XmlController
+	 */
+	private XmlController() {
+		
+	}
 	
 	/**
 	 * Mengembalikan Consumable yang sesuai berdasarkan input nama
@@ -50,7 +56,7 @@ public class XmlController {
 		return null;
 	}
 	
-	/* 
+	/**
 	 * Load Dragon from XML
 	 */
 	public static UserDragon LoadDragon(String name, String password) throws Exception {
@@ -118,7 +124,7 @@ public class XmlController {
 		}
 	}
 
-	/* 
+	/**
 	 * Save Dragon to XML
 	 */
 	public static void SaveDragon(UserDragon dragon) {
