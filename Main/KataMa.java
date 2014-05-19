@@ -65,21 +65,21 @@ public class KataMa extends javax.swing.JFrame {
 
         jLabel2.setText("Password :");
 
-        jButton1.setText("Login Admin");
+        jButton1.setText("Masuk Admin");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Guest");
+        jButton2.setText("Tamu");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Exit");
+        jButton3.setText("Keluar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

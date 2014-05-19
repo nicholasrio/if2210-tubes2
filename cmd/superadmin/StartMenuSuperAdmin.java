@@ -19,18 +19,18 @@ public class StartMenuSuperAdmin {
     static Scanner input=new Scanner(System.in);
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
+        System.out.println("Masukkan pilihan: ");
         option= Integer.valueOf(input.next());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Pilihan tak valid");
         }
         else{
             valid = true;
         }
     }
     static void print(){
-        System.out.println("1. Login");
-        System.out.println("0. Exit");
+        System.out.println("1. Log in");
+        System.out.println("0. Keluar");
     }
     static void input(){
         valid=false;

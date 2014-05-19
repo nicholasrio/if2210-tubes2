@@ -6,6 +6,7 @@
 
 package cmd.superadmin;
 
+import Video.NullException;
 import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -23,17 +24,17 @@ public class AddAdminForm {
     static Scanner input=new Scanner(System.in);
     
     static void input(){
-        System.out.print("Insert NIM: ");
-        NIM = input.next();
-        System.out.print("Insert Name: ");
-        Name = input.next();
-        System.out.print("Insert Password: ");
-        Password = input.next();
+        System.out.print("Masukkan NIM: ");
+        NIM = input.nextLine();
+        System.out.print("Nama: ");
+        Name = input.nextLine();
+        System.out.print("Password: ");
+        Password = input.nextLine();
     }
     static void execute(){
         try {
             DataController.AC.AdminRegister(NIM, Name, Password);
-        } catch (SQLException ex) {
+        } catch (SQLException | NullException ex) {
             Logger.getLogger(AddAdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

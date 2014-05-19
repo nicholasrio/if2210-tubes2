@@ -23,10 +23,10 @@ public class GroupSearchMenuUser {
     static boolean login;
     
     static void input(){
-        System.out.print("Insert Group Name: ");
-        Group_Name= input.next();
-        System.out.print("Insert Project Number: ");
-        no_tubes = Integer.valueOf(input.next());
+        System.out.print("Masukkan nama kelompok: ");
+        Group_Name= input.nextLine();
+        System.out.print("Masukkan no tugas besar: ");
+        no_tubes = Integer.valueOf(input.nextLine());
     }
     static void execute(){
         try {

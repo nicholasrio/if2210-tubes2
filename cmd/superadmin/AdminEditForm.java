@@ -21,7 +21,7 @@ public class AdminEditForm {
     static Scanner input=new Scanner(System.in);
     
     static void input(){
-        System.out.print("Insert NIM: ");
+        System.out.print("Masukkan NIM baru: ");
         NIM = input.next();
     }
     static void execute(){

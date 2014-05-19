@@ -21,15 +21,15 @@ public class GroupDeleteForm {
     static Scanner input=new Scanner(System.in);
     
     static void input(){
-        System.out.print("Insert Project Number: ");
+        System.out.print("Masukkan no Tugas Besar: ");
         No_Tubes = input.nextInt();
-        System.out.print("Insert Group Name: ");
+        System.out.print("Nama Kelompok: ");
         GroupName = input.next();
-        System.out.print("Number of Member: ");
+        System.out.print("Jumlah Anggota: ");
         Num = input.nextInt();
         Member = new String[Num];
         for(int i = 0; i<Num; i++){
-            System.out.print("Insert Member"+ (i+1));
+            System.out.print("Masukkan Anggota"+ (i+1));
             Member[0] = input.next();
         }
     }

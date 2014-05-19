@@ -26,15 +26,15 @@ public class Admins {
     static Scanner input=new Scanner(System.in);
     
     static void SelectChoice(){
-        System.out.println("Insert NIM: ");
+        System.out.println("Masukkan NIM: ");
         choice= input.next();
     }
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
+        System.out.println("Masukkan piihan menu: ");
         option= Integer.valueOf(input.next());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Pilihan tak valid");
         }
         else{
             valid = true;
@@ -50,10 +50,10 @@ public class Admins {
             }
         }
         System.out.println("");
-        System.out.println("1. Next");
-        System.out.println("2. Prev");
-        System.out.println("3. Select Admin");
-        System.out.println("0. Back");
+        System.out.println("1. Berikutnya");
+        System.out.println("2. Sebelumnya");
+        System.out.println("3. Pilih Admin");
+        System.out.println("0. Kembali");
     }
     static void input(){
         valid=false;

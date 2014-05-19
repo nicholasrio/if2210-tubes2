@@ -28,10 +28,10 @@ public class ManageGroupMenu {
         }
     }
     static void print(){
-        System.out.println("1. Add Group");
-        System.out.println("2. View Groups");
-        System.out.println("3. Search Group");
-        System.out.println("0. Cancel");
+        System.out.println("1. Tambah Kelompok");
+        System.out.println("2. Tampilkan daftar kelompok");
+        System.out.println("3. Cari kelompok");
+        System.out.println("0. Batal");
     }
     static void input(){
         valid=false;

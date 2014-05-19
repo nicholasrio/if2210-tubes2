@@ -33,11 +33,11 @@ public class AdminData {
     
     static void print(){
         System.out.println("NIM: "+Admin.GetNIM());
-        System.out.println("Name: "+Admin.GetName());
+        System.out.println("Nama: "+Admin.GetName());
         System.out.println("");
         System.out.println("Menu:");
-        System.out.println("1. Delete");
-        System.out.println("0. Back");
+        System.out.println("1. Hapus");
+        System.out.println("0. Kembali");
     }
     static void input(){
         valid=false;

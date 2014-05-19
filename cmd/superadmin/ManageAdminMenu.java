@@ -18,19 +18,19 @@ public class ManageAdminMenu {
     static Scanner input=new Scanner(System.in);
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
+        System.out.println("Masukkan pilihan: ");
         option= Integer.valueOf(input.next());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Pilihan tak valid");
         }
         else{
             valid = true;
         }
     }
     static void print(){
-        System.out.println("1. Register Admin");
-        System.out.println("2. View Admins");
-        System.out.println("3. Search Admins");
+        System.out.println("1. Daftarkan Admin");
+        System.out.println("2. Tampilkan daftar Admin");
+        System.out.println("3. Cari Admins");
         System.out.println("0. Logout");
     }
     static void input(){

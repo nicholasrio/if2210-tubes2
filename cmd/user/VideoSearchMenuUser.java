@@ -22,8 +22,8 @@ public class VideoSearchMenuUser {
     static boolean login;
     
     static void input(){
-        System.out.print("Insert Title: ");
-        VideoTitle= input.next();
+        System.out.print("Masukkan judul: ");
+        VideoTitle= input.nextLine();
     }
     static void execute(){
         try {

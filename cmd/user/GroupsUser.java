@@ -27,17 +27,17 @@ public class GroupsUser {
     static Scanner input=new Scanner(System.in);
     
     static void SelectChoice(){
-        System.out.println("Insert Group Name: ");
-        GroupName= input.next();
-        System.out.println("Insert Project Number: ");
-        no_tubes=Integer.valueOf(input.next());
+        System.out.println("Masukkan nama kelompok: ");
+        GroupName= input.nextLine();
+        System.out.println("No tugas besar: ");
+        no_tubes=Integer.valueOf(input.nextLine());
     }
     
     static void SelectOption(int i) throws OptionException{
-        System.out.println("Insert option: ");
-        option= Integer.valueOf(input.next());
+        System.out.println("Masukkan pilihan menu: ");
+        option= Integer.valueOf(input.nextLine());
         if (option > i || option <0){
-            throw new OptionException("Invalid Option");
+            throw new OptionException("Pilihan tak valid");
         }
         else{
             valid = true;
@@ -53,10 +53,10 @@ public class GroupsUser {
             }
         }
         System.out.println("");
-        System.out.println("1. Next");
-        System.out.println("2. Prev");
-        System.out.println("3. Select Grup");
-        System.out.println("0. Back");
+        System.out.println("1. Berikutnya");
+        System.out.println("2. Sebelumnya");
+        System.out.println("3. Pilih Kelompok");
+        System.out.println("0. Kembali");
     }
     static void input(){
         valid=false;

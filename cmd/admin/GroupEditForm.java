@@ -29,21 +29,21 @@ public class GroupEditForm {
     static Scanner input=new Scanner(System.in);
     
     static void input(){
-        System.out.print("Insert new Project Number: ");
-        new_no_tubes = input.nextInt();
+        System.out.print("Masukkan no Tugas Besar: ");
+        new_no_tubes = Integer.valueOf(input.nextLine());
         if(new_no_tubes==0){
             new_no_tubes=No_Tubes;
         }
-        System.out.print("Insert new Group Name: ");
-        new_group_name = input.next();
+        System.out.print("Nama kelompok: ");
+        new_group_name = input.nextLine();
         if(new_group_name.equals("")){
             new_group_name=GroupName;
         }
-        System.out.print("Number of Member: ");
-        Num = input.nextInt();
+        System.out.print("Jumlah Anggota: ");
+        Num = Integer.valueOf(input.nextLine());
         for(int i = 0; i<Num; i++){
-        System.out.print("Insert Member"+ (i+1) + " : ");
-        Member.add(input.next());
+        System.out.print("Masukkan Anggota"+ (i+1) + " : ");
+        Member.add(input.nextLine());
         }
     }
     static void execute(){

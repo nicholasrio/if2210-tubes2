@@ -22,8 +22,8 @@ public class VideoSearchForm {
     static boolean login;
     
     static void input(){
-        System.out.print("Insert Title: ");
-        VideoTitle= input.next();
+        System.out.print("Masukkan Judul: ");
+        VideoTitle= input.nextLine();
     }
     static void execute(){
         try {
