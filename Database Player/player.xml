@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<DatabasePlayer>
+     <lastLogin>
+          <nama>Tony</nama>
+          <score>999</score>
+          <levelUnlocked>3</levelUnlocked>
+          <achievementUnlocked>4</achievementUnlocked>
+     </lastLogin>
+     <player id="0">
+          <nama>dummy</nama>
+          <score>100</score>
+          <levelUnlocked>15</levelUnlocked>
+          <achievementUnlocked>25</achievementUnlocked>
+     </player>
+     <player id="1">
+          <nama>Timothy Pratama</nama>
+          <score>31</score>
+          <levelUnlocked>100</levelUnlocked>
+          <achievementUnlocked>20</achievementUnlocked>
+     </player>
+     <player id="2">
+          <nama>Eren Jaeger</nama>
+          <score>19</score>
+          <levelUnlocked>1</levelUnlocked>
+          <achievementUnlocked>1</achievementUnlocked>
+     </player>
+     <player id="3">
+          <nama>Winson Waisakurnia</nama>
+          <score>555</score>
+          <levelUnlocked>2</levelUnlocked>
+          <achievementUnlocked>30</achievementUnlocked>
+     </player>
+     <player id="4">
+          <nama>Michael Alexander Wangsa</nama>
+          <score>40</score>
+          <levelUnlocked>20</levelUnlocked>
+          <achievementUnlocked>10</achievementUnlocked>
+     </player>
+     <player id="5">
+          <nama>Tony</nama>
+          <score>999</score>
+          <levelUnlocked>3</levelUnlocked>
+          <achievementUnlocked>4</achievementUnlocked>
+     </player>
+     <player id="6">
+          <nama>Kevin Tjong</nama>
+          <score>555</score>
+          <levelUnlocked>10</levelUnlocked>
+          <achievementUnlocked>10</achievementUnlocked>
+     </player>
+</DatabasePlayer>

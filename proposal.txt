@@ -1,0 +1,37 @@
+-About the Team-
+
+Nama Team: Cube Mazer
+Judul Game: Cube Mazer
+
+13512018 - Tony
+13512032 - Timothy Pratama
+13512046 - Michael Alexander Wangsa
+13512071 - Winson Waisakurnia
+13512097 - Kevin
+
+-Background-
+Selama ini permainan maze yang ada biasanya hanya terdiri dari labirin-labirin
+yang berada di sebuah dungeon yang terlihat statis. Kami ingin membawakan sebuah maze
+dimana maze tersebut terletak di dalam sebuah kubus, di mana kubus tersebut dibagi 
+menjadi beberapa lantai maze yang saling berhubungan. Kami ingin membawa warna baru
+dalam permainan maze.
+
+-About the software product-
+Kami memilih tema game untuk software yang kami buat. Permainan kami ini mengenai permainan maze yang terletak di dalam sebuah kubus, dimana pemain akan masuk ke dalam kubus maze ini dalam sebuah titik dan harus keluar dari sebuah titik lainnya yang terletak pada kubus ini. Kubus maze ini akan terdiri dari beberapa lantai yang saling berhubungan, dan setiap lantai terdiri dari maze juga. Main objections nya adalah pemain harus bisa keluar dari kubus tersebut. Permainan ini akan terdiri dari beberapa kubus. Setiap kubus merupakan level yang berbeda. 
+
+
+-Workflow-
+1. Start game
+2. Masuk ke main menu. Pada main menu terdapat menu continue, change user, exit dan achievement. 
+3. Jika game ini baru pertama kali dimainkan, maka user akan diminta
+untuk memasukkan nama user. Jika sudah ada user yang terdaftar, user yang terakhir yang akan dianggap
+sedang bermain.
+4. Jika user memilih continue, maka akan masuk ke dalam stage selection yang terdiri dari scene-scene maze
+berupa kubus. Kemudian user memilih sebuah stage untuk dimainkan (yang sudah unlocked). Kemudian akan masuk
+ke dalam game scene berupa maze yang terletak di dalam sebuah kubus. User dapat menggerakan karakter utama
+dengan menggunakan keyboard. Di dalam maze ini akan terdapat pintu masuk, pintu keluar, dan barang yang dapat
+diambil oleh user. Objection nya adalah keluar dari maze.
+5. Jika user memilih change user, maka akan keluar sebuah menu untuk mengganti user, membuat user, maupun menghapus user
+yang sudah ada.
+6. Jika user memilih exit, maka user akan keluar dari game.
+7. Jika user memilih achievement, maka akan menampilkan achievement yang sudah diraih oleh user.

@@ -1,0 +1,126 @@
+=================================================
+| File untuk men-generate sebuah file map.xml   |
+| Format Input :                                |
+| <jumlah baris>                                |
+| <jumlah kolom>                                |
+| <jumlah level>                                |
+| <matriks level 0>                             |
+| ...                                           |
+| <matriks level (jumlah level - 1)>            |
+| <jumlah teleporter>				|
+| <informasi teleporter 1>			|
+| ...						|
+| <informasi teleporter (jumlah - 1)>		|
+| <format : baris,kolom,level>			|
+|						|
+| Legend : p = path, t = teleporter, c = coin	|
+|	   w = wall, s = start, f = finish	|	        
+=================================================
+
+8
+8
+8
+
+level 0
+s p p p p p p p
+p w w p w w w w
+p w w p w p p p
+p c w p w p w p
+p w w p w p w p
+p w c p w p w p
+p w w w w p w t0
+p p p p p p p w
+
+level 1
+p p p p p p p p
+w h w w w w w p
+p p p p p p w p
+p h p w c w w p
+p w p w w w w p
+p w p p p t2 w p
+p w w w w w w p
+p p p p p p p p
+
+level 2
+w h w w w w w p
+p p p p p c w p
+w p w w w w w p
+p p p p p p p h
+w p w w w w p w
+w p w t6 p p p w
+w p w w w w p w
+w p h p p w c w
+
+level 3
+c p p p p p p p
+w w w w w p w p
+c p w p p p w p
+w p h p w w p p
+p p w p w c w w
+w p p p w p w p
+w p w w w p w p
+t4 p p p p p p p
+
+level 4
+p w w w w w w p
+p p p p p c w p
+p h w w p w w p
+p w c w p h w p
+p w p w p w w p
+p w p w p t5 w p
+p w p w w w w p
+p p p h p p p p
+
+level 5
+w c w w w w t3 w
+p p p p p p p p
+w p w w h w p w 
+p p p p p p p p
+w p w p w w p w
+w p w p w w p w
+p p w p p p p c
+w p h p w w p w
+
+leve 6
+c p p p p p p p
+w w w p w w h w
+p h p p p p p p
+w p w p w w w w
+p p p p p p p p
+w w w p w p w w
+p p p p p p p p
+w c w h w w w t1
+
+level 7
+p p p p p p p c
+p w w w w p w w
+p w w h w p w c
+p w p p p p w p
+p w p w w w w p
+p w p p p p p p 
+p w w w w w w w
+p p p p p p p f
+
+jumlah teleporter
+7
+
+teleporter 0
+4 3 6
+
+teleporter 1
+0 0 1
+
+teleporter 2
+6 1 5
+
+teleporter 3
+3 6 3
+
+teleporter 4
+0 0 4
+
+teleporter 5
+3 3 2
+
+teleporter 6
+5 7 7
