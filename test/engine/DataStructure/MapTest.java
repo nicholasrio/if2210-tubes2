@@ -89,7 +89,7 @@ public class MapTest {
     @Test
     public void testGetStart() throws Exception {
         System.out.println("getStart");
-        Location expResult = new Location(0,5,0);
+        Location expResult = new Location(5,0,0);
         Location result = testMap.getStart();
         assertEquals(expResult.getLevel(), result.getLevel());
         assertEquals(expResult.getCol(), result.getCol());
